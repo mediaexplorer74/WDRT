@@ -1,9 +1,17 @@
-# Windows Device Recovery Tool Components Decompiled
+# WDRT 
+
+Windows Device Recovery Tool Components Decompiled
+
+
+## Abstract
+
 Decompiled dotnet source for Windows Device Recovery Tool, this code is provided 'as-is' and produced with "dnSpy", so expect errors in places.
 
+## My 2 cents
+- All projects "assembled" to one solution (.sln)
 
 
-**Files decompiled**
+## "Architecture" ("Files decompiled")
 
 ```
 en\System.Windows.Interactivity.resources
@@ -76,4 +84,25 @@ ufphostm
 WindowsDeviceRecoveryTool
 ZipForge
 ```
+
+## CAUTION
+
+- As my other decomp tests, this is as-is, I will not edit these. They are just a template for me to learn and maybe others.
+
+
+## TODO
+- Try to reconstruct this solution... (or find the time for WDRT RnD, heh)
+
+## References
+https://github.com/Empyreal96/WindowsDeviceRecoveryTool_components_decompiled
+
+https://github.com/microsoft
+
+
+## ..
+AS IS. No support. RnD only / DIY
+
+## .
+[m][e] 2022
+
 

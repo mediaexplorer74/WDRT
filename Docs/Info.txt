@@ -1,0 +1,14 @@
+// WDRT how-tos, etc. (RU)
+
+https://support.microsoft.com/ru-ru/windows/windows-device-recovery-tool-%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%D1%8B-%D0%B8-%D0%BE%D1%82%D0%B2%D0%B5%D1%82%D1%8B-2b186f06-7178-ed11-4cb6-5ed437f0855b
+
+https://4pda.to/forum/index.php?showtopic=963441&st=400
+
+https://yandex.ru/video/search?from=tabbar&text=WDRT
+
+https://www.youtube.com/watch?v=UxCVlRNz1Rc Ручная перепрошивка смартфона Lumia с помощью Windows Device Recovery Tool
+
+https://www.youtube.com/watch?v=ABzMNy8JDFI Windows device recovery tool - Lumia 950 XL
+
+https://www.youtube.com/watch?v=gnLQ_u4kF7E How to Install any Firmware with Windows Device Recovery Tool
+

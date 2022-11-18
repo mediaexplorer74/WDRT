@@ -36,9 +36,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ImageCommon">
-      <HintPath>C:\Program Files (x86)\Microsoft Care Suite\Windows Device Recovery Tool\ImageCommon.dll</HintPath>
-    </Reference>
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +51,12 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="app.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ImageCommon\ImageCommon.csproj">
+      <Project>{37ba0760-0c2c-4d4f-993f-94be80cecf40}</Project>
+      <Name>ImageCommon</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

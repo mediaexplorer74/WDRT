@@ -32,15 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.WindowsDeviceRecoveryTool.Common">
-      <HintPath>C:\Program Files (x86)\Microsoft Care Suite\Windows Device Recovery Tool\Microsoft.WindowsDeviceRecoveryTool.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsDeviceRecoveryTool.Core">
-      <HintPath>C:\Program Files (x86)\Microsoft Care Suite\Windows Device Recovery Tool\Microsoft.WindowsDeviceRecoveryTool.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Nokia.Lucid">
-      <HintPath>C:\Program Files (x86)\Microsoft Care Suite\Windows Device Recovery Tool\Nokia.Lucid.dll</HintPath>
-    </Reference>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
   </ItemGroup>
@@ -58,6 +49,20 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SynchronizationHelper.cs" />
     <Compile Include="WellKnownGuids.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Common\Microsoft.WindowsDeviceRecoveryTool.Common.csproj">
+      <Project>{64a43b64-7647-425c-b0e6-2e27da6dbdda}</Project>
+      <Name>Microsoft.WindowsDeviceRecoveryTool.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Core\Microsoft.WindowsDeviceRecoveryTool.Core.csproj">
+      <Project>{55a80c0e-e3d4-43eb-8c91-d6ef18bfa9dc}</Project>
+      <Name>Microsoft.WindowsDeviceRecoveryTool.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nokia.Lucid\Nokia.Lucid.csproj">
+      <Project>{0ba1a6f4-e417-4ab3-ab1d-264cc7735f25}</Project>
+      <Name>Nokia.Lucid</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

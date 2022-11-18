@@ -32,24 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.WindowsDeviceRecoveryTool.Common">
-      <HintPath>C:\Program Files (x86)\Microsoft Care Suite\Windows Device Recovery Tool\Microsoft.WindowsDeviceRecoveryTool.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsDeviceRecoveryTool.Core">
-      <HintPath>C:\Program Files (x86)\Microsoft Care Suite\Windows Device Recovery Tool\Microsoft.WindowsDeviceRecoveryTool.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsDeviceRecoveryTool.LogicCommon">
-      <HintPath>C:\Program Files (x86)\Microsoft Care Suite\Windows Device Recovery Tool\Microsoft.WindowsDeviceRecoveryTool.LogicCommon.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsDeviceRecoveryTool.Lucid">
-      <HintPath>C:\Program Files (x86)\Microsoft Care Suite\Windows Device Recovery Tool\Microsoft.WindowsDeviceRecoveryTool.Lucid.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsDeviceRecoveryTool.Model">
-      <HintPath>C:\Program Files (x86)\Microsoft Care Suite\Windows Device Recovery Tool\Microsoft.WindowsDeviceRecoveryTool.Model.dll</HintPath>
-    </Reference>
-    <Reference Include="Nokia.Lucid">
-      <HintPath>C:\Program Files (x86)\Microsoft Care Suite\Windows Device Recovery Tool\Nokia.Lucid.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
@@ -74,6 +56,32 @@
     <EmbeddedResource Include="Resources\HTC8X.png" />
     <EmbeddedResource Include="Resources\HtcLogo.png" />
     <EmbeddedResource Include="Resources\HTCOne.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Common\Microsoft.WindowsDeviceRecoveryTool.Common.csproj">
+      <Project>{64a43b64-7647-425c-b0e6-2e27da6dbdda}</Project>
+      <Name>Microsoft.WindowsDeviceRecoveryTool.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Core\Microsoft.WindowsDeviceRecoveryTool.Core.csproj">
+      <Project>{55a80c0e-e3d4-43eb-8c91-d6ef18bfa9dc}</Project>
+      <Name>Microsoft.WindowsDeviceRecoveryTool.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.LogicCommon\Microsoft.WindowsDeviceRecoveryTool.LogicCommon.csproj">
+      <Project>{2adf7f14-aa94-4a70-b28f-668964626e8f}</Project>
+      <Name>Microsoft.WindowsDeviceRecoveryTool.LogicCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Lucid\Microsoft.WindowsDeviceRecoveryTool.Lucid.csproj">
+      <Project>{adee4bcd-be8f-4ec5-8d00-aa6442b86415}</Project>
+      <Name>Microsoft.WindowsDeviceRecoveryTool.Lucid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Model\Microsoft.WindowsDeviceRecoveryTool.Model.csproj">
+      <Project>{0fcb723b-55fa-4794-8262-8ec9d399f6e3}</Project>
+      <Name>Microsoft.WindowsDeviceRecoveryTool.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nokia.Lucid\Nokia.Lucid.csproj">
+      <Project>{0ba1a6f4-e417-4ab3-ab1d-264cc7735f25}</Project>
+      <Name>Nokia.Lucid</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

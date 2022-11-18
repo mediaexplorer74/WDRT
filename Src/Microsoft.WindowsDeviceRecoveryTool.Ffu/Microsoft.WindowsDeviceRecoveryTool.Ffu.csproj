@@ -32,12 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FFUComponents">
-      <HintPath>C:\Program Files (x86)\Microsoft Care Suite\Windows Device Recovery Tool\FFUComponents.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsDeviceRecoveryTool.Core">
-      <HintPath>C:\Program Files (x86)\Microsoft Care Suite\Windows Device Recovery Tool\Microsoft.WindowsDeviceRecoveryTool.Core.dll</HintPath>
-    </Reference>
     <Reference Include="System.ComponentModel.Composition" />
   </ItemGroup>
   <ItemGroup>
@@ -49,6 +43,16 @@
     <Compile Include="FfuDeviceInformationProviderCacheDecorator.cs" />
     <Compile Include="IFfuDeviceInformationProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FFUComponents\FFUComponents.csproj">
+      <Project>{928157d7-3130-4324-9f56-b04dba29818a}</Project>
+      <Name>FFUComponents</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Core\Microsoft.WindowsDeviceRecoveryTool.Core.csproj">
+      <Project>{55a80c0e-e3d4-43eb-8c91-d6ef18bfa9dc}</Project>
+      <Name>Microsoft.WindowsDeviceRecoveryTool.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

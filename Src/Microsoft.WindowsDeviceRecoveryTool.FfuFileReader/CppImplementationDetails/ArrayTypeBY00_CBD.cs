@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-namespace <CppImplementationDetails>
+namespace CppImplementationDetails
 {
 	// Token: 0x02000013 RID: 19
 	[UnsafeValueType]
 	[NativeCppClass]
-	internal struct $ArrayType$$$BY00$$CBD
+	internal struct ArrayTypeBY00_CBD
 	{
 	}
 }

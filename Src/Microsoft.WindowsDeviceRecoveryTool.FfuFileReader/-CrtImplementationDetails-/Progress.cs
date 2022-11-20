@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-namespace <CrtImplementationDetails>
+namespace CrtImplementationDetails
 {
 	// Token: 0x020002A0 RID: 672
 	[NativeCppClass]

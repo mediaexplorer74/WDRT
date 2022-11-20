@@ -150,7 +150,15 @@ namespace Microsoft.Tools.Connectivity
 				uint num = 0U;
 				try
 				{
-					num = this.RemoteDevice.SirepClient.LaunchWithOutput((uint)this.Timeout.TotalMilliseconds, "\\windows\\system32\\cmd.exe", text, Path.GetDirectoryName("\\windows\\system32\\cmd.exe"), 0U, outputCallback);
+					//RnD
+					num = this.RemoteDevice.SirepClient.LaunchWithOutput
+						(
+						(uint)this.Timeout.TotalMilliseconds, "\\windows\\system32\\cmd.exe", 
+						text, 
+						Path.GetDirectoryName("\\windows\\system32\\cmd.exe"), 
+						0U, 
+						null/*outputCallback*/
+						);
 				}
 				catch (COMException ex)
 				{
@@ -195,7 +203,7 @@ namespace Microsoft.Tools.Connectivity
 		}
 
 		// Token: 0x0600007C RID: 124 RVA: 0x0000378C File Offset: 0x0000198C
-		internal RemoteFileInfo Info()
+		public RemoteFileInfo Info()
 		{
 			this.RemoteDevice.EnsureConnection();
 			if (this.remoteFileInfo == null && this.RemoteDevice.IsFileInfoSupported)
@@ -225,4 +233,6 @@ namespace Microsoft.Tools.Connectivity
 		// Token: 0x0400009A RID: 154
 		private RemoteFileInfo remoteFileInfo;
 	}
+
+   
 }

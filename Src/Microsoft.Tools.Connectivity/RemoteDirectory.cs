@@ -78,7 +78,9 @@ namespace Microsoft.Tools.Connectivity
 				uint num = 0U;
 				try
 				{
-					num = this.RemoteDevice.SirepClient.LaunchWithOutput((uint)this.Timeout.TotalMilliseconds, "\\windows\\system32\\cmd.exe", text, Path.GetDirectoryName("\\windows\\system32\\cmd.exe"), 0U, outputCallback);
+					num = this.RemoteDevice.SirepClient.LaunchWithOutput((uint)this.Timeout.TotalMilliseconds, "\\windows\\system32\\cmd.exe", text,
+						Path.GetDirectoryName("\\windows\\system32\\cmd.exe"), 
+						0U, /*outputCallback*/null);
 				}
 				catch (COMException ex)
 				{
@@ -141,7 +143,10 @@ namespace Microsoft.Tools.Connectivity
 				uint num = 0U;
 				try
 				{
-					num = this.RemoteDevice.SirepClient.LaunchWithOutput((uint)this.Timeout.TotalMilliseconds, "\\windows\\system32\\cmd.exe", text, Path.GetDirectoryName("\\windows\\system32\\cmd.exe"), 0U, outputCallback);
+					num = this.RemoteDevice.SirepClient.LaunchWithOutput((uint)this.Timeout.TotalMilliseconds, "\\windows\\system32\\cmd.exe", 
+						text, Path.GetDirectoryName("\\windows\\system32\\cmd.exe"), 
+						0U, 
+						/*outputCallback*/null);
 				}
 				catch (COMException ex)
 				{
@@ -258,7 +263,8 @@ namespace Microsoft.Tools.Connectivity
 				}
 				try
 				{
-					this.RemoteDevice.SirepClient.LaunchWithOutput((uint)this.Timeout.TotalMilliseconds, "<WPCONDEV>", text2, null, 0U, outputCallback);
+					this.RemoteDevice.SirepClient.LaunchWithOutput((uint)this.Timeout.TotalMilliseconds, "<WPCONDEV>", 
+						text2, null, 0U, /*outputCallback*/null);
 				}
 				catch (COMException ex)
 				{
@@ -323,7 +329,7 @@ namespace Microsoft.Tools.Connectivity
 			{
 				try
 				{
-					this.RemoteDevice.SirepClient.SirepDirectoryEnum(this.remoteDirectoryName, outputCallback);
+					this.RemoteDevice.SirepClient.SirepDirectoryEnum(this.remoteDirectoryName, /*outputCallback*/null);
 				}
 				catch (COMException ex4)
 				{
@@ -385,7 +391,8 @@ namespace Microsoft.Tools.Connectivity
 				uint num = 0U;
 				try
 				{
-					num = this.RemoteDevice.SirepClient.LaunchWithOutput((uint)this.Timeout.TotalMilliseconds, "\\windows\\system32\\cmd.exe", text, Path.GetDirectoryName("\\windows\\system32\\cmd.exe"), 0U, outputCallback);
+					num = this.RemoteDevice.SirepClient.LaunchWithOutput((uint)this.Timeout.TotalMilliseconds, "\\windows\\system32\\cmd.exe", text,
+						Path.GetDirectoryName("\\windows\\system32\\cmd.exe"), 0U, /*outputCallback*/null);
 				}
 				catch (COMException ex)
 				{

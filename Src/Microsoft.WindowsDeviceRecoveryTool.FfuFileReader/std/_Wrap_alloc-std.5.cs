@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace std
 {
+	/*
 	// Token: 0x02000249 RID: 585
 	[NativeCppClass]
 	internal struct _Wrap_alloc<std::allocator<FfuReader::partition>\u0020>
@@ -21,4 +22,5 @@ namespace std
 		{
 		}
 	}
+	*/
 }

@@ -129,7 +129,7 @@ namespace Microsoft.Tools.Connectivity
 
 		// Token: 0x17000016 RID: 22
 		// (get) Token: 0x0600002D RID: 45 RVA: 0x000024C5 File Offset: 0x000006C5
-		internal SirepClientClass SirepClient
+		public SirepClientClass SirepClient
 		{
 			get
 			{
@@ -252,9 +252,9 @@ namespace Microsoft.Tools.Connectivity
 				{
 					this.Discover(candidateIds);
 				}
-				catch (Exception exception)
+				catch (Exception exception1)
 				{
-					exception = exception;
+					exception = exception1;
 				}
 				finally
 				{
@@ -293,12 +293,12 @@ namespace Microsoft.Tools.Connectivity
 			{
 				throw new OperationFailedException("Device wasn't found");
 			}
-			SirepEndpointInfo localEndpoint;
+			SirepEndpointInfo localEndpoint = default;
 			localEndpoint.wszIPAddress = "127.0.0.1";
 			localEndpoint.usSirepPort = 0;
 			localEndpoint.usEchoPort = 0;
 			localEndpoint.usProtocol2Port = 0;
-			SirepEndpointInfo remoteEndpoint;
+			SirepEndpointInfo remoteEndpoint = default;
 			remoteEndpoint.wszIPAddress = this.ipEndPoint.Address.ToString();
 			remoteEndpoint.usSirepPort = 0;
 			remoteEndpoint.usEchoPort = 0;
@@ -313,7 +313,8 @@ namespace Microsoft.Tools.Connectivity
 				this.sirepClient.SirepInitializeWithEndpoints(localEndpoint, remoteEndpoint);
 				this.sirepClient.SirepSetSshPort((ushort)this.SshPort);
 				this.sirepClient.SirepConnect((uint)this.Timeout.TotalMilliseconds, false);
-				this.protocol = (RemoteDevice.TransportProtocol)this.sirepClient.SirepUsedProtocol();
+				//RnD
+				this.protocol = default;//(RemoteDevice.TransportProtocol)this.sirepClient.SirepUsedProtocol();
 				this.IsConnected = true;
 			}
 			catch (COMException ex)
@@ -333,9 +334,9 @@ namespace Microsoft.Tools.Connectivity
 				{
 					this.Connect();
 				}
-				catch (Exception exception)
+				catch (Exception exception1)
 				{
-					exception = exception;
+					exception = exception1;
 				}
 				finally
 				{
@@ -404,9 +405,9 @@ namespace Microsoft.Tools.Connectivity
 						ping = this.Ping();
 					}
 				}
-				catch (Exception exception)
+				catch (Exception exception1)
 				{
-					exception = exception;
+					exception = exception1;
 				}
 				finally
 				{

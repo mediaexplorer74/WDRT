@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 
 // Token: 0x020000E1 RID: 225
-[NativeCppClass]
+//[NativeCppClass]
 internal enum tagXMLEMEM_TYPE
 {
 

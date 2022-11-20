@@ -34,9 +34,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SirepInterop">
-      <HintPath>C:\Program Files (x86)\Microsoft Care Suite\Windows Device Recovery Tool\SirepInterop.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
@@ -57,6 +54,12 @@
     <Compile Include="RemoteDevice.cs" />
     <Compile Include="RemoteDirectory.cs" />
     <Compile Include="RemoteFile.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Interop.SirepClient\Interop.SirepClient.csproj">
+      <Project>{89ed6f52-d516-459e-a1bf-8aa345005784}</Project>
+      <Name>Interop.SirepClient</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

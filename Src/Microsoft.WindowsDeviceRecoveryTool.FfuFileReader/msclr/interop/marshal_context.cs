@@ -46,6 +46,7 @@ namespace msclr.interop
 		}
 
 		// Token: 0x040001C8 RID: 456
-		internal readonly LinkedList<object> _clean_up_list = new LinkedList<object>();
+		internal readonly LinkedList<object> _clean_up_list = 
+			new LinkedList<object>();
 	}
 }

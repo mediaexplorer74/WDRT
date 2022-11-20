@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 using System.Security;
 
-namespace <CrtImplementationDetails>
+namespace CrtImplementationDetails
 {
 	// Token: 0x02000271 RID: 625
 	[Serializable]

@@ -80,4 +80,5 @@ namespace Microsoft.Tools.Connectivity
 		// Token: 0x04000002 RID: 2
 		private Dictionary<Guid, DiscoveredDeviceInfo> discoveredDeviceInfos;
 	}
+	    
 }

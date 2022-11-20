@@ -93,7 +93,10 @@ namespace Microsoft.Tools.Connectivity
 			this.outputString.Clear();
 			try
 			{
-				this.ExitCode = (int)this.RemoteDevice.SirepClient.LaunchWithOutput((uint)this.Timeout.TotalMilliseconds, command, this.argumentsText, this.WorkingFolder, 0U, outputCallback);
+				this.ExitCode = (int)this.RemoteDevice.SirepClient.LaunchWithOutput((uint)this.Timeout.TotalMilliseconds, 
+					command, this.argumentsText, 
+					this.WorkingFolder, 0U, 
+					/*outputCallback*/null);
 			}
 			catch (COMException ex)
 			{
@@ -113,9 +116,9 @@ namespace Microsoft.Tools.Connectivity
 				{
 					this.Execute();
 				}
-				catch (Exception exception)
+				catch (Exception exception1)
 				{
-					exception = exception;
+					exception = exception1;
 				}
 				finally
 				{
@@ -148,7 +151,10 @@ namespace Microsoft.Tools.Connectivity
 			this.outputString.Clear();
 			try
 			{
-				result = (int)this.RemoteDevice.SirepClient.CreateProcess(this.commandText, this.argumentsText, this.WorkingFolder, 0U);
+				result = (int)this.RemoteDevice.SirepClient.CreateProcess(
+					this.commandText, 
+					this.argumentsText, 
+					this.WorkingFolder, 0U);
 			}
 			catch (COMException ex)
 			{

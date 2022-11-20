@@ -73,7 +73,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.BusinessLogic.Services
 		public event Action<bool> DeviceConnectionStatusRead;
 
 		// Token: 0x06000023 RID: 35 RVA: 0x00002894 File Offset: 0x00000A94
-		internal void AddAdaptation(BaseAdaptation adaptationService)
+		public void AddAdaptation(BaseAdaptation adaptationService)
 		{
 			this.adaptationServices.Add(adaptationService);
 			adaptationService.ProgressChanged += this.RaiseProgressChanged;
@@ -204,7 +204,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.BusinessLogic.Services
 			try
 			{
 				this.reportingService.OperationStarted(phone, ReportOperationType.EmergencyFlashing);
-				LumiaAdaptation lumiaAdaptation = this.GetAdaptation(PhoneTypes.Lumia) as LumiaAdaptation;
+				LumiaAdaptation1 lumiaAdaptation = this.GetAdaptation(PhoneTypes.Lumia)	as LumiaAdaptation1;
 				lumiaAdaptation.EmergencyFlashDevice(phone, token);
 				this.reportingService.PartialOperationSucceded(phone, ReportOperationType.EmergencyFlashing, UriData.EmergencyFlashingSuccesfullyFinished);
 			}

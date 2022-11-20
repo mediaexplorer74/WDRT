@@ -22,7 +22,15 @@ namespace ComponentAce.Compression.GZip
 		{
 			byte[] array = new byte[GzipHeader.SizeOf()];
 			int num;
-			if (!ReadWriteHelper.ReadFromStream(array, 0, array.Length, out num, this._compressedStream, new DoOnStreamOperationFailureDelegate(this.DoOnReadFromStreamFailure)))
+			if (
+				!ReadWriteHelper.ReadFromStream
+				(array, 
+				0, 
+				array.Length, out num, 
+				this._compressedStream, 
+				/*new DoOnStreamOperationFailureDelegate(this.DoOnReadFromStreamFailure)*/
+				null)
+			   )
 			{
 				throw ExceptionBuilder.Exception(ErrorCode.ReadFromStreamFailed);
 			}
@@ -60,7 +68,11 @@ namespace ComponentAce.Compression.GZip
 		{
 			byte[] array = new byte[2];
 			int num;
-			if (!ReadWriteHelper.ReadFromStream(array, 0, array.Length, out num, this._compressedStream, new DoOnStreamOperationFailureDelegate(this.DoOnReadFromStreamFailure)))
+			if (!ReadWriteHelper.ReadFromStream(array, 0, array.Length, out num, 
+				this._compressedStream, 
+				/*new DoOnStreamOperationFailureDelegate(this.DoOnReadFromStreamFailure)*/
+				null
+				))
 			{
 				throw ExceptionBuilder.Exception(ErrorCode.ReadFromStreamFailed);
 			}
@@ -69,7 +81,10 @@ namespace ComponentAce.Compression.GZip
 			item.ExtraFieldLenToRead = binaryReader.ReadUInt16();
 			byte[] array2 = new byte[(int)item.ExtraFieldLenToRead];
 			item.ExtraFieldData = (byte[])array2.Clone();
-			if (!ReadWriteHelper.ReadFromStream(array2, 0, array2.Length, out num, this._compressedStream, new DoOnStreamOperationFailureDelegate(this.DoOnReadFromStreamFailure)))
+			if (!ReadWriteHelper.ReadFromStream(array2, 0, array2.Length, out num, 
+				this._compressedStream, 
+				/*new DoOnStreamOperationFailureDelegate(this.DoOnReadFromStreamFailure)*/
+				null))
 			{
 				throw ExceptionBuilder.Exception(ErrorCode.ReadFromStreamFailed);
 			}
@@ -80,7 +95,10 @@ namespace ComponentAce.Compression.GZip
 		{
 			byte[] array = new byte[1];
 			int num;
-			while (ReadWriteHelper.ReadFromStream(array, 0, array.Length, out num, this._compressedStream, new DoOnStreamOperationFailureDelegate(this.DoOnReadFromStreamFailure)))
+			while (ReadWriteHelper.ReadFromStream(array, 0, array.Length, out num, 
+				this._compressedStream, 
+				/*new DoOnStreamOperationFailureDelegate(this.DoOnReadFromStreamFailure)*/
+				null))
 			{
 				if (array[0] != 0)
 				{
@@ -101,7 +119,10 @@ namespace ComponentAce.Compression.GZip
 			byte[] array = new byte[1];
 			item.Comment = string.Empty;
 			int num;
-			while (ReadWriteHelper.ReadFromStream(array, 0, array.Length, out num, this._compressedStream, new DoOnStreamOperationFailureDelegate(this.DoOnReadFromStreamFailure)))
+			while (ReadWriteHelper.ReadFromStream(array, 0, array.Length, out num,
+				this._compressedStream, 
+				/*new DoOnStreamOperationFailureDelegate(this.DoOnReadFromStreamFailure)*/
+				null))
 			{
 				if (array[0] != 0)
 				{
@@ -121,7 +142,10 @@ namespace ComponentAce.Compression.GZip
 		{
 			byte[] array = new byte[2];
 			int num;
-			if (!ReadWriteHelper.ReadFromStream(array, 0, array.Length, out num, this._compressedStream, new DoOnStreamOperationFailureDelegate(this.DoOnReadFromStreamFailure)))
+			if (!ReadWriteHelper.ReadFromStream(array, 0, array.Length, out num, 
+				this._compressedStream, 
+				/*new DoOnStreamOperationFailureDelegate(this.DoOnReadFromStreamFailure)*/
+				null))
 			{
 				throw ExceptionBuilder.Exception(ErrorCode.ReadFromStreamFailed);
 			}
@@ -131,7 +155,7 @@ namespace ComponentAce.Compression.GZip
 		}
 
 		// Token: 0x060002F2 RID: 754 RVA: 0x00018FCB File Offset: 0x00017FCB
-		protected void DoOnReadFromStreamFailure(Exception innerException, ref bool cancel)
+		protected void DoOnReadFromStreamFailure(System.Exception innerException, ref bool cancel)
 		{
 			throw innerException;
 		}

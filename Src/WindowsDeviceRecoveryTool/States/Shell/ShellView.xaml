@@ -11,14 +11,14 @@
 				Interval="0:0:0.1"
 				x:Key="FocusDelayTimer"
 				Tick="FocusDelayTimer_OnTick" />
-			<converters:StringNullOrEmptyToVisibilityConverter
+			<!--converters:StringNullOrEmptyToVisibilityConverter
 				Collapse="False"
-				x:Key="StringNullOrEmptyToVisibilityConverter" />
+				x:Key="StringNullOrEmptyToVisibilityConverter" /-->
 		</ResourceDictionary>
 	</FrameworkElement.Resources>
 	<Grid>
 		<controls:GenericRoot
-			Name="GenericRoot"
+		    Name="GenericRoot"
 			KeyboardNavigation.TabNavigation="Cycle"
 			KeyboardNavigation.IsTabStop="False"
 			FocusVisualStyle="{x:Null}"
@@ -62,9 +62,9 @@
 						Focusable="True"
 						Text="{Binding HeaderText}"
 						FocusVisualStyle="{x:Null}">
-						<i:Interaction.Behaviors>
+						<!--i:Interaction.Behaviors>
 							<controls:TextBlockFixedWidthBehaviour />
-						</i:Interaction.Behaviors>
+						</i:Interaction.Behaviors-->
 					</TextBlock>
 					<TextBlock
 						Style="{DynamicResource PageSubheaderTextStyle}"
@@ -81,15 +81,19 @@
 					Focusable="False"
 					KeyboardNavigation.TabNavigation="None"
 					FocusVisualStyle="{x:Null}">
-					<controls:NotificationControl
+					
+                    <!--controls:NotificationControl
 						Margin="10,0,-80,0"
 						HeaderStyle="{DynamicResource SubheaderTextStyle}"
 						MessageStyle="{DynamicResource BasicTextStyle}"
 						ShowNotification="{Binding IsNotificationVisible}"
 						NotificationText="{Binding NotificationText}"
-						NotificationHeader="{Binding NotificationHeader}" />
+						NotificationHeader="{Binding NotificationHeader}" 
+                      /-->
+                    
 				</ContentControl>
-				<controls:MainAreaControl
+				
+                <!--controls:MainAreaControl
 					Name="MainContent"
 					ContentChanged="MainContent_OnContentChanged"
 					Grid.Column="1"
@@ -98,8 +102,13 @@
 					VerticalAlignment="Stretch"
 					framework:RegionManager.RegionName="{x:Static resources:Consts.MainArea}"
 					Focusable="False"
-					FocusVisualStyle="{x:Null}" />
-				<ContentControl
+					FocusVisualStyle="{x:Null}" 
+                /-->
+
+                <!--
+                framework:RegionManager.RegionName="{x:Static resources:Consts.SettingsArea}"
+                -->
+                    <ContentControl
 					Grid.Column="0"
 					Grid.ColumnSpan="3"
 					Grid.Row="1"
@@ -107,7 +116,6 @@
 					HorizontalAlignment="Stretch"
 					HorizontalContentAlignment="Stretch"
 					Grid.RowSpan="2"
-					framework:RegionManager.RegionName="{x:Static resources:Consts.SettingsArea}"
 					Focusable="False"
 					FocusVisualStyle="{x:Null}">
 					<controls:SettingsControl
@@ -119,6 +127,7 @@
 				</ContentControl>
 			</Grid>
 		</controls:GenericRoot>
+        
 		<StackPanel
 			VerticalAlignment="Center"
 			HorizontalAlignment="Center"

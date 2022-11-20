@@ -1,55 +1,14 @@
-﻿using System.Reflection;
-using System.Resources;
+﻿using System;
+using System.Diagnostics;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using System.Windows;
+using System.Runtime.Versioning;
 
-// Общие сведения об этой сборке предоставляются следующим набором
-// набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
-// общие сведения об этой сборке.
-[assembly: AssemblyTitle("PkgToolBox")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("PkgToolBox")]
-[assembly: AssemblyCopyright("Copyright ©  2022")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-
-// Задание значения false для атрибута ComVisible приведет к тому, что типы из этой сборки станут невидимыми 
-// для COM-компонентов.  Если к одному из типов этой сборки необходимо обращаться из 
-// COM, задайте атрибуту ComVisible значение TRUE для этого типа.
+[assembly: AssemblyVersion("10.0.0.0")]
 [assembly: ComVisible(false)]
-
-//Чтобы начать создание локализуемых приложений, задайте
-//<UICulture>CultureYouAreCodingWith</UICulture> в файле .csproj
-//внутри <PropertyGroup>.  Например, если используется английский США
-//в своих исходных файлах установите <UICulture> в en-US.  Затем отмените преобразование в комментарий
-//атрибута NeutralResourceLanguage ниже.  Обновите "en-US" в
-//строка внизу для обеспечения соответствия настройки UICulture в файле проекта.
-
-//[assembly: NeutralResourcesLanguage("en-US", UltimateResourceFallbackLocation.Satellite)]
-
-
-[assembly:ThemeInfo(
-    ResourceDictionaryLocation.None, //где расположены словари ресурсов по конкретным тематикам
-                             //(используется, если ресурс не найден на странице,
-                             // или в словарях ресурсов приложения)
-    ResourceDictionaryLocation.SourceAssembly //где расположен словарь универсальных ресурсов
-                                      //(используется, если ресурс не найден на странице,
-                                      // в приложении или в каких-либо словарях ресурсов для конкретной темы)
-)]
-
-
-// Сведения о версии сборки состоят из следующих четырех значений:
-//
-//      Основной номер версии
-//      Дополнительный номер версии
-//   Номер сборки
-//      Редакция
-//
-// Можно задать все значения или принять номера сборки и редакции по умолчанию 
-// используя "*", как показано ниже:
-// [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: CLSCompliant(false)]
+[assembly: AssemblyProduct("Microsoft (R) Windows (R) Operating System")]
+[assembly: AssemblyCopyright("Copyright (c) Microsoft Corporation. All rights reserved.")]
+[assembly: AssemblyCompany("Microsoft Corporation")]
+[assembly: AssemblyFileVersion("10.0.10011.16384")]

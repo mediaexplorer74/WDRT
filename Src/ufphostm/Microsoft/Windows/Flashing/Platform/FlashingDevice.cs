@@ -35,10 +35,10 @@ namespace Microsoft.Windows.Flashing.Platform
 		}
 
 		// Token: 0x06000149 RID: 329 RVA: 0x0001306C File Offset: 0x0001246C
-		private void ~FlashingDevice()
-		{
-			this.!FlashingDevice();
-		}
+		//private void ~FlashingDevice()
+		//{
+		//	this.!FlashingDevice();
+		//}
 
 		// Token: 0x0600014A RID: 330 RVA: 0x00012D70 File Offset: 0x00012170
 		private unsafe void !FlashingDevice()

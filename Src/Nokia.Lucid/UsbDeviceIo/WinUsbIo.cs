@@ -20,6 +20,8 @@ namespace Nokia.Lucid.UsbDeviceIo
 		}
 
 		// Token: 0x060001BF RID: 447 RVA: 0x0000C654 File Offset: 0x0000A854
+		//RnD
+		/*
 		protected override void Finalize()
 		{
 			try
@@ -34,6 +36,7 @@ namespace Nokia.Lucid.UsbDeviceIo
 				base.Finalize();
 			}
 		}
+		*/
 
 		// Token: 0x1700003A RID: 58
 		// (get) Token: 0x060001C0 RID: 448 RVA: 0x0000C6AC File Offset: 0x0000A8AC

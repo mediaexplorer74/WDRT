@@ -1,6 +1,5 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:presentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
 	<DrawingImage
-		x:Freeze="True"
 		x:Key="VariantPackageImage">
 		<DrawingImage.Drawing>
 			<DrawingGroup>
@@ -22,7 +21,6 @@
 		</DrawingImage.Drawing>
 	</DrawingImage>
 	<DrawingImage
-		x:Freeze="True"
 		x:Key="DeviceIconImage">
 		<DrawingImage.Drawing>
 			<DrawingGroup>
@@ -50,7 +48,6 @@
 		</DrawingImage.Drawing>
 	</DrawingImage>
 	<DrawingImage
-		x:Freeze="True"
 		x:Key="FawkesDeviceIconImage">
 		<DrawingImage.Drawing>
 			<GeometryDrawing
@@ -65,7 +62,6 @@
 		</DrawingImage.Drawing>
 	</DrawingImage>
 	<DrawingImage
-		x:Freeze="True"
 		x:Key="AnalogDeviceIconImage">
 		<DrawingImage.Drawing>
 			<GeometryDrawing

@@ -24,7 +24,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.BusinessLogic
 			{
 				container.SatisfyImportsOnce(this);
 				this.ffuFileInfoService = container.GetExportedValue<FfuFileInfoService>();
-				this.lumiaAdaptation = container.GetExportedValue<LumiaAdaptation>();
+				this.lumiaAdaptation = container.GetExportedValue<LumiaAdaptation1>();
 				this.adaptationManager = container.GetExportedValue<AdaptationManager>();
 				this.autoUpdateService = container.GetExportedValue<AutoUpdateService>();
 				this.reportingService = container.GetExportedValue<ReportingService>();
@@ -75,11 +75,11 @@ namespace Microsoft.WindowsDeviceRecoveryTool.BusinessLogic
 
 		// Token: 0x17000004 RID: 4
 		// (get) Token: 0x06000008 RID: 8 RVA: 0x000021BC File Offset: 0x000003BC
-		public LumiaAdaptation LumiaAdaptation
+		public LumiaAdaptation1 LumiaAdaptation
 		{
 			get
 			{
-				LumiaAdaptation result;
+				LumiaAdaptation1 result;
 				lock (this.lumiaAdaptation)
 				{
 					result = this.lumiaAdaptation;
@@ -166,7 +166,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.BusinessLogic
 		// Token: 0x0600000E RID: 14 RVA: 0x00002384 File Offset: 0x00000584
 		private void InitializeAdaptationManager()
 		{
-			this.AdaptationManager.AddAdaptation(this.lumiaAdaptation);
+			//RnD
+			//this.AdaptationManager.AddAdaptation(this.lumiaAdaptation);
+
 			foreach (Lazy<IAdaptation, IExportAdaptationMetadata> lazy in this.AdaptationsWithMetadata)
 			{
 				this.AdaptationManager.AddAdaptation((BaseAdaptation)lazy.Value);
@@ -206,7 +208,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.BusinessLogic
 		private readonly FfuFileInfoService ffuFileInfoService;
 
 		// Token: 0x04000002 RID: 2
-		private readonly LumiaAdaptation lumiaAdaptation;
+		private readonly LumiaAdaptation1 lumiaAdaptation;
 
 		// Token: 0x04000003 RID: 3
 		private readonly AdaptationManager adaptationManager;
@@ -226,4 +228,5 @@ namespace Microsoft.WindowsDeviceRecoveryTool.BusinessLogic
 		// Token: 0x04000008 RID: 8
 		private bool disposed;
 	}
+
 }

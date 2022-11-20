@@ -6,16 +6,15 @@ Windows Device Recovery Tool Components Decompiled
 
 Decompiled dotnet source for Windows Device Recovery Tool, this code is provided 'as-is' and produced with "dnSpy", so expect errors in places.
 
-# Screenshots
+# Design / Screenshots
 <table><tr>
-<td> <img src="Images/shot1.png" alt="Drawing" style="width: 800px;"/> </td>
+<td> <img src="Design/wdrt-logo.png" alt="Drawing" style="width: 800px;"/> </td>
+<td> <img src="Design/under-construction.png" alt="Drawing" style="width: 800px;"/> </td>
 </tr></table>
 
 ## My 2 cents
 - All projects "assembled" to one solution (.sln)
 
-## Status
-Under the construction / Work in progress
 
 ## "Architecture" ("Files decompiled")
 

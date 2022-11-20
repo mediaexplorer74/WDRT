@@ -66,7 +66,9 @@ namespace Nokia.Lucid.TcpServer
 				if (ex.ErrorCode == 10048 && portNumber < num)
 				{
 					portNumber++;
-					goto IL_4D;
+
+					//RnD
+					//goto IL_4D;
 				}
 				throw;
 			}

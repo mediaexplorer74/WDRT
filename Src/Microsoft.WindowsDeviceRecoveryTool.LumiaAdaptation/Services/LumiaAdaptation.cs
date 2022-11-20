@@ -24,11 +24,11 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation.Services
 {
 	// Token: 0x02000007 RID: 7
 	[Export]
-	public class LumiaAdaptation : BaseAdaptation
+	public class LumiaAdaptation1 : BaseAdaptation
 	{
 		// Token: 0x06000040 RID: 64 RVA: 0x000043AC File Offset: 0x000025AC
 		[ImportingConstructor]
-		public LumiaAdaptation(DataPackageService dataPackageService, Thor2Service thor2Service, MsrService msrService, ReportingService reportingService)
+		public LumiaAdaptation1(DataPackageService dataPackageService, Thor2Service thor2Service, MsrService msrService, ReportingService reportingService)
 		{
 			this.msrService = msrService;
 			this.salesNameProvider = new SalesNameProvider();
@@ -163,12 +163,12 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation.Services
 		// Token: 0x06000053 RID: 83 RVA: 0x00004734 File Offset: 0x00002934
 		public override List<PackageFileInfo> FindPackage(string directory, Phone currentPhone, CancellationToken cancellationToken)
 		{
-			Tracer<LumiaAdaptation>.LogEntry("FindPackage");
+			Tracer<LumiaAdaptation1>.LogEntry("FindPackage");
 			List<PackageFileInfo> list = new List<PackageFileInfo>();
 			try
 			{
 				List<VariantInfo> list2 = this.dataPackageService.FindLocalVariants();
-				Tracer<LumiaAdaptation>.WriteInformation("Selecting variants for Product Type: {0}", new object[]
+				Tracer<LumiaAdaptation1>.WriteInformation("Selecting variants for Product Type: {0}", new object[]
 				{
 					currentPhone.HardwareModel
 				});
@@ -185,17 +185,17 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation.Services
 			}
 			catch (Exception error)
 			{
-				Tracer<LumiaAdaptation>.WriteError(error, "Error while searching for packages", new object[0]);
+				Tracer<LumiaAdaptation1>.WriteError(error, "Error while searching for packages", new object[0]);
 				throw;
 			}
-			Tracer<LumiaAdaptation>.LogExit("FindPackage");
+			Tracer<LumiaAdaptation1>.LogExit("FindPackage");
 			return list;
 		}
 
 		// Token: 0x06000054 RID: 84 RVA: 0x00004858 File Offset: 0x00002A58
 		public override List<PackageFileInfo> FindAllPackages(string directory, CancellationToken cancellationToken)
 		{
-			Tracer<LumiaAdaptation>.LogEntry("FindAllPackages");
+			Tracer<LumiaAdaptation1>.LogEntry("FindAllPackages");
 			List<PackageFileInfo> list = new List<PackageFileInfo>();
 			try
 			{
@@ -214,17 +214,17 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation.Services
 			}
 			catch (Exception error)
 			{
-				Tracer<LumiaAdaptation>.WriteError(error, "Error while searching for packages", new object[0]);
+				Tracer<LumiaAdaptation1>.WriteError(error, "Error while searching for packages", new object[0]);
 				throw;
 			}
-			Tracer<LumiaAdaptation>.LogExit("FindAllPackages");
+			Tracer<LumiaAdaptation1>.LogExit("FindAllPackages");
 			return list;
 		}
 
 		// Token: 0x06000055 RID: 85 RVA: 0x00004948 File Offset: 0x00002B48
 		public override void CheckPackageIntegrity(Phone phone, CancellationToken cancellationToken)
 		{
-			Tracer<LumiaAdaptation>.LogEntry("CheckPackageIntegrity");
+			Tracer<LumiaAdaptation1>.LogEntry("CheckPackageIntegrity");
 			base.RaiseProgressPercentageChanged(0, null);
 			this.dataPackageService.IntegrityCheckProgressEvent += this.DataPackageServiceIntegrityCheckProgressEvent;
 			try
@@ -235,7 +235,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation.Services
 			{
 				this.dataPackageService.IntegrityCheckProgressEvent -= this.DataPackageServiceIntegrityCheckProgressEvent;
 			}
-			Tracer<LumiaAdaptation>.LogExit("CheckPackageIntegrity");
+			Tracer<LumiaAdaptation1>.LogExit("CheckPackageIntegrity");
 		}
 
 		// Token: 0x06000056 RID: 86 RVA: 0x000049D0 File Offset: 0x00002BD0
@@ -253,7 +253,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation.Services
 		// Token: 0x06000058 RID: 88 RVA: 0x00004A20 File Offset: 0x00002C20
 		public override void DownloadPackage(Phone phone, CancellationToken cancellationToken)
 		{
-			Tracer<LumiaAdaptation>.LogEntry("DownloadPackage");
+			Tracer<LumiaAdaptation1>.LogEntry("DownloadPackage");
 			base.RaiseProgressPercentageChanged(0, null);
 			try
 			{
@@ -277,19 +277,19 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation.Services
 			{
 				if (ex.InnerException is AggregateException && ex.InnerException.InnerException is IOException && (long)ex.InnerException.InnerException.HResult == -2147024784L)
 				{
-					Tracer<LumiaAdaptation>.WriteInformation("--100: For some reason the exception wasn't thrown until here.");
+					Tracer<LumiaAdaptation1>.WriteInformation("--100: For some reason the exception wasn't thrown until here.");
 					throw new NotEnoughSpaceException();
 				}
 				UriData uriDataForException = this.GetUriDataForException(ex);
 				Tuple<long, long, bool> downloadPackageInformation = this.msrService.GetDownloadPackageInformation();
 				this.reportingService.SetDownloadByteInformation(phone, ReportOperationType.DownloadPackage, downloadPackageInformation.Item1, downloadPackageInformation.Item2, downloadPackageInformation.Item3);
 				this.reportingService.OperationFailed(phone, ReportOperationType.DownloadPackage, uriDataForException, ex);
-				Tracer<LumiaAdaptation>.WriteError(ex);
+				Tracer<LumiaAdaptation1>.WriteError(ex);
 				throw;
 			}
 			finally
 			{
-				Tracer<LumiaAdaptation>.LogExit("DownloadPackage");
+				Tracer<LumiaAdaptation1>.LogExit("DownloadPackage");
 			}
 		}
 
@@ -303,7 +303,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation.Services
 		// Token: 0x0600005A RID: 90 RVA: 0x00004C3C File Offset: 0x00002E3C
 		public override void DownloadEmergencyPackage(Phone phone, CancellationToken cancellationToken)
 		{
-			Tracer<LumiaAdaptation>.LogEntry("DownloadEmergencyPackage");
+			Tracer<LumiaAdaptation1>.LogEntry("DownloadEmergencyPackage");
 			base.RaiseProgressPercentageChanged(0, null);
 			try
 			{
@@ -319,10 +319,10 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation.Services
 			{
 				if (ex.InnerException is AggregateException && ex.InnerException.InnerException is IOException && (long)ex.InnerException.InnerException.HResult == -2147024784L)
 				{
-					Tracer<LumiaAdaptation>.WriteInformation("--100: For some reason the exception wasn't thrown until here.");
+					Tracer<LumiaAdaptation1>.WriteInformation("--100: For some reason the exception wasn't thrown until here.");
 					throw new NotEnoughSpaceException();
 				}
-				Tracer<LumiaAdaptation>.WriteError(ex);
+				Tracer<LumiaAdaptation1>.WriteError(ex);
 				if (ex.GetBaseException() is WebException && (long)ex.GetBaseException().HResult == -2146233079L)
 				{
 					this.reportingService.OperationFailed(phone, ReportOperationType.DownloadEmergencyPackage, UriData.EmergencyFlashFilesNotFoundOnServer, ex);
@@ -336,7 +336,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation.Services
 			finally
 			{
 				this.dataPackageService.DownloadProgressChanged -= this.DataPackageServiceDownloadProgressEvent;
-				Tracer<LumiaAdaptation>.LogExit("DownloadEmergencyPackage");
+				Tracer<LumiaAdaptation1>.LogExit("DownloadEmergencyPackage");
 			}
 		}
 
@@ -542,7 +542,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation.Services
 			PackageFileInfo result;
 			try
 			{
-				Tracer<LumiaAdaptation>.LogEntry("CheckLatestPackage");
+				Tracer<LumiaAdaptation1>.LogEntry("CheckLatestPackage");
 				DownloadParameters downloadParameters = new DownloadParameters
 				{
 					DiscoveryParameters = this.DeviceQueryParameters(phone),
@@ -576,7 +576,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation.Services
 			}
 			finally
 			{
-				Tracer<LumiaAdaptation>.LogExit("CheckLatestPackage");
+				Tracer<LumiaAdaptation1>.LogExit("CheckLatestPackage");
 			}
 			return result;
 		}
@@ -661,7 +661,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation.Services
 			try
 			{
 				int num = this.ReadBatteryLevel(phone);
-				Tracer<LumiaAdaptation>.WriteInformation("Battery level: ", new object[]
+				Tracer<LumiaAdaptation1>.WriteInformation("Battery level: ", new object[]
 				{
 					num
 				});
@@ -676,7 +676,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation.Services
 			}
 			catch (Exception ex)
 			{
-				Tracer<LumiaAdaptation>.WriteError("Cannot read battery level!: ", new object[]
+				Tracer<LumiaAdaptation1>.WriteError("Cannot read battery level!: ", new object[]
 				{
 					ex
 				});

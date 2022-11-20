@@ -57,7 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PkgToolBox\PkgToolBox.csproj">
-      <Project>{c0c56fe1-9f54-4032-afb1-8e34cf48481e}</Project>
+      <Project>{37ba0760-0c2c-4d4f-993f-94be80cecf63}</Project>
       <Name>PkgToolBox</Name>
     </ProjectReference>
   </ItemGroup>

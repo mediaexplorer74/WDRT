@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using std;
+//using std;
 
 namespace FfuFileReader
 {
@@ -10,10 +10,12 @@ namespace FfuFileReader
 		// Token: 0x060002A8 RID: 680 RVA: 0x000026E8 File Offset: 0x00001AE8
 		public unsafe int Read(string path)
 		{
+			int result = default;
+			/*
 			<Module>.std.basic_ios<char,std::char_traits<char>\u0020>.setstate(*(*(int*)<Module>.__imp_std.cout + 4) + <Module>.__imp_std.cout, 4, false);
 			basic_string<char,std::char_traits<char>,std::allocator<char>\u0020> basic_string<char,std::char_traits<char>,std::allocator<char>_u0020>;
 			<Module>.msclr.interop.marshal_as<class\u0020std::basic_string<char,struct\u0020std::char_traits<char>,class\u0020std::allocator<char>\u0020>,class\u0020System::String\u0020^>(&basic_string<char,std::char_traits<char>,std::allocator<char>_u0020>, ref path);
-			int result;
+			
 			try
 			{
 				FfuReader ffuReader;
@@ -58,19 +60,23 @@ namespace FfuFileReader
 				throw;
 			}
 			<Module>.std.basic_string<char,std::char_traits<char>,std::allocator<char>\u0020>._Tidy(ref basic_string<char,std::char_traits<char>,std::allocator<char>_u0020>, true, 0U);
+			
+			*/
 			return result;
 		}
 
 		// Token: 0x060002A9 RID: 681 RVA: 0x00002810 File Offset: 0x00001C10
 		public unsafe int ReadPlatformId(string path)
 		{
-			<Module>.std.basic_ios<char,std::char_traits<char>\u0020>.setstate(*(*(int*)<Module>.__imp_std.cout + 4) + <Module>.__imp_std.cout, 4, false);
-			basic_string<char,std::char_traits<char>,std::allocator<char>\u0020> basic_string<char,std::char_traits<char>,std::allocator<char>_u0020>;
-			<Module>.msclr.interop.marshal_as<class\u0020std::basic_string<char,struct\u0020std::char_traits<char>,class\u0020std::allocator<char>\u0020>,class\u0020System::String\u0020^>(&basic_string<char,std::char_traits<char>,std::allocator<char>_u0020>, ref path);
-			int result;
+			//<Module>.std.basic_ios<char,std::char_traits<char>\u0020>.setstate(*(*(int*)<Module>.__imp_std.cout + 4) + <Module>.__imp_std.cout, 4, false);
+			//basic_string<char,std::char_traits<char>,std::allocator<char>\u0020> basic_string<char,std::char_traits<char>,std::allocator<char>_u0020>;
+			//<Module>.msclr.interop.marshal_as<class\u0020std::basic_string<char,struct\u0020std::char_traits<char>,class\u0020std::allocator<char>\u0020>,class\u0020System::String\u0020^>(&basic_string<char,std::char_traits<char>,std::allocator<char>_u0020>, ref path);
+			int result = default;
+			/*
 			try
 			{
 				FfuReader ffuReader;
+				
 				<Module>.FfuReader.{ctor}(ref ffuReader);
 				try
 				{
@@ -111,6 +117,7 @@ namespace FfuFileReader
 				throw;
 			}
 			<Module>.std.basic_string<char,std::char_traits<char>,std::allocator<char>\u0020>._Tidy(ref basic_string<char,std::char_traits<char>,std::allocator<char>_u0020>, true, 0U);
+			*/
 			return result;
 		}
 

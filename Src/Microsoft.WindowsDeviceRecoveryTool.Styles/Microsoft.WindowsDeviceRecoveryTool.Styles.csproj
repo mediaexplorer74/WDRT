@@ -36,6 +36,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.Windows" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="WindowsBase" />
@@ -57,7 +58,7 @@
     <Compile Include="Behaviors\LiveRegionBehavior.cs" />
     <Compile Include="Behaviors\LiveSetting.cs" />
     <Compile Include="Behaviors\ScrollBehavior.cs" />
-    <Compile Include="Controls\TitleBar.cs" />
+    <Compile Include="TitleBar.cs" />
     <Compile Include="Converters\BooleanToVisibilityHiddenConverter.cs" />
     <Compile Include="Converters\BoolToOffOnConverter.cs" />
     <Compile Include="Converters\EqualityToBoolConverter.cs" />
@@ -137,6 +138,9 @@
       <Project>{081f084d-70ab-42aa-a1e7-460f52620ca7}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.Localization</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

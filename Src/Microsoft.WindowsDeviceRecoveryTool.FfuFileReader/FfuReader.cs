@@ -21,7 +21,7 @@ internal struct FfuReader
 	}
 
 	// Token: 0x020001D8 RID: 472
-	[NativeCppClass]
+	//[NativeCppClass]
 	[CLSCompliant(false)]
 	public enum AccessMethod
 	{

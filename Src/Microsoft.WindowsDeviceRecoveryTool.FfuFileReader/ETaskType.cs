@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 
 // Token: 0x02000281 RID: 641
-[NativeCppClass]
+//[NativeCppClass]
 internal enum ETaskType
 {
 

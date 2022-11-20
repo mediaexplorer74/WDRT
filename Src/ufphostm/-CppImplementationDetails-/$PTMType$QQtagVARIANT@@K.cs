@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-namespace <CppImplementationDetails>
+namespace CppImplementationDetails
 {
 	// Token: 0x02000023 RID: 35
 	[NativeCppClass]

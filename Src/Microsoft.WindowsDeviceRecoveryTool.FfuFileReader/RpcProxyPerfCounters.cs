@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 
 // Token: 0x02000074 RID: 116
-[NativeCppClass]
+//[NativeCppClass]
 internal enum RpcProxyPerfCounters
 {
 

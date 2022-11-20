@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ComponentAce.Compression.Exception
+namespace ComponentAce.Compression.Exception1
 {
 	// Token: 0x02000002 RID: 2
 	internal class ArchiverConst

@@ -369,18 +369,19 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 		}
 
 		// Token: 0x060004F5 RID: 1269 RVA: 0x000220C3 File Offset: 0x000210C3
-		protected internal void DoOnProcessFileFailure(string fileName, string errorMessage, Exception innerException)
+		protected internal void DoOnProcessFileFailure(string fileName, 
+			string errorMessage, System.Exception innerException)
 		{
 			if (this.OnProcessFileFailure != null)
 			{
-				this.OnProcessFileFailure(this, fileName, errorMessage, innerException);
+				this.OnProcessFileFailure(this, fileName, errorMessage, null/*innerException*/);
 				return;
 			}
 			throw innerException;
 		}
 
 		// Token: 0x060004F6 RID: 1270 RVA: 0x000220DE File Offset: 0x000210DE
-		protected internal void DoOnWriteToStreamFailed(Exception innerException, ref bool cancel)
+		protected internal void DoOnWriteToStreamFailed(System.Exception innerException, ref bool cancel)
 		{
 			cancel = false;
 			if (this.OnWriteToStreamFailure != null)
@@ -566,7 +567,7 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 			dirItem.CompressionMode = this._compressionMode;
 			dirItem.ActualCompressionMethod = this._compressionMethod;
 			dirItem.Signature = 33639248U;
-			dirItem.ExtractVersion = ((this._dmHandle.CentralDirectoryEnd.Signature == this.CentralDirEndSignature) ? 16660 : 20);
+			dirItem.ExtractVersion = (ushort)((this._dmHandle.CentralDirectoryEnd.Signature == this.CentralDirEndSignature) ? 16660 : 20);
 			dirItem.VersionMadeBy = 20;
 			if (!CompressionUtils.IsNullOrEmpty(this._password))
 			{
@@ -652,7 +653,7 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 				}
 				dirItem.RelativeLocalHeaderOffset = this._sentBytes;
 				dirItem.SetGeneralPurposeFlagBit(3);
-				dirItem.ExtractVersion = (dirItem.IsHugeFile ? ((this._dmHandle.CentralDirectoryEnd.Signature == this.CentralDirEndSignature) ? 16685 : 45) : 20);
+				dirItem.ExtractVersion = (ushort)(dirItem.IsHugeFile ? ((this._dmHandle.CentralDirectoryEnd.Signature == this.CentralDirEndSignature) ? 16685 : 45) : 20);
 				uint crc = dirItem.CRC32;
 				dirItem.CRC32 = 0U;
 				int num = stream.ReadByte();
@@ -686,7 +687,9 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 				dirItem.CRC32 = crc;
 				this.InternalCompressFile(stream, this._compressedStream, dirItem, num);
 				this._sentBytes += dirItem.CompressedSize;
-				if (dirItem.CompressedSize > (long)((ulong)-1))
+
+				//RnD (ulong)-1
+				if (dirItem.CompressedSize > -1)
 				{
 					dirItem.IsHugeFile = true;
 					if (this._zip64Mode == Zip64Mode.Disabled)
@@ -708,7 +711,7 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 				this.DoOnFileProgress(dirItem.Name, dirItem.UncompressedSize, DateTime.Now - this._currentItemOperationStartTime, ProgressPhase.End, ref this._progressCancel);
 				result = true;
 			}
-			catch (Exception ex)
+			catch (System.Exception ex)
 			{
 				this.DoOnProcessFileFailure(dirItem.Name, ex.Message, ex);
 			}
@@ -751,7 +754,7 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 					stream.Write(buffer, offset, count);
 					flag2 = false;
 				}
-				catch (Exception innerException)
+				catch (System.Exception innerException)
 				{
 					this.DoOnWriteToStreamFailed(innerException, ref flag);
 					flag2 = true;
@@ -1255,11 +1258,11 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 
 		// Token: 0x02000077 RID: 119
 		// (Invoke) Token: 0x06000510 RID: 1296
-		public delegate void OnProcessFileFailureDelegate(object sender, string fileName, string errorMessage, Exception exception);
+		public delegate void OnProcessFileFailureDelegate(object sender, string fileName, string errorMessage, System.Exception exception);
 
 		// Token: 0x02000078 RID: 120
 		// (Invoke) Token: 0x06000514 RID: 1300
-		public delegate void OnWriteToStreamFailureDelegate(object sender, Exception innerException, ref bool cancel);
+		public delegate void OnWriteToStreamFailureDelegate(object sender, System.Exception innerException, ref bool cancel);
 
 		// Token: 0x02000079 RID: 121
 		// (Invoke) Token: 0x06000518 RID: 1304

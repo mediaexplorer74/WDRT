@@ -37,8 +37,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nokia.Lucid.IsiStream", "No
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nokia.Mira", "Nokia.Mira\Nokia.Mira.csproj", "{A3FD0999-A422-44D1-9C14-23A16AF09D58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentationFramework", "PresentationFramework\PresentationFramework.csproj", "{38F92510-976A-4351-BB51-E6FDC3AFE202}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SirepInterop", "SirepInterop\SirepInterop.csproj", "{95243185-8C23-44F0-BE94-76AABFAF39AD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareRepository", "SoftwareRepository\SoftwareRepository.csproj", "{67FB07F5-DF73-45D6-8EFD-9C76838949BF}"
@@ -349,18 +347,6 @@ Global
 		{A3FD0999-A422-44D1-9C14-23A16AF09D58}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{A3FD0999-A422-44D1-9C14-23A16AF09D58}.Release|x86.ActiveCfg = Release|Any CPU
 		{A3FD0999-A422-44D1-9C14-23A16AF09D58}.Release|x86.Build.0 = Release|Any CPU
-		{38F92510-976A-4351-BB51-E6FDC3AFE202}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{38F92510-976A-4351-BB51-E6FDC3AFE202}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{38F92510-976A-4351-BB51-E6FDC3AFE202}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{38F92510-976A-4351-BB51-E6FDC3AFE202}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{38F92510-976A-4351-BB51-E6FDC3AFE202}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{38F92510-976A-4351-BB51-E6FDC3AFE202}.Debug|x86.Build.0 = Debug|Any CPU
-		{38F92510-976A-4351-BB51-E6FDC3AFE202}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{38F92510-976A-4351-BB51-E6FDC3AFE202}.Release|Any CPU.Build.0 = Release|Any CPU
-		{38F92510-976A-4351-BB51-E6FDC3AFE202}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{38F92510-976A-4351-BB51-E6FDC3AFE202}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{38F92510-976A-4351-BB51-E6FDC3AFE202}.Release|x86.ActiveCfg = Release|Any CPU
-		{38F92510-976A-4351-BB51-E6FDC3AFE202}.Release|x86.Build.0 = Release|Any CPU
 		{95243185-8C23-44F0-BE94-76AABFAF39AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{95243185-8C23-44F0-BE94-76AABFAF39AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95243185-8C23-44F0-BE94-76AABFAF39AD}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU

@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Permissions;
 using System.Threading;
-using <CppImplementationDetails>;
+using CppImplementationDetails;
 using <CrtImplementationDetails>;
 using ATL;
 using FlashingPlatform;

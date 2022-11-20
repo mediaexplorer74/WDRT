@@ -14,6 +14,8 @@ Decompiled dotnet source for Windows Device Recovery Tool, this code is provided
 ## My 2 cents
 - All projects "assembled" to one solution (.sln)
 
+## Status
+Under the construction / Work in progress
 
 ## "Architecture" ("Files decompiled")
 

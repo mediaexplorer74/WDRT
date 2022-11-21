@@ -32,7 +32,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.PkgCommon
 		}
 
 		// Token: 0x06000004 RID: 4 RVA: 0x000020A0 File Offset: 0x000002A0
-		public void Save(string cabPath, CompressionType compressionType)
+		public void Save(string cabPath, CompressionType1 compressionType)
 		{
 			string tempDirectory = FileUtils.GetTempDirectory();
 			try

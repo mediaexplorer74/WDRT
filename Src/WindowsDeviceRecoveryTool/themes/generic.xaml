@@ -1,5 +1,11 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:controls="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Controls" xmlns:system="clr-namespace:System;assembly=mscorlib" xmlns:l="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Localization;assembly=Microsoft.WindowsDeviceRecoveryTool.Localization">
-	<Style
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:controls="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Controls" 
+                    xmlns:system="clr-namespace:System;assembly=mscorlib" 
+                    xmlns:l="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Localization;assembly=Microsoft.WindowsDeviceRecoveryTool.Localization">
+
+    <!--Button-->
+        <Style
 		TargetType="{x:Type Button}"
 		x:Key="FlipImagePathButtonStyle">
 		<Setter
@@ -32,8 +38,7 @@
 		<Setter
 			Property="Foreground"
 			Value="{DynamicResource ButtonForegroundThemeBrush}" />
-		<Setter
-			Property="ContentTemplate">
+		<!--Setter Property="ContentTemplate">
 			<Setter.Value>
 				<DataTemplate
 					DataType="{x:Type ImageSource}">
@@ -55,13 +60,16 @@
 					</Image>
 				</DataTemplate>
 			</Setter.Value>
-		</Setter>
-		<Setter
+		</Setter-->
+		
+        <Setter
 			Property="Template">
 			<Setter.Value>
 				<ControlTemplate
-					TargetType="{x:Type Button}">
-					<Grid
+					TargetType="{x:Type TextBox}">
+                    <!-- Button-->
+                    
+                    <Grid
 						HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
 						VerticalAlignment="{TemplateBinding VerticalAlignment}">
 						<VisualStateManager.VisualStateGroups>
@@ -184,31 +192,34 @@
 		x:Key="PrevArrowGeometryCurved">m 29.5,-42.625 c -0.903454,0.09787 -1.778276,0.447802 -2.5,1 l -80,60 c -1.236216,0.927419 -1.999667,2.454576 -1.999667,4 0,1.545424 0.763451,3.072581 1.999667,4 l 80,60 c 0.85802,0.64347 1.927502,0.999964 3,1 l 30,0 c 2.081451,-6.24e-4 4.084179,-1.444565 4.742391,-3.419203 C 65.400604,81.981159 64.664787,79.62437 63,78.375 l -74.65625,-56 74.65625,-56 c 1.664787,-1.24937 2.400604,-3.606159 1.742391,-5.580797 C 64.084179,-41.180435 62.081451,-42.624376 60,-42.625 l -30,0 c -0.166528,-0.0083 -0.333472,-0.0083 -0.5,0 z</PathGeometry>
 	<PathGeometry
 		x:Key="NextArrowGeometryCurved">m 88.21875,-42.28125 c -2.081451,6.24e-4 -4.084179,1.444565 -4.742391,3.419203 -0.658213,1.974638 0.0776,4.331427 1.742391,5.580797 l 74.65625,56 -74.65625,56 c -1.664787,1.24937 -2.400604,3.606159 -1.742391,5.580797 0.658212,1.974638 2.66094,3.418579 4.742391,3.419203 l 30,0 c 1.0725,-3.6e-5 2.14198,-0.35653 3,-1 l 80,-60 c 1.23622,-0.927419 1.99967,-2.454576 1.99967,-4 0,-1.545424 -0.76345,-3.072581 -1.99967,-4 l -80,-60 c -0.85802,-0.64347 -1.9275,-0.999964 -3,-1 z</PathGeometry>
-	<Style
-		TargetType="{x:Type Button}"
+    
+    <!--Button-->
+        <Style
+		TargetType="{x:Type TextBox}"
 		BasedOn="{StaticResource FlipImagePathButtonStyle}"
 		x:Key="PagedListViewPreviousSwitchButtonTemplate">
 		<Setter
-			Property="Content"
+			Property="Text"
 			Value="{StaticResource PrevArrowGeometry}" />
 		<Setter
 			Property="Width"
 			Value="30" />
 	</Style>
-	<Style
-		TargetType="{x:Type Button}"
+	
+    <Style
+		TargetType="{x:Type TextBox}"
 		BasedOn="{StaticResource FlipImagePathButtonStyle}"
 		x:Key="PagedListViewNextSwitchButtonTemplate">
 		<Setter
-			Property="Content"
+			Property="Text"
 			Value="{StaticResource NextArrowGeometry}" />
 		<Setter
 			Property="Width"
 			Value="30" />
 	</Style>
 	<Style
-		TargetType="{x:Type controls:HyperlinkButton}"
-		x:Key="{x:Type controls:HyperlinkButton}">
+		TargetType="{x:Type Button}"
+		x:Key="{x:Type Button}">
 		<Setter
 			Property="FrameworkElement.FocusVisualStyle"
 			Value="{x:Null}" />
@@ -249,7 +260,7 @@
 			Property="Template">
 			<Setter.Value>
 				<ControlTemplate
-					TargetType="{x:Type controls:HyperlinkButton}">
+					TargetType="{x:Type Button}">
 					<Grid>
 						<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup
@@ -349,36 +360,25 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
-	<Style
-		TargetType="{x:Type controls:FlipListView}"
-		x:Key="{x:Type controls:FlipListView}">
+    <!--TargetType="{x:Type controls:FlipListView}"
+		x:Key="{x:Type controls:FlipListView}"-->
+        <Style
+        TargetType="{x:Type ListView}"
+		x:Key="{x:Type ListView}"
+		>
 		<Setter
 			Property="IsTabStop"
 			Value="False" />
-		<Setter
-			Property="HorizontalScrollBarVisibility"
-			Value="Disabled" />
-		<Setter
-			Property="VerticalScrollBarVisibility"
-			Value="Hidden" />
+		
 		<Setter
 			Property="ScrollViewer.IsDeferredScrollingEnabled"
 			Value="False" />
-		<Setter
-			Property="controls:FlipListView.SwitchPreviousButtonStyle"
-			Value="{StaticResource PagedListViewPreviousSwitchButtonTemplate}" />
-		<Setter
-			Property="controls:FlipListView.SwitchNextButtonStyle"
-			Value="{StaticResource PagedListViewNextSwitchButtonTemplate}" />
 		<Setter
 			Property="FrameworkElement.FocusVisualStyle"
 			Value="{x:Null}" />
 		<Setter
 			Property="Focusable"
 			Value="False" />
-		<Setter
-			Property="controls:FlipListView.ItemsOrientantion"
-			Value="Horizontal" />
 		<Setter
 			Property="ItemsPanel">
 			<Setter.Value>
@@ -402,7 +402,7 @@
 			Property="Template">
 			<Setter.Value>
 				<ControlTemplate
-					TargetType="{x:Type controls:FlipListView}">
+					TargetType="{x:Type ListView}">
 					<Border
 						Name="Border"
 						BorderBrush="{TemplateBinding BorderBrush}"
@@ -450,16 +450,13 @@
 							</Grid.ColumnDefinitions>
 							<Button
 								Name="PART_SwitchPrevButton"
-								Style="{TemplateBinding controls:SwitchPreviousButtonStyle}"
-								IsEnabled="{TemplateBinding controls:CanFlipPrevious}"
-								AutomationProperties.Name="{l:Localization PagePrevious}" />
+								Style="{TemplateBinding FocusVisualStyle}"
+								IsEnabled="True"
+								AutomationProperties.Name="PagePrevious" />
 							<ScrollViewer
 								Name="PART_ItemsScrollViewer"
 								Grid.Column="1"
 								CanContentScroll="True"
-								HorizontalScrollBarVisibility="{TemplateBinding HorizontalScrollBarVisibility}"
-								VerticalScrollBarVisibility="{TemplateBinding VerticalScrollBarVisibility}"
-								IsDeferredScrollingEnabled="{TemplateBinding IsDeferredScrollingEnabled}"
 								FocusVisualStyle="{x:Null}">
 								<ItemsPresenter
 									Name="PART_ItemsPresenter" />
@@ -470,9 +467,9 @@
 							<Button
 								Name="PART_SwitchNextButton"
 								Grid.Column="2"
-								Style="{TemplateBinding controls:SwitchNextButtonStyle}"
-								IsEnabled="{TemplateBinding controls:CanFlipNext}"
-								AutomationProperties.Name="{l:Localization PageNext}" />
+								Style="{TemplateBinding FocusVisualStyle}"
+								IsEnabled="True"
+								AutomationProperties.Name="PageNext" />
 						</Grid>
 					</Border>
 				</ControlTemplate>

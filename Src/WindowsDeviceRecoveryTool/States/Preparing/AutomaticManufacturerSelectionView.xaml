@@ -19,7 +19,7 @@
 			<TextBlock
 				Style="{DynamicResource SubheaderTextStyle}"
 				Focusable="True"
-				Text="{localization:Localization PleaseConnectDevice}"
+				Text="PleaseConnectDevice"
 				FocusVisualStyle="{x:Null}" />
 		</Grid>
 		<controls:DeviceConnectionCanvas
@@ -36,7 +36,7 @@
 			Margin="20,10"
 			Focusable="True"
 			KeyboardNavigation.TabNavigation="Local"
-			Content="{localization:Localization ButtonMyPhoneWasNotDetected}"
+			Content="ButtonMyPhoneWasNotDetected"
 			Command="{Binding DeviceNotDetectedCommand}" />
 	</Grid>
 </Grid>

@@ -109,7 +109,7 @@ namespace Microsoft.WindowsPhone.CompDB
 			Console.WriteLine(text6);
 			string text7 = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
 			Directory.CreateDirectory(text7);
-			CabApiWrapper.CreateCab(text3, text, text7, "*.*", CompressionType.FastLZX);
+			CabApiWrapper.CreateCab(text3, text, text7, "*.*", CompressionType1.FastLZX);
 			if (usePhoneSigning)
 			{
 				process.StartInfo.Arguments = "/c sign.cmd \"" + sourcePackage + "\"";

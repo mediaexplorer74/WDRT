@@ -30,7 +30,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.PkgCommon
 			IPkgBuilder pkgBuilder = new PkgBuilder(pkgManifest);
 			if (pkgManifest.PackageStyle == PackageStyle.CBS)
 			{
-				pkgBuilder.SaveCBSR(outputCab, CompressionType.FastLZX);
+				pkgBuilder.SaveCBSR(outputCab, CompressionType1.FastLZX);
 				return;
 			}
 			pkgBuilder.SaveCab(outputCab, true);

@@ -563,7 +563,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.PkgCommon
 			{
 				cab.AddFile(x.CabPath, x.SourcePath);
 			});
-			cab.Save(cabPath, /*compressionType*/null);
+			cab.Save(cabPath, compressionType);
 			try
 			{
 				if (signingHint == PackageTools.SIGNING_HINT.SIGNING_HINT_TEST)
@@ -890,7 +890,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.PkgCommon
 			CabArchiver cabArchiver = new CabArchiver();
 			cabArchiver.AddFile(this._manifestEntry.CabPath, this._manifestEntry.SourcePath);
 			cabArchiver.AddFile(this._catalogEntry.CabPath, this._catalogEntry.SourcePath);
-			cabArchiver.Save(cabPath, /*compressionType*/null);
+			cabArchiver.Save(cabPath, compressionType);
 			try
 			{
 				this._signer.SignFile(cabPath);

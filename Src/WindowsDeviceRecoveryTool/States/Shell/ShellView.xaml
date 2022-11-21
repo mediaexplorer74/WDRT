@@ -18,12 +18,12 @@
 	</FrameworkElement.Resources>
 	<Grid>
 		<controls:GenericRoot
-		    Name="GenericRoot"
+		    x:Name="GenericRoot1"
 			KeyboardNavigation.TabNavigation="Cycle"
 			KeyboardNavigation.IsTabStop="False"
 			FocusVisualStyle="{x:Null}"
 			AutomationProperties.Name="{Binding HeaderText}"
-			Visibility="{Binding IsAppBusy, Converter={StaticResource InvertedBooleanToVisibilityConverter}}">
+			Visibility="{Binding IsAppBusy}">
 			<Grid
 				Style="{DynamicResource ContentRoot}">
 				<Grid.ColumnDefinitions>
@@ -118,12 +118,12 @@
 					Grid.RowSpan="2"
 					Focusable="False"
 					FocusVisualStyle="{x:Null}">
-					<controls:SettingsControl
+					<!--controls:SettingsControl
 						Name="SettingsControl"
 						HorizontalAlignment="Stretch"
 						Margin="-10,0,-10,0"
 						MinHeight="50"
-						VerticalAlignment="Bottom" />
+						VerticalAlignment="Bottom" /-->
 				</ContentControl>
 			</Grid>
 		</controls:GenericRoot>

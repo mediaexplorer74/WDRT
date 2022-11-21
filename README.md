@@ -8,7 +8,6 @@ Decompiled dotnet source for Windows Device Recovery Tool, this code is provided
 
 # Design / Screenshots
 <table><tr>
-<td> <img src="Design/wdrt-logo.png" alt="Drawing" style="width: 800px;"/> </td>
 <td> <img src="Design/under-construction.png" alt="Drawing" style="width: 800px;"/> </td>
 </tr></table>
 

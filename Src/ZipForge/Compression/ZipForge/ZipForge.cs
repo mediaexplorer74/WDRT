@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using ComponentAce.Compression.Archiver;
-using ComponentAce.Compression.Exception;
+using ComponentAce.Compression.Exception1;
 using ComponentAce.Compression.Interfaces;
 using ComponentAce.Compression.ZipForge.Encryption;
 

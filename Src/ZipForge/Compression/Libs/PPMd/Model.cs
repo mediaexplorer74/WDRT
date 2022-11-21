@@ -4,7 +4,7 @@ using System.IO;
 namespace ComponentAce.Compression.Libs.PPMd
 {
 	// Token: 0x02000050 RID: 80
-	internal class Model
+	public class Model
 	{
 		// Token: 0x0600033B RID: 827 RVA: 0x0001AA60 File Offset: 0x00019A60
 		static Model()
@@ -52,7 +52,8 @@ namespace ComponentAce.Compression.Libs.PPMd
 		}
 
 		// Token: 0x0600033C RID: 828 RVA: 0x0001AC04 File Offset: 0x00019C04
-		public static bool Encode(Stream target, Stream source, int modelOrder, ModelRestorationMethod modelRestorationMethod)
+		public static bool Encode(Stream target, Stream source, int modelOrder, 
+			ModelRestorationMethod modelRestorationMethod)
 		{
 			if (target == null)
 			{
@@ -95,7 +96,7 @@ namespace ComponentAce.Compression.Libs.PPMd
 					suffix.EncodeSymbol2(symbol);
 					Coder.RangeEncodeSymbol();
 				}
-				if (Model.orderFall == 0 && Model.foundState.Successor >= Allocator.BaseUnit)
+				if (Model.orderFall == 0 && (int)(Model.foundState.Successor) >= (int)(Allocator.BaseUnit))
 				{
 					Model.maximumContext = Model.foundState.Successor;
 				}
@@ -169,7 +170,7 @@ namespace ComponentAce.Compression.Libs.PPMd
 					suffix.EncodeSymbol2(num);
 					Coder.RangeEncodeSymbol();
 				}
-				if (Model.orderFall == 0 && Model.foundState.Successor >= Allocator.BaseUnit)
+				if (Model.orderFall == 0 && (int)Model.foundState.Successor >= (int)Allocator.BaseUnit)
 				{
 					Model.maximumContext = Model.foundState.Successor;
 				}
@@ -270,7 +271,7 @@ namespace ComponentAce.Compression.Libs.PPMd
 				if (Model.entryPoint != 2)
 				{
 					target.WriteByte(Model.foundState.Symbol);
-					if (Model.orderFall == 0 && Model.foundState.Successor >= Allocator.BaseUnit)
+					if (Model.orderFall == 0 && (int)Model.foundState.Successor >= (int)Allocator.BaseUnit)
 					{
 						Model.maximumContext = Model.foundState.Successor;
 					}
@@ -321,8 +322,8 @@ namespace ComponentAce.Compression.Libs.PPMd
 			Model.StartModel(modelOrder, modelRestorationMethod);
 			Model.PpmContext suffix = Model.maximumContext;
 			byte b = suffix.NumberStatistics;
-			for (;;)
-			{
+			//for (;;)
+			//{
 				if (b != 0)
 				{
 					suffix.DecodeSymbol1();
@@ -349,7 +350,7 @@ namespace ComponentAce.Compression.Libs.PPMd
 					Coder.RangeRemoveSubrange();
 				}
 				target.WriteByte(Model.foundState.Symbol);
-				if (Model.orderFall == 0 && Model.foundState.Successor >= Allocator.BaseUnit)
+				if (Model.orderFall == 0 && (int)Model.foundState.Successor >= (int)Allocator.BaseUnit)
 				{
 					Model.maximumContext = Model.foundState.Successor;
 				}
@@ -364,7 +365,7 @@ namespace ComponentAce.Compression.Libs.PPMd
 				suffix = Model.maximumContext;
 				b = suffix.NumberStatistics;
 				Coder.RangeDecoderNormalize(source);
-			}
+			//}
 			return true;
 		}
 
@@ -479,7 +480,7 @@ namespace ComponentAce.Compression.Libs.PPMd
 				else
 				{
 					ppmState = suffix2.FirstState;
-					ppmState.Frequency += ((ppmState.Frequency < 32) ? 1 : 0);
+					ppmState.Frequency += (byte)((ppmState.Frequency < 32) ? 1 : 0);
 				}
 			}
 			if (Model.orderFall == 0 && ppmContext != Model.PpmContext.Zero)
@@ -524,7 +525,7 @@ namespace ComponentAce.Compression.Libs.PPMd
 						}
 						uint num2 = (uint)minimumContext.NumberStatistics;
 						uint num3 = (uint)minimumContext.SummaryFrequency - num2 - frequency;
-						byte b = (symbol >= 64) ? 8 : 0;
+						byte b = (byte)((symbol >= 64) ? 8 : 0);
 						while (suffix != minimumContext)
 						{
 							uint num4 = (uint)suffix.NumberStatistics;
@@ -539,7 +540,7 @@ namespace ComponentAce.Compression.Libs.PPMd
 									}
 									suffix.Statistics = ppmState;
 								}
-								suffix.SummaryFrequency += ((3U * num4 + 1U < num2) ? 1 : 0);
+								suffix.SummaryFrequency += (ushort)((3U * num4 + 1U < num2) ? 1 : 0);
 							}
 							else
 							{
@@ -631,7 +632,7 @@ namespace ComponentAce.Compression.Libs.PPMd
 							}
 							while (b != symbol);
 						}
-						b = ((state.Frequency < 115) ? 1 : 0);
+						b = (byte)((state.Frequency < 115) ? 1 : 0);
 						state.Frequency += b;
 						context.SummaryFrequency += (ushort)b;
 					}
@@ -658,11 +659,11 @@ namespace ComponentAce.Compression.Libs.PPMd
 				return context;
 			}
 			byte b2 = 0;
-			byte b3 = (symbol >= 64) ? 16 : 0;
+			byte b3 = (byte)((symbol >= 64) ? 16 : 0);
 			symbol = successor.NumberStatistics;
 			byte firstStateSymbol = symbol;
 			Model.PpmContext firstStateSuccessor = successor + 1;
-			b3 |= ((symbol >= 64) ? 8 : 0);
+			b3 |= (byte)((symbol >= 64) ? 8 : 0);
 			byte firstStateFrequency;
 			if (context.NumberStatistics != 0)
 			{
@@ -751,14 +752,14 @@ namespace ComponentAce.Compression.Libs.PPMd
 							}
 							while (b != symbol);
 						}
-						b = ((state.Frequency < 115) ? 2 : 0);
+						b =	(byte)((state.Frequency < 115) ? 2 : 0);
 						state.Frequency += b;
 						context.SummaryFrequency += (ushort)b;
 					}
 					else
 					{
 						state = context.FirstState;
-						state.Frequency += ((state.Frequency < 32) ? 1 : 0);
+						state.Frequency += (byte)((state.Frequency < 32) ? 1 : 0);
 					}
 				}
 				if (state.Successor != Model.PpmContext.Zero)
@@ -817,7 +818,7 @@ namespace ComponentAce.Compression.Libs.PPMd
 			{
 				if ((suffix.NumberStatistics -= 1) == 0)
 				{
-					suffix.Flags = (suffix.Flags & 16) + ((suffix.Statistics.Symbol >= 64) ? 8 : 0);
+					suffix.Flags = (byte)((suffix.Flags & 16) + ((suffix.Statistics.Symbol >= 64) ? 8 : 0 ));
 					PpmState statistics = suffix.Statistics;
 					Model.Copy(suffix.FirstState, statistics);
 					Allocator.SpecialFreeUnits(statistics);
@@ -1309,7 +1310,7 @@ namespace ComponentAce.Compression.Libs.PPMd
 		private static byte entryPoint = 0;
 
 		// Token: 0x02000051 RID: 81
-		internal struct PpmContext
+		public struct PpmContext
 		{
 			// Token: 0x0600034E RID: 846 RVA: 0x0001C03A File Offset: 0x0001B03A
 			public PpmContext(uint address)
@@ -1501,8 +1502,13 @@ namespace ComponentAce.Compression.Libs.PPMd
 				return context1.Address != context2.Address;
 			}
 
-			// Token: 0x06000367 RID: 871 RVA: 0x0001C428 File Offset: 0x0001B428
-			public override bool Equals(object obj)
+            public static explicit operator int(PpmContext v)
+            {
+                throw new NotImplementedException();
+            }
+
+            // Token: 0x06000367 RID: 871 RVA: 0x0001C428 File Offset: 0x0001B428
+            public override bool Equals(object obj)
 			{
 				if (obj is Model.PpmContext)
 				{
@@ -1526,7 +1532,7 @@ namespace ComponentAce.Compression.Libs.PPMd
 				if ((int)firstState.Symbol == symbol)
 				{
 					Model.foundState = firstState;
-					firstState.Frequency += ((firstState.Frequency < 196) ? 1 : 0);
+					firstState.Frequency += (byte)((firstState.Frequency < 196) ? 1 : 0);
 					Coder.LowCount = 0U;
 					Coder.HighCount = (uint)Model.binarySummary[num, num2];
 					ref ushort ptr = ref Model.binarySummary[num, num2];
@@ -1555,9 +1561,9 @@ namespace ComponentAce.Compression.Libs.PPMd
 				if ((ulong)num == (ulong)((long)symbol))
 				{
 					Coder.HighCount = (uint)ppmState.Frequency;
-					Model.previousSuccess = ((2U * Coder.HighCount >= Coder.Scale) ? 1 : 0);
+					Model.previousSuccess = (byte)((2U * Coder.HighCount >= Coder.Scale) ? 1 : 0);
 					Model.foundState = ppmState;
-					Model.foundState.Frequency = Model.foundState.Frequency + 4;
+					Model.foundState.Frequency = (byte)(Model.foundState.Frequency + 4);
 					this.SummaryFrequency += 4;
 					Model.runLength += (int)Model.previousSuccess;
 					if (ppmState.Frequency > 124)
@@ -1663,7 +1669,7 @@ namespace ComponentAce.Compression.Libs.PPMd
 				if (Coder.RangeGetCurrentShiftCount(14) < (uint)Model.binarySummary[num, num2])
 				{
 					Model.foundState = firstState;
-					firstState.Frequency += ((firstState.Frequency < 196) ? 1 : 0);
+					firstState.Frequency += (byte)((firstState.Frequency < 196) ? 1 : 0);
 					Coder.LowCount = 0U;
 					Coder.HighCount = (uint)Model.binarySummary[num, num2];
 					ref ushort ptr = ref Model.binarySummary[num, num2];
@@ -1693,7 +1699,7 @@ namespace ComponentAce.Compression.Libs.PPMd
 				if (num2 < num)
 				{
 					Coder.HighCount = num;
-					Model.previousSuccess = ((2U * Coder.HighCount >= Coder.Scale) ? 1 : 0);
+					Model.previousSuccess = (byte)((2U * Coder.HighCount >= Coder.Scale) ? 1 : 0);
 					Model.foundState = ppmState;
 					num += 4U;
 					Model.foundState.Frequency = (byte)num;
@@ -1797,7 +1803,7 @@ namespace ComponentAce.Compression.Libs.PPMd
 			public void Update1(PpmState state)
 			{
 				Model.foundState = state;
-				Model.foundState.Frequency = Model.foundState.Frequency + 4;
+				Model.foundState.Frequency = (byte)(Model.foundState.Frequency + 4);
 				this.SummaryFrequency += 4;
 				if (state[0].Frequency > state[-1].Frequency)
 				{
@@ -1814,7 +1820,7 @@ namespace ComponentAce.Compression.Libs.PPMd
 			public void Update2(PpmState state)
 			{
 				Model.foundState = state;
-				Model.foundState.Frequency = Model.foundState.Frequency + 4;
+				Model.foundState.Frequency = (byte)(Model.foundState.Frequency + 4);
 				this.SummaryFrequency += 4;
 				if (state.Frequency > 124)
 				{
@@ -1916,7 +1922,7 @@ namespace ComponentAce.Compression.Libs.PPMd
 						this.FirstStateSymbol = symbol;
 						this.FirstStateFrequency = b;
 						this.FirstStateSuccessor = successor;
-						this.Flags = (this.Flags & 16) + ((symbol >= 64) ? 8 : 0);
+						this.Flags = (byte)((this.Flags & 16) + ((symbol >= 64) ? 8 : 0));
 						Model.foundState = this.FirstState;
 						return;
 					}
@@ -1924,13 +1930,13 @@ namespace ComponentAce.Compression.Libs.PPMd
 					this.Flags &= 247;
 					num = (uint)this.NumberStatistics;
 					ppmState = this.Statistics;
-					this.Flags |= ((ppmState.Symbol >= 64) ? 8 : 0);
+					this.Flags |= (byte)((ppmState.Symbol >= 64) ? 8 : 0);
 					do
 					{
 						byte flags = this.Flags;
 						PpmState ppmState5;
 						ppmState = (ppmState5 = ++ppmState);
-						this.Flags = (flags | ((ppmState5.Symbol >= 64) ? 8 : 0));
+						this.Flags = (byte)(flags | ((ppmState5.Symbol >= 64) ? 8 : 0));
 					}
 					while ((num -= 1U) != 0U);
 				}
@@ -1947,7 +1953,7 @@ namespace ComponentAce.Compression.Libs.PPMd
 				int num2 = scale ? 1 : 0;
 				this.Statistics = Allocator.ShrinkUnits(this.Statistics, oldUnitCount, (uint)(num + 2 >> 1));
 				PpmState state = this.Statistics;
-				this.Flags = (this.Flags & 16 + (scale ? 4 : 0)) + ((state.Symbol >= 64) ? 8 : 0);
+				this.Flags = (byte)((this.Flags & 16 + (scale ? 4 : 0)) + ((state.Symbol >= 64) ? 8 : 0));
 				int num3 = (int)(this.SummaryFrequency - (ushort)state.Frequency);
 				state.Frequency = (byte)((int)state.Frequency + num2 >> num2);
 				this.SummaryFrequency = (ushort)state.Frequency;
@@ -1959,7 +1965,7 @@ namespace ComponentAce.Compression.Libs.PPMd
 					num3 = num4 - (int)ppmState.Frequency;
 					state.Frequency = (byte)((int)state.Frequency + num2 >> num2);
 					this.SummaryFrequency += (ushort)state.Frequency;
-					this.Flags |= ((state.Symbol >= 64) ? 8 : 0);
+					this.Flags |= (byte)((state.Symbol >= 64) ? 8 : 0);
 				}
 				while (--num != 0);
 				num3 = num3 + num2 >> num2;
@@ -2005,7 +2011,7 @@ namespace ComponentAce.Compression.Libs.PPMd
 						}
 						if (numberStatistics == 0)
 						{
-							this.Flags = (this.Flags & 16) + ((ppmState.Symbol >= 64) ? 8 : 0);
+							this.Flags = (byte)((this.Flags & 16) + ((ppmState.Symbol >= 64) ? 8 : 0));
 							Model.Copy(this.FirstState, ppmState);
 							Allocator.FreeUnits(ppmState, num);
 							this.FirstStateFrequency = (byte)(this.FirstStateFrequency + 11 >> 3);
@@ -2018,7 +2024,7 @@ namespace ComponentAce.Compression.Libs.PPMd
 					return this;
 				}
 				ppmState = this.FirstState;
-				if (!(ppmState.Successor >= Allocator.BaseUnit))
+				if (!((int)ppmState.Successor >= (int)Allocator.BaseUnit))
 				{
 					Allocator.SpecialFreeUnits(this);
 					return Model.PpmContext.Zero;
@@ -2047,7 +2053,8 @@ namespace ComponentAce.Compression.Libs.PPMd
 					PpmState ppmState = this.Statistics + (int)this.NumberStatistics;
 					while (ppmState >= this.Statistics)
 					{
-						if (ppmState.Successor >= Allocator.BaseUnit && order < Model.modelOrder)
+						if ((int)ppmState.Successor >= (int)Allocator.BaseUnit && 
+							order < Model.modelOrder)
 						{
 							ppmState.Successor = ppmState.Successor.RemoveBinaryContexts(order + 1);
 						}
@@ -2060,7 +2067,8 @@ namespace ComponentAce.Compression.Libs.PPMd
 					return this;
 				}
 				PpmState firstState = this.FirstState;
-				if (firstState.Successor >= Allocator.BaseUnit && order < Model.modelOrder)
+				if ((int)firstState.Successor >= (int)Allocator.BaseUnit 
+					&& order < Model.modelOrder)
 				{
 					firstState.Successor = firstState.Successor.RemoveBinaryContexts(order + 1);
 				}

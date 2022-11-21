@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using ComponentAce.Compression.Exception;
+using ComponentAce.Compression.Exception1;
 using ComponentAce.Compression.Libs.bzip2;
 
 namespace ComponentAce.Compression.Archiver

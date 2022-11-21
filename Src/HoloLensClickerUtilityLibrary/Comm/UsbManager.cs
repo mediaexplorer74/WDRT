@@ -17,13 +17,13 @@ namespace ClickerUtilityLibrary.Comm
 		// Token: 0x14000006 RID: 6
 		// (add) Token: 0x06000111 RID: 273 RVA: 0x00007170 File Offset: 0x00005370
 		// (remove) Token: 0x06000112 RID: 274 RVA: 0x000071A8 File Offset: 0x000053A8
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		//[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event EventHandler<FEvent> UsbManagerEvent;
 
 		// Token: 0x14000007 RID: 7
 		// (add) Token: 0x06000113 RID: 275 RVA: 0x000071E0 File Offset: 0x000053E0
 		// (remove) Token: 0x06000114 RID: 276 RVA: 0x00007218 File Offset: 0x00005418
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		//[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event EventHandler<byte[]> UsbDataReceived;
 
 		// Token: 0x06000115 RID: 277 RVA: 0x00007250 File Offset: 0x00005450

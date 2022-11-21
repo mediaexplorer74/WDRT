@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 using ComponentAce.Compression.Archiver;
-using ComponentAce.Compression.Exception;
+using ComponentAce.Compression.Exception1;
 using ComponentAce.Compression.Interfaces;
 using ComponentAce.Compression.ZipForge.Encryption;
 
@@ -893,7 +893,8 @@ namespace ComponentAce.Compression.ZipForge
 				{
 					result = (long)((ulong)this._compSize);
 				}
-				if (this._dataDescriptor != null && this._dataDescriptor.CompressedSize > 0L && this._dataDescriptor.CompressedSize != (long)((ulong)-1))
+				if (this._dataDescriptor != null && this._dataDescriptor.CompressedSize > 0L 
+					&& this._dataDescriptor.CompressedSize != (long)((int)-1))
 				{
 					result = this._dataDescriptor.CompressedSize;
 				}
@@ -901,7 +902,7 @@ namespace ComponentAce.Compression.ZipForge
 			}
 			set
 			{
-				if (value < (long)((ulong)-1) && this._extraFields.Zip64ExtraField == null)
+				if (value < (long)((int)-1) && this._extraFields.Zip64ExtraField == null)
 				{
 					this._compSize = (uint)value;
 					if (this._dataDescriptor != null)
@@ -948,7 +949,8 @@ namespace ComponentAce.Compression.ZipForge
 				{
 					result = (long)((ulong)this._uncompSize);
 				}
-				if (this._dataDescriptor != null && this._dataDescriptor.UncompressedSize > 0L && this._dataDescriptor.UncompressedSize != (long)((ulong)-1))
+				if (this._dataDescriptor != null && this._dataDescriptor.UncompressedSize > 0L 
+					&& this._dataDescriptor.UncompressedSize != (long)((int)-1))
 				{
 					result = this._dataDescriptor.UncompressedSize;
 				}
@@ -956,7 +958,7 @@ namespace ComponentAce.Compression.ZipForge
 			}
 			set
 			{
-				if (value < (long)((ulong)-1) && this._extraFields.Zip64ExtraField == null)
+				if (value < (long)((int)-1) && this._extraFields.Zip64ExtraField == null)
 				{
 					this._uncompSize = (uint)value;
 					if (this._dataDescriptor != null)
@@ -1179,7 +1181,7 @@ namespace ComponentAce.Compression.ZipForge
 			}
 			set
 			{
-				if (value < (long)((ulong)-1) && this._extraFields.Zip64ExtraField == null)
+				if (value < (long)((int)-1) && this._extraFields.Zip64ExtraField == null)
 				{
 					this._relOffsetLh = (uint)value;
 					return;

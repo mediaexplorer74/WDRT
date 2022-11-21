@@ -3,7 +3,7 @@
 namespace ComponentAce.Compression.Libs.PPMd
 {
 	// Token: 0x02000055 RID: 85
-	internal struct PpmState
+	public struct PpmState
 	{
 		// Token: 0x0600038D RID: 909 RVA: 0x0001D7C3 File Offset: 0x0001C7C3
 		public PpmState(uint address)

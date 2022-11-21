@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections;
-using ComponentAce.Compression.Exception;
+using ComponentAce.Compression.Exception1;
 using ComponentAce.Compression.Interfaces;
 
 namespace ComponentAce.Compression.Archiver

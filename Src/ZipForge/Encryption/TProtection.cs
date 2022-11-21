@@ -100,11 +100,11 @@ namespace ComponentAce.Encryption
 		}
 
 		// Token: 0x06000010 RID: 16 RVA: 0x00002460 File Offset: 0x00001460
-		public TProtection()
+		public TProtection() : base()
 		{
 			TPAction[] factions = new TPAction[1];
 			this.FActions = factions;
-			base..ctor();
+			//base..ctor();
 		}
 
 		// Token: 0x04000010 RID: 16

@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.IO;
 using ComponentAce.Compression.Archiver;
-using ComponentAce.Compression.Exception;
+using ComponentAce.Compression.Exception1;
 using ComponentAce.Compression.Interfaces;
 
 namespace ComponentAce.Compression.Tar

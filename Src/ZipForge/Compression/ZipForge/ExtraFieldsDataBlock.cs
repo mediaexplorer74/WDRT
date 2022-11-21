@@ -252,7 +252,9 @@ namespace ComponentAce.Compression.ZipForge
 			}
 			if (num == 0L)
 			{
-				using (IEnumerator enumerator = this._extraFieldsArray.GetEnumerator())
+				IEnumerator enumerator = this._extraFieldsArray.GetEnumerator();
+
+                using (enumerator as IDisposable)
 				{
 					while (enumerator.MoveNext())
 					{

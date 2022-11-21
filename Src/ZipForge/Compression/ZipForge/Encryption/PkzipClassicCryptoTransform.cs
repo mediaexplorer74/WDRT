@@ -100,7 +100,7 @@ namespace ComponentAce.Compression.ZipForge.Encryption
 			for (long num = (long)inputOffset; num < (long)(inputOffset + inputCount); num += 1L)
 			{
 				byte b = inputBuffer[(int)(checked((IntPtr)num))];
-				byte b2 = b ^ this.ZipDecryptByte(this.key);
+				byte b2 = (byte)(b ^ this.ZipDecryptByte(this.key));
 				this.ZipUpdateKeys(b2);
 				binaryWriter.Write(b2);
 			}
@@ -144,7 +144,7 @@ namespace ComponentAce.Compression.ZipForge.Encryption
 			byte[] bytes = this.zipKeyHeaderBlock.GetBytes();
 			for (int i = 0; i < bytes.Length; i++)
 			{
-				byte b = bytes[i] ^ this.ZipDecryptByte(this.key);
+				byte b = (byte)(bytes[i] ^ this.ZipDecryptByte(this.key));
 				this.ZipUpdateKeys(b);
 				bytes[i] = b;
 			}
@@ -191,7 +191,7 @@ namespace ComponentAce.Compression.ZipForge.Encryption
 		{
 			byte b = this.ZipDecryptByte(this.key);
 			this.ZipUpdateKeys(c);
-			return b ^ c;
+			return (byte)(b ^ c);
 		}
 
 		// Token: 0x0600069E RID: 1694 RVA: 0x0002A3B0 File Offset: 0x000293B0

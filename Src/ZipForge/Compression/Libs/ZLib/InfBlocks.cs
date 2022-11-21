@@ -287,18 +287,25 @@ namespace ComponentAce.Compression.Libs.ZLib
 					this.index = 0;
 					this.mode = InflateBlockMode.BTREE;
 					goto IL_6E1;
-				case InflateBlockMode.BTREE:
+                    break;
+                case InflateBlockMode.BTREE:
 					goto IL_6E1;
+					break;
 				case InflateBlockMode.DTREE:
 					goto IL_7B9;
-				case InflateBlockMode.CODES:
+                    break;
+                case InflateBlockMode.CODES:
 					goto IL_B58;
+					break;
 				case InflateBlockMode.DRY:
 					goto IL_C21;
+					break;
 				case InflateBlockMode.DONE:
 					goto IL_CB6;
+					break;
 				case InflateBlockMode.BAD:
 					goto IL_CFD;
+					break;
 				}
 				break;
 				IL_6E1:
@@ -331,8 +338,8 @@ namespace ComponentAce.Compression.Libs.ZLib
 				}
 				this.index = 0;
 				this.mode = InflateBlockMode.DTREE;
-				for (;;)
-				{
+				//for (;;)
+				//{
 					IL_7B9:
 					num6 = this.table;
 					if (this.index >= 258 + (num6 & 31) + (num6 >> 5 & 31))
@@ -393,7 +400,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 						while (--num9 != 0);
 						this.index = num8;
 					}
-				}
+				//}
 				this.tb[0] = -1;
 				int[] array5 = new int[1];
 				int[] array6 = new int[1];

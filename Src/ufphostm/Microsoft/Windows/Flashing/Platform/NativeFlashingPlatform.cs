@@ -6,7 +6,7 @@ using FlashingPlatform;
 namespace Microsoft.Windows.Flashing.Platform
 {
 	// Token: 0x0200003F RID: 63
-	internal class NativeFlashingPlatform
+	public class NativeFlashingPlatform
 	{
 		// Token: 0x06000117 RID: 279
 		[DllImport("ufphost.dll")]

@@ -273,7 +273,7 @@ namespace ComponentAce.Encryption
 			{
 				int num3 = 0;
 				uint num4 = BitConverter.ToUInt32(K, (this.FRounds - 7) * 4);
-				K[num3] = (K[num3] ^ CipherUtil.Rijndael_S[(int)((UIntPtr)0), (int)((UIntPtr)(num4 >> 8 & 255U))] ^ array[num2]);
+				K[num3] = ((byte)(K[num3] ^ CipherUtil.Rijndael_S[(int)((UIntPtr)0), (int)((UIntPtr)(num4 >> 8 & 255U))] ^ array[num2]));
 				num3++;
 				K[num3] ^= CipherUtil.Rijndael_S[(int)((UIntPtr)0), (int)((UIntPtr)(num4 >> 16 & 255U))];
 				num3++;

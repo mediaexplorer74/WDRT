@@ -3,7 +3,7 @@
 namespace ComponentAce.Compression.Libs.PPMd
 {
 	// Token: 0x0200004F RID: 79
-	internal struct MemoryNode
+	public struct MemoryNode
 	{
 		// Token: 0x06000325 RID: 805 RVA: 0x0001A27B File Offset: 0x0001927B
 		public MemoryNode(uint address)

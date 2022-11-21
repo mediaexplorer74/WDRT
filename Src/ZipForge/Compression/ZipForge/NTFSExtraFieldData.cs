@@ -165,7 +165,7 @@ namespace ComponentAce.Compression.ZipForge
 			{
 				foreach (NTFSExtraFieldData.NTFSAttributeTag ntfsattributeTag in this._attributes)
 				{
-					num += 4 + ntfsattributeTag.AttrSize;
+					num += (ushort)(4 + ntfsattributeTag.AttrSize);
 				}
 			}
 			return num;

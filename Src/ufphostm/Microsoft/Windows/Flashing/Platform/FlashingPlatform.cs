@@ -19,7 +19,7 @@ namespace Microsoft.Windows.Flashing.Platform
 			get
 			{
 				//RnD
-				return null;//this.m_Platform;
+				return this.m_Platform;
 			}
 		}
 
@@ -422,7 +422,7 @@ namespace Microsoft.Windows.Flashing.Platform
 						{
 							platform = this.m_Platform;
 							IFlashingPlatform* ptr2 = platform;
-							int num2 = calli(FlashingPlatform.ILogger* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), ptr2, *(*(int*)ptr2));
+							int num2 = -1;//calli(FlashingPlatform.ILogger* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), ptr2, *(*(int*)ptr2));
 							//calli(System.Void modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr,FlashingPlatform.LogLevel,System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)*), num2, 2, calli(System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), ref cautoDeleteArray<unsigned_u0020short_u0020const_u0020>, *(cautoDeleteArray<unsigned_u0020short_u0020const_u0020> + 16)), *(*num2 + 4));
 						}
 						IntPtr ptr3 = default;//(IntPtr)calli(System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), ref cautoDeleteArray<unsigned_u0020short_u0020const_u0020>, *(cautoDeleteArray<unsigned_u0020short_u0020const_u0020> + 16));
@@ -512,7 +512,7 @@ namespace Microsoft.Windows.Flashing.Platform
 					{
 						platform = this.m_Platform;
 						IFlashingPlatform* ptr4 = platform;
-						if (calli(FlashingPlatform.ILogger* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), ptr4, *(*(int*)ptr4)))
+						if (false)//(calli(FlashingPlatform.ILogger* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), ptr4, *(*(int*)ptr4)))
 						{
 							platform = this.m_Platform;
 							IFlashingPlatform* ptr5 = platform;
@@ -555,7 +555,7 @@ namespace Microsoft.Windows.Flashing.Platform
 			}
 			catch
 			{
-				<Module>.___CxxCallUnwindDtor(ldftn(RAII.CAutoDelete<CDeviceNotificationCallbackShim\u0020*>.{dtor}), (void*)(&cautoDelete<CDeviceNotificationCallbackShim_u0020*>));
+				//<Module>.___CxxCallUnwindDtor(ldftn(RAII.CAutoDelete<CDeviceNotificationCallbackShim\u0020*>.{dtor}), (void*)(&cautoDelete<CDeviceNotificationCallbackShim_u0020*>));
 				throw;
 			}
 		}
@@ -564,7 +564,7 @@ namespace Microsoft.Windows.Flashing.Platform
 		public unsafe string GetErrorMessage(int HResult)
 		{
 			IFlashingPlatform* platform = this.m_Platform;
-			ushort* ptr = calli(System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr,System.Int32 modopt(System.Runtime.CompilerServices.IsLong)), platform, HResult, *(*(int*)platform + 20));
+			ushort* ptr = null;//calli(System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr,System.Int32 modopt(System.Runtime.CompilerServices.IsLong)), platform, HResult, *(*(int*)platform + 20));
 			return (ptr == null) ? null : Marshal.PtrToStringUni((IntPtr)((void*)ptr));
 		}
 
@@ -572,7 +572,7 @@ namespace Microsoft.Windows.Flashing.Platform
 		public unsafe int Thor2ResultFromHResult(int HResult)
 		{
 			IFlashingPlatform* platform = this.m_Platform;
-			return calli(System.Int32 modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr,System.Int32 modopt(System.Runtime.CompilerServices.IsLong)), platform, HResult, *(*(int*)platform + 24));
+			return -1;//calli(System.Int32 modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr,System.Int32 modopt(System.Runtime.CompilerServices.IsLong)), platform, HResult, *(*(int*)platform + 24));
 		}
 
 		// Token: 0x06000126 RID: 294 RVA: 0x000124D8 File Offset: 0x000118D8
@@ -581,33 +581,33 @@ namespace Microsoft.Windows.Flashing.Platform
 		{
 			if (A_0)
 			{
-				this.~FlashingPlatform();
+				//this.~FlashingPlatform();
 			}
 			else
 			{
 				try
 				{
-					this.!FlashingPlatform();
+					this.UnFlashingPlatform();
 				}
 				finally
 				{
-					base.Finalize();
+					//base.Finalize();
 				}
 			}
 		}
 
 		// Token: 0x06000127 RID: 295 RVA: 0x000127D8 File Offset: 0x00011BD8
-		public sealed void Dispose()
+		public void Dispose()
 		{
 			this.Dispose(true);
 			GC.SuppressFinalize(this);
 		}
 
 		// Token: 0x06000128 RID: 296 RVA: 0x00012524 File Offset: 0x00011924
-		protected override void Finalize()
-		{
-			this.Dispose(false);
-		}
+		//protected override void Finalize()
+		//{
+		//	this.Dispose(false);
+		//}
 
 		// Token: 0x04000114 RID: 276
 		private unsafe IFlashingPlatform* m_Platform;
@@ -625,10 +625,5 @@ namespace Microsoft.Windows.Flashing.Platform
 		public static uint MinorVerion = 2U;
 	}
 }
-public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-    }
-}
-}
+
+

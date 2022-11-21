@@ -10,7 +10,7 @@ namespace ClickerUtilityLibrary.DataModel
 		// Token: 0x14000004 RID: 4
 		// (add) Token: 0x060000BC RID: 188 RVA: 0x00005B28 File Offset: 0x00003D28
 		// (remove) Token: 0x060000BD RID: 189 RVA: 0x00005B60 File Offset: 0x00003D60
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		//[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		internal event EventHandler<PacketRingBufferEventArgs> PacketRingBufferEvent;
 
 		// Token: 0x060000BE RID: 190 RVA: 0x00005B98 File Offset: 0x00003D98

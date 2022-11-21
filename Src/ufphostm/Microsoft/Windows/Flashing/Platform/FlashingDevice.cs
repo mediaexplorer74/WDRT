@@ -10,14 +10,17 @@ namespace Microsoft.Windows.Flashing.Platform
 	// Token: 0x02000043 RID: 67
 	public class FlashingDevice : ConnectedDevice
 	{
-        private unsafe IFlashingDevice* m_Device;
-        private class m_Platform
+        public unsafe IFlashingDevice* m_Device;
+
+		/*
+        public unsafe static class m_Platform
         {
             internal static unsafe IFlashingPlatform* Native;
         }
+		*/
 
         // Token: 0x06000147 RID: 327 RVA: 0x00013678 File Offset: 0x00012A78
-        internal unsafe FlashingDevice(IFlashingDevice* Device, [In] FlashingPlatform Platform) : base(null, Platform)
+        public unsafe FlashingDevice(IFlashingDevice* Device, [In] FlashingPlatform Platform) : base(null, Platform)
 		{
 			try
 			{
@@ -25,29 +28,31 @@ namespace Microsoft.Windows.Flashing.Platform
 			}
 			catch
 			{
-				base.Dispose(true);
+				base.Dispose(true); //RnD
 				throw;
 			}
 		}
 
 		// Token: 0x17000008 RID: 8
 		// (get) Token: 0x06000148 RID: 328 RVA: 0x00012DA0 File Offset: 0x000121A0
-		internal new unsafe IFlashingDevice* Native
+		public new unsafe IFlashingDevice* Native
 		{
 			get
 			{
-				return null;//this.m_Device;
+				return this.m_Device;
 			}
 		}
 
-		// Token: 0x06000149 RID: 329 RVA: 0x0001306C File Offset: 0x0001246C
-		//private void ~FlashingDevice()
-		//{
-		//	this.!FlashingDevice();
-		//}
+        public static unsafe IFlashingDevice* Device { get; private set; }
 
-		// Token: 0x0600014A RID: 330 RVA: 0x00012D70 File Offset: 0x00012170
-		private unsafe void UnFlashingDevice()//!FlashingDevice()
+        // Token: 0x06000149 RID: 329 RVA: 0x0001306C File Offset: 0x0001246C
+        //private void ~FlashingDevice()
+        //{
+        //	this.!FlashingDevice();
+        //}
+
+        // Token: 0x0600014A RID: 330 RVA: 0x00012D70 File Offset: 0x00012170
+        public unsafe void UnFlashingDevice()//!FlashingDevice()
         {
 			IFlashingDevice* device = this.m_Device;
 			if (device != null)
@@ -58,7 +63,7 @@ namespace Microsoft.Windows.Flashing.Platform
 			}
 		}
 
-        private unsafe object calli(int int32, object value1, object value2, IFlashingDevice* ptr, object value3)
+        public unsafe object calli(int int32, object value1, object value2, IFlashingDevice* ptr, object value3)
         {
             throw new NotImplementedException();
         }
@@ -76,10 +81,10 @@ namespace Microsoft.Windows.Flashing.Platform
 				//cautoDeleteArray<unsigned_u0020short_u0020const_u0020> = ref <Module>.??_7?$CAutoDeleteArray@$$CBG@RAII@@6B@;
 				try
 				{
-					IFlashingPlatform* native = FlashingDevice.m_Platform.Native;//this.m_Platform.Native;
-                    if (calli(FlashingPlatform.ILogger* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), native, *(*(int*)native)))
+					IFlashingPlatform* native = this.m_Platform.Native;//this.m_Platform.Native;
+                    if (false)//(calli(FlashingPlatform.ILogger* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), native, *(*(int*)native)))
 					{
-						IFlashingPlatform* native2 = FlashingDevice.m_Platform.Native;//this.m_Platform.Native;
+						IFlashingPlatform* native2 = this.m_Platform.Native;//this.m_Platform.Native;
 						int num2 = -1;//calli(FlashingPlatform.ILogger* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), native2, *(*(int*)native2));
 						//calli(System.Void modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr,FlashingPlatform.LogLevel,System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)*), num2, 2, calli(System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), ref cautoDeleteArray<unsigned_u0020short_u0020const_u0020>, *(cautoDeleteArray<unsigned_u0020short_u0020const_u0020> + 16)), *(*num2 + 4));
 					}
@@ -95,8 +100,8 @@ namespace Microsoft.Windows.Flashing.Platform
 			return null;//Marshal.PtrToStringUni((IntPtr)((void*)value));
 			
 			//try
-			{
-			}
+			//{
+			//}
 			//catch
 			//{
 				//CAutoDeleteArray<unsigned\u0020short\u0020const\u0020> cautoDeleteArray<unsigned_u0020short_u0020const_u0020>;
@@ -118,10 +123,10 @@ namespace Microsoft.Windows.Flashing.Platform
 				//cautoDeleteArray<unsigned_u0020short_u0020const_u0020> = ref <Module>.??_7?$CAutoDeleteArray@$$CBG@RAII@@6B@;
 				try
 				{
-					IFlashingPlatform* native = FlashingDevice.m_Platform.Native; // this.
+					IFlashingPlatform* native = this.m_Platform.Native; // this.
 					if (false)//(calli(FlashingPlatform.ILogger* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), native, *(*(int*)native)))
 					{
-						IFlashingPlatform* native2 = FlashingDevice.m_Platform.Native;
+						IFlashingPlatform* native2 = this.m_Platform.Native;
 						int num2 = -1;//calli(FlashingPlatform.ILogger* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), native2, *(*(int*)native2));
 						//calli(System.Void modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr,FlashingPlatform.LogLevel,System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)*), num2, 2, calli(System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), ref cautoDeleteArray<unsigned_u0020short_u0020const_u0020>, *(cautoDeleteArray<unsigned_u0020short_u0020const_u0020> + 16)), *(*num2 + 4));
 					}
@@ -160,10 +165,10 @@ namespace Microsoft.Windows.Flashing.Platform
 				//cautoDeleteArray<unsigned_u0020short_u0020const_u0020> = ref <Module>.??_7?$CAutoDeleteArray@$$CBG@RAII@@6B@;
 				try
 				{
-					IFlashingPlatform* native = FlashingDevice.m_Platform.Native;
+					IFlashingPlatform* native = this.m_Platform.Native;
 					if (false)//(calli(FlashingPlatform.ILogger* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), native, *(*(int*)native)))
 					{
-						IFlashingPlatform* native2 = FlashingDevice.m_Platform.Native;
+						IFlashingPlatform* native2 = this.m_Platform.Native;
 						int num2 = -1;//calli(FlashingPlatform.ILogger* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), native2, *(*(int*)native2));
 						//calli(System.Void modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr,FlashingPlatform.LogLevel,System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)*), num2, 2, calli(System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), ref cautoDeleteArray<unsigned_u0020short_u0020const_u0020>, *(cautoDeleteArray<unsigned_u0020short_u0020const_u0020> + 16)), *(*num2 + 4));
 					}
@@ -240,10 +245,10 @@ namespace Microsoft.Windows.Flashing.Platform
 						//cautoDeleteArray<unsigned_u0020short_u0020const_u0020> = ref <Module>.??_7?$CAutoDeleteArray@$$CBG@RAII@@6B@;
 						try
 						{
-							IFlashingPlatform* native = FlashDevice.m_Platform.Native;
+							IFlashingPlatform* native = this.m_Platform.Native;
 							if (false)//(calli(FlashingPlatform.ILogger* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), native, *(*(int*)native)))
 							{
-								IFlashingPlatform* native2 = FlashDevice.m_Platform.Native;
+								IFlashingPlatform* native2 = this.m_Platform.Native;
 								int num2 = -1;// calli(FlashingPlatform.ILogger* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), native2, *(*(int*)native2));
 								//calli(System.Void modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr,FlashingPlatform.LogLevel,System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)*), num2, 2, calli(System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), ref cautoDeleteArray<unsigned_u0020short_u0020const_u0020>, *(cautoDeleteArray<unsigned_u0020short_u0020const_u0020> + 16)), *(*num2 + 4));
 							}
@@ -309,10 +314,10 @@ namespace Microsoft.Windows.Flashing.Platform
 				//cautoDeleteArray<unsigned_u0020short_u0020const_u0020> = ref <Module>.??_7?$CAutoDeleteArray@$$CBG@RAII@@6B@;
 				try
 				{
-					IFlashingPlatform* native = FlashingDevice.m_Platform.Native;
+					IFlashingPlatform* native = this.m_Platform.Native;
 					if (false)//(calli(FlashingPlatform.ILogger* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), native, *(*(int*)native)))
 					{
-						IFlashingPlatform* native2 = FlashingDevice.m_Platform.Native;
+						IFlashingPlatform* native2 = this.m_Platform.Native;
 						int num2 = -1;//calli(FlashingPlatform.ILogger* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), native2, *(*(int*)native2));
 						//calli(System.Void modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr,FlashingPlatform.LogLevel,System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)*), num2, 2, calli(System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), ref cautoDeleteArray<unsigned_u0020short_u0020const_u0020>, *(cautoDeleteArray<unsigned_u0020short_u0020const_u0020> + 16)), *(*num2 + 4));
 					}
@@ -347,10 +352,10 @@ namespace Microsoft.Windows.Flashing.Platform
 				//cautoDeleteArray<unsigned_u0020short_u0020const_u0020> = ref <Module>.??_7?$CAutoDeleteArray@$$CBG@RAII@@6B@;
 				try
 				{
-					IFlashingPlatform* native = FlashingDevice.m_Platform.Native;
+					IFlashingPlatform* native = this.m_Platform.Native;
 					if (false)//(calli(FlashingPlatform.ILogger* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), native, *(*(int*)native)))
 					{
-						IFlashingPlatform* native2 = FlashingDevice.m_Platform.Native;
+						IFlashingPlatform* native2 = this.m_Platform.Native;
 						int num2 = -1;//calli(FlashingPlatform.ILogger* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), native2, *(*(int*)native2));
 						//calli(System.Void modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr,FlashingPlatform.LogLevel,System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)*), num2, 2, calli(System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), ref cautoDeleteArray<unsigned_u0020short_u0020const_u0020>, *(cautoDeleteArray<unsigned_u0020short_u0020const_u0020> + 16)), *(*num2 + 4));
 					}
@@ -385,10 +390,10 @@ namespace Microsoft.Windows.Flashing.Platform
 				//cautoDeleteArray<unsigned_u0020short_u0020const_u0020> = ref <Module>.??_7?$CAutoDeleteArray@$$CBG@RAII@@6B@;
 				try
 				{
-					IFlashingPlatform* native = FlashingDevice.m_Platform.Native;
+					IFlashingPlatform* native = this.m_Platform.Native;
 					if (false)//(calli(FlashingPlatform.ILogger* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), native, *(*(int*)native)))
 					{
-						IFlashingPlatform* native2 = FlashingDevice.m_Platform.Native;
+						IFlashingPlatform* native2 = this.m_Platform.Native;
 						int num2 = -1;//calli(FlashingPlatform.ILogger* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), native2, *(*(int*)native2));
 						//calli(System.Void modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr,FlashingPlatform.LogLevel,System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)*), num2, 2, calli(System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), ref cautoDeleteArray<unsigned_u0020short_u0020const_u0020>, *(cautoDeleteArray<unsigned_u0020short_u0020const_u0020> + 16)), *(*num2 + 4));
 					}
@@ -429,7 +434,7 @@ namespace Microsoft.Windows.Flashing.Platform
 			//CAutoDeleteArray<unsigned\u0020short\u0020const\u0020> cautoDeleteArray<unsigned_u0020short_u0020const_u0020>;
 			try
 			{
-				IFlashingDevice* device = null;//this.m_Device;
+				IFlashingDevice* device = this.m_Device;
 				int num = -1;//calli(System.Int32 modopt(System.Runtime.CompilerServices.IsLong) modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr,System.UInt32,System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)*), device, BootMode, calli(System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), ref cautoComFree<unsigned_u0020short_u0020const_u0020*>, *(cautoComFree<unsigned_u0020short_u0020const_u0020*> + 16)), *(*(int*)device + 52));
 				if (num < 0)
 				{
@@ -438,28 +443,28 @@ namespace Microsoft.Windows.Flashing.Platform
 					try
 					{
 						IFlashingPlatform* native = this.m_Platform.Native;
-						if (calli(FlashingPlatform.ILogger* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), native, *(*(int*)native)))
+						if (false)//(calli(FlashingPlatform.ILogger* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), native, *(*(int*)native)))
 						{
 							IFlashingPlatform* native2 = this.m_Platform.Native;
-							int num2 = calli(FlashingPlatform.ILogger* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), native2, *(*(int*)native2));
-							calli(System.Void modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr,FlashingPlatform.LogLevel,System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)*), num2, 2, calli(System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), ref cautoDeleteArray<unsigned_u0020short_u0020const_u0020>, *(cautoDeleteArray<unsigned_u0020short_u0020const_u0020> + 16)), *(*num2 + 4));
+							int num2 = -1;//calli(FlashingPlatform.ILogger* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), native2, *(*(int*)native2));
+							//calli(System.Void modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr,FlashingPlatform.LogLevel,System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)*), num2, 2, calli(System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), ref cautoDeleteArray<unsigned_u0020short_u0020const_u0020>, *(cautoDeleteArray<unsigned_u0020short_u0020const_u0020> + 16)), *(*num2 + 4));
 						}
-						IntPtr ptr2 = (IntPtr)calli(System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), ref cautoDeleteArray<unsigned_u0020short_u0020const_u0020>, *(cautoDeleteArray<unsigned_u0020short_u0020const_u0020> + 16));
+						IntPtr ptr2 = default;//(IntPtr)calli(System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), ref cautoDeleteArray<unsigned_u0020short_u0020const_u0020>, *(cautoDeleteArray<unsigned_u0020short_u0020const_u0020> + 16));
 						throw new Win32Exception(num, Marshal.PtrToStringUni(ptr2));
 					}
 					catch
 					{
-						<Module>.___CxxCallUnwindDtor(ldftn(RAII.CAutoDeleteArray<unsigned\u0020short\u0020const\u0020>.{dtor}), (void*)(&cautoDeleteArray<unsigned_u0020short_u0020const_u0020>));
+						//<Module>.___CxxCallUnwindDtor(ldftn(RAII.CAutoDeleteArray<unsigned\u0020short\u0020const\u0020>.{dtor}), (void*)(&cautoDeleteArray<unsigned_u0020short_u0020const_u0020>));
 						throw;
 					}
 				}
 			}
 			catch
 			{
-				<Module>.___CxxCallUnwindDtor(ldftn(RAII.CAutoComFree<unsigned\u0020short\u0020const\u0020*>.{dtor}), (void*)(&cautoComFree<unsigned_u0020short_u0020const_u0020*>));
+				//<Module>.___CxxCallUnwindDtor(ldftn(RAII.CAutoComFree<unsigned\u0020short\u0020const\u0020*>.{dtor}), (void*)(&cautoComFree<unsigned_u0020short_u0020const_u0020*>));
 				throw;
 			}
-			<Module>.RAII.CAutoComFree<unsigned\u0020short\u0020const\u0020*>.{dtor}(ref cautoComFree<unsigned_u0020short_u0020const_u0020*>);
+			//<Module>.RAII.CAutoComFree<unsigned\u0020short\u0020const\u0020*>.{dtor}(ref cautoComFree<unsigned_u0020short_u0020const_u0020*>);
 			try
 			{
 				try
@@ -467,13 +472,13 @@ namespace Microsoft.Windows.Flashing.Platform
 				}
 				catch
 				{
-					<Module>.___CxxCallUnwindDtor(ldftn(RAII.CAutoDeleteArray<unsigned\u0020short\u0020const\u0020>.{dtor}), (void*)(&cautoDeleteArray<unsigned_u0020short_u0020const_u0020>));
+					//<Module>.___CxxCallUnwindDtor(ldftn(RAII.CAutoDeleteArray<unsigned\u0020short\u0020const\u0020>.{dtor}), (void*)(&cautoDeleteArray<unsigned_u0020short_u0020const_u0020>));
 					throw;
 				}
 			}
 			catch
 			{
-				<Module>.___CxxCallUnwindDtor(ldftn(RAII.CAutoComFree<unsigned\u0020short\u0020const\u0020*>.{dtor}), (void*)(&cautoComFree<unsigned_u0020short_u0020const_u0020*>));
+				//<Module>.___CxxCallUnwindDtor(ldftn(RAII.CAutoComFree<unsigned\u0020short\u0020const\u0020*>.{dtor}), (void*)(&cautoComFree<unsigned_u0020short_u0020const_u0020*>));
 				throw;
 			}
 		}
@@ -490,77 +495,77 @@ namespace Microsoft.Windows.Flashing.Platform
 			{
 				ptr = null;
 			}
-			CAutoComFree<unsigned\u0020short\u0020const\u0020*> cautoComFree<unsigned_u0020short_u0020const_u0020*>;
-			*(ref cautoComFree<unsigned_u0020short_u0020const_u0020*> + 4) = ptr;
-			cautoComFree<unsigned_u0020short_u0020const_u0020*> = ref <Module>.??_7?$CAutoComFree@PBG@RAII@@6B@;
-			CAutoDelete<CGenericProgressShim\u0020*> cautoDelete<CGenericProgressShim_u0020*>;
-			CAutoDeleteArray<unsigned\u0020short\u0020const\u0020> cautoDeleteArray<unsigned_u0020short_u0020const_u0020>;
+			//CAutoComFree<unsigned\u0020short\u0020const\u0020*> cautoComFree<unsigned_u0020short_u0020const_u0020*>;
+			//*(ref cautoComFree<unsigned_u0020short_u0020const_u0020*> + 4) = ptr;
+			//cautoComFree<unsigned_u0020short_u0020const_u0020*> = ref <Module>.??_7?$CAutoComFree@PBG@RAII@@6B@;
+			//CAutoDelete<CGenericProgressShim\u0020*> cautoDelete<CGenericProgressShim_u0020*>;
+			//CAutoDeleteArray<unsigned\u0020short\u0020const\u0020> cautoDeleteArray<unsigned_u0020short_u0020const_u0020>;
 			try
 			{
-				CGenericProgressShim* ptr2 = <Module>.@new(8U);
+				CGenericProgressShim* ptr2 = default;//<Module>.@new(8U);
 				CGenericProgressShim* ptr3;
 				try
 				{
 					if (ptr2 != null)
 					{
-						*(int*)ptr2 = ref <Module>.??_7CGenericProgressShim@@6B@;
-						*(int*)(ptr2 + 4 / sizeof(CGenericProgressShim)) = ((IntPtr)GCHandle.Alloc(Progress)).ToPointer();
+						*(int*)(ptr2) = default;//ref <Module>.??_7CGenericProgressShim@@6B@;
+						*(int*)(ptr2 + 4 / sizeof(CGenericProgressShim)) = (int)((IntPtr)GCHandle.Alloc(Progress)).ToPointer();
 						ptr3 = ptr2;
 					}
 					else
 					{
-						ptr3 = 0;
+						ptr3 = (CGenericProgressShim*)0;
 					}
 				}
 				catch
 				{
-					<Module>.delete((void*)ptr2);
+					//<Module>.delete((void*)ptr2);
 					throw;
 				}
-				*(ref cautoDelete<CGenericProgressShim_u0020*> + 4) = ptr3;
-				cautoDelete<CGenericProgressShim_u0020*> = ref <Module>.??_7?$CAutoDelete@PAVCGenericProgressShim@@@RAII@@6B@;
+				//*(ref cautoDelete<CGenericProgressShim_u0020*> + 4) = ptr3;
+				//cautoDelete<CGenericProgressShim_u0020*> = ref <Module>.??_7?$CAutoDelete@PAVCGenericProgressShim@@@RAII@@6B@;
 				try
 				{
 					IntPtr handle = CancelEvent.Handle;
 					IFlashingDevice* device = this.m_Device;
-					int num = calli(System.Int32 modopt(System.Runtime.CompilerServices.IsLong) modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr,System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)*,System.UInt32 modopt(System.Runtime.CompilerServices.IsLong),FlashingPlatform.IGenericProgress*,System.Void*), device, calli(System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), ref cautoComFree<unsigned_u0020short_u0020const_u0020*>, *(cautoComFree<unsigned_u0020short_u0020const_u0020*> + 16)), Flags, calli(CGenericProgressShim* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), ref cautoDelete<CGenericProgressShim_u0020*>, *(cautoDelete<CGenericProgressShim_u0020*> + 16)), (void*)handle, *(*(int*)device + 56));
+					int num = -1;//calli(System.Int32 modopt(System.Runtime.CompilerServices.IsLong) modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr,System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)*,System.UInt32 modopt(System.Runtime.CompilerServices.IsLong),FlashingPlatform.IGenericProgress*,System.Void*), device, calli(System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), ref cautoComFree<unsigned_u0020short_u0020const_u0020*>, *(cautoComFree<unsigned_u0020short_u0020const_u0020*> + 16)), Flags, calli(CGenericProgressShim* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), ref cautoDelete<CGenericProgressShim_u0020*>, *(cautoDelete<CGenericProgressShim_u0020*> + 16)), (void*)handle, *(*(int*)device + 56));
 					if (num < 0)
 					{
-						*(ref cautoDeleteArray<unsigned_u0020short_u0020const_u0020> + 4) = <Module>.UfphNativeStrFormat((ushort*)(&<Module>.??_C@_1DC@PGNKAIIP@?$AAF?$AAa?$AAi?$AAl?$AAe?$AAd?$AA?5?$AAt?$AAo?$AA?5?$AAf?$AAl?$AAa?$AAs?$AAh?$AA?5?$AAF?$AAF?$AAU?$AA?5?$AAf?$AAi?$AAl?$AAe?$AA?$AA@));
-						cautoDeleteArray<unsigned_u0020short_u0020const_u0020> = ref <Module>.??_7?$CAutoDeleteArray@$$CBG@RAII@@6B@;
+						//*(ref cautoDeleteArray<unsigned_u0020short_u0020const_u0020> + 4) = <Module>.UfphNativeStrFormat((ushort*)(&<Module>.??_C@_1DC@PGNKAIIP@?$AAF?$AAa?$AAi?$AAl?$AAe?$AAd?$AA?5?$AAt?$AAo?$AA?5?$AAf?$AAl?$AAa?$AAs?$AAh?$AA?5?$AAF?$AAF?$AAU?$AA?5?$AAf?$AAi?$AAl?$AAe?$AA?$AA@));
+						//cautoDeleteArray<unsigned_u0020short_u0020const_u0020> = ref <Module>.??_7?$CAutoDeleteArray@$$CBG@RAII@@6B@;
 						try
 						{
-							IFlashingPlatform* native = this.m_Platform.Native;
-							if (calli(FlashingPlatform.ILogger* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), native, *(*(int*)native)))
+							IFlashingPlatform* native = null;//this.m_Platform.Native;
+							if (false)//(calli(FlashingPlatform.ILogger* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), native, *(*(int*)native)))
 							{
-								IFlashingPlatform* native2 = this.m_Platform.Native;
-								int num2 = calli(FlashingPlatform.ILogger* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), native2, *(*(int*)native2));
-								calli(System.Void modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr,FlashingPlatform.LogLevel,System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)*), num2, 2, calli(System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), ref cautoDeleteArray<unsigned_u0020short_u0020const_u0020>, *(cautoDeleteArray<unsigned_u0020short_u0020const_u0020> + 16)), *(*num2 + 4));
+								IFlashingPlatform* native2 = null;//this.m_Platform.Native;
+								int num2 = -1;// calli(FlashingPlatform.ILogger* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), native2, *(*(int*)native2));
+								//calli(System.Void modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr,FlashingPlatform.LogLevel,System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)*), num2, 2, calli(System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), ref cautoDeleteArray<unsigned_u0020short_u0020const_u0020>, *(cautoDeleteArray<unsigned_u0020short_u0020const_u0020> + 16)), *(*num2 + 4));
 							}
-							IntPtr ptr4 = (IntPtr)calli(System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), ref cautoDeleteArray<unsigned_u0020short_u0020const_u0020>, *(cautoDeleteArray<unsigned_u0020short_u0020const_u0020> + 16));
+							IntPtr ptr4 = default;//(IntPtr)calli(System.UInt16 modopt(System.Runtime.CompilerServices.IsConst)* modopt(System.Runtime.CompilerServices.CallConvThiscall)(System.IntPtr), ref cautoDeleteArray<unsigned_u0020short_u0020const_u0020>, *(cautoDeleteArray<unsigned_u0020short_u0020const_u0020> + 16));
 							throw new Win32Exception(num, Marshal.PtrToStringUni(ptr4));
 						}
 						catch
 						{
-							<Module>.___CxxCallUnwindDtor(ldftn(RAII.CAutoDeleteArray<unsigned\u0020short\u0020const\u0020>.{dtor}), (void*)(&cautoDeleteArray<unsigned_u0020short_u0020const_u0020>));
+							//<Module>.___CxxCallUnwindDtor(ldftn(RAII.CAutoDeleteArray<unsigned\u0020short\u0020const\u0020>.{dtor}), (void*)(&cautoDeleteArray<unsigned_u0020short_u0020const_u0020>));
 							throw;
 						}
 					}
 				}
 				catch
 				{
-					<Module>.___CxxCallUnwindDtor(ldftn(RAII.CAutoDelete<CGenericProgressShim\u0020*>.{dtor}), (void*)(&cautoDelete<CGenericProgressShim_u0020*>));
+					//<Module>.___CxxCallUnwindDtor(ldftn(RAII.CAutoDelete<CGenericProgressShim\u0020*>.{dtor}), (void*)(&cautoDelete<CGenericProgressShim_u0020*>));
 					throw;
 				}
-				cautoDelete<CGenericProgressShim_u0020*> = ref <Module>.??_7?$CAutoDelete@PAVCGenericProgressShim@@@RAII@@6B@;
-				<Module>.RAII.CAutoDelete<CGenericProgressShim\u0020*>.Release(ref cautoDelete<CGenericProgressShim_u0020*>);
+				//cautoDelete<CGenericProgressShim_u0020*> = ref <Module>.??_7?$CAutoDelete@PAVCGenericProgressShim@@@RAII@@6B@;
+				//<Module>.RAII.CAutoDelete<CGenericProgressShim\u0020*>.Release(ref cautoDelete<CGenericProgressShim_u0020*>);
 			}
 			catch
 			{
-				<Module>.___CxxCallUnwindDtor(ldftn(RAII.CAutoComFree<unsigned\u0020short\u0020const\u0020*>.{dtor}), (void*)(&cautoComFree<unsigned_u0020short_u0020const_u0020*>));
+				//<Module>.___CxxCallUnwindDtor(ldftn(RAII.CAutoComFree<unsigned\u0020short\u0020const\u0020*>.{dtor}), (void*)(&cautoComFree<unsigned_u0020short_u0020const_u0020*>));
 				throw;
 			}
-			<Module>.RAII.CAutoComFree<unsigned\u0020short\u0020const\u0020*>.{dtor}(ref cautoComFree<unsigned_u0020short_u0020const_u0020*>);
+			//<Module>.RAII.CAutoComFree<unsigned\u0020short\u0020const\u0020*>.{dtor}(ref cautoComFree<unsigned_u0020short_u0020const_u0020*>);
 			try
 			{
 				try
@@ -570,32 +575,32 @@ namespace Microsoft.Windows.Flashing.Platform
 					}
 					catch
 					{
-						<Module>.___CxxCallUnwindDtor(ldftn(RAII.CAutoDeleteArray<unsigned\u0020short\u0020const\u0020>.{dtor}), (void*)(&cautoDeleteArray<unsigned_u0020short_u0020const_u0020>));
+						//<Module>.___CxxCallUnwindDtor(ldftn(RAII.CAutoDeleteArray<unsigned\u0020short\u0020const\u0020>.{dtor}), (void*)(&cautoDeleteArray<unsigned_u0020short_u0020const_u0020>));
 						throw;
 					}
 				}
 				catch
 				{
-					<Module>.___CxxCallUnwindDtor(ldftn(RAII.CAutoDelete<CGenericProgressShim\u0020*>.{dtor}), (void*)(&cautoDelete<CGenericProgressShim_u0020*>));
+					//<Module>.___CxxCallUnwindDtor(ldftn(RAII.CAutoDelete<CGenericProgressShim\u0020*>.{dtor}), (void*)(&cautoDelete<CGenericProgressShim_u0020*>));
 					throw;
 				}
 			}
 			catch
 			{
-				<Module>.___CxxCallUnwindDtor(ldftn(RAII.CAutoComFree<unsigned\u0020short\u0020const\u0020*>.{dtor}), (void*)(&cautoComFree<unsigned_u0020short_u0020const_u0020*>));
+				//<Module>.___CxxCallUnwindDtor(ldftn(RAII.CAutoComFree<unsigned\u0020short\u0020const\u0020*>.{dtor}), (void*)(&cautoComFree<unsigned_u0020short_u0020const_u0020*>));
 				throw;
 			}
 		}
 
 		// Token: 0x06000154 RID: 340 RVA: 0x00012630 File Offset: 0x00011A30
 		[HandleProcessCorruptedStateExceptions]
-		protected override void Dispose([MarshalAs(UnmanagedType.U1)] bool A_0)
+		protected void Dispose([MarshalAs(UnmanagedType.U1)] bool A_0)
 		{
 			if (A_0)
 			{
 				try
 				{
-					this.~FlashingDevice();
+					this.UnFlashingDevice();//~FlashingDevice();
 					return;
 				}
 				finally
@@ -605,7 +610,7 @@ namespace Microsoft.Windows.Flashing.Platform
 			}
 			try
 			{
-				this.!FlashingDevice();
+				this.UnFlashingDevice();//!FlashingDevice();
 			}
 			finally
 			{
@@ -614,9 +619,7 @@ namespace Microsoft.Windows.Flashing.Platform
 		}
 
 		// Token: 0x0400011F RID: 287
-		private unsafe IFlashingDevice* m_Device = Device;
+		//private unsafe IFlashingDevice* m_Device = Device;
 	}
 }
-}
-}
-}
+

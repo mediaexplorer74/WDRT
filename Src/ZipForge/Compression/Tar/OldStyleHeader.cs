@@ -2,7 +2,7 @@
 using System.Net;
 using System.Text;
 using ComponentAce.Compression.Archiver;
-using ComponentAce.Compression.Exception;
+using ComponentAce.Compression.Exception1;
 
 namespace ComponentAce.Compression.Tar
 {
@@ -29,6 +29,7 @@ namespace ComponentAce.Compression.Tar
 				{
 					return this._fileName.Replace("\0", string.Empty);
 				}
+				
 				throw ExceptionBuilder.Exception(ErrorCode.FileNameWasNotSpecified);
 			}
 			set

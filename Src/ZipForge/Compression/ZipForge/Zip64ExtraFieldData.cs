@@ -32,17 +32,17 @@ namespace ComponentAce.Compression.ZipForge
 			long compSize = -1L;
 			long localHeaderOffset = -1L;
 			uint diskNumberStart = uint.MaxValue;
-			if (item.UncompressedSize == (long)((ulong)-1))
+			if (item.UncompressedSize == (long)((int)-1))
 			{
 				uncompSize = binaryReader.ReadInt64();
 				num2 += 8;
 			}
-			if (item.CompressedSize == (long)((ulong)-1))
+			if (item.CompressedSize == (long)((int)-1))
 			{
 				compSize = binaryReader.ReadInt64();
 				num2 += 8;
 			}
-			if (item.RelativeLocalHeaderOffset == (long)((ulong)-1))
+			if (item.RelativeLocalHeaderOffset == (long)((int)-1))
 			{
 				localHeaderOffset = binaryReader.ReadInt64();
 				num2 += 8;

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using ComponentAce.Compression.Exception;
+using ComponentAce.Compression.Exception1;
 using ComponentAce.Compression.Libs.PPMd;
 
 namespace ComponentAce.Compression.Archiver
@@ -39,7 +39,8 @@ namespace ComponentAce.Compression.Archiver
 			MemoryStream memoryStream = new MemoryStream();
 			if (this.sourceStream == null)
 			{
-				ushort value = (ushort)((ModelRestorationMethod)(this.modelOrder - 1) | (ModelRestorationMethod)(this.allocatorSize - 1 << 4) | this.modelRestorationMethod << 12);
+				ushort value = (ushort)((ModelRestorationMethod)(this.modelOrder - 1)
+					| (ModelRestorationMethod)(this.allocatorSize - 1 << 4) | (ModelRestorationMethod)((int)this.modelRestorationMethod << 12));
 				memoryStream.Write(BitConverter.GetBytes(value), 0, 2);
 				Model.StartEncoding(this.modelRestorationMethod, this.modelOrder);
 				this.sourceStream = new MemoryStream();

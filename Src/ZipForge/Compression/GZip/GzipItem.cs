@@ -3,7 +3,7 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using ComponentAce.Compression.Archiver;
-using ComponentAce.Compression.Exception;
+using ComponentAce.Compression.Exception1;
 using ComponentAce.Compression.Interfaces;
 using ComponentAce.Compression.Tar;
 using ComponentAce.Compression.ZipForge;

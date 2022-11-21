@@ -95,7 +95,7 @@ namespace ComponentAce.Encryption
 		{
 			while (Size > 0)
 			{
-				Dest[DestOffset++] = (Src1[Src1Offset++] ^ Src2[Src2Offset++]);
+				Dest[DestOffset++] = (byte)(Src1[Src1Offset++] ^ Src2[Src2Offset++]);
 				Size--;
 			}
 		}

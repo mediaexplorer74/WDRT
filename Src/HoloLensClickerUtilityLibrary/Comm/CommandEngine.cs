@@ -12,7 +12,7 @@ namespace ClickerUtilityLibrary.Comm
 		// Token: 0x14000005 RID: 5
 		// (add) Token: 0x060000E2 RID: 226 RVA: 0x00006664 File Offset: 0x00004864
 		// (remove) Token: 0x060000E3 RID: 227 RVA: 0x0000669C File Offset: 0x0000489C
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		//[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event EventHandler<FEvent> CommandEngineEvent;
 
 		// Token: 0x060000E4 RID: 228 RVA: 0x000066D4 File Offset: 0x000048D4

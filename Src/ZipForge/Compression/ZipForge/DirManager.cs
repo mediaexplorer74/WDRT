@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 using ComponentAce.Compression.Archiver;
-using ComponentAce.Compression.Exception;
+using ComponentAce.Compression.Exception1;
 using ComponentAce.Compression.Interfaces;
 using ComponentAce.Compression.ZipForge.Encryption;
 
@@ -630,15 +630,15 @@ namespace ComponentAce.Compression.ZipForge
 		internal ushort GetCDirZip64ExtraFieldLength(int DirItemNo)
 		{
 			ushort num = 0;
-			if (this.ItemsArray[DirItemNo].UncompressedSize == (long)((ulong)-1))
+			if (this.ItemsArray[DirItemNo].UncompressedSize == (long)((int)-1))
 			{
 				num += 8;
 			}
-			if ((this._itemsArray[DirItemNo] as DirItem).CompressedSize == (long)((ulong)-1))
+			if ((this._itemsArray[DirItemNo] as DirItem).CompressedSize == (long)((int)-1))
 			{
 				num += 8;
 			}
-			if ((this._itemsArray[DirItemNo] as DirItem).RelativeLocalHeaderOffset == (long)((ulong)-1))
+			if ((this._itemsArray[DirItemNo] as DirItem).RelativeLocalHeaderOffset == (long)((int)-1))
 			{
 				num += 8;
 			}
@@ -758,7 +758,7 @@ namespace ComponentAce.Compression.ZipForge
 				this.CentralDirEnd.EntriesCentralDir = ushort.MaxValue;
 				flag2 = true;
 			}
-			if (num2 < (long)((ulong)-1))
+			if (num2 < (long)((int)-1))
 			{
 				this.CentralDirEnd.CentralDirSize = (uint)num2;
 			}
@@ -767,7 +767,7 @@ namespace ComponentAce.Compression.ZipForge
 				this.CentralDirEnd.CentralDirSize = uint.MaxValue;
 				flag2 = true;
 			}
-			if (num < (long)((ulong)-1))
+			if (num < (long)((int)-1))
 			{
 				this.CentralDirEnd.OffsetStartDir = (uint)num;
 			}
@@ -794,7 +794,7 @@ namespace ComponentAce.Compression.ZipForge
 				this.Zip64CentralDirEnd.DiskNumber = (uint)this.FArc._volumeNumber;
 				flag2 = true;
 			}
-			if (this.FCompressedStream.Position >= (long)((ulong)-1) || flag2)
+			if (this.FCompressedStream.Position >= (long)((int)-1) || flag2)
 			{
 				this.SaveZip64CentralDirEnd(num);
 				this.SaveZip64CentralDirEndLocator();

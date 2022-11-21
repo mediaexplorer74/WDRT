@@ -1722,7 +1722,7 @@ namespace ComponentAce.Compression.Archiver
 			FileStream fileStream;
 			try
 			{
-				IL_1CA:
+				//IL_1CA:
 				if (File.Exists(text2))
 				{
 					CompressionUtils.FileSetAttr(text2, (FileAttributes)0);

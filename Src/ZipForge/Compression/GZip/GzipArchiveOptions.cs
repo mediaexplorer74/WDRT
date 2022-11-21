@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using ComponentAce.Compression.Archiver;
-using ComponentAce.Compression.Exception;
+using ComponentAce.Compression.Exception1;
 
 namespace ComponentAce.Compression.GZip
 {

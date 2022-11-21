@@ -6,7 +6,7 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using ComponentAce.Compression.Archiver;
-using ComponentAce.Compression.Exception;
+using ComponentAce.Compression.Exception1;
 using ComponentAce.Compression.ZipForge;
 using ComponentAce.Compression.ZipForge.Encryption;
 
@@ -238,7 +238,7 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 		{
 			if (this._compressedStream == null)
 			{
-				ExceptionBuilder.Exception(ErrorCode.CompressedStreamNotSpecified);
+				//ExceptionBuilder.Exception(ErrorCode.CompressedStreamNotSpecified);
 			}
 			this._dmHandle = new RealTimeDirManager(this);
 			this._dmHandle.ArchiveComment = this._commentsToArchive;
@@ -301,10 +301,10 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 			}
 			if (this._compressedStream == null)
 			{
-				throw ExceptionBuilder.Exception(ErrorCode.UnexpectedNullPointer, new object[]
-				{
-					"compressedStream"
-				});
+				//throw ExceptionBuilder.Exception(ErrorCode.UnexpectedNullPointer, new object[]
+				//{
+				//	"compressedStream"
+				//});
 			}
 			int num = this.AddItemToCentralDirectory(fileName, fileStream, fileComment);
 			this._progressCancel = false;

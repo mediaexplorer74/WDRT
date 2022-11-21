@@ -1,5 +1,5 @@
 ﻿using System;
-using ComponentAce.Compression.Exception;
+using ComponentAce.Compression.Exception1;
 
 namespace ComponentAce.Compression.Archiver
 {

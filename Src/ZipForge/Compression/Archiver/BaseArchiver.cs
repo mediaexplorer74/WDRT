@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Management;
 using System.Text;
-using ComponentAce.Compression.Exception;
+using ComponentAce.Compression.Exception1;
 using ComponentAce.Compression.Interfaces;
 using ComponentAce.Compression.ZipForge;
 using ComponentAce.Compression.ZipForge.Encryption;
@@ -549,8 +549,16 @@ namespace ComponentAce.Compression.Archiver
 					dirItem.ExtraFields.AddExtraField(new Zip64ExtraFieldData(), dirItem);
 				}
 				dirItem.RelativeLocalHeaderOffset = this._compressedStream.Position;
-				dirItem.ExtractVersion = ((dirItem.IsHugeFile || (stream != null && stream.Length >= (long)((ulong)-1))) ? ((this._currentItemsHandler.CentralDirEnd.Signature == this.GetCentralDirEndSignature()) ? 16685 : 45) : (this.IsFlexCompress() ? 16660 : 20));
-				dirItem.UncompressedSize = (long)((ulong)((stream != null) ? ((uint)stream.Length) : 0U));
+				dirItem.ExtractVersion = (ushort)((dirItem.IsHugeFile 
+					|| (stream != null 
+					&& stream.Length >= (long)((int)-1))) 
+					? ((this._currentItemsHandler.CentralDirEnd.Signature 
+					== this.GetCentralDirEndSignature()) ? 16685 : 45) 
+					: (this.IsFlexCompress() ? 16660 : 20));
+
+				dirItem.UncompressedSize = (long)((ulong)((stream != null) 
+					? ((uint)stream.Length) 
+					: 0U));
 				if (this._zip64Mode == Zip64Mode.Disabled && dirItem.IsHugeFile)
 				{
 					base.CloseStream(itemNo, ref stream, oldPosition);
@@ -762,10 +770,10 @@ namespace ComponentAce.Compression.Archiver
 			dirItem.IsModified = true;
 			dirItem.Password = this._password;
 			dirItem.SrcFileName = text;
-			dirItem.CompressionMode = ((!isDirectory) ? this._compressionMode : 0);
+			dirItem.CompressionMode = (byte)((!isDirectory) ? this._compressionMode : 0);
 			dirItem.ActualCompressionMethod = this._compressionMethod;
 			dirItem.Signature = this.GetCentralDirSignature();
-			dirItem.ExtractVersion = ((this._currentItemsHandler.CentralDirEnd.Signature == this.GetCentralDirEndSignature()) ? 16660 : 20);
+			dirItem.ExtractVersion = (ushort)((this._currentItemsHandler.CentralDirEnd.Signature == this.GetCentralDirEndSignature()) ? 16660 : 20);
 			dirItem.VersionMadeBy = 20;
 			if (this._password != "")
 			{
@@ -808,7 +816,7 @@ namespace ComponentAce.Compression.Archiver
 			}
 			dirItem.ActualCompressionMethod = this._compressionMethod;
 			dirItem.Signature = this.GetCentralDirSignature();
-			dirItem.ExtractVersion = ((this._currentItemsHandler.CentralDirEnd.Signature == this.GetCentralDirEndSignature()) ? 16660 : 20);
+			dirItem.ExtractVersion = (ushort)((this._currentItemsHandler.CentralDirEnd.Signature == this.GetCentralDirEndSignature()) ? 16660 : 20);
 			dirItem.VersionMadeBy = 20;
 			if (this._password != "")
 			{
@@ -891,7 +899,8 @@ namespace ComponentAce.Compression.Archiver
 			if (flag)
 			{
 				(this._currentItemsHandler.ItemsArray[num] as DirItem).CompressionMode = 0;
-				(this._currentItemsHandler.ItemsArray[num] as DirItem).ActualCompressionMethod = ((this._compressionMethod < 255) ? 0 : 255);
+				(this._currentItemsHandler.ItemsArray[num] as DirItem).ActualCompressionMethod = 
+					(ushort)((this._compressionMethod < 255) ? 0 : 255);
 			}
 			return num;
 		}
@@ -1202,7 +1211,7 @@ namespace ComponentAce.Compression.Archiver
 							{
 								lpVolumeName = "pkback# " + string.Format("##0", volumeNumber + 1);
 							}
-							Compression.SetVolumeLabel(CompressionUtils.ExtractFileDrive(text), lpVolumeName);
+							Compression1.SetVolumeLabel(CompressionUtils.ExtractFileDrive(text), lpVolumeName);
 						}
 					}
 				}

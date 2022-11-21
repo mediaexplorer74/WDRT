@@ -19,7 +19,7 @@ namespace ClickerUtilityLibrary
 		// Token: 0x14000002 RID: 2
 		// (add) Token: 0x06000021 RID: 33 RVA: 0x0000336C File Offset: 0x0000156C
 		// (remove) Token: 0x06000022 RID: 34 RVA: 0x000033A4 File Offset: 0x000015A4
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		//[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event EventHandler<FwUpdaterEventArgs> UpdaterEvent;
 
 		// Token: 0x06000023 RID: 35 RVA: 0x000033DC File Offset: 0x000015DC

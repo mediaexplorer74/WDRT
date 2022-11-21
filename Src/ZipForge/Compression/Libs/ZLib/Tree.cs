@@ -117,7 +117,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 				short[] bl_count2 = s.bl_count;
 				int num6 = i;
 				bl_count2[num6] -= 1;
-				s.bl_count[i + 1] = s.bl_count[i + 1] + 2;
+				s.bl_count[i + 1] = (short)(s.bl_count[i + 1] + 2);
 				short[] bl_count3 = s.bl_count;
 				int num7 = max_length;
 				bl_count3[num7] -= 1;
@@ -190,8 +190,8 @@ namespace ComponentAce.Compression.Libs.ZLib
 				int num3 = s.heap[1];
 				s.heap[--s.heap_max] = i;
 				s.heap[--s.heap_max] = num3;
-				array[num2 * 2] = array[i * 2] + array[num3 * 2];
-				s.depth[num2] = Math.Max(s.depth[i], s.depth[num3]) + 1;
+				array[num2 * 2] = (short)(array[i * 2] + array[num3 * 2]);
+				s.depth[num2] = (byte)(Math.Max(s.depth[i], s.depth[num3]) + 1);
 				array[i * 2 + 1] = (array[num3 * 2 + 1] = (short)num2);
 				s.heap[1] = num2++;
 				s.pqdownheap(array, 1);
@@ -220,7 +220,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 					short[] array2 = array;
 					int num4 = num2;
 					short code;
-					array2[num4] = (code = array2[num4]) + 1;
+					array2[num4] = (short)((code = array2[num4]) + 1);
 					tree[num3] = (short)Tree.bi_reverse((int)code, num2);
 				}
 			}

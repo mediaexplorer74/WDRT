@@ -5,7 +5,7 @@ namespace FlashingPlatform
 {
 	// Token: 0x02000045 RID: 69
 	[NativeCppClass]
-	internal struct ILogger
+    public struct ILogger
 	{
 	}
 }

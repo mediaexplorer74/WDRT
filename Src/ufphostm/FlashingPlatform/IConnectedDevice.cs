@@ -5,7 +5,7 @@ namespace FlashingPlatform
 {
 	// Token: 0x02000049 RID: 73
 	[NativeCppClass]
-	internal struct IConnectedDevice
+	public struct IConnectedDevice
 	{
 	}
 }

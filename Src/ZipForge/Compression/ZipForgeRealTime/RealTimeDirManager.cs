@@ -62,7 +62,7 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 			{
 				this.CentralDirectoryEnd.EntriesCentralDir = ushort.MaxValue;
 			}
-			if (num2 < (long)((ulong)-1))
+			if (num2 < (long)((int)-1))
 			{
 				this.CentralDirectoryEnd.CentralDirSize = (uint)num2;
 			}
@@ -70,7 +70,7 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 			{
 				this.CentralDirectoryEnd.CentralDirSize = uint.MaxValue;
 			}
-			if (num < (long)((ulong)-1))
+			if (num < (long)((int)-1))
 			{
 				this.CentralDirectoryEnd.OffsetStartDir = (uint)num;
 			}
@@ -87,7 +87,7 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 				this.CentralDirectoryEnd.CommentLength = 0;
 			}
 			this.CentralDirectoryEnd.DiskNumber = 0;
-			if (sentBytes >= (long)((ulong)-1))
+			if (sentBytes >= (long)((int)-1))
 			{
 				this.SaveZip64CentralDirEnd(stream, num, ref sentBytes);
 				this.SaveZip64CentralDirEndLocator(stream, ref sentBytes);

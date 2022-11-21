@@ -1,6 +1,6 @@
 ﻿using System;
 using ComponentAce.Compression.Archiver;
-using ComponentAce.Compression.Exception;
+using ComponentAce.Compression.Exception1;
 
 namespace ComponentAce.Compression.ZipForge.Encryption
 {

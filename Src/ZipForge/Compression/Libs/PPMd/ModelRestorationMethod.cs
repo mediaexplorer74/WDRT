@@ -3,7 +3,7 @@
 namespace ComponentAce.Compression.Libs.PPMd
 {
 	// Token: 0x02000052 RID: 82
-	internal enum ModelRestorationMethod : ushort
+	public enum ModelRestorationMethod : ushort
 	{
 		// Token: 0x0400025D RID: 605
 		Restart,

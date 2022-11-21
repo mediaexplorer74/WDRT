@@ -3,12 +3,13 @@
 namespace ComponentAce.Compression.Libs.PPMd
 {
 	// Token: 0x02000054 RID: 84
-	internal struct Pointer
+	public struct Pointer
 	{
 		// Token: 0x06000377 RID: 887 RVA: 0x0001D618 File Offset: 0x0001C618
 		public Pointer(uint address)
 		{
 			this.Address = address;
+			this.Stamp = default;//RnD
 		}
 
 		// Token: 0x17000080 RID: 128
@@ -126,8 +127,13 @@ namespace ComponentAce.Compression.Libs.PPMd
 			return pointer1.Address != pointer2.Address;
 		}
 
-		// Token: 0x0600038A RID: 906 RVA: 0x0001D76C File Offset: 0x0001C76C
-		public override bool Equals(object obj)
+        public static explicit operator int(Pointer v)
+        {
+            throw new NotImplementedException();
+        }
+
+        // Token: 0x0600038A RID: 906 RVA: 0x0001D76C File Offset: 0x0001C76C
+        public override bool Equals(object obj)
 		{
 			if (obj is Pointer)
 			{
@@ -153,5 +159,7 @@ namespace ComponentAce.Compression.Libs.PPMd
 
 		// Token: 0x04000269 RID: 617
 		public static readonly Pointer Zero = new Pointer(0U);
-	}
+
+        public uint Stamp { get; internal set; }
+    }
 }

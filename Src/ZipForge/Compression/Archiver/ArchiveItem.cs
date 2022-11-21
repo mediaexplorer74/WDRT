@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using ComponentAce.Compression.Exception;
+using ComponentAce.Compression.Exception1;
 using ComponentAce.Compression.ZipForge;
 
 namespace ComponentAce.Compression.Archiver

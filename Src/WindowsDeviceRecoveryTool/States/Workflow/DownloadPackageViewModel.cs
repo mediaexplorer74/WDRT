@@ -137,7 +137,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			this.LiveText = string.Empty;
 			this.progressCount = 0L;
 			this.uiUpdateAccessTimer.StartTimer();
-			base.Commands.Run((FlowController c) => c.DownloadPackage(null, CancellationToken.None));
+			//base.Commands.Run((FlowController c) => c.DownloadPackage(null, CancellationToken.None));
 			this.LiveText = LocalizationManager.GetTranslation("DownloadStarted");
 		}
 

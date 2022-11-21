@@ -107,7 +107,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			base.EventAggregator.Publish<IsBackButtonMessage>(new IsBackButtonMessage(false));
 			this.AppContext.CurrentPhone = null;
 			this.LiveText = null;
-			base.Commands.Run((FlowController c) => c.GetSupportedManufacturers());
+			//RnD
+			//base.Commands.Run((FlowController c) => c.GetSupportedManufacturers());
 			this.attachedDeviceIds.Clear();
 			using (CancellationTokenSource cancellationTokenSource = new CancellationTokenSource())
 			{
@@ -248,7 +249,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 		private void SwitchToState(string nextState)
 		{
 			this.switchToDeviceSelectionTimer.IsEnabled = false;
-			base.Commands.Run((AppController c) => c.SwitchToState(nextState));
+			//RnD
+			//base.Commands.Run((AppController c) => c.SwitchToState(nextState));
 		}
 
 		// Token: 0x060003E1 RID: 993 RVA: 0x00012A84 File Offset: 0x00010C84

@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 namespace ClickerUtilityLibrary.Comm.USBDriver
 {
 	// Token: 0x02000025 RID: 37
-	internal class CfgMgr
+	public class CfgMgr
 	{
 		// Token: 0x0600012B RID: 299
 		[DllImport("CfgMgr32.dll", SetLastError = true)]
@@ -22,9 +22,10 @@ namespace ClickerUtilityLibrary.Comm.USBDriver
 
 		// Token: 0x040000F4 RID: 244
 		internal const int ANYSIZE_ARRAY = 1;
+        internal ushort FixedElementField;
 
-		// Token: 0x0200004B RID: 75
-		internal enum WinError : uint
+        // Token: 0x0200004B RID: 75
+        internal enum WinError : uint
 		{
 			// Token: 0x040001B1 RID: 433
 			Success,
@@ -160,10 +161,10 @@ namespace ClickerUtilityLibrary.Comm.USBDriver
 
 			// Token: 0x040001D3 RID: 467
 			//[FixedBuffer(typeof(ushort), 1)]
-			//public CfgMgr.CM_NOTIFY_EVENT_DATA_DEVICE_INTERFACE.<SymbolicLink>e__FixedBuffer SymbolicLink;
+			public CfgMgr SymbolicLink; // <SymbolicLink>e__FixedBuffer
 
-			// Token: 0x0200005D RID: 93
-			[CompilerGenerated]
+            // Token: 0x0200005D RID: 93
+            [CompilerGenerated]
 			[UnsafeValueType]
 			[StructLayout(LayoutKind.Sequential, Size = 2)]
 			public struct SymbolicLinkFixedBuffer

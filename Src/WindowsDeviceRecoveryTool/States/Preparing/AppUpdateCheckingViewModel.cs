@@ -88,7 +88,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			base.EventAggregator.Publish<IsBackButtonMessage>(new IsBackButtonMessage(false));
 			base.EventAggregator.Publish<BlockWindowMessage>(new BlockWindowMessage(false, null, null));
 			this.IsChecking = true;
-			base.Commands.Run((AppController c) => c.CheckForAppUpdate(null, CancellationToken.None));
+			//RnD
+			//base.Commands.Run((AppController c) => c.CheckForAppUpdate(null, CancellationToken.None));
 		}
 
 		// Token: 0x06000427 RID: 1063 RVA: 0x0001401F File Offset: 0x0001221F

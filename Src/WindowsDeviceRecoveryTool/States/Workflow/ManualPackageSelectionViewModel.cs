@@ -170,7 +170,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 				{
 					this.CheckingPlatformId = true;
 					this.StatusInfo = LocalizationManager.GetTranslation("FFUCheckingFile");
-					base.Commands.Run((FfuController c) => c.ReadFfuFilePlatformId(this.FfuFilePath, CancellationToken.None));
+					//base.Commands.Run((FfuController c) => c.ReadFfuFilePlatformId(this.FfuFilePath, CancellationToken.None));
 				}
 				else
 				{

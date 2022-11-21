@@ -444,29 +444,32 @@ namespace Microsoft.WindowsPhone.ImageUpdate.PkgCommon
 		// Token: 0x06000095 RID: 149 RVA: 0x00004D9A File Offset: 0x00002F9A
 		public void SaveCab(string cabPath, bool compress)
 		{
-			this.SaveCab(cabPath, compress ? Package.DefaultCompressionType : CompressionType.None, PackageStyle.SPKG);
+			this.SaveCab(cabPath, compress 
+					? Package.DefaultCompressionType 
+					: CompressionType1.None, 
+				PackageStyle.SPKG);
 		}
 
 		// Token: 0x06000096 RID: 150 RVA: 0x00004DAF File Offset: 0x00002FAF
 		public void SaveCab(string cabPath, bool compress, PackageStyle outputStyle)
 		{
-			this.SaveCab(cabPath, compress ? Package.DefaultCompressionType : CompressionType.None, outputStyle);
+			this.SaveCab(cabPath, compress ? Package.DefaultCompressionType : CompressionType1.None, outputStyle);
 		}
 
 		// Token: 0x06000097 RID: 151 RVA: 0x00004DC4 File Offset: 0x00002FC4
-		public void SaveCab(string cabPath, CompressionType compressionType)
+		public void SaveCab(string cabPath, CompressionType1 compressionType)
 		{
 			this.SaveCab(cabPath, compressionType, PackageStyle.SPKG);
 		}
 
 		// Token: 0x06000098 RID: 152 RVA: 0x00004DCF File Offset: 0x00002FCF
-		public void SaveCab(string cabPath, CompressionType compressionType, PackageStyle outputStyle)
+		public void SaveCab(string cabPath, CompressionType1 compressionType, PackageStyle outputStyle)
 		{
 			this.SaveCab(cabPath, compressionType, outputStyle, PackageTools.SIGNING_HINT.SIGNING_HINT_TEST);
 		}
 
 		// Token: 0x06000099 RID: 153 RVA: 0x00004DDC File Offset: 0x00002FDC
-		public void SaveCab(string cabPath, CompressionType compressionType, PackageStyle outputStyle, PackageTools.SIGNING_HINT signingHint)
+		public void SaveCab(string cabPath, CompressionType1 compressionType, PackageStyle outputStyle, PackageTools.SIGNING_HINT signingHint)
 		{
 			if (outputStyle == PackageStyle.CBS)
 			{
@@ -560,7 +563,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.PkgCommon
 			{
 				cab.AddFile(x.CabPath, x.SourcePath);
 			});
-			cab.Save(cabPath, compressionType);
+			cab.Save(cabPath, /*compressionType*/null);
 			try
 			{
 				if (signingHint == PackageTools.SIGNING_HINT.SIGNING_HINT_TEST)
@@ -598,7 +601,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.PkgCommon
 		}
 
 		// Token: 0x0600009A RID: 154 RVA: 0x0000526C File Offset: 0x0000346C
-		public void SaveCBS(string cabPath, CompressionType compressionType)
+		public void SaveCBS(string cabPath, CompressionType1 compressionType)
 		{
 			string value = string.IsNullOrEmpty(this.m_pkgManifest.Culture) ? "neutral" : this.m_pkgManifest.Culture;
 			string value2 = string.IsNullOrEmpty(this.m_pkgManifest.PublicKey) ? PkgConstants.c_strCBSPublicKey : this.m_pkgManifest.PublicKey;
@@ -743,7 +746,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.PkgCommon
 		}
 
 		// Token: 0x0600009B RID: 155 RVA: 0x00005BC0 File Offset: 0x00003DC0
-		public void SaveCBSR(string cabPath, CompressionType compressionType)
+		public void SaveCBSR(string cabPath, CompressionType1 compressionType)
 		{
 			if (this.m_pkgManifest.IsBinaryPartition)
 			{
@@ -887,7 +890,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.PkgCommon
 			CabArchiver cabArchiver = new CabArchiver();
 			cabArchiver.AddFile(this._manifestEntry.CabPath, this._manifestEntry.SourcePath);
 			cabArchiver.AddFile(this._catalogEntry.CabPath, this._catalogEntry.SourcePath);
-			cabArchiver.Save(cabPath, compressionType);
+			cabArchiver.Save(cabPath, /*compressionType*/null);
 			try
 			{
 				this._signer.SignFile(cabPath);
@@ -944,7 +947,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.PkgCommon
 			return pkgBuilder;
 		}
 
-
+       
         // Token: 0x04000015 RID: 21
         private string _tmpDir;
 

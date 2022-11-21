@@ -3,7 +3,7 @@
 namespace Microsoft.WindowsPhone.ImageUpdate.Tools
 {
 	// Token: 0x02000002 RID: 2
-	public enum CompressionType
+	public enum CompressionType1
 	{
 		// Token: 0x04000002 RID: 2
 		None,

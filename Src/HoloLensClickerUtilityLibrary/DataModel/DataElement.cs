@@ -13,7 +13,7 @@ namespace ClickerUtilityLibrary.DataModel
 		// Token: 0x14000003 RID: 3
 		// (add) Token: 0x0600008A RID: 138 RVA: 0x000053A8 File Offset: 0x000035A8
 		// (remove) Token: 0x0600008B RID: 139 RVA: 0x000053E0 File Offset: 0x000035E0
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		//[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		// Token: 0x0600008C RID: 140 RVA: 0x00005418 File Offset: 0x00003618

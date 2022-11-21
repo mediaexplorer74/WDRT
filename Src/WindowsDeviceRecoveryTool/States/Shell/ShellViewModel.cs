@@ -183,11 +183,11 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Shell
 		{
 			if (string.IsNullOrEmpty(message.State))
 			{
-				base.Commands.Run((AppController c) => c.EndCurrentState());
+				//base.Commands.Run((AppController c) => c.EndCurrentState());
 			}
 			else
 			{
-				base.Commands.Run((AppController c) => c.SwitchToState(message.State));
+				//base.Commands.Run((AppController c) => c.SwitchToState(message.State));
 			}
 		}
 

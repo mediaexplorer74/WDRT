@@ -7,8 +7,10 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 	// Token: 0x02000037 RID: 55
 	public class MainAreaControl : ContentControl
 	{
-		// Token: 0x06000200 RID: 512 RVA: 0x0000DD24 File Offset: 0x0000BF24
-		static MainAreaControl()
+        private static RoutedEvent ContentChangedEvent;
+
+        // Token: 0x06000200 RID: 512 RVA: 0x0000DD24 File Offset: 0x0000BF24
+        static MainAreaControl()
 		{
 			MainAreaControl.ContentChangedEvent = EventManager.RegisterRoutedEvent("ContentChanged", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(MainAreaControl));
 			ContentControl.ContentProperty.OverrideMetadata(typeof(MainAreaControl), new FrameworkPropertyMetadata(new PropertyChangedCallback(MainAreaControl.OnContentPropertyChanged)));

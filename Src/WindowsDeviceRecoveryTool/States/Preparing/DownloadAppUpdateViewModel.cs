@@ -130,7 +130,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			this.Message = string.Empty;
 			this.TimeLeftMessage = string.Empty;
 			this.LiveText = string.Empty;
-			base.Commands.Run((AppController c) => c.UpdateApplication(null, CancellationToken.None));
+			//base.Commands.Run((AppController c) => c.UpdateApplication(null, CancellationToken.None));
 			this.LiveText = LocalizationManager.GetTranslation("DownloadStarted");
 		}
 

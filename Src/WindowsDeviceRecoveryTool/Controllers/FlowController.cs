@@ -52,7 +52,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 			if (!string.IsNullOrEmpty(result))
 			{
 				base.EventAggregator.Publish<PackageDirectoryMessage>(new PackageDirectoryMessage(result));
-				base.Commands.Run((FlowController c) => c.FindCorrectPackage(result, CancellationToken.None));
+				//base.Commands.Run((FlowController c) => c.FindCorrectPackage(result, CancellationToken.None));
 			}
 		}
 
@@ -73,7 +73,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 		public void CancelSearchingPackageAndSwitchToManual()
 		{
 			((IAsyncDelegateCommand)base.Commands["FindCorrectPackage"]).Cancel();
-			base.Commands.Run((AppController c) => c.SwitchToState("ManualPackageSelectionState"));
+			//base.Commands.Run((AppController c) => c.SwitchToState("ManualPackageSelectionState"));
 		}
 
 		// Token: 0x060001B9 RID: 441 RVA: 0x0000B7AC File Offset: 0x000099AC
@@ -114,7 +114,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 				"Error_OperationCanceledException"
 			};
 			base.EventAggregator.Publish<FlashResultMessage>(new FlashResultMessage(false, extendedMessage, null));
-			base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
+			//base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
 		}
 
 		// Token: 0x060001BD RID: 445 RVA: 0x0000B92C File Offset: 0x00009B2C
@@ -130,7 +130,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 					"Error_DeviceNotFoundException"
 				};
 				base.EventAggregator.Publish<FlashResultMessage>(new FlashResultMessage(false, extendedMessage, null));
-				base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
+				//base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
 			}
 			else
 			{
@@ -197,12 +197,12 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 			{
 				if (flag)
 				{
-					base.Commands.Run((AppController c) => c.SwitchToState("AwaitRecoveryModeAfterEmergencyFlashingState"));
+					//base.Commands.Run((AppController c) => c.SwitchToState("AwaitRecoveryModeAfterEmergencyFlashingState"));
 				}
 				else
 				{
 					base.EventAggregator.Publish<FlashResultMessage>(new FlashResultMessage(false, extendedMessage, argument));
-					base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
+					//base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
 				}
 			}
 		}
@@ -266,7 +266,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 			finally
 			{
 				base.EventAggregator.Publish<FlashResultMessage>(new FlashResultMessage(result, extendedMessage, argument));
-				base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
+				//base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
 			}
 		}
 
@@ -377,12 +377,12 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 					{
 						"DownloadCancelled"
 					}));
-					base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
+					//base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
 					Tracer<FlowController>.WriteInformation("Download package canceled.");
 				}
 				else
 				{
-					base.Commands.Run((AppController c) => c.SwitchToState("FlashingState"));
+					//base.Commands.Run((AppController c) => c.SwitchToState("FlashingState"));
 				}
 			}
 			catch (TaskCanceledException)
@@ -391,7 +391,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 				{
 					"DownloadCancelled"
 				}));
-				base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
+				//base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
 				Tracer<FlowController>.WriteInformation("Download package canceled.");
 			}
 			catch (WebException arg)
@@ -436,13 +436,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 					{
 						"DownloadCancelled"
 					}));
-					base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
+					//base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
 					Tracer<FlowController>.WriteInformation("Download package canceled.");
 				}
 				else
 				{
 					string nextState = (this.appContext.CurrentPhone.Type == PhoneTypes.HoloLensAccessory) ? "FlashingState" : "BatteryCheckingState";
-					base.Commands.Run((AppController c) => c.SwitchToState(nextState));
+					//base.Commands.Run((AppController c) => c.SwitchToState(nextState));
 				}
 			}
 			catch (OperationCanceledException)
@@ -451,7 +451,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 				{
 					"DownloadCancelled"
 				}));
-				base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
+				//base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
 				Tracer<FlowController>.WriteInformation("Download package canceled.");
 			}
 			catch (WebException arg)
@@ -538,11 +538,11 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 		{
 			if (!isPassed && this.appContext.SelectedManufacturer == PhoneTypes.Htc)
 			{
-				base.Commands.Run((AppController c) => c.SwitchToState("RebootHtcState"));
+				//base.Commands.Run((AppController c) => c.SwitchToState("RebootHtcState"));
 			}
 			else
 			{
-				base.Commands.Run((AppController c) => c.SwitchToState("AutomaticManufacturerSelectionState"));
+				//base.Commands.Run((AppController c) => c.SwitchToState("AutomaticManufacturerSelectionState"));
 			}
 		}
 
@@ -554,7 +554,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 			{
 				"BatteryCheckingCancelled"
 			}));
-			base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
+			//base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
 		}
 
 		// Token: 0x060001CF RID: 463 RVA: 0x0000CC39 File Offset: 0x0000AE39

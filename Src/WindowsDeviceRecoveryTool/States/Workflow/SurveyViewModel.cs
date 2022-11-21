@@ -207,7 +207,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 				ManufacturerProductLine = this.appContext.CurrentPhone.ReportManufacturerProductLine,
 				PhoneType = this.appContext.CurrentPhone.Type
 			};
-			base.Commands.Run((FlowController c) => c.SurveyCompleted(survey, CancellationToken.None));
+			//base.Commands.Run((FlowController c) => c.SurveyCompleted(survey, CancellationToken.None));
 			this.Continue(obj);
 		}
 
@@ -216,11 +216,11 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 		{
 			if (this.appContext.CurrentPhone.PackageFileInfo.OfflinePackage)
 			{
-				base.Commands.Run((AppController c) => c.SwitchToState("PackageIntegrityCheckState"));
+				//base.Commands.Run((AppController c) => c.SwitchToState("PackageIntegrityCheckState"));
 			}
 			else
 			{
-				base.Commands.Run((AppController c) => c.SwitchToState("DownloadPackageState"));
+				//base.Commands.Run((AppController c) => c.SwitchToState("DownloadPackageState"));
 			}
 		}
 

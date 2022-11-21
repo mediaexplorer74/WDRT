@@ -562,7 +562,7 @@ namespace FFUComponents
 			setupPacket.Request = (byte)request;
 			setupPacket.Value = 0;
 			setupPacket.Index = 0;
-			setupPacket.Length = ((buffer == null) ? 0 : ((ushort)buffer.Length));
+			setupPacket.Length = ((ushort)((buffer == null) ? 0 : ((ushort)buffer.Length)));
 			uint num = 0U;
 			fixed (byte* ptr = buffer)
 			{

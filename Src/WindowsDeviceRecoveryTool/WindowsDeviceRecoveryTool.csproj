@@ -14,6 +14,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>WindowsDeviceRecoveryTool.ico</ApplicationIcon>
     <TargetFrameworkProfile />
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -35,13 +36,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
     <Reference Include="UIAutomationProvider" />
     <Reference Include="UIAutomationTypes" />
     <Reference Include="WindowsBase" />
@@ -119,6 +128,7 @@
     <Compile Include="Detection\DeviceInfo.cs" />
     <Compile Include="Detection\DeviceInfoAction.cs" />
     <Compile Include="Detection\DeviceInfoEventArgs.cs" />
+    <Compile Include="Detection\f8__locals1.cs" />
     <Compile Include="Detection\IDetectionHandler.cs" />
     <Compile Include="Detection\IUsbDeviceMonitor.cs" />
     <Compile Include="Detection\LegacySupport\PhoneFactory.cs" />
@@ -180,6 +190,7 @@
     <Compile Include="Messages\ThemeColorChangedMessage.cs" />
     <Compile Include="Messages\TraceParametersMessage.cs" />
     <Compile Include="Messages\WaitMessage.cs" />
+    <Compile Include="Microsoft\WindowsDeviceRecoveryTool\States\Settings\Default.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.cs" />
     <Compile Include="Properties\Settings.cs" />
@@ -410,6 +421,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="app.manifest" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -700,6 +712,10 @@
       <Project>{55a80c0e-e3d4-43eb-8c91-d6ef18bfa9dc}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Localization.resources\Microsoft.WindowsDeviceRecoveryTool.Localization.resources.csproj">
+      <Project>{ab256c0c-b0de-49a8-a5fc-9a045d53a189}</Project>
+      <Name>Microsoft.WindowsDeviceRecoveryTool.Localization.resources</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Localization\Microsoft.WindowsDeviceRecoveryTool.Localization.csproj">
       <Project>{081f084d-70ab-42aa-a1e7-460f52620ca7}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.Localization</Name>
@@ -727,6 +743,10 @@
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Styles\Microsoft.WindowsDeviceRecoveryTool.Styles.csproj">
       <Project>{7902d216-e048-4fc0-8d7d-8adbb5516224}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.Styles</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nokia.Lucid\Nokia.Lucid.csproj">
+      <Project>{0ba1a6f4-e417-4ab3-ab1d-264cc7735f25}</Project>
+      <Name>Nokia.Lucid</Name>
     </ProjectReference>
     <ProjectReference Include="..\ZipForge\ZipForge.csproj">
       <Project>{5d42cec8-e315-4bae-82f9-db42646e73fe}</Project>

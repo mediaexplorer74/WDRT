@@ -295,24 +295,24 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 		// Token: 0x0600051C RID: 1308 RVA: 0x0001A524 File Offset: 0x00018724
 		private void OkClicked(object sender)
 		{
-			base.Commands.Run((AppController c) => c.SwitchToState("SettingsState"));
-			base.Commands.Run((AppController c) => c.SwitchSettingsState(this.previousState));
+			//base.Commands.Run((AppController c) => c.SwitchToState("SettingsState"));
+			//base.Commands.Run((AppController c) => c.SwitchSettingsState(this.previousState));
 			if ("PackagesState".Equals(this.previousState))
 			{
-				base.Commands.Run((SettingsController s) => s.SetPackagesPathDirectory(this.selectedPath, CancellationToken.None));
+				//base.Commands.Run((SettingsController s) => s.SetPackagesPathDirectory(this.selectedPath, CancellationToken.None));
 			}
 			else
 			{
 				base.EventAggregator.Publish<TraceParametersMessage>(new TraceParametersMessage(this.selectedPath, false));
-				base.Commands.Run((SettingsController s) => s.CollectLogs(this.selectedPath, CancellationToken.None));
+				//base.Commands.Run((SettingsController s) => s.CollectLogs(this.selectedPath, CancellationToken.None));
 			}
 		}
 
 		// Token: 0x0600051D RID: 1309 RVA: 0x0001A768 File Offset: 0x00018968
 		private void CancelClicked(object sender)
 		{
-			base.Commands.Run((AppController c) => c.SwitchToState("SettingsState"));
-			base.Commands.Run((AppController c) => c.SwitchSettingsState(this.previousState));
+			//base.Commands.Run((AppController c) => c.SwitchToState("SettingsState"));
+			//base.Commands.Run((AppController c) => c.SwitchSettingsState(this.previousState));
 		}
 
 		// Token: 0x0600051E RID: 1310 RVA: 0x0001A854 File Offset: 0x00018A54

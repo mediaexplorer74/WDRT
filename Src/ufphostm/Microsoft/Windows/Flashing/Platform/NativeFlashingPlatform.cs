@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using FlashingPlatform;
+using FlashingPlatform1;
 
 namespace Microsoft.Windows.Flashing.Platform
 {

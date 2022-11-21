@@ -70,7 +70,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			this.PhoneSettingsBackupPath = LocalizationManager.GetTranslation(this.appContext.CurrentPhone.IsWp10Device() ? "PhoneSettingsBackupPathWin10" : "PhoneSettingsBackupPathWin8");
 			if (this.appContext.CurrentPhone != null && this.appContext.CurrentPhone.Type == PhoneTypes.Analog)
 			{
-				base.Commands.Run((FlowController c) => c.CheckIfDeviceStillConnected(this.appContext.CurrentPhone, CancellationToken.None));
+				//base.Commands.Run((FlowController c) => c.CheckIfDeviceStillConnected(this.appContext.CurrentPhone, CancellationToken.None));
 			}
 		}
 
@@ -79,15 +79,15 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 		{
 			if (this.appContext.CurrentPhone.IsPhoneDeviceType())
 			{
-				base.Commands.Run((AppController c) => c.SwitchToState("SurveyState"));
+				//base.Commands.Run((AppController c) => c.SwitchToState("SurveyState"));
 			}
 			else if (this.appContext.CurrentPhone.PackageFileInfo.OfflinePackage)
 			{
-				base.Commands.Run((AppController c) => c.SwitchToState("PackageIntegrityCheckState"));
+				//base.Commands.Run((AppController c) => c.SwitchToState("PackageIntegrityCheckState"));
 			}
 			else
 			{
-				base.Commands.Run((AppController c) => c.SwitchToState("DownloadPackageState"));
+				//base.Commands.Run((AppController c) => c.SwitchToState("DownloadPackageState"));
 			}
 		}
 
@@ -103,7 +103,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 		// Token: 0x06000498 RID: 1176 RVA: 0x000163E8 File Offset: 0x000145E8
 		private void OpenSurvey(object obj)
 		{
-			base.Commands.Run((AppController c) => c.SwitchToState("SurveyState"));
+			//base.Commands.Run((AppController c) => c.SwitchToState("SurveyState"));
 		}
 
 		// Token: 0x040001FB RID: 507

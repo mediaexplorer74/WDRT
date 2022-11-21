@@ -25,14 +25,14 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Framework
 		}
 
 		// Token: 0x06000278 RID: 632 RVA: 0x0000F24C File Offset: 0x0000D44C
-		public static void Run(this IDictionary<string, IDelegateCommand> dictionary, Expression<Action> expression)
+		public static void Run(this IDictionary<string, IDelegateCommand> dictionary, Expression<Action<Controllers.AppController>> expression1, Expression<Action> expression)
 		{
 			string name = dictionary.GetName(expression);
 			Extenstions.Run(dictionary, expression.Body as MethodCallExpression, name, expression.Parameters);
 		}
 
 		// Token: 0x06000279 RID: 633 RVA: 0x0000F27C File Offset: 0x0000D47C
-		public static void Run<T>(this IDictionary<string, IDelegateCommand> dictionary, Expression<Action<T>> expression)
+		public static void Run<T>(this IDictionary<string, IDelegateCommand> dictionary, Expression<Action<Controllers.AppController>> expression1, Expression<Action<T>> expression)
 		{
 			string name = ReflectionHelper.GetName<T>(expression);
 			Extenstions.Run(dictionary, expression.Body as MethodCallExpression, name, expression.Parameters);
@@ -84,18 +84,23 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Framework
 		}
 
 		// Token: 0x06000280 RID: 640 RVA: 0x0000F3A4 File Offset: 0x0000D5A4
-		private static void Run(IDictionary<string, IDelegateCommand> dictionary, MethodCallExpression expressionBody, string commandName, IEnumerable<ParameterExpression> parameters)
+		private static void Run(IDictionary<string, 
+			IDelegateCommand> dictionary, 
+			MethodCallExpression expressionBody,
+			string commandName, 
+			IEnumerable<ParameterExpression> parameters)
 		{
+			/*
 			if (expressionBody.Arguments.Any<Expression>())
 			{
-				Expression expression = expressionBody.Arguments[0];
+				Expression expression = (Expression)expressionBody.Arguments[0];
 				ConstantExpression constantExpression = expression as ConstantExpression;
 				if (constantExpression != null)
 				{
 					dictionary[commandName].Execute(constantExpression.Value);
 					return;
 				}
-				if (expression is MemberExpression || expression is NewExpression)
+				if (expression is MemberExpression || expression is Expression)
 				{
 					LambdaExpression lambdaExpression = Expression.Lambda(expression, parameters);
 					Delegate @delegate = lambdaExpression.Compile();
@@ -111,7 +116,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Framework
 					}
 					return;
 				}
-			}
+			}*/
 			dictionary[commandName].Execute(null);
 		}
 	}

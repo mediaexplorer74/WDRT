@@ -19,16 +19,16 @@ namespace FFUComponents
 			bool result = true;
 			if (base.IsEnabled(eventDescriptor.Level, eventDescriptor.Keywords))
 			{
-				byte* ptr = stackalloc byte[(UIntPtr)(sizeof(DeviceEventProvider.EventData) * num)];
+				byte* ptr = stackalloc byte[(int)(UIntPtr)(sizeof(DeviceEventProvider.EventData) * num)];
 				DeviceEventProvider.EventData* ptr2 = (DeviceEventProvider.EventData*)ptr;
-				ptr2->DataPointer = &DeviceUniqueId;
+				ptr2->DataPointer = (ulong)&DeviceUniqueId;
 				ptr2->Size = (uint)sizeof(Guid);
 				ptr2[1].Size = (uint)((DeviceFriendlyName.Length + 1) * 2);
 				ptr2[2].Size = (uint)((AdditionalInfoString.Length + 1) * 2);
 				fixed (char* ptr3 = DeviceFriendlyName, ptr4 = AdditionalInfoString)
 				{
-					ptr2[1].DataPointer = ptr3;
-					ptr2[2].DataPointer = ptr4;
+					ptr2[1].DataPointer = (ulong)ptr3;
+					ptr2[2].DataPointer = (ulong)ptr4;
 					result = base.WriteEvent(ref eventDescriptor, num, (IntPtr)((void*)ptr));
 				}
 			}

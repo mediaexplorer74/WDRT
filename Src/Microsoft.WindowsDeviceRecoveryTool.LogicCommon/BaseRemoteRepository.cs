@@ -26,7 +26,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon
 		// Token: 0x17000008 RID: 8
 		// (get) Token: 0x06000034 RID: 52 RVA: 0x00002674 File Offset: 0x00000874
 		// (set) Token: 0x06000035 RID: 53 RVA: 0x0000268B File Offset: 0x0000088B
-		private protected SpeedCalculator SpeedCalculator { protected get; private set; }
+		private protected SpeedCalculator SpeedCalculator { get; private set; }
 
 		// Token: 0x17000009 RID: 9
 		// (get) Token: 0x06000036 RID: 54 RVA: 0x00002694 File Offset: 0x00000894

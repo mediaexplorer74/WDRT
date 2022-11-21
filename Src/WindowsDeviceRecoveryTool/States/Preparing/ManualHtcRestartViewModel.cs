@@ -36,14 +36,14 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			base.EventAggregator.Publish<IsBackButtonMessage>(new IsBackButtonMessage(false));
 			this.SubHeader = string.Format(LocalizationManager.GetTranslation("ManualRestartHtcInfo"), LocalizationManager.GetTranslation("ButtonCancel"));
 			DetectionParameters detectionParams = new DetectionParameters(PhoneTypes.Htc, PhoneModes.Normal);
-			base.Commands.Run((FlowController c) => c.StartDeviceDetection(detectionParams));
+			//base.Commands.Run((FlowController c) => c.StartDeviceDetection(detectionParams));
 		}
 
 		// Token: 0x06000487 RID: 1159 RVA: 0x00015E8C File Offset: 0x0001408C
 		public override void OnStopped()
 		{
 			base.OnStopped();
-			base.Commands.Run((FlowController c) => c.StopDeviceDetection());
+			//base.Commands.Run((FlowController c) => c.StopDeviceDetection());
 		}
 
 		// Token: 0x06000488 RID: 1160 RVA: 0x00015EF0 File Offset: 0x000140F0
@@ -53,7 +53,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			{
 				if (message.Phone.Type == PhoneTypes.Htc)
 				{
-					base.Commands.Run((AppController c) => c.SwitchToState("AwaitHtcState"));
+					//base.Commands.Run((AppController c) => c.SwitchToState("AwaitHtcState"));
 				}
 			}
 		}

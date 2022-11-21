@@ -202,7 +202,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 		public override void OnStopped()
 		{
 			this.cts.Cancel();
-			Settings.Default.Save();
+			//RnD
+			//Settings.Default.Save();
 		}
 
 		// Token: 0x060004F5 RID: 1269 RVA: 0x00019314 File Offset: 0x00017514
@@ -216,9 +217,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 			this.LogsCalculationInProgress = true;
 			this.ReportsCalculationInProgress = true;
 			this.PackagesCalculationInProgress = true;
-			base.Commands.Run((SettingsController controller) => controller.CalculateLogsSize(null, this.cts.Token));
-			base.Commands.Run((SettingsController controller) => controller.CalculateReportsSize(null, this.cts.Token));
-			base.Commands.Run((SettingsController controller) => controller.CalculatePackagesSize(null, this.cts.Token));
+			//base.Commands.Run((SettingsController controller) => controller.CalculateLogsSize(null, this.cts.Token));
+			//base.Commands.Run((SettingsController controller) => controller.CalculateReportsSize(null, this.cts.Token));
+			//base.Commands.Run((SettingsController controller) => controller.CalculatePackagesSize(null, this.cts.Token));
 		}
 
 		// Token: 0x060004F6 RID: 1270 RVA: 0x0001956C File Offset: 0x0001776C
@@ -254,17 +255,17 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 				case ApplicationInvalidateSizeMessage.DataType.Logs:
 					this.LogFilesSize = 0L;
 					this.LogsCalculationInProgress = true;
-					base.Commands.Run((SettingsController controller) => controller.CalculateLogsSize(null, this.cts.Token));
+					//base.Commands.Run((SettingsController controller) => controller.CalculateLogsSize(null, this.cts.Token));
 					break;
 				case ApplicationInvalidateSizeMessage.DataType.Reports:
 					this.ReportsFilesSize = 0L;
 					this.ReportsCalculationInProgress = true;
-					base.Commands.Run((SettingsController controller) => controller.CalculateReportsSize(null, this.cts.Token));
+					//base.Commands.Run((SettingsController controller) => controller.CalculateReportsSize(null, this.cts.Token));
 					break;
 				case ApplicationInvalidateSizeMessage.DataType.Packages:
 					this.PackagesFilesSize = 0L;
 					this.PackagesCalculationInProgress = true;
-					base.Commands.Run((SettingsController controller) => controller.CalculatePackagesSize(null, this.cts.Token));
+					//base.Commands.Run((SettingsController controller) => controller.CalculatePackagesSize(null, this.cts.Token));
 					break;
 				}
 			}

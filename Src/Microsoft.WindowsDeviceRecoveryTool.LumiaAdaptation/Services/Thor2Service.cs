@@ -107,7 +107,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation.Services
 				if (this.lastRawMessageReceived != null)
 				{
 					long num = long.Parse(this.lastRawMessageReceived.Substring(14, 4), NumberStyles.HexNumber);
-					num += (long)((ulong)-100663296);
+					num += (long)((int)-100663296);
 					Thor2ExitCode thor2ExitCode2 = (Thor2ExitCode)num;
 					if (Enum.IsDefined(typeof(Thor2ExitCode), thor2ExitCode2))
 					{

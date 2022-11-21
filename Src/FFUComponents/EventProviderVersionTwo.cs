@@ -19,16 +19,16 @@ namespace FFUComponents
 			bool result = true;
 			if (base.IsEnabled(eventDescriptor.Level, eventDescriptor.Keywords))
 			{
-				byte* ptr = stackalloc byte[(UIntPtr)(sizeof(EventProviderVersionTwo.EventData) * num)];
+				byte* ptr = stackalloc byte[(int)(UIntPtr)(sizeof(EventProviderVersionTwo.EventData) * num)];
 				EventProviderVersionTwo.EventData* ptr2 = (EventProviderVersionTwo.EventData*)ptr;
-				ptr2->DataPointer = &DeviceId;
+				ptr2->DataPointer = (ulong)&DeviceId;
 				ptr2->Size = (uint)sizeof(Guid);
 				ptr2[1].Size = (uint)((DeviceFriendlyName.Length + 1) * 2);
 				ptr2[2].Size = (uint)((AssemblyFileVersion.Length + 1) * 2);
 				fixed (char* ptr3 = DeviceFriendlyName, ptr4 = AssemblyFileVersion)
 				{
-					ptr2[1].DataPointer = ptr3;
-					ptr2[2].DataPointer = ptr4;
+					ptr2[1].DataPointer = (ulong)ptr3;
+					ptr2[2].DataPointer = (ulong)ptr4;
 					result = base.WriteEvent(ref eventDescriptor, num, (IntPtr)((void*)ptr));
 				}
 			}
@@ -42,14 +42,14 @@ namespace FFUComponents
 			bool result = true;
 			if (base.IsEnabled(eventDescriptor.Level, eventDescriptor.Keywords))
 			{
-				byte* ptr = stackalloc byte[(UIntPtr)(sizeof(EventProviderVersionTwo.EventData) * num)];
+				byte* ptr = stackalloc byte[(int)(UIntPtr)(sizeof(EventProviderVersionTwo.EventData) * num)];
 				EventProviderVersionTwo.EventData* ptr2 = (EventProviderVersionTwo.EventData*)ptr;
-				ptr2->DataPointer = &DeviceId;
+				ptr2->DataPointer = (ulong)&DeviceId;
 				ptr2->Size = (uint)sizeof(Guid);
 				ptr2[1].Size = (uint)((DeviceFriendlyName.Length + 1) * 2);
 				fixed (char* ptr3 = DeviceFriendlyName)
 				{
-					ptr2[1].DataPointer = ptr3;
+					ptr2[1].DataPointer = (ulong)ptr3;
 					result = base.WriteEvent(ref eventDescriptor, num, (IntPtr)((void*)ptr));
 				}
 			}
@@ -63,16 +63,16 @@ namespace FFUComponents
 			bool result = true;
 			if (base.IsEnabled(eventDescriptor.Level, eventDescriptor.Keywords))
 			{
-				byte* ptr = stackalloc byte[(UIntPtr)(sizeof(EventProviderVersionTwo.EventData) * num)];
+				byte* ptr = stackalloc byte[(int)(UIntPtr)(sizeof(EventProviderVersionTwo.EventData) * num)];
 				EventProviderVersionTwo.EventData* ptr2 = (EventProviderVersionTwo.EventData*)ptr;
-				ptr2->DataPointer = &DeviceId;
+				ptr2->DataPointer = (ulong)&DeviceId;
 				ptr2->Size = (uint)sizeof(Guid);
 				ptr2[1].Size = (uint)((DeviceFriendlyName.Length + 1) * 2);
-				ptr2[2].DataPointer = &ErrorCode;
+				ptr2[2].DataPointer = (ulong)&ErrorCode;
 				ptr2[2].Size = 4U;
 				fixed (char* ptr3 = DeviceFriendlyName)
 				{
-					ptr2[1].DataPointer = ptr3;
+					ptr2[1].DataPointer = (ulong)ptr3;
 					result = base.WriteEvent(ref eventDescriptor, num, (IntPtr)((void*)ptr));
 				}
 			}
@@ -86,14 +86,14 @@ namespace FFUComponents
 			bool result = true;
 			if (base.IsEnabled(eventDescriptor.Level, eventDescriptor.Keywords))
 			{
-				byte* ptr = stackalloc byte[(UIntPtr)(sizeof(EventProviderVersionTwo.EventData) * num)];
+				byte* ptr = stackalloc byte[(int)(UIntPtr)(sizeof(EventProviderVersionTwo.EventData) * num)];
 				EventProviderVersionTwo.EventData* ptr2 = (EventProviderVersionTwo.EventData*)ptr;
 				ptr2->Size = (uint)((DevicePath.Length + 1) * 2);
 				ptr2[1].Size = (uint)((Exception.Length + 1) * 2);
 				fixed (char* ptr3 = DevicePath, ptr4 = Exception)
 				{
-					ptr2->DataPointer = ptr3;
-					ptr2[1].DataPointer = ptr4;
+					ptr2->DataPointer = (ulong)ptr3;
+					ptr2[1].DataPointer = (ulong)ptr4;
 					result = base.WriteEvent(ref eventDescriptor, num, (IntPtr)((void*)ptr));
 				}
 			}
@@ -107,16 +107,16 @@ namespace FFUComponents
 			bool result = true;
 			if (base.IsEnabled(eventDescriptor.Level, eventDescriptor.Keywords))
 			{
-				byte* ptr = stackalloc byte[(UIntPtr)(sizeof(EventProviderVersionTwo.EventData) * num)];
+				byte* ptr = stackalloc byte[(int)(UIntPtr)(sizeof(EventProviderVersionTwo.EventData) * num)];
 				EventProviderVersionTwo.EventData* ptr2 = (EventProviderVersionTwo.EventData*)ptr;
-				ptr2->DataPointer = &DeviceId;
+				ptr2->DataPointer = (ulong)&DeviceId;
 				ptr2->Size = (uint)sizeof(Guid);
 				ptr2[1].Size = (uint)((DeviceFriendlyName.Length + 1) * 2);
-				ptr2[2].DataPointer = &TransferSize;
+				ptr2[2].DataPointer = (ulong)&TransferSize;
 				ptr2[2].Size = 4U;
 				fixed (char* ptr3 = DeviceFriendlyName)
 				{
-					ptr2[1].DataPointer = ptr3;
+					ptr2[1].DataPointer = (ulong)ptr3;
 					result = base.WriteEvent(ref eventDescriptor, num, (IntPtr)((void*)ptr));
 				}
 			}
@@ -130,11 +130,11 @@ namespace FFUComponents
 			bool result = true;
 			if (base.IsEnabled(eventDescriptor.Level, eventDescriptor.Keywords))
 			{
-				byte* ptr = stackalloc byte[(UIntPtr)(sizeof(EventProviderVersionTwo.EventData) * num)];
+				byte* ptr = stackalloc byte[(int)(UIntPtr)(sizeof(EventProviderVersionTwo.EventData) * num)];
 				EventProviderVersionTwo.EventData* ptr2 = (EventProviderVersionTwo.EventData*)ptr;
-				ptr2->DataPointer = &USBTransactionSize;
+				ptr2->DataPointer = (ulong)&USBTransactionSize;
 				ptr2->Size = 4U;
-				ptr2[1].DataPointer = &PacketDataSize;
+				ptr2[1].DataPointer = (ulong)&PacketDataSize;
 				ptr2[1].Size = 4U;
 				result = base.WriteEvent(ref eventDescriptor, num, (IntPtr)((void*)ptr));
 			}

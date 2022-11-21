@@ -58,7 +58,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Framework
 			executor(delegate
 			{
 				List<WeakReference> list = new List<WeakReference>();
-				WeakReference[] objectsToNotify;
+				WeakReference[] objectsToNotify = default;
 				foreach (WeakReference weakReference in objectsToNotify)
 				{
 					ICanHandle<TMessage> canHandle = weakReference.Target as ICanHandle<TMessage>;

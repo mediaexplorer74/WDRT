@@ -104,11 +104,14 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Detection.LegacySupport
 			string vid = vidPidPair.Vid;
 			string pid = vidPidPair.Pid;
 			string deviceIdentifier = deviceInfo.DeviceIdentifier;
-			return new DeviceInfoSet
+
+			//RnD
+			return null;/*new DeviceInfoSet
 			{
 				Filter = ((Nokia.Lucid.Primitives.DeviceIdentifier di) => di.Vid(vid) && di.Pid(pid)),
 				DeviceTypeMap = new DeviceTypeMap(PhoneFactory.UsbDeviceInterfaceClassGuid, DeviceType.PhysicalDevice)
 			}.GetDevice(deviceIdentifier);
+				*/
 		}
 
 		// Token: 0x060000EE RID: 238 RVA: 0x00006E94 File Offset: 0x00005094
@@ -148,7 +151,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Detection.LegacySupport
 				}
 				try
 				{
-					busReportedDeviceDescription = deviceInfo.ReadBusReportedDeviceDescription();
+					busReportedDeviceDescription = null;//deviceInfo.ReadBusReportedDeviceDescription();
 					Tracer<PhoneFactory>.WriteInformation("Bus reported device description = {0}", new object[]
 					{
 						busReportedDeviceDescription
@@ -160,7 +163,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Detection.LegacySupport
 				}
 				try
 				{
-					locationInfo = deviceInfo.ReadLocationInformation();
+					locationInfo = null;//deviceInfo.ReadLocationInformation();
 					Tracer<PhoneFactory>.WriteInformation("Location info = {0}", new object[]
 					{
 						locationInfo
@@ -193,8 +196,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Detection.LegacySupport
 			return null;
 		}
 
-		// Token: 0x060000F0 RID: 240 RVA: 0x00007338 File Offset: 0x00005538
-		internal void DetermineDeviceTypeDesignatorAndSalesName(string pid, string busReportedDeviceDescription, out string typeDesignator, out string salesName)
+        private Task<string> GetLocationPathAsync(DeviceInfo deviceInfo, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        // Token: 0x060000F0 RID: 240 RVA: 0x00007338 File Offset: 0x00005538
+        internal void DetermineDeviceTypeDesignatorAndSalesName(string pid, string busReportedDeviceDescription, out string typeDesignator, out string salesName)
 		{
 			LucidConnectivityHelper.ParseTypeDesignatorAndSalesName(busReportedDeviceDescription, out typeDesignator, out salesName);
 			Tracer<UsbDeviceScanner>.WriteInformation("Type designator: {0}, Sales name: {1}", new object[]
@@ -315,7 +323,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Detection.LegacySupport
 			{
 				ncsdDevicePath
 			});
-			DeviceInfo lucidDeviceInfo = this.lucidService.GetDeviceInfoForInterfaceGuid(usbDeviceInterfaceDevicePath, WellKnownGuids.UsbDeviceInterfaceGuid);
+			//RnD
+			DeviceInfo lucidDeviceInfo = null;//this.lucidService.GetDeviceInfoForInterfaceGuid(usbDeviceInterfaceDevicePath, WellKnownGuids.UsbDeviceInterfaceGuid);
 			UsbDevice usbDevice = await this.GetUsbDeviceAsync(lucidDeviceInfo, vidPidPair, deviceInfo.DeviceSalesName, cancellationToken);
 			return new Phone(usbDevice, adaptation.PhoneType, adaptation.SalesNameProvider(), false, "", "")
 			{

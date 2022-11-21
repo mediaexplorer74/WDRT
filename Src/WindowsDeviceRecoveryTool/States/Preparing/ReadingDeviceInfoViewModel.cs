@@ -95,8 +95,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			switch (selectedManufacturer)
 			{
 			case PhoneTypes.Lumia:
-				base.Commands.Run((LumiaController c) => c.SetSelectedPhone(this.SelectedPhone, CancellationToken.None));
-				base.Commands.Run((LumiaController c) => c.StartCurrentLumiaDetection(this.DetectionType, CancellationToken.None));
+					//RnD
+				//base.Commands.Run((LumiaController c) => c.SetSelectedPhone(this.SelectedPhone, CancellationToken.None));
+				//base.Commands.Run((LumiaController c) => c.StartCurrentLumiaDetection(this.DetectionType, CancellationToken.None));
 				goto IL_346;
 			case PhoneTypes.Htc:
 			case PhoneTypes.Analog:
@@ -116,10 +117,12 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			this.readingDeviceInfoTimer = new System.Timers.Timer(60000.0);
 			this.readingDeviceInfoTimer.Elapsed += this.ReadingDeviceInfoTimerElapsed;
 			this.readingDeviceInfoTimer.Start();
-			base.Commands.Run((FlowController c) => c.ReadDeviceInfo(this.AppContext.CurrentPhone, CancellationToken.None));
+			//RnD
+			//base.Commands.Run((FlowController c) => c.ReadDeviceInfo(this.AppContext.CurrentPhone, CancellationToken.None));
 			IL_346:
 			DetectionParameters detectionParams = new DetectionParameters(PhoneTypes.All, PhoneModes.Normal);
-			base.Commands.Run((FlowController c) => c.StartDeviceDetection(detectionParams));
+			//RnD
+			//base.Commands.Run((FlowController c) => c.StartDeviceDetection(detectionParams));
 		}
 
 		// Token: 0x060004A5 RID: 1189 RVA: 0x000169D4 File Offset: 0x00014BD4
@@ -129,7 +132,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			switch (selectedManufacturer)
 			{
 			case PhoneTypes.Lumia:
-				base.Commands.Run((LumiaController c) => c.StopCurrentLumiaDetection());
+				//RnD
+				//base.Commands.Run((LumiaController c) => c.StopCurrentLumiaDetection());
 				goto IL_E7;
 			case PhoneTypes.Htc:
 			case PhoneTypes.Analog:
@@ -147,9 +151,11 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 				break;
 			}
 			this.readingDeviceInfoTimer.Stop();
-			base.Commands.Run((FlowController c) => c.CancelReadDeviceInfo());
+			
+			//base.Commands.Run((FlowController c) => c.CancelReadDeviceInfo());
 			IL_E7:
-			base.Commands.Run((FlowController c) => c.StopDeviceDetection());
+			//base.Commands.Run((FlowController c) => c.StopDeviceDetection());
+			return;
 		}
 
 		// Token: 0x060004A6 RID: 1190 RVA: 0x00016B18 File Offset: 0x00014D18
@@ -163,11 +169,11 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 					{
 						this.AppContext.CurrentPhone.PlatformId
 					});
-					base.Commands.Run((AppController c) => c.SwitchToState("UnsupportedDeviceState"));
+					//base.Commands.Run((AppController c) => c.SwitchToState("UnsupportedDeviceState"));
 				}
 				else if ((this.AppContext.SelectedManufacturer == PhoneTypes.Analog || this.AppContext.SelectedManufacturer == PhoneTypes.Htc || this.AppContext.SelectedManufacturer == PhoneTypes.Lg || this.AppContext.SelectedManufacturer == PhoneTypes.Mcj || this.AppContext.SelectedManufacturer == PhoneTypes.Blu || this.AppContext.SelectedManufacturer == PhoneTypes.Alcatel || this.AppContext.SelectedManufacturer == PhoneTypes.HoloLensAccessory) && message.Result)
 				{
-					base.Commands.Run((AppController c) => c.SwitchToState("CheckLatestPackageState"));
+					//base.Commands.Run((AppController c) => c.SwitchToState("CheckLatestPackageState"));
 				}
 			}
 		}
@@ -177,12 +183,12 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 		{
 			if (this.AppContext.CurrentPhone.Type == PhoneTypes.Htc)
 			{
-				base.Commands.Run((AppController c) => c.SwitchToState("ManualHtcRestartState"));
+				//base.Commands.Run((AppController c) => c.SwitchToState("ManualHtcRestartState"));
 			}
 			else if (this.AppContext.CurrentPhone.Type == PhoneTypes.Analog)
 			{
-				base.EventAggregator.Publish<ErrorMessage>(new ErrorMessage(new ReadPhoneInformationException("Please check if device was connected in NORMAL mode")));
-				base.Commands.Run((AppController c) => c.SwitchToState("ErrorState"));
+				//base.EventAggregator.Publish<ErrorMessage>(new ErrorMessage(new ReadPhoneInformationException("Please check if device was connected in NORMAL mode")));
+				//base.Commands.Run((AppController c) => c.SwitchToState("ErrorState"));
 			}
 		}
 
@@ -211,7 +217,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			{
 				if (this.NeedToCheckIfDeviceWasDisconnected())
 				{
-					base.Commands.Run((FlowController fc) => fc.CheckIfDeviceStillConnected(this.appContext.CurrentPhone, CancellationToken.None));
+					//base.Commands.Run((FlowController fc) => fc.CheckIfDeviceStillConnected(this.appContext.CurrentPhone, CancellationToken.None));
 				}
 			}
 		}

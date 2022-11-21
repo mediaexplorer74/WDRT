@@ -75,5 +75,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Shell
 
 		// Token: 0x0400035D RID: 861
 		private readonly DispatcherTimer focusDelayTimer;
-	}
+        private SettingsControl SettingsControl;
+
+        public FrameworkElement GenericRoot { get; private set; }
+    }
 }

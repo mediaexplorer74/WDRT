@@ -142,7 +142,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			{
 				this.AppContext.CurrentPhone.HardwareModel
 			});
-			base.Commands.Run((FlowController c) => c.DownloadEmergencyPackage(null, CancellationToken.None));
+			//base.Commands.Run((FlowController c) => c.DownloadEmergencyPackage(null, CancellationToken.None));
 			this.LiveText = LocalizationManager.GetTranslation("DownloadStarted");
 		}
 

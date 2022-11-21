@@ -124,7 +124,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 		// Token: 0x060006A7 RID: 1703 RVA: 0x000225F8 File Offset: 0x000207F8
 		public override void OnStopped()
 		{
-			base.Commands.Run((SettingsController controller) => controller.SetProxy(null));
+			//base.Commands.Run((SettingsController controller) => controller.SetProxy(null));
 			Settings.Default.Save();
 		}
 

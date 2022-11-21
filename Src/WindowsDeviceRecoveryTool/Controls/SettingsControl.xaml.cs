@@ -203,5 +203,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 
 		// Token: 0x040000ED RID: 237
 		private readonly Timer timer;
-	}
+        private static RoutedEvent OpenEvent;
+        private static RoutedEvent CloseEvent;
+    }
 }

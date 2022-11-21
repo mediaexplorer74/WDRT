@@ -117,7 +117,7 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 					portableDeviceValues2.GetUnsignedIntegerValue(ref PortableDevicePKeys.WPD_PROPERTY_MTP_EXT_TRANSFER_TOTAL_DATA_SIZE, out num2);
 					while (num2 > 0U)
 					{
-						IntPtr source = 0;
+						IntPtr source = (IntPtr)0;
 						uint num3 = Math.Min(num2, (uint)array.Length);
 						uint num4 = 0U;
 						portableDeviceValues.Clear();

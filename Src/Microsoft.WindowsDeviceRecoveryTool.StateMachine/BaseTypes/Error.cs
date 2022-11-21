@@ -4,10 +4,10 @@ using Microsoft.WindowsDeviceRecoveryTool.Common;
 namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.BaseTypes
 {
 	// Token: 0x02000007 RID: 7
-	public class Error : EventArgs<Exception>
+	public class Error : EventArgs//<Exception>
 	{
 		// Token: 0x0600004F RID: 79 RVA: 0x00003321 File Offset: 0x00001521
-		public Error(Exception ex) : base(ex)
+		public Error(Exception ex) : base()//(ex)
 		{
 		}
 
@@ -17,7 +17,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.BaseTypes
 		{
 			get
 			{
-				return base.Value.GetType();
+				return base.GetType();//.Value.GetType();
 			}
 		}
 

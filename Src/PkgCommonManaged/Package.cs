@@ -377,7 +377,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.PkgCommon
 		}
 
 		// Token: 0x0400008A RID: 138
-		public static CompressionType DefaultCompressionType = CompressionType.FastLZX;
+		public static CompressionType1 DefaultCompressionType = CompressionType1.FastLZX;
 
 		// Token: 0x0400008B RID: 139
 		public static IDeploymentLogger Logger = new IULogger();

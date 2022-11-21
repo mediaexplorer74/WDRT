@@ -145,7 +145,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			this.BlockFlow = (this.BlockFlow || !flag);
 			if (status == BatteryStatus.BatteryOk && flag)
 			{
-				base.Commands.Run((AppController c) => c.SwitchToState(this.NextCommand));
+				//base.Commands.Run((AppController c) => c.SwitchToState(this.NextCommand));
 			}
 		}
 
@@ -213,7 +213,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 		private void ReadDeviceBatteryStatus(object obj)
 		{
 			this.CheckingBatteryStatus = true;
-			base.Commands.Run((FlowController c) => c.ReadDeviceBatteryStatus(this.appContext.CurrentPhone, CancellationToken.None));
+			//base.Commands.Run((FlowController c) => c.ReadDeviceBatteryStatus(this.appContext.CurrentPhone, CancellationToken.None));
 		}
 
 		// Token: 0x06000419 RID: 1049 RVA: 0x00013D10 File Offset: 0x00011F10

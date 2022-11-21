@@ -48,7 +48,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 			this.appContext.CurrentPhone = phone;
 			if (this.currentDetectionType == DetectionType.RecoveryModeAfterEmergencyFlashing)
 			{
-				base.Commands.Run((FlowController c) => c.FinishAwaitRecoveryAfterEmergency(false, CancellationToken.None));
+				//base.Commands.Run((FlowController c) => c.FinishAwaitRecoveryAfterEmergency(false, CancellationToken.None));
 			}
 			else if (this.currentDetectionType == DetectionType.RecoveryMode && this.appContext.CurrentPhone.IsDeviceInEmergencyMode())
 			{
@@ -246,7 +246,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 				}
 				if (this.appContext.CurrentPhone.IsProductCodeTypeEmpty())
 				{
-					base.Commands.Run((AppController c) => c.SwitchToState("ReadingDeviceInfoWithThorState"));
+					//base.Commands.Run((AppController c) => c.SwitchToState("ReadingDeviceInfoWithThorState"));
 				}
 				else
 				{

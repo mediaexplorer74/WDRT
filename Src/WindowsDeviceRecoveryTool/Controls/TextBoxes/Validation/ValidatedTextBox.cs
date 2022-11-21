@@ -51,7 +51,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls.TextBoxes.Validation
 		// Token: 0x0600021C RID: 540 RVA: 0x0000E134 File Offset: 0x0000C334
 		private bool ValidationSucceeded()
 		{
-			return !Validation.GetHasError(this);
+			//RnD
+			return default;//!Validation.GetHasError(this);
 		}
 
 		// Token: 0x0600021D RID: 541 RVA: 0x0000E150 File Offset: 0x0000C350
@@ -60,7 +61,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls.TextBoxes.Validation
 			BindingExpression bindingExpression = base.GetBindingExpression(TextBox.TextProperty);
 			if (bindingExpression != null)
 			{
-				Validation.ClearInvalid(bindingExpression);
+				//RnD
+				//Validation.ClearInvalid(bindingExpression);
 			}
 		}
 

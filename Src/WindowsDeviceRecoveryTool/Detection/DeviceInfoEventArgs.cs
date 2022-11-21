@@ -3,10 +3,11 @@
 namespace Microsoft.WindowsDeviceRecoveryTool.Detection
 {
 	// Token: 0x02000013 RID: 19
-	internal sealed class DeviceInfoEventArgs
+	public sealed class DeviceInfoEventArgs
 	{
 		// Token: 0x06000077 RID: 119 RVA: 0x00003966 File Offset: 0x00001B66
-		public DeviceInfoEventArgs(DeviceInfo deviceInfo, DeviceInfoAction deviceInfoAction, bool isEnumerated = false)
+		public DeviceInfoEventArgs(DeviceInfo deviceInfo, 
+			DeviceInfoAction deviceInfoAction, bool isEnumerated = false)
 		{
 			this.DeviceInfo = deviceInfo;
 			this.DeviceInfoAction = deviceInfoAction;

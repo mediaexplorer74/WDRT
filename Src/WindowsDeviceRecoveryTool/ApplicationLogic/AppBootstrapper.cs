@@ -44,7 +44,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 		// Token: 0x17000001 RID: 1
 		// (get) Token: 0x06000005 RID: 5 RVA: 0x000020F4 File Offset: 0x000002F4
 		// (set) Token: 0x06000006 RID: 6 RVA: 0x0000210B File Offset: 0x0000030B
-		private protected AppContext AppContext { protected get; private set; }
+		private protected AppContext AppContext {  get; private set; }
 
 		// Token: 0x17000002 RID: 2
 		// (get) Token: 0x06000007 RID: 7 RVA: 0x00002114 File Offset: 0x00000314
@@ -54,27 +54,27 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 		// Token: 0x17000003 RID: 3
 		// (get) Token: 0x06000009 RID: 9 RVA: 0x00002134 File Offset: 0x00000334
 		// (set) Token: 0x0600000A RID: 10 RVA: 0x0000214B File Offset: 0x0000034B
-		private protected CompositionContainer Container { protected get; private set; }
+		private protected CompositionContainer Container { get; private set; }
 
 		// Token: 0x17000004 RID: 4
 		// (get) Token: 0x0600000B RID: 11 RVA: 0x00002154 File Offset: 0x00000354
 		// (set) Token: 0x0600000C RID: 12 RVA: 0x0000216B File Offset: 0x0000036B
-		private protected ICommandRepository CommandRepository { protected get; private set; }
+		private protected ICommandRepository CommandRepository { get; private set; }
 
 		// Token: 0x17000005 RID: 5
 		// (get) Token: 0x0600000D RID: 13 RVA: 0x00002174 File Offset: 0x00000374
 		// (set) Token: 0x0600000E RID: 14 RVA: 0x0000218B File Offset: 0x0000038B
-		private protected Application Application { protected get; private set; }
+		private protected Application Application { get; private set; }
 
 		// Token: 0x17000006 RID: 6
 		// (get) Token: 0x0600000F RID: 15 RVA: 0x00002194 File Offset: 0x00000394
 		// (set) Token: 0x06000010 RID: 16 RVA: 0x000021AB File Offset: 0x000003AB
-		private protected MainWindow ShellWindow { protected get; private set; }
+		private protected MainWindow ShellWindow { get; private set; }
 
 		// Token: 0x17000007 RID: 7
 		// (get) Token: 0x06000011 RID: 17 RVA: 0x000021B4 File Offset: 0x000003B4
 		// (set) Token: 0x06000012 RID: 18 RVA: 0x000021CB File Offset: 0x000003CB
-		private protected EventAggregator EventAggregator { protected get; private set; }
+		private protected EventAggregator EventAggregator { get; private set; }
 
 		// Token: 0x17000008 RID: 8
 		// (get) Token: 0x06000013 RID: 19 RVA: 0x000021D4 File Offset: 0x000003D4
@@ -344,7 +344,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 		protected void OnWindowClosing(object sender, CancelEventArgs e)
 		{
 			e.Cancel = true;
-			this.CommandRepository.Run((AppController c) => c.CloseAppOperations(this.ShellWindow, CancellationToken.None));
+			//RnD
+			//this.CommandRepository.Run((AppController c) => c.CloseAppOperations(this.ShellWindow, CancellationToken.None));
 			Tracer<AppBootstrapper>.WriteInformation("Starting closing App.");
 		}
 
@@ -370,7 +371,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 			if (errorTemplateSelector != null && errorTemplateSelector.IsImplemented(exception))
 			{
 				this.EventAggregator.Publish<ErrorMessage>(new ErrorMessage(exception));
-				this.CommandRepository.Run((AppController c) => c.SwitchToState("ErrorState"));
+				
+				//RnD
+				//this.CommandRepository.Run((AppController c) => c.SwitchToState("ErrorState"));
 			}
 			else
 			{

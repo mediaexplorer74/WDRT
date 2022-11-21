@@ -143,7 +143,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 		{
 			string value = Assembly.GetExecutingAssembly().GetCustomAttributes(false).OfType<GuidAttribute>().First<GuidAttribute>().Value;
 			bool flag;
-			AppInfo.mutex = new Mutex(false, value, ref flag);
+			AppInfo.mutex = new Mutex(false, value, out flag);
 			return !flag;
 		}
 

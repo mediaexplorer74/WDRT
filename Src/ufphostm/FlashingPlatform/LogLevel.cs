@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-namespace FlashingPlatform
+namespace FlashingPlatform1
 {
 	// Token: 0x02000009 RID: 9
 	//[NativeCppClass]

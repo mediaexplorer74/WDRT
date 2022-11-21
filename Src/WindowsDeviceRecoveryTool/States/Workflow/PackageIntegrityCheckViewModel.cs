@@ -137,7 +137,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			this.LiveText = string.Empty;
 			base.EventAggregator.Publish<HeaderMessage>(new HeaderMessage(LocalizationManager.GetTranslation("PackageIntegrityCheck"), ""));
 			base.EventAggregator.Publish<BlockWindowMessage>(new BlockWindowMessage(true, LocalizationManager.GetTranslation("FlashCancelMessage"), null));
-			base.Commands.Run((FlowController c) => c.CheckPackageIntegrity(null, CancellationToken.None));
+			//base.Commands.Run((FlowController c) => c.CheckPackageIntegrity(null, CancellationToken.None));
 			this.Progress = -1;
 			this.LiveText = LocalizationManager.GetTranslation("VerificationStarted");
 		}
@@ -167,7 +167,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			if (integrityCheckMessage.Result)
 			{
 				string nextState = (this.AppContext.CurrentPhone.Type == PhoneTypes.HoloLensAccessory) ? "FlashingState" : "BatteryCheckingState";
-				base.Commands.Run((AppController c) => c.SwitchToState(nextState));
+				//base.Commands.Run((AppController c) => c.SwitchToState(nextState));
 			}
 			else
 			{

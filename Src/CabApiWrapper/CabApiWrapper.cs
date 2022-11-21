@@ -247,7 +247,14 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools
 		}
 
 		// Token: 0x06000009 RID: 9 RVA: 0x00002480 File Offset: 0x00000680
-		public static void CreateCab(string filename, string rootDirectory, string tempWorkingFolder, string filterToSelectFiles, CompressionType compressionType = CompressionType.None)
+		public static void CreateCab
+		(
+			string filename, 
+			string rootDirectory, 
+			string tempWorkingFolder, 
+			string filterToSelectFiles, 
+			CompressionType1 compressionType = CompressionType1.None
+		)
 		{
 			if (string.IsNullOrEmpty(filename))
 			{
@@ -286,7 +293,14 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools
 		}
 
 		// Token: 0x0600000A RID: 10 RVA: 0x00002544 File Offset: 0x00000744
-		public static void CreateCabSelected(string filename, string[] files, string tempWorkingFolder, string prefixToTrim, CompressionType compressionType = CompressionType.None)
+		public static void CreateCabSelected
+		(
+			string filename, 
+			string[] files, 
+			string tempWorkingFolder, 
+			string prefixToTrim, 
+			CompressionType1 compressionType = CompressionType1.None
+		)
 		{
 			if (string.IsNullOrEmpty(filename))
 			{
@@ -336,7 +350,14 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools
 		}
 
 		// Token: 0x0600000B RID: 11 RVA: 0x00002664 File Offset: 0x00000864
-		public static void CreateCabSelected(string filename, string[] sourceFiles, string[] targetFiles, string tempWorkingFolder, CompressionType compressionType = CompressionType.None)
+		public static void CreateCabSelected
+		(
+			string filename, 
+			string[] sourceFiles, 
+			string[] targetFiles, 
+			string tempWorkingFolder, 
+			CompressionType1 compressionType = CompressionType1.None
+		)
 		{
 			if (string.IsNullOrEmpty(filename))
 			{
@@ -418,48 +439,71 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools
 			}
 
 			// Token: 0x0600001A RID: 26
-			[DllImport("CabApi.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Auto, SetLastError = true)]
+			[DllImport("CabApi.dll", CallingConvention = CallingConvention.Cdecl, 
+				CharSet = CharSet.Auto, SetLastError = true)]
 			public static extern uint Cab_Extract(string filename, string outputDir);
 
 			// Token: 0x0600001B RID: 27
-			[DllImport("CabApi.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Auto, SetLastError = true)]
+			[DllImport("CabApi.dll", CallingConvention = CallingConvention.Cdecl, 
+				CharSet = CharSet.Auto, SetLastError = true)]
 			public static extern uint Cab_ExtractOne(string filename, string outputDir, string fileToExtract);
 
 			// Token: 0x0600001C RID: 28
-			[DllImport("CabApi.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Auto, SetLastError = true)]
+			[DllImport("CabApi.dll", CallingConvention = CallingConvention.Cdecl, 
+				CharSet = CharSet.Auto, SetLastError = true)]
 			public static extern uint Cab_ExtractSelected(string filename, string outputDir, string[] filesToExtract, uint cFilesToExtract);
 
 			// Token: 0x0600001D RID: 29
-			[DllImport("CabApi.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Auto, EntryPoint = "Cab_ExtractSelectedToTarget", SetLastError = true)]
-			public static extern uint Cab_ExtractSelected(string filename, string[] filesToExtract, uint cFilesToExtract, string[] targetPaths, uint cTargetPaths);
+			[DllImport("CabApi.dll", CallingConvention = CallingConvention.Cdecl, 
+				CharSet = CharSet.Auto, EntryPoint = "Cab_ExtractSelectedToTarget", SetLastError = true)]
+			public static extern uint Cab_ExtractSelected(string filename, 
+				string[] filesToExtract, uint cFilesToExtract, string[] targetPaths, uint cTargetPaths);
 
 			// Token: 0x0600001E RID: 30
-			[DllImport("CabApi.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Auto, SetLastError = true)]
-			public static extern uint Cab_GetFileSizeList(string filename, out IntPtr fileList, out IntPtr sizeList, out uint cFileList);
+			[DllImport("CabApi.dll", CallingConvention = CallingConvention.Cdecl, 
+				CharSet = CharSet.Auto, SetLastError = true)]
+			public static extern uint Cab_GetFileSizeList(string filename, 
+				out IntPtr fileList, out IntPtr sizeList, out uint cFileList);
 
 			// Token: 0x0600001F RID: 31
-			[DllImport("CabApi.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Auto, SetLastError = true)]
+			[DllImport("CabApi.dll", CallingConvention = CallingConvention.Cdecl, 
+				CharSet = CharSet.Auto, SetLastError = true)]
 			public static extern uint Cab_FreeFileSizeList(IntPtr fileList, IntPtr sizeList, uint cFileList);
 
 			// Token: 0x06000020 RID: 32
-			[DllImport("CabApi.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Auto, SetLastError = true)]
+			[DllImport("CabApi.dll", CallingConvention = CallingConvention.Cdecl, 
+				CharSet = CharSet.Auto, SetLastError = true)]
 			public static extern uint Cab_GetFileList(string filename, out IntPtr fileList, out uint cFileList);
 
 			// Token: 0x06000021 RID: 33
-			[DllImport("CabApi.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Auto, SetLastError = true)]
+			[DllImport("CabApi.dll", CallingConvention = CallingConvention.Cdecl, 
+				CharSet = CharSet.Auto, SetLastError = true)]
 			public static extern uint Cab_FreeFileList(IntPtr fileList, uint cFileList);
 
 			// Token: 0x06000022 RID: 34
-			[DllImport("CabApi.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Auto, SetLastError = true)]
+			[DllImport("CabApi.dll", CallingConvention = CallingConvention.Cdecl, 
+				CharSet = CharSet.Auto, SetLastError = true)]
 			public static extern uint Cab_CheckIsCabinet(string filename, out bool isCabinet);
 
 			// Token: 0x06000023 RID: 35
-			[DllImport("CabApi.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Auto, SetLastError = true)]
-			public static extern uint Cab_CreateCab(string filename, string rootDirectory, string tempWorkingFolder, string filterToSelectFiles, CompressionType compressionType);
+			[DllImport("CabApi.dll", CallingConvention = CallingConvention.Cdecl, 
+				CharSet = CharSet.Auto, SetLastError = true)]
+			public static extern uint Cab_CreateCab
+			(
+				string filename, 
+				string rootDirectory, 
+				string tempWorkingFolder, 
+				string filterToSelectFiles, 
+				CompressionType1 compressionType
+			);
 
 			// Token: 0x06000024 RID: 36
-			[DllImport("CabApi.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Auto, SetLastError = true)]
-			public static extern uint Cab_CreateCabSelected(string filename, string[] files, uint cFiles, string[] targetfiles, uint cTargetFiles, string tempWorkingFolder, string prefixToTrim, CompressionType compressionType);
+			[DllImport("CabApi.dll", CallingConvention = CallingConvention.Cdecl, 
+				CharSet = CharSet.Auto, SetLastError = true)]
+			public static extern uint Cab_CreateCabSelected(string filename, 
+				string[] files, uint cFiles, string[] targetfiles, 
+				uint cTargetFiles, string tempWorkingFolder, 
+				string prefixToTrim, CompressionType1 compressionType);
 
 			// Token: 0x04000042 RID: 66
 			private const string STRING_CABAPI_DLL = "CabApi.dll";

@@ -53,13 +53,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			base.EventAggregator.Publish<IsBackButtonMessage>(new IsBackButtonMessage(true));
 			base.EventAggregator.Publish<BlockWindowMessage>(new BlockWindowMessage(false, null, null));
 			DetectionParameters detectionParams = new DetectionParameters(PhoneTypes.HoloLensAccessory, PhoneModes.Normal);
-			base.Commands.Run((FlowController c) => c.StartDeviceDetection(detectionParams));
+			//base.Commands.Run((FlowController c) => c.StartDeviceDetection(detectionParams));
 		}
 
 		// Token: 0x060003EC RID: 1004 RVA: 0x00012CF0 File Offset: 0x00010EF0
 		public override void OnStopped()
 		{
-			base.Commands.Run((FlowController c) => c.StopDeviceDetection());
+			//base.Commands.Run((FlowController c) => c.StopDeviceDetection());
 		}
 
 		// Token: 0x060003ED RID: 1005 RVA: 0x00012D4C File Offset: 0x00010F4C
@@ -70,7 +70,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 				if (message.Phone.Type == PhoneTypes.HoloLensAccessory)
 				{
 					this.appContext.CurrentPhone = message.Phone;
-					base.Commands.Run((AppController a) => a.SwitchToState("ReadingDeviceInfoState"));
+					//base.Commands.Run((AppController a) => a.SwitchToState("ReadingDeviceInfoState"));
 				}
 			}
 		}

@@ -90,7 +90,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			base.EventAggregator.Publish<IsBackButtonMessage>(new IsBackButtonMessage(false));
 			base.EventAggregator.Publish<BlockWindowMessage>(new BlockWindowMessage(true, null, null));
 			this.AreInstructionsVisible = false;
-			base.Commands.Run((LumiaController c) => c.StartLumiaDetection(DetectionType.RecoveryModeAfterEmergencyFlashing, CancellationToken.None));
+			//base.Commands.Run((LumiaController c) => c.StartLumiaDetection(DetectionType.RecoveryModeAfterEmergencyFlashing, CancellationToken.None));
 		}
 
 		// Token: 0x06000432 RID: 1074 RVA: 0x000142E9 File Offset: 0x000124E9
@@ -104,7 +104,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 		public override void OnStopped()
 		{
 			this.timer.Dispose();
-			base.Commands.Run((LumiaController c) => c.StopLumiaDetection());
+			//base.Commands.Run((LumiaController c) => c.StopLumiaDetection());
 		}
 
 		// Token: 0x06000434 RID: 1076 RVA: 0x00014368 File Offset: 0x00012568
@@ -112,7 +112,10 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 		{
 			if (base.IsStarted && message.Phone.Type == PhoneTypes.Lumia && this.appContext.CurrentPhone != null)
 			{
-				base.Commands.Run((FlowController a) => a.FinishAwaitRecoveryAfterEmergency(false, CancellationToken.None));
+				//base.Commands.Run((FlowController a) =>
+                //{
+                //    a.FinishAwaitRecoveryAfterEmergency(false, CancellationToken.None);
+                //});
 			}
 		}
 

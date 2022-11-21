@@ -177,7 +177,7 @@ namespace ClickerUtilityLibrary.Comm.USBDriver
 				throw new IOException("WinUsb Query Interface Settings failed.");
 			}
 			byte b2;
-			for (byte b = 0; b < winUsbInterfaceDescriptor.NumEndpoints; b = b2 + 1)
+			for (byte b = 0; b < winUsbInterfaceDescriptor.NumEndpoints; b = (byte)(b2 + 1))
 			{
 				bool flag3 = !NativeMethods.WinUsbQueryPipe(this.usbHandle, 0, b, ref winUsbPipeInformation);
 				if (flag3)

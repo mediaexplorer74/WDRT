@@ -46,7 +46,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Detection
 				DeviceTypeMap = deviceTypeMap,
 				Filter = deviceIdentifierFilter
 			};
-			foreach (DeviceInfo deviceInfo in deviceInfoSet.EnumeratePresentDevices())
+			foreach (Nokia.Lucid.DeviceInformation.DeviceInfo deviceInfo in deviceInfoSet.EnumeratePresentDevices())
 			{
 				DeviceChangedEventArgs data = new DeviceChangedEventArgs(DeviceChangeAction.Attach, deviceInfo.Path, deviceInfo.DeviceType);
 				deviceMonitor.DeviceWatcherOnDeviceChanged(context, deviceWatcher, new UsbDeviceChangeEvent(data, true));

@@ -98,9 +98,10 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 
 		// Token: 0x04000019 RID: 25
 		public static readonly DependencyProperty TargetNameProperty = Hyperlink.TargetNameProperty.AddOwner(typeof(HyperlinkButton));
+        private static RoutedEvent RequestNavigateEvent;
 
-		// Token: 0x02000010 RID: 16
-		private sealed class HyperlinkButtonAutomationPeer : ButtonBaseAutomationPeer, IInvokeProvider
+        // Token: 0x02000010 RID: 16
+        private sealed class HyperlinkButtonAutomationPeer : ButtonBaseAutomationPeer, IInvokeProvider
 		{
 			// Token: 0x0600006A RID: 106 RVA: 0x000037D8 File Offset: 0x000019D8
 			public HyperlinkButtonAutomationPeer(HyperlinkButton owner) : base(owner)

@@ -114,8 +114,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			this.entropy = Encoding.Unicode.GetBytes("Windows Phone Recovery Tool, salt and papper entropy");
 		}
 
-		// Token: 0x040000AA RID: 170
-		private string userName;
+        public string DecryptString(object proxyPassword)
+        {
+            throw new NotImplementedException();
+        }
+
+        // Token: 0x040000AA RID: 170
+        private string userName;
 
 		// Token: 0x040000AB RID: 171
 		private string password;

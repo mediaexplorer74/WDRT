@@ -41,7 +41,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 			Tracer<SettingsController>.LogEntry("ChangePackagesPathDirectory");
 			base.EventAggregator.Publish<SettingsPreviousStateMessage>(new SettingsPreviousStateMessage("PackagesState"));
 			base.EventAggregator.Publish<SelectedPathMessage>(new SelectedPathMessage(Settings.Default.PackagesPath));
-			base.Commands.Run((AppController c) => c.SwitchSettingsState("FolderBrowseAreaState"));
+			//base.Commands.Run((AppController c) => c.SwitchSettingsState("FolderBrowseAreaState"));
 			Tracer<SettingsController>.LogExit("ChangePackagesPathDirectory");
 		}
 
@@ -312,7 +312,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 			Tracer<SettingsController>.LogEntry("ChangeZipLogPath");
 			base.EventAggregator.Publish<SettingsPreviousStateMessage>(new SettingsPreviousStateMessage("TraceState"));
 			base.EventAggregator.Publish<SelectedPathMessage>(new SelectedPathMessage(Environment.ExpandEnvironmentVariables(Settings.Default.ZipFilePath)));
-			base.Commands.Run((AppController c) => c.SwitchSettingsState("FolderBrowseAreaState"));
+			//base.Commands.Run((AppController c) => c.SwitchSettingsState("FolderBrowseAreaState"));
 			Tracer<SettingsController>.LogExit("ChangeZipLogPath");
 		}
 

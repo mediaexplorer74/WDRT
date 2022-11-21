@@ -49,7 +49,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 						default:
 							goto IL_F9;
 						}
-						base.Commands.Run((AppController c) => c.SwitchSettingsState(nextState));
+						//base.Commands.Run((AppController c) => c.SwitchSettingsState(nextState));
 					}
 					IL_F9:;
 				}
@@ -70,7 +70,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 		public override void OnStopped()
 		{
 			Settings.Default.Save();
-			base.Commands.Run((SettingsController c) => c.SetApplicationSettings());
+			//base.Commands.Run((SettingsController c) => c.SetApplicationSettings());
 		}
 
 		// Token: 0x06000692 RID: 1682 RVA: 0x00021F40 File Offset: 0x00020140

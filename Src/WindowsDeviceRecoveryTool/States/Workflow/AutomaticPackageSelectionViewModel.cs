@@ -201,7 +201,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			this.FoundPackages = null;
 			this.PackagePath = string.Empty;
 			this.CheckingPackageDirectory = true;
-			base.Commands.Run((FlowController c) => c.CheckIfDeviceStillConnected(this.AppContext.CurrentPhone, CancellationToken.None));
+			//base.Commands.Run((FlowController c) => c.CheckIfDeviceStillConnected(this.AppContext.CurrentPhone, CancellationToken.None));
 		}
 
 		// Token: 0x060005E5 RID: 1509 RVA: 0x0001E928 File Offset: 0x0001CB28
@@ -257,9 +257,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 				}
 				if (this.AppContext.CurrentPhone == null || this.AppContext.CurrentPhone.PlatformId == null)
 				{
-					base.Commands.Run((AppController c) => c.SwitchToState("ManualPackageSelectionState"));
+					//base.Commands.Run((AppController c) => c.SwitchToState("ManualPackageSelectionState"));
 				}
-				base.Commands.Run((FlowController c) => c.FindCorrectPackage(this.PackageDirectory, CancellationToken.None));
+				//base.Commands.Run((FlowController c) => c.FindCorrectPackage(this.PackageDirectory, CancellationToken.None));
 			}
 		}
 

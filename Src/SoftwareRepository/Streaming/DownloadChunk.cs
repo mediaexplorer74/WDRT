@@ -124,11 +124,13 @@ namespace SoftwareRepository.Streaming
 				{
 					throw new DownloadException(0, "Content-Range does not match request range");
 				}
-				using (Stream stream = await httpResponseMessage.Content.ReadAsStreamAsync())
+				using (Stream stream1 = await httpResponseMessage.Content.ReadAsStreamAsync())
 				{
 					byte[] buffer = new byte[4096];
 					int bytesRead = 0;
-					while ((bytesRead = await DownloadChunk.WithTimeout<int>(stream.ReadAsync(buffer, 0, buffer.Length, this.CancellationToken), this.TimeoutInMilliseconds)) != 0)
+					while ((bytesRead = await DownloadChunk.WithTimeout<int>(
+						stream1.ReadAsync(buffer, 0, 
+						buffer.Length, this.CancellationToken), this.TimeoutInMilliseconds)) != 0)
 					{
 						this.CancellationToken.ThrowIfCancellationRequested();
 						bytesRead = (int)Math.Min(this.Bytes - this.BytesRead, (long)bytesRead);

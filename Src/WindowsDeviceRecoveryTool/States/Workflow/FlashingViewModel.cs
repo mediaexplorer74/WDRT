@@ -148,11 +148,11 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			base.EventAggregator.Publish<BlockWindowMessage>(new BlockWindowMessage(true, LocalizationManager.GetTranslation("FlashCancelMessage"), null));
 			if (this.appContext.CurrentPhone.IsDeviceInEmergencyMode())
 			{
-				base.Commands.Run((FlowController c) => c.EmergencyFlashDevice(null, CancellationToken.None));
+				//base.Commands.Run((FlowController c) => c.EmergencyFlashDevice(null, CancellationToken.None));
 			}
 			else
 			{
-				base.Commands.Run((FlowController c) => c.FlashDevice(this.DetectionType, CancellationToken.None));
+				//base.Commands.Run((FlowController c) => c.FlashDevice(this.DetectionType, CancellationToken.None));
 			}
 			this.LiveText = LocalizationManager.GetTranslation("InstallationStarted");
 		}

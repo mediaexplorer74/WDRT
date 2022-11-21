@@ -205,12 +205,12 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 			// Token: 0x1700002D RID: 45
 			// (get) Token: 0x0600008E RID: 142 RVA: 0x000038C4 File Offset: 0x00001AC4
 			// (set) Token: 0x0600008F RID: 143 RVA: 0x000038CC File Offset: 0x00001ACC
-			private protected string Command { protected get; private set; }
+			private protected string Command { get; private set; }
 
 			// Token: 0x1700002E RID: 46
 			// (get) Token: 0x06000090 RID: 144 RVA: 0x000038D5 File Offset: 0x00001AD5
 			// (set) Token: 0x06000091 RID: 145 RVA: 0x000038DD File Offset: 0x00001ADD
-			private protected string AlternateCommand { protected get; private set; }
+			private protected string AlternateCommand {  get; private set; }
 
 			// Token: 0x06000092 RID: 146 RVA: 0x000038E6 File Offset: 0x00001AE6
 			public IpDeviceCommand(string command, string alternateCommand, string args)

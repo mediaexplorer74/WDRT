@@ -319,7 +319,7 @@ namespace SoftwareRepository.Streaming
 							}
 							f8__locals2 = null;
 						}
-						checksum = null;
+						//checksum = null;
 					}
 				}
 				List<SoftwareFileChecksum>.Enumerator enumerator = default(List<SoftwareFileChecksum>.Enumerator);
@@ -639,6 +639,7 @@ namespace SoftwareRepository.Streaming
             }
         }
 
+		/*
         public class ProgressWrapper
         {
             private DownloadProgress<DownloadProgressInfo> progress;
@@ -648,6 +649,7 @@ namespace SoftwareRepository.Streaming
                 this.progress = progress;
             }           
         }//ProgressWrapper
+		*/
 
         private class DisplayClass55_0
         {

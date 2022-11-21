@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.ExceptionServices;
 using System.Runtime.InteropServices;
-using FlashingPlatform;
+using FlashingPlatform1;
 //using RAII;
 
 namespace Microsoft.Windows.Flashing.Platform

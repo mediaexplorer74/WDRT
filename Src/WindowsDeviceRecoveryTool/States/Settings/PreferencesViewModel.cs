@@ -11,8 +11,9 @@ using Microsoft.WindowsDeviceRecoveryTool.Framework;
 using Microsoft.WindowsDeviceRecoveryTool.Localization;
 using Microsoft.WindowsDeviceRecoveryTool.Messages;
 using Microsoft.WindowsDeviceRecoveryTool.Model;
-using Microsoft.WindowsDeviceRecoveryTool.Properties;
+//using Microsoft.WindowsDeviceRecoveryTool.Properties;
 using Microsoft.WindowsDeviceRecoveryTool.Styles.Assets;
+using Microsoft.WindowsDeviceRecoveryTool.Properties;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 {
@@ -86,7 +87,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 					base.RaisePropertyChanged<ThemeStyle>(() => this.SelectedTheme);
 					if (this.reloadTheme)
 					{
-						StyleLogic.LoadTheme(Settings.GetSelectedThemeFileName());
+						//RnD
+						//StyleLogic.LoadTheme(Settings.GetSelectedThemeFileName());
 					}
 				}
 			}
@@ -109,7 +111,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 					base.RaisePropertyChanged<string>(() => this.SelectedColor);
 					if (this.reloadTheme)
 					{
-						StyleLogic.LoadTheme(Settings.GetSelectedThemeFileName());
+						//RnD
+						//StyleLogic.LoadTheme(Settings.GetSelectedThemeFileName());
 					}
 				}
 			}
@@ -213,7 +216,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 				this.reloadTheme = true;
 				if (flag)
 				{
-					StyleLogic.LoadTheme(Settings.GetSelectedThemeFileName());
+					//RnD
+					//StyleLogic.LoadTheme(Settings.GetSelectedThemeFileName());
 				}
 			}
 		}

@@ -77,13 +77,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 				phoneTypes = this.AppContext.CurrentPhone.Type;
 			}
 			DetectionParameters detectionParams = new DetectionParameters(phoneTypes, PhoneModes.Flash);
-			base.Commands.Run((FlowController c) => c.StartDeviceDetection(detectionParams));
+			//base.Commands.Run((FlowController c) => c.StartDeviceDetection(detectionParams));
 		}
 
 		// Token: 0x06000403 RID: 1027 RVA: 0x000133E8 File Offset: 0x000115E8
 		public override void OnStopped()
 		{
-			base.Commands.Run((FlowController c) => c.StopDeviceDetection());
+			//base.Commands.Run((FlowController c) => c.StopDeviceDetection());
 		}
 
 		// Token: 0x06000404 RID: 1028 RVA: 0x00013444 File Offset: 0x00011644
@@ -123,7 +123,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 					if (this.appContext.CurrentPhone.LocationPath == null || this.appContext.CurrentPhone.LocationPath == message.Phone.LocationPath)
 					{
 						this.appContext.CurrentPhone.Path = message.Phone.Path;
-						base.Commands.Run((AppController a) => a.SwitchToState("FlashingState"));
+						//base.Commands.Run((AppController a) => a.SwitchToState("FlashingState"));
 					}
 					else
 					{
@@ -147,7 +147,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 					message.Phone.SalesName = this.appContext.CurrentPhone.SalesName;
 				}
 				this.appContext.CurrentPhone = message.Phone;
-				base.Commands.Run((AppController a) => a.SwitchToState("ReadingDeviceInfoState"));
+				//base.Commands.Run((AppController a) => a.SwitchToState("ReadingDeviceInfoState"));
 				IL_25A:;
 			}
 		}

@@ -23,6 +23,7 @@ using Microsoft.WindowsDeviceRecoveryTool.LogicCommon;
 using Microsoft.WindowsDeviceRecoveryTool.Messages;
 using Microsoft.WindowsDeviceRecoveryTool.Model;
 using Microsoft.WindowsDeviceRecoveryTool.Model.Enums;
+using static System.Windows.Forms.AxHost;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 {
@@ -235,14 +236,19 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			if (operationCancelledInternally)
 			{
 				IDictionary<string, IDelegateCommand> commands = base.Commands;
-				ParameterExpression parameterExpression = Expression.Parameter(typeof(AppController), "c");
-				commands.Run(Expression.Lambda<Action<AppController>>(Expression.Call(parameterExpression, methodof(AppController.SwitchToState(string)), new Expression[]
-				{
-					Expression.Constant("ManualManufacturerSelectionState", typeof(string))
-				}), new ParameterExpression[]
-				{
-					parameterExpression
-				}));
+
+				//RnD
+				ParameterExpression parameterExpression = default;//Expression.Parameter(typeof(AppController), "c");
+
+				//RnD
+			    //commands.Run( Expression.Lambda<Action<AppController>>(Expression.Call(default/*parameterExpression*/, 
+				//	methodof(&AppController.SwitchToState(state)), new Expression[]
+				//{
+				//	//Expression.Constant("ManualManufacturerSelectionState", typeof(string))
+				//}), new ParameterExpression[]
+				//{
+				//	parameterExpression
+				//}));
 			}
 			else if (!operationCancelledExternally)
 			{
@@ -254,22 +260,29 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 				catch (OperationCanceledException)
 				{
 					IDictionary<string, IDelegateCommand> commands2 = base.Commands;
-					ParameterExpression parameterExpression = Expression.Parameter(typeof(AppController), "c");
-					commands2.Run(Expression.Lambda<Action<AppController>>(Expression.Call(parameterExpression, methodof(AppController.SwitchToState(string)), new Expression[]
-					{
-						Expression.Constant("AutomaticManufacturerSelectionState", typeof(string))
-					}), new ParameterExpression[]
-					{
-						parameterExpression
-					}));
+
+					//RnD
+					ParameterExpression parameterExpression = default;//Expression.Parameter(typeof(AppController), "c");
+					
+					//RnD
+					//commands2.Run(Expression.Lambda<Action<AppController>>
+					//	(Expression.Call(parameterExpression, methodof(ref AppController.SwitchToState("string")), 
+					//	new Expression[]
+					//{
+					//	Expression.Constant("AutomaticManufacturerSelectionState", typeof(string))
+					//}), new ParameterExpression[]
+					//{
+					//	parameterExpression
+					//}));
 					return;
 				}
 				this.OnCompleted(selectedTile.Phone);
 			}
 		}
 
-		// Token: 0x060004C1 RID: 1217 RVA: 0x00017D24 File Offset: 0x00015F24
-		public override void OnStopped()
+		
+        // Token: 0x060004C1 RID: 1217 RVA: 0x00017D24 File Offset: 0x00015F24
+        public override void OnStopped()
 		{
 			if (this.externalTokenSource != null)
 			{
@@ -348,7 +361,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			IL_137:
 			base.EventAggregator.Publish<DetectionTypeMessage>(new DetectionTypeMessage(DetectionType.NormalMode));
 			base.EventAggregator.Publish<SelectedDeviceMessage>(new SelectedDeviceMessage(phone));
-			base.Commands.Run((AppController c) => c.SwitchToState(nextState));
+			//RnD
+			//base.Commands.Run((AppController c) => c.SwitchToState(nextState));
 		}
 
 		// Token: 0x060004C3 RID: 1219 RVA: 0x00017F45 File Offset: 0x00016145
@@ -362,7 +376,10 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 		{
 			this.SelectedPhoneTile = (obj as Tile);
 			this.itemSelectedTaskCompletionSource.SetResult(obj as Tile);
-			base.Commands.Run((FlowController c) => c.StartSessionFlow(string.Empty, new CancellationTokenSource().Token));
+
+			//RnD
+			//base.Commands.Run((FlowController c) 
+			//	=> c.StartSessionFlow(string.Empty, new CancellationTokenSource().Token));
 		}
 
 		// Token: 0x060004C5 RID: 1221 RVA: 0x00018040 File Offset: 0x00016240

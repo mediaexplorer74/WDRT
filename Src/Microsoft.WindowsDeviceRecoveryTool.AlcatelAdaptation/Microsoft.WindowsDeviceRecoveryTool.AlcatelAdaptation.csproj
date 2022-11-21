@@ -77,6 +77,10 @@
       <Project>{2adf7f14-aa94-4a70-b28f-668964626e8f}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.LogicCommon</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Lucid\Microsoft.WindowsDeviceRecoveryTool.Lucid.csproj">
+      <Project>{adee4bcd-be8f-4ec5-8d00-aa6442b86415}</Project>
+      <Name>Microsoft.WindowsDeviceRecoveryTool.Lucid</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation\Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation.csproj">
       <Project>{bb6e51c1-bc8b-40d8-8777-27bf97b2105c}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation</Name>

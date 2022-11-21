@@ -10,7 +10,7 @@ using Nokia.Lucid.DeviceDetection;
 namespace Microsoft.WindowsDeviceRecoveryTool.Detection
 {
 	// Token: 0x02000018 RID: 24
-	internal sealed class DetectionHandler : IDetectionHandler, IDisposable
+	public sealed class DetectionHandler : IDetectionHandler, IDisposable
 	{
 		// Token: 0x060000BD RID: 189 RVA: 0x00004C74 File Offset: 0x00002E74
 		public DetectionHandler(IUsbDeviceMonitor usbDeviceMonitor, IEnumerable<IDeviceSupport> supports, IDeviceInformationCacheManager deviceInformationCacheManager)
@@ -37,9 +37,11 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Detection
 		{
 			DetectionHandler.ChangedDevice changedDevice2;
 			DetectionHandler.ChangedDevice attachedDevice;
-			for (;;)
-			{
-				Task<DetectionHandler.ChangedDevice> detectionTask = this.CreateDetectionTask(cancellationToken);
+
+			
+            for (;;)
+            {
+                Task<DetectionHandler.ChangedDevice> detectionTask = this.CreateDetectionTask(cancellationToken);
 				this.ongoingTasks.Add(detectionTask);
 				Task<DetectionHandler.ChangedDevice> finishedTask = await Task.WhenAny<DetectionHandler.ChangedDevice>(this.ongoingTasks);
 				DetectionHandler.ChangedDevice changedDevice = null;
@@ -103,6 +105,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Detection
 					this.ongoingTasks.Add(identificationTask);
 				}
 			}
+
 			try
 			{
 				await Task.WhenAll<DetectionHandler.ChangedDevice>(this.ongoingTasks);
@@ -115,10 +118,10 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Detection
 			this.attachedDevices.Remove(changedDevice2);
 			return new DeviceInfoEventArgs(new DeviceInfo(changedDevice2.Identifier), DeviceInfoAction.Detached, false);
 			Block_7:
-			return new DeviceInfoEventArgs(attachedDevice.UpdatedDeviceInfo, DeviceInfoAction.Attached, CS$<>8__locals1.changedDevice.IsEnumerated);
+			return new DeviceInfoEventArgs(attachedDevice.UpdatedDeviceInfo, DeviceInfoAction.Attached, f8__locals1.changedDevice.IsEnumerated);
 			Block_13:
-			this.attachedDevices.Add(CS$<>8__locals1.changedDevice);
-			return new DeviceInfoEventArgs(new DeviceInfo(CS$<>8__locals1.changedDevice.Identifier), DeviceInfoAction.Attached, CS$<>8__locals1.changedDevice.IsEnumerated);
+			this.attachedDevices.Add(f8__locals1.changedDevice);
+			return new DeviceInfoEventArgs(new DeviceInfo(f8__locals1.changedDevice.Identifier), DeviceInfoAction.Attached, f8__locals1.changedDevice.IsEnumerated);
 		}
 
 		// Token: 0x060000BF RID: 191 RVA: 0x000058CC File Offset: 0x00003ACC
@@ -198,7 +201,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Detection
 		private readonly List<DetectionHandler.ChangedDevice> attachedDevices = new List<DetectionHandler.ChangedDevice>();
 
 		// Token: 0x02000019 RID: 25
-		private sealed class ChangedDevice
+		public class ChangedDevice
 		{
 			// Token: 0x060000C9 RID: 201 RVA: 0x00005E6E File Offset: 0x0000406E
 			public ChangedDevice(string identifier, bool isAttached, bool isEnumerated)

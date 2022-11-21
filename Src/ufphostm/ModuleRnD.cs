@@ -10,7 +10,7 @@ using System.Threading;
 //using CppImplementationDetails;
 //using CrtImplementationDetails;
 using ATL;
-using FlashingPlatform;
+using FlashingPlatform1;
 using Microsoft.Windows.Flashing.Platform;
 //using RAII;
 using std;

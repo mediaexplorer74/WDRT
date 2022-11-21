@@ -152,7 +152,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 					manufacturerStartingState = "AwaitGenericDeviceState";
 					IL_145:
 					base.EventAggregator.Publish<DetectionTypeMessage>(new DetectionTypeMessage(DetectionType.RecoveryMode));
-					base.Commands.Run((AppController c) => c.SwitchToState(manufacturerStartingState));
+					//base.Commands.Run((AppController c) => c.SwitchToState(manufacturerStartingState));
 				}
 			}
 		}
@@ -170,7 +170,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			{
 				this.AppContext.CurrentPhone = null;
 			}
-			base.Commands.Run((FlowController c) => c.GetSupportedManufacturers());
+			//base.Commands.Run((FlowController c) => c.GetSupportedManufacturers());
 		}
 
 		// Token: 0x06000638 RID: 1592 RVA: 0x00020428 File Offset: 0x0001E628
@@ -186,7 +186,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			{
 				Tile tile = parameter as Tile;
 				this.SelectedManufacturer = tile;
-				base.Commands.Run((FlowController c) => c.StartSessionFlow(string.Empty, new CancellationTokenSource().Token));
+				//base.Commands.Run((FlowController c) => c.StartSessionFlow(string.Empty, new CancellationTokenSource().Token));
 			}
 		}
 

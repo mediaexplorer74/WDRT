@@ -17,12 +17,12 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AnalogAdaptation.Services
 		// Token: 0x1700000D RID: 13
 		// (get) Token: 0x0600005A RID: 90 RVA: 0x00005310 File Offset: 0x00003510
 		// (set) Token: 0x0600005B RID: 91 RVA: 0x00005327 File Offset: 0x00003527
-		private protected string Command { protected get; private set; }
+		private protected string Command { get; private set; }
 
 		// Token: 0x1700000E RID: 14
 		// (get) Token: 0x0600005C RID: 92 RVA: 0x00005330 File Offset: 0x00003530
 		// (set) Token: 0x0600005D RID: 93 RVA: 0x00005347 File Offset: 0x00003547
-		private protected string AlternateCommand { protected get; private set; }
+		private protected string AlternateCommand { get; private set; }
 
 		// Token: 0x0600005E RID: 94 RVA: 0x00005350 File Offset: 0x00003550
 		protected string Args(string additionalArgs = null)

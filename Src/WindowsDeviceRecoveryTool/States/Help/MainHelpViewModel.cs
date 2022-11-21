@@ -55,25 +55,25 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Help
 						switch (valueOrDefault)
 						{
 						case HelpTabs.LumiaChoose:
-							base.Commands.Run((AppController c) => c.SwitchHelpState("LumiaChooseHelpState"));
+							//base.Commands.Run((AppController c) => c.SwitchHelpState("LumiaChooseHelpState"));
 							break;
 						case HelpTabs.LumiaEmergency:
-							base.Commands.Run((AppController c) => c.SwitchHelpState("LumiaEmergencyHelpState"));
+							//base.Commands.Run((AppController c) => c.SwitchHelpState("LumiaEmergencyHelpState"));
 							break;
 						case HelpTabs.LumiaFlashing:
-							base.Commands.Run((AppController c) => c.SwitchHelpState("LumiaFlashingHelpState"));
+							//base.Commands.Run((AppController c) => c.SwitchHelpState("LumiaFlashingHelpState"));
 							break;
 						case HelpTabs.LumiaNormal:
-							base.Commands.Run((AppController c) => c.SwitchHelpState("LumiaNormalHelpState"));
+							//base.Commands.Run((AppController c) => c.SwitchHelpState("LumiaNormalHelpState"));
 							break;
 						case HelpTabs.HtcChoose:
-							base.Commands.Run((AppController c) => c.SwitchHelpState("HtcChooseHelpState"));
+							//base.Commands.Run((AppController c) => c.SwitchHelpState("HtcChooseHelpState"));
 							break;
 						case HelpTabs.HtcBootloader:
-							base.Commands.Run((AppController c) => c.SwitchHelpState("HtcBootloaderHelpState"));
+							//base.Commands.Run((AppController c) => c.SwitchHelpState("HtcBootloaderHelpState"));
 							break;
 						case HelpTabs.HtcNormal:
-							base.Commands.Run((AppController c) => c.SwitchHelpState("HtcNormalHelpState"));
+							//base.Commands.Run((AppController c) => c.SwitchHelpState("HtcNormalHelpState"));
 							break;
 						}
 					}
@@ -135,7 +135,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Help
 			base.EventAggregator.Publish<HeaderMessage>(new HeaderMessage(LocalizationManager.GetTranslation("Help"), LocalizationManager.GetTranslation("ManufacturerHeader")));
 			base.EventAggregator.Publish<IsBackButtonMessage>(new IsBackButtonMessage(true));
 			this.HTCBootloaderModeText = string.Format(LocalizationManager.GetTranslation("HtcBootloaderMode"), "boot-loader");
-			base.Commands.Run((FlowController c) => c.GetSupportedManufacturers());
+			//base.Commands.Run((FlowController c) => c.GetSupportedManufacturers());
 		}
 
 		// Token: 0x040001B4 RID: 436

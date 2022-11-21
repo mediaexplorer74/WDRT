@@ -1,12 +1,17 @@
-﻿using System;
+﻿using Nokia.Lucid;
+using System;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Detection
 {
 	// Token: 0x0200001A RID: 26
-	internal sealed class DeviceInfo
+	public sealed class DeviceInfo
 	{
-		// Token: 0x060000D2 RID: 210 RVA: 0x00005F14 File Offset: 0x00004114
-		public DeviceInfo(string deviceIdentifier)
+        internal string InstanceId;
+        internal string Path;
+        internal DeviceType DeviceType;
+
+        // Token: 0x060000D2 RID: 210 RVA: 0x00005F14 File Offset: 0x00004114
+        public DeviceInfo(string deviceIdentifier)
 		{
 			this.DeviceIdentifier = deviceIdentifier;
 		}

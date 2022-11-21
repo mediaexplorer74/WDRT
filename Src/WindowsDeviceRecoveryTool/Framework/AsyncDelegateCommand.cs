@@ -163,8 +163,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Framework
 			}
 			catch (Exception ex)
 			{
-				Exception ex2;
-				Exception ex = ex2;
+				//Exception ex2;
+				//Exception ex = ex2;
 				Tracer<IAsyncDelegateCommand>.WriteError(ex);
 				AppDispatcher.Execute(delegate
 				{

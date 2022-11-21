@@ -270,7 +270,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			this.CurrentState = ManualDeviceTypeSelectionState.FfuSelection;
 			this.StatusInfo = LocalizationManager.GetTranslation("ConnectedDeviceCannotBeRecovered");
 			string productsPath = FileSystemInfo.GetLumiaProductsPath("");
-			base.Commands.Run((FlowController c) => c.FindAllLumiaPackages(productsPath, CancellationToken.None));
+			//base.Commands.Run((FlowController c) => c.FindAllLumiaPackages(productsPath, CancellationToken.None));
 		}
 
 		// Token: 0x06000567 RID: 1383 RVA: 0x0001BDE4 File Offset: 0x00019FE4
@@ -301,7 +301,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			{
 				this.SelectedPackage = (PackageFileInfo)obj;
 			}
-			base.Commands.Run((AppController c) => c.SwitchToState("DownloadEmergencyPackageState"));
+			//base.Commands.Run((AppController c) => c.SwitchToState("DownloadEmergencyPackageState"));
 		}
 
 		// Token: 0x06000569 RID: 1385 RVA: 0x0001BF44 File Offset: 0x0001A144

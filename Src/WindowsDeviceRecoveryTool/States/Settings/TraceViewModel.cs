@@ -20,7 +20,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 		{
 			get
 			{
-				return Environment.ExpandEnvironmentVariables(Settings.Default.ZipFilePath);
+				return Environment.ExpandEnvironmentVariables(
+					Settings.Default.ZipFilePath);
 			}
 			set
 			{
@@ -51,10 +52,10 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 			set
 			{
 				Settings.Default.TraceEnabled = value;
-				base.Commands.Run((SettingsController c) => c.SetTraceEnabled(value, CancellationToken.None));
+				//base.Commands.Run((SettingsController c) => c.SetTraceEnabled(value, CancellationToken.None));
 				if (!value)
 				{
-					base.Commands.Run((SettingsController controller) => controller.CalculateLogsSize(null, CancellationToken.None));
+					//base.Commands.Run((SettingsController controller) => controller.CalculateLogsSize(null, CancellationToken.None));
 				}
 				base.RaisePropertyChanged<bool>(() => this.ExportEnable);
 				base.RaisePropertyChanged<bool>(() => this.TraceEnabled);
@@ -83,7 +84,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 			base.RaisePropertyChanged<string>(() => this.ZipFilePath);
 			if (!this.TraceEnabled)
 			{
-				base.Commands.Run((SettingsController controller) => controller.CalculateLogsSize(null, CancellationToken.None));
+				//base.Commands.Run((SettingsController controller) => controller.CalculateLogsSize(null, CancellationToken.None));
 			}
 			base.RaisePropertyChanged<bool>(() => this.TraceEnabled);
 			base.EventAggregator.Publish<HeaderMessage>(new HeaderMessage(LocalizationManager.GetTranslation("Settings"), LocalizationManager.GetTranslation("Troubleshooting")));

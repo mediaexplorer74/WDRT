@@ -5,7 +5,6 @@
 	<FrameworkElement.Resources>
 		<ResourceDictionary>
 			<DrawingImage
-				x:Freeze="True"
 				x:Key="FawkesDeviceImage">
 				<DrawingImage.Drawing>
 					<DrawingGroup>
@@ -48,7 +47,6 @@
 				</DrawingImage.Drawing>
 			</DrawingImage>
 			<DrawingImage
-				x:Freeze="True"
 				x:Key="AnalogDeviceImage">
 				<DrawingImage.Drawing>
 					<DrawingGroup>
@@ -91,7 +89,6 @@
 				</DrawingImage.Drawing>
 			</DrawingImage>
 			<DrawingImage
-				x:Freeze="True"
 				x:Key="DeviceImage">
 				<DrawingImage.Drawing>
 					<DrawingGroup>
@@ -123,7 +120,6 @@
 				</DrawingImage.Drawing>
 			</DrawingImage>
 			<DrawingImage
-				x:Freeze="True"
 				x:Key="ComputerImage">
 				<DrawingImage.Drawing>
 					<DrawingGroup>

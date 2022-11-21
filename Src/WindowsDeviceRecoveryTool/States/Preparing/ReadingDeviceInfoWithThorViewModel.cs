@@ -51,7 +51,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			base.EventAggregator.Publish<HeaderMessage>(new HeaderMessage(LocalizationManager.GetTranslation("ReadingDeviceInfo"), ""));
 			base.EventAggregator.Publish<IsBackButtonMessage>(new IsBackButtonMessage(false));
 			base.EventAggregator.Publish<BlockWindowMessage>(new BlockWindowMessage(true, null, null));
-			base.Commands.Run((LumiaController c) => c.TryReadMissingInfoWithThor(null, CancellationToken.None));
+			//RnD
+			//base.Commands.Run((LumiaController c) => c.TryReadMissingInfoWithThor(null, CancellationToken.None));
 		}
 
 		// Token: 0x0400021B RID: 539

@@ -31,7 +31,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Framework
 
 		// Token: 0x17000037 RID: 55
 		// (get) Token: 0x0600010E RID: 270 RVA: 0x000085CC File Offset: 0x000067CC
-		protected ICommandRepository Commands
+		public ICommandRepository Commands
 		{
 			get
 			{
@@ -183,7 +183,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Framework
 				List<Type> list = (from p in methodInfo.GetParameters()
 				select p.ParameterType).ToList<Type>();
 				list.Add(methodInfo.ReturnType);
-				Type funcType = Expression.GetFuncType(list.ToArray());
+				//RnD
+				Type funcType = default;//Expression.GetFuncType(list.ToArray());
 				result = (Func<object, bool>)Delegate.CreateDelegate(funcType, this, methodInfo);
 			}
 			else

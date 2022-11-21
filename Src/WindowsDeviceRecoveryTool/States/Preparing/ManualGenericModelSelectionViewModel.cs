@@ -96,7 +96,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 					{
 						nextState = "CheckLatestPackageState";
 					}
-					base.Commands.Run((AppController c) => c.SwitchToState(nextState));
+					//base.Commands.Run((AppController c) => c.SwitchToState(nextState));
 				}
 			}
 		}
@@ -113,8 +113,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			{
 				this.appContext.CurrentPhone.Type = this.appContext.SelectedManufacturer;
 			}
-			base.Commands.Run((FlowController c) => c.GetSupportedAdaptationModels(this.appContext.SelectedManufacturer));
-			base.Commands.Run((FlowController c) => c.StartSessionFlow(string.Empty, CancellationToken.None));
+			//base.Commands.Run((FlowController c) => c.GetSupportedAdaptationModels(this.appContext.SelectedManufacturer));
+			//base.Commands.Run((FlowController c) => c.StartSessionFlow(string.Empty, CancellationToken.None));
 		}
 
 		// Token: 0x0600046E RID: 1134 RVA: 0x00015614 File Offset: 0x00013814

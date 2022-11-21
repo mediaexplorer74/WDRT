@@ -476,8 +476,8 @@ namespace FFUComponents
 		// Token: 0x04000035 RID: 53
 		public static FlashingPlatform flashingPlatform;
 
-		// Token: 0x04000036 RID: 54
-		public static NotificationCallback deviceNotification;
+        // Token: 0x04000036 RID: 54
+        public static NotificationCallback deviceNotification;
 
 		// Token: 0x04000039 RID: 57
 		private static List<UsbEventWatcher> eventWatchers;

@@ -31,7 +31,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 		// Token: 0x0600043B RID: 1083 RVA: 0x000144C8 File Offset: 0x000126C8
 		private void ContinueClicked(object obj)
 		{
-			base.Commands.Run((FlowController c) => c.CheckIfDeviceStillConnected(this.appContext.CurrentPhone, CancellationToken.None));
+			//RnD
+			//base.Commands.Run((FlowController c) => c.CheckIfDeviceStillConnected(this.appContext.CurrentPhone, CancellationToken.None));
 		}
 
 		// Token: 0x0600043C RID: 1084 RVA: 0x00014578 File Offset: 0x00012778
@@ -52,7 +53,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 				{
 					throw new DeviceNotFoundException();
 				}
-				base.Commands.Run((AppController c) => c.SwitchToState("FlashingState"));
+				//RnD
+				//base.Commands.Run((AppController c) => c.SwitchToState("FlashingState"));
 			}
 		}
 

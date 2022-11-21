@@ -1,4 +1,4 @@
-﻿using FlashingPlatform;
+﻿using FlashingPlatform1;
 
 namespace Microsoft.Windows.Flashing.Platform
 {

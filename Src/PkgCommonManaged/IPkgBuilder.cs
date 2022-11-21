@@ -147,15 +147,16 @@ namespace Microsoft.WindowsPhone.ImageUpdate.PkgCommon
 		void SaveCab(string cabPath, bool compress, PackageStyle outputStyle);
 
 		// Token: 0x060001CA RID: 458
-		void SaveCab(string cabPath, CompressionType compressionType);
+		void SaveCab(string cabPath, CompressionType1 compressionType);
 
 		// Token: 0x060001CB RID: 459
-		void SaveCab(string cabPath, CompressionType compressionType, PackageStyle outputStyle);
+		void SaveCab(string cabPath, CompressionType1 compressionType, PackageStyle outputStyle);
 
 		// Token: 0x060001CC RID: 460
-		void SaveCab(string cabPath, CompressionType compressionType, PackageStyle outputStyle, PackageTools.SIGNING_HINT signingHint);
+		void SaveCab(string cabPath, CompressionType1 compressionType, 
+			PackageStyle outputStyle, PackageTools.SIGNING_HINT signingHint);
 
 		// Token: 0x060001CD RID: 461
-		void SaveCBSR(string cabPath, CompressionType compressionType);
+		void SaveCBSR(string cabPath, CompressionType1 compressionType);
 	}
 }

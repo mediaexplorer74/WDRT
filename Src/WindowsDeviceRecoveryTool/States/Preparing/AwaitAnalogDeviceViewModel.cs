@@ -53,13 +53,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			base.EventAggregator.Publish<IsBackButtonMessage>(new IsBackButtonMessage(true));
 			base.EventAggregator.Publish<BlockWindowMessage>(new BlockWindowMessage(false, null, null));
 			DetectionParameters detectionParams = new DetectionParameters(PhoneTypes.Analog, PhoneModes.Flash);
-			base.Commands.Run((FlowController c) => c.StartDeviceDetection(detectionParams));
+			//base.Commands.Run((FlowController c) => c.StartDeviceDetection(detectionParams));
 		}
 
 		// Token: 0x06000446 RID: 1094 RVA: 0x00014834 File Offset: 0x00012A34
 		public override void OnStopped()
 		{
-			base.Commands.Run((FlowController c) => c.StopDeviceDetection());
+			//base.Commands.Run((FlowController c) => c.StopDeviceDetection());
 		}
 
 		// Token: 0x06000447 RID: 1095 RVA: 0x00014890 File Offset: 0x00012A90
@@ -70,7 +70,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 				if (message.Phone.Type == PhoneTypes.Analog)
 				{
 					this.appContext.CurrentPhone = message.Phone;
-					base.Commands.Run((AppController a) => a.SwitchToState("ReadingDeviceInfoState"));
+					//base.Commands.Run((AppController a) => a.SwitchToState("ReadingDeviceInfoState"));
 				}
 			}
 		}

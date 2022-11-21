@@ -99,7 +99,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 				this.appContext.CurrentPhone.HardwareModel = tile.Phone.HardwareModel;
 				this.appContext.CurrentPhone.HardwareVariant = tile.Phone.HardwareVariant;
 				this.appContext.CurrentPhone.QueryParameters = tile.Phone.QueryParameters;
-				base.Commands.Run((AppController c) => c.SwitchToState("CheckLatestPackageState"));
+				//base.Commands.Run((AppController c) => c.SwitchToState("CheckLatestPackageState"));
 			}
 		}
 

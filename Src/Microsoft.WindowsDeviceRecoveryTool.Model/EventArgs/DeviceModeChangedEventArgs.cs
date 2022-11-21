@@ -4,7 +4,7 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.Enums;
 namespace Microsoft.WindowsDeviceRecoveryTool.Model.EventArgs
 {
 	// Token: 0x0200002E RID: 46
-	public class DeviceModeChangedEventArgs : EventArgs
+	public class DeviceModeChangedEventArgs : System.EventArgs
 	{
 		// Token: 0x0600013D RID: 317 RVA: 0x00004778 File Offset: 0x00002978
 		public DeviceModeChangedEventArgs(ConnectedDevice connectedDevice, ConnectedDeviceMode oldMode, ConnectedDeviceMode newMode)

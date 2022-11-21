@@ -286,31 +286,35 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation.Services
 		// Token: 0x0600002B RID: 43 RVA: 0x000030A0 File Offset: 0x000012A0
 		protected override void InitializeManuallySupportedModels()
 		{
-			var array = new <>f__AnonymousType0<ModelInfo, string>[]
+			ModelIdent[] array = new ModelIdent[]
 			{
-				new
-				{
-					Model = AcerModels.LiquidM220,
+				
+				new ModelIdent{
+					//RnD
+					Model1 = AcerModels.LiquidM220,
 					IdentificationInstruction = LocalizationManager.GetTranslation("ModelIdentificationAcerM220")
 				},
-				new
-				{
-					Model = AcerModels.JadePrimo,
+
+                new ModelIdent{
+					Model1 = AcerModels.JadePrimo,
 					IdentificationInstruction = null
 				},
-				new
-				{
-					Model = AcerModels.LiquidM330,
-					IdentificationInstruction = LocalizationManager.GetTranslation("ModelIdentificationAcerM330")
+
+                new ModelIdent{
+                    Model1 = AcerModels.LiquidM330,
+					IdentificationInstruction = 
+					LocalizationManager.GetTranslation("ModelIdentificationAcerM330")
 				}
+				
 			};
+			
 			var array2 = array;
 			for (int i = 0; i < array2.Length; i++)
 			{
-				var <>f__AnonymousType = array2[i];
-				ModelInfo model = <>f__AnonymousType.Model;
-				Phone phone = this.GetPhone(<>f__AnonymousType.Model);
-				phone.ModelIdentificationInstruction = <>f__AnonymousType.IdentificationInstruction;
+				var f__AnonymousType = array2[i];
+				ModelInfo model = f__AnonymousType.Model1;
+				Phone phone = this.GetPhone(f__AnonymousType.Model1);
+				phone.ModelIdentificationInstruction = f__AnonymousType.IdentificationInstruction;
 				this.manuallySupportedModels.Add(phone);
 				if (model.Variants.Length == 1)
 				{
@@ -334,7 +338,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation.Services
 		public override List<Phone> ManuallySupportedVariants(Phone phone)
 		{
 			return (from variant in this.manuallySupportedVariants
-			where variant.HardwareModel.Equals(phone.HardwareModel, StringComparison.OrdinalIgnoreCase)
+			where variant.HardwareModel.Equals(phone.HardwareModel, 
+			StringComparison.OrdinalIgnoreCase)
 			select variant).ToList<Phone>();
 		}
 
@@ -346,15 +351,18 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation.Services
 			string text = string.Empty;
 			if (phone.SalesName.ToLower().Contains("m220"))
 			{
-				text = manifestResourceNames.FirstOrDefault((string resourceName) => resourceName.Contains("M220.png"));
+				text = manifestResourceNames.FirstOrDefault((string resourceName) 
+					=> resourceName.Contains("M220.png"));
 			}
 			else if (phone.SalesName.ToLower().Contains("jade primo"))
 			{
-				text = manifestResourceNames.FirstOrDefault((string resourcesName) => resourcesName.Contains("JadePrimo.png"));
+				text = manifestResourceNames.FirstOrDefault((string resourcesName) 
+					=> resourcesName.Contains("JadePrimo.png"));
 			}
 			else if (phone.SalesName.ToLower().Contains("m330"))
 			{
-				text = manifestResourceNames.FirstOrDefault((string resourcesName) => resourcesName.Contains("M330.png"));
+				text = manifestResourceNames.FirstOrDefault((string resourcesName) 
+					=> resourcesName.Contains("M330.png"));
 			}
 			if (!string.IsNullOrEmpty(text))
 			{
@@ -368,7 +376,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation.Services
 		{
 			Assembly executingAssembly = Assembly.GetExecutingAssembly();
 			string[] manifestResourceNames = executingAssembly.GetManifestResourceNames();
-			string text = manifestResourceNames.FirstOrDefault((string resourceName) => resourceName.Contains("AcerLogo.png"));
+			string text = manifestResourceNames.FirstOrDefault((string resourceName) 
+				=> resourceName.Contains("AcerLogo.png"));
 			if (!string.IsNullOrEmpty(text))
 			{
 				return executingAssembly.GetManifestResourceStream(text);
@@ -379,7 +388,10 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation.Services
 		// Token: 0x06000030 RID: 48 RVA: 0x0000334B File Offset: 0x0000154B
 		private void MsrDownloadProgressEvent(ProgressChangedEventArgs progressArgs)
 		{
-			base.RaiseProgressPercentageChanged(progressArgs.Percentage, progressArgs.Message, progressArgs.DownloadedSize, progressArgs.TotalSize, progressArgs.BytesPerSecond, progressArgs.SecondsLeft);
+			base.RaiseProgressPercentageChanged(progressArgs.Percentage, 
+				progressArgs.Message, progressArgs.DownloadedSize, 
+				progressArgs.TotalSize, progressArgs.BytesPerSecond, 
+				progressArgs.SecondsLeft);
 		}
 
 		// Token: 0x06000031 RID: 49 RVA: 0x00003378 File Offset: 0x00001578
@@ -422,4 +434,10 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation.Services
 		// Token: 0x04000017 RID: 23
 		private string progressMessage;
 	}
+
+    internal class ModelIdent
+    {
+        internal ModelInfo Model1;
+        internal string IdentificationInstruction;
+    }
 }

@@ -70,16 +70,16 @@ namespace SoftwareRepository.Streaming
 		// (set) Token: 0x06000049 RID: 73 RVA: 0x00002CA3 File Offset: 0x00000EA3
 		[SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Auth", Justification = "Acceptable abbreviation")]
 		public bool AllowWindowsAuth { get; set; }
-
-		// Token: 0x14000001 RID: 1
-		// (add) Token: 0x0600004A RID: 74 RVA: 0x00002CAC File Offset: 0x00000EAC
-		// (remove) Token: 0x0600004B RID: 75 RVA: 0x00002CE4 File Offset: 0x00000EE4
-		public event DownloadReadyEventHandler DownloadReady;
+        
+        // Token: 0x14000001 RID: 1
+        // (add) Token: 0x0600004A RID: 74 RVA: 0x00002CAC File Offset: 0x00000EAC
+        // (remove) Token: 0x0600004B RID: 75 RVA: 0x00002CE4 File Offset: 0x00000EE4
+        public event DownloadReadyEventHandler DownloadReady;
 
 		// Token: 0x14000002 RID: 2
 		// (add) Token: 0x0600004C RID: 76 RVA: 0x00002D1C File Offset: 0x00000F1C
 		// (remove) Token: 0x0600004D RID: 77 RVA: 0x00002D54 File Offset: 0x00000F54
-		[SuppressMessage("Microsoft.Design", "CA1009:DeclareEventHandlersCorrectly")]
+		//[SuppressMessage("Microsoft.Design", "CA1009:DeclareEventHandlersCorrectly")]
 		public event BestUrlSelectionEventHandler OnUrlSelection;
 
 		// Token: 0x0600004E RID: 78 RVA: 0x00002D8C File Offset: 0x00000F8C
@@ -257,11 +257,22 @@ namespace SoftwareRepository.Streaming
 			this.ReportCompleted(progressWrapper, packageId, filename, fileUrlResult.FileSize);
 		}
 
-		// Token: 0x06000052 RID: 82 RVA: 0x00002F2C File Offset: 0x0000112C
-		private static async Task<bool> FileIntegrityPreservedAsync(List<SoftwareFileChecksum> checksums, Stream stream)
+        private Task<int> DownloadAsync(ChunkManager chunkManager, FileUrlResult fileUrlResult, Streamer streamer, ProgressWrapper progressWrapper)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ReportCompleted(ProgressWrapper progressWrapper, string packageId, string filename, long fileSize)
+        {
+            throw new NotImplementedException();
+        }
+
+        // Token: 0x06000052 RID: 82 RVA: 0x00002F2C File Offset: 0x0000112C
+        private static async Task<bool> FileIntegrityPreservedAsync(List<SoftwareFileChecksum> checksums, Stream stream)
 		{
-			Downloader.<>c__DisplayClass53_1 CS$<>8__locals1 = new Downloader.<>c__DisplayClass53_1();
-			CS$<>8__locals1.stream = stream;
+			Downloader.DisplayClass53_1 f8__locals1 
+				= new Downloader.DisplayClass53_1();
+			f8__locals1.stream = stream;
 			bool result;
 			if (checksums == null)
 			{
@@ -272,17 +283,25 @@ namespace SoftwareRepository.Streaming
 				bool ret = false;
 				foreach (SoftwareFileChecksum checksum in checksums)
 				{
-					if (checksum != null && checksum.ChecksumType != null && checksum.Value != null)
+					if (checksum != null && checksum.ChecksumType != null 
+						&& checksum.Value != null)
 					{
 						if (checksum.ChecksumType.ToUpperInvariant() == "MD5")
 						{
-							Downloader.<>c__DisplayClass53_0 CS$<>8__locals2 = new Downloader.<>c__DisplayClass53_0();
-							CS$<>8__locals2.CS$<>8__locals1 = CS$<>8__locals1;
-							CS$<>8__locals2.md5 = MD5.Create();
+							Downloader.DisplayClass53_0 f8__locals2 
+								= new Downloader.DisplayClass53_0();
+
+                            f8__locals2.f8__locals1 = f8__locals1;
+							f8__locals2.md5 = MD5.Create();
 							try
 							{
-								CS$<>8__locals2.CS$<>8__locals1.stream.Seek(0L, SeekOrigin.Begin);
-								byte[] array = await Task.Run<byte[]>(() => CS$<>8__locals2.md5.ComputeHash(CS$<>8__locals2.CS$<>8__locals1.stream));
+								f8__locals2.f8__locals1.stream.Seek(0L, 
+									SeekOrigin.Begin);
+								
+								byte[] array = await Task.Run<byte[]>(() 
+									=> f8__locals2.md5.ComputeHash(
+										f8__locals2.f8__locals1.stream));
+								
 								string value = Convert.ToBase64String(array);
 								string value2 = BitConverter.ToString(array).Replace("-", string.Empty).ToLowerInvariant();
 								if (!checksum.Value.Equals(value) && !checksum.Value.ToLowerInvariant().Equals(value2))
@@ -293,12 +312,12 @@ namespace SoftwareRepository.Streaming
 							}
 							finally
 							{
-								if (CS$<>8__locals2.md5 != null)
+								if (f8__locals2.md5 != null)
 								{
-									((IDisposable)CS$<>8__locals2.md5).Dispose();
+									((IDisposable)f8__locals2.md5).Dispose();
 								}
 							}
-							CS$<>8__locals2 = null;
+							f8__locals2 = null;
 						}
 						checksum = null;
 					}
@@ -378,71 +397,94 @@ namespace SoftwareRepository.Streaming
 		}
 
 		// Token: 0x06000054 RID: 84 RVA: 0x00002FDC File Offset: 0x000011DC
-		private async Task<string> SelectBestUrlAsync(DownloadChunk testChunk, FileUrlResult fileUrlResult, Streamer streamer, CancellationToken cancellationToken, Downloader.ProgressWrapper progress, ChunkManager chunkManager)
+		private async Task<string> SelectBestUrlAsync
+		(
+			DownloadChunk testChunk, 
+			FileUrlResult fileUrlResult, 
+			Streamer streamer, CancellationToken cancellationToken, 
+			Downloader.ProgressWrapper progress, 
+			ChunkManager chunkManager
+		)
 		{
-			Downloader.<>c__DisplayClass55_0 CS$<>8__locals1 = new Downloader.<>c__DisplayClass55_0();
-			CS$<>8__locals1.progress = progress;
-			CS$<>8__locals1.chunkManager = chunkManager;
-			CS$<>8__locals1.urlSelectionResult = new UrlSelectionResult();
-			CS$<>8__locals1.urlSelectionResult.TestBytes = testChunk.Bytes;
+			Downloader.DisplayClass55_0 f8__locals1 = 
+				new Downloader.DisplayClass55_0();
+			f8__locals1.progress = progress;
+			f8__locals1.chunkManager = chunkManager;
+			f8__locals1.urlSelectionResult = new UrlSelectionResult();
+			f8__locals1.urlSelectionResult.TestBytes = testChunk.Bytes;
 			List<string> fileUrls = fileUrlResult.GetFileUrls();
+			
 			string result;
+
 			if (fileUrls.Count == 1)
 			{
-				CS$<>8__locals1.urlSelectionResult.UrlResults.Add(new UrlResult
+				f8__locals1.urlSelectionResult.UrlResults.Add(new UrlResult
 				{
 					FileUrl = fileUrls.First<string>(),
 					IsSelected = true
 				});
 				if (this.OnUrlSelection != null)
 				{
-					this.OnUrlSelection(CS$<>8__locals1.urlSelectionResult);
+					this.OnUrlSelection(f8__locals1.urlSelectionResult);
 				}
 				result = fileUrls.First<string>();
 			}
 			else
 			{
-				CS$<>8__locals1.urlSelectionResult.UrlResults.AddRange(from x in fileUrlResult.GetFileUrls()
-				select new UrlResult
-				{
-					FileUrl = x
-				});
-				CS$<>8__locals1.ret = null;
-				CS$<>8__locals1.exception = null;
+				f8__locals1.urlSelectionResult.UrlResults.AddRange(from x in fileUrlResult.GetFileUrls()
+																   select new UrlResult
+																   {
+																	   FileUrl = x
+																   });
+				f8__locals1.ret = null;
+				f8__locals1.exception = null;
+
 				Task<int> winner = null;
 				int statusCode = -1;
 				List<DownloadChunk> chunks = new List<DownloadChunk>();
 				List<Task<int>> tasks = new List<Task<int>>();
-				CS$<>8__locals1.currentDownloaded = CS$<>8__locals1.chunkManager.ProgressBytes;
-				CS$<>8__locals1.bestChunk = 0L;
+				f8__locals1.currentDownloaded =
+					f8__locals1.chunkManager.ProgressBytes;
+				f8__locals1.bestChunk = 0L;
+
 				DownloadChunk chunk;
-				DownloadProgressEventHandler progressHandler = delegate(object sender, EventArgs args)
+				DownloadProgressEventHandler progressHandler = delegate (object sender, EventArgs args)
 				{
-					DownloadChunk chunk = sender as DownloadChunk;
-					(from x in CS$<>8__locals1.urlSelectionResult.UrlResults
-					where x.FileUrl.Equals(chunk.Url, StringComparison.OrdinalIgnoreCase)
-					select x).ToList<UrlResult>().ForEach(delegate(UrlResult x)
+					DownloadChunk chunk1 = sender as DownloadChunk;
+					(from x in f8__locals1.urlSelectionResult.UrlResults
+					 where x.FileUrl.Equals(chunk1.Url,
+					 StringComparison.OrdinalIgnoreCase)
+					 select x).ToList<UrlResult>().ForEach(delegate (UrlResult x)
+					 {
+						 x.TestSpeed = chunk1.DownloadSpeed;
+						 x.BytesRead = chunk1.BytesRead;
+					 });
+					if (chunk1.BytesRead > f8__locals1.bestChunk)
 					{
-						x.TestSpeed = chunk.DownloadSpeed;
-						x.BytesRead = chunk.BytesRead;
-					});
-					if (chunk.BytesRead > CS$<>8__locals1.bestChunk)
-					{
-						CS$<>8__locals1.bestChunk = chunk.BytesRead;
-						CS$<>8__locals1.progress.Report(new DownloadProgressInfo(CS$<>8__locals1.currentDownloaded + CS$<>8__locals1.bestChunk, CS$<>8__locals1.chunkManager.FileSize, CS$<>8__locals1.chunkManager.FileName));
+						f8__locals1.bestChunk = chunk1.BytesRead;
+						f8__locals1.progress.Report(
+							new DownloadProgressInfo(
+								f8__locals1.currentDownloaded
+								+ f8__locals1.bestChunk,
+								  f8__locals1.chunkManager.FileSize,
+								  f8__locals1.chunkManager.FileName));
 					}
 				};
-				Downloader.<>c__DisplayClass55_2 CS$<>8__locals2 = new Downloader.<>c__DisplayClass55_2();
-				CS$<>8__locals2.CS$<>8__locals1 = CS$<>8__locals1;
-				CS$<>8__locals2.cts = new CancellationTokenSource();
+
+				Downloader.DisplayClass55_2 f8__locals2 =
+					new Downloader.DisplayClass55_2();
+
+				f8__locals2.f8__locals1 = f8__locals1;
+				f8__locals2.cts = new CancellationTokenSource();
 				try
 				{
-					using (cancellationToken.Register(delegate()
+					using (cancellationToken.Register(delegate ()
 					{
-						CS$<>8__locals2.cts.Cancel();
+						f8__locals2.cts.Cancel();
 					}))
 					{
-						using (List<string>.Enumerator enumerator = fileUrls.GetEnumerator())
+						using (List<string>.Enumerator
+							enumerator = fileUrls.GetEnumerator())
 						{
 							while (enumerator.MoveNext())
 							{
@@ -457,7 +499,7 @@ namespace SoftwareRepository.Streaming
 							}
 							goto IL_4DF;
 						}
-						IL_2AD:
+					IL_2AD:
 						try
 						{
 							Task<int> task = await Task.WhenAny<int>(tasks);
@@ -466,13 +508,14 @@ namespace SoftwareRepository.Streaming
 						}
 						catch (OperationCanceledException exception)
 						{
-							CS$<>8__locals2.CS$<>8__locals1.exception = exception;
+							f8__locals2.f8__locals1.exception = exception;
 						}
 						catch (Exception exception2)
 						{
-							if (!(CS$<>8__locals2.CS$<>8__locals1.exception is OperationCanceledException))
+							if (!(f8__locals2.f8__locals1.exception
+								is OperationCanceledException))
 							{
-								CS$<>8__locals2.CS$<>8__locals1.exception = exception2;
+								f8__locals2.f8__locals1.exception = exception2;
 							}
 						}
 						finally
@@ -482,13 +525,14 @@ namespace SoftwareRepository.Streaming
 								int index = tasks.IndexOf(winner);
 								tasks.Remove(winner);
 								fileUrls.RemoveAt(index);
-								DownloadChunk chunk = chunks[index];
+								DownloadChunk chunk1 = chunks[index];
 								Func<Exception, string> walkException = null;
-								walkException = delegate(Exception e)
+								walkException = delegate (Exception e)
 								{
 									if (e.InnerException != null)
 									{
-										return string.Format(CultureInfo.InvariantCulture, "{0}: {1} ({2})", new object[]
+										return string.Format(
+											CultureInfo.InvariantCulture, "{0}: {1} ({2})", new object[]
 										{
 											e.GetType().Name,
 											e.Message,
@@ -501,54 +545,59 @@ namespace SoftwareRepository.Streaming
 										e.Message
 									});
 								};
-								(from x in CS$<>8__locals2.CS$<>8__locals1.urlSelectionResult.UrlResults
-								where x.FileUrl.Equals(chunk.Url, StringComparison.OrdinalIgnoreCase)
-								select x).ToList<UrlResult>().ForEach(delegate(UrlResult x)
-								{
-									x.Error = walkException(CS$<>8__locals2.CS$<>8__locals1.exception);
-								});
-								chunk.OutStream.Dispose();
-								chunk.DownloadProgress -= progressHandler;
+								(from x in f8__locals2.f8__locals1.urlSelectionResult.UrlResults
+								 where x.FileUrl.Equals(chunk1.Url, StringComparison.OrdinalIgnoreCase)
+								 select x).ToList<UrlResult>().ForEach(delegate (UrlResult x)
+								 {
+									 x.Error = walkException(
+										 f8__locals2.f8__locals1.exception);
+								 });
+								chunk1.OutStream.Dispose();
+								chunk1.DownloadProgress -= progressHandler;
 								chunks.RemoveAt(index);
 							}
 						}
-						IL_4DF:
+					IL_4DF:
 						if (statusCode == -1 && tasks.Count > 0)
 						{
 							goto IL_2AD;
 						}
 					}
-					CancellationTokenRegistration cancellationTokenRegistration = default(CancellationTokenRegistration);
-					if (!CS$<>8__locals2.cts.IsCancellationRequested)
+					CancellationTokenRegistration cancellationTokenRegistration
+						= default(CancellationTokenRegistration);
+
+					if (!f8__locals2.cts.IsCancellationRequested)
 					{
-						CS$<>8__locals2.cts.Cancel();
+						f8__locals2.cts.Cancel();
 					}
 				}
 				finally
 				{
-					if (CS$<>8__locals2.cts != null)
+					if (f8__locals2.cts != null)
 					{
-						((IDisposable)CS$<>8__locals2.cts).Dispose();
+						((IDisposable)f8__locals2.cts).Dispose();
 					}
 				}
-				CS$<>8__locals2 = null;
+				f8__locals2 = null;
 				if (statusCode != -1)
 				{
 					int index2 = tasks.IndexOf(winner);
-					CS$<>8__locals1.ret = fileUrls[index2];
-					(from x in CS$<>8__locals1.urlSelectionResult.UrlResults
-					where x.FileUrl.Equals(CS$<>8__locals1.ret, StringComparison.OrdinalIgnoreCase)
-					select x).ToList<UrlResult>().ForEach(delegate(UrlResult x)
-					{
-						x.IsSelected = true;
-					});
+					f8__locals1.ret = fileUrls[index2];
+
+					(from x in f8__locals1.urlSelectionResult.UrlResults
+					 where x.FileUrl.Equals(f8__locals1.ret,
+					 StringComparison.OrdinalIgnoreCase)
+					 select x).ToList<UrlResult>().ForEach(delegate (UrlResult x)
+					 {
+						 x.IsSelected = true;
+					 });
 					chunk = chunks[index2];
 					chunk.OutStream.Seek(0L, SeekOrigin.Begin);
 					streamer.GetStream().Seek(chunk.BytesFrom, SeekOrigin.Begin);
 					await chunk.OutStream.CopyToAsync(streamer.GetStream());
 					await streamer.GetStream().FlushAsync();
-					CS$<>8__locals1.chunkManager.MarkDownloaded(chunk);
-					CS$<>8__locals1.chunkManager.SaveMetadata(streamer, false);
+					f8__locals1.chunkManager.MarkDownloaded(chunk);
+					f8__locals1.chunkManager.SaveMetadata(streamer, false);
 					chunk = null;
 				}
 				foreach (DownloadChunk downloadChunk2 in chunks)
@@ -556,22 +605,79 @@ namespace SoftwareRepository.Streaming
 					downloadChunk2.OutStream.Dispose();
 					downloadChunk2.DownloadProgress -= progressHandler;
 				}
-				if (statusCode == -1 && CS$<>8__locals1.exception != null)
+				if (statusCode == -1 && f8__locals1.exception != null)
 				{
-					throw CS$<>8__locals1.exception;
+					throw f8__locals1.exception;
 				}
 				if (this.OnUrlSelection != null)
 				{
-					this.OnUrlSelection(CS$<>8__locals1.urlSelectionResult);
+					this.OnUrlSelection(f8__locals1.urlSelectionResult);
 				}
-				result = CS$<>8__locals1.ret;
+				result = f8__locals1.ret;
 			}
-			return result;
-		}
+            return result;
+        }//SelectBestUrlAsync
+
+        
+		//
+		private class DisplayClass53_1
+        {
+            internal Stream stream;
+
+            public DisplayClass53_1()
+            {
+            }
+        }
+
+        private class DisplayClass53_0
+        {
+            internal DisplayClass53_1 f8__locals1;
+            internal MD5 md5;
+
+            public DisplayClass53_0()
+            {
+            }
+        }
+
+        public class ProgressWrapper
+        {
+            private DownloadProgress<DownloadProgressInfo> progress;
+
+            public ProgressWrapper(DownloadProgress<DownloadProgressInfo> progress)
+            {
+                this.progress = progress;
+            }           
+        }//ProgressWrapper
+
+        private class DisplayClass55_0
+        {
+            internal ProgressWrapper progress;
+            internal ChunkManager chunkManager;
+            internal Streaming.UrlSelectionResult urlSelectionResult;
+            internal string ret;
+            internal Exception exception;
+            internal long currentDownloaded;
+            internal long bestChunk;
+
+            public DisplayClass55_0()
+            {
+            }
+        }
+
+        private class DisplayClass55_2
+        {
+            internal DisplayClass55_0 f8__locals1;
+            internal CancellationTokenSource cts; // cancellation token source
+
+            public DisplayClass55_2()
+            {
+            }
+        }
+    
 
 		// Token: 0x06000055 RID: 85 RVA: 0x00003054 File Offset: 0x00001254
-		[SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", MessageId = "fileUrlResult")]
-		private async Task<int> DownloadAsync(ChunkManager chunkManager, FileUrlResult fileUrlResult, Streamer streamer, Downloader.ProgressWrapper progress)
+		//[SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", MessageId = "fileUrlResult")]
+		private async Task<int> DownloadAsync1(ChunkManager chunkManager, FileUrlResult fileUrlResult, Streamer streamer, Downloader.ProgressWrapper progress)
 		{
 			int maxParallelConnections = this.MaxParallelConnections;
 			DownloadProgressEventHandler progressHandler = delegate(object sender, EventArgs args)
@@ -625,7 +731,7 @@ namespace SoftwareRepository.Streaming
 		}
 
 		// Token: 0x06000056 RID: 86 RVA: 0x000030B2 File Offset: 0x000012B2
-		private void ReportCompleted(Downloader.ProgressWrapper progressWrapper, string packageId, string fileName, long fileSize)
+		private void ReportCompleted1(Downloader.ProgressWrapper progressWrapper, string packageId, string fileName, long fileSize)
 		{
 			progressWrapper.Report(new DownloadProgressInfo(fileSize, fileSize, fileName));
 			if (this.DownloadReady != null)

@@ -151,9 +151,9 @@ namespace Nokia.Lucid.DeviceDetection
 						});
 					}
 				}
-				catch (AggregateException exception)
+				catch (AggregateException exception1)
 				{
-					exception = exception;
+					exception = exception1;
 				}
 				finally
 				{

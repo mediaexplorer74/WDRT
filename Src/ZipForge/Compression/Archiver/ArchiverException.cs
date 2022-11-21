@@ -6,7 +6,8 @@ namespace ComponentAce.Compression.Archiver
 	public class ArchiverException : Exception
 	{
 		// Token: 0x06000003 RID: 3 RVA: 0x0000233C File Offset: 0x0000133C
-		public ArchiverException(string message, ErrorCode errorCode, object[] args, Exception innerException) : base(message, innerException)
+		public ArchiverException(string message, ErrorCode errorCode, 
+			object[] args, Exception innerException) : base(message, innerException)
 		{
 			this.Args = args;
 			this.ErrorCode = errorCode;

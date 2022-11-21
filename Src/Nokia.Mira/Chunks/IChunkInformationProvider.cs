@@ -3,7 +3,7 @@
 namespace Nokia.Mira.Chunks
 {
 	// Token: 0x02000009 RID: 9
-	internal interface IChunkInformationProvider
+	public interface IChunkInformationProvider
 	{
 		// Token: 0x17000003 RID: 3
 		// (get) Token: 0x06000017 RID: 23

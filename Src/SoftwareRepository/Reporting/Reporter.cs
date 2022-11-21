@@ -120,8 +120,12 @@ namespace SoftwareRepository.Reporting
 				foreach (string filePath in filePaths)
 				{
 					string fileName = Path.GetFileName(filePath);
-					await new CloudBlockBlob(new Uri(await this.GetReportUploadLocationAsync(manufacturerName, manufacturerProductLine, reportClassification, fileName, cancellationToken))).UploadFromFileAsync(filePath, FileMode.Open);
-					filePath = null;
+					await new CloudBlockBlob(
+						new Uri(await this.GetReportUploadLocationAsync
+						(manufacturerName, manufacturerProductLine,
+						reportClassification,
+						fileName, cancellationToken))).UploadFromFileAsync(filePath);//,FileMode.Open);
+					//filePath = null;
 				}
 				List<string>.Enumerator enumerator = default(List<string>.Enumerator);
 			}

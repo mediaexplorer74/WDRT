@@ -272,7 +272,8 @@ namespace ComponentAce.Encryption
 						{
 							if (this.ctrMode_Nonce[j] < 255)
 							{
-								this.ctrMode_Nonce[j] = this.ctrMode_Nonce[j] + 1;
+								this.ctrMode_Nonce[j] = 
+										(byte)(this.ctrMode_Nonce[j] + 1);
 								break;
 							}
 							this.ctrMode_Nonce[j] = 0;
@@ -367,7 +368,8 @@ namespace ComponentAce.Encryption
 						{
 							if (this.ctrMode_Nonce[j] < 255)
 							{
-								this.ctrMode_Nonce[j] = this.ctrMode_Nonce[j] + 1;
+								this.ctrMode_Nonce[j] =
+										(byte)(this.ctrMode_Nonce[j] + 1);
 								break;
 							}
 							this.ctrMode_Nonce[j] = 0;

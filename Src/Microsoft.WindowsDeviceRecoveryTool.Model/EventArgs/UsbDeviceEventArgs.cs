@@ -4,7 +4,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model.EventArgs
 {
 	// Token: 0x02000032 RID: 50
 	//RnD
-	public class UsbDeviceEventArgs //: EventArgs
+	public class UsbDeviceEventArgs : System.EventArgs
 	{
 		// Token: 0x06000166 RID: 358 RVA: 0x00004AB0 File Offset: 0x00002CB0
 		public UsbDeviceEventArgs(UsbDevice usbDevice)

@@ -16,49 +16,79 @@ namespace Nokia.Mira.Primitives
 	public sealed class DownloadTask
 	{
 		// Token: 0x060000BB RID: 187 RVA: 0x00003AB8 File Offset: 0x00001CB8
-		internal DownloadTask(IHttpWebRequestFactory httpWebRequestFactory, string fileName, CancellationToken cancellationToken, IProgress<DownloadProgressInfo> progress, DownloadSettings downloadSettings, IDownloadStrategyFactory downloadStrategyFactory, IDownloadPool downloadPool) : this(httpWebRequestFactory, fileName, DownloadTask.GetTemporaryFileName(fileName), DownloadTask.GetMetadataFileName(fileName), new EnvironmentSetup(DownloadTask.GetTemporaryFileName(fileName)), cancellationToken, progress, downloadSettings, downloadStrategyFactory, downloadPool)
+		public DownloadTask(IHttpWebRequestFactory httpWebRequestFactory, 
+			string fileName, CancellationToken cancellationToken, 
+			IProgress<DownloadProgressInfo> progress, 
+			DownloadSettings downloadSettings, 
+			IDownloadStrategyFactory downloadStrategyFactory, 
+			IDownloadPool downloadPool) : 
+			this(httpWebRequestFactory, fileName, 
+				DownloadTask.GetTemporaryFileName(fileName), 
+				DownloadTask.GetMetadataFileName(fileName), 
+				new EnvironmentSetup(DownloadTask.GetTemporaryFileName(fileName)), 
+				cancellationToken, progress, downloadSettings, 
+				downloadStrategyFactory, downloadPool)
 		{
 		}
 
-		// Token: 0x060000BC RID: 188 RVA: 0x00003C58 File Offset: 0x00001E58
-		internal DownloadTask(IHttpWebRequestFactory httpWebRequestFactory, string fileName, string temporaryFileName, string metadataFileName, EnvironmentSetup environmentSetup, CancellationToken cancellationToken, IProgress<DownloadProgressInfo> progress, DownloadSettings downloadSettings, IDownloadStrategyFactory downloadStrategyFactory, IDownloadPool downloadPool)
+        // Token: 0x060000BC RID: 188 RVA: 0x00003C58 File Offset: 0x00001E58
+        public DownloadTask(IHttpWebRequestFactory httpWebRequestFactory, 
+			string fileName, 
+			string temporaryFileName, 
+			string metadataFileName, 
+			EnvironmentSetup environmentSetup, 
+			CancellationToken cancellationToken, 
+			IProgress<DownloadProgressInfo> progress, 
+			DownloadSettings downloadSettings, 
+			IDownloadStrategyFactory downloadStrategyFactory,
+			IDownloadPool downloadPool)
 		{
-			DownloadTask <>4__this = this;
-			this.fileName = fileName;
-			this.temporaryFileName = temporaryFileName;
-			this.cancellationToken = cancellationToken;
-			this.downloadSettings = downloadSettings;
-			this.downloadPool = downloadPool;
+			//DownloadTask _this = this;
+            this.fileName = fileName;
+            this.temporaryFileName = temporaryFileName;
+            this.cancellationToken = cancellationToken;
+            this.downloadSettings = downloadSettings;
+            this.downloadPool = downloadPool;
 			this.progress = progress;
 			this.blockingDispatcher = new BlockingDispatcher<DownloadProgressInfo>(new Action<DownloadProgressInfo>(this.OnProgressDispatched));
 			this.AddEmptyTask();
 			this.downloadStrategyLazy = new Lazy<IDownloadStrategy>(delegate()
 			{
-				<>4__this.cancellationToken.ThrowIfCancellationRequested();
-				if (!<>4__this.downloadSettings.OverwriteExistingFile && File.Exists(<>4__this.fileName))
+				this.cancellationToken.ThrowIfCancellationRequested();
+				if (!this.downloadSettings.OverwriteExistingFile 
+				&& File.Exists(this.fileName))
 				{
-					throw new InvalidOperationException("Target file already exists.");
+					throw new InvalidOperationException(
+						"Target file already exists.");
 				}
 				environmentSetup.EnsureTargetDirectory();
-				<>4__this.streamContainer = new MetadataStreamContainer(metadataFileName);
-				IChunkInformationReader reader = new ChunkInformationXmlReader(<>4__this.streamContainer);
+				this.streamContainer = new MetadataStreamContainer(metadataFileName);
+				IChunkInformationReader reader = 
+				new ChunkInformationXmlReader(this.streamContainer);
+				
 				ChunkInformation[] array;
 				if (downloadSettings.ResumeDownload)
 				{
-					array = environmentSetup.PrepareForResumedDownload(downloadSettings.ChunkSize, reader).ToArray<ChunkInformation>();
+					array = environmentSetup.PrepareForResumedDownload(
+						downloadSettings.ChunkSize, reader)
+					      .ToArray<ChunkInformation>();
 				}
 				else
 				{
 					array = new ChunkInformation[0];
 					environmentSetup.PrepareForNewDownload();
 				}
+				
 				HttpWebRequest request = httpWebRequestFactory.Create();
 				IChunkInformationProvider chunkInformationProvider = new CollectionBasedChunkInformationProvider(array, downloadSettings.ChunkSize);
 				ChunkInformation chunkInformation = chunkInformationProvider.Current;
 				IWebResponse response = request.GetResponse(chunkInformation.Current, chunkInformation.End, cancellationToken);
-				IChunkInformationWriter chunkInformationWriter = new ChunkInformationXmlWriter(<>4__this.streamContainer);
+				
+				IChunkInformationWriter chunkInformationWriter = 
+					new ChunkInformationXmlWriter(this.streamContainer);
 				chunkInformationProvider.MoveNext();
-				return downloadStrategyFactory.Create(<>4__this.temporaryFileName, downloadSettings, httpWebRequestFactory, chunkInformationWriter, array, chunkInformationProvider, response, chunkInformation, cancellationToken, new Action<DownloadProgressInfo>(<>4__this.blockingDispatcher.Dispatch));
+				return downloadStrategyFactory.Create(this.temporaryFileName, downloadSettings, httpWebRequestFactory, chunkInformationWriter, array, chunkInformationProvider, response, chunkInformation, cancellationToken, 
+					new Action<DownloadProgressInfo>(this.blockingDispatcher.Dispatch));
 			});
 		}
 

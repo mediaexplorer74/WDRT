@@ -73,14 +73,15 @@ namespace ClickerUtilityLibrary.Comm.USBDriver
 		internal struct CM_NOTIFY_FILTER_DEVICE_INSTANCE
 		{
 			// Token: 0x040001BD RID: 445
-			[FixedBuffer(typeof(ushort), 200)]
-			public CfgMgr.CM_NOTIFY_FILTER_DEVICE_INSTANCE.<InstanceId>e__FixedBuffer InstanceId;
+			//[FixedBuffer(typeof(ushort), 200)]
+            //public CfgMgr.CM_NOTIFY_FILTER_DEVICE_INSTANCE.<InstanceId>e__FixedBuffer InstanceId;
+            public int InstanceId;
 
-			// Token: 0x0200005C RID: 92
-			[CompilerGenerated]
+            // Token: 0x0200005C RID: 92
+            [CompilerGenerated]
 			[UnsafeValueType]
 			[StructLayout(LayoutKind.Sequential, Size = 400)]
-			public struct <InstanceId>e__FixedBuffer
+			public struct InstanceId__FixedBuffer
 			{
 				// Token: 0x040001E7 RID: 487
 				public ushort FixedElementField;
@@ -158,14 +159,14 @@ namespace ClickerUtilityLibrary.Comm.USBDriver
 			public Guid ClassGuid;
 
 			// Token: 0x040001D3 RID: 467
-			[FixedBuffer(typeof(ushort), 1)]
-			public CfgMgr.CM_NOTIFY_EVENT_DATA_DEVICE_INTERFACE.<SymbolicLink>e__FixedBuffer SymbolicLink;
+			//[FixedBuffer(typeof(ushort), 1)]
+			//public CfgMgr.CM_NOTIFY_EVENT_DATA_DEVICE_INTERFACE.<SymbolicLink>e__FixedBuffer SymbolicLink;
 
 			// Token: 0x0200005D RID: 93
 			[CompilerGenerated]
 			[UnsafeValueType]
 			[StructLayout(LayoutKind.Sequential, Size = 2)]
-			public struct <SymbolicLink>e__FixedBuffer
+			public struct SymbolicLinkFixedBuffer
 			{
 				// Token: 0x040001E8 RID: 488
 				public ushort FixedElementField;
@@ -185,14 +186,14 @@ namespace ClickerUtilityLibrary.Comm.USBDriver
 			public uint DataSize;
 
 			// Token: 0x040001D7 RID: 471
-			[FixedBuffer(typeof(byte), 1)]
-			public CfgMgr.CM_NOTIFY_EVENT_DATA_DEVICE_HANDLE.<Data>e__FixedBuffer Data;
+			//[FixedBuffer(typeof(byte), 1)]
+			//public CfgMgr.CM_NOTIFY_EVENT_DATA_DEVICE_HANDLE.<Data>e__FixedBuffer Data;
 
 			// Token: 0x0200005E RID: 94
 			[CompilerGenerated]
 			[UnsafeValueType]
 			[StructLayout(LayoutKind.Sequential, Size = 1)]
-			public struct <Data>e__FixedBuffer
+			public struct DataFixedBuffer
 			{
 				// Token: 0x040001E9 RID: 489
 				public byte FixedElementField;
@@ -203,14 +204,14 @@ namespace ClickerUtilityLibrary.Comm.USBDriver
 		internal struct CM_NOTIFY_EVENT_DATA_DEVICE_INSTANCE
 		{
 			// Token: 0x040001D8 RID: 472
-			[FixedBuffer(typeof(ushort), 1)]
-			public CfgMgr.CM_NOTIFY_EVENT_DATA_DEVICE_INSTANCE.<InstanceId>e__FixedBuffer InstanceId;
+			//[FixedBuffer(typeof(ushort), 1)]
+			//public CfgMgr.CM_NOTIFY_EVENT_DATA_DEVICE_INSTANCE.<InstanceId>e__FixedBuffer InstanceId;
 
 			// Token: 0x0200005F RID: 95
 			[CompilerGenerated]
 			[UnsafeValueType]
 			[StructLayout(LayoutKind.Sequential, Size = 2)]
-			public struct <InstanceId>e__FixedBuffer
+			public struct InstanceIdFixedBuffer
 			{
 				// Token: 0x040001EA RID: 490
 				public ushort FixedElementField;

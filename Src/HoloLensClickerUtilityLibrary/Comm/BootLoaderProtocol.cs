@@ -188,15 +188,17 @@ namespace ClickerUtilityLibrary.Comm
 					else
 					{
 						int cDEIndex;
-						Predicate<DataElement> <>9__0;
+						Predicate<DataElement> f9__0 = default;
 						for (;;)
 						{
 							cDEIndex = (int)BitConverter.ToUInt16(packet.RawPacket, num);
-							List<DataElement> responseArgs = CommandDictionary.Instance[command].ResponseArgs;
+							List<DataElement> responseArgs 
+								= CommandDictionary.Instance[command].ResponseArgs;
 							Predicate<DataElement> match;
-							if ((match = <>9__0) == null)
+							if ((match = f9__0) == null)
 							{
-								match = (<>9__0 = ((DataElement i) => i.Type == (DataElementType)cDEIndex));
+								match = (f9__0 = ((DataElement i) 
+									=> i.Type == (DataElementType)cDEIndex));
 							}
 							DataElement dataElement = responseArgs.Find(match);
 							bool flag5 = dataElement == null;

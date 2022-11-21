@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Threading;
 using Nokia.Mira.Chunks;
 
 namespace Nokia.Mira.Strategies
 {
 	// Token: 0x02000021 RID: 33
-	internal sealed class EnvironmentSetup
+	public sealed class EnvironmentSetup
 	{
 		// Token: 0x06000085 RID: 133 RVA: 0x00002EB9 File Offset: 0x000010B9
 		public EnvironmentSetup(string fileName)
@@ -15,8 +16,13 @@ namespace Nokia.Mira.Strategies
 			this.fileName = fileName;
 		}
 
-		// Token: 0x06000086 RID: 134 RVA: 0x00002EC8 File Offset: 0x000010C8
-		public void PrepareForNewDownload()
+        public EnvironmentSetup(CancellationToken cancellationToken)
+        {
+            this.cancellationToken = cancellationToken;
+        }
+
+        // Token: 0x06000086 RID: 134 RVA: 0x00002EC8 File Offset: 0x000010C8
+        public void PrepareForNewDownload()
 		{
 			this.EnsureEmptyTargetFile();
 		}
@@ -32,7 +38,11 @@ namespace Nokia.Mira.Strategies
 		}
 
 		// Token: 0x06000088 RID: 136 RVA: 0x00002F00 File Offset: 0x00001100
-		public ReadOnlyCollection<ChunkInformation> PrepareForResumedDownload(long chunkSize, IChunkInformationReader reader)
+		public ReadOnlyCollection<ChunkInformation> PrepareForResumedDownload
+		(
+			long chunkSize, 
+			IChunkInformationReader reader
+		)
 		{
 			ReadOnlyCollection<ChunkRaw> readOnlyCollection = reader.Read();
 			if (readOnlyCollection.Count == 0 || !this.TargetFileExists())
@@ -67,5 +77,6 @@ namespace Nokia.Mira.Strategies
 
 		// Token: 0x0400003D RID: 61
 		private readonly string fileName;
-	}
+        private CancellationToken cancellationToken;
+    }
 }

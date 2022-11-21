@@ -1,10 +1,11 @@
 ﻿using System;
 using Microsoft.WindowsDeviceRecoveryTool.Model.Enums;
+using Microsoft.WindowsDeviceRecoveryTool.Common; //?
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model.EventArgs
 {
 	// Token: 0x0200002F RID: 47
-	public class DeviceReadyChangedEventArgs : EventArgs
+	public class DeviceReadyChangedEventArgs : System.EventArgs
 	{
 		// Token: 0x06000144 RID: 324 RVA: 0x00004820 File Offset: 0x00002A20
 		public DeviceReadyChangedEventArgs(ConnectedDevice device, bool deviceReady, ConnectedDeviceMode mode)

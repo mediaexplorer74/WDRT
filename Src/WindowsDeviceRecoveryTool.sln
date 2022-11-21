@@ -41,8 +41,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareRepository", "Softw
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZipForge", "ZipForge\ZipForge.csproj", "{5D42CEC8-E315-4BAE-82F9-DB42646E73FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WindowsAzure.Storage", "Microsoft.WindowsAzure.Storage\Microsoft.WindowsAzure.Storage.csproj", "{D6981D57-352E-4D09-999E-00A422C840EE}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WindowsDeviceRecoveryTool.Localization.resources", "Microsoft.WindowsDeviceRecoveryTool.Localization.resources\Microsoft.WindowsDeviceRecoveryTool.Localization.resources.csproj", "{AB256C0C-B0DE-49A8-A5FC-9A045D53A189}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoloLensClickerUtilityLibrary", "HoloLensClickerUtilityLibrary\HoloLensClickerUtilityLibrary.csproj", "{AAC36403-B82F-4495-9801-9626BA5E60B3}"
@@ -130,6 +128,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PkgToolBox", "PkgToolBox\PkgToolBox.csproj", "{37BA0760-0C2C-4D4F-993F-94BE80CECF63}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interop.SirepClient", "Interop.SirepClient\Interop.SirepClient.csproj", "{89ED6F52-D516-459E-A1BF-8AA345005784}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ufphostm", "ufphostm\ufphostm.csproj", "{8FB84F5D-49BE-460B-B0D8-89F7F19132DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -369,18 +369,6 @@ Global
 		{5D42CEC8-E315-4BAE-82F9-DB42646E73FE}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{5D42CEC8-E315-4BAE-82F9-DB42646E73FE}.Release|x86.ActiveCfg = Release|Any CPU
 		{5D42CEC8-E315-4BAE-82F9-DB42646E73FE}.Release|x86.Build.0 = Release|Any CPU
-		{D6981D57-352E-4D09-999E-00A422C840EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D6981D57-352E-4D09-999E-00A422C840EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D6981D57-352E-4D09-999E-00A422C840EE}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{D6981D57-352E-4D09-999E-00A422C840EE}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{D6981D57-352E-4D09-999E-00A422C840EE}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{D6981D57-352E-4D09-999E-00A422C840EE}.Debug|x86.Build.0 = Debug|Any CPU
-		{D6981D57-352E-4D09-999E-00A422C840EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D6981D57-352E-4D09-999E-00A422C840EE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D6981D57-352E-4D09-999E-00A422C840EE}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{D6981D57-352E-4D09-999E-00A422C840EE}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{D6981D57-352E-4D09-999E-00A422C840EE}.Release|x86.ActiveCfg = Release|Any CPU
-		{D6981D57-352E-4D09-999E-00A422C840EE}.Release|x86.Build.0 = Release|Any CPU
 		{AB256C0C-B0DE-49A8-A5FC-9A045D53A189}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{AB256C0C-B0DE-49A8-A5FC-9A045D53A189}.Debug|Any CPU.Build.0 = Debug|x86
 		{AB256C0C-B0DE-49A8-A5FC-9A045D53A189}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
@@ -909,6 +897,18 @@ Global
 		{89ED6F52-D516-459E-A1BF-8AA345005784}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{89ED6F52-D516-459E-A1BF-8AA345005784}.Release|x86.ActiveCfg = Release|Any CPU
 		{89ED6F52-D516-459E-A1BF-8AA345005784}.Release|x86.Build.0 = Release|Any CPU
+		{8FB84F5D-49BE-460B-B0D8-89F7F19132DF}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{8FB84F5D-49BE-460B-B0D8-89F7F19132DF}.Debug|Any CPU.Build.0 = Debug|x86
+		{8FB84F5D-49BE-460B-B0D8-89F7F19132DF}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{8FB84F5D-49BE-460B-B0D8-89F7F19132DF}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{8FB84F5D-49BE-460B-B0D8-89F7F19132DF}.Debug|x86.ActiveCfg = Debug|x86
+		{8FB84F5D-49BE-460B-B0D8-89F7F19132DF}.Debug|x86.Build.0 = Debug|x86
+		{8FB84F5D-49BE-460B-B0D8-89F7F19132DF}.Release|Any CPU.ActiveCfg = Release|x86
+		{8FB84F5D-49BE-460B-B0D8-89F7F19132DF}.Release|Any CPU.Build.0 = Release|x86
+		{8FB84F5D-49BE-460B-B0D8-89F7F19132DF}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{8FB84F5D-49BE-460B-B0D8-89F7F19132DF}.Release|Mixed Platforms.Build.0 = Release|x86
+		{8FB84F5D-49BE-460B-B0D8-89F7F19132DF}.Release|x86.ActiveCfg = Release|x86
+		{8FB84F5D-49BE-460B-B0D8-89F7F19132DF}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

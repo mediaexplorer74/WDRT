@@ -3,7 +3,7 @@
 namespace Nokia.Mira.Chunks
 {
 	// Token: 0x02000024 RID: 36
-	internal class ChunkInformation
+	public class ChunkInformation
 	{
 		// Token: 0x0600009C RID: 156 RVA: 0x0000334B File Offset: 0x0000154B
 		public ChunkInformation(long begin, long current, long end)

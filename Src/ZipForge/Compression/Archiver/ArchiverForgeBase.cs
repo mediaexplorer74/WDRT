@@ -6,7 +6,7 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using ComponentAce.Compression.Exception;
+using ComponentAce.Compression.Exception1;
 using ComponentAce.Compression.Interfaces;
 
 namespace ComponentAce.Compression.Archiver
@@ -1684,32 +1684,38 @@ namespace ComponentAce.Compression.Archiver
 						return;
 					}
 				}
+
 				switch (this._archiverOptions.Overwrite)
 				{
 				case OverwriteMode.Prompt:
 					this.DoOnConfirmOverwrite(text, ref text2, ref flag, ref cancel);
 					if (flag && !cancel)
 					{
-						goto IL_1CA;
+						//goto IL_1CA;
 					}
 					break;
 				case OverwriteMode.Always:
-					goto IL_1CA;
+						//goto IL_1CA;
+						break;
 				case OverwriteMode.Never:
 					break;
 				case OverwriteMode.IfNewer:
+						break;
 				case OverwriteMode.IfOlder:
-				{
+				
 					DateTime lastWriteTime = File.GetLastWriteTime(text2);
 					DateTime lastModificationDateTime = this.GetLastModificationDateTime(this._itemsHandler.ItemsArray[itemNo]);
 					if ((lastWriteTime >= lastModificationDateTime && this._archiverOptions.Overwrite == OverwriteMode.IfNewer) || (lastWriteTime <= lastModificationDateTime && this._archiverOptions.Overwrite == OverwriteMode.IfOlder))
 					{
 						return;
 					}
-					goto IL_1CA;
-				}
-				default:
-					goto IL_1CA;
+							//goto IL_1CA;
+							
+				    break;
+				    
+				//default:
+					//goto IL_1CA;
+
 				}
 				return;
 			}

@@ -3,7 +3,7 @@
 namespace Microsoft.WindowsDeviceRecoveryTool.Model.EventArgs
 {
 	// Token: 0x0200002D RID: 45
-	public class DeviceConnectedEventArgs : EventArgs
+	public class DeviceConnectedEventArgs : System.EventArgs
 	{
 		// Token: 0x0600013A RID: 314 RVA: 0x00004720 File Offset: 0x00002920
 		public DeviceConnectedEventArgs(ConnectedDevice connectedDevice)

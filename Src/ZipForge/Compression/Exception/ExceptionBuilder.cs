@@ -1,7 +1,7 @@
 ﻿using System;
 using ComponentAce.Compression.Archiver;
 
-namespace ComponentAce.Compression.Exception
+namespace ComponentAce.Compression.Exception1
 {
 	// Token: 0x02000035 RID: 53
 	internal class ExceptionBuilder

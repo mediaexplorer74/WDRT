@@ -2,16 +2,17 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Common
 {
-	// Token: 0x02000005 RID: 5
-	public class EventArgs<T> : EventArgs
+    // Token: 0x02000005 RID: 5
+    // EventArgs<T>
+    public class EventArgs1<T>: System.EventArgs
 	{
 		// Token: 0x0600000B RID: 11 RVA: 0x000022A7 File Offset: 0x000004A7
-		public EventArgs()
+		public EventArgs1()
 		{
 		}
 
 		// Token: 0x0600000C RID: 12 RVA: 0x000022B2 File Offset: 0x000004B2
-		public EventArgs(T value) : this()
+		public EventArgs1(T value) : this()
 		{
 			this.Value = value;
 		}

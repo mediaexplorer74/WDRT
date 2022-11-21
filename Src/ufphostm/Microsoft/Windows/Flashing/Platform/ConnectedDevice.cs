@@ -319,13 +319,13 @@ namespace Microsoft.Windows.Flashing.Platform
 		}
 
 		// Token: 0x06000146 RID: 326 RVA: 0x00012614 File Offset: 0x00011A14
-		protected override void Finalize()
-		{
-			this.Dispose(false);
-		}
+		//public override void Finalize()
+		//{
+		//	this.Dispose(false);
+		//}
 
 		// Token: 0x0400011C RID: 284
-		private unsafe IConnectedDevice* m_Device = Device;
+		public unsafe IConnectedDevice* m_Device = Device;
 
 		// Token: 0x0400011D RID: 285
 		private bool m_OwnDevice;

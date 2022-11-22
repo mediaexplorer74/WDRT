@@ -93,8 +93,9 @@ ZipForge
 
 ## CAUTION
 
-- As my other decomp tests, this is as-is, I will not edit these. They are just a template for me to learn and maybe others.
-- System engenners, use / re-use it at your own risk. 
+- This is as-is. Just manual R.E. after automatic decompiling (or "reversing"), no more. 
+They are just a "system template" for me to learn and maybe others.
+- System engeneers, use / re-use it at your own risk. This app is not easy type of WPF app, IMHO.
 
 
 ## TODO

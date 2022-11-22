@@ -75,9 +75,13 @@
 		Content="{localization:Localization ButtonCancel}"
 		Visibility="{Binding IsCancelVisible, Converter={StaticResource VisibilityFixedHeightConverter}}"
 		Command="{Binding Commands[CancelAwaitRecoveryAfterEmergency]}">
-		<FrameworkElement.Style>
+
+        <!--
+        BasedOn="{StaticResource Button}"
+        -->
+            <FrameworkElement.Style>
 			<Style
-				BasedOn="{StaticResource Button}"
+				
 				TargetType="{x:Type Button}">
 				<Style.Triggers>
 					<Trigger

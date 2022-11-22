@@ -13,6 +13,8 @@ Decompiled dotnet source for Windows Device Recovery Tool, this code is provided
 
 ## My 2 cents
 - All projects "assembled" to one solution (.sln)
+- All "bad blocks" banned (disabled), but app logics crashed (events, dictionary etc. : mulfunction)
+- App compilation ok, app starts (shows blank window)
 
 
 ## "Architecture" ("Files decompiled")
@@ -92,10 +94,12 @@ ZipForge
 ## CAUTION
 
 - As my other decomp tests, this is as-is, I will not edit these. They are just a template for me to learn and maybe others.
+- System engenners, use / re-use it at your own risk. 
 
 
 ## TODO
-- Try to reconstruct this solution... (or find the time for WDRT RnD, heh)
+- Try to find the time for more WDRT RnD...
+- Try to assemble the lite version: use minimal number of projects, more special logics for ffu (re)flashing... idk
 
 ## References
 https://github.com/Empyreal96/WindowsDeviceRecoveryTool_components_decompiled
@@ -107,6 +111,6 @@ https://github.com/microsoft
 AS IS. No support. RnD only / DIY
 
 ## .
-[m][e] 2022
+[m][e] 2022, November
 
 

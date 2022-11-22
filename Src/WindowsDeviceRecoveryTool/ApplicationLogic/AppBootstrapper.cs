@@ -368,7 +368,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 			Tracer<AppBootstrapper>.WriteError(exception);
 			ErrorView exportedValue = this.Container.GetExportedValue<ErrorView>();
 			ErrorTemplateSelector errorTemplateSelector = exportedValue.Resources["ErrorSelector"] as ErrorTemplateSelector;
-			if (errorTemplateSelector != null && errorTemplateSelector.IsImplemented(exception))
+			if (errorTemplateSelector != null 
+				&& errorTemplateSelector.IsImplemented(exception))
 			{
 				this.EventAggregator.Publish<ErrorMessage>(new ErrorMessage(exception));
 				

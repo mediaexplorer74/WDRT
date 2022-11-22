@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -38,8 +39,16 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Framework
 		// Token: 0x06000285 RID: 645 RVA: 0x0000F50E File Offset: 0x0000D70E
 		public void ShowView(string regionName, FrameworkElement content)
 		{
-			this.regions[regionName].Content = content;
-		}
+			//RnD
+            try
+            {
+                this.regions[regionName].Content = content;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("[ex] RegionManager (ShowView) Exception : " + ex.Message);
+            }
+        }
 
 		// Token: 0x06000286 RID: 646 RVA: 0x0000F524 File Offset: 0x0000D724
 		public void AddRegion(string name, ContentControl control)
@@ -68,7 +77,15 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Framework
 		// Token: 0x0600028A RID: 650 RVA: 0x0000F57C File Offset: 0x0000D77C
 		public void ShowRegion(string name)
 		{
-			this.regions[name].Visibility = Visibility.Visible;
+			//RnD
+			try
+			{
+				this.regions[name].Visibility = Visibility.Visible;
+			}
+			catch (Exception ex)
+			{
+				Debug.WriteLine("[ex] RegionManager (ShowRegion) Exception : " + ex.Message);
+			}
 		}
 
 		// Token: 0x0600028B RID: 651 RVA: 0x0000F594 File Offset: 0x0000D794

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.Diagnostics;
 using System.Linq;
 using Microsoft.WindowsDeviceRecoveryTool.Common;
 
@@ -50,38 +51,46 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Framework
 		// Token: 0x06000785 RID: 1925 RVA: 0x00027BF4 File Offset: 0x00025DF4
 		private void Publish<TMessage>(TMessage message, Action<Action> executor)
 		{
-			WeakReference[] objectsToNotify;
-			lock (this.subscribers)
+			WeakReference[] objectsToNotify = default;
+
+			try
 			{
-				objectsToNotify = this.subscribers.ToArray();
-			}
-			executor(delegate
-			{
-				List<WeakReference> list = new List<WeakReference>();
-				WeakReference[] objectsToNotify = default;
-				foreach (WeakReference weakReference in objectsToNotify)
+				lock (this.subscribers)
 				{
-					ICanHandle<TMessage> canHandle = weakReference.Target as ICanHandle<TMessage>;
-					if (canHandle != null)
-					{
-						canHandle.Handle(message);
-					}
-					else if (!weakReference.IsAlive)
-					{
-						list.Add(weakReference);
-					}
+					objectsToNotify = this.subscribers.ToArray();
 				}
-				if (list.Count > 0)
+				executor(delegate
 				{
-					lock (this.subscribers)
+					List<WeakReference> list = new List<WeakReference>();
+					WeakReference[] objectsToNotify = default;
+					foreach (WeakReference weakReference in objectsToNotify)
 					{
-						foreach (WeakReference item in list)
+						ICanHandle<TMessage> canHandle = weakReference.Target as ICanHandle<TMessage>;
+						if (canHandle != null)
 						{
-							this.subscribers.Remove(item);
+							canHandle.Handle(message);
+						}
+						else if (!weakReference.IsAlive)
+						{
+							list.Add(weakReference);
 						}
 					}
-				}
-			});
+					if (list.Count > 0)
+					{
+						lock (this.subscribers)
+						{
+							foreach (WeakReference item in list)
+							{
+								this.subscribers.Remove(item);
+							}
+						}
+					}
+				});
+			}
+			catch (Exception ex)
+			{
+				Debug.WriteLine("[ex] EventAggregator (Publish) Exception : " + ex.Message);
+			}
 		}
 
 		// Token: 0x0400035B RID: 859

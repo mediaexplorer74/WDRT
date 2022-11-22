@@ -6,7 +6,7 @@
 
     <!--Button-->
         <Style
-		TargetType="{x:Type Button}"
+		TargetType="{x:Type ButtonBase}"
 		x:Key="FlipImagePathButtonStyle">
 		<Setter
 			Property="Background"
@@ -38,7 +38,7 @@
 		<Setter
 			Property="Foreground"
 			Value="{DynamicResource ButtonForegroundThemeBrush}" />
-		<!--Setter Property="ContentTemplate">
+		<Setter Property="ContentTemplate">
 			<Setter.Value>
 				<DataTemplate
 					DataType="{x:Type ImageSource}">
@@ -60,7 +60,7 @@
 					</Image>
 				</DataTemplate>
 			</Setter.Value>
-		</Setter-->
+		</Setter>
 		
         <Setter
 			Property="Template">

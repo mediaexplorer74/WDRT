@@ -1,5 +1,12 @@
 <Grid
-	x:Class="Microsoft.WindowsDeviceRecoveryTool.States.Error.ErrorView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:resources="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Resources" xmlns:templates1="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.States.Error.Templates" xmlns:error1="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.States.Error"
+	x:Class="Microsoft.WindowsDeviceRecoveryTool.States.Error.ErrorView" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:resources="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Resources" 
+    xmlns:templates1="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.States.Error.Templates" 
+    xmlns:error1="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.States.Error"
 	Style="{DynamicResource ContentRoot}">
 	<FrameworkElement.Resources>
 		<ResourceDictionary>
@@ -18,11 +25,11 @@
 				<templates1:AutoUpdateError
 					DataContext="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type error1:ErrorView}}}" />
 			</DataTemplate>
-			<error1:ErrorTemplateSelector
+			<!--error1:ErrorTemplateSelector
 				DefaultError="{StaticResource DefaultErrorTemplate}"
 				TryAgainError="{StaticResource TryAgainErrorTemplate}"
 				AutoUpdateError="{StaticResource AutoUpdateErrorTemplate}"
-				x:Key="{x:Static resources:Consts.ErrorSelector}" />
+				x:Key="{x:Static resources:Consts.ErrorSelector}" /-->
 		</ResourceDictionary>
 	</FrameworkElement.Resources>
 	<Grid.RowDefinitions>
@@ -31,9 +38,10 @@
 		<RowDefinition
 			Height="*" />
 	</Grid.RowDefinitions>
-	<ContentControl
+
+    <!--ContentTemplateSelector="{StaticResource resources:Consts.ErrorSelector}"-->
+        <ContentControl
 		Grid.Row="1"
-		ContentTemplateSelector="{StaticResource resources:Consts.ErrorSelector}"
 		HorizontalContentAlignment="Left"
 		VerticalContentAlignment="Center"
 		HorizontalAlignment="Left"

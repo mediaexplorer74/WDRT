@@ -20,35 +20,33 @@
 			ScrollViewer.HorizontalScrollBarVisibility="Disabled"
 			SelectedValuePath="DataContext"
 			AutomationProperties.Name="{l:Localization HelpPages}">
-			<TreeViewItem
+            <!--(TreeViewItem 1) Style="{DynamicResource SettingsPageTreeViewItemStyle}"-->
+            <!--(TreeViewItem 2) Style="{DynamicResource SettingsPageTreeViewItemStyle}"-->
+            <!--(TreeViewItem 3) Style="{DynamicResource SettingsPageTreeViewItemStyle}"-->
+            <!--(TreeViewItem 4) Style="{DynamicResource SettingsPageTreeViewItemStyle}"-->
+            <TreeViewItem
 				Header="Lumia"
-				Style="{DynamicResource SettingsPageTreeViewItemStyle}"
 				IsSelected="{Binding SelectedTab, Converter={StaticResource EqualityToBoolConverter}, ConverterParameter={x:Static help:HelpTabs.LumiaChoose}}">
 				<TreeViewItem
-					Style="{DynamicResource SettingsPageTreeViewItemStyle}"
 					Header="{l:Localization EmergencyMode}"
 					IsSelected="{Binding SelectedTab, Converter={StaticResource EqualityToBoolConverter}, ConverterParameter={x:Static help:HelpTabs.LumiaEmergency}}" />
 				<TreeViewItem
-					Style="{DynamicResource SettingsPageTreeViewItemStyle}"
 					Header="{l:Localization FlashMode}"
 					IsSelected="{Binding SelectedTab, Converter={StaticResource EqualityToBoolConverter}, ConverterParameter={x:Static help:HelpTabs.LumiaFlashing}}" />
 				<TreeViewItem
-					Style="{DynamicResource SettingsPageTreeViewItemStyle}"
 					Header="{l:Localization NormalMode}"
 					IsSelected="{Binding SelectedTab, Converter={StaticResource EqualityToBoolConverter}, ConverterParameter={x:Static help:HelpTabs.LumiaNormal}}" />
 			</TreeViewItem>
+            
 			<TreeViewItem
 				Header="HTC"
-				Style="{DynamicResource SettingsPageTreeViewItemStyle}"
 				IsSelected="{Binding SelectedTab, Converter={StaticResource EqualityToBoolConverter}, ConverterParameter={x:Static help:HelpTabs.HtcChoose}}"
 				Visibility="{Binding DataContext.HtcPluginOn, Converter={StaticResource BoolToVisibilityConverter}, ElementName=RootElement}">
 				<TreeViewItem
-					Style="{DynamicResource SettingsPageTreeViewItemStyle}"
 					Header="{Binding DataContext.HTCBootloaderModeText, ElementName=RootElement}"
 					IsSelected="{Binding SelectedTab, Converter={StaticResource EqualityToBoolConverter}, ConverterParameter={x:Static help:HelpTabs.HtcBootloader}}"
 					Visibility="{Binding DataContext.HtcPluginOn, Converter={StaticResource BoolToVisibilityConverter}, ElementName=RootElement}" />
 				<TreeViewItem
-					Style="{DynamicResource SettingsPageTreeViewItemStyle}"
 					Header="{l:Localization NormalMode}"
 					IsSelected="{Binding SelectedTab, Converter={StaticResource EqualityToBoolConverter}, ConverterParameter={x:Static help:HelpTabs.HtcNormal}}"
 					Visibility="{Binding DataContext.HtcPluginOn, Converter={StaticResource BoolToVisibilityConverter}, ElementName=RootElement}" />

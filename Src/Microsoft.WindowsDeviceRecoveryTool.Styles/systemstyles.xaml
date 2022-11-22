@@ -7712,17 +7712,23 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
-	<Style
+    
+    <!--
+    BasedOn="{StaticResource {x:Type ComboBoxItem}}"
+    -->
+    <Style
 		TargetType="{x:Type ComboBoxItem}"
-		BasedOn="{StaticResource {x:Type ComboBoxItem}}"
+		
 		x:Key="PreferencesComboBoxItem">
-		<Setter
+		<!--Setter
 			Property="MinWidth"
-			Value="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" />
+			Value="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" /-->
 	</Style>
-	<Style
+
+    <!--BasedOn="{StaticResource {x:Type ComboBoxItem}}"-->
+    <Style
 		TargetType="{x:Type ComboBoxItem}"
-		BasedOn="{StaticResource {x:Type ComboBoxItem}}"
+		
 		x:Key="PreferencesLanguageComboBoxItem">
 		<Setter
 			Property="MinWidth"

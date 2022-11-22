@@ -84,16 +84,19 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 		// Token: 0x060006AC RID: 1708 RVA: 0x00022CA4 File Offset: 0x00020EA4
 		private void OnLanguagesComboBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			ThemeStyle themeStyle = this.ThemesComboBox.SelectedItem as ThemeStyle;
-			if (themeStyle != null)
-			{
-				this.UpdateComboBoxText(this.ThemesComboBox, themeStyle.LocalizedName);
-			}
-			DictionaryStyle dictionaryStyle = this.ColorsComboBox.SelectedItem as DictionaryStyle;
-			if (dictionaryStyle != null)
-			{
-				this.UpdateComboBoxText(this.ColorsComboBox, dictionaryStyle.LocalizedName);
-			}
+			//RnD
+			//ThemeStyle themeStyle = this.ThemesComboBox.SelectedItem as ThemeStyle;
+			//if (themeStyle != null)
+			//{
+			//	this.UpdateComboBoxText(this.ThemesComboBox, themeStyle.LocalizedName);
+			//}
+			
+			//RnD
+			//DictionaryStyle dictionaryStyle = this.ColorsComboBox.SelectedItem as DictionaryStyle;
+			//if (dictionaryStyle != null)
+			//{
+			//	this.UpdateComboBoxText(this.ColorsComboBox, dictionaryStyle.LocalizedName);
+			//}
 		}
 
 		// Token: 0x060006AD RID: 1709 RVA: 0x00022D10 File Offset: 0x00020F10

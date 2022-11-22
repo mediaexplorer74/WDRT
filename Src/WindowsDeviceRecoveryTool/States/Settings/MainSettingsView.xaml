@@ -6,7 +6,9 @@
 		<ColumnDefinition
 			Width="*" />
 	</Grid.ColumnDefinitions>
-	<ListView
+    
+    <!--ItemContainerStyle="{DynamicResource SettingsPageListViewItemStyle}"-->
+    <ListView
 		Name="ListView"
 		Grid.Column="0"
 		Grid.RowSpan="2"
@@ -19,8 +21,7 @@
 		ScrollViewer.HorizontalScrollBarVisibility="Disabled"
 		SelectedValuePath="Page"
 		DisplayMemberPath="Title"
-		ItemContainerStyle="{DynamicResource SettingsPageListViewItemStyle}"
-		AutomationProperties.Name="{localization:Localization SettingsPages}"
+		AutomationProperties.Name="SettingsPages"
 		SelectedValue="{Binding SelectedPage}">
 		<settings:SettingsPageListItem
 			Page="Preferences"

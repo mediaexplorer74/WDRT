@@ -12,6 +12,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Framework
 		// Token: 0x06000281 RID: 641 RVA: 0x0000F4AC File Offset: 0x0000D6AC
 		private RegionManager()
 		{
+			//
 		}
 
 		// Token: 0x1700006C RID: 108

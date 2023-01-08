@@ -34,9 +34,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CabApiWrapper">
-      <HintPath>C:\iutool2015\CabApiWrapper.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml" />
@@ -102,6 +99,10 @@
     <Compile Include="WPPackageBase.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CabApiWrapper\CabApiWrapper.csproj">
+      <Project>{3008b0cc-bade-46cb-a46d-0ffe647f19cd}</Project>
+      <Name>CabApiWrapper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PkgToolBox\PkgToolBox.csproj">
       <Project>{37BA0760-0C2C-4D4F-993F-94BE80CECF63}</Project>
       <Name>PkgToolBox</Name>

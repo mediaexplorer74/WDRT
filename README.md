@@ -112,6 +112,6 @@ https://github.com/microsoft
 AS IS. No support. RnD only / DIY
 
 ## .
-[m][e] 8 January, 2023
+[m][e] January, 8 2023
 
 

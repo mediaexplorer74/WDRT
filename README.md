@@ -13,8 +13,9 @@ Decompiled dotnet source for Windows Device Recovery Tool, this code is provided
 
 ## My 2 cents
 - All projects "assembled" to one solution (.sln)
-- All "bad blocks" banned (disabled), but app logics crashed (events, dictionary etc. : mulfunction)
-- App compilation ok, app starts (shows blank window)
+- Some "bad blocks" banned (disabled), 
+- Some app logics crashed (events, dictionary...)
+- App compilation ok, app starts (shows only Update window)
 
 
 ## "Architecture" ("Files decompiled")

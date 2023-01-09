@@ -84,12 +84,15 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 		// Token: 0x06000426 RID: 1062 RVA: 0x00013F44 File Offset: 0x00012144
 		public override void OnStarted()
 		{
-			base.EventAggregator.Publish<HeaderMessage>(new HeaderMessage(LocalizationManager.GetTranslation("ApplicationUpdate"), ""));
-			base.EventAggregator.Publish<IsBackButtonMessage>(new IsBackButtonMessage(false));
-			base.EventAggregator.Publish<BlockWindowMessage>(new BlockWindowMessage(false, null, null));
+			base.EventAggregator.Publish<HeaderMessage>(
+				new HeaderMessage(LocalizationManager.GetTranslation("ApplicationUpdate"), ""));
+			base.EventAggregator.Publish<IsBackButtonMessage>(
+				new IsBackButtonMessage(false));
+			base.EventAggregator.Publish<BlockWindowMessage>(
+				new BlockWindowMessage(false, null, null));
 			this.IsChecking = true;
 			//RnD
-			//base.Commands.Run((AppController c) => c.CheckForAppUpdate(null, CancellationToken.None));
+			base.Commands.Run((AppController c) => c.CheckForAppUpdate(null, CancellationToken.None));
 		}
 
 		// Token: 0x06000427 RID: 1063 RVA: 0x0001401F File Offset: 0x0001221F

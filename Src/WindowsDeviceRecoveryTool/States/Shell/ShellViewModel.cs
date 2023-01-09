@@ -222,34 +222,34 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Shell
 			this.IsBackButton = message.IsBackButton;
 		}
 
-		// Token: 0x0400032B RID: 811
-		private Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext;
+        // Token: 0x0400032B RID: 811
+        public Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext;
 
-		// Token: 0x0400032C RID: 812
-		private string busyMessage;
+        // Token: 0x0400032C RID: 812
+        public string busyMessage;
 
-		// Token: 0x0400032D RID: 813
-		private string notificationHeader;
+        // Token: 0x0400032D RID: 813
+        public string notificationHeader;
 
-		// Token: 0x0400032E RID: 814
-		private string notificationText;
+        // Token: 0x0400032E RID: 814
+        public string notificationText;
 
-		// Token: 0x0400032F RID: 815
-		private string headerText;
+        // Token: 0x0400032F RID: 815
+        public string headerText;
 
-		// Token: 0x04000330 RID: 816
-		private string subheaderText;
+        // Token: 0x04000330 RID: 816
+        public string subheaderText;
 
-		// Token: 0x04000331 RID: 817
-		private bool isAppBusy;
+        // Token: 0x04000331 RID: 817
+        public bool isAppBusy;
 
-		// Token: 0x04000332 RID: 818
-		private bool? isNotificationVisible;
+        // Token: 0x04000332 RID: 818
+        public bool? isNotificationVisible;
 
-		// Token: 0x04000333 RID: 819
-		private bool showDetailedInfo;
+        // Token: 0x04000333 RID: 819
+        public bool showDetailedInfo;
 
-		// Token: 0x04000334 RID: 820
-		private bool isBackButton;
+        // Token: 0x04000334 RID: 820
+        public bool isBackButton;
 	}
 }

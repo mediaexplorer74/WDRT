@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.WindowsDeviceRecoveryTool.Controllers;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
@@ -20,5 +21,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Framework
 		protected CommandRepository(SerializationInfo info, StreamingContext context) : base(info, context)
 		{
 		}
-	}
+
+        public void Run(Action<AppController> value) 
+		{            
+        }
+    }
 }

@@ -104,9 +104,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 			{
 				if (ApplicationBuildSettings.SkipApplicationUpdate || !this.IsAvailableAppUpdate())
 				{
-					//RnD
-					//base.Commands.Run((AppController c) => c.SwitchToState("AutomaticManufacturerSelectionState"));
-				}
+                    //RnD
+                    base.Commands.Run((AppController c) =>
+                    {
+                        c.SwitchToState("AutomaticManufacturerSelectionState");
+                    });
+                    
+                }
 			}
 			catch (Exception ex)
 			{
@@ -140,7 +144,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 		public void InstallAppUpdate(object parameter, CancellationToken cancellationToken)
 		{
 			//RnD
-			//base.Commands.Run((AppController c) => c.SwitchToState("AppAutoUpdateState"));
+			base.Commands.Run((AppController c) => c.SwitchToState("AppAutoUpdateState"));
 		}
 
 		// Token: 0x06000759 RID: 1881 RVA: 0x00026F14 File Offset: 0x00025114
@@ -195,8 +199,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 					return;
 				}
 			}
+			
 			//RnD
-			//base.Commands.Run((AppController c) => c.SwitchToState(comparisonStatusAndStateTuple.Item2));
+			base.Commands.Run((AppController c) => c.SwitchToState(comparisonStatusAndStateTuple.Item2));
 		}
 
 		// Token: 0x0600075C RID: 1884 RVA: 0x00027118 File Offset: 0x00025318
@@ -206,7 +211,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 			((IAsyncDelegateCommand)base.Commands["UpdateApplication"]).Cancel();
 			
 			//RnD
-			//base.Commands.Run((AppController c) => c.SwitchToState("CheckAppAutoUpdateState"));
+			base.Commands.Run((AppController c) => c.SwitchToState("CheckAppAutoUpdateState"));
 		}
 
 		// Token: 0x0600075D RID: 1885 RVA: 0x000271A7 File Offset: 0x000253A7

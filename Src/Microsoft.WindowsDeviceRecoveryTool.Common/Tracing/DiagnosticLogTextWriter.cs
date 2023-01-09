@@ -102,7 +102,15 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Common.Tracing
 			{
 				builder.Append(" | ");
 			}
-			builder.AppendFormat(CultureInfo.CurrentCulture, formatString, args);
+
+			//RnD
+			if (formatString == null)
+			{
+				formatString = "";
+			}
+
+
+            builder.AppendFormat(CultureInfo.CurrentCulture, formatString, args);
 		}
 
 		// Token: 0x06000050 RID: 80 RVA: 0x000032FC File Offset: 0x000014FC

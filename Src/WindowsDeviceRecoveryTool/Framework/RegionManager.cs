@@ -100,16 +100,21 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Framework
 		}
 
 		// Token: 0x040000FB RID: 251
-		private readonly IDictionary<string, ContentControl> regions = new Dictionary<string, ContentControl>();
+		private readonly IDictionary<string, ContentControl> 
+			regions = new Dictionary<string, ContentControl>();
 
 		// Token: 0x040000FC RID: 252
-		public static readonly DependencyProperty RegionNameProperty = DependencyProperty.RegisterAttached("RegionName", typeof(string), typeof(RegionManager), new FrameworkPropertyMetadata(string.Empty, FrameworkPropertyMetadataOptions.AffectsRender, new PropertyChangedCallback(RegionManager.OnSetRegionNameChanged)));
+		public static readonly DependencyProperty RegionNameProperty 
+			= DependencyProperty.RegisterAttached("RegionName", typeof(string), 
+				typeof(RegionManager), new FrameworkPropertyMetadata(
+					string.Empty, FrameworkPropertyMetadataOptions.AffectsRender, 
+					new PropertyChangedCallback(RegionManager.OnSetRegionNameChanged)));
 
 		// Token: 0x02000049 RID: 73
-		private class Nested
+		public class Nested
 		{
 			// Token: 0x040000FD RID: 253
-			internal static readonly RegionManager NestedInstance = new RegionManager();
+			public static readonly RegionManager NestedInstance = new RegionManager();
 		}
 	}
 }

@@ -1,5 +1,14 @@
 <Grid
-	x:Class="Microsoft.WindowsDeviceRecoveryTool.States.Settings.MainSettingsView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:framework="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Framework" xmlns:resources="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Resources" xmlns:settings="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.States.Settings" xmlns:localization="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Localization;assembly=Microsoft.WindowsDeviceRecoveryTool.Localization" xmlns:behaviors="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Styles.Behaviors;assembly=Microsoft.WindowsDeviceRecoveryTool.Styles">
+	x:Class="Microsoft.WindowsDeviceRecoveryTool.States.Settings.MainSettingsView" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:framework="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Framework" 
+    xmlns:resources="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Resources" 
+    xmlns:settings="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.States.Settings" 
+    xmlns:localization="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Localization;assembly=Microsoft.WindowsDeviceRecoveryTool.Localization" 
+    xmlns:behaviors="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Styles.Behaviors;assembly=Microsoft.WindowsDeviceRecoveryTool.Styles">
 	<Grid.ColumnDefinitions>
 		<ColumnDefinition
 			Width="200" />

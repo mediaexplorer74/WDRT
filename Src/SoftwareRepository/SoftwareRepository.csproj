@@ -84,10 +84,6 @@
       <Project>{8C726962-D7A3-4054-B90F-0583259F965A}</Project>
       <Name>Microsoft.WindowsAzure.Storage</Name>
     </ProjectReference>
-    <ProjectReference Include="..\mscorlib\mscorlib.csproj">
-      <Project>{8C726962-D7A3-4054-B90F-0583259F968E}</Project>
-      <Name>mscorlib</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Newtonsoft.Json\Newtonsoft.Json.csproj">
       <Project>{8C726962-D7A3-4054-B90F-0583259F9682}</Project>
       <Name>Newtonsoft.Json</Name>
@@ -102,4 +98,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
+ 
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>

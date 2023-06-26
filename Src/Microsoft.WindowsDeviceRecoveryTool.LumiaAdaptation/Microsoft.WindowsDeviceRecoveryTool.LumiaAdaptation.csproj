@@ -84,10 +84,6 @@
       <Project>{8C726962-D7A3-4054-B90F-0583259F9675}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\mscorlib\mscorlib.csproj">
-      <Project>{8C726962-D7A3-4054-B90F-0583259F968E}</Project>
-      <Name>mscorlib</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Nokia.Lucid\Nokia.Lucid.csproj">
       <Project>{8C726962-D7A3-4054-B90F-0583259F9683}</Project>
       <Name>Nokia.Lucid</Name>
@@ -110,4 +106,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
+<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>

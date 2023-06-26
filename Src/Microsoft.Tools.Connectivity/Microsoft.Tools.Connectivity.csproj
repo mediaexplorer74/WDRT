@@ -54,10 +54,6 @@
     <Compile Include="RemoteFile.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\mscorlib\mscorlib.csproj">
-      <Project>{8C726962-D7A3-4054-B90F-0583259F968E}</Project>
-      <Name>mscorlib</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SirepInterop\SirepInterop.csproj">
       <Project>{8C726962-D7A3-4054-B90F-0583259F9687}</Project>
       <Name>SirepInterop</Name>
@@ -68,6 +64,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="System" /> 
     <Reference Include="System.Core" />
   </ItemGroup>
+
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>

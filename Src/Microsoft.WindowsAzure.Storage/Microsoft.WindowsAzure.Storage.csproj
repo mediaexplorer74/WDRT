@@ -392,10 +392,6 @@
       <Project>{8C726962-D7A3-4054-B90F-0583259F9656}</Project>
       <Name>Microsoft.Data.Services.Client</Name>
     </ProjectReference>
-    <ProjectReference Include="..\mscorlib\mscorlib.csproj">
-      <Project>{8C726962-D7A3-4054-B90F-0583259F968E}</Project>
-      <Name>mscorlib</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Newtonsoft.Json\Newtonsoft.Json.csproj">
       <Project>{8C726962-D7A3-4054-B90F-0583259F9682}</Project>
       <Name>Newtonsoft.Json</Name>
@@ -410,4 +406,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
+
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>

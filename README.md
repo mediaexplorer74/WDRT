@@ -1,15 +1,8 @@
 # WDRT 
-
 Windows Device Recovery Tool 3.16.0.0 (decomp.+refresh.)
 
 ## Abstract
-
 Decompiled dotnet source for Windows Device Recovery Tool, this code is provided 'as-is', so expect errors in places.
-
-# Design / Screenshots
-<table><tr>
-<td> <img src="Images/shot1.png" alt="Drawing" style="width: 800px;"/> </td>
-</tr></table> 
 
 ## Current status
 - Researching the decomp. code, fixing *.csproj files
@@ -24,7 +17,7 @@ Decompiled dotnet source for Windows Device Recovery Tool, this code is provided
 - Try to add platform targets: x64; ARMxx.
 
 ## ..
-As is. RnD only. 
+As is. No support. RnD only. 
 
 ## .
 [m][e] 2023

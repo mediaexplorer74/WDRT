@@ -61,10 +61,6 @@
     <EmbeddedResource Include="Resources\winjrlte.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FFUComponents\FFUComponents.csproj">
-      <Project>{8C726962-D7A3-4054-B90F-0583259F964F}</Project>
-      <Name>FFUComponents</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Common\Microsoft.WindowsDeviceRecoveryTool.Common.csproj">
       <Project>{8C726962-D7A3-4054-B90F-0583259F9660}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.Common</Name>
@@ -93,10 +89,6 @@
       <Project>{8C726962-D7A3-4054-B90F-0583259F9676}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.OemAdaptation</Name>
     </ProjectReference>
-    <ProjectReference Include="..\mscorlib\mscorlib.csproj">
-      <Project>{8C726962-D7A3-4054-B90F-0583259F968E}</Project>
-      <Name>mscorlib</Name>
-    </ProjectReference>
     <ProjectReference Include="..\System.Drawing\System.Drawing.csproj">
       <Project>{8C726962-D7A3-4054-B90F-0583259F968F}</Project>
       <Name>System.Drawing</Name>
@@ -110,4 +102,6 @@
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
   </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>

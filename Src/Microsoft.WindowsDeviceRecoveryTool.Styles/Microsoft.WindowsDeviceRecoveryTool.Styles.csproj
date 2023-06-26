@@ -67,6 +67,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TiltEffect.cs" />
   </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Common\Microsoft.WindowsDeviceRecoveryTool.Common.csproj">
       <Project>{8C726962-D7A3-4054-B90F-0583259F9660}</Project>
@@ -76,24 +77,17 @@
       <Project>{8C726962-D7A3-4054-B90F-0583259F966F}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.Localization</Name>
     </ProjectReference>
-    <ProjectReference Include="..\mscorlib\mscorlib.csproj">
-      <Project>{8C726962-D7A3-4054-B90F-0583259F968E}</Project>
-      <Name>mscorlib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\System.Drawing\System.Drawing.csproj">
-      <Project>{8C726962-D7A3-4054-B90F-0583259F968F}</Project>
-      <Name>System.Drawing</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\System\System.csproj">
-      <Project>{8C726962-D7A3-4054-B90F-0583259F9692}</Project>
-      <Name>System</Name>
-    </ProjectReference>
+   
   </ItemGroup>
+
   <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="System.Core" />
     <Reference Include="WindowsBase" />
+    <Reference Include="System" />
+    <Reference Include="System.Drawing"/>
   </ItemGroup>
+
   <ItemGroup>
     <Page Include="colors\blackdictionary.xaml">
       <SubType>Designer</SubType>
@@ -148,4 +142,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+
+<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>

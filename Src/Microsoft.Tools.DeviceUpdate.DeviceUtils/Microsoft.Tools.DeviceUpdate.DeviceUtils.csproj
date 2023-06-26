@@ -91,21 +91,9 @@
     <Compile Include="WpdUtils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FFUComponents\FFUComponents.csproj">
-      <Project>{8C726962-D7A3-4054-B90F-0583259F964F}</Project>
-      <Name>FFUComponents</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Microsoft.Tools.Connectivity\Microsoft.Tools.Connectivity.csproj">
       <Project>{8C726962-D7A3-4054-B90F-0583259F9658}</Project>
       <Name>Microsoft.Tools.Connectivity</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\mscorlib\mscorlib.csproj">
-      <Project>{8C726962-D7A3-4054-B90F-0583259F968E}</Project>
-      <Name>mscorlib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\mscorlib\mscorlib.csproj">
-      <Project>{8C726962-D7A3-4054-B90F-0583259F968E}</Project>
-      <Name>mscorlib</Name>
     </ProjectReference>
     <ProjectReference Include="..\System\System.csproj">
       <Project>{8C726962-D7A3-4054-B90F-0583259F9692}</Project>
@@ -122,4 +110,5 @@
     <Reference Include="Microsoft.Deployment.Compression.Cab" />
     <Reference Include="System.Core" />
   </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

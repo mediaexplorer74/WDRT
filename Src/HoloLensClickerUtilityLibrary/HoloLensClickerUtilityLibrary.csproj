@@ -8,7 +8,6 @@
     <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
     <FileAlignment>512</FileAlignment>
     <TargetFramework>net48</TargetFramework>
-    <!--Platforms>AnyCPU;x86</Platforms-->
   </PropertyGroup>
   
   <PropertyGroup>
@@ -103,17 +102,5 @@
     <Compile Include="NamespaceDoc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\mscorlib\mscorlib.csproj">
-      <Project>{8C726962-D7A3-4054-B90F-0583259F968E}</Project>
-      <Name>mscorlib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\System\System.csproj">
-      <Project>{8C726962-D7A3-4054-B90F-0583259F9692}</Project>
-      <Name>System</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="System.Core" />
-  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

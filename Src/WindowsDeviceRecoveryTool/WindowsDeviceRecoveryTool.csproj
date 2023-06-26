@@ -455,24 +455,14 @@
       <Project>{8C726962-D7A3-4054-B90F-0583259F9681}</Project>
       <Name>Microsoft.Xaml.Behaviors</Name>
     </ProjectReference>
-    <ProjectReference Include="..\mscorlib\mscorlib.csproj">
-      <Project>{8C726962-D7A3-4054-B90F-0583259F968E}</Project>
-      <Name>mscorlib</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Nokia.Lucid\Nokia.Lucid.csproj">
       <Project>{8C726962-D7A3-4054-B90F-0583259F9683}</Project>
       <Name>Nokia.Lucid</Name>
     </ProjectReference>
-    <ProjectReference Include="..\System.Windows.Forms\System.Windows.Forms.csproj">
-      <Project>{8C726962-D7A3-4054-B90F-0583259F9691}</Project>
-      <Name>System.Windows.Forms</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\System\System.csproj">
-      <Project>{8C726962-D7A3-4054-B90F-0583259F9692}</Project>
-      <Name>System</Name>
-    </ProjectReference>
   </ItemGroup>
+
   <ItemGroup>
+    <Reference Include="System" />
     <Reference Include="PresentationCore" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
@@ -480,6 +470,7 @@
     <Reference Include="UIAutomationTypes" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
+
   <ItemGroup>
     <None Include="app.config" />
     <None Include="app.manifest" />
@@ -756,4 +747,7 @@
     <Resource Include="Resources\unknown_wp.png" />
     <Resource Include="Resources\unsupporteddevice.png" />
   </ItemGroup>
+  
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>

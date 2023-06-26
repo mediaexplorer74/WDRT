@@ -45,13 +45,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\mscorlib\mscorlib.csproj">
-      <Project>{8C726962-D7A3-4054-B90F-0583259F968E}</Project>
-      <Name>mscorlib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\System\System.csproj">
-      <Project>{8C726962-D7A3-4054-B90F-0583259F9692}</Project>
-      <Name>System</Name>
-    </ProjectReference>
-  </ItemGroup>
+    <Reference Include="System" />
+   </ItemGroup>
+
+ <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>

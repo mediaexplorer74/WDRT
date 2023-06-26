@@ -47,6 +47,7 @@
     <Compile Include="Primitives\VariantInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Core\Microsoft.WindowsDeviceRecoveryTool.Core.csproj">
       <Project>{8C726962-D7A3-4054-B90F-0583259F9661}</Project>
@@ -56,16 +57,14 @@
       <Project>{8C726962-D7A3-4054-B90F-0583259F9675}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\mscorlib\mscorlib.csproj">
-      <Project>{8C726962-D7A3-4054-B90F-0583259F968E}</Project>
-      <Name>mscorlib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\System.Drawing\System.Drawing.csproj">
-      <Project>{8C726962-D7A3-4054-B90F-0583259F968F}</Project>
-      <Name>System.Drawing</Name>
-    </ProjectReference>
+  
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawings" />
   </ItemGroup>
+
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>

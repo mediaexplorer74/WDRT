@@ -54,10 +54,6 @@
       <Project>{8C726962-D7A3-4054-B90F-0583259F9651}</Project>
       <Name>ImageCommon</Name>
     </ProjectReference>
-    <ProjectReference Include="..\mscorlib\mscorlib.csproj">
-      <Project>{8C726962-D7A3-4054-B90F-0583259F968E}</Project>
-      <Name>mscorlib</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Core" />
@@ -65,4 +61,6 @@
   <ItemGroup>
     <None Include="app.manifest" />
   </ItemGroup>
+
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

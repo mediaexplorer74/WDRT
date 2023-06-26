@@ -854,10 +854,6 @@
     <Compile Include="__vcrt_lock_id.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\mscorlib\mscorlib.csproj">
-      <Project>{8C726962-D7A3-4054-B90F-0583259F968E}</Project>
-      <Name>mscorlib</Name>
-    </ProjectReference>
     <ProjectReference Include="..\System\System.csproj">
       <Project>{8C726962-D7A3-4054-B90F-0583259F9692}</Project>
       <Name>System</Name>
@@ -870,4 +866,6 @@
   <ItemGroup>
     <None Include="app.manifest" />
   </ItemGroup>
+<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>

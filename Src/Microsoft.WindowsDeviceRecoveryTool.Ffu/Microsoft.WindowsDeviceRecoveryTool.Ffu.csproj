@@ -45,20 +45,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FFUComponents\FFUComponents.csproj">
-      <Project>{8C726962-D7A3-4054-B90F-0583259F964F}</Project>
-      <Name>FFUComponents</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Core\Microsoft.WindowsDeviceRecoveryTool.Core.csproj">
       <Project>{8C726962-D7A3-4054-B90F-0583259F9661}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\mscorlib\mscorlib.csproj">
-      <Project>{8C726962-D7A3-4054-B90F-0583259F968E}</Project>
-      <Name>mscorlib</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.ComponentModel.Composition" />
   </ItemGroup>
+<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>

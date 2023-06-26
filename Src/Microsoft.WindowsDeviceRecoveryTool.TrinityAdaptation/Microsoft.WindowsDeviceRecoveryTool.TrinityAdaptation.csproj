@@ -57,11 +57,8 @@
     <EmbeddedResource Include="Resources\Neo Device front.png" />
     <EmbeddedResource Include="Resources\Neo_Logo.jpg" />
   </ItemGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\FFUComponents\FFUComponents.csproj">
-      <Project>{8C726962-D7A3-4054-B90F-0583259F964F}</Project>
-      <Name>FFUComponents</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Common\Microsoft.WindowsDeviceRecoveryTool.Common.csproj">
       <Project>{8C726962-D7A3-4054-B90F-0583259F9660}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.Common</Name>
@@ -85,22 +82,15 @@
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.OemAdaptation\Microsoft.WindowsDeviceRecoveryTool.OemAdaptation.csproj">
       <Project>{8C726962-D7A3-4054-B90F-0583259F9676}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.OemAdaptation</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\mscorlib\mscorlib.csproj">
-      <Project>{8C726962-D7A3-4054-B90F-0583259F968E}</Project>
-      <Name>mscorlib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\System.Drawing\System.Drawing.csproj">
-      <Project>{8C726962-D7A3-4054-B90F-0583259F968F}</Project>
-      <Name>System.Drawing</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\System\System.csproj">
-      <Project>{8C726962-D7A3-4054-B90F-0583259F9692}</Project>
-      <Name>System</Name>
-    </ProjectReference>
+    </ProjectReference>    
   </ItemGroup>
+
   <ItemGroup>
+    <Reference Include="System"/>
+    <Reference Include="System.Drawing"/>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
   </ItemGroup>
+<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>

@@ -8,8 +8,9 @@
     <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
     <FileAlignment>512</FileAlignment>
     <TargetFramework>net48</TargetFramework>
-    <Platforms>AnyCPU;x86</Platforms>
+    <!--Platforms>AnyCPU;x86</Platforms-->
   </PropertyGroup>
+  
   <PropertyGroup>
     <NoStdLib>True</NoStdLib>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>

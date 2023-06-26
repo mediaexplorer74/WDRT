@@ -137,7 +137,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToolsCommon", "ToolsCommon\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ufphostm", "ufphostm\ufphostm.csproj", "{8C726962-D7A3-4054-B90F-0583259F968B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZipForge", "ZipForge\ZipForge.csproj", "{8C726962-D7A3-4054-B90F-0583259F968D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZipForge", "ZipForge\ZipForge.csproj", "{8C726962-D7A3-4054-B90F-0583259F968D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

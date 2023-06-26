@@ -1,23 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{8C726962-D7A3-4054-B90F-0583259F968D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>ComponentAce</RootNamespace>
     <AssemblyName>ZipForge</AssemblyName>
-    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>4096</FileAlignment>
-    <TargetFramework>net48</TargetFramework>
-    <UseWindowsForms>True</UseWindowsForms>
+    <TargetFrameworkProfile />
   </PropertyGroup>
-  <PropertyGroup>
-    <NoStdLib>True</NoStdLib>
-    <EnableDefaultItems>False</EnableDefaultItems>
-  </PropertyGroup>
-  <PropertyGroup />
 
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -27,8 +24,8 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\bin\Release\</OutputPath>
@@ -255,5 +252,5 @@
       <Name>System</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+ <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

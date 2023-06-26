@@ -8,11 +8,11 @@ Decompiled dotnet source for Windows Device Recovery Tool, this code is provided
 
 # Design / Screenshots
 <table><tr>
-<td> <img src="Images/under-construction.png" alt="U.C." style="width: 800px;"/> </td>
+<td> <img src="Images/shot1.png" alt="Drawing" style="width: 800px;"/> </td>
 </tr></table> 
 
 ## Current status
-- Researching the decomp. code
+- Researching the decomp. code, fixing *.csproj files
 
 ## My 2 cents
 -  .NET framework 4.0/4.5 -> 4.8

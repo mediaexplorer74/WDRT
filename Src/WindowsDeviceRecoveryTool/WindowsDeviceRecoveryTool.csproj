@@ -10,7 +10,6 @@
     <TargetFramework>net48</TargetFramework>
     <UseWPF>True</UseWPF>
     <UseWindowsForms>True</UseWindowsForms>
-    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup>
     <NoStdLib>True</NoStdLib>
@@ -471,10 +470,6 @@
     <ProjectReference Include="..\System\System.csproj">
       <Project>{8C726962-D7A3-4054-B90F-0583259F9692}</Project>
       <Name>System</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ZipForge\ZipForge.csproj">
-      <Project>{8C726962-D7A3-4054-B90F-0583259F968D}</Project>
-      <Name>ZipForge</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

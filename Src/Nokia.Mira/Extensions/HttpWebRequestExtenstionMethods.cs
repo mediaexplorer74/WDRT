@@ -13,11 +13,11 @@ namespace Nokia.Mira.Extensions
 		{
 			request.AddRange(rangeBegin, rangeEnd);
 			IDisposable disposable = null;
-			IWebResponse result;
+			IWebResponse webResponse;
 			try
 			{
 				disposable = token.Register(new Action(request.Abort));
-				result = new WebResponseAdapter((HttpWebResponse)request.GetResponse());
+				webResponse = new WebResponseAdapter((HttpWebResponse)request.GetResponse());
 			}
 			catch (WebException ex)
 			{
@@ -42,7 +42,7 @@ namespace Nokia.Mira.Extensions
 					disposable.Dispose();
 				}
 			}
-			return result;
+			return webResponse;
 		}
 	}
 }

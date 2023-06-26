@@ -13,23 +13,27 @@ namespace FFUComponents
 		}
 
 		// Token: 0x06000051 RID: 81 RVA: 0x00003079 File Offset: 0x00001279
-		public FFUFlashException(string message) : base(message)
+		public FFUFlashException(string message)
+			: base(message)
 		{
 		}
 
 		// Token: 0x06000052 RID: 82 RVA: 0x00003082 File Offset: 0x00001282
-		public FFUFlashException(string message, Exception innerException) : base(message, innerException)
+		public FFUFlashException(string message, Exception innerException)
+			: base(message, innerException)
 		{
 		}
 
 		// Token: 0x06000053 RID: 83 RVA: 0x0000308C File Offset: 0x0000128C
-		public FFUFlashException(string deviceName, Guid deviceId, FFUFlashException.ErrorCode error, string message) : base(deviceName, deviceId, message)
+		public FFUFlashException(string deviceName, Guid deviceId, FFUFlashException.ErrorCode error, string message)
+			: base(deviceName, deviceId, message)
 		{
 			this.Error = error;
 		}
 
 		// Token: 0x06000054 RID: 84 RVA: 0x0000309F File Offset: 0x0000129F
-		protected FFUFlashException(SerializationInfo info, StreamingContext context) : base(info, context)
+		protected FFUFlashException(SerializationInfo info, StreamingContext context)
+			: base(info, context)
 		{
 			info.AddValue("Error", this.Error);
 		}

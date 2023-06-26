@@ -20,11 +20,11 @@ using Microsoft.WindowsDeviceRecoveryTool.States.BaseStates;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 {
-	// Token: 0x020000BA RID: 186
+	// Token: 0x02000013 RID: 19
 	[Export]
-	public class CheckLatestPackageViewModel : BaseViewModel, ICanHandle<FoundSoftwareVersionMessage>, ICanHandle<FirmwareVersionsCompareMessage>, ICanHandle<FfuFilePlatformIdMessage>, ICanHandle<PackageDirectoryMessage>, ICanHandle<DeviceDisconnectedMessage>, ICanHandle<DeviceConnectionStatusReadMessage>, ICanHandle
+	public class CheckLatestPackageViewModel : BaseViewModel, ICanHandle<FoundSoftwareVersionMessage>, ICanHandle, ICanHandle<FirmwareVersionsCompareMessage>, ICanHandle<FfuFilePlatformIdMessage>, ICanHandle<PackageDirectoryMessage>, ICanHandle<DeviceDisconnectedMessage>, ICanHandle<DeviceConnectionStatusReadMessage>
 	{
-		// Token: 0x06000576 RID: 1398 RVA: 0x0001C0D7 File Offset: 0x0001A2D7
+		// Token: 0x060000B9 RID: 185 RVA: 0x00005CED File Offset: 0x00003EED
 		[ImportingConstructor]
 		public CheckLatestPackageViewModel(Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext)
 		{
@@ -32,34 +32,35 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			this.StartSoftwareInstallCommand = new DelegateCommand<object>(new Action<object>(this.StartSoftwareInstallCommandOnExecuted));
 		}
 
-		// Token: 0x17000130 RID: 304
-		// (get) Token: 0x06000577 RID: 1399 RVA: 0x0001C104 File Offset: 0x0001A304
-		// (set) Token: 0x06000578 RID: 1400 RVA: 0x0001C11B File Offset: 0x0001A31B
+		// Token: 0x17000026 RID: 38
+		// (get) Token: 0x060000BA RID: 186 RVA: 0x00005D17 File Offset: 0x00003F17
+		// (set) Token: 0x060000BB RID: 187 RVA: 0x00005D1F File Offset: 0x00003F1F
 		public ICommand StartSoftwareInstallCommand { get; private set; }
 
-		// Token: 0x17000131 RID: 305
-		// (get) Token: 0x06000579 RID: 1401 RVA: 0x0001C124 File Offset: 0x0001A324
+		// Token: 0x17000027 RID: 39
+		// (get) Token: 0x060000BC RID: 188 RVA: 0x00005D28 File Offset: 0x00003F28
 		public override string PreviousStateName
 		{
 			get
 			{
-				string result;
-				if (this.conditions.IsHtcConnected())
+				bool flag = this.conditions.IsHtcConnected();
+				string text;
+				if (flag)
 				{
 					base.EventAggregator.Publish<FlashResultMessage>(new FlashResultMessage(false));
-					result = "RebootHtcState";
+					text = "RebootHtcState";
 				}
 				else
 				{
-					result = "AutomaticManufacturerSelectionState";
+					text = "AutomaticManufacturerSelectionState";
 				}
-				return result;
+				return text;
 			}
 		}
 
-		// Token: 0x17000132 RID: 306
-		// (get) Token: 0x0600057A RID: 1402 RVA: 0x0001C168 File Offset: 0x0001A368
-		// (set) Token: 0x0600057B RID: 1403 RVA: 0x0001C180 File Offset: 0x0001A380
+		// Token: 0x17000028 RID: 40
+		// (get) Token: 0x060000BD RID: 189 RVA: 0x00005D6C File Offset: 0x00003F6C
+		// (set) Token: 0x060000BE RID: 190 RVA: 0x00005D84 File Offset: 0x00003F84
 		public Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext AppContext
 		{
 			get
@@ -72,9 +73,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x17000133 RID: 307
-		// (get) Token: 0x0600057C RID: 1404 RVA: 0x0001C1D0 File Offset: 0x0001A3D0
-		// (set) Token: 0x0600057D RID: 1405 RVA: 0x0001C1E8 File Offset: 0x0001A3E8
+		// Token: 0x17000029 RID: 41
+		// (get) Token: 0x060000BF RID: 191 RVA: 0x00005DC4 File Offset: 0x00003FC4
+		// (set) Token: 0x060000C0 RID: 192 RVA: 0x00005DDC File Offset: 0x00003FDC
 		public string Description
 		{
 			get
@@ -87,9 +88,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x17000134 RID: 308
-		// (get) Token: 0x0600057E RID: 1406 RVA: 0x0001C238 File Offset: 0x0001A438
-		// (set) Token: 0x0600057F RID: 1407 RVA: 0x0001C250 File Offset: 0x0001A450
+		// Token: 0x1700002A RID: 42
+		// (get) Token: 0x060000C1 RID: 193 RVA: 0x00005E1C File Offset: 0x0000401C
+		// (set) Token: 0x060000C2 RID: 194 RVA: 0x00005E34 File Offset: 0x00004034
 		public bool IsBusy
 		{
 			get
@@ -102,9 +103,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x17000135 RID: 309
-		// (get) Token: 0x06000580 RID: 1408 RVA: 0x0001C2A0 File Offset: 0x0001A4A0
-		// (set) Token: 0x06000581 RID: 1409 RVA: 0x0001C2B8 File Offset: 0x0001A4B8
+		// Token: 0x1700002B RID: 43
+		// (get) Token: 0x060000C3 RID: 195 RVA: 0x00005E74 File Offset: 0x00004074
+		// (set) Token: 0x060000C4 RID: 196 RVA: 0x00005E8C File Offset: 0x0000408C
 		public bool IsAkVersionVisible
 		{
 			get
@@ -117,9 +118,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x17000136 RID: 310
-		// (get) Token: 0x06000582 RID: 1410 RVA: 0x0001C308 File Offset: 0x0001A508
-		// (set) Token: 0x06000583 RID: 1411 RVA: 0x0001C320 File Offset: 0x0001A520
+		// Token: 0x1700002C RID: 44
+		// (get) Token: 0x060000C5 RID: 197 RVA: 0x00005ECC File Offset: 0x000040CC
+		// (set) Token: 0x060000C6 RID: 198 RVA: 0x00005EE4 File Offset: 0x000040E4
 		public bool IsFirmwareVersionVisible
 		{
 			get
@@ -132,9 +133,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x17000137 RID: 311
-		// (get) Token: 0x06000584 RID: 1412 RVA: 0x0001C370 File Offset: 0x0001A570
-		// (set) Token: 0x06000585 RID: 1413 RVA: 0x0001C388 File Offset: 0x0001A588
+		// Token: 0x1700002D RID: 45
+		// (get) Token: 0x060000C7 RID: 199 RVA: 0x00005F24 File Offset: 0x00004124
+		// (set) Token: 0x060000C8 RID: 200 RVA: 0x00005F3C File Offset: 0x0000413C
 		public bool IsBuildVersionVisible
 		{
 			get
@@ -147,9 +148,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x17000138 RID: 312
-		// (get) Token: 0x06000586 RID: 1414 RVA: 0x0001C3D8 File Offset: 0x0001A5D8
-		// (set) Token: 0x06000587 RID: 1415 RVA: 0x0001C3F0 File Offset: 0x0001A5F0
+		// Token: 0x1700002E RID: 46
+		// (get) Token: 0x060000C9 RID: 201 RVA: 0x00005F7C File Offset: 0x0000417C
+		// (set) Token: 0x060000CA RID: 202 RVA: 0x00005F94 File Offset: 0x00004194
 		public bool IsPlatformIdVisible
 		{
 			get
@@ -162,9 +163,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x17000139 RID: 313
-		// (get) Token: 0x06000588 RID: 1416 RVA: 0x0001C440 File Offset: 0x0001A640
-		// (set) Token: 0x06000589 RID: 1417 RVA: 0x0001C460 File Offset: 0x0001A660
+		// Token: 0x1700002F RID: 47
+		// (get) Token: 0x060000CB RID: 203 RVA: 0x00005FD4 File Offset: 0x000041D4
+		// (set) Token: 0x060000CC RID: 204 RVA: 0x00005FF4 File Offset: 0x000041F4
 		public bool UseSignatureCheck
 		{
 			get
@@ -178,8 +179,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x1700013A RID: 314
-		// (get) Token: 0x0600058A RID: 1418 RVA: 0x0001C4B8 File Offset: 0x0001A6B8
+		// Token: 0x17000030 RID: 48
+		// (get) Token: 0x060000CD RID: 205 RVA: 0x00006048 File Offset: 0x00004248
 		public bool IsUseSignatureCheckChoiceAvailable
 		{
 			get
@@ -188,9 +189,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x1700013B RID: 315
-		// (get) Token: 0x0600058B RID: 1419 RVA: 0x0001C4D8 File Offset: 0x0001A6D8
-		// (set) Token: 0x0600058C RID: 1420 RVA: 0x0001C504 File Offset: 0x0001A704
+		// Token: 0x17000031 RID: 49
+		// (get) Token: 0x060000CE RID: 206 RVA: 0x00006068 File Offset: 0x00004268
+		// (set) Token: 0x060000CF RID: 207 RVA: 0x00006090 File Offset: 0x00004290
 		public bool IsManualSelectionEnabled
 		{
 			get
@@ -203,9 +204,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x1700013C RID: 316
-		// (get) Token: 0x0600058D RID: 1421 RVA: 0x0001C554 File Offset: 0x0001A754
-		// (set) Token: 0x0600058E RID: 1422 RVA: 0x0001C56C File Offset: 0x0001A76C
+		// Token: 0x17000032 RID: 50
+		// (get) Token: 0x060000D0 RID: 208 RVA: 0x000060D0 File Offset: 0x000042D0
+		// (set) Token: 0x060000D1 RID: 209 RVA: 0x000060E8 File Offset: 0x000042E8
 		public bool IsNextEnabled
 		{
 			get
@@ -218,9 +219,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x1700013D RID: 317
-		// (get) Token: 0x0600058F RID: 1423 RVA: 0x0001C5BC File Offset: 0x0001A7BC
-		// (set) Token: 0x06000590 RID: 1424 RVA: 0x0001C5D4 File Offset: 0x0001A7D4
+		// Token: 0x17000033 RID: 51
+		// (get) Token: 0x060000D2 RID: 210 RVA: 0x00006128 File Offset: 0x00004328
+		// (set) Token: 0x060000D3 RID: 211 RVA: 0x00006140 File Offset: 0x00004340
 		public bool IsPackageFound
 		{
 			get
@@ -233,9 +234,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x1700013E RID: 318
-		// (get) Token: 0x06000591 RID: 1425 RVA: 0x0001C624 File Offset: 0x0001A824
-		// (set) Token: 0x06000592 RID: 1426 RVA: 0x0001C63C File Offset: 0x0001A83C
+		// Token: 0x17000034 RID: 52
+		// (get) Token: 0x060000D4 RID: 212 RVA: 0x00006180 File Offset: 0x00004380
+		// (set) Token: 0x060000D5 RID: 213 RVA: 0x00006198 File Offset: 0x00004398
 		public SwVersionComparisonResult SoftwareComparisonStatus
 		{
 			get
@@ -248,9 +249,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x1700013F RID: 319
-		// (get) Token: 0x06000593 RID: 1427 RVA: 0x0001C68C File Offset: 0x0001A88C
-		// (set) Token: 0x06000594 RID: 1428 RVA: 0x0001C6A4 File Offset: 0x0001A8A4
+		// Token: 0x17000035 RID: 53
+		// (get) Token: 0x060000D6 RID: 214 RVA: 0x000061D8 File Offset: 0x000043D8
+		// (set) Token: 0x060000D7 RID: 215 RVA: 0x000061F0 File Offset: 0x000043F0
 		public string ContinueButtonText
 		{
 			get
@@ -263,9 +264,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x17000140 RID: 320
-		// (get) Token: 0x06000595 RID: 1429 RVA: 0x0001C6F4 File Offset: 0x0001A8F4
-		// (set) Token: 0x06000596 RID: 1430 RVA: 0x0001C70C File Offset: 0x0001A90C
+		// Token: 0x17000036 RID: 54
+		// (get) Token: 0x060000D8 RID: 216 RVA: 0x00006230 File Offset: 0x00004430
+		// (set) Token: 0x060000D9 RID: 217 RVA: 0x00006248 File Offset: 0x00004448
 		public string SoftwareInfoHeader
 		{
 			get
@@ -278,29 +279,31 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x17000141 RID: 321
-		// (get) Token: 0x06000597 RID: 1431 RVA: 0x0001C75C File Offset: 0x0001A95C
-		// (set) Token: 0x06000598 RID: 1432 RVA: 0x0001C7C0 File Offset: 0x0001A9C0
+		// Token: 0x17000037 RID: 55
+		// (get) Token: 0x060000DA RID: 218 RVA: 0x00006288 File Offset: 0x00004488
+		// (set) Token: 0x060000DB RID: 219 RVA: 0x000062C8 File Offset: 0x000044C8
 		public string FfuFilePath
 		{
 			get
 			{
-				string result;
-				if (this.appContext.CurrentPhone != null)
+				bool flag = this.appContext.CurrentPhone != null;
+				string text;
+				if (flag)
 				{
-					result = this.appContext.CurrentPhone.PackageFilePath;
+					text = this.appContext.CurrentPhone.PackageFilePath;
 				}
 				else
 				{
-					result = string.Empty;
+					text = string.Empty;
 				}
-				return result;
+				return text;
 			}
 			set
 			{
-				if (this.appContext.CurrentPhone != null)
+				bool flag = this.appContext.CurrentPhone != null;
+				if (flag)
 				{
-					base.SetValue<string>(() => this.FfuFilePath, delegate()
+					base.SetValue<string>(() => this.FfuFilePath, delegate
 					{
 						this.appContext.CurrentPhone.PackageFilePath = value;
 					});
@@ -308,10 +311,11 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x06000599 RID: 1433 RVA: 0x0001C850 File Offset: 0x0001AA50
+		// Token: 0x060000DC RID: 220 RVA: 0x00006340 File Offset: 0x00004540
 		public override void OnStarted()
 		{
-			if (this.AppContext.CurrentPhone == null)
+			bool flag = this.AppContext.CurrentPhone == null;
+			if (flag)
 			{
 				Tracer<CheckLatestPackageViewModel>.WriteInformation("Current phone is empty. Unable to check latest package.");
 				throw new DeviceNotFoundException();
@@ -321,64 +325,68 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			this.ContinueButtonText = LocalizationManager.GetTranslation("ButtonInstallSoftware");
 			this.IsNextEnabled = false;
 			this.IsManualSelectionEnabled = false;
-			this.IsAkVersionVisible = (this.appContext.CurrentPhone != null && this.appContext.CurrentPhone.Type == PhoneTypes.Analog);
-			this.IsFirmwareVersionVisible = (this.appContext.CurrentPhone != null && this.appContext.CurrentPhone.Type != PhoneTypes.Analog);
+			this.IsAkVersionVisible = this.appContext.CurrentPhone != null && this.appContext.CurrentPhone.Type == PhoneTypes.Analog;
+			this.IsFirmwareVersionVisible = this.appContext.CurrentPhone != null && this.appContext.CurrentPhone.Type != PhoneTypes.Analog;
 			this.IsBuildVersionVisible = false;
 			this.IsPackageFound = true;
 			this.Description = string.Empty;
 			this.IsPlatformIdVisible = false;
 			this.SoftwareInfoHeader = LocalizationManager.GetTranslation("SoftwareOnServer");
 			DetectionParameters detectionParams = new DetectionParameters(PhoneTypes.All, PhoneModes.Normal);
-			//base.Commands.Run((FlowController c) => c.StartDeviceDetection(detectionParams));
-			if (this.AppContext.CurrentPhone.Type == PhoneTypes.Lumia || this.AppContext.CurrentPhone.Type == PhoneTypes.Htc || this.AppContext.CurrentPhone.Type == PhoneTypes.Lg || this.AppContext.CurrentPhone.Type == PhoneTypes.Mcj || this.AppContext.CurrentPhone.Type == PhoneTypes.Blu || this.AppContext.CurrentPhone.Type == PhoneTypes.Alcatel || this.AppContext.CurrentPhone.Type == PhoneTypes.Analog || this.AppContext.CurrentPhone.Type == PhoneTypes.HoloLensAccessory || this.AppContext.CurrentPhone.Type == PhoneTypes.Acer || this.AppContext.CurrentPhone.Type == PhoneTypes.Trinity || this.AppContext.CurrentPhone.Type == PhoneTypes.Unistrong || this.AppContext.CurrentPhone.Type == PhoneTypes.YEZZ || this.AppContext.CurrentPhone.Type == PhoneTypes.Acer || this.AppContext.CurrentPhone.Type == PhoneTypes.VAIO || this.AppContext.CurrentPhone.Type == PhoneTypes.Diginnos || this.AppContext.CurrentPhone.Type == PhoneTypes.VAIO || this.AppContext.CurrentPhone.Type == PhoneTypes.Inversenet || this.AppContext.CurrentPhone.Type == PhoneTypes.Freetel || this.AppContext.CurrentPhone.Type == PhoneTypes.Funker || this.AppContext.CurrentPhone.Type == PhoneTypes.Micromax || this.AppContext.CurrentPhone.Type == PhoneTypes.XOLO || this.AppContext.CurrentPhone.Type == PhoneTypes.KM || this.AppContext.CurrentPhone.Type == PhoneTypes.Jenesis || this.AppContext.CurrentPhone.Type == PhoneTypes.Gomobile || this.AppContext.CurrentPhone.Type == PhoneTypes.HP || this.AppContext.CurrentPhone.Type == PhoneTypes.Lenovo || this.AppContext.CurrentPhone.Type == PhoneTypes.Zebra || this.AppContext.CurrentPhone.Type == PhoneTypes.Honeywell || this.AppContext.CurrentPhone.Type == PhoneTypes.Panasonic || this.AppContext.CurrentPhone.Type == PhoneTypes.TrekStor || this.AppContext.CurrentPhone.Type == PhoneTypes.Wileyfox)
+			base.Commands.Run((FlowController c) => c.StartDeviceDetection(detectionParams));
+			bool flag2 = this.AppContext.CurrentPhone.Type == PhoneTypes.Lumia || this.AppContext.CurrentPhone.Type == PhoneTypes.Htc || this.AppContext.CurrentPhone.Type == PhoneTypes.Lg || this.AppContext.CurrentPhone.Type == PhoneTypes.Mcj || this.AppContext.CurrentPhone.Type == PhoneTypes.Blu || this.AppContext.CurrentPhone.Type == PhoneTypes.Alcatel || this.AppContext.CurrentPhone.Type == PhoneTypes.Analog || this.AppContext.CurrentPhone.Type == PhoneTypes.HoloLensAccessory || this.AppContext.CurrentPhone.Type == PhoneTypes.Acer || this.AppContext.CurrentPhone.Type == PhoneTypes.Trinity || this.AppContext.CurrentPhone.Type == PhoneTypes.Unistrong || this.AppContext.CurrentPhone.Type == PhoneTypes.YEZZ || this.AppContext.CurrentPhone.Type == PhoneTypes.Acer || this.AppContext.CurrentPhone.Type == PhoneTypes.VAIO || this.AppContext.CurrentPhone.Type == PhoneTypes.Diginnos || this.AppContext.CurrentPhone.Type == PhoneTypes.VAIO || this.AppContext.CurrentPhone.Type == PhoneTypes.Inversenet || this.AppContext.CurrentPhone.Type == PhoneTypes.Freetel || this.AppContext.CurrentPhone.Type == PhoneTypes.Funker || this.AppContext.CurrentPhone.Type == PhoneTypes.Micromax || this.AppContext.CurrentPhone.Type == PhoneTypes.XOLO || this.AppContext.CurrentPhone.Type == PhoneTypes.KM || this.AppContext.CurrentPhone.Type == PhoneTypes.Jenesis || this.AppContext.CurrentPhone.Type == PhoneTypes.Gomobile || this.AppContext.CurrentPhone.Type == PhoneTypes.HP || this.AppContext.CurrentPhone.Type == PhoneTypes.Lenovo || this.AppContext.CurrentPhone.Type == PhoneTypes.Zebra || this.AppContext.CurrentPhone.Type == PhoneTypes.Honeywell || this.AppContext.CurrentPhone.Type == PhoneTypes.Panasonic || this.AppContext.CurrentPhone.Type == PhoneTypes.TrekStor || this.AppContext.CurrentPhone.Type == PhoneTypes.Wileyfox;
+			if (flag2)
 			{
 				this.IsBusy = true;
-				//base.Commands.Run((FlowController c) => c.CheckLatestPackage(null, CancellationToken.None));
-			}
-			else if (this.AppContext.CurrentPhone.Type == PhoneTypes.Generic)
-			{
-				this.IsManualSelectionEnabled = true;
-			}
-		}
-
-		// Token: 0x0600059A RID: 1434 RVA: 0x0001CD50 File Offset: 0x0001AF50
-		public override void OnStopped()
-		{
-			base.OnStopped();
-			//base.Commands.Run((FlowController c) => c.StopDeviceDetection());
-			//base.Commands.Run((FlowController c) => c.CancelCheckLatestPackage());
-		}
-
-		// Token: 0x0600059B RID: 1435 RVA: 0x0001CE00 File Offset: 0x0001B000
-		public void Handle(FoundSoftwareVersionMessage message)
-		{
-			this.IsBusy = false;
-			this.IsManualSelectionEnabled = (this.AppContext.CurrentPhone != null && this.AppContext.CurrentPhone.Type == PhoneTypes.Analog);
-			if (message.Status)
-			{
-				//base.Commands.Run((FlowController c) => c.CompareFirmwareVersions());
-				this.IsAkVersionVisible = (message.PackageFileInfo != null && !string.IsNullOrWhiteSpace(message.PackageFileInfo.AkVersion) && message.PackageFileInfo.AkVersion != "0000.0000");
+				base.Commands.Run((FlowController c) => c.CheckLatestPackage(null, CancellationToken.None));
 			}
 			else
 			{
-				this.Handle(new FirmwareVersionsCompareMessage(SwVersionComparisonResult.PackageNotFound));
-				if (this.AppContext.CurrentPhone != null)
+				bool flag3 = this.AppContext.CurrentPhone.Type == PhoneTypes.Generic;
+				if (flag3)
 				{
-					this.IsAkVersionVisible = (this.AppContext.CurrentPhone.Type == PhoneTypes.Analog);
-					this.IsManualSelectionEnabled = (this.AppContext.CurrentPhone.Type == PhoneTypes.Analog);
+					this.IsManualSelectionEnabled = true;
 				}
 			}
 		}
 
-		// Token: 0x0600059C RID: 1436 RVA: 0x0001CF34 File Offset: 0x0001B134
+		// Token: 0x060000DD RID: 221 RVA: 0x0000682C File Offset: 0x00004A2C
+		public override void OnStopped()
+		{
+			base.OnStopped();
+			base.Commands.Run((FlowController c) => c.StopDeviceDetection());
+			base.Commands.Run((FlowController c) => c.CancelCheckLatestPackage());
+		}
+
+		// Token: 0x060000DE RID: 222 RVA: 0x000068D8 File Offset: 0x00004AD8
+		public void Handle(FoundSoftwareVersionMessage message)
+		{
+			this.IsBusy = false;
+			this.IsManualSelectionEnabled = this.AppContext.CurrentPhone != null && this.AppContext.CurrentPhone.Type == PhoneTypes.Analog;
+			bool status = message.Status;
+			if (status)
+			{
+				base.Commands.Run((FlowController c) => c.CompareFirmwareVersions());
+				this.IsAkVersionVisible = message.PackageFileInfo != null && !string.IsNullOrWhiteSpace(message.PackageFileInfo.AkVersion) && message.PackageFileInfo.AkVersion != "0000.0000";
+			}
+			else
+			{
+				this.Handle(new FirmwareVersionsCompareMessage(SwVersionComparisonResult.PackageNotFound));
+				bool flag = this.AppContext.CurrentPhone != null;
+				if (flag)
+				{
+					this.IsAkVersionVisible = this.AppContext.CurrentPhone.Type == PhoneTypes.Analog;
+					this.IsManualSelectionEnabled = this.AppContext.CurrentPhone.Type == PhoneTypes.Analog;
+				}
+			}
+		}
+
+		// Token: 0x060000DF RID: 223 RVA: 0x00006A04 File Offset: 0x00004C04
 		public void Handle(FirmwareVersionsCompareMessage message)
 		{
 			this.IsPackageFound = true;
 			this.SoftwareComparisonStatus = message.Status;
-			Tracer<CheckLatestPackageViewModel>.WriteInformation("Software comparison result: {0}", new object[]
-			{
-				message.Status
-			});
+			Tracer<CheckLatestPackageViewModel>.WriteInformation("Software comparison result: {0}", new object[] { message.Status });
 			this.ContinueButtonText = LocalizationManager.GetTranslation("ButtonInstallSoftware");
 			switch (message.Status)
 			{
@@ -399,31 +407,33 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 				this.Description = LocalizationManager.GetTranslation("PhoneIsUpToDate");
 				break;
 			case SwVersionComparisonResult.PackageNotFound:
+			{
 				this.IsNextEnabled = false;
 				this.IsPackageFound = false;
 				this.Description = LocalizationManager.GetTranslation("PackageNotFound");
-				if (this.appContext.SelectedManufacturer == PhoneTypes.Htc)
+				bool flag = this.appContext.SelectedManufacturer == PhoneTypes.Htc;
+				if (flag)
 				{
-					//base.Commands.Run((AppController c) => c.SwitchToState("RebootHtcState"));
+					base.Commands.Run((AppController c) => c.SwitchToState("RebootHtcState"));
 				}
 				break;
 			}
+			}
 		}
 
-		// Token: 0x0600059D RID: 1437 RVA: 0x0001D0D0 File Offset: 0x0001B2D0
+		// Token: 0x060000E0 RID: 224 RVA: 0x00006B90 File Offset: 0x00004D90
 		public void Handle(PackageDirectoryMessage message)
 		{
-			if (base.IsStarted)
+			bool isStarted = base.IsStarted;
+			if (isStarted)
 			{
 				Tracer<CheckLatestPackageViewModel>.LogEntry("Handle");
-				Tracer<CheckLatestPackageViewModel>.WriteInformation("Selected package manually: {0}", new object[]
-				{
-					message.Directory
-				});
+				Tracer<CheckLatestPackageViewModel>.WriteInformation("Selected package manually: {0}", new object[] { message.Directory });
 				this.FfuFilePath = message.Directory;
-				if (!string.IsNullOrEmpty(this.FfuFilePath) && this.appContext.CurrentPhone.Type != PhoneTypes.Lumia)
+				bool flag = !string.IsNullOrEmpty(this.FfuFilePath) && this.appContext.CurrentPhone.Type > PhoneTypes.Lumia;
+				if (flag)
 				{
-					//base.Commands.Run((FfuController c) => c.ReadFfuFilePlatformId(this.FfuFilePath, CancellationToken.None));
+					base.Commands.Run((FfuController c) => c.ReadFfuFilePlatformId(this.FfuFilePath, CancellationToken.None));
 				}
 				else
 				{
@@ -433,15 +443,17 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x0600059E RID: 1438 RVA: 0x0001D200 File Offset: 0x0001B400
+		// Token: 0x060000E1 RID: 225 RVA: 0x00006CAC File Offset: 0x00004EAC
 		private void CheckCompatibility(FfuFilePlatformIdMessage platformIdMessage)
 		{
 			Tracer<CheckLatestPackageViewModel>.LogEntry("CheckCompatibility");
 			PlatformId platformId = CheckLatestPackageViewModel.FindCompatiblePlatformId(platformIdMessage, this.appContext.CurrentPhone);
-			if (this.appContext.CurrentPhone.Type == PhoneTypes.Analog)
+			bool flag = this.appContext.CurrentPhone.Type == PhoneTypes.Analog;
+			if (flag)
 			{
 				this.SoftwareInfoHeader = LocalizationManager.GetTranslation("LocalPackage");
-				if (platformIdMessage != null)
+				bool flag2 = platformIdMessage != null;
+				if (flag2)
 				{
 					this.AppContext.CurrentPhone.PackageFileInfo = new FfuPackageFileInfo(this.FfuFilePath, platformId ?? platformIdMessage.PlatformId, platformIdMessage.Version, platformIdMessage.Version)
 					{
@@ -453,19 +465,11 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 					this.AppContext.CurrentPhone.PackageFileInfo = new FfuPackageFileInfo(this.FfuFilePath, null, null);
 				}
 				this.AppContext.CurrentPhone.PackageFilePath = this.FfuFilePath;
-				//base.Commands.Run((FlowController c) => c.CompareFirmwareVersions());
-				Tracer<CheckLatestPackageViewModel>.WriteInformation("Set local package: {0}", new object[]
-				{
-					this.FfuFilePath
-				});
-				SwVersionComparisonResult swVersionComparisonResult = 
-					VersionComparer.CompareSoftwareVersions(
-						this.AppContext.CurrentPhone.PackageFileInfo.SoftwareVersion, 
-						/*AnalogAdaptation.OldestRollbackOsVersion*/null, new char[]
-				{
-					'.'
-				});
-				if (platformId != null && (swVersionComparisonResult == SwVersionComparisonResult.FirstIsGreater || swVersionComparisonResult == SwVersionComparisonResult.NumbersAreEqual))
+				base.Commands.Run((FlowController c) => c.CompareFirmwareVersions());
+				Tracer<CheckLatestPackageViewModel>.WriteInformation("Set local package: {0}", new object[] { this.FfuFilePath });
+				SwVersionComparisonResult swVersionComparisonResult = VersionComparer.CompareSoftwareVersions(this.AppContext.CurrentPhone.PackageFileInfo.SoftwareVersion, AnalogAdaptation.OldestRollbackOsVersion, new char[] { '.' });
+				bool flag3 = platformId != null && (swVersionComparisonResult == SwVersionComparisonResult.FirstIsGreater || swVersionComparisonResult == SwVersionComparisonResult.NumbersAreEqual);
+				if (flag3)
 				{
 					this.IsNextEnabled = true;
 					this.Description = string.Empty;
@@ -479,134 +483,147 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			Tracer<CheckLatestPackageViewModel>.LogExit("CheckCompatibility");
 		}
 
-		// Token: 0x0600059F RID: 1439 RVA: 0x0001D3D8 File Offset: 0x0001B5D8
+		// Token: 0x060000E2 RID: 226 RVA: 0x00006E6C File Offset: 0x0000506C
 		public void Handle(FfuFilePlatformIdMessage message)
 		{
-			if (base.IsStarted)
+			bool isStarted = base.IsStarted;
+			if (isStarted)
 			{
-				if (this.appContext.CurrentPhone != null)
+				bool flag = this.appContext.CurrentPhone == null;
+				if (!flag)
 				{
 					this.CheckCompatibility(message);
 				}
 			}
 		}
 
-		// Token: 0x060005A0 RID: 1440 RVA: 0x0001D444 File Offset: 0x0001B644
+		// Token: 0x060000E3 RID: 227 RVA: 0x00006EA4 File Offset: 0x000050A4
 		private static PlatformId FindCompatiblePlatformId(FfuFilePlatformIdMessage message, Phone phone)
 		{
-			PlatformId result;
-			if (message == null || phone == null || phone.PlatformId == null)
+			bool flag = message == null || phone == null || phone.PlatformId == null;
+			PlatformId platformId;
+			if (flag)
 			{
-				result = null;
-			}
-			else if (message.AllPlatformIds == null || !message.AllPlatformIds.Any<PlatformId>())
-			{
-				if (message.PlatformId.IsCompatibleWithDevicePlatformId(phone.PlatformId))
-				{
-					result = message.PlatformId;
-				}
-				else
-				{
-					result = null;
-				}
+				platformId = null;
 			}
 			else
 			{
-				result = message.AllPlatformIds.FirstOrDefault((PlatformId id) => id.IsCompatibleWithDevicePlatformId(phone.PlatformId));
+				bool flag2 = message.AllPlatformIds == null || !message.AllPlatformIds.Any<PlatformId>();
+				if (flag2)
+				{
+					bool flag3 = message.PlatformId.IsCompatibleWithDevicePlatformId(phone.PlatformId);
+					if (flag3)
+					{
+						platformId = message.PlatformId;
+					}
+					else
+					{
+						platformId = null;
+					}
+				}
+				else
+				{
+					platformId = message.AllPlatformIds.FirstOrDefault((PlatformId id) => id.IsCompatibleWithDevicePlatformId(phone.PlatformId));
+				}
 			}
-			return result;
+			return platformId;
 		}
 
-		// Token: 0x060005A1 RID: 1441 RVA: 0x0001D4FC File Offset: 0x0001B6FC
+		// Token: 0x060000E4 RID: 228 RVA: 0x00006F48 File Offset: 0x00005148
 		private void StartSoftwareInstallCommandOnExecuted(object obj)
 		{
-			if (this.AppContext.CurrentPhone != null && (this.AppContext.CurrentPhone.Type == PhoneTypes.Analog || this.AppContext.CurrentPhone.Type == PhoneTypes.HoloLensAccessory))
+			bool flag = this.AppContext.CurrentPhone != null && (this.AppContext.CurrentPhone.Type == PhoneTypes.Analog || this.AppContext.CurrentPhone.Type == PhoneTypes.HoloLensAccessory);
+			if (flag)
 			{
-				string state = (this.appContext.CurrentPhone.PackageFileInfo != null && this.appContext.CurrentPhone.PackageFileInfo.OfflinePackage) ? "PackageIntegrityCheckState" : "DownloadPackageState";
-				//base.Commands.Run((AppController c) => c.StartSoftwareInstallStatus(new Tuple<SwVersionComparisonResult, string>(this.SoftwareComparisonStatus, state)));
+				string state = ((this.appContext.CurrentPhone.PackageFileInfo != null && this.appContext.CurrentPhone.PackageFileInfo.OfflinePackage) ? "PackageIntegrityCheckState" : "DownloadPackageState");
+				base.Commands.Run((AppController c) => c.StartSoftwareInstallStatus(new Tuple<SwVersionComparisonResult, string>(this.SoftwareComparisonStatus, state)));
 			}
 			else
 			{
 				SwVersionComparisonResult softwareStatus = (SwVersionComparisonResult)obj;
-				//base.Commands.Run((AppController c) => c.StartSoftwareInstall(softwareStatus));
+				base.Commands.Run((AppController c) => c.StartSoftwareInstall(softwareStatus));
 			}
 		}
 
-		// Token: 0x060005A2 RID: 1442 RVA: 0x0001D6E4 File Offset: 0x0001B8E4
+		// Token: 0x060000E5 RID: 229 RVA: 0x0000711C File Offset: 0x0000531C
 		private bool NeedToCheckIfDeviceWasDisconnected()
 		{
 			return this.appContext != null && this.appContext.CurrentPhone != null && this.appContext.CurrentPhone.Type == PhoneTypes.HoloLensAccessory;
 		}
 
-		// Token: 0x060005A3 RID: 1443 RVA: 0x0001D724 File Offset: 0x0001B924
+		// Token: 0x060000E6 RID: 230 RVA: 0x0000715C File Offset: 0x0000535C
 		public void Handle(DeviceDisconnectedMessage message)
 		{
-			if (base.IsStarted)
+			bool flag = !base.IsStarted;
+			if (!flag)
 			{
-				if (this.NeedToCheckIfDeviceWasDisconnected())
+				bool flag2 = this.NeedToCheckIfDeviceWasDisconnected();
+				if (flag2)
 				{
-					//base.Commands.Run((FlowController fc) => fc.CheckIfDeviceStillConnected(this.appContext.CurrentPhone, CancellationToken.None));
+					base.Commands.Run((FlowController fc) => fc.CheckIfDeviceStillConnected(this.appContext.CurrentPhone, CancellationToken.None));
 				}
 			}
 		}
 
-		// Token: 0x060005A4 RID: 1444 RVA: 0x0001D7F8 File Offset: 0x0001B9F8
+		// Token: 0x060000E7 RID: 231 RVA: 0x00007228 File Offset: 0x00005428
 		public void Handle(DeviceConnectionStatusReadMessage message)
 		{
-			if (base.IsStarted)
+			bool flag = !base.IsStarted;
+			if (!flag)
 			{
-				if (!message.Status)
+				bool flag2 = !message.Status;
+				if (flag2)
 				{
 					throw new DeviceDisconnectedException();
 				}
 			}
 		}
 
-		// Token: 0x0400025B RID: 603
+		// Token: 0x04000080 RID: 128
 		[Import]
 		private Conditions conditions;
 
-		// Token: 0x0400025C RID: 604
+		// Token: 0x04000081 RID: 129
 		[Import]
 		private FlowConditionService flowConditions;
 
-		// Token: 0x0400025D RID: 605
+		// Token: 0x04000082 RID: 130
 		private Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext;
 
-		// Token: 0x0400025E RID: 606
+		// Token: 0x04000083 RID: 131
 		private bool isBusy;
 
-		// Token: 0x0400025F RID: 607
+		// Token: 0x04000084 RID: 132
 		private bool isManualSelectionEnabled;
 
-		// Token: 0x04000260 RID: 608
+		// Token: 0x04000085 RID: 133
 		private bool isNextEnabled;
 
-		// Token: 0x04000261 RID: 609
+		// Token: 0x04000086 RID: 134
 		private bool isPackageFound;
 
-		// Token: 0x04000262 RID: 610
+		// Token: 0x04000087 RID: 135
 		private string continueButtonText;
 
-		// Token: 0x04000263 RID: 611
+		// Token: 0x04000088 RID: 136
 		private bool isAkVersionVisible;
 
-		// Token: 0x04000264 RID: 612
+		// Token: 0x04000089 RID: 137
 		private bool isPlatformIdVisible;
 
-		// Token: 0x04000265 RID: 613
+		// Token: 0x0400008A RID: 138
 		private bool isFirmwareVersionVisible;
 
-		// Token: 0x04000266 RID: 614
+		// Token: 0x0400008B RID: 139
 		private bool isBuildVersionVisible;
 
-		// Token: 0x04000267 RID: 615
+		// Token: 0x0400008C RID: 140
 		private string description;
 
-		// Token: 0x04000268 RID: 616
+		// Token: 0x0400008D RID: 141
 		private string softwareInfoHeader;
 
-		// Token: 0x04000269 RID: 617
+		// Token: 0x0400008E RID: 142
 		private SwVersionComparisonResult softwareComparisonStatus;
 	}
 }

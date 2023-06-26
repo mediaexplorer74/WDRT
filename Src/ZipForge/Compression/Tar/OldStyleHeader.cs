@@ -2,7 +2,7 @@
 using System.Net;
 using System.Text;
 using ComponentAce.Compression.Archiver;
-using ComponentAce.Compression.Exception1;
+using ComponentAce.Compression.Exception;
 
 namespace ComponentAce.Compression.Tar
 {
@@ -29,7 +29,6 @@ namespace ComponentAce.Compression.Tar
 				{
 					return this._fileName.Replace("\0", string.Empty);
 				}
-				
 				throw ExceptionBuilder.Exception(ErrorCode.FileNameWasNotSpecified);
 			}
 			set
@@ -40,11 +39,7 @@ namespace ComponentAce.Compression.Tar
 				}
 				if (value.Length > 100)
 				{
-					throw ExceptionBuilder.Exception(ErrorCode.NameTooLong, new object[]
-					{
-						value,
-						100
-					});
+					throw ExceptionBuilder.Exception(ErrorCode.NameTooLong, new object[] { value, 100 });
 				}
 				this._fileName = value.Substring(0, Math.Min(100, value.Length));
 			}
@@ -260,11 +255,7 @@ namespace ComponentAce.Compression.Tar
 			}
 			if (this._fileName.Length > 100)
 			{
-				throw ExceptionBuilder.Exception(ErrorCode.NameTooLong, new object[]
-				{
-					this._fileName,
-					100
-				});
+				throw ExceptionBuilder.Exception(ErrorCode.NameTooLong, new object[] { this._fileName, 100 });
 			}
 			if (this._fileName.Length == 100)
 			{
@@ -279,10 +270,7 @@ namespace ComponentAce.Compression.Tar
 			encoding.GetBytes(this.GroupIdString).CopyTo(this._buffer, 116);
 			encoding.GetBytes(this.SizeString).CopyTo(this._buffer, 124);
 			encoding.GetBytes(this.LastModificationString).CopyTo(this._buffer, 136);
-			encoding.GetBytes(new char[]
-			{
-				this.TypeFlag
-			}).CopyTo(this._buffer, 156);
+			encoding.GetBytes(new char[] { this.TypeFlag }).CopyTo(this._buffer, 156);
 			this.RecalculateChecksum(this._buffer);
 			encoding.GetBytes(this.HeaderChecksumString).CopyTo(this._buffer, 148);
 			return this._buffer;
@@ -320,8 +308,8 @@ namespace ComponentAce.Compression.Tar
 			this.TypeFlag = ((OldStyleHeader.TrimString(encoding.GetString(this._buffer, 156, 1)).Length > 0) ? Convert.ToChar(OldStyleHeader.TrimString(encoding.GetString(this._buffer, 156, 1))) : '0');
 			if ((this._buffer[124] & 128) == 128)
 			{
-				long network = BitConverter.ToInt64(this._buffer, 128);
-				this.SizeInBytes = IPAddress.NetworkToHostOrder(network);
+				long num = BitConverter.ToInt64(this._buffer, 128);
+				this.SizeInBytes = IPAddress.NetworkToHostOrder(num);
 			}
 			else
 			{
@@ -334,18 +322,18 @@ namespace ComponentAce.Compression.Tar
 					this.SizeInBytes = 0L;
 				}
 			}
-			long num;
+			long num2;
 			try
 			{
-				num = long.Parse(OldStyleHeader.TrimString(encoding.GetString(this._buffer, 136, 11)));
+				num2 = long.Parse(OldStyleHeader.TrimString(encoding.GetString(this._buffer, 136, 11)));
 			}
 			catch
 			{
-				num = 0L;
+				num2 = 0L;
 			}
-			num = Convert.ToInt64(num.ToString(), 8);
-			this.LastModification = this._theEpoch.AddSeconds((double)num);
-			int num2;
+			num2 = Convert.ToInt64(num2.ToString(), 8);
+			this.LastModification = this._theEpoch.AddSeconds((double)num2);
+			int num3;
 			try
 			{
 				StringBuilder stringBuilder = new StringBuilder(encoding.GetString(this._buffer, 148, 8));
@@ -357,20 +345,20 @@ namespace ComponentAce.Compression.Tar
 						i--;
 					}
 				}
-				num2 = int.Parse(OldStyleHeader.TrimString(stringBuilder.ToString()));
+				num3 = int.Parse(OldStyleHeader.TrimString(stringBuilder.ToString()));
 			}
 			catch
 			{
-				num2 = 0;
+				num3 = 0;
 			}
-			num2 = Convert.ToInt32(num2.ToString(), 8);
+			num3 = Convert.ToInt32(num3.ToString(), 8);
 			this.RecalculateChecksum(this._buffer);
-			if ((long)num2 == this._headerChecksum)
+			if ((long)num3 == this._headerChecksum)
 			{
 				return true;
 			}
 			this.RecalculateAltChecksum(this._buffer);
-			return (long)num2 == this._headerChecksum;
+			return (long)num3 == this._headerChecksum;
 		}
 
 		// Token: 0x06000414 RID: 1044 RVA: 0x0001F06C File Offset: 0x0001E06C

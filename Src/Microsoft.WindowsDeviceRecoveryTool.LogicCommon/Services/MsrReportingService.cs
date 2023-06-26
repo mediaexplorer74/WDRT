@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -20,29 +21,30 @@ using Microsoft.WindowsDeviceRecoveryTool.Model;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 {
-	// Token: 0x0200003D RID: 61
+	// Token: 0x0200000F RID: 15
+	[Export(typeof(IUseProxy))]
 	[Export(typeof(MsrReportingService))]
 	[PartCreationPolicy(CreationPolicy.Shared)]
-	[Export(typeof(IUseProxy))]
 	public class MsrReportingService : IUseProxy
 	{
-		// Token: 0x06000323 RID: 803 RVA: 0x0000CED6 File Offset: 0x0000B0D6
+		// Token: 0x060000A4 RID: 164 RVA: 0x00003B56 File Offset: 0x00001D56
 		[ImportingConstructor]
 		public MsrReportingService()
 		{
 		}
 
-		// Token: 0x170000F3 RID: 243
-		// (get) Token: 0x06000324 RID: 804 RVA: 0x0000CEEC File Offset: 0x0000B0EC
-		// (set) Token: 0x06000325 RID: 805 RVA: 0x0000CF03 File Offset: 0x0000B103
+		// Token: 0x1700001A RID: 26
+		// (get) Token: 0x060000A5 RID: 165 RVA: 0x00003B6B File Offset: 0x00001D6B
+		// (set) Token: 0x060000A6 RID: 166 RVA: 0x00003B73 File Offset: 0x00001D73
 		public IManufacturerDataProvider ManufacturerDataProvider { get; set; }
 
-		// Token: 0x14000010 RID: 16
-		// (add) Token: 0x06000326 RID: 806 RVA: 0x0000CF0C File Offset: 0x0000B10C
-		// (remove) Token: 0x06000327 RID: 807 RVA: 0x0000CF48 File Offset: 0x0000B148
+		// Token: 0x1400000B RID: 11
+		// (add) Token: 0x060000A7 RID: 167 RVA: 0x00003B7C File Offset: 0x00001D7C
+		// (remove) Token: 0x060000A8 RID: 168 RVA: 0x00003BB4 File Offset: 0x00001DB4
+		[field: DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event Action SessionReportsSendingCompleted;
 
-		// Token: 0x06000328 RID: 808 RVA: 0x0000CF84 File Offset: 0x0000B184
+		// Token: 0x060000A9 RID: 169 RVA: 0x00003BEC File Offset: 0x00001DEC
 		private void Initialize()
 		{
 			this.msrServiceData = MsrServiceData.CreateServiceData();
@@ -51,15 +53,19 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 			this.msrReportSender.SendOldReports();
 		}
 
-		// Token: 0x06000329 RID: 809 RVA: 0x0000D1AC File Offset: 0x0000B3AC
+		// Token: 0x060000AA RID: 170 RVA: 0x00003C24 File Offset: 0x00001E24
 		public async Task SendReportAsync(IReport report)
 		{
-			if (!report.Sent)
+			bool sent = report.Sent;
+			if (!sent)
 			{
-				string uploadUrl = await this.ProvideReportUploadUrlAsync(report, null);
+				string text = await this.ProvideReportUploadUrlAsync(report, null);
+				string uploadUrl = text;
+				text = null;
 				if (!string.IsNullOrWhiteSpace(uploadUrl))
 				{
-					if (await this.UploadWithHttpClientAsync(uploadUrl, report))
+					bool flag = await this.UploadWithHttpClientAsync(uploadUrl, report);
+					if (flag)
 					{
 						report.MarkAsSent();
 					}
@@ -71,39 +77,30 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 			}
 		}
 
-		// Token: 0x0600032A RID: 810 RVA: 0x0000D200 File Offset: 0x0000B400
+		// Token: 0x060000AB RID: 171 RVA: 0x00003C70 File Offset: 0x00001E70
 		public void OperationStarted(Phone phone, ReportOperationType reportOperationType)
 		{
 			ReportData reportData = this.GetReportData(phone, reportOperationType, reportOperationType == ReportOperationType.DownloadPackage);
-			switch (reportOperationType)
+			if (reportOperationType > ReportOperationType.Recovery)
 			{
-			case ReportOperationType.Flashing:
-			case ReportOperationType.Recovery:
-				break;
-			case ReportOperationType.ReadDeviceInfo:
-			case ReportOperationType.ReadDeviceInfoWithThor:
-				return;
-			case ReportOperationType.DownloadPackage:
-				reportData.StartDownloadTimer();
-				return;
-			default:
+				if (reportOperationType == ReportOperationType.DownloadPackage)
+				{
+					reportData.StartDownloadTimer();
+					return;
+				}
 				if (reportOperationType != ReportOperationType.RecoveryAfterEmergencyFlashing)
 				{
 					return;
 				}
-				break;
 			}
 			reportData.StartUpdateTimer();
 		}
 
-		// Token: 0x0600032B RID: 811 RVA: 0x0000D250 File Offset: 0x0000B450
+		// Token: 0x060000AC RID: 172 RVA: 0x00003CB4 File Offset: 0x00001EB4
 		public void OperationSucceded(Phone phone, ReportOperationType reportOperationType, UriData uriData)
 		{
 			Tracer<MsrReportingService>.LogEntry("OperationSucceded");
-			Tracer<MsrReportingService>.WriteInformation("Operation: {0} succeeded", new object[]
-			{
-				reportOperationType
-			});
+			Tracer<MsrReportingService>.WriteInformation("Operation: {0} succeeded", new object[] { reportOperationType });
 			ReportData reportData = this.GetReportData(phone, reportOperationType, false);
 			reportData.SetPhoneInfo(phone);
 			this.SendReport(reportData);
@@ -111,14 +108,11 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 			Tracer<MsrReportingService>.LogExit("OperationSucceded");
 		}
 
-		// Token: 0x0600032C RID: 812 RVA: 0x0000D2B4 File Offset: 0x0000B4B4
+		// Token: 0x060000AD RID: 173 RVA: 0x00003D18 File Offset: 0x00001F18
 		public void OperationSucceded(Phone phone, ReportOperationType reportOperationType)
 		{
 			Tracer<MsrReportingService>.LogEntry("OperationSucceded");
-			Tracer<MsrReportingService>.WriteInformation("Operation: {0} succeeded", new object[]
-			{
-				reportOperationType
-			});
+			Tracer<MsrReportingService>.WriteInformation("Operation: {0} succeeded", new object[] { reportOperationType });
 			ReportData reportData = this.GetReportData(phone, reportOperationType, false);
 			switch (reportOperationType)
 			{
@@ -129,7 +123,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 				this.SendReport(reportData, UriData.DeadPhoneRecovered);
 				goto IL_E6;
 			case ReportOperationType.DownloadPackage:
-				if (reportData.DownloadedBytes != 0L)
+			{
+				bool flag = reportData.DownloadedBytes != 0L;
+				if (flag)
 				{
 					this.SendReport(reportData, UriData.DownloadPackageSuccess);
 				}
@@ -138,6 +134,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 					this.msrReportSender.RemoveLocalReport(reportData.LocalPath);
 				}
 				goto IL_E6;
+			}
 			case ReportOperationType.EmergencyFlashing:
 				reportData.SetPhoneInfo(phone);
 				this.SendReport(reportData, UriData.EmergencyFlashingSuccesfullyFinished);
@@ -152,22 +149,20 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 			Tracer<MsrReportingService>.LogExit("OperationSucceded");
 		}
 
-		// Token: 0x0600032D RID: 813 RVA: 0x0000D3BB File Offset: 0x0000B5BB
+		// Token: 0x060000AE RID: 174 RVA: 0x00003E1F File Offset: 0x0000201F
 		public void SurveySucceded(SurveyReport survey)
 		{
 			survey.SessionId = this.GetSessionId();
 			this.msrReportSender.SendReport(survey, ApplicationInfo.IsInternal());
 		}
 
-		// Token: 0x0600032E RID: 814 RVA: 0x0000D3E0 File Offset: 0x0000B5E0
+		// Token: 0x060000AF RID: 175 RVA: 0x00003E44 File Offset: 0x00002044
 		public void PartialOperationSucceded(Phone phone, ReportOperationType reportOperationType, UriData uriData)
 		{
 			Tracer<MsrReportingService>.LogEntry("PartialOperationSucceded");
-			Tracer<MsrReportingService>.WriteInformation("Operation: {0} succeeded", new object[]
-			{
-				reportOperationType
-			});
-			if (reportOperationType == ReportOperationType.EmergencyFlashing)
+			Tracer<MsrReportingService>.WriteInformation("Operation: {0} succeeded", new object[] { reportOperationType });
+			bool flag = reportOperationType == ReportOperationType.EmergencyFlashing;
+			if (flag)
 			{
 				this.UpdateReportWithImeiNumber(phone, reportOperationType);
 			}
@@ -177,11 +172,12 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 			Tracer<MsrReportingService>.LogExit("PartialOperationSucceded");
 		}
 
-		// Token: 0x0600032F RID: 815 RVA: 0x0000D454 File Offset: 0x0000B654
+		// Token: 0x060000B0 RID: 176 RVA: 0x00003EB0 File Offset: 0x000020B0
 		public void OperationFailed(Phone phone, ReportOperationType reportOperationType, UriData resultUriData, Exception ex)
 		{
 			ReportData reportData = this.GetReportData(phone, reportOperationType, false);
-			if (ex != null)
+			bool flag = ex != null;
+			if (flag)
 			{
 				ex = ex.GetBaseException();
 			}
@@ -189,7 +185,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 			this.msrReportSender.SaveLocalReport(reportData);
 		}
 
-		// Token: 0x06000330 RID: 816 RVA: 0x0000D498 File Offset: 0x0000B698
+		// Token: 0x060000B1 RID: 177 RVA: 0x00003EF4 File Offset: 0x000020F4
 		public void SetDownloadByteInformation(Phone phone, ReportOperationType reportOperationType, long currentDownloadedSize, long packageSize, bool isResumed)
 		{
 			ReportData reportData = this.GetReportData(phone, reportOperationType, isResumed);
@@ -197,24 +193,25 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 			reportData.DownloadedBytes = currentDownloadedSize;
 		}
 
-		// Token: 0x06000331 RID: 817 RVA: 0x0000D4C4 File Offset: 0x0000B6C4
+		// Token: 0x060000B2 RID: 178 RVA: 0x00003F20 File Offset: 0x00002120
 		public void SendSessionReports()
 		{
 			this.msrReportSender.SessionReportsSendingCompleted += this.SessionReportsSendingCompleted;
-			lock (this.msrReports)
+			Dictionary<string, ReportData> dictionary = this.msrReports;
+			lock (dictionary)
 			{
 				this.msrReportSender.SendSessionReports(this.msrReports.Values.ToList<ReportData>(), ApplicationInfo.IsInternal());
 				this.msrReports.Clear();
 			}
 		}
 
-		// Token: 0x06000332 RID: 818 RVA: 0x0000D548 File Offset: 0x0000B748
+		// Token: 0x060000B3 RID: 179 RVA: 0x00003FA0 File Offset: 0x000021A0
 		public void StartFlowSession()
 		{
 			this.currentSessionId = Guid.NewGuid().ToString();
 		}
 
-		// Token: 0x06000333 RID: 819 RVA: 0x0000DB3C File Offset: 0x0000BD3C
+		// Token: 0x060000B4 RID: 180 RVA: 0x00003FC8 File Offset: 0x000021C8
 		private async Task<string> ProvideReportUploadUrlAsync(IReport report, ManufacturerInfo manufacturerInfo = null)
 		{
 			string result = null;
@@ -242,7 +239,10 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 					})
 				};
 				string postBody = requestBody.ToJsonString();
-				using (HttpResponseMessage response = await client.PostAsync(new Uri(this.msrServiceData.UploadApiUrl), new StringContent(postBody, Encoding.UTF8, "application/json"), CancellationToken.None))
+				HttpResponseMessage httpResponseMessage = await client.PostAsync(new Uri(this.msrServiceData.UploadApiUrl), new StringContent(postBody, Encoding.UTF8, "application/json"), CancellationToken.None);
+				HttpResponseMessage response = httpResponseMessage;
+				httpResponseMessage = null;
+				try
 				{
 					if (response.IsSuccessStatusCode)
 					{
@@ -255,30 +255,38 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 							Tracer<MsrReportingService>.WriteWarning("ManufacturerDataProvider value was not set", new object[0]);
 							throw new HttpRequestException(string.Format("Could not provide reporting upload url. Status: {0}", response.StatusCode));
 						}
-						Tracer<MsrReportingService>.WriteWarning("Could not provide report upload url using params: {0}", new object[]
-						{
-							postBody
-						});
+						Tracer<MsrReportingService>.WriteWarning("Could not provide report upload url using params: {0}", new object[] { postBody });
 						Tracer<MsrReportingService>.WriteInformation("Try use manufacturer extracted data for getting upload url");
 						ManufacturerInfo minfo = this.ManufacturerDataProvider.GetAdaptationsData().FirstOrDefault((ManufacturerInfo mi) => mi.Type == report.PhoneType);
 						if (minfo != null)
 						{
-							result = await this.ProvideReportUploadUrlAsync(report, minfo);
+							string text = await this.ProvideReportUploadUrlAsync(report, minfo);
+							result = text;
+							text = null;
 						}
 						else
 						{
-							Tracer<MsrReportingService>.WriteWarning("No manufacturer for reported type '{0}' found", new object[]
-							{
-								report.PhoneType
-							});
+							Tracer<MsrReportingService>.WriteWarning("No manufacturer for reported type '{0}' found", new object[] { report.PhoneType });
 						}
+						minfo = null;
 					}
 				}
+				finally
+				{
+					if (response != null)
+					{
+						((IDisposable)response).Dispose();
+					}
+				}
+				response = null;
+				requestBody = null;
+				postBody = null;
 			}
+			HttpClient client = null;
 			return result;
 		}
 
-		// Token: 0x06000334 RID: 820 RVA: 0x0000DDD0 File Offset: 0x0000BFD0
+		// Token: 0x060000B5 RID: 181 RVA: 0x0000401C File Offset: 0x0000221C
 		private async Task<bool> UploadWithHttpClientAsync(string reportFileUri, IReport report)
 		{
 			HttpClientHandler httpClientHandler = new HttpClientHandler
@@ -294,13 +302,15 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 				client.Timeout = Timeout.InfiniteTimeSpan;
 				client.DefaultRequestHeaders.Add("x-ms-blob-type", BlobType.BlockBlob.ToString());
 				client.DefaultRequestHeaders.Add("x-ms-date", dateInRfc1123Format);
-				HttpResponseMessage reqResult = await client.PutAsync(reportFileUri, content);
+				HttpResponseMessage httpResponseMessage = await client.PutAsync(reportFileUri, content);
+				HttpResponseMessage reqResult = httpResponseMessage;
+				httpResponseMessage = null;
 				isSuccessStatusCode = reqResult.IsSuccessStatusCode;
 			}
 			return isSuccessStatusCode;
 		}
 
-		// Token: 0x06000335 RID: 821 RVA: 0x0000E048 File Offset: 0x0000C248
+		// Token: 0x060000B6 RID: 182 RVA: 0x00004070 File Offset: 0x00002270
 		private async Task UploadWithHttpClientAsync(string reportFileUri, string content)
 		{
 			HttpClientHandler httpClientHandler = new HttpClientHandler
@@ -316,24 +326,27 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 				client.DefaultRequestHeaders.Add("x-ms-blob-type", BlobType.BlockBlob.ToString());
 				client.DefaultRequestHeaders.Add("x-ms-date", dateInRfc1123Format);
 				await client.PutAsync(reportFileUri, stringContent);
+				dateInRfc1123Format = null;
+				stringContent = null;
 			}
+			HttpClient client = null;
 		}
 
-		// Token: 0x06000336 RID: 822 RVA: 0x0000E0A2 File Offset: 0x0000C2A2
+		// Token: 0x060000B7 RID: 183 RVA: 0x000040C2 File Offset: 0x000022C2
 		private void SendReport(ReportData reportData, UriData reportResultUriData)
 		{
 			reportData.SetResult(reportResultUriData, null);
 			this.SendReport(reportData);
 		}
 
-		// Token: 0x06000337 RID: 823 RVA: 0x0000E0B6 File Offset: 0x0000C2B6
+		// Token: 0x060000B8 RID: 184 RVA: 0x000040D6 File Offset: 0x000022D6
 		private void SendReport(ReportData reportData)
 		{
 			reportData.EndDataCollecting();
 			this.msrReportSender.SendReport(reportData, ApplicationInfo.IsInternal());
 		}
 
-		// Token: 0x06000338 RID: 824 RVA: 0x0000E0D4 File Offset: 0x0000C2D4
+		// Token: 0x060000B9 RID: 185 RVA: 0x000040F4 File Offset: 0x000022F4
 		private ReportData StartDataCollecting(string description, Phone phone)
 		{
 			ReportData reportData = new ReportData(description, this.GetSessionId());
@@ -341,70 +354,80 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 			return reportData;
 		}
 
-		// Token: 0x06000339 RID: 825 RVA: 0x0000E0FC File Offset: 0x0000C2FC
+		// Token: 0x060000BA RID: 186 RVA: 0x0000411C File Offset: 0x0000231C
 		private ReportData GetReportData(Phone phone, ReportOperationType reportOperationType, bool resumeCounter = false)
 		{
-			string key = string.Format("{0}_{1}", phone.Imei, reportOperationType);
-			ReportData result;
-			lock (this.msrReports)
+			string text = string.Format("{0}_{1}", phone.Imei, reportOperationType);
+			Dictionary<string, ReportData> dictionary = this.msrReports;
+			ReportData reportData2;
+			lock (dictionary)
 			{
-				if (this.msrReports.ContainsKey(key))
+				bool flag2 = this.msrReports.ContainsKey(text);
+				if (flag2)
 				{
 					Tracer<MsrReportingService>.WriteInformation("Getting existing report from dictionary");
 					if (resumeCounter)
 					{
-						this.msrReports[key].ResumeCounter++;
-						if (this.msrReports[key].Exception != null)
+						ReportData reportData = this.msrReports[text];
+						int resumeCounter2 = reportData.ResumeCounter;
+						reportData.ResumeCounter = resumeCounter2 + 1;
+						bool flag3 = this.msrReports[text].Exception != null;
+						if (flag3)
 						{
-							if (this.msrReports[key].LastError == null)
+							bool flag4 = this.msrReports[text].LastError == null;
+							if (flag4)
 							{
-								this.msrReports[key].LastError = this.msrReports[key].Exception;
+								this.msrReports[text].LastError = this.msrReports[text].Exception;
 							}
 						}
 					}
-					result = this.msrReports[key];
+					reportData2 = this.msrReports[text];
 				}
 				else
 				{
 					Tracer<MsrReportingService>.WriteInformation("Create new report and add it to dictionary");
-					ReportData value = this.StartDataCollecting(reportOperationType.ToString(), phone);
-					this.msrReports.Add(key, value);
-					result = this.msrReports[key];
+					ReportData reportData3 = this.StartDataCollecting(reportOperationType.ToString(), phone);
+					this.msrReports.Add(text, reportData3);
+					reportData2 = this.msrReports[text];
 				}
 			}
-			return result;
+			return reportData2;
 		}
 
-		// Token: 0x0600033A RID: 826 RVA: 0x0000E258 File Offset: 0x0000C458
+		// Token: 0x060000BB RID: 187 RVA: 0x00004264 File Offset: 0x00002464
 		private void RemoveReportData(Phone phone, ReportOperationType reportOperationType)
 		{
-			string key = string.Format("{0}_{1}", phone.Imei, reportOperationType);
-			lock (this.msrReports)
+			string text = string.Format("{0}_{1}", phone.Imei, reportOperationType);
+			Dictionary<string, ReportData> dictionary = this.msrReports;
+			lock (dictionary)
 			{
-				if (this.msrReports.ContainsKey(key))
+				bool flag2 = this.msrReports.ContainsKey(text);
+				if (flag2)
 				{
-					this.msrReports.Remove(key);
+					this.msrReports.Remove(text);
 				}
 			}
 		}
 
-		// Token: 0x0600033B RID: 827 RVA: 0x0000E2D8 File Offset: 0x0000C4D8
+		// Token: 0x060000BC RID: 188 RVA: 0x000042DC File Offset: 0x000024DC
 		private void UpdateReportWithImeiNumber(Phone phone, ReportOperationType reportOperationType)
 		{
-			string key = string.Format("{0}_{1}", null, reportOperationType);
-			string key2 = string.Format("{0}_{1}", phone.Imei, reportOperationType);
-			lock (this.msrReports)
+			string text = string.Format("{0}_{1}", null, reportOperationType);
+			string text2 = string.Format("{0}_{1}", phone.Imei, reportOperationType);
+			Dictionary<string, ReportData> dictionary = this.msrReports;
+			lock (dictionary)
 			{
-				if (this.msrReports.ContainsKey(key))
+				bool flag2 = this.msrReports.ContainsKey(text);
+				if (flag2)
 				{
-					ReportData value = this.msrReports[key];
-					this.msrReports[key2] = value;
-					this.msrReports.Remove(key);
+					ReportData reportData = this.msrReports[text];
+					this.msrReports[text2] = reportData;
+					this.msrReports.Remove(text);
 				}
 			}
 		}
 
-		// Token: 0x0600033C RID: 828 RVA: 0x0000E38C File Offset: 0x0000C58C
+		// Token: 0x060000BD RID: 189 RVA: 0x00004384 File Offset: 0x00002584
 		private UriData GetDefaultFailUriData(ReportOperationType reportOperationType)
 		{
 			switch (reportOperationType)
@@ -428,7 +451,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 			return UriData.InvalidUriCode;
 		}
 
-		// Token: 0x0600033D RID: 829 RVA: 0x0000E3DC File Offset: 0x0000C5DC
+		// Token: 0x060000BE RID: 190 RVA: 0x000043D8 File Offset: 0x000025D8
 		private void AddDefaultHeaders(HttpClient client)
 		{
 			client.Timeout = Timeout.InfiniteTimeSpan;
@@ -436,45 +459,46 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 		}
 
-		// Token: 0x0600033E RID: 830 RVA: 0x0000E430 File Offset: 0x0000C630
+		// Token: 0x060000BF RID: 191 RVA: 0x0000442C File Offset: 0x0000262C
 		private string GetSessionId()
 		{
-			if (string.IsNullOrEmpty(this.currentSessionId) || string.Equals(this.currentSessionId, Guid.Empty.ToString()))
+			bool flag = string.IsNullOrEmpty(this.currentSessionId) || string.Equals(this.currentSessionId, Guid.Empty.ToString());
+			if (flag)
 			{
 				this.StartFlowSession();
 			}
 			return this.currentSessionId;
 		}
 
-		// Token: 0x0600033F RID: 831 RVA: 0x0000E487 File Offset: 0x0000C687
+		// Token: 0x060000C0 RID: 192 RVA: 0x0000447F File Offset: 0x0000267F
 		public void SetProxy(IWebProxy settings)
 		{
 			this.proxySettings = settings;
 			this.Initialize();
 		}
 
-		// Token: 0x06000340 RID: 832 RVA: 0x0000E498 File Offset: 0x0000C698
+		// Token: 0x060000C1 RID: 193 RVA: 0x00004490 File Offset: 0x00002690
 		private IWebProxy Proxy()
 		{
 			return this.proxySettings ?? WebRequest.GetSystemWebProxy();
 		}
 
-		// Token: 0x04000181 RID: 385
+		// Token: 0x04000036 RID: 54
 		private const string JsonContentType = "application/json";
 
-		// Token: 0x04000182 RID: 386
+		// Token: 0x04000037 RID: 55
 		private readonly Dictionary<string, ReportData> msrReports = new Dictionary<string, ReportData>();
 
-		// Token: 0x04000183 RID: 387
+		// Token: 0x04000038 RID: 56
 		private MsrReportSender msrReportSender;
 
-		// Token: 0x04000184 RID: 388
+		// Token: 0x04000039 RID: 57
 		private MsrServiceData msrServiceData;
 
-		// Token: 0x04000185 RID: 389
+		// Token: 0x0400003A RID: 58
 		private IWebProxy proxySettings;
 
-		// Token: 0x04000186 RID: 390
+		// Token: 0x0400003B RID: 59
 		private string currentSessionId;
 	}
 }

@@ -38,8 +38,8 @@ namespace FFUComponents
 		protected override void OnHandleCreated(EventArgs e)
 		{
 			IntPtr intPtr = this.RegisterDeviceNotification(this.ifGuid);
-			IntPtr value = Interlocked.CompareExchange(ref this.notificationHandle, intPtr, IntPtr.Zero);
-			if (IntPtr.Zero != value)
+			IntPtr intPtr2 = Interlocked.CompareExchange(ref this.notificationHandle, intPtr, IntPtr.Zero);
+			if (IntPtr.Zero != intPtr2)
 			{
 				NativeMethods.UnregisterDeviceNotification(intPtr);
 			}
@@ -64,15 +64,12 @@ namespace FFUComponents
 		// Token: 0x06000183 RID: 387 RVA: 0x00007EA8 File Offset: 0x000060A8
 		private void DiscoverSimpleIODevices()
 		{
-			string queryString = string.Format(CultureInfo.InvariantCulture, "SELECT PnPDeviceId FROM Win32_PnPEntity where ClassGuid ='{0:B}'", new object[]
-			{
-				this.classGuid
-			});
-			ManagementObjectSearcher managementObjectSearcher = new ManagementObjectSearcher(queryString);
+			string text = string.Format(CultureInfo.InvariantCulture, "SELECT PnPDeviceId FROM Win32_PnPEntity where ClassGuid ='{0:B}'", new object[] { this.classGuid });
+			ManagementObjectSearcher managementObjectSearcher = new ManagementObjectSearcher(text);
 			foreach (ManagementBaseObject managementBaseObject in managementObjectSearcher.Get())
 			{
-				string pnpId = managementBaseObject["PnPDeviceId"] as string;
-				this.NotifyConnect(pnpId);
+				string text2 = managementBaseObject["PnPDeviceId"] as string;
+				this.NotifyConnect(text2);
 			}
 		}
 
@@ -102,18 +99,18 @@ namespace FFUComponents
 				int lastWin32Error = Marshal.GetLastWin32Error();
 				throw new Win32Exception(lastWin32Error);
 			}
-			int memberIndex = 0;
 			int num = 0;
+			int num2 = 0;
 			DeviceInterfaceData deviceInterfaceData = new DeviceInterfaceData
 			{
 				Size = Marshal.SizeOf(typeof(DeviceInterfaceData))
 			};
-			if (!NativeMethods.SetupDiEnumDeviceInterfaces(intPtr, IntPtr.Zero, ref this.ifGuid, memberIndex, ref deviceInterfaceData))
+			if (!NativeMethods.SetupDiEnumDeviceInterfaces(intPtr, IntPtr.Zero, ref this.ifGuid, num, ref deviceInterfaceData))
 			{
 				int lastWin32Error2 = Marshal.GetLastWin32Error();
 				throw new Win32Exception(lastWin32Error2);
 			}
-			if (!NativeMethods.SetupDiGetDeviceInterfaceDetail(intPtr, ref deviceInterfaceData, IntPtr.Zero, 0, ref num, IntPtr.Zero))
+			if (!NativeMethods.SetupDiGetDeviceInterfaceDetail(intPtr, ref deviceInterfaceData, IntPtr.Zero, 0, ref num2, IntPtr.Zero))
 			{
 				int lastWin32Error3 = Marshal.GetLastWin32Error();
 				if (lastWin32Error3 != 122)
@@ -121,8 +118,8 @@ namespace FFUComponents
 					throw new Win32Exception(lastWin32Error3);
 				}
 			}
-			DeviceInterfaceDetailData* ptr = (DeviceInterfaceDetailData*)((void*)Marshal.AllocHGlobal(num));
-			string result;
+			DeviceInterfaceDetailData* ptr = (DeviceInterfaceDetailData*)(void*)Marshal.AllocHGlobal(num2);
+			string text2;
 			try
 			{
 				if (IntPtr.Size == 4)
@@ -137,19 +134,19 @@ namespace FFUComponents
 				{
 					Size = Marshal.SizeOf(typeof(DeviceInformationData))
 				};
-				if (!NativeMethods.SetupDiGetDeviceInterfaceDetail(intPtr, ref deviceInterfaceData, ptr, num, ref num, ref deviceInformationData))
+				if (!NativeMethods.SetupDiGetDeviceInterfaceDetail(intPtr, ref deviceInterfaceData, ptr, num2, ref num2, ref deviceInformationData))
 				{
 					int lastWin32Error4 = Marshal.GetLastWin32Error();
 					throw new Win32Exception(lastWin32Error4);
 				}
 				string text = Marshal.PtrToStringAuto(new IntPtr((void*)(&ptr->DevicePath)));
-				result = text;
+				text2 = text;
 			}
 			finally
 			{
 				Marshal.FreeHGlobal((IntPtr)((void*)ptr));
 			}
-			return result;
+			return text2;
 		}
 
 		// Token: 0x06000186 RID: 390 RVA: 0x000080DC File Offset: 0x000062DC
@@ -196,24 +193,24 @@ namespace FFUComponents
 		// Token: 0x06000187 RID: 391 RVA: 0x000081E4 File Offset: 0x000063E4
 		private IntPtr RegisterDeviceNotification(Guid ifGuid)
 		{
-			IntPtr result = IntPtr.Zero;
+			IntPtr intPtr = IntPtr.Zero;
 			DevBroadcastDeviceInterface devBroadcastDeviceInterface = new DevBroadcastDeviceInterface
 			{
 				Size = Marshal.SizeOf(typeof(DevBroadcastDeviceInterface)),
 				DeviceType = 5,
 				ClassGuid = ifGuid
 			};
-			IntPtr intPtr = Marshal.AllocHGlobal(devBroadcastDeviceInterface.Size);
+			IntPtr intPtr2 = Marshal.AllocHGlobal(devBroadcastDeviceInterface.Size);
 			try
 			{
-				Marshal.StructureToPtr(devBroadcastDeviceInterface, intPtr, true);
-				result = NativeMethods.RegisterDeviceNotification(base.Handle, intPtr, 0);
+				Marshal.StructureToPtr(devBroadcastDeviceInterface, intPtr2, true);
+				intPtr = NativeMethods.RegisterDeviceNotification(base.Handle, intPtr2, 0);
 			}
 			finally
 			{
-				Marshal.FreeHGlobal(intPtr);
+				Marshal.FreeHGlobal(intPtr2);
 			}
-			return result;
+			return intPtr;
 		}
 
 		// Token: 0x04000171 RID: 369

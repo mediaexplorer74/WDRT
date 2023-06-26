@@ -7,11 +7,11 @@ using System.Threading;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 {
-	// Token: 0x02000005 RID: 5
+	// Token: 0x020000E4 RID: 228
 	public static class AppInfo
 	{
-		// Token: 0x1700000F RID: 15
-		// (get) Token: 0x0600003A RID: 58 RVA: 0x00002F64 File Offset: 0x00001164
+		// Token: 0x170001A6 RID: 422
+		// (get) Token: 0x0600075B RID: 1883 RVA: 0x000211F8 File Offset: 0x0001F3F8
 		public static int ApplicationId
 		{
 			get
@@ -20,13 +20,14 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 			}
 		}
 
-		// Token: 0x17000010 RID: 16
-		// (get) Token: 0x0600003B RID: 59 RVA: 0x00002F7C File Offset: 0x0000117C
+		// Token: 0x170001A7 RID: 423
+		// (get) Token: 0x0600075C RID: 1884 RVA: 0x00021210 File Offset: 0x0001F410
 		public static string ApplicationName
 		{
 			get
 			{
-				if (string.IsNullOrEmpty(AppInfo.applicationName))
+				bool flag = string.IsNullOrEmpty(AppInfo.applicationName);
+				if (flag)
 				{
 					AppInfo.applicationName = AppInfo.GetAppName();
 				}
@@ -34,13 +35,14 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 			}
 		}
 
-		// Token: 0x17000011 RID: 17
-		// (get) Token: 0x0600003C RID: 60 RVA: 0x00002FB0 File Offset: 0x000011B0
+		// Token: 0x170001A8 RID: 424
+		// (get) Token: 0x0600075D RID: 1885 RVA: 0x00021244 File Offset: 0x0001F444
 		public static string Version
 		{
 			get
 			{
-				if (string.IsNullOrEmpty(AppInfo.version))
+				bool flag = string.IsNullOrEmpty(AppInfo.version);
+				if (flag)
 				{
 					AppInfo.version = AppInfo.GetVersion();
 				}
@@ -48,73 +50,71 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 			}
 		}
 
-		// Token: 0x0600003D RID: 61 RVA: 0x00002FE4 File Offset: 0x000011E4
+		// Token: 0x0600075E RID: 1886 RVA: 0x00021278 File Offset: 0x0001F478
 		public static string AppName()
 		{
 			Assembly entryAssembly = Assembly.GetEntryAssembly();
-			string result;
-			if (entryAssembly != null)
+			bool flag = entryAssembly != null;
+			string text;
+			if (flag)
 			{
-				result = entryAssembly.GetName().Name;
+				text = entryAssembly.GetName().Name;
 			}
 			else
 			{
-				result = string.Empty;
+				text = string.Empty;
 			}
-			return result;
+			return text;
 		}
 
-		// Token: 0x0600003E RID: 62 RVA: 0x00003020 File Offset: 0x00001220
+		// Token: 0x0600075F RID: 1887 RVA: 0x000212B0 File Offset: 0x0001F4B0
 		public static string AppTitle()
 		{
 			Assembly entryAssembly = Assembly.GetEntryAssembly();
 			object[] customAttributes = entryAssembly.GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
-			string result;
-			if (customAttributes.Length == 1)
+			bool flag = customAttributes.Length == 1;
+			string text;
+			if (flag)
 			{
-				result = ((AssemblyTitleAttribute)customAttributes[0]).Title;
+				text = ((AssemblyTitleAttribute)customAttributes[0]).Title;
 			}
 			else
 			{
-				result = string.Empty;
+				text = string.Empty;
 			}
-			return result;
+			return text;
 		}
 
-		// Token: 0x0600003F RID: 63 RVA: 0x00003070 File Offset: 0x00001270
+		// Token: 0x06000760 RID: 1888 RVA: 0x000212FC File Offset: 0x0001F4FC
 		public static string AppVersion()
 		{
 			Assembly entryAssembly = Assembly.GetEntryAssembly();
-			string result;
-			if (entryAssembly != null)
+			bool flag = entryAssembly != null;
+			string text4;
+			if (flag)
 			{
 				string text = entryAssembly.GetName().Version.Major.ToString(CultureInfo.InvariantCulture);
 				string text2 = entryAssembly.GetName().Version.Minor.ToString(CultureInfo.InvariantCulture);
 				string text3 = entryAssembly.GetName().Version.Build.ToString(CultureInfo.InvariantCulture);
-				result = string.Concat(new object[]
-				{
-					text,
-					'.',
-					text2,
-					'.',
-					text3
-				});
+				text4 = string.Concat(new string[] { text, ".", text2, ".", text3 });
 			}
 			else
 			{
-				result = string.Empty;
+				text4 = string.Empty;
 			}
-			return result;
+			return text4;
 		}
 
-		// Token: 0x06000040 RID: 64 RVA: 0x00003138 File Offset: 0x00001338
+		// Token: 0x06000761 RID: 1889 RVA: 0x000213B4 File Offset: 0x0001F5B4
 		public static string Copyrights()
 		{
 			Assembly entryAssembly = Assembly.GetEntryAssembly();
-			if (entryAssembly != null)
+			bool flag = entryAssembly != null;
+			if (flag)
 			{
 				object[] customAttributes = entryAssembly.GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
-				if (customAttributes.Length > 0)
+				bool flag2 = customAttributes.Length != 0;
+				if (flag2)
 				{
 					return ((AssemblyCopyrightAttribute)customAttributes[0]).Copyright;
 				}
@@ -122,81 +122,79 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 			return string.Empty;
 		}
 
-		// Token: 0x06000041 RID: 65 RVA: 0x00003198 File Offset: 0x00001398
+		// Token: 0x06000762 RID: 1890 RVA: 0x00021410 File Offset: 0x0001F610
 		public static string AppAssemblyFilePath()
 		{
 			Assembly entryAssembly = Assembly.GetEntryAssembly();
-			string result;
-			if (entryAssembly != null)
+			bool flag = entryAssembly != null;
+			string text;
+			if (flag)
 			{
-				result = new Uri(entryAssembly.CodeBase, UriKind.Absolute).LocalPath;
+				text = new Uri(entryAssembly.CodeBase, UriKind.Absolute).LocalPath;
 			}
 			else
 			{
-				result = string.Empty;
+				text = string.Empty;
 			}
-			return result;
+			return text;
 		}
 
-		// Token: 0x06000042 RID: 66 RVA: 0x000031D8 File Offset: 0x000013D8
+		// Token: 0x06000763 RID: 1891 RVA: 0x00021450 File Offset: 0x0001F650
 		public static bool IsAnotherInstanceRunning()
 		{
-			string value = Assembly.GetExecutingAssembly().GetCustomAttributes(false).OfType<GuidAttribute>().First<GuidAttribute>().Value;
+			string value = Assembly.GetExecutingAssembly().GetCustomAttributes(false).OfType<GuidAttribute>()
+				.First<GuidAttribute>()
+				.Value;
 			bool flag;
 			AppInfo.mutex = new Mutex(false, value, out flag);
 			return !flag;
 		}
 
-		// Token: 0x06000043 RID: 67 RVA: 0x00003220 File Offset: 0x00001420
+		// Token: 0x06000764 RID: 1892 RVA: 0x0002149C File Offset: 0x0001F69C
 		private static string GetVersion()
 		{
 			Assembly entryAssembly = Assembly.GetEntryAssembly();
-			string result;
-			if (entryAssembly != null)
+			bool flag = entryAssembly != null;
+			string text4;
+			if (flag)
 			{
 				Version version = entryAssembly.GetName().Version;
 				string text = version.Major.ToString(CultureInfo.InvariantCulture);
 				string text2 = version.Minor.ToString(CultureInfo.InvariantCulture);
 				string text3 = version.Build.ToString(CultureInfo.InvariantCulture);
-				result = string.Concat(new object[]
-				{
-					text,
-					'.',
-					text2,
-					'.',
-					text3
-				});
+				text4 = string.Concat(new string[] { text, ".", text2, ".", text3 });
 			}
 			else
 			{
-				result = string.Empty;
+				text4 = string.Empty;
 			}
-			return result;
+			return text4;
 		}
 
-		// Token: 0x06000044 RID: 68 RVA: 0x000032D8 File Offset: 0x000014D8
+		// Token: 0x06000765 RID: 1893 RVA: 0x00021544 File Offset: 0x0001F744
 		private static string GetAppName()
 		{
 			Assembly entryAssembly = Assembly.GetEntryAssembly();
-			string result;
-			if (entryAssembly != null)
+			bool flag = entryAssembly != null;
+			string text;
+			if (flag)
 			{
-				result = entryAssembly.GetName().Name;
+				text = entryAssembly.GetName().Name;
 			}
 			else
 			{
-				result = string.Empty;
+				text = string.Empty;
 			}
-			return result;
+			return text;
 		}
 
-		// Token: 0x04000015 RID: 21
+		// Token: 0x0400033D RID: 829
 		private static string version;
 
-		// Token: 0x04000016 RID: 22
+		// Token: 0x0400033E RID: 830
 		private static string applicationName;
 
-		// Token: 0x04000017 RID: 23
+		// Token: 0x0400033F RID: 831
 		private static Mutex mutex;
 	}
 }

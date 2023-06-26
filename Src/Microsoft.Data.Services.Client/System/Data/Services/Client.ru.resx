@@ -1,0 +1,886 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ALinq_AnyAllNotSupportedInOrderBy" xml:space="preserve">
+    <value>Метод "{0}" не поддерживается параметром запроса "orderby".</value>
+  </data>
+  <data name="ALinq_BinaryNotSupported" xml:space="preserve">
+    <value>Двоичный оператор "{0}" не поддерживается.</value>
+  </data>
+  <data name="ALinq_CanOnlyApplyOneKeyPredicate" xml:space="preserve">
+    <value>Нельзя указывать несколько ключевых предикатов для одного набора сущностей.</value>
+  </data>
+  <data name="ALinq_CanOnlyProjectTheLeaf" xml:space="preserve">
+    <value>В преобразуемом запросе может быть выполнена проекция только последнего типа сущности.</value>
+  </data>
+  <data name="ALinq_CannotAddCountOption" xml:space="preserve">
+    <value>Не удалось добавить параметр count к набору ресурсов.</value>
+  </data>
+  <data name="ALinq_CannotAddCountOptionConflict" xml:space="preserve">
+    <value>Не удалось добавить параметр count к набору ресурсов, поскольку это вызвало бы конфликт с существующими параметрами count.</value>
+  </data>
+  <data name="ALinq_CannotConstructKnownEntityTypes" xml:space="preserve">
+    <value>Построение экземпляров типа сущности должно использовать инициализатор объекта с конструктором по умолчанию.</value>
+  </data>
+  <data name="ALinq_CannotCreateConstantEntity" xml:space="preserve">
+    <value>При проекции результатов не поддерживаются ссылки на локальные экземпляры типов сущностей.</value>
+  </data>
+  <data name="ALinq_CannotProjectWithExplicitExpansion" xml:space="preserve">
+    <value>Не удается создать проекцию, пока в том же запросе указано явное расширение.</value>
+  </data>
+  <data name="ALinq_CannotUseTypeFiltersMultipleTimes" xml:space="preserve">
+    <value>Неизбыточные фильтры типов (OfType&lt;T&gt;, "as" в C# и "TryCast" в VB) могут использоваться только один раз в наборе ресурсов.</value>
+  </data>
+  <data name="ALinq_CantAddAstoriaQueryOption" xml:space="preserve">
+    <value>Не удается добавить параметр запроса "{0}", поскольку это приведет к конфликту с параметрами запроса из преобразованного выражения Linq.</value>
+  </data>
+  <data name="ALinq_CantAddDuplicateQueryOption" xml:space="preserve">
+    <value>Не удается добавить повторяющийся параметр запроса "{0}".</value>
+  </data>
+  <data name="ALinq_CantAddQueryOption" xml:space="preserve">
+    <value>Нестандартные параметры запроса не допускаются.</value>
+  </data>
+  <data name="ALinq_CantAddQueryOptionStartingWithDollarSign" xml:space="preserve">
+    <value>Не удается добавить параметр запроса "{0}", поскольку он начинается с зарезервированного символа "$".</value>
+  </data>
+  <data name="ALinq_CantCastToUnsupportedPrimitive" xml:space="preserve">
+    <value>Не удается выполнить приведение к неподдерживаемому типу "{0}"</value>
+  </data>
+  <data name="ALinq_CantExpand" xml:space="preserve">
+    <value>Не допускается параметр запроса Expand.</value>
+  </data>
+  <data name="ALinq_CantNavigateWithoutKeyPredicate" xml:space="preserve">
+    <value>Отдельные свойства можно выбирать только из единичного ресурса или в составе типа. Укажите предикат ключа, чтобы ограничить набор сущностей одним экземпляром или спроецировать свойство в именованный или анонимный тип.</value>
+  </data>
+  <data name="ALinq_CantReferToPublicField" xml:space="preserve">
+    <value>Ссылка на открытое поле "{0}" не поддерживается в выражении параметра запроса.  Вместо этого используйте открытое свойство.</value>
+  </data>
+  <data name="ALinq_CantTranslateExpression" xml:space="preserve">
+    <value>Выражение {0} не поддерживается.</value>
+  </data>
+  <data name="ALinq_CollectionMemberAccessNotSupportedInNavigation" xml:space="preserve">
+    <value>Переход к элементам свойства коллекции "{0}" не поддерживается в выражениях запроса "select".</value>
+  </data>
+  <data name="ALinq_CollectionPropertyNotSupportedInOrderBy" xml:space="preserve">
+    <value>Свойство коллекции "{0}" не может использоваться в выражении запроса "orderby". Свойства коллекции не поддерживаются параметром запроса "orderby".</value>
+  </data>
+  <data name="ALinq_CollectionPropertyNotSupportedInWhere" xml:space="preserve">
+    <value>Свойство коллекции "{0}" не может использоваться в выражении запроса "where". Свойства коллекции поддерживаются только в качестве источника методов "any" или "all" в параметре запроса "where".</value>
+  </data>
+  <data name="ALinq_ConditionalNotSupported" xml:space="preserve">
+    <value>Условное выражение не поддерживается.</value>
+  </data>
+  <data name="ALinq_ConstantNotSupported" xml:space="preserve">
+    <value>Константа для "{0}" не поддерживается.</value>
+  </data>
+  <data name="ALinq_CouldNotConvert" xml:space="preserve">
+    <value>Не удалось преобразовать константное выражение {0} в строковое.</value>
+  </data>
+  <data name="ALinq_ExpressionCannotEndWithTypeAs" xml:space="preserve">
+    <value>Выражение "{0}" в методе "{1}" не поддерживается. Выражение не может оканчиваться на TypeAs.</value>
+  </data>
+  <data name="ALinq_ExpressionNotSupportedInProjection" xml:space="preserve">
+    <value>Создание и инициализация экземпляров типа {0} с выражением {1} не поддерживается.</value>
+  </data>
+  <data name="ALinq_ExpressionNotSupportedInProjectionToEntity" xml:space="preserve">
+    <value>Создание и инициализация сущностей типа {0} с выражением {1} не поддерживается.</value>
+  </data>
+  <data name="ALinq_FormatQueryOptionNotSupported" xml:space="preserve">
+    <value>Параметр запроса "$format" не поддерживается. Задайте нужный формат через свойство DataServiceContext.Format.</value>
+  </data>
+  <data name="ALinq_InvalidExpressionInNavigationPath" xml:space="preserve">
+    <value>Выражение "{0}" недопустимо для пути навигации. В лямбда-выражении поддерживаются только операции MemberAccess и TypeAs. Выражение должно содержать хотя бы одну операцию MemberAccess и не может завершаться операцией TypeAs.</value>
+  </data>
+  <data name="ALinq_InvalidSourceForAnyAll" xml:space="preserve">
+    <value>Исходным параметром для метода "{0}" должно быть свойство навигации или свойство коллекции.</value>
+  </data>
+  <data name="ALinq_InvocationNotSupported" xml:space="preserve">
+    <value>Выражения вызова не поддерживаются.</value>
+  </data>
+  <data name="ALinq_LambdaNotSupported" xml:space="preserve">
+    <value>Лямбда-выражения не поддерживаются.</value>
+  </data>
+  <data name="ALinq_LinkPropertyNotSupportedInExpression" xml:space="preserve">
+    <value>Свойство "{0}" типа "DataServiceStreamLink" не может использоваться в выражениях запроса "where" и "orderby". Свойства типа "DataServiceStreamLink" не поддерживаются в этих параметрах запроса.</value>
+  </data>
+  <data name="ALinq_ListInitNotSupported" xml:space="preserve">
+    <value>Выражения List Init не поддерживаются.</value>
+  </data>
+  <data name="ALinq_MemberAccessNotSupported" xml:space="preserve">
+    <value>Доступ к элементам "{0}" не поддерживается.</value>
+  </data>
+  <data name="ALinq_MemberInitNotSupported" xml:space="preserve">
+    <value>Выражения Member Init не поддерживаются.</value>
+  </data>
+  <data name="ALinq_MethodNotSupported" xml:space="preserve">
+    <value>Метод "{0}" не поддерживается.</value>
+  </data>
+  <data name="ALinq_MethodNotSupportedForMaxDataServiceVersionLessThanX" xml:space="preserve">
+    <value>Метод "{0}" не поддерживается, если MaxProtocolVersion имеет значение меньше "{1}".</value>
+  </data>
+  <data name="ALinq_NewArrayNotSupported" xml:space="preserve">
+    <value>Выражения New Array не поддерживаются.</value>
+  </data>
+  <data name="ALinq_NewNotSupported" xml:space="preserve">
+    <value>Выражения New не поддерживаются.</value>
+  </data>
+  <data name="ALinq_OfTypeArgumentNotAvailable" xml:space="preserve">
+    <value>Не удалось определить целевой тип для фильтра OfType.</value>
+  </data>
+  <data name="ALinq_ParameterNotSupported" xml:space="preserve">
+    <value>Выражение параметра не поддерживается.</value>
+  </data>
+  <data name="ALinq_ProjectionCanOnlyHaveOneProjection" xml:space="preserve">
+    <value>Не удалось преобразовать несколько операций выборки Linq Select в одном параметре запроса "select".</value>
+  </data>
+  <data name="ALinq_ProjectionMemberAssignmentMismatch" xml:space="preserve">
+    <value>Не удалось инициализировать экземпляр сущности типа "{0}", поскольку "{1}" и "{2}" относятся не к одной и той же исходной сущности.</value>
+  </data>
+  <data name="ALinq_ProjectionOnlyAllowedOnLeafNodes" xml:space="preserve">
+    <value>Параметр запроса "select" может быть указан только после последней навигации.</value>
+  </data>
+  <data name="ALinq_PropertyNamesMustMatchInProjections" xml:space="preserve">
+    <value>Не удалось присвоить значение свойства {0} свойству {1}. При проекции результатов на тип сущности имена свойств исходного и целевого типов должны соответствовать проецируемым свойствам.</value>
+  </data>
+  <data name="ALinq_QueryOptionOutOfOrder" xml:space="preserve">
+    <value>Параметр запроса {0} не может указываться после параметра {1}.</value>
+  </data>
+  <data name="ALinq_QueryOptionsOnlyAllowedOnLeafNodes" xml:space="preserve">
+    <value>После последней навигации могут быть указаны только параметры запроса (orderby, where, take, skip).</value>
+  </data>
+  <data name="ALinq_QueryOptionsOnlyAllowedOnSingletons" xml:space="preserve">
+    <value>Параметры запроса (orderby, where, take, skip, count) нельзя задавать для одного ресурса.</value>
+  </data>
+  <data name="ALinq_TranslationError" xml:space="preserve">
+    <value>Ошибка преобразования выражения Linq в URI: {0}</value>
+  </data>
+  <data name="ALinq_TypeAsArgumentNotEntityType" xml:space="preserve">
+    <value>Тип "{0}" не является типом сущности. Типом целевого объекта для оператора TypeAs должен быть тип сущности.</value>
+  </data>
+  <data name="ALinq_TypeAsNotSupportedForMaxDataServiceVersionLessThan3" xml:space="preserve">
+    <value>Выражение "TypeAs" не поддерживается, если MaxProtocolVersion имеет значение меньше "3.0".</value>
+  </data>
+  <data name="ALinq_TypeBinaryNotSupported" xml:space="preserve">
+    <value>Операция между выражением и типом не поддерживается.</value>
+  </data>
+  <data name="ALinq_UnaryNotSupported" xml:space="preserve">
+    <value>Унарный оператор "{0}" не поддерживается.</value>
+  </data>
+  <data name="ALinq_UnsupportedExpression" xml:space="preserve">
+    <value>Тип выражений {0} не поддерживается.</value>
+  </data>
+  <data name="AtomMaterializer_CannotAssignNull" xml:space="preserve">
+    <value>Значение NULL свойства "{0}" не может быть присвоено типу "{1}".</value>
+  </data>
+  <data name="AtomMaterializer_CollectionExpectedCollection" xml:space="preserve">
+    <value>При материализации коллекции верхнего уровня ожидался тип ICollection&lt;&gt;, однако фактический тип - {0}.</value>
+  </data>
+  <data name="AtomMaterializer_DataServiceCollectionNotSupportedForNonEntities" xml:space="preserve">
+    <value>DataServiceCollection может содержать только типы сущности. Коллекция такого вида не может содержать типы-примитивы и сложные типы.</value>
+  </data>
+  <data name="AtomMaterializer_EntryIntoCollectionMismatch" xml:space="preserve">
+    <value>Запись типа "{0}" не может быть добавлена в коллекцию, содержащую экземпляры типа "{1}". Это может произойти при наличии у существующей записи другого типа такого же значения идентификатора или при проецировании той же сущности на два разных типа в одном запросе.</value>
+  </data>
+  <data name="AtomMaterializer_EntryToAccessIsNull" xml:space="preserve">
+    <value>Запись, возвращенная свойством навигации "{0}", имеет значение NULL, и ее не удается инициализировать. Перед обращением к этому свойству необходимо проверить значение NULL.</value>
+  </data>
+  <data name="AtomMaterializer_EntryToInitializeIsNull" xml:space="preserve">
+    <value>Запись, которая содержит данные, необходимые для создания экземпляра типа "{0}", имеет значение NULL, и ее не удается инициализировать. Перед обращением к этой записи необходимо проверить значение NULL.</value>
+  </data>
+  <data name="AtomMaterializer_InvalidCollectionItem" xml:space="preserve">
+    <value>Элемент "{0}" является недопустимым элементом коллекции. Элемент сбора должен иметь имя "element" и принадлежать пространству имен "http://schemas.microsoft.com/ado/2007/08/dataservices".</value>
+  </data>
+  <data name="AtomMaterializer_InvalidContentTypeEncountered" xml:space="preserve">
+    <value>Тип содержимого ответа "{0}" в данный момент не поддерживается.</value>
+  </data>
+  <data name="AtomMaterializer_InvalidEntityType" xml:space="preserve">
+    <value>Обнаружено несоответствие типов между клиентом и службой. Тип "{0}" является типом сущности, но тип в полезных данных ответа не представляет тип сущности. Убедитесь, что типы, определенные на клиенте, соответствуют модели данных службы, или обновите ссылку на службу на клиенте.</value>
+  </data>
+  <data name="AtomMaterializer_InvalidNonEntityType" xml:space="preserve">
+    <value>Обнаружено несоответствие типов между клиентом и службой. Тип "{0}" не является типом сущности, но тип в полезных данных ответа представляет тип сущности. Убедитесь, что типы, определенные на клиенте, соответствуют модели данных службы, или обновите ссылку на службу на клиенте.</value>
+  </data>
+  <data name="AtomMaterializer_InvalidResponsePayload" xml:space="preserve">
+    <value>Эти полезные данные ответа не являются допустимыми. Убедитесь в том, что элемент верхнего уровня является допустимым элементом Atom или JSON или принадлежит пространству имен "{0}".</value>
+  </data>
+  <data name="AtomMaterializer_MaterializationTypeError" xml:space="preserve">
+    <value>Материализация результатов в тип коллекции "{0}" невозможна, поскольку в нем нет конструктора без параметров.</value>
+  </data>
+  <data name="AtomMaterializer_NoParameterlessCtorForCollectionProperty" xml:space="preserve">
+    <value>Не удалось создать свойство коллекции "{0}", поскольку тип "{1}" не имеет открытого конструктора, не принимающего параметров.</value>
+  </data>
+  <data name="AtomMaterializer_ProjectEntityTypeMismatch" xml:space="preserve">
+    <value>Проекция сущности типа "{0}" невозможна, поскольку уже существует экземпляр типа "{1}" для "{2}".</value>
+  </data>
+  <data name="AtomMaterializer_PropertyMissing" xml:space="preserve">
+    <value>При обработке записи не удалось обнаружить ожидаемое свойство "{0}". Перед доступом к этому свойству проверьте возможное значение NULL.</value>
+  </data>
+  <data name="AtomMaterializer_PropertyNotExpectedEntry" xml:space="preserve">
+    <value>Свойство "{0}" не является сущностью.</value>
+  </data>
+  <data name="AtomMaterializer_ResetAfterEnumeratorCreationError" xml:space="preserve">
+    <value>Сброс не должен быть вызван для модуля чтения коллекций во внутреннем перечислении.</value>
+  </data>
+  <data name="AtomMaterializer_TypeShouldBeCollectionError" xml:space="preserve">
+    <value>Невозможна материализация коллекции типов-примитивов или сложных типов без типа "{0}", который коллекцией.</value>
+  </data>
+  <data name="AtomParser_SingleEntry_ExpectedFeedOrEntry" xml:space="preserve">
+    <value>В ответе сервера ожидался веб-канал или запись Atom, но обнаружен непредвиденный элемент.</value>
+  </data>
+  <data name="AtomParser_SingleEntry_MultipleFound" xml:space="preserve">
+    <value>В ответе сервера ожидалась ровно одна запись Atom, но обнаружено несколько записей.</value>
+  </data>
+  <data name="AtomParser_SingleEntry_NoneFound" xml:space="preserve">
+    <value>В ответе сервера ожидалась ровно одна запись Atom, но не обнаружено ни одной записи.</value>
+  </data>
+  <data name="Batch_ExpectedContentType" xml:space="preserve">
+    <value>Для пакетных запросов ожидается тип содержимого "multipart/mixed;boundary=batch", а не "{0}".</value>
+  </data>
+  <data name="Batch_ExpectedResponse" xml:space="preserve">
+    <value>Для запроса POST ожидался ответ с содержимым. ID={0}</value>
+  </data>
+  <data name="Batch_IncompleteResponseCount" xml:space="preserve">
+    <value>Не все запросы в пакете получили ответ.</value>
+  </data>
+  <data name="Batch_UnexpectedContent" xml:space="preserve">
+    <value>В веб-ответе обнаружены непредвиденные разделы. ID={0}</value>
+  </data>
+  <data name="ClientTypeCache_NonEntityTypeCannotContainEntityProperties" xml:space="preserve">
+    <value>Свойство "{0}" имеет тип сущности и не может быть свойством типа "{1}", который не является типом сущности.  Свойства навигации могут содержаться только в типах сущности.</value>
+  </data>
+  <data name="ClientType_Ambiguous" xml:space="preserve">
+    <value>Разрешение типа из "{0}", наследующего от "{1}", является неоднозначным.</value>
+  </data>
+  <data name="ClientType_CollectionOfCollectionNotSupported" xml:space="preserve">
+    <value>Коллекции свойств типа коллекции не поддерживаются.</value>
+  </data>
+  <data name="ClientType_CollectionPropertyNotSupportedInV2AndBelow" xml:space="preserve">
+    <value>Тип "{0}" имеет свойство коллекции "{1}". Свойства коллекции поддерживаются только в протоколе версии "V3" и более поздних версий.</value>
+  </data>
+  <data name="ClientType_KeysMustBeSimpleTypes" xml:space="preserve">
+    <value>{0} содержит ключевые свойства, объявленные для типа, отличного от простого.</value>
+  </data>
+  <data name="ClientType_KeysOnDifferentDeclaredType" xml:space="preserve">
+    <value>{0} содержит ключевые свойства, объявленные на разных уровнях иерархии типов.</value>
+  </data>
+  <data name="ClientType_MissingMediaEntryProperty" xml:space="preserve">
+    <value>Тип "{0}" имеет атрибут MediaEntry, ссылающийся на свойство с именем "{1}". Однако в этом типе отсутствует свойство "{1}".</value>
+  </data>
+  <data name="ClientType_MissingMimeTypeDataProperty" xml:space="preserve">
+    <value>Тип "{0}" имеет атрибут MimeTypeProperty, ссылающийся на свойство данных "{1}". Однако в этом типе отсутствует свойство "{1}".</value>
+  </data>
+  <data name="ClientType_MissingMimeTypeProperty" xml:space="preserve">
+    <value>Тип "{0}" имеет атрибут MimeTypeProperty, ссылающийся на свойство типа MIME "{1}". Однако в этом типе отсутствует свойство "{1}".</value>
+  </data>
+  <data name="ClientType_MissingOpenProperty" xml:space="preserve">
+    <value>Открытое свойство объекта "{0}:{1}" не определено.</value>
+  </data>
+  <data name="ClientType_MissingProperty" xml:space="preserve">
+    <value>Для закрытого типа {0} нет соответствующего задаваемого свойства {1}.</value>
+  </data>
+  <data name="ClientType_MultipleImplementationNotSupported" xml:space="preserve">
+    <value>Множественные реализации ICollection&lt;T&gt; не поддерживаются.</value>
+  </data>
+  <data name="ClientType_MultipleTypesWithSameName" xml:space="preserve">
+    <value>Обнаружены различные типы с одинаковым наименованием "{0}". Все имена должны быть уникальными.</value>
+  </data>
+  <data name="ClientType_NoSettableFields" xml:space="preserve">
+    <value>В типе "{0}" отсутствуют задаваемые свойства.</value>
+  </data>
+  <data name="ClientType_NullOpenProperties" xml:space="preserve">
+    <value>Свойство "{0}" открытого типа возвратило экземпляр NULL.</value>
+  </data>
+  <data name="ClientType_UnsupportedType" xml:space="preserve">
+    <value>Тип "{0}" не поддерживается клиентской библиотекой.</value>
+  </data>
+  <data name="Clienttype_MultipleOpenProperty" xml:space="preserve">
+    <value>{0} имеет несколько определений для OpenObjectAttribute.</value>
+  </data>
+  <data name="Collection_ComplexTypesInCollectionOfPrimitiveTypesNotAllowed" xml:space="preserve">
+    <value>Свойство коллекции типов-примитивов не может содержать элемент сложного типа.</value>
+  </data>
+  <data name="Collection_NullCollectionItemsNotSupported" xml:space="preserve">
+    <value>Элемент в свойстве коллекции имеет значение NULL. Свойства коллекции, содержащие элементы со значениями NULL, не поддерживаются.</value>
+  </data>
+  <data name="Collection_NullCollectionNotSupported" xml:space="preserve">
+    <value>Свойство "{0}" имеет значение NULL. Свойства, представляющие собой тип коллекции примитивов или сложных типов, не могут иметь значение NULL.</value>
+  </data>
+  <data name="Collection_NullCollectionReference" xml:space="preserve">
+    <value>{0}.{1} должен возвращать коллекцию открытых свойств со значением, отличным от NULL.</value>
+  </data>
+  <data name="Collection_NullNonPropertyCollectionNotSupported" xml:space="preserve">
+    <value>Свойство коллекции типов элементов "{0}" имеет значение NULL. Коллекция не может иметь значение NULL.</value>
+  </data>
+  <data name="Collection_PrimitiveTypesInCollectionOfComplexTypesNotAllowed" xml:space="preserve">
+    <value>Свойство коллекции сложных типов не может содержать элемент типа-примитива.</value>
+  </data>
+  <data name="Content_EntityIsNotEntityType" xml:space="preserve">
+    <value>Для выполнения этой операции запись должна иметь тип сущности, либо помечающей свои ключевые свойства, либо добавляющей атрибут к классу с помощью DataServiceEntityAttribute</value>
+  </data>
+  <data name="Content_EntityWithoutKey" xml:space="preserve">
+    <value>Для выполнения этой операции запись должна иметь тип сущности и хотя бы одно ключевое свойство.</value>
+  </data>
+  <data name="Context_AddLinkCollectionOnly" xml:space="preserve">
+    <value>Методы AddLink и DeleteLink будут работать только в том случае, если sourceProperty является коллекцией.</value>
+  </data>
+  <data name="Context_AddRelatedObjectCollectionOnly" xml:space="preserve">
+    <value>Метод AddRelatedObject работает, только если в качестве атрибута sourceProperty указана коллекция.</value>
+  </data>
+  <data name="Context_AddRelatedObjectSourceDeleted" xml:space="preserve">
+    <value>Метод AddRelatedObject работает, только если исходная сущность находится в неудаленном состоянии.</value>
+  </data>
+  <data name="Context_AsyncAlreadyDone" xml:space="preserve">
+    <value>Асинхронный результат уже завершен.</value>
+  </data>
+  <data name="Context_BaseUri" xml:space="preserve">
+    <value>Ожидался абсолютный URL-адрес в правильном формате http, без запроса и без фрагмента.</value>
+  </data>
+  <data name="Context_BaseUriRequired" xml:space="preserve">
+    <value>Перед выполнением этой операции необходимо задать свойство BaseUri.</value>
+  </data>
+  <data name="Context_BatchExecuteError" xml:space="preserve">
+    <value>Произошла ошибка в этом запросе во время выполнения пакета.  Подробные сведения см. во внутреннем исключении.</value>
+  </data>
+  <data name="Context_BatchNotSupportedForMediaLink" xml:space="preserve">
+    <value>В текущей версии не поддерживается сохранение сущностей с атрибутом [MediaEntry] в пакетном режиме. Используйте режим без пакетов.</value>
+  </data>
+  <data name="Context_BatchNotSupportedForNamedStreams" xml:space="preserve">
+    <value>Изменения нельзя сохранить как пакет, если сущность содержит один или несколько потоков, связанных с ним. Повторите операцию SaveChanges, не включая параметры SaveChangesOptions.Batch и SaveChangesOptions.BatchWithIndependentOperations.</value>
+  </data>
+  <data name="Context_BodyOperationParametersNotAllowedWithGet" xml:space="preserve">
+    <value>OperationParameter типа BodyOperationParameter нельзя указывать, если для HttpMethod задано GET.</value>
+  </data>
+  <data name="Context_BothLocationAndIdMustBeSpecified" xml:space="preserve">
+    <value>Ответ должен иметь оба заголовка "Location" и "DataServiceId" либо не должен иметь ни одного из них.</value>
+  </data>
+  <data name="Context_BuildingRequestAndSendingRequestCannotBeUsedTogether" xml:space="preserve">
+    <value>SendingRequest — это устаревшее событие. При использовании BuildingRequest нельзя использовать SendingRequest. Вместо этого используйте SendingRequest2.</value>
+  </data>
+  <data name="Context_CannotChangeStateIfAdded" xml:space="preserve">
+    <value>Сущность, находящуюся в состоянии "Added", нельзя изменить на "{0}", ее можно изменить только на "Detached".</value>
+  </data>
+  <data name="Context_CannotChangeStateToAdded" xml:space="preserve">
+    <value>Метод ChangeState не поддерживает состояние "Added", поскольку для вставок необходима дополнительная информация. Вместо этого используйте метод AddObject или AddRelatedObject.</value>
+  </data>
+  <data name="Context_CannotChangeStateToModifiedIfNotUnchanged" xml:space="preserve">
+    <value>Если сущность в данный момент находится в состоянии "Unchanged", ее состояние можно изменить только на "Modified".</value>
+  </data>
+  <data name="Context_CannotConvertKey" xml:space="preserve">
+    <value>Не удалось преобразовать значение "{0}" в строку ключа для идентификатора URI.</value>
+  </data>
+  <data name="Context_ChildResourceExists" xml:space="preserve">
+    <value>Попытка удалить связь между двумя объектами не удалась, поскольку идентификатор целевого объекта связи зависит от исходного объекта связи.</value>
+  </data>
+  <data name="Context_ContentTypeRequiredForNamedStream" xml:space="preserve">
+    <value>Значение ContentType для именованного потока не может иметь значение NULL или быть пустой строкой.</value>
+  </data>
+  <data name="Context_DidNotOriginateAsync" xml:space="preserve">
+    <value>Текущий объект не создал асинхронный результат.</value>
+  </data>
+  <data name="Context_DifferentEntityAlreadyContained" xml:space="preserve">
+    <value>Контекст уже отслеживает другую сущность с тем же URI ресурса.</value>
+  </data>
+  <data name="Context_DuplicateBodyOperationParameterName" xml:space="preserve">
+    <value>Обнаружено несколько параметров операции с текстом с одним именем. Имена параметров операции с текстом должны быть уникальными.</value>
+  </data>
+  <data name="Context_DuplicateUriOperationParameterName" xml:space="preserve">
+    <value>Обнаружено несколько параметров операции uri с одним именем. Имена параметров операции uri должны быть уникальными.</value>
+  </data>
+  <data name="Context_EndExecuteExpectedVoidResponse" xml:space="preserve">
+    <value>Перегруженная версия EndExecute для операций и действий службы типа void получила от сервера ответ, не имеющий тип void.</value>
+  </data>
+  <data name="Context_EntityAlreadyContained" xml:space="preserve">
+    <value>Контекст уже отслеживает эту сущность.</value>
+  </data>
+  <data name="Context_EntityDoesNotContainNamedStream" xml:space="preserve">
+    <value>В сущности нет потока с именем "{0}". Убедитесь, что имя потока указано правильно.</value>
+  </data>
+  <data name="Context_EntityMetadataBuilderIsRequired" xml:space="preserve">
+    <value>Реализация ODataEntityMetadataBuilder является обязательной, но из GetEntityMetadataBuilder было возвращено значение NULL.</value>
+  </data>
+  <data name="Context_EntityNotContained" xml:space="preserve">
+    <value>Сейчас контекст не отслеживает эту сущность.</value>
+  </data>
+  <data name="Context_EntityNotMediaLinkEntry" xml:space="preserve">
+    <value>Для этой операции необходимо, чтобы указанная сущность была ссылкой на носитель (Media Link Entry) и был доступен ReadStreamUri. Однако указанная сущность не является ссылкой на носитель или не имеет допустимого значения ReadStreamUri. Если сущность является ссылкой на носитель, повторно запросите службы данных для этой сущности, чтобы получить допустимое значение ReadStreamUri.</value>
+  </data>
+  <data name="Context_EntitySetName" xml:space="preserve">
+    <value>Ожидаемый соответствующий URL-адрес без запроса или фрагмента.</value>
+  </data>
+  <data name="Context_ExecuteExpectedVoidResponse" xml:space="preserve">
+    <value>Перегруженная версия Execute для операций и действий службы типа void получила от сервера ответ, не имеющий типа void.</value>
+  </data>
+  <data name="Context_ExecuteExpectsGetOrPost" xml:space="preserve">
+    <value>HttpMethod должен иметь значение GET или POST.</value>
+  </data>
+  <data name="Context_InternalError" xml:space="preserve">
+    <value>Внутренняя ошибка System.Data.Services.Client: {0}.</value>
+  </data>
+  <data name="Context_LinkResourceInsertFailure" xml:space="preserve">
+    <value>Не удалось вставить один из ресурсов ссылки.</value>
+  </data>
+  <data name="Context_LocationHeaderExpectsAbsoluteUri" xml:space="preserve">
+    <value>Значение заголовка "Location", указываемое в ответе, должно быть абсолютным URI.</value>
+  </data>
+  <data name="Context_MLEWithoutSaveStream" xml:space="preserve">
+    <value>Тип сущности {0} помечен атрибутом MediaEntry, но для сущности не задан поток сохранения.</value>
+  </data>
+  <data name="Context_MissingOperationParameterName" xml:space="preserve">
+    <value>Свойство Name для OperationParameter должно иметь своим значением непустую строку, отличную от NULL.</value>
+  </data>
+  <data name="Context_MissingSelfAndEditLinkForNamedStream" xml:space="preserve">
+    <value>Отсутствуют элементы ссылки self-link и edit-media для потока с именем "{0}". Убедитесь, что для этого потока указан элемент ссылки self-link или edit-media.</value>
+  </data>
+  <data name="Context_NoContentTypeForMediaLink" xml:space="preserve">
+    <value>Объект ссылки на носитель типа "{0}" настроен для использования типа MIME, заданного в свойстве "{1}". Однако это свойство пусто или имеет значение NULL.</value>
+  </data>
+  <data name="Context_NoLoadWithInsertEnd" xml:space="preserve">
+    <value>Контекст не может загрузить связанную коллекцию или ссылку для объектов в добавленном состоянии.</value>
+  </data>
+  <data name="Context_NoRelationWithDeleteEnd" xml:space="preserve">
+    <value>Один концевой элемент связи или оба находятся в удаленном состоянии.</value>
+  </data>
+  <data name="Context_NoRelationWithInsertEnd" xml:space="preserve">
+    <value>Один концевой элемент связи или оба находятся в добавленном состоянии.</value>
+  </data>
+  <data name="Context_NullElementInOperationParameterArray" xml:space="preserve">
+    <value>Массив параметров операции содержит недопустимый элемент NULL.</value>
+  </data>
+  <data name="Context_NullKeysAreNotSupported" xml:space="preserve">
+    <value>Ключевой элемент "{0}" сериализованного ресурса имеет значение NULL. Для ключевых элементов не поддерживаются значения NULL.</value>
+  </data>
+  <data name="Context_OnMessageCreatingReturningNull" xml:space="preserve">
+    <value>Свойство DataServiceContext.Configurations.RequestPipeline.OnMessageCreating не должно возвращать значение NULL. Возвратите значение, отличное от NULL, для этого свойства.</value>
+  </data>
+  <data name="Context_OperationCanceled" xml:space="preserve">
+    <value>Операция отменена.</value>
+  </data>
+  <data name="Context_PropertyNotSupportedForMaxDataServiceVersionGreaterThanX" xml:space="preserve">
+    <value>Свойство "{0}" не поддерживается, если MaxProtocolVersion превышает значение "{1}".</value>
+  </data>
+  <data name="Context_RelationAlreadyContained" xml:space="preserve">
+    <value>Контекст уже отслеживает эту связь.</value>
+  </data>
+  <data name="Context_RelationNotRefOrCollection" xml:space="preserve">
+    <value>Свойство sourceProperty не является ссылкой или коллекцией типа объекта назначения.</value>
+  </data>
+  <data name="Context_RequestUriIsRelativeBaseUriRequired" xml:space="preserve">
+    <value>Поскольку requestUri является относительным URI, необходимо задать свойство BaseUri в DataServiceContext.</value>
+  </data>
+  <data name="Context_RequestVersionIsBiggerThanProtocolVersion" xml:space="preserve">
+    <value>Для запроса необходимо использовать версию {0} протокола, но свойство MaxProtocolVersion в контексте службы данных имеет значение {1}. Задайте в свойстве MaxProtocolVersion более позднюю версию и повторите операцию.</value>
+  </data>
+  <data name="Context_ResolveEntitySetOrBaseUriRequired" xml:space="preserve">
+    <value>Функция ResolveEntitySet должна возвращать отличный от NULL Uri для EntitySet "{0}". В противном случае необходимо задать свойство BaseUri.</value>
+  </data>
+  <data name="Context_ResolveReturnedInvalidUri" xml:space="preserve">
+    <value>Uri, возвращаемый функцией ResolveEntitySet, должен быть абсолютным URL-адресом правильного формата с именем схемы "http" или "https" и не должен содержать строки запроса и идентификаторы фрагментов.</value>
+  </data>
+  <data name="Context_ResponseVersionIsBiggerThanProtocolVersion" xml:space="preserve">
+    <value>Ответ имеет версию {0}, но свойство MaxProtocolVersion в контексте службы данных имеет значение {1}. Установите в свойстве MaxProtocolVersion версию, необходимую для ответа, а затем повторите запрос. Если клиент не поддерживает необходимую версию протокола, обновите клиент.</value>
+  </data>
+  <data name="Context_SendingRequestEventArgsNotHttp" xml:space="preserve">
+    <value>Для этого свойства в настоящий момент разрешены только экземпляры HttpWebRequest. Другие подтипы WebRequest не поддерживаются.</value>
+  </data>
+  <data name="Context_SendingRequest_InvalidWhenUsingOnMessageCreating" xml:space="preserve">
+    <value>SendingRequest не может использоваться в сочетании со свойством DataServiceContext.Configurations.RequestPipeline.OnMessageCreating. Вместо этого со свойством DataServiceContext.Configurations.RequestPipeline.OnMessageCreating следует использовать SendingRequest2.</value>
+  </data>
+  <data name="Context_SetLinkReferenceOnly" xml:space="preserve">
+    <value>Метод SetLink будет работать только в случае, если sourceProperty не является коллекцией.</value>
+  </data>
+  <data name="Context_SetSaveStreamOnInvalidEntityState" xml:space="preserve">
+    <value>Вызов SetSaveStream для сущности в состоянии "{0}" не разрешается.</value>
+  </data>
+  <data name="Context_SetSaveStreamOnMediaEntryProperty" xml:space="preserve">
+    <value>Нельзя использовать SetSaveStream для сущностей типа {0}, для которых определено свойство записи носителя.</value>
+  </data>
+  <data name="Context_SetSaveStreamWithoutEditMediaLink" xml:space="preserve">
+    <value>Отсутствует ссылка edit-media для потока мультимедиа. Убедитесь, что для этого потока указана ссылка edit-media.</value>
+  </data>
+  <data name="Context_SetSaveStreamWithoutNamedStreamEditLink" xml:space="preserve">
+    <value>Поток с именем "{0}" нельзя изменить, поскольку в нем нет ссылки (link) edit-media. Убедитесь, что имя потока задано правильно, а ссылка edit-media для этого потока включена в элемент записи в ответе.</value>
+  </data>
+  <data name="Context_TrackingExpectsAbsoluteUri" xml:space="preserve">
+    <value>Значение идентификатора, указанное в элементе id Atom или в заголовке DataServiceId, должно быть абсолютным URI.</value>
+  </data>
+  <data name="Context_UnexpectedZeroRawRead" xml:space="preserve">
+    <value>Непредвиденный результат (&lt;= 0) метода stream.Read() во время считывания необработанных данных для этого свойства.</value>
+  </data>
+  <data name="Context_VersionNotSupported" xml:space="preserve">
+    <value>Версия ответа "{0}" не поддерживается. Поддерживаются только следующие версии: {1}.</value>
+  </data>
+  <data name="DSKAttribute_MustSpecifyAtleastOnePropertyName" xml:space="preserve">
+    <value>В атрибуте DataServiceKey должно быть задано хотя бы одно имя свойства.</value>
+  </data>
+  <data name="DataBinding_BindingOperation_ArrayItemNotEntity" xml:space="preserve">
+    <value>Значение, указанное во время выполнения операции "{0}" для коллекции DataServiceCollection, не относится к типу сущности с ключом.</value>
+  </data>
+  <data name="DataBinding_BindingOperation_ArrayItemNull" xml:space="preserve">
+    <value>Значения NULL не допускаются во время выполнения операций "{0}" для коллекции DataServiceCollection.</value>
+  </data>
+  <data name="DataBinding_BindingOperation_DetachedSource" xml:space="preserve">
+    <value>Операция Add/Update/Delete не может быть выполнена для дочерней сущности, если родительская сущность уже отсоединена.</value>
+  </data>
+  <data name="DataBinding_CollectionAssociatedWithMultipleEntities" xml:space="preserve">
+    <value>Не удалось выполнить отслеживание объекта коллекции типов "{0}", поскольку объект коллекции уже отслеживается.</value>
+  </data>
+  <data name="DataBinding_CollectionChangedUnknownActionCollection" xml:space="preserve">
+    <value>Непредвиденное действие "{0}" для события OnCollectionChanged, вызванного объектом коллекции типа "{1}".</value>
+  </data>
+  <data name="DataBinding_CollectionPropertySetterValueHasObserver" xml:space="preserve">
+    <value>Задание экземпляра коллекции DataServiceCollection для свойства сущности не допускается, если экземпляр уже отслеживается. Ошибка свойства "{0}" для типа сущности "{1}".</value>
+  </data>
+  <data name="DataBinding_ComplexObjectAssociatedWithMultipleEntities" xml:space="preserve">
+    <value>Не удалось выполнить отслеживание сложного объекта типа "{0}", поскольку сложный объект уже отслеживается.</value>
+  </data>
+  <data name="DataBinding_DataServiceCollectionArgumentMustHaveEntityType" xml:space="preserve">
+    <value>Для отслеживания коллекции DataServiceCollection необходимо, чтобы коллекция содержала элементы типа сущности, имеющие хотя бы одно ключевое свойство. Тип элемента "{0}" не обладает каким-либо ключевым свойством.</value>
+  </data>
+  <data name="DataBinding_DataServiceCollectionChangedUnknownActionCollection" xml:space="preserve">
+    <value>Непредвиденное действие "{0}" для события OnCollectionChanged вызвано коллекцией DataServiceCollection.</value>
+  </data>
+  <data name="DataBinding_EntityAlreadyInCollection" xml:space="preserve">
+    <value>Предпринята попытка добавить сущность типа "{0}" в коллекцию, где уже имеется такая же сущность.</value>
+  </data>
+  <data name="DataBinding_NotifyCollectionChangedNotImpl" xml:space="preserve">
+    <value>Не удалось выполнить отслеживание типа сущности или сложного типа, поскольку тип сущности или сложный тип содержит свойство коллекции типа "{0}", в котором не реализован интерфейс INotifyCollectionChanged.</value>
+  </data>
+  <data name="DataBinding_NotifyPropertyChangedNotImpl" xml:space="preserve">
+    <value>Попытка отследить сущность или сложный тип не удалась, поскольку сущностью или сложным типом "{0}" не реализуется интерфейс INotifyPropertyChanged.</value>
+  </data>
+  <data name="DataBinding_Util_UnknownEntitySetName" xml:space="preserve">
+    <value>Не указано имя набора сущностей для сущности типа "{0}".</value>
+  </data>
+  <data name="DataServiceClientFormat_AtomEventsOnlySupportedWithAtomFormat" xml:space="preserve">
+    <value>События ReadingEntity и WritingEntity поддерживаются только при использовании формата Atom. Используйте формат Atom или удалите все зарегистрированные обработчики для этих событий перед включением другого формата.</value>
+  </data>
+  <data name="DataServiceClientFormat_JsonUnsupportedForLessThanV3" xml:space="preserve">
+    <value>UseJson не поддерживается, если MaxProtocolVersion имеет значение меньше V3. Формат JSON поддерживается только в OData v3 или более поздних версиях.</value>
+  </data>
+  <data name="DataServiceClientFormat_JsonVerboseUnsupported" xml:space="preserve">
+    <value>Значение типа содержимого "{0}" не поддерживается.</value>
+  </data>
+  <data name="DataServiceClientFormat_LoadServiceModelRequired" xml:space="preserve">
+    <value>При вызове метода UseJson без параметров необходимо использовать свойство LoadServiceModel для предоставления допустимого экземпляра IEdmModel.</value>
+  </data>
+  <data name="DataServiceClientFormat_ValidServiceModelRequiredForJson" xml:space="preserve">
+    <value>Для использования формата JSON необходимо сначала вызвать метод DataServiceContext.Format.UseJson() и передать допустимую модель службы.</value>
+  </data>
+  <data name="DataServiceCollection_CannotDetermineContextFromItems" xml:space="preserve">
+    <value>Не удалось определить DataServiceContext, к которому принадлежит экземпляр DataServiceCollection. DataServiceContext должен указываться в конструкторе DataServiceCollection либо использоваться для создания объекта DataServiceQuery или QueryOperationResponse, который служит источником элементов в DataServiceCollection.</value>
+  </data>
+  <data name="DataServiceCollection_CannotStopTrackingChildCollection" xml:space="preserve">
+    <value>Отслеживание коллекции DataServiceCollection нельзя остановить для дочерних коллекций.</value>
+  </data>
+  <data name="DataServiceCollection_InsertIntoTrackedButNotLoadedCollection" xml:space="preserve">
+    <value>Не удалось добавить элемент в коллекцию. Если элементы в DataServiceCollection отслеживаются контекстом DataServiceContext, новые элементы не могут добавляться раньше, чем элементы загружаются в коллекцию.</value>
+  </data>
+  <data name="DataServiceCollection_LoadAsyncNoParamsWithoutParentEntity" xml:space="preserve">
+    <value>Метод LoadAsync нельзя вызывать, если DataServiceCollection не является дочерней коллекцией связанной сущности.</value>
+  </data>
+  <data name="DataServiceCollection_LoadAsyncRequiresDataServiceQuery" xml:space="preserve">
+    <value>При вызове метода LoadAsync для коллекции DataServiceCollection может указываться только типизированный объект DataServiceQuery.</value>
+  </data>
+  <data name="DataServiceCollection_LoadRequiresTargetCollectionObserved" xml:space="preserve">
+    <value>Целевая коллекция для операции Load должна иметь связанный класс DataServiceContext.</value>
+  </data>
+  <data name="DataServiceCollection_MultipleLoadAsyncOperationsAtTheSameTime" xml:space="preserve">
+    <value>Предыдущая операция LoadAsync еще не завершена. Снова вызвать метод LoadAsync для коллекции DataServiceCollection нельзя, пока не завершится предыдущая операция.</value>
+  </data>
+  <data name="DataServiceCollection_OperationForTrackedOnly" xml:space="preserve">
+    <value>Эта операция поддерживается только для отслеживаемых коллекций.</value>
+  </data>
+  <data name="DataServiceException_GeneralError" xml:space="preserve">
+    <value>При обработке этого запроса возникла ошибка.</value>
+  </data>
+  <data name="DataServiceQuery_EnumerationNotSupported" xml:space="preserve">
+    <value>Эта требуемая версия .NET Framework не позволяет напрямую перечислять запрос к службе данных. Это связано с тем, что перечисление автоматически передает службе данных синхронный запрос. Так как эта версия .NET Framework поддерживает асинхронные операции, необходимо вызвать методы BeginExecute и EndExecute для получения результата запроса, который поддерживает перечисление.</value>
+  </data>
+  <data name="DataServiceRequest_FailGetCount" xml:space="preserve">
+    <value>Не удалось получить значение count с сервера.</value>
+  </data>
+  <data name="Deserialize_Current" xml:space="preserve">
+    <value>Тип "{1}" текущего значения несовместим с ожидаемым типом "{0}".</value>
+  </data>
+  <data name="Deserialize_ExpectingSimpleValue" xml:space="preserve">
+    <value>Ошибка обработки потока ответов. Элемент XML имеет смешанное содержимое.</value>
+  </data>
+  <data name="Deserialize_GetEnumerator" xml:space="preserve">
+    <value>Только единичное перечисление поддерживается данным интерфейсом IEnumerable.</value>
+  </data>
+  <data name="Deserialize_MismatchAtomLinkEntryPropertyIsCollection" xml:space="preserve">
+    <value>Ошибка обработки потока ответов. В полезных данных Atom имеется запись, а свойство "{0}" является коллекцией.</value>
+  </data>
+  <data name="Deserialize_MismatchAtomLinkFeedPropertyNotCollection" xml:space="preserve">
+    <value>Ошибка обработки потока ответов. В полезных данных Atom имеется канал, а свойство "{0}" не является коллекцией.</value>
+  </data>
+  <data name="Deserialize_MismatchAtomLinkLocalSimple" xml:space="preserve">
+    <value>Ошибка обработки потока ответов. В полезных данных Atom имеется ссылка, а локальный объект имеет простое значение.</value>
+  </data>
+  <data name="Deserialize_MissingIdElement" xml:space="preserve">
+    <value>Ошибка обработки потока ответов. В ответе отсутствует элемент id.</value>
+  </data>
+  <data name="Deserialize_MixedTextWithComment" xml:space="preserve">
+    <value>Ошибка обработки потока ответов. Не поддерживается вставка примечаний в значение элемента.</value>
+  </data>
+  <data name="Deserialize_NoLocationHeader" xml:space="preserve">
+    <value>В ответе на этот запрос POST не содержался заголовок "location". Этот клиент не поддерживает такие ответы.</value>
+  </data>
+  <data name="Deserialize_ServerException" xml:space="preserve">
+    <value>Ошибка обработки потока ответов. Сервер передал следующее сообщение об ошибке:
+{0}</value>
+  </data>
+  <data name="EdmValueUtils_CannotConvertTypeToClrValue" xml:space="preserve">
+    <value>Значение с видом типа-примитива "{0}" невозможно преобразовать в значение объекта-примитива.</value>
+  </data>
+  <data name="EdmValueUtils_IncorrectPrimitiveTypeKind" xml:space="preserve">
+    <value>Были найдены несовместимые виды типов-примитивов. Тип "{0}" принадлежит к виду "{2}", а не к виду "{1}", как ожидалось.</value>
+  </data>
+  <data name="EdmValueUtils_IncorrectPrimitiveTypeKindNoTypeName" xml:space="preserve">
+    <value>Были найдены несовместимые виды типов-примитивов. Обнаружен тип вида "{0}", а не вида "{1}", как ожидалось.</value>
+  </data>
+  <data name="EdmValueUtils_UnsupportedPrimitiveType" xml:space="preserve">
+    <value>Для значения-примитива был найден тип "{0}". Тип "{0}" не является в OData поддерживаемым типом-примитивом.</value>
+  </data>
+  <data name="EntityDescriptor_MissingSelfEditLink" xml:space="preserve">
+    <value>С сущностью с идентификатором "{0}" не связан элемент self-link или edit-link. Убедитесь, что с этой сущностью связан элемент self-link или edit-link.</value>
+  </data>
+  <data name="EpmSourceTree_CollectionPropertyCannotBeMapped" xml:space="preserve">
+    <value>Свойство "{0}" типа "{1}" имеет тип коллекции. Свойства коллекции не могут сопоставляться со свойством сущности.</value>
+  </data>
+  <data name="EpmSourceTree_DuplicateEpmAttrsWithSameSourceName" xml:space="preserve">
+    <value>Значение "{0}" свойства PropertyName для более чем одного атрибута EntityPropertyMappingAttribute типа ресурса "{1}" указано несколько раз.</value>
+  </data>
+  <data name="EpmSourceTree_EndsWithNonPrimitiveType" xml:space="preserve">
+    <value>Свойство "{0}", указанное в конце свойства PropertyName атрибута EntityPropertyMappingAttribute для типа ресурса, не является типом-примитивом.</value>
+  </data>
+  <data name="EpmSourceTree_InaccessiblePropertyOnType" xml:space="preserve">
+    <value>Свойство "{0}" для типа "{1}" отсутствует или недоступно.</value>
+  </data>
+  <data name="EpmSourceTree_InvalidSourcePath" xml:space="preserve">
+    <value>Значение "{1}" свойства PropertyName атрибута EntityPropertyMappingAttribute для типа "{0}" недопустимо.</value>
+  </data>
+  <data name="EpmSourceTree_NamedStreamCannotBeMapped" xml:space="preserve">
+    <value>Свойство "{0}" типа "{1}" имеет тип "DataServiceStreamLink". Свойства потока не могут сопоставляться со свойством сущности.</value>
+  </data>
+  <data name="EpmSourceTree_SpatialTypeCannotBeMapped" xml:space="preserve">
+    <value>Свойство "{0}" типа "{1}" имеет пространственный тип. Свойства пространственного типа нельзя сопоставлять в сопоставлении свойств сущности.</value>
+  </data>
+  <data name="EpmTargetTree_AttributeInMiddle" xml:space="preserve">
+    <value>Идентификатор атрибута "{0}" указывается в середине свойства TargetName атрибута EntityPropertyMappingAttribute.</value>
+  </data>
+  <data name="EpmTargetTree_DuplicateEpmAttrsWithSameTargetName" xml:space="preserve">
+    <value>Свойство TargetName "{0}" для более чем одного атрибута EntityPropertyMappingAttribute типа ресурса "{1}" имеет одно и то же значение. Противоречие между свойствами "{2}" и "{3}".</value>
+  </data>
+  <data name="EpmTargetTree_InvalidTargetPath" xml:space="preserve">
+    <value>В EntityPropertyMappingAttribute задан недопустимый путь "{0}" к свойству TargetName.</value>
+  </data>
+  <data name="General_InternalError" xml:space="preserve">
+    <value>Произошла внутренняя ошибка "{0}".</value>
+  </data>
+  <data name="HttpProcessUtility_ClosingQuoteNotFound" xml:space="preserve">
+    <value>Значение "{0}" для параметра типа MIME неверно, поскольку не удалось найти символ закрывающей кавычки для значения параметра, начинающегося с символа открывающей кавычки.</value>
+  </data>
+  <data name="HttpProcessUtility_ContentTypeMissing" xml:space="preserve">
+    <value>Отсутствует значение заголовка Content-Type.</value>
+  </data>
+  <data name="HttpProcessUtility_EncodingNotSupported" xml:space="preserve">
+    <value>Неподдерживаемая кодировка "{0}".</value>
+  </data>
+  <data name="HttpProcessUtility_EscapeCharAtEnd" xml:space="preserve">
+    <value>Значение для параметра типа MIME "{0}" неверно, поскольку завершается escape-символом. В значении параметра после escape-символов всегда должны следовать другие символы.</value>
+  </data>
+  <data name="HttpProcessUtility_EscapeCharWithoutQuotes" xml:space="preserve">
+    <value>Значение для параметра типа MIME "{0}" неверно, поскольку содержит escape-символы и при этом не заключено в кавычки.</value>
+  </data>
+  <data name="HttpProcessUtility_MediaTypeMissingValue" xml:space="preserve">
+    <value>В типе носителя отсутствует значение параметра.</value>
+  </data>
+  <data name="HttpProcessUtility_MediaTypeRequiresSemicolonBeforeParameter" xml:space="preserve">
+    <value>В типе носителя перед определением параметра должен стоять символ ";".</value>
+  </data>
+  <data name="HttpProcessUtility_MediaTypeRequiresSlash" xml:space="preserve">
+    <value>В типе носителя должен стоять символ "/".</value>
+  </data>
+  <data name="HttpProcessUtility_MediaTypeRequiresSubType" xml:space="preserve">
+    <value>В типе носителя должно присутствовать определение подтипа.</value>
+  </data>
+  <data name="HttpProcessUtility_MediaTypeUnspecified" xml:space="preserve">
+    <value>Не задан тип носителя.</value>
+  </data>
+  <data name="MaterializeFromAtom_CollectionKeyNotPresentInLinkTable" xml:space="preserve">
+    <value>Эта коллекция не является частью текущей записи</value>
+  </data>
+  <data name="MaterializeFromAtom_CountNotPresent" xml:space="preserve">
+    <value>Значение Count не является частью потока ответов.</value>
+  </data>
+  <data name="MaterializeFromAtom_GetNestLinkForFlatCollection" xml:space="preserve">
+    <value>Этот ответ не содержит вложенных коллекций. Вместо этого в качестве ключа Key используйте значение NULL.</value>
+  </data>
+  <data name="MaterializeFromAtom_TopLevelLinkNotAvailable" xml:space="preserve">
+    <value>Ссылка верхнего уровня доступна только после перечисления ответа.</value>
+  </data>
+  <data name="ODataMetadataBuilder_MissingEntityInstanceUri" xml:space="preserve">
+    <value>Для набора сущностей "{0}" не было найдено ни заметки "OData.EntityInstanceUri", ни заметки "OData.EntitySetUriSuffix". Наличие одной из этих заметок является обязательным.</value>
+  </data>
+  <data name="ODataMetadataBuilder_MissingEntitySetUri" xml:space="preserve">
+    <value>Набор сущностей "{0}" не имеет заметки "OData.EntitySetUri". Эта заметка является обязательной.</value>
+  </data>
+  <data name="ODataMetadataBuilder_MissingSegmentForEntitySetUriSuffix" xml:space="preserve">
+    <value>Набор сущностей "{0}" имеет URI "{1}", который не имеет сегментов пути. Суффикс URI набора сущностей не может быть добавлен к URI без сегментов пути.</value>
+  </data>
+  <data name="ODataRequestMessage_GetStreamMethodNotSupported" xml:space="preserve">
+    <value>Метод GetStream не поддерживается.</value>
+  </data>
+  <data name="Serializer_InvalidCollectionParamterItemType" xml:space="preserve">
+    <value>Параметр операции с именем "{0}" содержит элемент сбора типа Edm "{1}". Элемент сбора должен относиться к типу-примитиву или сложному типу Edm.</value>
+  </data>
+  <data name="Serializer_InvalidParameterType" xml:space="preserve">
+    <value>Параметр операции с именем "{0}" имеет тип Edm "{1}". Параметр операции должен иметь тип-примитив, сложный тип или коллекцию типов-примитивов или сложных типов.</value>
+  </data>
+  <data name="Serializer_LoopsNotAllowedInComplexTypes" xml:space="preserve">
+    <value>При сериализации свойства "{0}" обнаружен цикл. Необходимо исключить циклы в свойствах, возвращающих коллекцию или сложный тип.</value>
+  </data>
+  <data name="Serializer_LoopsNotAllowedInNonPropertyComplexTypes" xml:space="preserve">
+    <value>При сериализации сложного типа "{0}" обнаружен цикл. Необходимо исключить циклы в коллекции или в сложном типе.</value>
+  </data>
+  <data name="Serializer_NullCollectionParamterItemValue" xml:space="preserve">
+    <value>Параметр операции с именем "{0}" содержит элемент сбора со значением NULL. Элементы коллекции не могут иметь значение NULL.</value>
+  </data>
+  <data name="Serializer_UriDoesNotContainParameterAlias" xml:space="preserve">
+    <value>В URI запроса отсутствует псевдоним параметра "{0}". В URI запроса должны присутствовать все параметры, передаваемые в виде псевдонима.</value>
+  </data>
+  <data name="Util_EmptyArray" xml:space="preserve">
+    <value>Пустой массив.</value>
+  </data>
+  <data name="Util_EmptyString" xml:space="preserve">
+    <value>Пустая строка.</value>
+  </data>
+  <data name="Util_NullArrayElement" xml:space="preserve">
+    <value>Массив содержит элемент NULL.</value>
+  </data>
+  <data name="WebUtil_CollectionTypeNotSupportedInV2OrBelow" xml:space="preserve">
+    <value>Тип "{0}" является типом коллекции. Типы коллекции поддерживаются только в протоколе версии "V3" и более поздних версиях.</value>
+  </data>
+  <data name="WebUtil_TypeMismatchInCollection" xml:space="preserve">
+    <value>Элемент в свойстве коллекции "{0}" имеет неправильный тип. Все элементы в свойстве коллекции должны иметь тип элемента сбора.</value>
+  </data>
+  <data name="WebUtil_TypeMismatchInNonPropertyCollection" xml:space="preserve">
+    <value>Коллекция типов элементов "{0}" содержит элемент неправильного типа. Все элементы в коллекции должны иметь тип элемента сбора.</value>
+  </data>
+</root>

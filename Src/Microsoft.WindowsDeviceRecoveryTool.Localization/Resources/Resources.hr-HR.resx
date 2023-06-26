@@ -1,0 +1,892 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccentColor" xml:space="preserve">
+    <value>Boja za naglašavanje</value>
+  </data>
+  <data name="AccentColorBlack" xml:space="preserve">
+    <value>Crna</value>
+  </data>
+  <data name="AccentColorBlue" xml:space="preserve">
+    <value>Plava</value>
+  </data>
+  <data name="AccentColorCobalt" xml:space="preserve">
+    <value>Kobaltna</value>
+  </data>
+  <data name="AccentColorCrimson" xml:space="preserve">
+    <value>Grimizna</value>
+  </data>
+  <data name="AccentColorEmerald" xml:space="preserve">
+    <value>Smaragdna</value>
+  </data>
+  <data name="AccentColorIndigo" xml:space="preserve">
+    <value>Indigo</value>
+  </data>
+  <data name="AccentColorMauve" xml:space="preserve">
+    <value>Svijetloljubičasta</value>
+  </data>
+  <data name="AccentColorSienna" xml:space="preserve">
+    <value>Crveno smeđa</value>
+  </data>
+  <data name="AddressForm" xml:space="preserve">
+    <value>Adresa</value>
+  </data>
+  <data name="AllFilesSize" xml:space="preserve">
+    <value>Datoteke svih veličina: {0}</value>
+  </data>
+  <data name="AnotherInstanceAlreadyRunning" xml:space="preserve">
+    <value>Druga instanca aplikacije {0} već se izvodi</value>
+  </data>
+  <data name="ApplicationData" xml:space="preserve">
+    <value>Podaci aplikacije</value>
+  </data>
+  <data name="ApplicationUpdate" xml:space="preserve">
+    <value>Ažuriranje aplikacije</value>
+  </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>Jeste li sigurni?</value>
+  </data>
+  <data name="AutomaticPackageFileSelection" xml:space="preserve">
+    <value>Pretraživanje ispravnog paketa za povezani telefon.</value>
+  </data>
+  <data name="AutomaticPackageSelection" xml:space="preserve">
+    <value>Automatski odabir stranice</value>
+  </data>
+  <data name="AvailablePackageIsOlder" xml:space="preserve">
+    <value>Dostupan softver stariji je od onoga na telefonu.</value>
+  </data>
+  <data name="AwaitRecoveryAfterEmergencyFlashingInstruction" xml:space="preserve">
+    <value>Čeka se na telefon nakon uspješnog vraćanja.
+Ako je baterija pri kraju, to može potrajati do 30 minuta.</value>
+  </data>
+  <data name="BatteryCheckHeader" xml:space="preserve">
+    <value>Provjera baterije</value>
+  </data>
+  <data name="BatteryCheckingCancelled" xml:space="preserve">
+    <value>Provjera baterije je otkazana.</value>
+  </data>
+  <data name="BatteryWarning" xml:space="preserve">
+    <value>Pobrinite se da razina napunjenosti baterije bude barem 25%. U protivnom može doći do oštećenja telefona.</value>
+  </data>
+  <data name="ButtonBrowse" xml:space="preserve">
+    <value>Potraži</value>
+  </data>
+  <data name="ButtonCancel" xml:space="preserve">
+    <value>Odustani</value>
+  </data>
+  <data name="ButtonChangePackagePath" xml:space="preserve">
+    <value>Promjena puta paketa</value>
+  </data>
+  <data name="ButtonClean" xml:space="preserve">
+    <value>Očisti sve podatke aplikacije</value>
+  </data>
+  <data name="ButtonCleanOneCategory" xml:space="preserve">
+    <value>Očistite</value>
+  </data>
+  <data name="ButtonCollectLogs" xml:space="preserve">
+    <value>Izvoz</value>
+  </data>
+  <data name="ButtonContinue" xml:space="preserve">
+    <value>Nastavi</value>
+  </data>
+  <data name="ButtonDelete" xml:space="preserve">
+    <value>Izbriši</value>
+  </data>
+  <data name="ButtonExit" xml:space="preserve">
+    <value>Izađi</value>
+  </data>
+  <data name="ButtonFinish" xml:space="preserve">
+    <value>Završi</value>
+  </data>
+  <data name="ButtonInstall" xml:space="preserve">
+    <value>Instaliraj</value>
+  </data>
+  <data name="ButtonInstallSoftware" xml:space="preserve">
+    <value>Instaliranje softvera</value>
+  </data>
+  <data name="ButtonMyPhoneIsNotOnTheList" xml:space="preserve">
+    <value>Moj telefon nije na popisu</value>
+  </data>
+  <data name="ButtonMyPhoneWasNotDetected" xml:space="preserve">
+    <value>Moj telefon nije pronađen</value>
+  </data>
+  <data name="ButtonNewFolder" xml:space="preserve">
+    <value>Nova mapa</value>
+  </data>
+  <data name="ButtonNext" xml:space="preserve">
+    <value>Sljedeće</value>
+  </data>
+  <data name="ButtonNo" xml:space="preserve">
+    <value>Ne</value>
+  </data>
+  <data name="ButtonOff" xml:space="preserve">
+    <value>Isključno</value>
+  </data>
+  <data name="ButtonOk" xml:space="preserve">
+    <value>U redu</value>
+  </data>
+  <data name="ButtonOn" xml:space="preserve">
+    <value>Uključeno</value>
+  </data>
+  <data name="ButtonReset" xml:space="preserve">
+    <value>Vrati na zadane postavke</value>
+  </data>
+  <data name="ButtonTryAgain" xml:space="preserve">
+    <value>Pokušajte opet</value>
+  </data>
+  <data name="ButtonYes" xml:space="preserve">
+    <value>Da</value>
+  </data>
+  <data name="CapsLockIsOn" xml:space="preserve">
+    <value>Uključena su velika slova</value>
+  </data>
+  <data name="CheckLatestPackageHeader" xml:space="preserve">
+    <value>Podaci o telefonu</value>
+  </data>
+  <data name="CheckingAlreadyDownloadedFiles" xml:space="preserve">
+    <value>Provjera kompatibilnosti preuzetih datoteka</value>
+  </data>
+  <data name="CheckingAppUpdate" xml:space="preserve">
+    <value>Provjera dostupnih ažuriranja aplikacija</value>
+  </data>
+  <data name="CheckingFirmwareAvailability" xml:space="preserve">
+    <value>U tijeku je provjera dostupnosti softvera</value>
+  </data>
+  <data name="CheckingPackageIntegrity" xml:space="preserve">
+    <value>Provjera integriteta paketa</value>
+  </data>
+  <data name="CleanUserDataQuestion" xml:space="preserve">
+    <value>Jeste li sigurni da želite izbrisati sve podatke aplikacije (izvještaji, softverski paketi telefona, datoteke dnevnika)?</value>
+  </data>
+  <data name="CollectingLogFilesInfo" xml:space="preserve">
+    <value>Prikupljanje datoteka dnevnika. Pričekajte.</value>
+  </data>
+  <data name="ComputerBatteryWarning" xml:space="preserve">
+    <value>Baterija u vašem računalu gotovo je prazna. Spojite uređaj na punjač i pokušajte opet.</value>
+  </data>
+  <data name="ConnectPhone" xml:space="preserve">
+    <value>Povežite telefon</value>
+  </data>
+  <data name="ConnectPhoneWithUsbCable" xml:space="preserve">
+    <value>Priključite USB kabel na telefon.</value>
+  </data>
+  <data name="ConnectedDeviceCannotBeRecovered" xml:space="preserve">
+    <value>Povezani se telefon ne može vratiti.</value>
+  </data>
+  <data name="CouldNotDetectPhone" xml:space="preserve">
+    <value>Nismo mogli pronaći telefon</value>
+  </data>
+  <data name="CreatingNewFolderMessage" xml:space="preserve">
+    <value>Stvori novu mapu</value>
+  </data>
+  <data name="CurrentFirmwareVersion" xml:space="preserve">
+    <value>Instalirana verzija softvera:</value>
+  </data>
+  <data name="CustomPackagesPath" xml:space="preserve">
+    <value>Koristite prilagođeni put za pakete</value>
+  </data>
+  <data name="DeleteLogsQuestion" xml:space="preserve">
+    <value>Sigurno želite izbrisati datoteke dnevnika?</value>
+  </data>
+  <data name="DeletePackagesQuestion" xml:space="preserve">
+    <value>Sigurno želite izbrisati datoteke za vraćanje softvera?</value>
+  </data>
+  <data name="DeleteReportsQuestion" xml:space="preserve">
+    <value>Sigurno želite izbrisati datoteke izvješća?</value>
+  </data>
+  <data name="DeletingLogFilesInfo" xml:space="preserve">
+    <value>Brisanje datoteka dnevnika</value>
+  </data>
+  <data name="DeletingPackagesInfo" xml:space="preserve">
+    <value>Brisanje datoteka za vraćanje softvera</value>
+  </data>
+  <data name="DeletingReportsInfo" xml:space="preserve">
+    <value>Brisanje datoteka izvješća</value>
+  </data>
+  <data name="DetailsHeader" xml:space="preserve">
+    <value>Pojedinosti</value>
+  </data>
+  <data name="Device" xml:space="preserve">
+    <value>Telefon</value>
+  </data>
+  <data name="DeviceFlashing" xml:space="preserve">
+    <value>Instalacija softverskog paketa</value>
+  </data>
+  <data name="DeviceInUefiMode" xml:space="preserve">
+    <value>Telefon Lumia</value>
+  </data>
+  <data name="DeviceSelectionHeader" xml:space="preserve">
+    <value>Odabir telefona</value>
+  </data>
+  <data name="DirectoryNotSet" xml:space="preserve">
+    <value>Direktorij nije odabran ili ne postoji.</value>
+  </data>
+  <data name="DisclaimerBackupInfo" xml:space="preserve">
+    <value>Osobni sadržaj na telefonu bit će obrisan tijekom instalacije. Preporučamo da na telefonu stvorite sigurnosnu kopiju, pod:</value>
+  </data>
+  <data name="DisclaimerHeader" xml:space="preserve">
+    <value>Odricanje odgovornosti</value>
+  </data>
+  <data name="DisclaimerInfoInstallationDuration" xml:space="preserve">
+    <value>Instaliranje softvera potrajat će oko 15 minuta. Vrijeme preuzimanja softverskog paketa ovisi o brzini mreže.</value>
+  </data>
+  <data name="DisconnectPhone" xml:space="preserve">
+    <value>Izvadite USB kabel iz telefona.</value>
+  </data>
+  <data name="DowngradeSoftwareQuestion" xml:space="preserve">
+    <value>Pokušavate instalirati softver koji je stariji od softvera instaliranog na vašem telefonu. Želite li nastaviti?</value>
+  </data>
+  <data name="DownloadCancelled" xml:space="preserve">
+    <value>Preuzimanje je otkazano</value>
+  </data>
+  <data name="DownloadProgressExactMinute" xml:space="preserve">
+    <value>Preostalo je približno {0} min.</value>
+  </data>
+  <data name="DownloadProgressMinute" xml:space="preserve">
+    <value>Preostalo je oko jedne minute</value>
+  </data>
+  <data name="DownloadProgressMinuteLess" xml:space="preserve">
+    <value>Preostalo je manje od jedne minute</value>
+  </data>
+  <data name="DownloadingCancelMessage" xml:space="preserve">
+    <value>Ovim će se otkazati preuzimanje. Datoteke koje su već preuzete neće se izbrisati. Možete kasnije ponovo nastaviti preuzimanje.</value>
+  </data>
+  <data name="DownloadingEmergencyPackage" xml:space="preserve">
+    <value>Preuzimanje hitnog paketa</value>
+  </data>
+  <data name="DownloadingFiles" xml:space="preserve">
+    <value>Preuzimanje datoteka: {0}/{1} ({2})</value>
+  </data>
+  <data name="DownloadingInstallPacket" xml:space="preserve">
+    <value>Preuzimanje nove verzije</value>
+  </data>
+  <data name="DownloadingPackage" xml:space="preserve">
+    <value>Preuzimanje paketa</value>
+  </data>
+  <data name="EmergencyFlashingMessage" xml:space="preserve">
+    <value>Hitno učitavanje</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Pogreška</value>
+  </data>
+  <data name="ErrorDescription_AutoUpdateException" xml:space="preserve">
+    <value>Čini se da postoji problem u povezivanju s poslužiteljem. Provjerite vezu s internetom. Provjerite jesu li postavke za vaš proxy, vatrozid i zaštitu od virusa ispravne. Isto tako, provjerite postavke datuma i vremena.</value>
+  </data>
+  <data name="ErrorDescription_CannotAccessDirectoryException" xml:space="preserve">
+    <value>Čini se da nemate potrebne ovlasti za direktorij. Promijenite put direktorija ili promijenite ovlasti direktorija.</value>
+  </data>
+  <data name="ErrorDescription_DeviceNotFoundException" xml:space="preserve">
+    <value>Telefon nije pronađen.</value>
+  </data>
+  <data name="ErrorDescription_DownloadPackageException" xml:space="preserve">
+    <value>Provjerite jesu li postavke proxy poslužitelja ispravne i pritisnite "{0}". Ako želite otkazati postupak preuzimanja pritisnite "{1}".</value>
+  </data>
+  <data name="ErrorDescription_EmergencyPackageNotFoundOnServerException" xml:space="preserve">
+    <value>Hitno učitavanje trenutačno nije podržano za vaš telefon</value>
+  </data>
+  <data name="ErrorDescription_FirmwareFileNotFoundException" xml:space="preserve">
+    <value>Softverski paket nije potpun. Nedostaje jedna ili više datoteka. Ponovno preuzmite paket ili odaberite drugi softver.</value>
+  </data>
+  <data name="ErrorDescription_HtcDeviceCommunicationException" xml:space="preserve">
+    <value>Ponovo pokrenite uređaj na način rada {0}.</value>
+  </data>
+  <data name="ErrorDescription_HtcPackageFileCheckException" xml:space="preserve">
+    <value>Ponovo preuzmite ROM paket.</value>
+  </data>
+  <data name="ErrorDescription_HtcServiceControlException" xml:space="preserve">
+    <value>Provjerite je li usluga {0} zaustavljena.</value>
+  </data>
+  <data name="ErrorDescription_HtcUsbCommunicationException" xml:space="preserve">
+    <value>Ponovo pokrenite uređaj na {0}.
+Provjerite USB vezu uređaja.</value>
+  </data>
+  <data name="ErrorDescription_HtcUsbPortOpenException" xml:space="preserve">
+    <value>Provjerite je li druga aplikacija zauzela port.
+Provjerite USB vezu uređaja.</value>
+  </data>
+  <data name="ErrorDescription_InvalidOperationException" xml:space="preserve">
+    <value>Ponovo pokrenite aplikaciju.</value>
+  </data>
+  <data name="ErrorDescription_NoInternetConnectionException" xml:space="preserve">
+    <value>Nije se mogla dovršiti zadnja operacija jer veza s internetom nije aktivna.</value>
+  </data>
+  <data name="ErrorDescription_NotEnoughSpaceException" xml:space="preserve">
+    <value>{0} nedostaje na disku {1}. Oslobodite nešto prostora i pokušajte opet.</value>
+  </data>
+  <data name="ErrorDescription_OperationCanceledException" xml:space="preserve">
+    <value>Operacija je otkazana.</value>
+  </data>
+  <data name="ErrorDescription_PackageNotFoundException" xml:space="preserve">
+    <value>Softverski paket nije dostupan za ovaj telefon.</value>
+  </data>
+  <data name="ErrorDescription_PlannedServiceBreakException" xml:space="preserve">
+    <value>Usluga nije dostupna između {0} i {1}. Pokušajte ponovno kasnije.</value>
+  </data>
+  <data name="ErrorDescription_ReadPhoneInformationException" xml:space="preserve">
+    <value>Nismo mogli očitati podatke s telefona.</value>
+  </data>
+  <data name="ErrorDescription_RestartApplicationException" xml:space="preserve">
+    <value>Odvojite sve telefone i ponovo pokrenite aplikaciju. Ako problem i dalje traje, deinstalirajte aplikaciju {0} i preuzmite najnoviju verziju aplikacije.</value>
+  </data>
+  <data name="ErrorDescription_UnknownError" xml:space="preserve">
+    <value>Operacija se nije mogla dovršiti.</value>
+  </data>
+  <data name="ErrorDescription_WebException" xml:space="preserve">
+    <value>Čini se da postoji problem u povezivanju s poslužiteljem. Provjerite vezu s internetom. Provjerite jesu li postavke za vaš proxy, vatrozid i zaštitu od virusa ispravne.</value>
+  </data>
+  <data name="ErrorDetails_NotEnoughSpaceOnTheDiskException" xml:space="preserve">
+    <value>Minimalna količina slobodnog prostora na disku {0} potrebna za ažuriranje je {1}. Oslobodite nešto prostora i pokušajte opet.</value>
+  </data>
+  <data name="ErrorHeader" xml:space="preserve">
+    <value>Nažalost, naišli smo na problem</value>
+  </data>
+  <data name="Error_AutoUpdateException" xml:space="preserve">
+    <value>Provjera ažuriranja aplikacije nije uspjela</value>
+  </data>
+  <data name="Error_CannotAccessDirectoryException" xml:space="preserve">
+    <value>Ne može se pristupiti direktoriju</value>
+  </data>
+  <data name="Error_DeviceNotFoundException" xml:space="preserve">
+    <value>Telefon nije pronađen</value>
+  </data>
+  <data name="Error_DownloadPackageException" xml:space="preserve">
+    <value>Došlo je do problema prilikom preuzimanja softverskog paketa</value>
+  </data>
+  <data name="Error_EmergencyPackageNotFoundOnServerException" xml:space="preserve">
+    <value>Hitni paket nije pronađen</value>
+  </data>
+  <data name="Error_FileNotFoundException" xml:space="preserve">
+    <value>Datoteka ili put: "{0}" nisu pronađeni</value>
+  </data>
+  <data name="Error_FirmwareFileNotFoundException" xml:space="preserve">
+    <value>Softverska datoteka nije pronađena</value>
+  </data>
+  <data name="Error_HtcDeviceCommunicationException" xml:space="preserve">
+    <value>Pogreška komunikacije uređaja</value>
+  </data>
+  <data name="Error_HtcDeviceHandshakingException" xml:space="preserve">
+    <value>Pogreška trešnje uređaja u ruci</value>
+  </data>
+  <data name="Error_HtcPackageFileCheckException" xml:space="preserve">
+    <value>Pogreška provjere datoteke paketa</value>
+  </data>
+  <data name="Error_HtcServiceControlException" xml:space="preserve">
+    <value>Pogreška kontrole usluge</value>
+  </data>
+  <data name="Error_HtcUsbCommunicationException" xml:space="preserve">
+    <value>Pogreška USB komunikacije</value>
+  </data>
+  <data name="Error_HtcUsbPortOpenException" xml:space="preserve">
+    <value>Pogreška otvorenog USB porta</value>
+  </data>
+  <data name="Error_InvalidOperationException" xml:space="preserve">
+    <value>Operacija nije uspjela</value>
+  </data>
+  <data name="Error_NoInternetConnectionException" xml:space="preserve">
+    <value>Nema veze s internetom</value>
+  </data>
+  <data name="Error_NotEnoughSpaceException" xml:space="preserve">
+    <value>Nema dovoljno prostora na disku</value>
+  </data>
+  <data name="Error_NotEnoughSpaceOnTheDiskException" xml:space="preserve">
+    <value>Nema dovoljno prostora na disku</value>
+  </data>
+  <data name="Error_OperationCanceledException" xml:space="preserve">
+    <value>Operacija je otkazana</value>
+  </data>
+  <data name="Error_PackageNotFoundException" xml:space="preserve">
+    <value>Paket varijante nije pronađen</value>
+  </data>
+  <data name="Error_PlannedServiceBreakException" xml:space="preserve">
+    <value>Nemoguće povezivanje s poslužiteljem</value>
+  </data>
+  <data name="Error_ReadPhoneInformationException" xml:space="preserve">
+    <value>Čitanje podataka s telefona nije uspjelo</value>
+  </data>
+  <data name="Error_RestartApplicationException" xml:space="preserve">
+    <value>Ponovo pokrenite aplikaciju</value>
+  </data>
+  <data name="Error_SoftwareInstallationFailed" xml:space="preserve">
+    <value>Instalacija softvera nije uspjela. Ponovo pokrenite telefon i pokušajte ponovo instalirati softver. Ako vaš telefon nije pronađen, koristite gumb "{0}" na zaslonu dobrodošlice.</value>
+  </data>
+  <data name="Error_SoftwareIsNotCorrectlySignedException" xml:space="preserve">
+    <value>Softver nije pravilno potpisan ili nije potpisan za ovaj telefon.</value>
+  </data>
+  <data name="Error_UnauthorizedAccessException" xml:space="preserve">
+    <value>Pristup nije dopušten</value>
+  </data>
+  <data name="Error_UnknownError" xml:space="preserve">
+    <value>Došlo je do nepoznate pogreške</value>
+  </data>
+  <data name="Error_WebException" xml:space="preserve">
+    <value>Povezivanje s poslužiteljem nije moguće</value>
+  </data>
+  <data name="FFUCheckingDirectory" xml:space="preserve">
+    <value>Provjeravanje direktorija</value>
+  </data>
+  <data name="FFUCheckingFile" xml:space="preserve">
+    <value>Provjera odabrane datoteke</value>
+  </data>
+  <data name="FFUFamily" xml:space="preserve">
+    <value>Obitelj:</value>
+  </data>
+  <data name="FFUManufacturer" xml:space="preserve">
+    <value>Proizvođač:</value>
+  </data>
+  <data name="FFUProductName" xml:space="preserve">
+    <value>Naziv proizvoda:</value>
+  </data>
+  <data name="FFUVersion" xml:space="preserve">
+    <value>Verzija:</value>
+  </data>
+  <data name="FirmwareIntegrityError" xml:space="preserve">
+    <value>Softverski paket {0} je oštećen. Ponovno preuzmite paket ili odaberite drugi softver.</value>
+  </data>
+  <data name="FirmwareVersion" xml:space="preserve">
+    <value>Verzija softvera uređaja: </value>
+  </data>
+  <data name="FirmwareVersionUnknown" xml:space="preserve">
+    <value>Verzija softvera uređaja: nije poznata</value>
+  </data>
+  <data name="FlashCancelMessage" xml:space="preserve">
+    <value>U tijeku je instalacija softverskog paketa. Otkazivanje može dovesti do oštećenja telefona. Želite li zaista otkazati postupak?</value>
+  </data>
+  <data name="FlashWarningMessage1" xml:space="preserve">
+    <value>Nemojte upotrebljavati svoj telefon. Nemojte odspajati kabel. Nemojte isključivati telefon. U protivnom uređaj može prestati s radom.</value>
+  </data>
+  <data name="FlashWarningMessage2" xml:space="preserve">
+    <value>Tijekom instalacije telefon s ponovo pokrene i zaslon se zacrni.
+Možete zanemariti sve obavijesti sustava Windows o vezi USB kabela.</value>
+  </data>
+  <data name="Flashing" xml:space="preserve">
+    <value>Softver se instalira softvera na telefon</value>
+  </data>
+  <data name="FlashingMessageChangeToFlashMode" xml:space="preserve">
+    <value>Telefon se prebacuje u način za učitavanje</value>
+  </data>
+  <data name="FlashingMessageCheckingAntiTheftStatus" xml:space="preserve">
+    <value>Provjera statusa zaštite od krađe</value>
+  </data>
+  <data name="FlashingMessageConnectingWithPhone" xml:space="preserve">
+    <value>Povezivanje s telefonom</value>
+  </data>
+  <data name="FlashingMessageInstallingSoftware" xml:space="preserve">
+    <value>U tijeku je instaliranje softvera</value>
+  </data>
+  <data name="FlashingMessageOperationStarted" xml:space="preserve">
+    <value>Pokrenuto je instaliranje softvera</value>
+  </data>
+  <data name="FlashingResult" xml:space="preserve">
+    <value>Rezultat instalacije softverskog paketa</value>
+  </data>
+  <data name="HtcBootloaderMode" xml:space="preserve">
+    <value>Način rada HTC {0}</value>
+  </data>
+  <data name="HtcPackageNotFound" xml:space="preserve">
+    <value>Softverski paket nije pronađen na poslužitelju</value>
+  </data>
+  <data name="KeepButtonTillImage" xml:space="preserve">
+    <value>Držite gumb pritisnutim dok se ne prikaže slika poput ove na zaslonu.</value>
+  </data>
+  <data name="KeepButtonsTillImage" xml:space="preserve">
+    <value>Držite gumbe pritisnutima dok se ne prikaže slika poput ove na zaslonu.</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Jezik</value>
+  </data>
+  <data name="LogFiles" xml:space="preserve">
+    <value>Datoteke dnevnika</value>
+  </data>
+  <data name="LumiaBatteryChecking" xml:space="preserve">
+    <value>Baterija telefona gotovo je prazna. Možete nastaviti s radom, ali to može oštetiti telefon.</value>
+  </data>
+  <data name="ManualDeviceSelection" xml:space="preserve">
+    <value>Odabir telefona</value>
+  </data>
+  <data name="ManualRestartHtcInfo" xml:space="preserve">
+    <value>Podaci telefona nisu se mogli očitati. Za nastavak slijedite korake ispod ili za otkazivanje postupka pritisnite "{0}".</value>
+  </data>
+  <data name="ManufacturerDetectionFailed" xml:space="preserve">
+    <value>Nismo mogli odrediti proizvođača vašeg telefona.</value>
+  </data>
+  <data name="ManufacturerHeader" xml:space="preserve">
+    <value>Proizvođač telefona</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>Način rada {0}</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model: </value>
+  </data>
+  <data name="ModelUnknown" xml:space="preserve">
+    <value>Model: nije poznat</value>
+  </data>
+  <data name="MoreThanOnePackageFound" xml:space="preserve">
+    <value>Pronađeno je više paketa – odaberite jednog i za nastavak pritisnite "{0}".</value>
+  </data>
+  <data name="Network" xml:space="preserve">
+    <value>Mreža</value>
+  </data>
+  <data name="NoPackagesFoundSelectAnotherDirectory" xml:space="preserve">
+    <value>Ispravan paket nije pronađen. Odaberite drugi direktorij ili ručno odaberite paket.</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>Nije pronađeno</value>
+  </data>
+  <data name="OnePackageFound" xml:space="preserve">
+    <value>Pronađen je jedan paket za: {0}. Pritisnite "{1}" kako biste nastavili ili odaberite drugu mapu ili datoteku.</value>
+  </data>
+  <data name="OperatingSystemUnknown" xml:space="preserve">
+    <value>Verzija operacijskog sustava: nije poznata</value>
+  </data>
+  <data name="OperatingSystemVersion" xml:space="preserve">
+    <value>Verzija operacijskog sustava: </value>
+  </data>
+  <data name="OperationFailed" xml:space="preserve">
+    <value>Operacija nije uspjela</value>
+  </data>
+  <data name="OperationPassed" xml:space="preserve">
+    <value>Operacija je uspješno dovršena</value>
+  </data>
+  <data name="PackageDirectory" xml:space="preserve">
+    <value>Direktorij paketa: {0}</value>
+  </data>
+  <data name="PackageFileHeader" xml:space="preserve">
+    <value>Datoteka paketa</value>
+  </data>
+  <data name="PackageFilePath" xml:space="preserve">
+    <value>Put paketa: {0}</value>
+  </data>
+  <data name="PackageIntegrityCheck" xml:space="preserve">
+    <value>Provjera integriteta paketa</value>
+  </data>
+  <data name="PackageNotFound" xml:space="preserve">
+    <value>Paket nije dostupan za ovaj telefon.</value>
+  </data>
+  <data name="PackagePathNotSet" xml:space="preserve">
+    <value>Put paketa nije postavljen</value>
+  </data>
+  <data name="PackageSelection" xml:space="preserve">
+    <value>Odabir paketa</value>
+  </data>
+  <data name="Packages" xml:space="preserve">
+    <value>Paketi</value>
+  </data>
+  <data name="PackagesPath" xml:space="preserve">
+    <value>Put za pakete</value>
+  </data>
+  <data name="PasswordForm" xml:space="preserve">
+    <value>Zaporka</value>
+  </data>
+  <data name="PhoneAddedHeader" xml:space="preserve">
+    <value>Telefon povezan</value>
+  </data>
+  <data name="PhoneAddedMessage" xml:space="preserve">
+    <value>Novi telefon {0} je povezan.</value>
+  </data>
+  <data name="PhoneIsUpToDate" xml:space="preserve">
+    <value>Imate najnoviju dostupnu verziju softvera.</value>
+  </data>
+  <data name="PhoneRemovedHeader" xml:space="preserve">
+    <value>Telefon odvojen</value>
+  </data>
+  <data name="PhoneRemovedMessage" xml:space="preserve">
+    <value>Telefon {0} je odvojen.</value>
+  </data>
+  <data name="PhoneRestart" xml:space="preserve">
+    <value>Ponovno pokretanje telefona</value>
+  </data>
+  <data name="PhoneSettingsBackupPathWin10" xml:space="preserve">
+    <value>Postavke &gt; Ažuriranje i oporavak &gt; Sigurnosna kopija</value>
+  </data>
+  <data name="PhoneSettingsBackupPathWin8" xml:space="preserve">
+    <value>Postavke &gt; sigurnosna kopija</value>
+  </data>
+  <data name="PleaseConnectDevice" xml:space="preserve">
+    <value>Povežite telefon</value>
+  </data>
+  <data name="PleaseConnectOneDevice" xml:space="preserve">
+    <value>Povežite samo jedan telefon</value>
+  </data>
+  <data name="PleaseSelectAFolder" xml:space="preserve">
+    <value>Odaberite mapu</value>
+  </data>
+  <data name="PleaseSelectDeviceToContinue" xml:space="preserve">
+    <value>Za nastavak odaberite telefon</value>
+  </data>
+  <data name="PleaseSelectManufacturer" xml:space="preserve">
+    <value>Odaberite ispravnog ispod:</value>
+  </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>Pričekajte</value>
+  </data>
+  <data name="PortForm" xml:space="preserve">
+    <value>Port</value>
+  </data>
+  <data name="Preferences" xml:space="preserve">
+    <value>Osobne postavke</value>
+  </data>
+  <data name="PressPowerAndVolumeDown" xml:space="preserve">
+    <value>Istovremeno pritisnite gumbe za uključivanje i "Smanjenje glasnoće".</value>
+  </data>
+  <data name="PressThePowerButton" xml:space="preserve">
+    <value>Pritisnite gumb za uključivanje. </value>
+  </data>
+  <data name="PressThePowerButtonUntilSwitchOff" xml:space="preserve">
+    <value>Pritisnite i držite gumb za uključivanje dok telefon ne zavibrira.</value>
+  </data>
+  <data name="PressVolumeUpVolumeDown" xml:space="preserve">
+    <value>Kad telefon zavibrira, istovremeno pritisnite gumbe "Povećanje glasnoće" i "Smanjenje glasnoće".</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Pravila privatnosti</value>
+  </data>
+  <data name="ReadingDeviceInfo" xml:space="preserve">
+    <value>Očitavanje podataka telefona</value>
+  </data>
+  <data name="RebootHtc" xml:space="preserve">
+    <value>Sad možete ponovo pokrenuti telefon u normalnom načinu rada. Za ponovno pokretanje telefona pritisnite gumb za uključivanje i držite ga neko vrijeme.</value>
+  </data>
+  <data name="RebootPhoneInstructions" xml:space="preserve">
+    <value>Telefon nije pronađen.
+Pokušajte ponovo pokrenuti telefon istovremenim pritiskom guma za uključivanje i "Smanjenje glasnoće".
+Držite gumbe pritisnutima sve dok telefon ne zavibrira.</value>
+  </data>
+  <data name="ReinstallSoftware" xml:space="preserve">
+    <value>Ponovno instaliranje softvera</value>
+  </data>
+  <data name="ReleasePowerPressVolumeUp" xml:space="preserve">
+    <value>Kad telefon zavibrira, otpustite gumb za uključivanje i pritisnite "Povećanje glasnoće".</value>
+  </data>
+  <data name="RemovingPackages" xml:space="preserve">
+    <value>Uklanjanje paketa</value>
+  </data>
+  <data name="RemovingReports" xml:space="preserve">
+    <value>Uklanjanje izvješća</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>Izvješća</value>
+  </data>
+  <data name="ResetSettingsQuestion" xml:space="preserve">
+    <value>Sigurno želite vratiti sve postavke na njihove zadane vrijednosti?</value>
+  </data>
+  <data name="RestartDeviceHeader" xml:space="preserve">
+    <value>Ponovno pokretanje telefona</value>
+  </data>
+  <data name="SelectDeviceToRecover" xml:space="preserve">
+    <value>Odaberite telefon koji želite oporaviti</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Postavke</value>
+  </data>
+  <data name="SoftwareInstallation" xml:space="preserve">
+    <value>Instalacija softvera</value>
+  </data>
+  <data name="SoftwareOnServer" xml:space="preserve">
+    <value>Softver je dostupan na poslužitelju</value>
+  </data>
+  <data name="SoftwarePackage" xml:space="preserve">
+    <value>Softverski paket</value>
+  </data>
+  <data name="SthWentWrongMessage" xml:space="preserve">
+    <value>Nešto je pošlo krivo</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>Sažetak</value>
+  </data>
+  <data name="Survey1" xml:space="preserve">
+    <value>Upitnik</value>
+  </data>
+  <data name="Survey_Button_ContinueNoSubmit1" xml:space="preserve">
+    <value>Nastavi bez slanja</value>
+  </data>
+  <data name="Survey_Button_SubmitAndContinue1" xml:space="preserve">
+    <value>Pošalji i nastavi s oporavkom</value>
+  </data>
+  <data name="Survey_Choice_AppsNotWorking1" xml:space="preserve">
+    <value>Moje aplikacije ne rade u skladu s očekivanjima</value>
+  </data>
+  <data name="Survey_Choice_DeviceNotWorking1" xml:space="preserve">
+    <value>Moj uređaj ne radi u skladu s očekivanjima</value>
+  </data>
+  <data name="Survey_Choice_PerformanceIssues1" xml:space="preserve">
+    <value>Imam probleme s performansama</value>
+  </data>
+  <data name="Survey_Choice_PrevVersionFaster1" xml:space="preserve">
+    <value>Prethodna se verzija doimala bržom</value>
+  </data>
+  <data name="Survey_Choice_PrevVersionMoreReliable1" xml:space="preserve">
+    <value>Prethodna se verzija doimala pouzdanijom</value>
+  </data>
+  <data name="Survey_Header1" xml:space="preserve">
+    <value>Zašto vršite oporavak uređaja?</value>
+  </data>
+  <data name="Survey_TellUsMore1" xml:space="preserve">
+    <value>Recite nam više</value>
+  </data>
+  <data name="Theme" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>Tamno</value>
+  </data>
+  <data name="ThemeHighContrast" xml:space="preserve">
+    <value>Visoki kontrast</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>Svijetlo</value>
+  </data>
+  <data name="ThereIsMandatoryApplicationUpdate" xml:space="preserve">
+    <value>Postoji obvezno ažuriranje za aplikaciju {0}.</value>
+  </data>
+  <data name="ThisUpdateMustBeInstalled" xml:space="preserve">
+    <value>Ovo {0} ažuriranje mora se instalirati i ne može se preskočiti. Prije upotrebe aplikaciju morate ažurirati.
+Prije instalacije ovog ažuriranja odvojite sve uređaje.</value>
+  </data>
+  <data name="TraceEnabled" xml:space="preserve">
+    <value>Stvaranje datoteke dnevnika</value>
+  </data>
+  <data name="Troubleshooting" xml:space="preserve">
+    <value>Rješavanje problema</value>
+  </data>
+  <data name="TurnOffPhone" xml:space="preserve">
+    <value>Isključite telefon.</value>
+  </data>
+  <data name="UpdateAvailable" xml:space="preserve">
+    <value>Ažuriranje je dostupno za vaš telefon.</value>
+  </data>
+  <data name="UseProxyServer" xml:space="preserve">
+    <value>Koristite proxy poslužitelj</value>
+  </data>
+  <data name="UserNameForm" xml:space="preserve">
+    <value>Korisničko ime</value>
+  </data>
+  <data name="VerifyingDownloadedFiles" xml:space="preserve">
+    <value>Provjera preuzetih datoteka</value>
+  </data>
+  <data name="WaitUntilPhoneTurnsOn" xml:space="preserve">
+    <value>Pričekajte dok se telefon ne uključi.</value>
+  </data>
+  <data name="WaitingForConnection" xml:space="preserve">
+    <value>Čekanje veze</value>
+  </data>
+  <data name="WelcomeHeader" xml:space="preserve">
+    <value>Dobro došli</value>
+  </data>
+</root>

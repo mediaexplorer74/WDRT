@@ -127,13 +127,7 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 		{
 			get
 			{
-				return string.Format("{0}.{1}.{2}.{3}", new object[]
-				{
-					this.CoreSysBuildNumber,
-					this.CoreSysBuildRevision,
-					this.Branch,
-					this.BuildTimeStamp
-				});
+				return string.Format("{0}.{1}.{2}.{3}", new object[] { this.CoreSysBuildNumber, this.CoreSysBuildRevision, this.Branch, this.BuildTimeStamp });
 			}
 		}
 
@@ -204,12 +198,12 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 		// Token: 0x06000072 RID: 114 RVA: 0x00002CDC File Offset: 0x00000EDC
 		private void UpdateStatus()
 		{
-			string response = this.DeviceCommunicator.ExecuteCommand(IpDeviceCommunicator.APPLY_UPDATE_COMMAND_STATUS, null);
-			string text;
-			bool flag = IpDeviceCommunicator.IpDeviceApplyUpdateCommand.ParseResponse(response, out text, out this.updateState, out this.updateProgress);
+			string text = this.DeviceCommunicator.ExecuteCommand(IpDeviceCommunicator.APPLY_UPDATE_COMMAND_STATUS, null);
+			string text2;
+			bool flag = IpDeviceCommunicator.IpDeviceApplyUpdateCommand.ParseResponse(text, out text2, out this.updateState, out this.updateProgress);
 			if (flag)
 			{
-				this.duResult = text;
+				this.duResult = text2;
 			}
 		}
 
@@ -259,23 +253,17 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 		{
 			this.OnNormalMessageEvent("Retrieving list of installed packages...");
 			string text = this.DeviceCommunicator.ExecuteCommand(IpDeviceCommunicator.DEVICE_UPDATE_COMMAND_GET_INSTALLED_PACKAGES, null);
-			string[] array = text.Split(new char[]
-			{
-				';'
-			});
+			string[] array = text.Split(new char[] { ';' });
 			List<InstalledPackageInfo> list = new List<InstalledPackageInfo>();
 			foreach (string text2 in array)
 			{
-				string[] array3 = text2.Split(new char[]
-				{
-					','
-				});
+				string[] array3 = text2.Split(new char[] { ',' });
 				if (3 != array3.Length)
 				{
 					throw new DeviceException(string.Format("Package string has invalid format: {0}", text2));
 				}
-				InstalledPackageInfo item = new InstalledPackageInfo(array3[0], array3[1], array3[2]);
-				list.Add(item);
+				InstalledPackageInfo installedPackageInfo = new InstalledPackageInfo(array3[0], array3[1], array3[2]);
+				list.Add(installedPackageInfo);
 			}
 			this.OnNormalMessageEvent("Retrieved list of installed packages");
 			if (list.Count == 0)
@@ -372,8 +360,8 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 				}
 				try
 				{
-					string localFilePath = Path.Combine(text, Path.GetFileName("C:\\Data\\ProgramData\\Update\\ApplyUpdate.log"));
-					this.DeviceCommunicator.GetFile("C:\\Data\\ProgramData\\Update\\ApplyUpdate.log", localFilePath);
+					string text3 = Path.Combine(text, Path.GetFileName("C:\\Data\\ProgramData\\Update\\ApplyUpdate.log"));
+					this.DeviceCommunicator.GetFile("C:\\Data\\ProgramData\\Update\\ApplyUpdate.log", text3);
 				}
 				catch (DeviceException ex)
 				{
@@ -444,38 +432,29 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 		// Token: 0x0600007E RID: 126 RVA: 0x000032C8 File Offset: 0x000014C8
 		public void SendIuPackage(Stream stream)
 		{
-			string path = null;
+			string text = null;
 			try
 			{
-				path = Path.GetTempFileName();
-				using (FileStream fileStream = File.OpenWrite(path))
+				text = Path.GetTempFileName();
+				using (FileStream fileStream = File.OpenWrite(text))
 				{
 					stream.CopyTo(fileStream);
 				}
-				this.SendIuPackage(path);
+				this.SendIuPackage(text);
 			}
 			finally
 			{
-				File.Delete(path);
+				File.Delete(text);
 			}
 		}
 
 		// Token: 0x0600007F RID: 127 RVA: 0x00003324 File Offset: 0x00001524
 		public void SetTime(DateTime time)
 		{
-			string args = string.Format("{0} {1} {2} {3} {4} {5} {6}", new object[]
-			{
-				time.Year,
-				time.Month,
-				time.Day,
-				time.Hour,
-				time.Minute,
-				time.Second,
-				time.Millisecond
-			});
+			string text = string.Format("{0} {1} {2} {3} {4} {5} {6}", new object[] { time.Year, time.Month, time.Day, time.Hour, time.Minute, time.Second, time.Millisecond });
 			try
 			{
-				this.DeviceCommunicator.ExecuteCommand(IpDeviceCommunicator.DEVICE_UPDATE_COMMAND_SET_TIME, args);
+				this.DeviceCommunicator.ExecuteCommand(IpDeviceCommunicator.DEVICE_UPDATE_COMMAND_SET_TIME, text);
 			}
 			catch (DeviceException ex)
 			{
@@ -483,18 +462,8 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 				{
 					throw;
 				}
-				args = string.Format("{0} {1} {2} {3} {4} {5} {6} {7}", new object[]
-				{
-					time.Year,
-					time.Month,
-					time.DayOfWeek,
-					time.Day,
-					time.Hour,
-					time.Minute,
-					time.Second,
-					time.Millisecond
-				});
-				this.DeviceCommunicator.ExecuteCommand(IpDeviceCommunicator.DEVICE_UPDATE_COMMAND_SET_TIME, args);
+				text = string.Format("{0} {1} {2} {3} {4} {5} {6} {7}", new object[] { time.Year, time.Month, time.DayOfWeek, time.Day, time.Hour, time.Minute, time.Second, time.Millisecond });
+				this.DeviceCommunicator.ExecuteCommand(IpDeviceCommunicator.DEVICE_UPDATE_COMMAND_SET_TIME, text);
 			}
 		}
 

@@ -20,7 +20,7 @@ namespace Nokia.Mira.Cryptography
 				throw new ArgumentException("filePath");
 			}
 			byte[] array = new byte[65536];
-			byte[] result;
+			byte[] array2;
 			using (Stream stream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
 			{
 				for (;;)
@@ -32,9 +32,9 @@ namespace Nokia.Mira.Cryptography
 					}
 					this.HashCore(array, 0, num, array, 0);
 				}
-				result = this.HashFinal();
+				array2 = this.HashFinal();
 			}
-			return result;
+			return array2;
 		}
 
 		// Token: 0x06000026 RID: 38 RVA: 0x00002664 File Offset: 0x00000864
@@ -47,7 +47,7 @@ namespace Nokia.Mira.Cryptography
 				{
 					if ((num2 & 1U) == 1U)
 					{
-						num2 = (num2 >> 1 ^ 3988292384U);
+						num2 = (num2 >> 1) ^ 3988292384U;
 					}
 					else
 					{
@@ -64,7 +64,7 @@ namespace Nokia.Mira.Cryptography
 			int num = inputOffset + inputCount;
 			for (int i = inputOffset; i < num; i++)
 			{
-				this.crc32Result = (this.crc32Result >> 8 ^ CRC32.Crc32Table[(int)((UIntPtr)((uint)inputBuffer[i] ^ (this.crc32Result & 255U)))]);
+				this.crc32Result = (this.crc32Result >> 8) ^ CRC32.Crc32Table[(int)((UIntPtr)((uint)inputBuffer[i] ^ (this.crc32Result & 255U)))];
 			}
 			if (outputBuffer != null && (inputBuffer != outputBuffer || inputOffset != outputOffset))
 			{

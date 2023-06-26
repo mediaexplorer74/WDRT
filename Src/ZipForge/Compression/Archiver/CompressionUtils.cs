@@ -21,7 +21,7 @@ namespace ComponentAce.Compression.Archiver
 			{
 				return;
 			}
-			int num = (p.Length < count) ? p.Length : count;
+			int num = ((p.Length < count) ? p.Length : count);
 			for (int i = 0; i < num; i++)
 			{
 				p[i] = b;
@@ -53,10 +53,7 @@ namespace ComponentAce.Compression.Archiver
 		{
 			if (Path.IsPathRooted(path))
 			{
-				path = path.TrimEnd(new char[]
-				{
-					Path.DirectorySeparatorChar
-				});
+				path = path.TrimEnd(new char[] { Path.DirectorySeparatorChar });
 				try
 				{
 					string fileName = Path.GetFileName(path);
@@ -252,10 +249,10 @@ namespace ComponentAce.Compression.Archiver
 		{
 			lock (CompressionUtils._tempBuffer)
 			{
-				int count;
-				while ((count = input.Read(CompressionUtils._tempBuffer, 0, 2048)) > 0)
+				int num;
+				while ((num = input.Read(CompressionUtils._tempBuffer, 0, 2048)) > 0)
 				{
-					output.Write(CompressionUtils._tempBuffer, 0, count);
+					output.Write(CompressionUtils._tempBuffer, 0, num);
 				}
 			}
 		}
@@ -266,11 +263,11 @@ namespace ComponentAce.Compression.Archiver
 			lock (CompressionUtils._tempBuffer)
 			{
 				long num = 0L;
-				long val;
-				while ((val = (long)input.Read(CompressionUtils._tempBuffer, 0, 2048)) > 0L && num < count)
+				long num2;
+				while ((num2 = (long)input.Read(CompressionUtils._tempBuffer, 0, 2048)) > 0L && num < count)
 				{
-					output.Write(CompressionUtils._tempBuffer, 0, (int)Math.Min(val, count - num));
-					num += Math.Min(val, count);
+					output.Write(CompressionUtils._tempBuffer, 0, (int)Math.Min(num2, count - num));
+					num += Math.Min(num2, count);
 				}
 			}
 		}
@@ -281,11 +278,11 @@ namespace ComponentAce.Compression.Archiver
 			lock (CompressionUtils._tempBuffer)
 			{
 				long num = 0L;
-				long val;
-				while ((val = (long)input.Read(CompressionUtils._tempBuffer, (int)offset, 2048)) > 0L && num < count)
+				long num2;
+				while ((num2 = (long)input.Read(CompressionUtils._tempBuffer, (int)offset, 2048)) > 0L && num < count)
 				{
-					output.Write(CompressionUtils._tempBuffer, 0, (int)Math.Min(val, count - num));
-					num += Math.Min(val, count);
+					output.Write(CompressionUtils._tempBuffer, 0, (int)Math.Min(num2, count - num));
+					num += Math.Min(num2, count);
 				}
 			}
 		}
@@ -326,9 +323,9 @@ namespace ComponentAce.Compression.Archiver
 		// Token: 0x060004B4 RID: 1204 RVA: 0x00021290 File Offset: 0x00020290
 		public static uint DateTimeToDosDateTime(DateTime dt)
 		{
-			int num = dt.Second >> 1 | dt.Minute << 5 | dt.Hour << 11;
-			int num2 = (dt.Year - 1980 & 127) << 9 | dt.Month << 5 | dt.Day;
-			return (uint)(num2 << 16 | num);
+			int num = (dt.Second >> 1) | (dt.Minute << 5) | (dt.Hour << 11);
+			int num2 = (((dt.Year - 1980) & 127) << 9) | (dt.Month << 5) | dt.Day;
+			return (uint)((num2 << 16) | num);
 		}
 
 		// Token: 0x060004B5 RID: 1205 RVA: 0x000212E8 File Offset: 0x000202E8
@@ -336,16 +333,16 @@ namespace ComponentAce.Compression.Archiver
 		{
 			int num = (int)(dosDateTime >> 16);
 			int num2 = (int)(dosDateTime & 65535U);
-			DateTime result;
+			DateTime dateTime;
 			try
 			{
-				result = new DateTime((num >> 9) + 1980, (num >> 5) % 16, num % 32, num2 >> 11, (num2 >> 5) % 64, num2 % 32 * 2);
+				dateTime = new DateTime((num >> 9) + 1980, (num >> 5) % 16, num % 32, num2 >> 11, (num2 >> 5) % 64, num2 % 32 * 2);
 			}
 			catch
 			{
-				result = DateTime.Now;
+				dateTime = DateTime.Now;
 			}
-			return result;
+			return dateTime;
 		}
 
 		// Token: 0x060004B6 RID: 1206 RVA: 0x00021348 File Offset: 0x00020348
@@ -378,7 +375,7 @@ namespace ComponentAce.Compression.Archiver
 			}
 			case StorePathMode.FullPath:
 			{
-				string text4 = (text2.Substring(1, 2) == ":\\") ? text2.Substring(3) : text2;
+				string text4 = ((text2.Substring(1, 2) == ":\\") ? text2.Substring(3) : text2);
 				if (text4.IndexOf("..\\") < 0 && text4.IndexOf("../") < 0)
 				{
 					text2 = text4;

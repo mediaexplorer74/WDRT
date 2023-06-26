@@ -4,6 +4,6 @@ using System.Runtime.CompilerServices;
 // Token: 0x020000A8 RID: 168
 [UnsafeValueType]
 [NativeCppClass]
-public struct ioinfo
+internal struct ioinfo
 {
 }

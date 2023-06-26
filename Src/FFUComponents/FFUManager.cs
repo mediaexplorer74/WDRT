@@ -39,10 +39,10 @@ namespace FFUComponents
 					}
 				}
 			}
-			foreach (IFFUDeviceInternal device in list)
+			foreach (IFFUDeviceInternal iffudeviceInternal in list)
 			{
-				FFUManager.disconnectTimer.StopTimer(device);
-				FFUManager.OnDisconnect(device);
+				FFUManager.disconnectTimer.StopTimer(iffudeviceInternal);
+				FFUManager.OnDisconnect(iffudeviceInternal);
 			}
 		}
 
@@ -84,19 +84,19 @@ namespace FFUComponents
 		// Token: 0x06000088 RID: 136 RVA: 0x000034DC File Offset: 0x000016DC
 		private static bool DevicePresent(Guid id)
 		{
-			bool result = false;
+			bool flag = false;
 			lock (FFUManager.activeFFUDevices)
 			{
 				for (int i = 0; i < FFUManager.activeFFUDevices.Count; i++)
 				{
 					if (FFUManager.activeFFUDevices[i].DeviceUniqueID == id)
 					{
-						result = true;
+						flag = true;
 						break;
 					}
 				}
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x06000089 RID: 137 RVA: 0x0000354C File Offset: 0x0000174C
@@ -144,32 +144,32 @@ namespace FFUComponents
 			SimpleIODevice device = new SimpleIODevice(usbDevicePath);
 			if (device.OnConnect(device))
 			{
-				IFFUDeviceInternal device3 = null;
-				IFFUDeviceInternal device2 = null;
+				IFFUDeviceInternal iffudeviceInternal = null;
+				IFFUDeviceInternal iffudeviceInternal2 = null;
 				lock (FFUManager.activeFFUDevices)
 				{
-					IFFUDeviceInternal iffudeviceInternal = FFUManager.activeFFUDevices.SingleOrDefault((IFFUDeviceInternal deviceInstance) => deviceInstance.DeviceUniqueID == device.DeviceUniqueID);
-					IFFUDeviceInternal iffudeviceInternal2 = FFUManager.disconnectTimer.StopTimer(device);
-					if (iffudeviceInternal == null && iffudeviceInternal2 != null)
+					IFFUDeviceInternal iffudeviceInternal3 = FFUManager.activeFFUDevices.SingleOrDefault((IFFUDeviceInternal deviceInstance) => deviceInstance.DeviceUniqueID == device.DeviceUniqueID);
+					IFFUDeviceInternal iffudeviceInternal4 = FFUManager.disconnectTimer.StopTimer(device);
+					if (iffudeviceInternal3 == null && iffudeviceInternal4 != null)
 					{
-						FFUManager.activeFFUDevices.Add(iffudeviceInternal2);
-						iffudeviceInternal = iffudeviceInternal2;
-						device2 = iffudeviceInternal2;
+						FFUManager.activeFFUDevices.Add(iffudeviceInternal4);
+						iffudeviceInternal3 = iffudeviceInternal4;
+						iffudeviceInternal2 = iffudeviceInternal4;
 					}
-					if (iffudeviceInternal != null && !((SimpleIODevice)iffudeviceInternal).OnConnect(device))
+					if (iffudeviceInternal3 != null && !((SimpleIODevice)iffudeviceInternal3).OnConnect(device))
 					{
-						FFUManager.activeFFUDevices.Remove(iffudeviceInternal);
-						device3 = iffudeviceInternal;
-						iffudeviceInternal = null;
+						FFUManager.activeFFUDevices.Remove(iffudeviceInternal3);
+						iffudeviceInternal = iffudeviceInternal3;
+						iffudeviceInternal3 = null;
 					}
-					if (iffudeviceInternal == null)
+					if (iffudeviceInternal3 == null)
 					{
-						device2 = device;
+						iffudeviceInternal2 = device;
 						FFUManager.activeFFUDevices.Add(device);
 					}
 				}
-				FFUManager.OnDisconnect(device3);
-				FFUManager.OnConnect(device2);
+				FFUManager.OnDisconnect(iffudeviceInternal);
+				FFUManager.OnConnect(iffudeviceInternal2);
 			}
 		}
 
@@ -181,9 +181,7 @@ namespace FFUComponents
 			{
 				if (usbDevicePath != null)
 				{
-					using (IEnumerator<IFFUDeviceInternal> enumerator = (from d in FFUManager.activeFFUDevices
-					where d.UsbDevicePath.Equals(usbDevicePath, StringComparison.OrdinalIgnoreCase)
-					select d).GetEnumerator())
+					using (IEnumerator<IFFUDeviceInternal> enumerator = FFUManager.activeFFUDevices.Where((IFFUDeviceInternal d) => d.UsbDevicePath.Equals(usbDevicePath, StringComparison.OrdinalIgnoreCase)).GetEnumerator())
 					{
 						while (enumerator.MoveNext())
 						{
@@ -212,9 +210,9 @@ namespace FFUComponents
 					FFUManager.StartTimerIfNecessary(iffudeviceInternal3);
 				}
 			}
-			foreach (IFFUDeviceInternal device in list)
+			foreach (IFFUDeviceInternal iffudeviceInternal4 in list)
 			{
-				FFUManager.OnDisconnect(device);
+				FFUManager.OnDisconnect(iffudeviceInternal4);
 			}
 		}
 
@@ -227,15 +225,15 @@ namespace FFUComponents
 				int i = 0;
 				while (i < thorDevicePids.Length)
 				{
-					string value = thorDevicePids[i];
-					if (devicePath.IndexOf(value, StringComparison.OrdinalIgnoreCase) >= 0)
+					string text = thorDevicePids[i];
+					if (devicePath.IndexOf(text, StringComparison.OrdinalIgnoreCase) >= 0)
 					{
 						ConnectedDevice connectedDevice = FFUManager.flashingPlatform.CreateConnectedDevice(devicePath);
 						bool flag2 = connectedDevice.CanFlash();
 						if (flag2)
 						{
-							FlashingDevice device = connectedDevice.CreateFlashingDevice();
-							ThorDevice thorDevice = new ThorDevice(device, devicePath);
+							FlashingDevice flashingDevice = connectedDevice.CreateFlashingDevice();
+							ThorDevice thorDevice = new ThorDevice(flashingDevice, devicePath);
 							FFUManager.activeFFUDevices.Add(thorDevice);
 							FFUManager.OnConnect(thorDevice);
 							break;
@@ -258,9 +256,7 @@ namespace FFUComponents
 			{
 				if (devicePath != null)
 				{
-					using (IEnumerator<IFFUDeviceInternal> enumerator = (from d in FFUManager.activeFFUDevices
-					where d.UsbDevicePath.Equals(devicePath, StringComparison.OrdinalIgnoreCase)
-					select d).GetEnumerator())
+					using (IEnumerator<IFFUDeviceInternal> enumerator = FFUManager.activeFFUDevices.Where((IFFUDeviceInternal d) => d.UsbDevicePath.Equals(devicePath, StringComparison.OrdinalIgnoreCase)).GetEnumerator())
 					{
 						while (enumerator.MoveNext())
 						{
@@ -283,39 +279,35 @@ namespace FFUComponents
 					}
 				}
 				IL_C7:
-				foreach (ThorDevice item in list)
+				foreach (ThorDevice thorDevice3 in list)
 				{
-					FFUManager.activeFFUDevices.Remove(item);
+					FFUManager.activeFFUDevices.Remove(thorDevice3);
 				}
 			}
-			foreach (ThorDevice device in list)
+			foreach (ThorDevice thorDevice4 in list)
 			{
-				FFUManager.OnDisconnect(device);
+				FFUManager.OnDisconnect(thorDevice4);
 			}
 		}
 
 		// Token: 0x06000090 RID: 144 RVA: 0x00003B38 File Offset: 0x00001D38
 		static FFUManager()
 		{
-			FFUManager.activeFFUDevices = new List<IFFUDeviceInternal>();
-			FFUManager.eventWatchers = new List<UsbEventWatcher>();
-			FFUManager.HostLogger = new FlashingHostLogger();
-			FFUManager.DeviceLogger = new FlashingDeviceLogger();
-			string str = Process.GetCurrentProcess().ProcessName + Process.GetCurrentProcess().Id.ToString(CultureInfo.InvariantCulture);
-			string logFile = Path.Combine(Path.GetTempPath(), str + ".log");
-			FFUManager.flashingPlatform = new FlashingPlatform(logFile);
+			string text = Process.GetCurrentProcess().ProcessName + Process.GetCurrentProcess().Id.ToString(CultureInfo.InvariantCulture);
+			string text2 = Path.Combine(Path.GetTempPath(), text + ".log");
+			FFUManager.flashingPlatform = new FlashingPlatform(text2);
 			FFUManager.deviceNotification = null;
 		}
 
 		// Token: 0x1700000F RID: 15
 		// (get) Token: 0x06000091 RID: 145 RVA: 0x00003C03 File Offset: 0x00001E03
 		// (set) Token: 0x06000092 RID: 146 RVA: 0x00003C0A File Offset: 0x00001E0A
-		internal static FlashingHostLogger HostLogger { get; private set; }
+		internal static FlashingHostLogger HostLogger { get; private set; } = new FlashingHostLogger();
 
 		// Token: 0x17000010 RID: 16
 		// (get) Token: 0x06000093 RID: 147 RVA: 0x00003C12 File Offset: 0x00001E12
 		// (set) Token: 0x06000094 RID: 148 RVA: 0x00003C19 File Offset: 0x00001E19
-		internal static FlashingDeviceLogger DeviceLogger { get; private set; }
+		internal static FlashingDeviceLogger DeviceLogger { get; private set; } = new FlashingDeviceLogger();
 
 		// Token: 0x06000095 RID: 149 RVA: 0x00003C24 File Offset: 0x00001E24
 		public static void Start()
@@ -325,15 +317,15 @@ namespace FFUComponents
 				if (!FFUManager.isStarted)
 				{
 					DeviceNotificationCallback deviceNotificationCallback = null;
-					NotificationCallback callback = new NotificationCallback();
-					FFUManager.flashingPlatform.RegisterDeviceNotificationCallback(callback, ref deviceNotificationCallback);
-					FFUManager.deviceNotification = callback;
+					NotificationCallback notificationCallback = new NotificationCallback();
+					FFUManager.flashingPlatform.RegisterDeviceNotificationCallback(notificationCallback, ref deviceNotificationCallback);
+					FFUManager.deviceNotification = notificationCallback;
 					FFUManager.disconnectTimer = new DisconnectTimer();
 					if (FFUManager.eventWatchers.Count <= 0)
 					{
-						IUsbEventSink eventSink = new SimpleIoEventSink(new SimpleIoEventSink.ConnectHandler(FFUManager.OnSimpleIoConnect), new SimpleIoEventSink.DisconnectHandler(FFUManager.OnSimpleIoDisconnect));
-						FFUManager.eventWatchers.Add(new UsbEventWatcher(eventSink, FFUManager.SimpleIOGuid, FFUManager.SimpleIOGuid));
-						FFUManager.eventWatchers.Add(new UsbEventWatcher(eventSink, FFUManager.WinUSBClassGuid, FFUManager.WinUSBFlashingIfGuid));
+						IUsbEventSink usbEventSink = new SimpleIoEventSink(new SimpleIoEventSink.ConnectHandler(FFUManager.OnSimpleIoConnect), new SimpleIoEventSink.DisconnectHandler(FFUManager.OnSimpleIoDisconnect));
+						FFUManager.eventWatchers.Add(new UsbEventWatcher(usbEventSink, FFUManager.SimpleIOGuid, FFUManager.SimpleIOGuid));
+						FFUManager.eventWatchers.Add(new UsbEventWatcher(usbEventSink, FFUManager.WinUSBClassGuid, FFUManager.WinUSBFlashingIfGuid));
 					}
 					FFUManager.isStarted = true;
 				}
@@ -359,9 +351,9 @@ namespace FFUComponents
 					DisconnectTimer disconnectTimer = Interlocked.Exchange<DisconnectTimer>(ref FFUManager.disconnectTimer, null);
 					disconnectTimer.StopAllTimers();
 					DeviceNotificationCallback deviceNotificationCallback = null;
-					NotificationCallback callback = null;
-					FFUManager.flashingPlatform.RegisterDeviceNotificationCallback(callback, ref deviceNotificationCallback);
-					FFUManager.deviceNotification = callback;
+					NotificationCallback notificationCallback = null;
+					FFUManager.flashingPlatform.RegisterDeviceNotificationCallback(notificationCallback, ref deviceNotificationCallback);
+					FFUManager.deviceNotification = notificationCallback;
 					FFUManager.isStarted = false;
 				}
 			}
@@ -373,9 +365,9 @@ namespace FFUComponents
 		{
 			get
 			{
-				ICollection<IFFUDevice> result = new List<IFFUDevice>();
-				FFUManager.GetFlashableDevices(ref result);
-				return result;
+				ICollection<IFFUDevice> collection = new List<IFFUDevice>();
+				FFUManager.GetFlashableDevices(ref collection);
+				return collection;
 			}
 		}
 
@@ -391,9 +383,9 @@ namespace FFUComponents
 				devices.Clear();
 				lock (FFUManager.activeFFUDevices)
 				{
-					foreach (IFFUDeviceInternal item in FFUManager.activeFFUDevices)
+					foreach (IFFUDeviceInternal iffudeviceInternal in FFUManager.activeFFUDevices)
 					{
-						devices.Add(item);
+						devices.Add(iffudeviceInternal);
 					}
 				}
 			}
@@ -469,21 +461,21 @@ namespace FFUComponents
 		// Token: 0x0600009B RID: 155 RVA: 0x000040A4 File Offset: 0x000022A4
 		private static string GetFallbackInstancePath(string instancePath)
 		{
-			MatchEvaluator evaluator = new MatchEvaluator(FFUManager.ReplaceUsbSerial);
-			return Regex.Replace(instancePath, "\\\\\\?\\\\usb#vid_[a-zA-Z0-9]{4}&pid_[a-zA-Z0-9]{4}#(?<serial>.+)#{[A-F0-9]{8}(?:-[A-F0-9]{4}){3}-[A-F0-9]{12}}\\z", evaluator, RegexOptions.IgnoreCase);
+			MatchEvaluator matchEvaluator = new MatchEvaluator(FFUManager.ReplaceUsbSerial);
+			return Regex.Replace(instancePath, "\\\\\\?\\\\usb#vid_[a-zA-Z0-9]{4}&pid_[a-zA-Z0-9]{4}#(?<serial>.+)#{[A-F0-9]{8}(?:-[A-F0-9]{4}){3}-[A-F0-9]{12}}\\z", matchEvaluator, RegexOptions.IgnoreCase);
 		}
 
 		// Token: 0x04000035 RID: 53
 		public static FlashingPlatform flashingPlatform;
 
-        // Token: 0x04000036 RID: 54
-        public static NotificationCallback deviceNotification;
+		// Token: 0x04000036 RID: 54
+		public static NotificationCallback deviceNotification;
 
 		// Token: 0x04000039 RID: 57
-		private static List<UsbEventWatcher> eventWatchers;
+		private static List<UsbEventWatcher> eventWatchers = new List<UsbEventWatcher>();
 
 		// Token: 0x0400003A RID: 58
-		private static IList<IFFUDeviceInternal> activeFFUDevices;
+		private static IList<IFFUDeviceInternal> activeFFUDevices = new List<IFFUDeviceInternal>();
 
 		// Token: 0x0400003B RID: 59
 		private static DisconnectTimer disconnectTimer;
@@ -501,9 +493,6 @@ namespace FFUComponents
 		public static readonly Guid WinUSBFlashingIfGuid = new Guid("{82809DD0-51F5-11E1-B86C-0800200C9A66}");
 
 		// Token: 0x04000040 RID: 64
-		private static readonly string[] ThorDevicePids = new string[]
-		{
-			"pid_0658"
-		};
+		private static readonly string[] ThorDevicePids = new string[] { "pid_0658" };
 	}
 }

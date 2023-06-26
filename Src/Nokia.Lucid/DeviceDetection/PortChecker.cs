@@ -22,10 +22,7 @@ namespace Nokia.Lucid.DeviceDetection
 			{
 				throw new ArgumentNullException("parentDeviceLocationPath");
 			}
-			this.PortIds = new string[]
-			{
-				parentDeviceLocationPath
-			};
+			this.PortIds = new string[] { parentDeviceLocationPath };
 		}
 
 		// Token: 0x17000001 RID: 1
@@ -41,9 +38,9 @@ namespace Nokia.Lucid.DeviceDetection
 				throw new ArgumentNullException("locationPath");
 			}
 			int num = 0;
-			foreach (string value in this.PortIds)
+			foreach (string text in this.PortIds)
 			{
-				if (locationPath.Contains(value))
+				if (locationPath.Contains(text))
 				{
 					return num;
 				}

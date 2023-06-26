@@ -1,0 +1,17 @@
+﻿using System;
+
+namespace System.Deployment.Internal.Isolation.Manifest
+{
+	// Token: 0x020006C4 RID: 1732
+	internal enum CMS_HASH_DIGESTMETHOD
+	{
+		// Token: 0x040022DF RID: 8927
+		CMS_HASH_DIGESTMETHOD_SHA1 = 1,
+		// Token: 0x040022E0 RID: 8928
+		CMS_HASH_DIGESTMETHOD_SHA256,
+		// Token: 0x040022E1 RID: 8929
+		CMS_HASH_DIGESTMETHOD_SHA384,
+		// Token: 0x040022E2 RID: 8930
+		CMS_HASH_DIGESTMETHOD_SHA512
+	}
+}

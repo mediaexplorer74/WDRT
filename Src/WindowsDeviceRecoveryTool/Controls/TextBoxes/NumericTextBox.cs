@@ -6,10 +6,10 @@ using Microsoft.WindowsDeviceRecoveryTool.Controls.TextBoxes.Validation;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Controls.TextBoxes
 {
-	// Token: 0x0200003C RID: 60
+	// Token: 0x020000DC RID: 220
 	public class NumericTextBox : ValidatedTextBox
 	{
-		// Token: 0x0600021F RID: 543 RVA: 0x0000E18F File Offset: 0x0000C38F
+		// Token: 0x06000702 RID: 1794 RVA: 0x0001FCAE File Offset: 0x0001DEAE
 		public NumericTextBox()
 		{
 			this.MinValue = int.MinValue;
@@ -17,20 +17,21 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls.TextBoxes
 			DataObject.AddPastingHandler(this, new DataObjectPastingEventHandler(this.OnPaste));
 		}
 
-		// Token: 0x17000064 RID: 100
-		// (get) Token: 0x06000220 RID: 544 RVA: 0x0000E1C8 File Offset: 0x0000C3C8
-		// (set) Token: 0x06000221 RID: 545 RVA: 0x0000E1DF File Offset: 0x0000C3DF
+		// Token: 0x17000196 RID: 406
+		// (get) Token: 0x06000703 RID: 1795 RVA: 0x0001FCE3 File Offset: 0x0001DEE3
+		// (set) Token: 0x06000704 RID: 1796 RVA: 0x0001FCEB File Offset: 0x0001DEEB
 		public int MinValue { get; set; }
 
-		// Token: 0x17000065 RID: 101
-		// (get) Token: 0x06000222 RID: 546 RVA: 0x0000E1E8 File Offset: 0x0000C3E8
-		// (set) Token: 0x06000223 RID: 547 RVA: 0x0000E1FF File Offset: 0x0000C3FF
+		// Token: 0x17000197 RID: 407
+		// (get) Token: 0x06000705 RID: 1797 RVA: 0x0001FCF4 File Offset: 0x0001DEF4
+		// (set) Token: 0x06000706 RID: 1798 RVA: 0x0001FCFC File Offset: 0x0001DEFC
 		public int MaxValue { get; set; }
 
-		// Token: 0x06000224 RID: 548 RVA: 0x0000E208 File Offset: 0x0000C408
+		// Token: 0x06000707 RID: 1799 RVA: 0x0001FD08 File Offset: 0x0001DF08
 		protected override void OnPreviewKeyDown(KeyEventArgs e)
 		{
-			if (e.Key == Key.Space)
+			bool flag = e.Key == Key.Space;
+			if (flag)
 			{
 				e.Handled = true;
 			}
@@ -40,21 +41,23 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls.TextBoxes
 			}
 		}
 
-		// Token: 0x06000225 RID: 549 RVA: 0x0000E23C File Offset: 0x0000C43C
+		// Token: 0x06000708 RID: 1800 RVA: 0x0001FD38 File Offset: 0x0001DF38
 		protected override void OnTextChanged(TextChangedEventArgs e)
 		{
 			base.OnTextChanged(e);
 			base.Text = NumericTextBox.RemoveTrailingZeros(base.Text);
-			if (!this.IsTextAllowed(base.Text))
+			bool flag = !this.IsTextAllowed(base.Text);
+			if (flag)
 			{
 				base.Text = string.Empty;
 			}
 		}
 
-		// Token: 0x06000226 RID: 550 RVA: 0x0000E284 File Offset: 0x0000C484
+		// Token: 0x06000709 RID: 1801 RVA: 0x0001FD84 File Offset: 0x0001DF84
 		protected override void OnPreviewTextInput(TextCompositionEventArgs e)
 		{
-			if (e != null)
+			bool flag = e == null;
+			if (!flag)
 			{
 				string text = new string(base.Text.ToCharArray());
 				text = text.Remove(text.IndexOf(base.SelectedText, StringComparison.Ordinal), base.SelectedText.Length);
@@ -62,7 +65,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls.TextBoxes
 			}
 		}
 
-		// Token: 0x06000227 RID: 551 RVA: 0x0000E2F4 File Offset: 0x0000C4F4
+		// Token: 0x0600070A RID: 1802 RVA: 0x0001FDF0 File Offset: 0x0001DFF0
 		private static string RemoveTrailingZeros(string text)
 		{
 			string text2 = new string(text.ToCharArray());
@@ -73,19 +76,22 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls.TextBoxes
 			return text2;
 		}
 
-		// Token: 0x06000228 RID: 552 RVA: 0x0000E340 File Offset: 0x0000C540
+		// Token: 0x0600070B RID: 1803 RVA: 0x0001FE3C File Offset: 0x0001E03C
 		private void OnPaste(object sender, DataObjectPastingEventArgs e)
 		{
-			if (e != null)
+			bool flag = e == null;
+			if (!flag)
 			{
-				if (e.DataObject.GetDataPresent(typeof(string)))
+				bool dataPresent = e.DataObject.GetDataPresent(typeof(string));
+				if (dataPresent)
 				{
 					string text = new string(base.Text.ToCharArray());
 					text = new string(text.ToCharArray());
 					text = text.Remove(text.IndexOf(base.SelectedText, StringComparison.Ordinal), base.SelectedText.Length);
 					text = text.Insert(base.CaretIndex, (string)e.DataObject.GetData(typeof(string)));
 					text = NumericTextBox.RemoveTrailingZeros(text);
-					if (!this.IsTextAllowed(text))
+					bool flag2 = !this.IsTextAllowed(text);
+					if (flag2)
 					{
 						e.CancelCommand();
 					}
@@ -97,11 +103,22 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls.TextBoxes
 			}
 		}
 
-		// Token: 0x06000229 RID: 553 RVA: 0x0000E40C File Offset: 0x0000C60C
+		// Token: 0x0600070C RID: 1804 RVA: 0x0001FF04 File Offset: 0x0001E104
 		private bool IsTextAllowed(string text)
 		{
-			int num;
-			return (!text.StartsWith("0", StringComparison.Ordinal) || text.Length <= 1) && int.TryParse(text, out num) && this.MinValue <= num && num <= this.MaxValue;
+			bool flag = text.StartsWith("0", StringComparison.Ordinal) && text.Length > 1;
+			bool flag2;
+			if (flag)
+			{
+				flag2 = false;
+			}
+			else
+			{
+				int num;
+				bool flag3 = !int.TryParse(text, out num);
+				flag2 = !flag3 && this.MinValue <= num && num <= this.MaxValue;
+			}
+			return flag2;
 		}
 	}
 }

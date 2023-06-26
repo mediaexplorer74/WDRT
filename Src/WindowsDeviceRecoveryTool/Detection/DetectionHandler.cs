@@ -9,21 +9,24 @@ using Nokia.Lucid.DeviceDetection;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Detection
 {
-	// Token: 0x02000018 RID: 24
-	public sealed class DetectionHandler : IDetectionHandler, IDisposable
+	// Token: 0x020000B9 RID: 185
+	internal sealed class DetectionHandler : IDetectionHandler, IDisposable
 	{
-		// Token: 0x060000BD RID: 189 RVA: 0x00004C74 File Offset: 0x00002E74
+		// Token: 0x060005BC RID: 1468 RVA: 0x0001B948 File Offset: 0x00019B48
 		public DetectionHandler(IUsbDeviceMonitor usbDeviceMonitor, IEnumerable<IDeviceSupport> supports, IDeviceInformationCacheManager deviceInformationCacheManager)
 		{
-			if (usbDeviceMonitor == null)
+			bool flag = usbDeviceMonitor == null;
+			if (flag)
 			{
 				throw new ArgumentNullException("usbDeviceMonitor");
 			}
-			if (supports == null)
+			bool flag2 = supports == null;
+			if (flag2)
 			{
 				throw new ArgumentNullException("supports");
 			}
-			if (deviceInformationCacheManager == null)
+			bool flag3 = deviceInformationCacheManager == null;
+			if (flag3)
 			{
 				throw new ArgumentNullException("deviceInformationCacheManager");
 			}
@@ -32,22 +35,26 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Detection
 			this.deviceInformationCacheManager = deviceInformationCacheManager;
 		}
 
-		// Token: 0x060000BE RID: 190 RVA: 0x0000563C File Offset: 0x0000383C
+		// Token: 0x060005BD RID: 1469 RVA: 0x0001B9C4 File Offset: 0x00019BC4
 		public async Task<DeviceInfoEventArgs> TakeDeviceInfoEventAsync(CancellationToken cancellationToken)
 		{
-			DetectionHandler.ChangedDevice changedDevice2;
+			DetectionHandler.<>c__DisplayClass6_0 CS$<>8__locals1;
+			DetectionHandler.ChangedDevice detachedDevice;
 			DetectionHandler.ChangedDevice attachedDevice;
-
-			
-            for (;;)
-            {
-                Task<DetectionHandler.ChangedDevice> detectionTask = this.CreateDetectionTask(cancellationToken);
+			for (;;)
+			{
+				CS$<>8__locals1 = new DetectionHandler.<>c__DisplayClass6_0();
+				Task<DetectionHandler.ChangedDevice> detectionTask = this.CreateDetectionTask(cancellationToken);
 				this.ongoingTasks.Add(detectionTask);
-				Task<DetectionHandler.ChangedDevice> finishedTask = await Task.WhenAny<DetectionHandler.ChangedDevice>(this.ongoingTasks);
-				DetectionHandler.ChangedDevice changedDevice = null;
+				Task<DetectionHandler.ChangedDevice> task = await Task.WhenAny<DetectionHandler.ChangedDevice>(this.ongoingTasks);
+				Task<DetectionHandler.ChangedDevice> finishedTask = task;
+				task = null;
+				CS$<>8__locals1.changedDevice = null;
 				try
 				{
-					changedDevice = await finishedTask;
+					DetectionHandler.ChangedDevice changedDevice = await finishedTask;
+					CS$<>8__locals1.changedDevice = changedDevice;
+					changedDevice = null;
 				}
 				catch (OperationCanceledException)
 				{
@@ -64,48 +71,55 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Detection
 				{
 					break;
 				}
-				if (!changedDevice.IsAttached)
+				if (!CS$<>8__locals1.changedDevice.IsAttached)
 				{
-					changedDevice2 = this.attachedDevices.FirstOrDefault((DetectionHandler.ChangedDevice d) => string.Equals(d.Identifier, changedDevice.Identifier, StringComparison.OrdinalIgnoreCase));
-					if (changedDevice2 != null)
+					detachedDevice = this.attachedDevices.FirstOrDefault((DetectionHandler.ChangedDevice d) => string.Equals(d.Identifier, CS$<>8__locals1.changedDevice.Identifier, StringComparison.OrdinalIgnoreCase));
+					if (detachedDevice != null)
 					{
-						goto Block_5;
+						goto Block_4;
 					}
 				}
 				else
 				{
-					attachedDevice = this.attachedDevices.FirstOrDefault((DetectionHandler.ChangedDevice d) => string.Equals(d.Identifier, changedDevice.Identifier, StringComparison.OrdinalIgnoreCase));
+					attachedDevice = this.attachedDevices.FirstOrDefault((DetectionHandler.ChangedDevice d) => string.Equals(d.Identifier, CS$<>8__locals1.changedDevice.Identifier, StringComparison.OrdinalIgnoreCase));
 					if (attachedDevice != null && attachedDevice.UpdatedDeviceInfo != null)
 					{
-						goto Block_7;
+						goto Block_6;
 					}
-					VidPidPair vidPid = VidPidPair.Parse(changedDevice.Identifier);
+					CS$<>8__locals1.vidPid = VidPidPair.Parse(CS$<>8__locals1.changedDevice.Identifier);
 					var detectionInfos = (from s in this.supports.SelectMany((IDeviceSupport s) => from vp in s.GetDeviceDetectionInformation()
-					select new
-					{
-						Support = s,
-						DetectionInfo = vp
-					})
-					where s.DetectionInfo.VidPidPair == vidPid
-					select s).ToArray();
+							select new
+							{
+								Support = s,
+								DetectionInfo = vp
+							})
+						where s.DetectionInfo.VidPidPair == CS$<>8__locals1.vidPid
+						select s).ToArray();
 					var defferedDetection = (from info in detectionInfos
-					where info.DetectionInfo.DetectionDeferred
-					select info).ToArray();
+						where info.DetectionInfo.DetectionDeferred
+						select (info)).ToArray();
 					var nonDefferedDetection = (from info in detectionInfos
-					where !info.DetectionInfo.DetectionDeferred
-					select info).ToArray();
-					if (nonDefferedDetection.Length > 0)
+						where !info.DetectionInfo.DetectionDeferred
+						select (info)).ToArray();
+					if (nonDefferedDetection.Length != 0)
 					{
-						goto Block_13;
+						goto Block_12;
 					}
-					this.attachedDevices.Add(changedDevice);
-					IEnumerable<IDeviceSupport> defferedSupports = from d in defferedDetection
-					select d.Support;
-					Task<DetectionHandler.ChangedDevice> identificationTask = this.UpdateDeviceDetectionDataAsync(defferedSupports, changedDevice, cancellationToken);
+					this.attachedDevices.Add(CS$<>8__locals1.changedDevice);
+					IEnumerable<IDeviceSupport> defferedSupports = defferedDetection.Select(d => d.Support);
+					Task<DetectionHandler.ChangedDevice> identificationTask = this.UpdateDeviceDetectionDataAsync(defferedSupports, CS$<>8__locals1.changedDevice, cancellationToken);
 					this.ongoingTasks.Add(identificationTask);
+					CS$<>8__locals1 = null;
+					detectionTask = null;
+					finishedTask = null;
+					attachedDevice = null;
+					detectionInfos = null;
+					defferedDetection = null;
+					nonDefferedDetection = null;
+					defferedSupports = null;
+					identificationTask = null;
 				}
 			}
-
 			try
 			{
 				await Task.WhenAll<DetectionHandler.ChangedDevice>(this.ongoingTasks);
@@ -114,21 +128,22 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Detection
 			{
 			}
 			throw new OperationCanceledException(cancellationToken);
-			Block_5:
-			this.attachedDevices.Remove(changedDevice2);
-			return new DeviceInfoEventArgs(new DeviceInfo(changedDevice2.Identifier), DeviceInfoAction.Detached, false);
-			Block_7:
-			return new DeviceInfoEventArgs(attachedDevice.UpdatedDeviceInfo, DeviceInfoAction.Attached, f8__locals1.changedDevice.IsEnumerated);
-			Block_13:
-			this.attachedDevices.Add(f8__locals1.changedDevice);
-			return new DeviceInfoEventArgs(new DeviceInfo(f8__locals1.changedDevice.Identifier), DeviceInfoAction.Attached, f8__locals1.changedDevice.IsEnumerated);
+			Block_4:
+			this.attachedDevices.Remove(detachedDevice);
+			return new DeviceInfoEventArgs(new DeviceInfo(detachedDevice.Identifier), DeviceInfoAction.Detached, false);
+			Block_6:
+			return new DeviceInfoEventArgs(attachedDevice.UpdatedDeviceInfo, DeviceInfoAction.Attached, CS$<>8__locals1.changedDevice.IsEnumerated);
+			Block_12:
+			this.attachedDevices.Add(CS$<>8__locals1.changedDevice);
+			return new DeviceInfoEventArgs(new DeviceInfo(CS$<>8__locals1.changedDevice.Identifier), DeviceInfoAction.Attached, CS$<>8__locals1.changedDevice.IsEnumerated);
 		}
 
-		// Token: 0x060000BF RID: 191 RVA: 0x000058CC File Offset: 0x00003ACC
+		// Token: 0x060005BE RID: 1470 RVA: 0x0001BA10 File Offset: 0x00019C10
 		public async Task UpdateDeviceInfoAsync(DeviceInfo deviceInfo, CancellationToken cancellationToken)
 		{
 			DetectionHandler.ChangedDevice attachedDevice = this.attachedDevices.FirstOrDefault((DetectionHandler.ChangedDevice d) => string.Equals(d.Identifier, deviceInfo.DeviceIdentifier, StringComparison.OrdinalIgnoreCase));
-			if (attachedDevice.UpdatedDeviceInfo == null)
+			bool flag = attachedDevice.UpdatedDeviceInfo == null;
+			if (flag)
 			{
 				await this.UpdateDeviceDetectionDataAsync(this.supports, attachedDevice, cancellationToken);
 			}
@@ -141,69 +156,84 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Detection
 			}
 		}
 
-		// Token: 0x060000C0 RID: 192 RVA: 0x00005926 File Offset: 0x00003B26
+		// Token: 0x060005BF RID: 1471 RVA: 0x0001BA62 File Offset: 0x00019C62
 		public void Dispose()
 		{
 			this.usbDeviceMonitor.Dispose();
 		}
 
-		// Token: 0x060000C1 RID: 193 RVA: 0x00005A70 File Offset: 0x00003C70
+		// Token: 0x060005C0 RID: 1472 RVA: 0x0001BA74 File Offset: 0x00019C74
 		private async Task<DetectionHandler.ChangedDevice> CreateDetectionTask(CancellationToken cancellationToken)
 		{
-			UsbDeviceChangeEvent result = await this.usbDeviceMonitor.TakeDeviceChangeEventAsync(cancellationToken);
+			UsbDeviceChangeEvent usbDeviceChangeEvent = await this.usbDeviceMonitor.TakeDeviceChangeEventAsync(cancellationToken);
+			UsbDeviceChangeEvent result = usbDeviceChangeEvent;
+			usbDeviceChangeEvent = null;
 			return new DetectionHandler.ChangedDevice(result.Data.Path, result.Data.Action == DeviceChangeAction.Attach, result.IsEnumerated);
 		}
 
-		// Token: 0x060000C2 RID: 194 RVA: 0x00005E0C File Offset: 0x0000400C
+		// Token: 0x060005C1 RID: 1473 RVA: 0x0001BAC0 File Offset: 0x00019CC0
 		private async Task<DetectionHandler.ChangedDevice> UpdateDeviceDetectionDataAsync(IEnumerable<IDeviceSupport> supportsToCheck, DetectionHandler.ChangedDevice changedDevice, CancellationToken cancellationToken)
 		{
-			string deviceIdentifier = changedDevice.Identifier;
-			DeviceDetectionData deviceDetectionData = new DeviceDetectionData(deviceIdentifier);
-			using (this.deviceInformationCacheManager.EnableCacheForDevicePath(deviceIdentifier))
+			DetectionHandler.<>c__DisplayClass10_0 CS$<>8__locals1 = new DetectionHandler.<>c__DisplayClass10_0();
+			CS$<>8__locals1.deviceIdentifier = changedDevice.Identifier;
+			DeviceDetectionData deviceDetectionData = new DeviceDetectionData(CS$<>8__locals1.deviceIdentifier);
+			using (this.deviceInformationCacheManager.EnableCacheForDevicePath(CS$<>8__locals1.deviceIdentifier))
 			{
 				foreach (IDeviceSupport support in supportsToCheck)
 				{
 					await support.UpdateDeviceDetectionDataAsync(deviceDetectionData, cancellationToken);
 					if (deviceDetectionData.IsDeviceSupported)
 					{
-						DeviceInfo updatedDeviceInfo = new DeviceInfo(deviceIdentifier)
+						DeviceInfo info = new DeviceInfo(CS$<>8__locals1.deviceIdentifier)
 						{
 							DeviceBitmapBytes = deviceDetectionData.DeviceBitmapBytes,
 							DeviceSalesName = deviceDetectionData.DeviceSalesName,
 							IsDeviceSupported = deviceDetectionData.IsDeviceSupported,
 							SupportId = support.Id
 						};
-						DetectionHandler.ChangedDevice changedDevice2 = this.attachedDevices.FirstOrDefault((DetectionHandler.ChangedDevice at) => string.Equals(at.Identifier, deviceIdentifier, StringComparison.OrdinalIgnoreCase));
-						if (changedDevice2 != null)
+						IEnumerable<DetectionHandler.ChangedDevice> enumerable = this.attachedDevices;
+						Func<DetectionHandler.ChangedDevice, bool> func;
+						if ((func = CS$<>8__locals1.<>9__0) == null)
 						{
-							changedDevice2.UpdatedDeviceInfo = updatedDeviceInfo;
+							DetectionHandler.<>c__DisplayClass10_0 CS$<>8__locals2 = CS$<>8__locals1;
+							Func<DetectionHandler.ChangedDevice, bool> func2 = (DetectionHandler.ChangedDevice at) => string.Equals(at.Identifier, CS$<>8__locals1.deviceIdentifier, StringComparison.OrdinalIgnoreCase);
+							CS$<>8__locals2.<>9__0 = func2;
+							func = func2;
+						}
+						DetectionHandler.ChangedDevice device = enumerable.FirstOrDefault(func);
+						if (device != null)
+						{
+							device.UpdatedDeviceInfo = info;
 						}
 						break;
 					}
+					support = null;
 				}
+				IEnumerator<IDeviceSupport> enumerator = null;
 			}
+			IDisposable disposable = null;
 			return changedDevice;
 		}
 
-		// Token: 0x0400003E RID: 62
+		// Token: 0x0400027E RID: 638
 		private readonly IUsbDeviceMonitor usbDeviceMonitor;
 
-		// Token: 0x0400003F RID: 63
+		// Token: 0x0400027F RID: 639
 		private readonly IEnumerable<IDeviceSupport> supports;
 
-		// Token: 0x04000040 RID: 64
+		// Token: 0x04000280 RID: 640
 		private readonly IDeviceInformationCacheManager deviceInformationCacheManager;
 
-		// Token: 0x04000041 RID: 65
+		// Token: 0x04000281 RID: 641
 		private readonly List<Task<DetectionHandler.ChangedDevice>> ongoingTasks = new List<Task<DetectionHandler.ChangedDevice>>();
 
-		// Token: 0x04000042 RID: 66
+		// Token: 0x04000282 RID: 642
 		private readonly List<DetectionHandler.ChangedDevice> attachedDevices = new List<DetectionHandler.ChangedDevice>();
 
-		// Token: 0x02000019 RID: 25
-		public class ChangedDevice
+		// Token: 0x02000143 RID: 323
+		private sealed class ChangedDevice
 		{
-			// Token: 0x060000C9 RID: 201 RVA: 0x00005E6E File Offset: 0x0000406E
+			// Token: 0x0600082A RID: 2090 RVA: 0x00023324 File Offset: 0x00021524
 			public ChangedDevice(string identifier, bool isAttached, bool isEnumerated)
 			{
 				this.Identifier = identifier;
@@ -211,24 +241,24 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Detection
 				this.IsEnumerated = isEnumerated;
 			}
 
-			// Token: 0x17000025 RID: 37
-			// (get) Token: 0x060000CA RID: 202 RVA: 0x00005E94 File Offset: 0x00004094
-			// (set) Token: 0x060000CB RID: 203 RVA: 0x00005EAB File Offset: 0x000040AB
+			// Token: 0x170001B0 RID: 432
+			// (get) Token: 0x0600082B RID: 2091 RVA: 0x00023346 File Offset: 0x00021546
+			// (set) Token: 0x0600082C RID: 2092 RVA: 0x0002334E File Offset: 0x0002154E
 			public string Identifier { get; private set; }
 
-			// Token: 0x17000026 RID: 38
-			// (get) Token: 0x060000CC RID: 204 RVA: 0x00005EB4 File Offset: 0x000040B4
-			// (set) Token: 0x060000CD RID: 205 RVA: 0x00005ECB File Offset: 0x000040CB
+			// Token: 0x170001B1 RID: 433
+			// (get) Token: 0x0600082D RID: 2093 RVA: 0x00023357 File Offset: 0x00021557
+			// (set) Token: 0x0600082E RID: 2094 RVA: 0x0002335F File Offset: 0x0002155F
 			public bool IsAttached { get; private set; }
 
-			// Token: 0x17000027 RID: 39
-			// (get) Token: 0x060000CE RID: 206 RVA: 0x00005ED4 File Offset: 0x000040D4
-			// (set) Token: 0x060000CF RID: 207 RVA: 0x00005EEB File Offset: 0x000040EB
+			// Token: 0x170001B2 RID: 434
+			// (get) Token: 0x0600082F RID: 2095 RVA: 0x00023368 File Offset: 0x00021568
+			// (set) Token: 0x06000830 RID: 2096 RVA: 0x00023370 File Offset: 0x00021570
 			public bool IsEnumerated { get; private set; }
 
-			// Token: 0x17000028 RID: 40
-			// (get) Token: 0x060000D0 RID: 208 RVA: 0x00005EF4 File Offset: 0x000040F4
-			// (set) Token: 0x060000D1 RID: 209 RVA: 0x00005F0B File Offset: 0x0000410B
+			// Token: 0x170001B3 RID: 435
+			// (get) Token: 0x06000831 RID: 2097 RVA: 0x00023379 File Offset: 0x00021579
+			// (set) Token: 0x06000832 RID: 2098 RVA: 0x00023381 File Offset: 0x00021581
 			public DeviceInfo UpdatedDeviceInfo { get; set; }
 		}
 	}

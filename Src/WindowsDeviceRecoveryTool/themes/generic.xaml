@@ -1,51 +1,46 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-                    xmlns:controls="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Controls" 
-                    xmlns:system="clr-namespace:System;assembly=mscorlib" 
-                    xmlns:l="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Localization;assembly=Microsoft.WindowsDeviceRecoveryTool.Localization">
-
-    <!--Button-->
-        <Style
-		TargetType="{x:Type ButtonBase}"
-		x:Key="FlipImagePathButtonStyle">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:controls="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Controls" xmlns:system="clr-namespace:System;assembly=mscorlib" xmlns:l="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Localization;assembly=Microsoft.WindowsDeviceRecoveryTool.Localization">
+	<Style
+		x:Key="FlipImagePathButtonStyle"
+		TargetType="{x:Type Button}">
 		<Setter
-			Property="Background"
+			Property="Control.Background"
 			Value="{x:Static Brushes.Transparent}" />
 		<Setter
-			Property="BorderBrush"
+			Property="Control.BorderBrush"
 			Value="{x:Static Brushes.Transparent}" />
 		<Setter
-			Property="BorderThickness"
+			Property="Control.BorderThickness"
 			Value="0" />
 		<Setter
-			Property="HorizontalAlignment"
+			Property="FrameworkElement.HorizontalAlignment"
 			Value="Stretch" />
 		<Setter
-			Property="HorizontalContentAlignment"
+			Property="Control.HorizontalContentAlignment"
 			Value="Center" />
 		<Setter
-			Property="VerticalAlignment"
+			Property="FrameworkElement.VerticalAlignment"
 			Value="Stretch" />
 		<Setter
-			Property="VerticalContentAlignment"
+			Property="Control.VerticalContentAlignment"
 			Value="Center" />
 		<Setter
-			Property="Padding"
+			Property="Control.Padding"
 			Value="5" />
 		<Setter
-			Property="Margin"
+			Property="FrameworkElement.Margin"
 			Value="0,5" />
 		<Setter
-			Property="Foreground"
+			Property="Control.Foreground"
 			Value="{DynamicResource ButtonForegroundThemeBrush}" />
-		<Setter Property="ContentTemplate">
+		<Setter
+			Property="ContentControl.ContentTemplate">
 			<Setter.Value>
 				<DataTemplate
 					DataType="{x:Type ImageSource}">
 					<Image
-						Width="{TemplateBinding Width}"
-						Height="{TemplateBinding Height}"
-						Stretch="Uniform"
+						FrameworkElement.Width="{TemplateBinding FrameworkElement.Width}"
+						FrameworkElement.Height="{TemplateBinding FrameworkElement.Height}"
+						Image.Stretch="Uniform"
 						SnapsToDevicePixels="True">
 						<Image.Source>
 							<DrawingImage>
@@ -61,17 +56,14 @@
 				</DataTemplate>
 			</Setter.Value>
 		</Setter>
-		
-        <Setter
-			Property="Template">
+		<Setter
+			Property="Control.Template">
 			<Setter.Value>
 				<ControlTemplate
-					TargetType="{x:Type TextBox}">
-                    <!-- Button-->
-                    
-                    <Grid
-						HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-						VerticalAlignment="{TemplateBinding VerticalAlignment}">
+					TargetType="{x:Type Button}">
+					<Grid
+						FrameworkElement.HorizontalAlignment="{TemplateBinding FrameworkElement.HorizontalAlignment}"
+						FrameworkElement.VerticalAlignment="{TemplateBinding FrameworkElement.VerticalAlignment}">
 						<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup
 								x:Name="CommonStates">
@@ -161,24 +153,24 @@
 						</VisualStateManager.VisualStateGroups>
 						<Border
 							Name="PART_Border"
-							Background="{TemplateBinding Background}"
-							BorderBrush="{TemplateBinding BorderBrush}"
-							BorderThickness="{TemplateBinding BorderThickness}"
-							HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-							VerticalAlignment="{TemplateBinding VerticalAlignment}" />
+							Border.Background="{TemplateBinding Control.Background}"
+							Border.BorderBrush="{TemplateBinding Control.BorderBrush}"
+							Border.BorderThickness="{TemplateBinding Control.BorderThickness}"
+							FrameworkElement.HorizontalAlignment="{TemplateBinding FrameworkElement.HorizontalAlignment}"
+							FrameworkElement.VerticalAlignment="{TemplateBinding FrameworkElement.VerticalAlignment}" />
 						<Border
 							Name="PART_BorderPointerOver"
 							Opacity="0"
-							Background="{DynamicResource ButtonPointerOverBackgroundThemeBrush}"
-							BorderBrush="{TemplateBinding BorderBrush}"
-							BorderThickness="{TemplateBinding BorderThickness}"
-							HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-							VerticalAlignment="{TemplateBinding VerticalAlignment}" />
+							Border.Background="{DynamicResource ButtonPointerOverBackgroundThemeBrush}"
+							Border.BorderBrush="{TemplateBinding Control.BorderBrush}"
+							Border.BorderThickness="{TemplateBinding Control.BorderThickness}"
+							FrameworkElement.HorizontalAlignment="{TemplateBinding FrameworkElement.HorizontalAlignment}"
+							FrameworkElement.VerticalAlignment="{TemplateBinding FrameworkElement.VerticalAlignment}" />
 						<ContentPresenter
 							Name="PART_ContentPresenter"
-							Margin="{TemplateBinding Padding}"
-							HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-							VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+							FrameworkElement.Margin="{TemplateBinding Control.Padding}"
+							FrameworkElement.HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}"
+							FrameworkElement.VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}" />
 					</Grid>
 				</ControlTemplate>
 			</Setter.Value>
@@ -192,34 +184,31 @@
 		x:Key="PrevArrowGeometryCurved">m 29.5,-42.625 c -0.903454,0.09787 -1.778276,0.447802 -2.5,1 l -80,60 c -1.236216,0.927419 -1.999667,2.454576 -1.999667,4 0,1.545424 0.763451,3.072581 1.999667,4 l 80,60 c 0.85802,0.64347 1.927502,0.999964 3,1 l 30,0 c 2.081451,-6.24e-4 4.084179,-1.444565 4.742391,-3.419203 C 65.400604,81.981159 64.664787,79.62437 63,78.375 l -74.65625,-56 74.65625,-56 c 1.664787,-1.24937 2.400604,-3.606159 1.742391,-5.580797 C 64.084179,-41.180435 62.081451,-42.624376 60,-42.625 l -30,0 c -0.166528,-0.0083 -0.333472,-0.0083 -0.5,0 z</PathGeometry>
 	<PathGeometry
 		x:Key="NextArrowGeometryCurved">m 88.21875,-42.28125 c -2.081451,6.24e-4 -4.084179,1.444565 -4.742391,3.419203 -0.658213,1.974638 0.0776,4.331427 1.742391,5.580797 l 74.65625,56 -74.65625,56 c -1.664787,1.24937 -2.400604,3.606159 -1.742391,5.580797 0.658212,1.974638 2.66094,3.418579 4.742391,3.419203 l 30,0 c 1.0725,-3.6e-5 2.14198,-0.35653 3,-1 l 80,-60 c 1.23622,-0.927419 1.99967,-2.454576 1.99967,-4 0,-1.545424 -0.76345,-3.072581 -1.99967,-4 l -80,-60 c -0.85802,-0.64347 -1.9275,-0.999964 -3,-1 z</PathGeometry>
-    
-    <!--Button-->
-        <Style
-		TargetType="{x:Type TextBox}"
-		BasedOn="{StaticResource FlipImagePathButtonStyle}"
-		x:Key="PagedListViewPreviousSwitchButtonTemplate">
+	<Style
+		x:Key="PagedListViewPreviousSwitchButtonTemplate"
+		TargetType="{x:Type Button}"
+		BasedOn="{StaticResource FlipImagePathButtonStyle}">
 		<Setter
-			Property="Text"
+			Property="ContentControl.Content"
 			Value="{StaticResource PrevArrowGeometry}" />
 		<Setter
-			Property="Width"
-			Value="30" />
-	</Style>
-	
-    <Style
-		TargetType="{x:Type TextBox}"
-		BasedOn="{StaticResource FlipImagePathButtonStyle}"
-		x:Key="PagedListViewNextSwitchButtonTemplate">
-		<Setter
-			Property="Text"
-			Value="{StaticResource NextArrowGeometry}" />
-		<Setter
-			Property="Width"
+			Property="FrameworkElement.Width"
 			Value="30" />
 	</Style>
 	<Style
+		x:Key="PagedListViewNextSwitchButtonTemplate"
 		TargetType="{x:Type Button}"
-		x:Key="{x:Type Button}">
+		BasedOn="{StaticResource FlipImagePathButtonStyle}">
+		<Setter
+			Property="ContentControl.Content"
+			Value="{StaticResource NextArrowGeometry}" />
+		<Setter
+			Property="FrameworkElement.Width"
+			Value="30" />
+	</Style>
+	<Style
+		x:Key="{x:Type controls:HyperlinkButton}"
+		TargetType="{x:Type controls:HyperlinkButton}">
 		<Setter
 			Property="FrameworkElement.FocusVisualStyle"
 			Value="{x:Null}" />
@@ -227,40 +216,40 @@
 			Property="UIElement.SnapsToDevicePixels"
 			Value="True" />
 		<Setter
-			Property="Foreground"
+			Property="Control.Foreground"
 			Value="{DynamicResource HyperlinkForegroundThemeBrush}" />
 		<Setter
-			Property="Background"
+			Property="Control.Background"
 			Value="{DynamicResource HyperlinkButtonBackgroundThemeBrush}" />
 		<Setter
-			Property="BorderBrush"
+			Property="Control.BorderBrush"
 			Value="{DynamicResource HyperlinkButtonBorderThemeBrush}" />
 		<Setter
-			Property="BorderThickness"
+			Property="Control.BorderThickness"
 			Value="{DynamicResource HyperlinkButtonBorderThemeThickness}" />
 		<Setter
-			Property="Padding"
+			Property="Control.Padding"
 			Value="12,4,12,5" />
 		<Setter
-			Property="HorizontalAlignment"
+			Property="FrameworkElement.HorizontalAlignment"
 			Value="Left" />
 		<Setter
-			Property="VerticalAlignment"
+			Property="FrameworkElement.VerticalAlignment"
 			Value="Center" />
 		<Setter
-			Property="FontFamily"
+			Property="Control.FontFamily"
 			Value="{DynamicResource ContentControlThemeFontFamily}" />
 		<Setter
-			Property="FontWeight"
+			Property="Control.FontWeight"
 			Value="SemiBold" />
 		<Setter
-			Property="FontSize"
+			Property="Control.FontSize"
 			Value="{DynamicResource ControlContentThemeFontSize}" />
 		<Setter
-			Property="Template">
+			Property="Control.Template">
 			<Setter.Value>
 				<ControlTemplate
-					TargetType="{x:Type Button}">
+					TargetType="{x:Type controls:HyperlinkButton}">
 					<Grid>
 						<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup
@@ -327,21 +316,21 @@
 						</VisualStateManager.VisualStateGroups>
 						<Border
 							Name="Border"
-							Background="{TemplateBinding Background}"
-							BorderBrush="{TemplateBinding BorderBrush}"
-							BorderThickness="{TemplateBinding BorderThickness}"
-							Margin="3">
+							Border.Background="{TemplateBinding Control.Background}"
+							Border.BorderBrush="{TemplateBinding Control.BorderBrush}"
+							Border.BorderThickness="{TemplateBinding Control.BorderThickness}"
+							FrameworkElement.Margin="3">
 							<ContentPresenter
 								Name="ContentPresenter"
-								Margin="{TemplateBinding Padding}"
-								HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-								VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+								FrameworkElement.Margin="{TemplateBinding Control.Padding}"
+								FrameworkElement.HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}"
+								FrameworkElement.VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}" />
 						</Border>
 						<Rectangle
 							Name="FocusVisualWhite"
 							UseLayoutRounding="True"
 							IsHitTestVisible="False"
-							Stroke="{DynamicResource FocusVisualWhiteStrokeThemeBrush}"
+							Shape.Stroke="{DynamicResource FocusVisualWhiteStrokeThemeBrush}"
 							StrokeEndLineCap="Square"
 							StrokeDashArray="1,1"
 							Opacity="0"
@@ -350,7 +339,7 @@
 							Name="FocusVisualBlack"
 							UseLayoutRounding="True"
 							IsHitTestVisible="False"
-							Stroke="{DynamicResource FocusVisualBlackStrokeThemeBrush}"
+							Shape.Stroke="{DynamicResource FocusVisualBlackStrokeThemeBrush}"
 							StrokeEndLineCap="Square"
 							StrokeDashArray="1,1"
 							Opacity="0"
@@ -360,38 +349,49 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
-    <!--TargetType="{x:Type controls:FlipListView}"
-		x:Key="{x:Type controls:FlipListView}"-->
-        <Style
-        TargetType="{x:Type ListView}"
-		x:Key="{x:Type ListView}"
-		>
+	<Style
+		x:Key="{x:Type controls:FlipListView}"
+		TargetType="{x:Type controls:FlipListView}">
 		<Setter
-			Property="IsTabStop"
+			Property="Control.IsTabStop"
 			Value="False" />
-		
+		<Setter
+			Property="ScrollViewer.HorizontalScrollBarVisibility"
+			Value="Disabled" />
+		<Setter
+			Property="ScrollViewer.VerticalScrollBarVisibility"
+			Value="Hidden" />
 		<Setter
 			Property="ScrollViewer.IsDeferredScrollingEnabled"
 			Value="False" />
 		<Setter
+			Property="controls:FlipListView.SwitchPreviousButtonStyle"
+			Value="{StaticResource PagedListViewPreviousSwitchButtonTemplate}" />
+		<Setter
+			Property="controls:FlipListView.SwitchNextButtonStyle"
+			Value="{StaticResource PagedListViewNextSwitchButtonTemplate}" />
+		<Setter
 			Property="FrameworkElement.FocusVisualStyle"
 			Value="{x:Null}" />
 		<Setter
-			Property="Focusable"
+			Property="UIElement.Focusable"
 			Value="False" />
 		<Setter
-			Property="ItemsPanel">
+			Property="controls:FlipListView.ItemsOrientantion"
+			Value="Horizontal" />
+		<Setter
+			Property="ItemsControl.ItemsPanel">
 			<Setter.Value>
 				<ItemsPanelTemplate>
 					<WrapPanel
 						Orientation="Horizontal"
-						VerticalAlignment="Stretch"
-						HorizontalAlignment="Stretch" />
+						FrameworkElement.VerticalAlignment="Stretch"
+						FrameworkElement.HorizontalAlignment="Stretch" />
 				</ItemsPanelTemplate>
 			</Setter.Value>
 		</Setter>
 		<Setter
-			Property="RenderTransform">
+			Property="UIElement.RenderTransform">
 			<Setter.Value>
 				<TranslateTransform
 					x:Name="TranslateTransform"
@@ -399,15 +399,15 @@
 			</Setter.Value>
 		</Setter>
 		<Setter
-			Property="Template">
+			Property="Control.Template">
 			<Setter.Value>
 				<ControlTemplate
-					TargetType="{x:Type ListView}">
+					TargetType="{x:Type controls:FlipListView}">
 					<Border
 						Name="Border"
-						BorderBrush="{TemplateBinding BorderBrush}"
-						Background="{TemplateBinding Background}"
-						BorderThickness="{TemplateBinding BorderThickness}">
+						Border.BorderBrush="{TemplateBinding Control.BorderBrush}"
+						Border.Background="{TemplateBinding Control.Background}"
+						Border.BorderThickness="{TemplateBinding Control.BorderThickness}">
 						<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup
 								x:Name="FlipStates">
@@ -439,24 +439,27 @@
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
 						<Grid
-							Margin="{TemplateBinding Padding}">
+							FrameworkElement.Margin="{TemplateBinding Control.Padding}">
 							<Grid.ColumnDefinitions>
 								<ColumnDefinition
-									Width="Auto" />
+									ColumnDefinition.Width="Auto" />
 								<ColumnDefinition
-									Width="*" />
+									ColumnDefinition.Width="*" />
 								<ColumnDefinition
-									Width="Auto" />
+									ColumnDefinition.Width="Auto" />
 							</Grid.ColumnDefinitions>
 							<Button
 								Name="PART_SwitchPrevButton"
-								Style="{TemplateBinding FocusVisualStyle}"
-								IsEnabled="True"
-								AutomationProperties.Name="PagePrevious" />
+								FrameworkElement.Style="{TemplateBinding controls:FlipListView.SwitchPreviousButtonStyle}"
+								UIElement.IsEnabled="{TemplateBinding controls:FlipListView.CanFlipPrevious}"
+								AutomationProperties.Name="{l:Localization PagePrevious}" />
 							<ScrollViewer
 								Name="PART_ItemsScrollViewer"
 								Grid.Column="1"
-								CanContentScroll="True"
+								ScrollViewer.CanContentScroll="True"
+								ScrollViewer.HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+								ScrollViewer.VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
+								IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
 								FocusVisualStyle="{x:Null}">
 								<ItemsPresenter
 									Name="PART_ItemsPresenter" />
@@ -467,9 +470,9 @@
 							<Button
 								Name="PART_SwitchNextButton"
 								Grid.Column="2"
-								Style="{TemplateBinding FocusVisualStyle}"
-								IsEnabled="True"
-								AutomationProperties.Name="PageNext" />
+								FrameworkElement.Style="{TemplateBinding controls:FlipListView.SwitchNextButtonStyle}"
+								UIElement.IsEnabled="{TemplateBinding controls:FlipListView.CanFlipNext}"
+								AutomationProperties.Name="{l:Localization PageNext}" />
 						</Grid>
 					</Border>
 				</ControlTemplate>

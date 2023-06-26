@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -12,7 +14,7 @@ namespace SoftwareRepository.Streaming
 	// Token: 0x02000016 RID: 22
 	internal class DownloadChunk
 	{
-		// Token: 0x06000083 RID: 131 RVA: 0x000034E4 File Offset: 0x000016E4
+		// Token: 0x06000087 RID: 135 RVA: 0x00003A2C File Offset: 0x00001C2C
 		internal DownloadChunk(string filename, string url, long bytesFrom, long byteCount, CancellationToken cancellationToken)
 		{
 			this.FileName = filename;
@@ -24,41 +26,43 @@ namespace SoftwareRepository.Streaming
 		}
 
 		// Token: 0x17000020 RID: 32
-		// (get) Token: 0x06000084 RID: 132 RVA: 0x00003523 File Offset: 0x00001723
-		// (set) Token: 0x06000085 RID: 133 RVA: 0x0000352B File Offset: 0x0000172B
+		// (get) Token: 0x06000088 RID: 136 RVA: 0x00003A81 File Offset: 0x00001C81
+		// (set) Token: 0x06000089 RID: 137 RVA: 0x00003A89 File Offset: 0x00001C89
 		internal string FileName { get; set; }
 
 		// Token: 0x17000021 RID: 33
-		// (get) Token: 0x06000086 RID: 134 RVA: 0x00003534 File Offset: 0x00001734
-		// (set) Token: 0x06000087 RID: 135 RVA: 0x0000353C File Offset: 0x0000173C
+		// (get) Token: 0x0600008A RID: 138 RVA: 0x00003A92 File Offset: 0x00001C92
+		// (set) Token: 0x0600008B RID: 139 RVA: 0x00003A9A File Offset: 0x00001C9A
 		internal string Url { get; set; }
 
 		// Token: 0x17000022 RID: 34
-		// (get) Token: 0x06000088 RID: 136 RVA: 0x00003545 File Offset: 0x00001745
-		// (set) Token: 0x06000089 RID: 137 RVA: 0x0000354D File Offset: 0x0000174D
+		// (get) Token: 0x0600008C RID: 140 RVA: 0x00003AA3 File Offset: 0x00001CA3
+		// (set) Token: 0x0600008D RID: 141 RVA: 0x00003AAB File Offset: 0x00001CAB
 		[SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Justification = "Unused for now but might prove useful later.")]
 		internal long FileSize { get; set; }
 
 		// Token: 0x17000023 RID: 35
-		// (get) Token: 0x0600008A RID: 138 RVA: 0x00003556 File Offset: 0x00001756
-		// (set) Token: 0x0600008B RID: 139 RVA: 0x0000355E File Offset: 0x0000175E
+		// (get) Token: 0x0600008E RID: 142 RVA: 0x00003AB4 File Offset: 0x00001CB4
+		// (set) Token: 0x0600008F RID: 143 RVA: 0x00003ABC File Offset: 0x00001CBC
 		internal IWebProxy SoftwareRepositoryProxy { get; set; }
 
 		// Token: 0x14000003 RID: 3
-		// (add) Token: 0x0600008C RID: 140 RVA: 0x00003568 File Offset: 0x00001768
-		// (remove) Token: 0x0600008D RID: 141 RVA: 0x000035A0 File Offset: 0x000017A0
+		// (add) Token: 0x06000090 RID: 144 RVA: 0x00003AC8 File Offset: 0x00001CC8
+		// (remove) Token: 0x06000091 RID: 145 RVA: 0x00003B00 File Offset: 0x00001D00
+		[field: DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		internal event DownloadProgressEventHandler DownloadProgress;
 
-		// Token: 0x0600008E RID: 142 RVA: 0x000035D5 File Offset: 0x000017D5
+		// Token: 0x06000092 RID: 146 RVA: 0x00003B38 File Offset: 0x00001D38
 		private void OnDownloadProgress(EventArgs e)
 		{
-			if (this.DownloadProgress != null)
+			bool flag = this.DownloadProgress != null;
+			if (flag)
 			{
 				this.DownloadProgress(this, e);
 			}
 		}
 
-		// Token: 0x0600008F RID: 143 RVA: 0x000035EC File Offset: 0x000017EC
+		// Token: 0x06000093 RID: 147 RVA: 0x00003B64 File Offset: 0x00001D64
 		internal DownloadChunk Clone()
 		{
 			return new DownloadChunk(this.FileName, this.Url, this.BytesFrom, this.Bytes, this.CancellationToken)
@@ -74,40 +78,47 @@ namespace SoftwareRepository.Streaming
 			};
 		}
 
-		// Token: 0x06000090 RID: 144 RVA: 0x0000367C File Offset: 0x0000187C
+		// Token: 0x06000094 RID: 148 RVA: 0x00003BFC File Offset: 0x00001DFC
 		internal async Task<int> Download()
 		{
-			int result;
-			if (this.Bytes == 0L)
+			bool flag = this.Bytes == 0L;
+			int num;
+			if (flag)
 			{
-				result = 200;
+				num = 200;
 			}
 			else
 			{
 				int ret = -1;
 				DateTime downloadStartTime = DateTime.UtcNow;
-				HttpClientHandler httpClientHandler = new HttpClientHandler
+				HttpClientHandler handler = new HttpClientHandler
 				{
 					UseDefaultCredentials = this.AllowWindowsAuth
 				};
-				if (this.SoftwareRepositoryProxy != null)
+				bool flag2 = this.SoftwareRepositoryProxy != null;
+				if (flag2)
 				{
-					httpClientHandler.Proxy = this.SoftwareRepositoryProxy;
-					httpClientHandler.UseProxy = true;
+					handler.Proxy = this.SoftwareRepositoryProxy;
+					handler.UseProxy = true;
 				}
-				HttpClient httpClient = new HttpClient(httpClientHandler);
-				HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, new Uri(this.Url));
+				HttpClient httpClient = new HttpClient(handler);
+				HttpRequestMessage contentRequest = new HttpRequestMessage(HttpMethod.Get, new Uri(this.Url));
 				long rangeStart = this.BytesFrom + this.BytesRead;
 				long rangeEnd = this.BytesFrom + this.Bytes - 1L;
-				httpRequestMessage.Headers.Range = new RangeHeaderValue(new long?(rangeStart), new long?(rangeEnd));
-				HttpResponseMessage httpResponseMessage = await httpClient.SendAsync(httpRequestMessage, HttpCompletionOption.ResponseHeadersRead, this.CancellationToken);
-				HttpStatusCode httpStatusCode = httpResponseMessage.StatusCode;
+				contentRequest.Headers.Range = new RangeHeaderValue(new long?(rangeStart), new long?(rangeEnd));
+				HttpResponseMessage httpResponseMessage = await httpClient.SendAsync(contentRequest, HttpCompletionOption.ResponseHeadersRead, this.CancellationToken);
+				HttpResponseMessage response = httpResponseMessage;
+				httpResponseMessage = null;
+				HttpStatusCode httpStatusCode = response.StatusCode;
 				if (httpStatusCode != HttpStatusCode.OK && httpStatusCode != HttpStatusCode.PartialContent)
 				{
 					httpClient.Dispose();
-					throw new DownloadException((int)httpStatusCode, "HTTP Response status code: " + (int)httpStatusCode);
+					int num2 = (int)httpStatusCode;
+					string text = "HTTP Response status code: ";
+					int num3 = (int)httpStatusCode;
+					throw new DownloadException(num2, text + num3.ToString());
 				}
-				HttpContentHeaders headers = httpResponseMessage.Content.Headers;
+				HttpContentHeaders headers = response.Content.Headers;
 				if (headers.ContentLength == null)
 				{
 					Diagnostics.Log(LogLevel.Warning, "Missing Content-Length header", new object[0]);
@@ -120,18 +131,42 @@ namespace SoftwareRepository.Streaming
 				{
 					Diagnostics.Log(LogLevel.Warning, "Missing Content-Range header", new object[0]);
 				}
-				else if (headers.ContentRange.Unit.ToLowerInvariant() != "bytes" || headers.ContentRange.From != rangeStart || headers.ContentRange.To != rangeEnd)
+				else
 				{
-					throw new DownloadException(0, "Content-Range does not match request range");
+					bool flag3;
+					if (!(headers.ContentRange.Unit.ToLowerInvariant() != "bytes"))
+					{
+						long? num4 = headers.ContentRange.From;
+						long num5 = rangeStart;
+						if ((num4.GetValueOrDefault() == num5) & (num4 != null))
+						{
+							num4 = headers.ContentRange.To;
+							num5 = rangeEnd;
+							flag3 = !((num4.GetValueOrDefault() == num5) & (num4 != null));
+							goto IL_35A;
+						}
+					}
+					flag3 = true;
+					IL_35A:
+					if (flag3)
+					{
+						throw new DownloadException(0, "Content-Range does not match request range");
+					}
 				}
-				using (Stream stream1 = await httpResponseMessage.Content.ReadAsStreamAsync())
+				Stream stream2 = await response.Content.ReadAsStreamAsync();
+				Stream stream = stream2;
+				stream2 = null;
+				try
 				{
 					byte[] buffer = new byte[4096];
 					int bytesRead = 0;
-					while ((bytesRead = await DownloadChunk.WithTimeout<int>(
-						stream1.ReadAsync(buffer, 0, 
-						buffer.Length, this.CancellationToken), this.TimeoutInMilliseconds)) != 0)
+					do
 					{
+						int num6 = await DownloadChunk.WithTimeout<int>(stream.ReadAsync(buffer, 0, buffer.Length, this.CancellationToken), this.TimeoutInMilliseconds);
+						if ((bytesRead = num6) == 0)
+						{
+							goto Block_16;
+						}
 						this.CancellationToken.ThrowIfCancellationRequested();
 						bytesRead = (int)Math.Min(this.Bytes - this.BytesRead, (long)bytesRead);
 						if (this.SyncLock != null)
@@ -151,10 +186,10 @@ namespace SoftwareRepository.Streaming
 								await this.OutStream.FlushAsync();
 							}
 						}
-						catch (OperationCanceledException ex)
+						catch (OperationCanceledException e)
 						{
 							httpClient.Dispose();
-							throw ex;
+							throw e;
 						}
 						catch (Exception)
 						{
@@ -170,33 +205,38 @@ namespace SoftwareRepository.Streaming
 						}
 						this.DownloadSpeed = (double)this.BytesRead / (DateTime.UtcNow - downloadStartTime).TotalSeconds;
 						this.OnDownloadProgress(null);
-						if (this.BytesRead >= this.Bytes)
-						{
-							httpClient.Dispose();
-							return (int)httpStatusCode;
-						}
 					}
+					while (this.BytesRead < this.Bytes);
+					httpClient.Dispose();
+					return (int)httpStatusCode;
+					Block_16:
 					buffer = null;
 				}
-				Stream stream = null;
-				result = ret;
+				finally
+				{
+					if (stream != null)
+					{
+						((IDisposable)stream).Dispose();
+					}
+				}
+				stream = null;
+				headers = null;
+				num = ret;
 			}
-			return result;
+			return num;
 		}
 
-		// Token: 0x06000091 RID: 145 RVA: 0x000036C4 File Offset: 0x000018C4
-		private static async Task<T> WithTimeout<T>(Task<T> task, int time)
+		// Token: 0x06000095 RID: 149 RVA: 0x00003C40 File Offset: 0x00001E40
+		[DebuggerStepThrough]
+		private static Task<T> WithTimeout<T>(Task<T> task, int time)
 		{
-			Task delayTask = Task.Delay(time);
-			if (await Task.WhenAny(new Task[]
-			{
-				task,
-				delayTask
-			}) == delayTask)
-			{
-				throw new DownloadException(408, "Download request or streaming timeout.");
-			}
-			return await task;
+			DownloadChunk.<WithTimeout>d__36<T> <WithTimeout>d__ = new DownloadChunk.<WithTimeout>d__36<T>();
+			<WithTimeout>d__.<>t__builder = AsyncTaskMethodBuilder<T>.Create();
+			<WithTimeout>d__.task = task;
+			<WithTimeout>d__.time = time;
+			<WithTimeout>d__.<>1__state = -1;
+			<WithTimeout>d__.<>t__builder.Start<DownloadChunk.<WithTimeout>d__36<T>>(ref <WithTimeout>d__);
+			return <WithTimeout>d__.<>t__builder.Task;
 		}
 
 		// Token: 0x0400004F RID: 79
@@ -236,6 +276,6 @@ namespace SoftwareRepository.Streaming
 		internal bool AllowSeek = true;
 
 		// Token: 0x0400005F RID: 95
-		internal bool AllowWindowsAuth;
+		internal bool AllowWindowsAuth = false;
 	}
 }

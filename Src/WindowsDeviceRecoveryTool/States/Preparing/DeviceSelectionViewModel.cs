@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Runtime.ExceptionServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -23,15 +23,14 @@ using Microsoft.WindowsDeviceRecoveryTool.LogicCommon;
 using Microsoft.WindowsDeviceRecoveryTool.Messages;
 using Microsoft.WindowsDeviceRecoveryTool.Model;
 using Microsoft.WindowsDeviceRecoveryTool.Model.Enums;
-using static System.Windows.Forms.AxHost;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 {
-	// Token: 0x020000A8 RID: 168
+	// Token: 0x02000053 RID: 83
 	[Export]
 	public sealed class DeviceSelectionViewModel : BaseViewModel, INotifyLiveRegionChanged
 	{
-		// Token: 0x060004B0 RID: 1200 RVA: 0x0001701C File Offset: 0x0001521C
+		// Token: 0x06000332 RID: 818 RVA: 0x00012150 File Offset: 0x00010350
 		[ImportingConstructor]
 		internal DeviceSelectionViewModel(Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext, AdaptationManager adaptationManager, DetectionHandlerFactory detectionHandlerFactory, PhoneFactory phoneFactory)
 		{
@@ -48,31 +47,33 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			this.DeviceNotDetectedCommand = new DelegateCommand<object>(new Action<object>(this.OnDeviceNotDetectedCommandExecuted));
 		}
 
-		// Token: 0x060004B1 RID: 1201 RVA: 0x000170D0 File Offset: 0x000152D0
+		// Token: 0x06000333 RID: 819 RVA: 0x00012204 File Offset: 0x00010404
 		private bool OnCanExecuteSelectTileCommand(object arg)
 		{
 			Tile tile = arg as Tile;
-			return tile != null && tile.IsEnabled;
+			bool flag = tile == null;
+			return !flag && tile.IsEnabled;
 		}
 
-		// Token: 0x1400000A RID: 10
-		// (add) Token: 0x060004B2 RID: 1202 RVA: 0x00017100 File Offset: 0x00015300
-		// (remove) Token: 0x060004B3 RID: 1203 RVA: 0x0001713C File Offset: 0x0001533C
+		// Token: 0x14000007 RID: 7
+		// (add) Token: 0x06000334 RID: 820 RVA: 0x00012230 File Offset: 0x00010430
+		// (remove) Token: 0x06000335 RID: 821 RVA: 0x00012268 File Offset: 0x00010468
+		[field: DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event EventHandler LiveRegionChanged;
 
-		// Token: 0x170000F8 RID: 248
-		// (get) Token: 0x060004B4 RID: 1204 RVA: 0x00017178 File Offset: 0x00015378
-		// (set) Token: 0x060004B5 RID: 1205 RVA: 0x0001718F File Offset: 0x0001538F
+		// Token: 0x170000D0 RID: 208
+		// (get) Token: 0x06000336 RID: 822 RVA: 0x0001229D File Offset: 0x0001049D
+		// (set) Token: 0x06000337 RID: 823 RVA: 0x000122A5 File Offset: 0x000104A5
 		public ICommand DeviceNotDetectedCommand { get; set; }
 
-		// Token: 0x170000F9 RID: 249
-		// (get) Token: 0x060004B6 RID: 1206 RVA: 0x00017198 File Offset: 0x00015398
-		// (set) Token: 0x060004B7 RID: 1207 RVA: 0x000171AF File Offset: 0x000153AF
+		// Token: 0x170000D1 RID: 209
+		// (get) Token: 0x06000338 RID: 824 RVA: 0x000122AE File Offset: 0x000104AE
+		// (set) Token: 0x06000339 RID: 825 RVA: 0x000122B6 File Offset: 0x000104B6
 		public ICommand SelectTileCommand { get; private set; }
 
-		// Token: 0x170000FA RID: 250
-		// (get) Token: 0x060004B8 RID: 1208 RVA: 0x000171B8 File Offset: 0x000153B8
-		// (set) Token: 0x060004B9 RID: 1209 RVA: 0x000171D0 File Offset: 0x000153D0
+		// Token: 0x170000D2 RID: 210
+		// (get) Token: 0x0600033A RID: 826 RVA: 0x000122C0 File Offset: 0x000104C0
+		// (set) Token: 0x0600033B RID: 827 RVA: 0x000122D8 File Offset: 0x000104D8
 		public Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext AppContext
 		{
 			get
@@ -85,9 +86,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x170000FB RID: 251
-		// (get) Token: 0x060004BA RID: 1210 RVA: 0x00017220 File Offset: 0x00015420
-		// (set) Token: 0x060004BB RID: 1211 RVA: 0x00017238 File Offset: 0x00015438
+		// Token: 0x170000D3 RID: 211
+		// (get) Token: 0x0600033C RID: 828 RVA: 0x00012318 File Offset: 0x00010518
+		// (set) Token: 0x0600033D RID: 829 RVA: 0x00012330 File Offset: 0x00010530
 		public CollectionObservable<Tile> Tiles
 		{
 			get
@@ -100,9 +101,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x170000FC RID: 252
-		// (get) Token: 0x060004BC RID: 1212 RVA: 0x00017288 File Offset: 0x00015488
-		// (set) Token: 0x060004BD RID: 1213 RVA: 0x000172A0 File Offset: 0x000154A0
+		// Token: 0x170000D4 RID: 212
+		// (get) Token: 0x0600033E RID: 830 RVA: 0x00012370 File Offset: 0x00010570
+		// (set) Token: 0x0600033F RID: 831 RVA: 0x00012388 File Offset: 0x00010588
 		public Tile SelectedPhoneTile
 		{
 			get
@@ -115,9 +116,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x170000FD RID: 253
-		// (get) Token: 0x060004BE RID: 1214 RVA: 0x000172F0 File Offset: 0x000154F0
-		// (set) Token: 0x060004BF RID: 1215 RVA: 0x00017308 File Offset: 0x00015508
+		// Token: 0x170000D5 RID: 213
+		// (get) Token: 0x06000340 RID: 832 RVA: 0x000123C8 File Offset: 0x000105C8
+		// (set) Token: 0x06000341 RID: 833 RVA: 0x000123E0 File Offset: 0x000105E0
 		public string LiveText
 		{
 			get
@@ -127,164 +128,45 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			set
 			{
 				base.SetValue<string>(() => this.LiveText, ref this.liveText, value);
-				if (!string.IsNullOrWhiteSpace(this.liveText))
+				bool flag = !string.IsNullOrWhiteSpace(this.liveText);
+				if (flag)
 				{
 					this.OnLiveRegionChanged();
 				}
 			}
 		}
 
-		// Token: 0x060004C0 RID: 1216 RVA: 0x00017CE8 File Offset: 0x00015EE8
-		public override async void OnStarted()
+		// Token: 0x06000342 RID: 834 RVA: 0x00012448 File Offset: 0x00010648
+		public override void OnStarted()
 		{
-			base.OnStarted();
-			base.EventAggregator.Publish<HeaderMessage>(new HeaderMessage(LocalizationManager.GetTranslation("DeviceSelectionHeader"), ""));
-			base.EventAggregator.Publish<IsBackButtonMessage>(new IsBackButtonMessage(false));
-			base.EventAggregator.Publish<BlockWindowMessage>(new BlockWindowMessage(false, null, null));
-			this.SelectedPhoneTile = null;
-			this.LiveText = null;
-			this.Tiles.Clear();
-			List<Task> tasks = new List<Task>();
-			Exception error = null;
-			bool operationCancelledInternally = false;
-			bool operationCancelledExternally = false;
-			this.itemSelectedTaskCompletionSource = new TaskCompletionSource<Tile>();
-			Task<Tile> itemSelectedTask = this.itemSelectedTaskCompletionSource.Task;
-			using (this.externalTokenSource = new CancellationTokenSource())
-			{
-				using (this.internalTokenSource = new CancellationTokenSource())
-				{
-					using (CancellationTokenSource linkedTokenSource = CancellationTokenSource.CreateLinkedTokenSource(this.externalTokenSource.Token, this.internalTokenSource.Token))
-					{
-						using (IDetectionHandler detectionHandler = this.detectionHandlerFactory.CreateDetectionHandler())
-						{
-							for (;;)
-							{
-								DeviceInfoEventArgs deviceInfoEventArgs;
-								try
-								{
-									Task<DeviceInfoEventArgs> deviceChangeEventTask = detectionHandler.TakeDeviceInfoEventAsync(linkedTokenSource.Token);
-									Task completedTask = await Task.WhenAny(new Task[]
-									{
-										itemSelectedTask,
-										deviceChangeEventTask
-									});
-									if (completedTask == itemSelectedTask)
-									{
-										tasks.Add(deviceChangeEventTask);
-										this.internalTokenSource.Cancel();
-										break;
-									}
-									deviceInfoEventArgs = await deviceChangeEventTask;
-									this.PurgeCompletedTasks(tasks);
-								}
-								catch (OperationCanceledException)
-								{
-									if (this.externalTokenSource.IsCancellationRequested)
-									{
-										operationCancelledExternally = true;
-									}
-									else if (this.internalTokenSource.IsCancellationRequested)
-									{
-										operationCancelledInternally = true;
-									}
-									break;
-								}
-								catch (Exception ex)
-								{
-									Tracer<DeviceSelectionViewModel>.WriteError(ex.ToString(), new object[0]);
-									error = ex;
-									break;
-								}
-								if (deviceInfoEventArgs.DeviceInfoAction == DeviceInfoAction.Attached)
-								{
-									Tracer<DeviceSelectionViewModel>.WriteInformation("Attached device detected: {0}", new object[]
-									{
-										deviceInfoEventArgs.DeviceInfo.DeviceIdentifier
-									});
-									Task item = this.ProcessDeviceAttachedAsync(detectionHandler, deviceInfoEventArgs.DeviceInfo, deviceInfoEventArgs.IsEnumerated, linkedTokenSource.Token);
-									tasks.Add(item);
-								}
-								else
-								{
-									Tracer<DeviceSelectionViewModel>.WriteInformation("DetachedTask device detected: {0}", new object[]
-									{
-										deviceInfoEventArgs.DeviceInfo.DeviceIdentifier
-									});
-									Task item2 = this.ProcessDeviceDetachedAsync(deviceInfoEventArgs.DeviceInfo);
-									tasks.Add(item2);
-								}
-							}
-							try
-							{
-								await Task.WhenAll(tasks);
-							}
-							catch (Exception ex)
-							{
-								Tracer<DeviceSelectionViewModel>.WriteWarning(ex.ToString(), new object[0]);
-							}
-						}
-					}
-				}
-			}
-			this.externalTokenSource = null;
-			this.internalTokenSource = null;
-			if (error != null)
-			{
-				ExceptionDispatchInfo.Capture(error).Throw();
-			}
-			if (operationCancelledInternally)
-			{
-				IDictionary<string, IDelegateCommand> commands = base.Commands;
+			/*
+An exception occurred when decompiling this method (06000342)
 
-				//RnD
-				ParameterExpression parameterExpression = default;//Expression.Parameter(typeof(AppController), "c");
-
-				//RnD
-			    //commands.Run( Expression.Lambda<Action<AppController>>(Expression.Call(default/*parameterExpression*/, 
-				//	methodof(&AppController.SwitchToState(state)), new Expression[]
-				//{
-				//	//Expression.Constant("ManualManufacturerSelectionState", typeof(string))
-				//}), new ParameterExpression[]
-				//{
-				//	parameterExpression
-				//}));
-			}
-			else if (!operationCancelledExternally)
-			{
-				Tile selectedTile;
-				try
-				{
-					selectedTile = await itemSelectedTask;
-				}
-				catch (OperationCanceledException)
-				{
-					IDictionary<string, IDelegateCommand> commands2 = base.Commands;
-
-					//RnD
-					ParameterExpression parameterExpression = default;//Expression.Parameter(typeof(AppController), "c");
-					
-					//RnD
-					//commands2.Run(Expression.Lambda<Action<AppController>>
-					//	(Expression.Call(parameterExpression, methodof(ref AppController.SwitchToState("string")), 
-					//	new Expression[]
-					//{
-					//	Expression.Constant("AutomaticManufacturerSelectionState", typeof(string))
-					//}), new ParameterExpression[]
-					//{
-					//	parameterExpression
-					//}));
-					return;
-				}
-				this.OnCompleted(selectedTile.Phone);
-			}
+ICSharpCode.Decompiler.DecompilerException: Error decompiling System.Void Microsoft.WindowsDeviceRecoveryTool.States.Preparing.DeviceSelectionViewModel::OnStarted()
+ ---> System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.ThrowHelper.ThrowKeyNotFoundException()
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at ICSharpCode.Decompiler.ILAst.GotoRemoval.<GetParents>d__14.MoveNext() in D:\a\dnSpy\dnSpy\Extensions\ILSpy.Decompiler\ICSharpCode.Decompiler\ICSharpCode.Decompiler\ILAst\GotoRemoval.cs:line 213
+   at System.Linq.Enumerable.<OfTypeIterator>d__95`1.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at ICSharpCode.Decompiler.ILAst.GotoRemoval.Enter(ILNode node, HashSet`1 visitedNodes) in D:\a\dnSpy\dnSpy\Extensions\ILSpy.Decompiler\ICSharpCode.Decompiler\ICSharpCode.Decompiler\ILAst\GotoRemoval.cs:line 279
+   at ICSharpCode.Decompiler.ILAst.GotoRemoval.TrySimplifyGoto(ILExpression gotoExpr) in D:\a\dnSpy\dnSpy\Extensions\ILSpy.Decompiler\ICSharpCode.Decompiler\ICSharpCode.Decompiler\ILAst\GotoRemoval.cs:line 228
+   at ICSharpCode.Decompiler.ILAst.GotoRemoval.RemoveGotosCore(ILBlock method) in D:\a\dnSpy\dnSpy\Extensions\ILSpy.Decompiler\ICSharpCode.Decompiler\ICSharpCode.Decompiler\ILAst\GotoRemoval.cs:line 102
+   at ICSharpCode.Decompiler.ILAst.GotoRemoval.RemoveGotos(DecompilerContext context, ILBlock method) in D:\a\dnSpy\dnSpy\Extensions\ILSpy.Decompiler\ICSharpCode.Decompiler\ICSharpCode.Decompiler\ILAst\GotoRemoval.cs:line 57
+   at ICSharpCode.Decompiler.ILAst.ILAstOptimizer.Optimize(DecompilerContext context, ILBlock method, AutoPropertyProvider autoPropertyProvider, StateMachineKind& stateMachineKind, MethodDef& inlinedMethod, AsyncMethodDebugInfo& asyncInfo, ILAstOptimizationStep abortBeforeStep) in D:\a\dnSpy\dnSpy\Extensions\ILSpy.Decompiler\ICSharpCode.Decompiler\ICSharpCode.Decompiler\ILAst\ILAstOptimizer.cs:line 358
+   at ICSharpCode.Decompiler.Ast.AstMethodBodyBuilder.CreateMethodBody(IEnumerable`1 parameters, MethodDebugInfoBuilder& builder) in D:\a\dnSpy\dnSpy\Extensions\ILSpy.Decompiler\ICSharpCode.Decompiler\ICSharpCode.Decompiler\Ast\AstMethodBodyBuilder.cs:line 125
+   at ICSharpCode.Decompiler.Ast.AstMethodBodyBuilder.CreateMethodBody(MethodDef methodDef, DecompilerContext context, AutoPropertyProvider autoPropertyProvider, IEnumerable`1 parameters, Boolean valueParameterIsKeyword, StringBuilder sb, MethodDebugInfoBuilder& stmtsBuilder) in D:\a\dnSpy\dnSpy\Extensions\ILSpy.Decompiler\ICSharpCode.Decompiler\ICSharpCode.Decompiler\Ast\AstMethodBodyBuilder.cs:line 88
+   --- End of inner exception stack trace ---
+   at ICSharpCode.Decompiler.Ast.AstMethodBodyBuilder.CreateMethodBody(MethodDef methodDef, DecompilerContext context, AutoPropertyProvider autoPropertyProvider, IEnumerable`1 parameters, Boolean valueParameterIsKeyword, StringBuilder sb, MethodDebugInfoBuilder& stmtsBuilder) in D:\a\dnSpy\dnSpy\Extensions\ILSpy.Decompiler\ICSharpCode.Decompiler\ICSharpCode.Decompiler\Ast\AstMethodBodyBuilder.cs:line 92
+   at ICSharpCode.Decompiler.Ast.AstBuilder.AddMethodBody(EntityDeclaration methodNode, EntityDeclaration& updatedNode, MethodDef method, IEnumerable`1 parameters, Boolean valueParameterIsKeyword, MethodKind methodKind) in D:\a\dnSpy\dnSpy\Extensions\ILSpy.Decompiler\ICSharpCode.Decompiler\ICSharpCode.Decompiler\Ast\AstBuilder.cs:line 1627
+*/;
 		}
 
-		
-        // Token: 0x060004C1 RID: 1217 RVA: 0x00017D24 File Offset: 0x00015F24
-        public override void OnStopped()
+		// Token: 0x06000343 RID: 835 RVA: 0x00012484 File Offset: 0x00010684
+		public override void OnStopped()
 		{
-			if (this.externalTokenSource != null)
+			bool flag = this.externalTokenSource != null;
+			if (flag)
 			{
 				this.externalTokenSource.Cancel();
 			}
@@ -292,22 +174,23 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			base.OnStopped();
 		}
 
-		// Token: 0x060004C2 RID: 1218 RVA: 0x00017D6C File Offset: 0x00015F6C
+		// Token: 0x06000344 RID: 836 RVA: 0x000124C4 File Offset: 0x000106C4
 		private void OnCompleted(Phone phone)
 		{
 			this.AppContext.CurrentPhone = phone;
 			this.AppContext.SelectedManufacturer = phone.Type;
 			PhoneTypes selectedManufacturer = this.appContext.SelectedManufacturer;
+			PhoneTypes phoneTypes = selectedManufacturer;
 			string nextState;
-			switch (selectedManufacturer)
+			switch (phoneTypes)
 			{
 			case PhoneTypes.Lumia:
 			case PhoneTypes.Analog:
 				nextState = "ReadingDeviceInfoState";
-				goto IL_137;
+				goto IL_13A;
 			case PhoneTypes.Htc:
 				nextState = "AwaitHtcState";
-				goto IL_137;
+				goto IL_13A;
 			case PhoneTypes.Lg:
 				break;
 			case PhoneTypes.Mcj:
@@ -336,7 +219,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			case PhoneTypes.Wileyfox:
 			{
 				BaseAdaptation adaptation = this.adaptationManager.GetAdaptation(phone.Type);
-				if (adaptation.ManuallySupportedVariants(phone).Any<Phone>())
+				bool flag = adaptation.ManuallySupportedVariants(phone).Any<Phone>();
+				if (flag)
 				{
 					nextState = "ManualGenericVariantSelectionState";
 				}
@@ -344,62 +228,62 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 				{
 					nextState = "CheckLatestPackageState";
 				}
-				goto IL_137;
+				goto IL_13A;
 			}
 			case PhoneTypes.HoloLensAccessory:
 				nextState = "AwaitFawkesDeviceState";
-				goto IL_137;
+				goto IL_13A;
 			default:
-				if (selectedManufacturer == PhoneTypes.UnknownWp)
+				if (phoneTypes == PhoneTypes.UnknownWp)
 				{
 					nextState = "ManualManufacturerSelectionState";
-					goto IL_137;
+					goto IL_13A;
 				}
 				break;
 			}
 			nextState = "AwaitGenericDeviceState";
-			IL_137:
+			IL_13A:
 			base.EventAggregator.Publish<DetectionTypeMessage>(new DetectionTypeMessage(DetectionType.NormalMode));
 			base.EventAggregator.Publish<SelectedDeviceMessage>(new SelectedDeviceMessage(phone));
-			//RnD
-			//base.Commands.Run((AppController c) => c.SwitchToState(nextState));
+			base.Commands.Run((AppController c) => c.SwitchToState(nextState));
 		}
 
-		// Token: 0x060004C3 RID: 1219 RVA: 0x00017F45 File Offset: 0x00016145
+		// Token: 0x06000345 RID: 837 RVA: 0x0001269F File Offset: 0x0001089F
 		private void OnDeviceNotDetectedCommandExecuted(object obj)
 		{
 			this.internalTokenSource.Cancel();
 		}
 
-		// Token: 0x060004C4 RID: 1220 RVA: 0x00017F54 File Offset: 0x00016154
+		// Token: 0x06000346 RID: 838 RVA: 0x000126B0 File Offset: 0x000108B0
 		private void OnTileSelectedCommandExecuted(object obj)
 		{
-			this.SelectedPhoneTile = (obj as Tile);
+			this.SelectedPhoneTile = obj as Tile;
 			this.itemSelectedTaskCompletionSource.SetResult(obj as Tile);
-
-			//RnD
-			//base.Commands.Run((FlowController c) 
-			//	=> c.StartSessionFlow(string.Empty, new CancellationTokenSource().Token));
+			ParameterExpression parameterExpression;
+			base.Commands.Run(Expression.Lambda<Action<FlowController>>(Expression.Call(parameterExpression, methodof(FlowController.StartSessionFlow(string, CancellationToken)), new Expression[]
+			{
+				Expression.Field(null, fieldof(string.Empty)),
+				Expression.Property(Expression.New(typeof(CancellationTokenSource)), methodof(CancellationTokenSource.get_Token()))
+			}), new ParameterExpression[] { parameterExpression }));
 		}
 
-		// Token: 0x060004C5 RID: 1221 RVA: 0x00018040 File Offset: 0x00016240
+		// Token: 0x06000347 RID: 839 RVA: 0x00012764 File Offset: 0x00010964
 		private void PurgeCompletedTasks(List<Task> tasks)
 		{
-			Task[] array = (from t in tasks
-			where t.IsCanceled || t.IsCompleted || t.IsFaulted
-			select t).ToArray<Task>();
-			foreach (Task item in array)
+			Task[] array = tasks.Where((Task t) => t.IsCanceled || t.IsCompleted || t.IsFaulted).ToArray<Task>();
+			foreach (Task task in array)
 			{
-				tasks.Remove(item);
+				tasks.Remove(task);
 			}
 		}
 
-		// Token: 0x060004C6 RID: 1222 RVA: 0x0001838C File Offset: 0x0001658C
+		// Token: 0x06000348 RID: 840 RVA: 0x000127BC File Offset: 0x000109BC
 		private async Task ProcessDeviceAttachedAsync(IDetectionHandler detectionHandler, DeviceInfo deviceInfo, bool isEnumerated, CancellationToken cancellationToken)
 		{
 			Tile tile = this.CreateNewTile(deviceInfo.DeviceIdentifier);
 			this.AddTile(tile);
-			if (!isEnumerated)
+			bool flag = !isEnumerated;
+			if (flag)
 			{
 				this.LiveText = LocalizationManager.GetTranslation("DeviceConnected");
 			}
@@ -407,36 +291,32 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			try
 			{
 				await detectionHandler.UpdateDeviceInfoAsync(deviceInfo, cancellationToken);
-				phone = await this.phoneFactory.CreateAsync(deviceInfo, cancellationToken);
+				Phone phone2 = await this.phoneFactory.CreateAsync(deviceInfo, cancellationToken);
+				phone = phone2;
+				phone2 = null;
 			}
 			catch (OperationCanceledException)
 			{
 				throw;
 			}
-			catch (Exception error)
+			catch (Exception ex)
 			{
-				Tracer<DeviceSelectionViewModel>.WriteError(error);
+				Tracer<DeviceSelectionViewModel>.WriteError(ex);
 				return;
 			}
 			if (!deviceInfo.IsDeviceSupported)
 			{
-				Tracer<DeviceSelectionViewModel>.WriteInformation("Device not supppoted: {0}", new object[]
-				{
-					deviceInfo.DeviceIdentifier
-				});
+				Tracer<DeviceSelectionViewModel>.WriteInformation("Device not supppoted: {0}", new object[] { deviceInfo.DeviceIdentifier });
 				this.UpdateTileInformationForNotSupported(tile);
 			}
 			else
 			{
-				Tracer<DeviceSelectionViewModel>.WriteInformation("Device supppoted: {0}", new object[]
-				{
-					deviceInfo.DeviceIdentifier
-				});
+				Tracer<DeviceSelectionViewModel>.WriteInformation("Device supppoted: {0}", new object[] { deviceInfo.DeviceIdentifier });
 				this.UpdateTileInformation(tile, phone, deviceInfo);
 			}
 		}
 
-		// Token: 0x060004C7 RID: 1223 RVA: 0x00018484 File Offset: 0x00016684
+		// Token: 0x06000349 RID: 841 RVA: 0x00012820 File Offset: 0x00010A20
 		private Task ProcessDeviceDetachedAsync(DeviceInfo deviceInfo)
 		{
 			TaskCompletionSource<object> source = new TaskCompletionSource<object>();
@@ -445,7 +325,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 				tile2.ShowStartAnimation = false;
 			}
 			Tile tileToRemove = this.Tiles.FirstOrDefault((Tile tile) => string.Equals(tile.DevicePath, deviceInfo.DeviceIdentifier, StringComparison.CurrentCultureIgnoreCase));
-			if (tileToRemove != null)
+			bool flag = tileToRemove != null;
+			if (flag)
 			{
 				this.LiveText = LocalizationManager.GetTranslation("DeviceDisconnected");
 				EventHandler onTimerElapsed = null;
@@ -457,10 +338,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 				};
 				tileToRemove.OnRemoveTimerElapsed += onTimerElapsed;
 				tileToRemove.IsDeleted = true;
-				Tracer<DeviceSelectionViewModel>.WriteInformation("Removed device: {0}", new object[]
-				{
-					deviceInfo.DeviceIdentifier
-				});
+				Tracer<DeviceSelectionViewModel>.WriteInformation("Removed device: {0}", new object[] { deviceInfo.DeviceIdentifier });
 			}
 			else
 			{
@@ -470,34 +348,36 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			return source.Task;
 		}
 
-		// Token: 0x060004C8 RID: 1224 RVA: 0x000185E0 File Offset: 0x000167E0
+		// Token: 0x0600034A RID: 842 RVA: 0x00012984 File Offset: 0x00010B84
 		private void RemoveTile(Tile tile)
 		{
 			this.Tiles.Remove(tile);
-			if (this.Tiles.Count == 0)
+			bool flag = this.Tiles.Count == 0;
+			if (flag)
 			{
 				this.cancelTimer.Start();
 			}
 		}
 
-		// Token: 0x060004C9 RID: 1225 RVA: 0x0001861E File Offset: 0x0001681E
+		// Token: 0x0600034B RID: 843 RVA: 0x000129BF File Offset: 0x00010BBF
 		private void AddTile(Tile tile)
 		{
 			this.Tiles.Add(tile);
 			this.cancelTimer.IsEnabled = false;
 		}
 
-		// Token: 0x060004CA RID: 1226 RVA: 0x0001863C File Offset: 0x0001683C
+		// Token: 0x0600034C RID: 844 RVA: 0x000129DC File Offset: 0x00010BDC
 		private void OnCancelTimerTick(object sender, EventArgs eventArgs)
 		{
 			this.cancelTimer.IsEnabled = false;
-			if (this.Tiles.Count == 0)
+			bool flag = this.Tiles.Count == 0;
+			if (flag)
 			{
 				this.itemSelectedTaskCompletionSource.SetCanceled();
 			}
 		}
 
-		// Token: 0x060004CB RID: 1227 RVA: 0x0001867C File Offset: 0x0001687C
+		// Token: 0x0600034D RID: 845 RVA: 0x00012A18 File Offset: 0x00010C18
 		private Tile CreateNewTile(string path)
 		{
 			return new Tile
@@ -511,25 +391,26 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			};
 		}
 
-		// Token: 0x060004CC RID: 1228 RVA: 0x000186DC File Offset: 0x000168DC
+		// Token: 0x0600034E RID: 846 RVA: 0x00012A78 File Offset: 0x00010C78
 		private void OnLiveRegionChanged()
 		{
 			EventHandler liveRegionChanged = this.LiveRegionChanged;
-			if (liveRegionChanged != null)
+			bool flag = liveRegionChanged != null;
+			if (flag)
 			{
 				EventArgs empty = EventArgs.Empty;
 				liveRegionChanged(this, empty);
 			}
 		}
 
-		// Token: 0x060004CD RID: 1229 RVA: 0x0001870A File Offset: 0x0001690A
+		// Token: 0x0600034F RID: 847 RVA: 0x00012AA6 File Offset: 0x00010CA6
 		private void UpdateTileInformationForNotSupported(Tile tile)
 		{
 			tile.Title = LocalizationManager.GetTranslation("ManufacturerDetectionFailed");
 			tile.IsWaiting = false;
 		}
 
-		// Token: 0x060004CE RID: 1230 RVA: 0x00018728 File Offset: 0x00016928
+		// Token: 0x06000350 RID: 848 RVA: 0x00012AC4 File Offset: 0x00010CC4
 		private void UpdateTileInformation(Tile tile, Phone phone, DeviceInfo deviceInfo)
 		{
 			tile.Phone = phone;
@@ -542,60 +423,61 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			tile.BasicDeviceInformation = deviceInfo;
 		}
 
-		// Token: 0x060004CF RID: 1231 RVA: 0x00018790 File Offset: 0x00016990
+		// Token: 0x06000351 RID: 849 RVA: 0x00012B2C File Offset: 0x00010D2C
 		private static BitmapImage LoadBitmapImageFromBytes(byte[] bytes)
 		{
-			BitmapImage result;
-			if (bytes == null)
+			bool flag = bytes == null;
+			BitmapImage bitmapImage;
+			if (flag)
 			{
-				result = null;
+				bitmapImage = null;
 			}
 			else
 			{
 				using (MemoryStream memoryStream = new MemoryStream(bytes))
 				{
-					BitmapImage bitmapImage = new BitmapImage();
-					bitmapImage.BeginInit();
-					bitmapImage.StreamSource = memoryStream;
-					bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-					bitmapImage.EndInit();
-					result = bitmapImage;
+					BitmapImage bitmapImage2 = new BitmapImage();
+					bitmapImage2.BeginInit();
+					bitmapImage2.StreamSource = memoryStream;
+					bitmapImage2.CacheOption = BitmapCacheOption.OnLoad;
+					bitmapImage2.EndInit();
+					bitmapImage = bitmapImage2;
 				}
 			}
-			return result;
+			return bitmapImage;
 		}
 
-		// Token: 0x04000209 RID: 521
+		// Token: 0x0400016B RID: 363
 		private readonly DetectionHandlerFactory detectionHandlerFactory;
 
-		// Token: 0x0400020A RID: 522
+		// Token: 0x0400016C RID: 364
 		private readonly PhoneFactory phoneFactory;
 
-		// Token: 0x0400020B RID: 523
+		// Token: 0x0400016D RID: 365
 		private readonly AdaptationManager adaptationManager;
 
-		// Token: 0x0400020C RID: 524
+		// Token: 0x0400016E RID: 366
 		private readonly DispatcherTimer cancelTimer;
 
-		// Token: 0x0400020D RID: 525
+		// Token: 0x0400016F RID: 367
 		private Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext;
 
-		// Token: 0x0400020E RID: 526
+		// Token: 0x04000170 RID: 368
 		private Tile selectedPhoneTile;
 
-		// Token: 0x0400020F RID: 527
+		// Token: 0x04000171 RID: 369
 		private string liveText;
 
-		// Token: 0x04000210 RID: 528
+		// Token: 0x04000172 RID: 370
 		private CollectionObservable<Tile> tiles = new CollectionObservable<Tile>();
 
-		// Token: 0x04000211 RID: 529
+		// Token: 0x04000173 RID: 371
 		private TaskCompletionSource<Tile> itemSelectedTaskCompletionSource;
 
-		// Token: 0x04000212 RID: 530
+		// Token: 0x04000174 RID: 372
 		private CancellationTokenSource externalTokenSource;
 
-		// Token: 0x04000213 RID: 531
+		// Token: 0x04000175 RID: 373
 		private CancellationTokenSource internalTokenSource;
 	}
 }

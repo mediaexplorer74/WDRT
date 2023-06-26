@@ -59,7 +59,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 			{
 				return -2;
 			}
-			int num = (flush == FlushStrategy.Z_FINISH) ? -5 : 0;
+			int num = ((flush == FlushStrategy.Z_FINISH) ? (-5) : 0);
 			int num2 = -5;
 			for (;;)
 			{
@@ -187,7 +187,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 				num2 = num;
 				z.avail_in--;
 				z.total_in += 1L;
-				z.istate.need += ((long)((long)(z.next_in[z.next_in_index++] & byte.MaxValue) << 8) & 65280L);
+				z.istate.need += (long)((long)(z.next_in[z.next_in_index++] & byte.MaxValue) << 8) & 65280L;
 				z.istate.mode = InflateMode.CHECK1;
 				goto IL_5BE;
 				IL_4D9:
@@ -198,7 +198,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 				num2 = num;
 				z.avail_in--;
 				z.total_in += 1L;
-				z.istate.need += ((long)((long)(z.next_in[z.next_in_index++] & byte.MaxValue) << 16) & 16711680L);
+				z.istate.need += (long)((long)(z.next_in[z.next_in_index++] & byte.MaxValue) << 16) & 16711680L;
 				z.istate.mode = InflateMode.CHECK2;
 				goto IL_54C;
 				IL_46E:
@@ -209,7 +209,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 				num2 = num;
 				z.avail_in--;
 				z.total_in += 1L;
-				z.istate.need = (long)((int)(z.next_in[z.next_in_index++] & byte.MaxValue) << 24 & -16777216);
+				z.istate.need = (long)(((int)(z.next_in[z.next_in_index++] & byte.MaxValue) << 24) & -16777216);
 				z.istate.mode = InflateMode.CHECK3;
 				goto IL_4D9;
 			}
@@ -224,7 +224,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 			num2 = num;
 			z.avail_in--;
 			z.total_in += 1L;
-			z.istate.need = ((long)(z.next_in[z.next_in_index++] & byte.MaxValue) << 24 & -16777216L);
+			z.istate.need = ((long)(z.next_in[z.next_in_index++] & byte.MaxValue) << 24) & -16777216L;
 			z.istate.mode = InflateMode.DICT3;
 			IL_25E:
 			if (z.avail_in == 0)
@@ -234,7 +234,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 			num2 = num;
 			z.avail_in--;
 			z.total_in += 1L;
-			z.istate.need += ((long)(z.next_in[z.next_in_index++] & byte.MaxValue) << 16 & 16711680L);
+			z.istate.need += ((long)(z.next_in[z.next_in_index++] & byte.MaxValue) << 16) & 16711680L;
 			z.istate.mode = InflateMode.DICT2;
 			IL_2D0:
 			if (z.avail_in == 0)
@@ -244,7 +244,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 			num2 = num;
 			z.avail_in--;
 			z.total_in += 1L;
-			z.istate.need += ((long)(z.next_in[z.next_in_index++] & byte.MaxValue) << 8 & 65280L);
+			z.istate.need += ((long)(z.next_in[z.next_in_index++] & byte.MaxValue) << 8) & 65280L;
 			z.istate.mode = InflateMode.DICT1;
 			IL_341:
 			if (z.avail_in == 0)
@@ -270,8 +270,8 @@ namespace ComponentAce.Compression.Libs.ZLib
 		// Token: 0x060007ED RID: 2029 RVA: 0x000320B0 File Offset: 0x000310B0
 		internal int inflateSetDictionary(ZStream z, byte[] dictionary, int dictLength)
 		{
-			int start = 0;
-			int num = dictLength;
+			int num = 0;
+			int num2 = dictLength;
 			if (z == null || z.istate == null || z.istate.mode != InflateMode.DICT0)
 			{
 				return -2;
@@ -281,12 +281,12 @@ namespace ComponentAce.Compression.Libs.ZLib
 				return -3;
 			}
 			z.adler = Adler32.GetAdler32Checksum(0L, null, 0, 0);
-			if (num >= 1 << z.istate.wbits)
+			if (num2 >= 1 << z.istate.wbits)
 			{
-				num = (1 << z.istate.wbits) - 1;
-				start = dictLength - num;
+				num2 = (1 << z.istate.wbits) - 1;
+				num = dictLength - num2;
 			}
-			z.istate.blocks.set_dictionary(dictionary, start, num);
+			z.istate.blocks.set_dictionary(dictionary, num, num2);
 			z.istate.mode = InflateMode.BLOCKS;
 			return 0;
 		}

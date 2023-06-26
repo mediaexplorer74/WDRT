@@ -9,12 +9,14 @@ namespace Microsoft.Diagnostics.Telemetry
 	internal class TelemetryEventSource : EventSource
 	{
 		// Token: 0x06000247 RID: 583 RVA: 0x0000B764 File Offset: 0x00009964
-		public TelemetryEventSource(string eventSourceName) : base(eventSourceName, EventSourceSettings.EtwSelfDescribingEventFormat, TelemetryEventSource.telemetryTraits)
+		public TelemetryEventSource(string eventSourceName)
+			: base(eventSourceName, EventSourceSettings.EtwSelfDescribingEventFormat, TelemetryEventSource.telemetryTraits)
 		{
 		}
 
 		// Token: 0x06000248 RID: 584 RVA: 0x0000B773 File Offset: 0x00009973
-		protected TelemetryEventSource() : base(EventSourceSettings.EtwSelfDescribingEventFormat, TelemetryEventSource.telemetryTraits)
+		protected TelemetryEventSource()
+			: base(EventSourceSettings.EtwSelfDescribingEventFormat, TelemetryEventSource.telemetryTraits)
 		{
 		}
 
@@ -120,11 +122,7 @@ namespace Microsoft.Diagnostics.Telemetry
 		public const EventFieldTags HashPiiField = (EventFieldTags)134217728;
 
 		// Token: 0x040001F4 RID: 500
-		private static readonly string[] telemetryTraits = new string[]
-		{
-			"ETW_GROUP",
-			"{4f50731a-89cf-4782-b3e0-dce8c90476ba}"
-		};
+		private static readonly string[] telemetryTraits = new string[] { "ETW_GROUP", "{4f50731a-89cf-4782-b3e0-dce8c90476ba}" };
 
 		// Token: 0x02000063 RID: 99
 		private class EventDescriptionInfo<T>
@@ -139,7 +137,7 @@ namespace Microsoft.Diagnostics.Telemetry
 				if (num < customAttributes.Length)
 				{
 					object obj = customAttributes[num];
-					eventDescriptionAttribute = (obj as EventDescriptionAttribute);
+					eventDescriptionAttribute = obj as EventDescriptionAttribute;
 				}
 				if (eventDescriptionAttribute == null)
 				{
@@ -164,8 +162,8 @@ namespace Microsoft.Diagnostics.Telemetry
 			{
 				if (TelemetryEventSource.EventDescriptionInfo<T>.instance == null)
 				{
-					TelemetryEventSource.EventDescriptionInfo<T> value = new TelemetryEventSource.EventDescriptionInfo<T>(typeof(T));
-					Interlocked.CompareExchange<TelemetryEventSource.EventDescriptionInfo<T>>(ref TelemetryEventSource.EventDescriptionInfo<T>.instance, value, null);
+					TelemetryEventSource.EventDescriptionInfo<T> eventDescriptionInfo = new TelemetryEventSource.EventDescriptionInfo<T>(typeof(T));
+					Interlocked.CompareExchange<TelemetryEventSource.EventDescriptionInfo<T>>(ref TelemetryEventSource.EventDescriptionInfo<T>.instance, eventDescriptionInfo, null);
 				}
 				return TelemetryEventSource.EventDescriptionInfo<T>.instance;
 			}

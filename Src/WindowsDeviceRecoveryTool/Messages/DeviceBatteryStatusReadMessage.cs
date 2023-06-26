@@ -3,18 +3,18 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.Enums;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Messages
 {
-	// Token: 0x02000021 RID: 33
+	// Token: 0x02000095 RID: 149
 	public class DeviceBatteryStatusReadMessage
 	{
-		// Token: 0x060000FD RID: 253 RVA: 0x00008428 File Offset: 0x00006628
+		// Token: 0x06000525 RID: 1317 RVA: 0x0001B23C File Offset: 0x0001943C
 		public DeviceBatteryStatusReadMessage(BatteryStatus status)
 		{
 			this.Status = status;
 		}
 
-		// Token: 0x17000031 RID: 49
-		// (get) Token: 0x060000FE RID: 254 RVA: 0x0000843C File Offset: 0x0000663C
-		// (set) Token: 0x060000FF RID: 255 RVA: 0x00008453 File Offset: 0x00006653
+		// Token: 0x17000120 RID: 288
+		// (get) Token: 0x06000526 RID: 1318 RVA: 0x0001B24E File Offset: 0x0001944E
+		// (set) Token: 0x06000527 RID: 1319 RVA: 0x0001B256 File Offset: 0x00019456
 		public BatteryStatus Status { get; private set; }
 	}
 }

@@ -5,15 +5,16 @@ using System.Threading;
 
 namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 {
-	// Token: 0x02000011 RID: 17
+	// Token: 0x02000017 RID: 23
 	public class MobileCoreVHD : MobileCoreImage
 	{
-		// Token: 0x0600007F RID: 127 RVA: 0x000051AE File Offset: 0x000033AE
-		internal MobileCoreVHD(string path) : base(path)
+		// Token: 0x060000A2 RID: 162 RVA: 0x00005C44 File Offset: 0x00003E44
+		internal MobileCoreVHD(string path)
+			: base(path)
 		{
 		}
 
-		// Token: 0x06000080 RID: 128 RVA: 0x000051C4 File Offset: 0x000033C4
+		// Token: 0x060000A3 RID: 163 RVA: 0x00005C58 File Offset: 0x00003E58
 		private void MountWithRetry(bool readOnly)
 		{
 			if (base.IsMounted)
@@ -33,7 +34,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 				catch (Exception)
 				{
 					num++;
-					flag = (num < num2);
+					flag = num < num2;
 					if (!flag)
 					{
 						throw;
@@ -45,33 +46,32 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			base.IsMounted = true;
 		}
 
-		// Token: 0x06000081 RID: 129 RVA: 0x00005220 File Offset: 0x00003420
+		// Token: 0x060000A4 RID: 164 RVA: 0x00005CB4 File Offset: 0x00003EB4
 		public override void MountReadOnly()
 		{
-			bool readOnly = true;
-			this.MountWithRetry(readOnly);
+			bool flag = true;
+			this.MountWithRetry(flag);
 		}
 
-		// Token: 0x06000082 RID: 130 RVA: 0x00005238 File Offset: 0x00003438
+		// Token: 0x060000A5 RID: 165 RVA: 0x00005CCC File Offset: 0x00003ECC
 		public override void Mount()
 		{
-			bool readOnly = false;
-			this.MountWithRetry(readOnly);
+			bool flag = false;
+			this.MountWithRetry(flag);
 		}
 
-		// Token: 0x06000083 RID: 131 RVA: 0x00005250 File Offset: 0x00003450
+		// Token: 0x060000A6 RID: 166 RVA: 0x00005CE4 File Offset: 0x00003EE4
 		private void MountVHD(bool readOnly)
 		{
-			object lockObj = MobileCoreVHD._lockObj;
-			lock (lockObj)
+			lock (MobileCoreVHD._lockObj)
 			{
 				this.m_partitions.Clear();
 				try
 				{
 					this._hndlVirtDisk = CommonUtils.MountVHD(this.m_mobileCoreImagePath, readOnly);
-					int capacity = 1024;
-					StringBuilder stringBuilder = new StringBuilder(capacity);
-					int virtualDiskPhysicalPath = VirtualDiskLib.GetVirtualDiskPhysicalPath(this._hndlVirtDisk, ref capacity, stringBuilder);
+					int num = 1024;
+					StringBuilder stringBuilder = new StringBuilder(num);
+					int virtualDiskPhysicalPath = VirtualDiskLib.GetVirtualDiskPhysicalPath(this._hndlVirtDisk, ref num, stringBuilder);
 					if (0 < virtualDiskPhysicalPath)
 					{
 						throw new Win32Exception(virtualDiskPhysicalPath);
@@ -79,10 +79,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 					this.m_partitions.PopulateFromPhysicalDeviceId(stringBuilder.ToString());
 					if (this.m_partitions.Count == 0)
 					{
-						throw new IUException("Could not retrieve logical drive information for {0}", new object[]
-						{
-							stringBuilder
-						});
+						throw new IUException("Could not retrieve logical drive information for {0}", new object[] { stringBuilder });
 					}
 				}
 				catch (Exception)
@@ -93,11 +90,10 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x06000084 RID: 132 RVA: 0x00005318 File Offset: 0x00003518
+		// Token: 0x060000A7 RID: 167 RVA: 0x00005DB4 File Offset: 0x00003FB4
 		public override void Unmount()
 		{
-			object lockObj = MobileCoreVHD._lockObj;
-			lock (lockObj)
+			lock (MobileCoreVHD._lockObj)
 			{
 				CommonUtils.DismountVHD(this._hndlVirtDisk);
 				this._hndlVirtDisk = IntPtr.Zero;
@@ -106,16 +102,16 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x04000022 RID: 34
-		private IntPtr _hndlVirtDisk = IntPtr.Zero;
-
-		// Token: 0x04000023 RID: 35
-		private static readonly object _lockObj = new object();
-
-		// Token: 0x04000024 RID: 36
+		// Token: 0x04000038 RID: 56
 		private const int SLEEP_1000 = 1000;
 
-		// Token: 0x04000025 RID: 37
+		// Token: 0x04000039 RID: 57
 		private const int MAX_RETRY = 3;
+
+		// Token: 0x0400003A RID: 58
+		private IntPtr _hndlVirtDisk = IntPtr.Zero;
+
+		// Token: 0x0400003B RID: 59
+		private static readonly object _lockObj = new object();
 	}
 }

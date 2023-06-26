@@ -10,15 +10,12 @@ using Microsoft.WindowsDeviceRecoveryTool.Framework;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Error
 {
-	// Token: 0x020000BE RID: 190
-	[Region(new string[]
-	{
-		"MainArea"
-	})]
+	// Token: 0x02000070 RID: 112
 	[Export]
+	[Region(new string[] { "MainArea" })]
 	public sealed partial class ErrorView : Grid
 	{
-		// Token: 0x060005B6 RID: 1462 RVA: 0x0001DA6F File Offset: 0x0001BC6F
+		// Token: 0x060003E0 RID: 992 RVA: 0x00015074 File Offset: 0x00013274
 		public ErrorView()
 		{
 			this.InitializeComponent();

@@ -5,14 +5,14 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 
-[assembly: AssemblyVersion("3.14.7501.0")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("WindowsDeviceRecoveryTool.Lucid")]
+[assembly: AssemblyVersion("3.14.0.0")]
 [assembly: AssemblyTitle("WindowsDeviceRecoveryTool.Lucid")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyProduct("WindowsDeviceRecoveryTool.Lucid")]
+[assembly: AssemblyCopyright("Copyright Â© 2014 - 2016 Microsoft Mobile Oy.")]
 [assembly: AssemblyTrademark("")]
-[assembly: AssemblyCopyright("Copyright © 2014 - 2016 Microsoft Mobile Oy.")]
-[assembly: Guid("a3252507-48ee-4c3a-a780-71b5dcdbe81a")]
 [assembly: ComVisible(false)]
-[assembly: AssemblyFileVersion("3.14.07501")]
+[assembly: Guid("a3252507-48ee-4c3a-a780-71b5dcdbe81a")]
+[assembly: AssemblyFileVersion("3.14")]

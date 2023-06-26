@@ -3,33 +3,32 @@ using System.Reflection;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Helpers
 {
-	// Token: 0x02000010 RID: 16
+	// Token: 0x02000037 RID: 55
 	public static class UriDataArgument
 	{
-		// Token: 0x0600008D RID: 141 RVA: 0x00003280 File Offset: 0x00001480
+		// Token: 0x06000350 RID: 848 RVA: 0x0000CDE4 File Offset: 0x0000AFE4
 		public static string Description(UriData value)
 		{
 			string text = string.Empty;
 			Type type = value.GetType();
 			FieldInfo field = type.GetField(value.ToString());
-			if (field != null)
+			bool flag = field != null;
+			if (flag)
 			{
 				UriDescriptionAttribute[] array = field.GetCustomAttributes(typeof(UriDescriptionAttribute), false) as UriDescriptionAttribute[];
-				if (array != null && array.Length > 0)
+				bool flag2 = array != null && array.Length != 0;
+				if (flag2)
 				{
 					text = array[0].Value;
 				}
 			}
-			if (!string.IsNullOrEmpty(text))
+			bool flag3 = !string.IsNullOrEmpty(text);
+			if (flag3)
 			{
-				object obj = text;
-				text = string.Concat(new object[]
-				{
-					obj,
-					" (",
-					(int)value,
-					")"
-				});
+				string text2 = text;
+				string text3 = " (";
+				int num = (int)value;
+				text = text2 + text3 + num.ToString() + ")";
 			}
 			return text;
 		}

@@ -4,11 +4,11 @@ using System.Runtime.CompilerServices;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Common.Tracing
 {
-	// Token: 0x0200000E RID: 14
+	// Token: 0x0200000D RID: 13
 	[CompilerGenerated]
 	internal sealed class ThreadSafeTracer : IThreadSafeTracer
 	{
-		// Token: 0x06000056 RID: 86 RVA: 0x000034F8 File Offset: 0x000016F8
+		// Token: 0x0600004D RID: 77 RVA: 0x00002E50 File Offset: 0x00001050
 		public ThreadSafeTracer(string name, SourceLevels tracingLevel)
 		{
 			this.tracer = new TraceSource(name)
@@ -20,60 +20,66 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Common.Tracing
 			};
 		}
 
-		// Token: 0x06000057 RID: 87 RVA: 0x00003542 File Offset: 0x00001742
-		public ThreadSafeTracer(string name) : this(name, SourceLevels.All)
+		// Token: 0x0600004E RID: 78 RVA: 0x00002E8A File Offset: 0x0000108A
+		public ThreadSafeTracer(string name)
+			: this(name, SourceLevels.All)
 		{
 		}
 
-		// Token: 0x06000058 RID: 88 RVA: 0x00003550 File Offset: 0x00001750
+		// Token: 0x0600004F RID: 79 RVA: 0x00002E98 File Offset: 0x00001098
 		public void TraceData(TraceEventType eventType, params object[] data)
 		{
-			lock (this.syncRoot)
+			object obj = this.syncRoot;
+			lock (obj)
 			{
 				this.tracer.TraceData(eventType, 0, data);
 			}
 		}
 
-		// Token: 0x06000059 RID: 89 RVA: 0x000035A4 File Offset: 0x000017A4
+		// Token: 0x06000050 RID: 80 RVA: 0x00002EE8 File Offset: 0x000010E8
 		public void DisableTracing()
 		{
-			lock (this.syncRoot)
+			object obj = this.syncRoot;
+			lock (obj)
 			{
 				this.tracer.Switch.Level = SourceLevels.Off;
 			}
 		}
 
-		// Token: 0x0600005A RID: 90 RVA: 0x000035FC File Offset: 0x000017FC
+		// Token: 0x06000051 RID: 81 RVA: 0x00002F3C File Offset: 0x0000113C
 		public void EnableTracing()
 		{
-			lock (this.syncRoot)
+			object obj = this.syncRoot;
+			lock (obj)
 			{
 				this.tracer.Switch.Level = SourceLevels.All;
 			}
 		}
 
-		// Token: 0x0600005B RID: 91 RVA: 0x00003654 File Offset: 0x00001854
+		// Token: 0x06000052 RID: 82 RVA: 0x00002F90 File Offset: 0x00001190
 		public void AddTraceListener(TraceListener traceListener)
 		{
-			lock (this.syncRoot)
+			object obj = this.syncRoot;
+			lock (obj)
 			{
 				this.tracer.Listeners.Add(traceListener);
 			}
 		}
 
-		// Token: 0x0600005C RID: 92 RVA: 0x000036AC File Offset: 0x000018AC
+		// Token: 0x06000053 RID: 83 RVA: 0x00002FE4 File Offset: 0x000011E4
 		public void Close()
 		{
-			lock (this.syncRoot)
+			object obj = this.syncRoot;
+			lock (obj)
 			{
 				this.tracer.Close();
 			}
 		}
 
-		// Token: 0x04000011 RID: 17
+		// Token: 0x0400000C RID: 12
 		private readonly object syncRoot = new object();
 
-		// Token: 0x04000012 RID: 18
+		// Token: 0x0400000D RID: 13
 		private readonly TraceSource tracer;
 	}
 }

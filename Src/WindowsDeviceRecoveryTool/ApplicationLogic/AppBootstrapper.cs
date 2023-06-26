@@ -27,62 +27,64 @@ using Microsoft.WindowsDeviceRecoveryTool.Styles.Assets;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 {
-	// Token: 0x02000003 RID: 3
+	// Token: 0x020000E2 RID: 226
 	public class AppBootstrapper
 	{
-		// Token: 0x06000004 RID: 4 RVA: 0x000020B8 File Offset: 0x000002B8
+		// Token: 0x06000726 RID: 1830 RVA: 0x00020490 File Offset: 0x0001E690
 		public AppBootstrapper()
 		{
 			this.InitializeSettings();
-			if (!this.CantRunApplication())
+			bool flag = this.CantRunApplication();
+			if (!flag)
 			{
 				this.ShowSplashScreen();
 				this.InitializeApplication();
 			}
 		}
 
-		// Token: 0x17000001 RID: 1
-		// (get) Token: 0x06000005 RID: 5 RVA: 0x000020F4 File Offset: 0x000002F4
-		// (set) Token: 0x06000006 RID: 6 RVA: 0x0000210B File Offset: 0x0000030B
-		private protected AppContext AppContext {  get; private set; }
+		// Token: 0x17000198 RID: 408
+		// (get) Token: 0x06000727 RID: 1831 RVA: 0x000204C7 File Offset: 0x0001E6C7
+		// (set) Token: 0x06000728 RID: 1832 RVA: 0x000204CF File Offset: 0x0001E6CF
+		private protected AppContext AppContext { protected get; private set; }
 
-		// Token: 0x17000002 RID: 2
-		// (get) Token: 0x06000007 RID: 7 RVA: 0x00002114 File Offset: 0x00000314
-		// (set) Token: 0x06000008 RID: 8 RVA: 0x0000212B File Offset: 0x0000032B
+		// Token: 0x17000199 RID: 409
+		// (get) Token: 0x06000729 RID: 1833 RVA: 0x000204D8 File Offset: 0x0001E6D8
+		// (set) Token: 0x0600072A RID: 1834 RVA: 0x000204E0 File Offset: 0x0001E6E0
 		protected ShellState ShellState { get; set; }
 
-		// Token: 0x17000003 RID: 3
-		// (get) Token: 0x06000009 RID: 9 RVA: 0x00002134 File Offset: 0x00000334
-		// (set) Token: 0x0600000A RID: 10 RVA: 0x0000214B File Offset: 0x0000034B
-		private protected CompositionContainer Container { get; private set; }
+		// Token: 0x1700019A RID: 410
+		// (get) Token: 0x0600072B RID: 1835 RVA: 0x000204E9 File Offset: 0x0001E6E9
+		// (set) Token: 0x0600072C RID: 1836 RVA: 0x000204F1 File Offset: 0x0001E6F1
+		private protected CompositionContainer Container { protected get; private set; }
 
-		// Token: 0x17000004 RID: 4
-		// (get) Token: 0x0600000B RID: 11 RVA: 0x00002154 File Offset: 0x00000354
-		// (set) Token: 0x0600000C RID: 12 RVA: 0x0000216B File Offset: 0x0000036B
-		private protected ICommandRepository CommandRepository { get; private set; }
+		// Token: 0x1700019B RID: 411
+		// (get) Token: 0x0600072D RID: 1837 RVA: 0x000204FA File Offset: 0x0001E6FA
+		// (set) Token: 0x0600072E RID: 1838 RVA: 0x00020502 File Offset: 0x0001E702
+		private protected ICommandRepository CommandRepository { protected get; private set; }
 
-		// Token: 0x17000005 RID: 5
-		// (get) Token: 0x0600000D RID: 13 RVA: 0x00002174 File Offset: 0x00000374
-		// (set) Token: 0x0600000E RID: 14 RVA: 0x0000218B File Offset: 0x0000038B
-		private protected Application Application { get; private set; }
+		// Token: 0x1700019C RID: 412
+		// (get) Token: 0x0600072F RID: 1839 RVA: 0x0002050B File Offset: 0x0001E70B
+		// (set) Token: 0x06000730 RID: 1840 RVA: 0x00020513 File Offset: 0x0001E713
+		private protected Application Application { protected get; private set; }
 
-		// Token: 0x17000006 RID: 6
-		// (get) Token: 0x0600000F RID: 15 RVA: 0x00002194 File Offset: 0x00000394
-		// (set) Token: 0x06000010 RID: 16 RVA: 0x000021AB File Offset: 0x000003AB
-		private protected MainWindow ShellWindow { get; private set; }
+		// Token: 0x1700019D RID: 413
+		// (get) Token: 0x06000731 RID: 1841 RVA: 0x0002051C File Offset: 0x0001E71C
+		// (set) Token: 0x06000732 RID: 1842 RVA: 0x00020524 File Offset: 0x0001E724
+		private protected MainWindow ShellWindow { protected get; private set; }
 
-		// Token: 0x17000007 RID: 7
-		// (get) Token: 0x06000011 RID: 17 RVA: 0x000021B4 File Offset: 0x000003B4
-		// (set) Token: 0x06000012 RID: 18 RVA: 0x000021CB File Offset: 0x000003CB
-		private protected EventAggregator EventAggregator { get; private set; }
+		// Token: 0x1700019E RID: 414
+		// (get) Token: 0x06000733 RID: 1843 RVA: 0x0002052D File Offset: 0x0001E72D
+		// (set) Token: 0x06000734 RID: 1844 RVA: 0x00020535 File Offset: 0x0001E735
+		private protected EventAggregator EventAggregator { protected get; private set; }
 
-		// Token: 0x17000008 RID: 8
-		// (get) Token: 0x06000013 RID: 19 RVA: 0x000021D4 File Offset: 0x000003D4
+		// Token: 0x1700019F RID: 415
+		// (get) Token: 0x06000735 RID: 1845 RVA: 0x00020540 File Offset: 0x0001E740
 		public static bool IsInDesignMode
 		{
 			get
 			{
-				if (AppBootstrapper.isInDesignMode == null)
+				bool flag = AppBootstrapper.isInDesignMode == null;
+				if (flag)
 				{
 					AppBootstrapper.isInDesignMode = new bool?(Application.Current != null && (Application.Current.ToString() == "System.Windows.Application" || Application.Current.ToString() == "Microsoft.Expression.Blend.BlendApplication"));
 				}
@@ -90,40 +92,50 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 			}
 		}
 
-		// Token: 0x06000014 RID: 20 RVA: 0x00002244 File Offset: 0x00000444
+		// Token: 0x06000736 RID: 1846 RVA: 0x000205B4 File Offset: 0x0001E7B4
 		protected bool CantRunApplication()
 		{
-			bool result;
-			if (AppBootstrapper.IsInDesignMode)
+			bool flag = AppBootstrapper.IsInDesignMode;
+			bool flag2;
+			if (flag)
 			{
-				result = true;
-			}
-			else if (AppInfo.IsAnotherInstanceRunning())
-			{
-				string message = string.Format(LocalizationManager.GetTranslation("AnotherInstanceAlreadyRunning"), AppInfo.AppTitle());
-				this.ShowSthWentWrongMessage(message);
-				result = true;
-			}
-			else if (DateTime.UtcNow >= ApplicationBuildSettings.ExpirationDate)
-			{
-				Tracer<AppBootstrapper>.WriteInformation("Build is out of date!");
-				this.ShowSthWentWrongMessage("Windows Device Recovery Tool build has expired, please install a new version.");
-				result = true;
+				flag2 = true;
 			}
 			else
 			{
-				result = false;
+				bool flag3 = AppInfo.IsAnotherInstanceRunning();
+				if (flag3)
+				{
+					string text = string.Format(LocalizationManager.GetTranslation("AnotherInstanceAlreadyRunning"), AppInfo.AppTitle());
+					this.ShowSthWentWrongMessage(text);
+					flag2 = true;
+				}
+				else
+				{
+					bool flag4 = DateTime.UtcNow >= ApplicationBuildSettings.ExpirationDate;
+					if (flag4)
+					{
+						Tracer<AppBootstrapper>.WriteInformation("Build is out of date!");
+						this.ShowSthWentWrongMessage("Windows Device Recovery Tool build has expired, please install a new version.");
+						flag2 = true;
+					}
+					else
+					{
+						flag2 = false;
+					}
+				}
 			}
-			return result;
+			return flag2;
 		}
 
-		// Token: 0x06000015 RID: 21 RVA: 0x000022C8 File Offset: 0x000004C8
+		// Token: 0x06000737 RID: 1847 RVA: 0x00020634 File Offset: 0x0001E834
 		protected void InitializeSettings()
 		{
 			this.RestorePreviousSettings();
 			StyleLogic.RestoreStyle(Settings.Default.Style);
 			StyleLogic.LoadTheme(Settings.GetSelectedThemeFileName());
-			if (Settings.Default.CustomPackagesPathEnabled && !string.IsNullOrWhiteSpace(Settings.Default.PackagesPath))
+			bool flag = Settings.Default.CustomPackagesPathEnabled && !string.IsNullOrWhiteSpace(Settings.Default.PackagesPath);
+			if (flag)
 			{
 				Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.CustomPackagesPath = Settings.Default.PackagesPath;
 			}
@@ -133,19 +145,21 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 			}
 		}
 
-		// Token: 0x06000016 RID: 22 RVA: 0x00002338 File Offset: 0x00000538
+		// Token: 0x06000738 RID: 1848 RVA: 0x000206A8 File Offset: 0x0001E8A8
 		private void RestorePreviousSettings()
 		{
-			if (Settings.Default.CallUpgrade)
+			bool callUpgrade = Settings.Default.CallUpgrade;
+			if (callUpgrade)
 			{
 				Tracer<AppBootstrapper>.WriteInformation("Settings upgrade needed");
 				Settings.Default.Upgrade();
 				Settings.Default.CallUpgrade = false;
-				if (!StyleLogic.IfStyleExists(Settings.Default.Style))
+				bool flag = !StyleLogic.IfStyleExists(Settings.Default.Style);
+				if (flag)
 				{
 					Tracer<AppBootstrapper>.WriteInformation("Saved Style doesn't exist. Need to reset it to default");
-					Settings.Default.Style = (Settings.Default.Properties["Style"].DefaultValue as string);
-					Settings.Default.Theme = (Settings.Default.Properties["Theme"].DefaultValue as string);
+					Settings.Default.Style = Settings.Default.Properties["Style"].DefaultValue as string;
+					Settings.Default.Theme = Settings.Default.Properties["Theme"].DefaultValue as string;
 				}
 				Settings.Default.Save();
 				Tracer<AppBootstrapper>.WriteInformation("Settings are upgraded");
@@ -153,15 +167,12 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 			LocalizationManager.Instance().CurrentLanguage = ApplicationInfo.CurrentLanguageInRegistry;
 		}
 
-		// Token: 0x06000017 RID: 23 RVA: 0x00002418 File Offset: 0x00000618
+		// Token: 0x06000739 RID: 1849 RVA: 0x00020788 File Offset: 0x0001E988
 		protected void InitializeApplication()
 		{
 			try
 			{
-				Tracer<AppBootstrapper>.WriteInformation("Operating system version: {0}", new object[]
-				{
-					Environment.OSVersion.ToString()
-				});
+				Tracer<AppBootstrapper>.WriteInformation("Operating system version: {0}", new object[] { Environment.OSVersion.ToString() });
 				this.Application = Application.Current;
 				this.ConfigureDispacher();
 				this.ConfigureLogging();
@@ -175,7 +186,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 			this.InitializeBusinessLogicLayer();
 		}
 
-		// Token: 0x06000018 RID: 24 RVA: 0x00002498 File Offset: 0x00000698
+		// Token: 0x0600073A RID: 1850 RVA: 0x00020804 File Offset: 0x0001EA04
 		protected void InitializeUiLogic()
 		{
 			try
@@ -195,7 +206,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 			}
 		}
 
-		// Token: 0x06000019 RID: 25 RVA: 0x00002542 File Offset: 0x00000742
+		// Token: 0x0600073B RID: 1851 RVA: 0x0002089C File Offset: 0x0001EA9C
 		protected void ShellWindowOnContentRendered(object sender, EventArgs eventArgs)
 		{
 			AppDispatcher.Execute(delegate
@@ -204,14 +215,14 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 			}, false);
 		}
 
-		// Token: 0x0600001A RID: 26 RVA: 0x00002558 File Offset: 0x00000758
+		// Token: 0x0600073C RID: 1852 RVA: 0x000208B2 File Offset: 0x0001EAB2
 		protected void InitializeBusinessLogicLayer()
 		{
 			this.businessLogicHostThread = new Thread(new ThreadStart(this.StartBusinessLogic));
 			this.businessLogicHostThread.Start();
 		}
 
-		// Token: 0x0600001B RID: 27 RVA: 0x00002580 File Offset: 0x00000780
+		// Token: 0x0600073D RID: 1853 RVA: 0x000208D8 File Offset: 0x0001EAD8
 		protected void StartBusinessLogic()
 		{
 			try
@@ -227,35 +238,34 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 			}
 		}
 
-		// Token: 0x0600001C RID: 28 RVA: 0x000025EC File Offset: 0x000007EC
+		// Token: 0x0600073E RID: 1854 RVA: 0x00020944 File Offset: 0x0001EB44
 		protected void ClearUpdatesFolder()
 		{
 			try
 			{
 				string[] files = Directory.GetFiles(Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.AppDataPath(SpecialFolder.AppUpdate));
-				if (files.Any<string>())
+				bool flag = files.Any<string>();
+				if (flag)
 				{
-					foreach (string path in files)
+					foreach (string text in files)
 					{
-						File.Delete(path);
+						File.Delete(text);
 					}
 				}
 			}
 			catch (Exception ex)
 			{
-				Tracer<AppBootstrapper>.WriteError("Cannot delete content of Updates folder!", new object[]
-				{
-					ex
-				});
+				Tracer<AppBootstrapper>.WriteError("Cannot delete content of Updates folder!", new object[] { ex });
 			}
 		}
 
-		// Token: 0x0600001D RID: 29 RVA: 0x00002674 File Offset: 0x00000874
+		// Token: 0x0600073F RID: 1855 RVA: 0x000209BC File Offset: 0x0001EBBC
 		protected void ConfigureLogging()
 		{
 			try
 			{
-				if (Settings.Default.TraceEnabled)
+				bool traceEnabled = Settings.Default.TraceEnabled;
+				if (traceEnabled)
 				{
 					TraceManager.Instance.EnableDiagnosticLogs(Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.AppDataPath(SpecialFolder.Traces), Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.AppNamePrefix);
 					Tracer<AppBootstrapper>.WriteInformation("App version: {0} (running on: {1})", new object[]
@@ -272,13 +282,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 			}
 		}
 
-		// Token: 0x0600001E RID: 30 RVA: 0x00002730 File Offset: 0x00000930
+		// Token: 0x06000740 RID: 1856 RVA: 0x00020A3C File Offset: 0x0001EC3C
 		protected void ConfigureCommands()
 		{
 			Tracer<AppBootstrapper>.LogEntry("ConfigureCommands");
 			List<Type> list = (from type in Assembly.GetExecutingAssembly().GetTypes()
-			where typeof(IController).IsAssignableFrom(type) && type.FullName.Contains("Microsoft.WindowsDeviceRecoveryTool.Controllers")
-			select type).ToList<Type>();
+				where typeof(IController).IsAssignableFrom(type) && type.FullName.Contains("Microsoft.WindowsDeviceRecoveryTool.Controllers")
+				select type).ToList<Type>();
 			foreach (Type type2 in list)
 			{
 				this.Container.GetExportedValue<IController>(type2.FullName);
@@ -287,21 +297,21 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 			Tracer<AppBootstrapper>.LogExit("ConfigureCommands");
 		}
 
-		// Token: 0x0600001F RID: 31 RVA: 0x000027F0 File Offset: 0x000009F0
+		// Token: 0x06000741 RID: 1857 RVA: 0x00020AF8 File Offset: 0x0001ECF8
 		protected void ConfigureDispacher()
 		{
 			AppDispatcher.Initialize(Dispatcher.CurrentDispatcher);
 		}
 
-		// Token: 0x06000020 RID: 32 RVA: 0x00002800 File Offset: 0x00000A00
+		// Token: 0x06000742 RID: 1858 RVA: 0x00020B08 File Offset: 0x0001ED08
 		protected void ConfigureMef()
 		{
-			AggregateCatalog catalog = new AggregateCatalog(new ComposablePartCatalog[]
+			AggregateCatalog aggregateCatalog = new AggregateCatalog(new ComposablePartCatalog[]
 			{
 				new AssemblyCatalog(Assembly.GetExecutingAssembly()),
 				new DirectoryCatalog(Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.AppPath, "Microsoft.WindowsDeviceRecoveryTool*.dll")
 			});
-			this.Container = new CompositionContainer(catalog, new ExportProvider[0]);
+			this.Container = new CompositionContainer(aggregateCatalog, new ExportProvider[0]);
 			this.Container.ComposeExportedValue(this.Container);
 			try
 			{
@@ -316,7 +326,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 			Tracer<AppBootstrapper>.WriteInformation("The container configured.");
 		}
 
-		// Token: 0x06000021 RID: 33 RVA: 0x000028D0 File Offset: 0x00000AD0
+		// Token: 0x06000743 RID: 1859 RVA: 0x00020BD4 File Offset: 0x0001EDD4
 		protected void ConfigureApplication()
 		{
 			Tracer<AppBootstrapper>.LogEntry("ConfigureApplication");
@@ -328,7 +338,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 			Tracer<AppBootstrapper>.LogExit("ConfigureApplication");
 		}
 
-		// Token: 0x06000022 RID: 34 RVA: 0x00002954 File Offset: 0x00000B54
+		// Token: 0x06000744 RID: 1860 RVA: 0x00020C58 File Offset: 0x0001EE58
 		protected void ConfigureShellWindow()
 		{
 			Tracer<AppBootstrapper>.LogEntry("ConfigureShellWindow");
@@ -340,41 +350,38 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 			Tracer<AppBootstrapper>.LogExit("ConfigureShellWindow");
 		}
 
-		// Token: 0x06000023 RID: 35 RVA: 0x000029DC File Offset: 0x00000BDC
+		// Token: 0x06000745 RID: 1861 RVA: 0x00020CE0 File Offset: 0x0001EEE0
 		protected void OnWindowClosing(object sender, CancelEventArgs e)
 		{
 			e.Cancel = true;
-			//RnD
-			//this.CommandRepository.Run((AppController c) => c.CloseAppOperations(this.ShellWindow, CancellationToken.None));
+			this.CommandRepository.Run((AppController c) => c.CloseAppOperations(this.ShellWindow, CancellationToken.None));
 			Tracer<AppBootstrapper>.WriteInformation("Starting closing App.");
 		}
 
-		// Token: 0x06000024 RID: 36 RVA: 0x00002A90 File Offset: 0x00000C90
+		// Token: 0x06000746 RID: 1862 RVA: 0x00020D8B File Offset: 0x0001EF8B
 		protected void OnCurrentDomainUnhandledException(object sender, UnhandledExceptionEventArgs e)
 		{
 			this.OnExceptionOccured(e.ExceptionObject as Exception);
 		}
 
-		// Token: 0x06000025 RID: 37 RVA: 0x00002AA5 File Offset: 0x00000CA5
+		// Token: 0x06000747 RID: 1863 RVA: 0x00020DA0 File Offset: 0x0001EFA0
 		protected void OnUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
 		{
 			e.Handled = true;
 			this.OnExceptionOccured(e.Exception);
 		}
 
-		// Token: 0x06000026 RID: 38 RVA: 0x00002AC0 File Offset: 0x00000CC0
+		// Token: 0x06000748 RID: 1864 RVA: 0x00020DB8 File Offset: 0x0001EFB8
 		private void OnExceptionOccured(Exception exception)
 		{
 			Tracer<AppBootstrapper>.WriteError(exception);
 			ErrorView exportedValue = this.Container.GetExportedValue<ErrorView>();
 			ErrorTemplateSelector errorTemplateSelector = exportedValue.Resources["ErrorSelector"] as ErrorTemplateSelector;
-			if (errorTemplateSelector != null 
-				&& errorTemplateSelector.IsImplemented(exception))
+			bool flag = errorTemplateSelector != null && errorTemplateSelector.IsImplemented(exception);
+			if (flag)
 			{
 				this.EventAggregator.Publish<ErrorMessage>(new ErrorMessage(exception));
-				
-				//RnD
-				//this.CommandRepository.Run((AppController c) => c.SwitchToState("ErrorState"));
+				this.CommandRepository.Run((AppController c) => c.SwitchToState("ErrorState"));
 			}
 			else
 			{
@@ -382,21 +389,23 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 			}
 		}
 
-		// Token: 0x06000027 RID: 39 RVA: 0x00002B9C File Offset: 0x00000D9C
+		// Token: 0x06000749 RID: 1865 RVA: 0x00020E84 File Offset: 0x0001F084
 		private void ShowSthWentWrongMessage(Exception ex)
 		{
-			if (this.isLoggerConfigured)
+			bool flag = this.isLoggerConfigured;
+			if (flag)
 			{
 				Tracer<AppBootstrapper>.WriteError(ex);
 			}
 			this.ShowSthWentWrongMessage(ex.Message);
 		}
 
-		// Token: 0x06000028 RID: 40 RVA: 0x00002BD0 File Offset: 0x00000DD0
+		// Token: 0x0600074A RID: 1866 RVA: 0x00020EB4 File Offset: 0x0001F0B4
 		private void ShowSthWentWrongMessage(string message)
 		{
 			ExtendedMessageBox extendedMessageBox = new ExtendedMessageBox();
-			if (this.ShellWindow != null && this.ShellWindow.IsLoaded)
+			bool flag = this.ShellWindow != null && this.ShellWindow.IsLoaded;
+			if (flag)
 			{
 				extendedMessageBox.Owner = this.ShellWindow;
 			}
@@ -404,38 +413,39 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 			extendedMessageBox.MessageBoxAdvance = message;
 			extendedMessageBox.Title = LocalizationManager.GetTranslation("Error");
 			extendedMessageBox.ShowDialog();
-			if ((this.ShellWindow == null || !this.ShellWindow.IsLoaded) && this.Application != null)
+			bool flag2 = (this.ShellWindow == null || !this.ShellWindow.IsLoaded) && this.Application != null;
+			if (flag2)
 			{
 				this.Application.Shutdown();
 			}
 		}
 
-		// Token: 0x06000029 RID: 41 RVA: 0x00002C76 File Offset: 0x00000E76
+		// Token: 0x0600074B RID: 1867 RVA: 0x00020F55 File Offset: 0x0001F155
 		private void ShowSplashScreen()
 		{
 			this.splashScreen = new SplashScreen("Resources/splashScreen.png");
 			this.splashScreen.Show(false);
 		}
 
-		// Token: 0x0600002A RID: 42 RVA: 0x00002C96 File Offset: 0x00000E96
+		// Token: 0x0600074C RID: 1868 RVA: 0x00020F75 File Offset: 0x0001F175
 		private void CloseSplashScreen()
 		{
 			this.splashScreen.Close(new TimeSpan(100L));
 		}
 
-		// Token: 0x04000002 RID: 2
+		// Token: 0x0400032B RID: 811
 		private static bool? isInDesignMode;
 
-		// Token: 0x04000003 RID: 3
+		// Token: 0x0400032C RID: 812
 		private Thread businessLogicHostThread;
 
-		// Token: 0x04000004 RID: 4
+		// Token: 0x0400032D RID: 813
 		private LogicContext logicContext;
 
-		// Token: 0x04000005 RID: 5
+		// Token: 0x0400032E RID: 814
 		private bool isLoggerConfigured;
 
-		// Token: 0x04000006 RID: 6
+		// Token: 0x0400032F RID: 815
 		private SplashScreen splashScreen;
 	}
 }

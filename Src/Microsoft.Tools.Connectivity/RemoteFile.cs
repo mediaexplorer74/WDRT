@@ -142,7 +142,7 @@ namespace Microsoft.Tools.Connectivity
 			if (this.RemoteDevice.Protocol != RemoteDevice.TransportProtocol.Ssh)
 			{
 				string reply = null;
-				CallbackHandler outputCallback = new CallbackHandler(delegate(uint flags, string data)
+				CallbackHandler callbackHandler = new CallbackHandler(delegate(uint flags, string data)
 				{
 					reply += data;
 				});
@@ -150,23 +150,11 @@ namespace Microsoft.Tools.Connectivity
 				uint num = 0U;
 				try
 				{
-					//RnD
-					num = this.RemoteDevice.SirepClient.LaunchWithOutput
-						(
-						(uint)this.Timeout.TotalMilliseconds, "\\windows\\system32\\cmd.exe", 
-						text, 
-						Path.GetDirectoryName("\\windows\\system32\\cmd.exe"), 
-						0U, 
-						null/*outputCallback*/
-						);
+					num = this.RemoteDevice.SirepClient.LaunchWithOutput((uint)this.Timeout.TotalMilliseconds, "\\windows\\system32\\cmd.exe", text, Path.GetDirectoryName("\\windows\\system32\\cmd.exe"), 0U, callbackHandler);
 				}
 				catch (COMException ex)
 				{
-					this.RemoteDevice.ExceptionHandler(ex, string.Format(CultureInfo.CurrentCulture, "Remote command '{0} {1}' execution failed.", new object[]
-					{
-						"\\windows\\system32\\cmd.exe",
-						text
-					}));
+					this.RemoteDevice.ExceptionHandler(ex, string.Format(CultureInfo.CurrentCulture, "Remote command '{0} {1}' execution failed.", new object[] { "\\windows\\system32\\cmd.exe", text }));
 				}
 				if (num != 0U)
 				{
@@ -177,12 +165,7 @@ namespace Microsoft.Tools.Connectivity
 					{
 						throw new ArgumentException(exceptionForHR.Message, exceptionForHR);
 					}
-					throw new OperationFailedException(string.Format(CultureInfo.CurrentCulture, "Remote command '{0} {1}' execution failed with {2}.", new object[]
-					{
-						"\\windows\\system32\\cmd.exe",
-						text,
-						exceptionForHR
-					}));
+					throw new OperationFailedException(string.Format(CultureInfo.CurrentCulture, "Remote command '{0} {1}' execution failed with {2}.", new object[] { "\\windows\\system32\\cmd.exe", text, exceptionForHR }));
 				}
 			}
 			else
@@ -203,7 +186,7 @@ namespace Microsoft.Tools.Connectivity
 		}
 
 		// Token: 0x0600007C RID: 124 RVA: 0x0000378C File Offset: 0x0000198C
-		public RemoteFileInfo Info()
+		internal RemoteFileInfo Info()
 		{
 			this.RemoteDevice.EnsureConnection();
 			if (this.remoteFileInfo == null && this.RemoteDevice.IsFileInfoSupported)
@@ -233,6 +216,4 @@ namespace Microsoft.Tools.Connectivity
 		// Token: 0x0400009A RID: 154
 		private RemoteFileInfo remoteFileInfo;
 	}
-
-   
 }

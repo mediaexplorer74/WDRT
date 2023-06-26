@@ -8,10 +8,10 @@ using System.Text;
 
 namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 {
-	// Token: 0x02000015 RID: 21
+	// Token: 0x0200001B RID: 27
 	public class OfflineRegUtils
 	{
-		// Token: 0x060000AF RID: 175 RVA: 0x00005C24 File Offset: 0x00003E24
+		// Token: 0x060000D0 RID: 208 RVA: 0x000066AC File Offset: 0x000048AC
 		public static IntPtr CreateHive()
 		{
 			IntPtr zero = IntPtr.Zero;
@@ -23,7 +23,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return zero;
 		}
 
-		// Token: 0x060000B0 RID: 176 RVA: 0x00005C4C File Offset: 0x00003E4C
+		// Token: 0x060000D1 RID: 209 RVA: 0x000066D4 File Offset: 0x000048D4
 		public static IntPtr CreateKey(IntPtr handle, string keyName)
 		{
 			if (handle == IntPtr.Zero)
@@ -36,7 +36,8 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 			IntPtr zero = IntPtr.Zero;
 			uint num = 0U;
-			foreach (string text in keyName.Split(OfflineRegUtils.BSLASH_DELIMITER))
+			string[] array = keyName.Split(OfflineRegUtils.BSLASH_DELIMITER);
+			foreach (string text in array)
 			{
 				int num2 = OffRegNativeMethods.ORCreateKey(handle, keyName, null, 0U, null, ref zero, ref num);
 				if (num2 != 0)
@@ -47,7 +48,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return zero;
 		}
 
-		// Token: 0x060000B1 RID: 177 RVA: 0x00005CCC File Offset: 0x00003ECC
+		// Token: 0x060000D2 RID: 210 RVA: 0x0000675C File Offset: 0x0000495C
 		public static void SetValue(IntPtr handle, string valueName, RegistryValueType type, byte[] value)
 		{
 			if (handle == IntPtr.Zero)
@@ -65,7 +66,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x060000B2 RID: 178 RVA: 0x00005D14 File Offset: 0x00003F14
+		// Token: 0x060000D3 RID: 211 RVA: 0x000067A4 File Offset: 0x000049A4
 		public static void DeleteValue(IntPtr handle, string valueName)
 		{
 			if (handle == IntPtr.Zero)
@@ -83,7 +84,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x060000B3 RID: 179 RVA: 0x00005D58 File Offset: 0x00003F58
+		// Token: 0x060000D4 RID: 212 RVA: 0x000067E8 File Offset: 0x000049E8
 		public static void DeleteKey(IntPtr handle, string keyName)
 		{
 			if (handle == IntPtr.Zero)
@@ -97,7 +98,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x060000B4 RID: 180 RVA: 0x00005D90 File Offset: 0x00003F90
+		// Token: 0x060000D5 RID: 213 RVA: 0x00006820 File Offset: 0x00004A20
 		public static IntPtr OpenHive(string hivefile)
 		{
 			if (string.IsNullOrEmpty(hivefile))
@@ -113,7 +114,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return zero;
 		}
 
-		// Token: 0x060000B5 RID: 181 RVA: 0x00005DCC File Offset: 0x00003FCC
+		// Token: 0x060000D6 RID: 214 RVA: 0x0000685C File Offset: 0x00004A5C
 		public static void SaveHive(IntPtr handle, string path, int osMajor, int osMinor)
 		{
 			if (handle == IntPtr.Zero)
@@ -135,7 +136,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x060000B6 RID: 182 RVA: 0x00005E28 File Offset: 0x00004028
+		// Token: 0x060000D7 RID: 215 RVA: 0x000068B8 File Offset: 0x00004AB8
 		public static void CloseHive(IntPtr handle)
 		{
 			if (handle == IntPtr.Zero)
@@ -149,7 +150,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x060000B7 RID: 183 RVA: 0x00005E60 File Offset: 0x00004060
+		// Token: 0x060000D8 RID: 216 RVA: 0x000068F0 File Offset: 0x00004AF0
 		public static IntPtr OpenKey(IntPtr handle, string subKeyName)
 		{
 			if (handle == IntPtr.Zero)
@@ -169,7 +170,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return zero;
 		}
 
-		// Token: 0x060000B8 RID: 184 RVA: 0x00005EB8 File Offset: 0x000040B8
+		// Token: 0x060000D9 RID: 217 RVA: 0x00006948 File Offset: 0x00004B48
 		public static void CloseKey(IntPtr handle)
 		{
 			if (handle == IntPtr.Zero)
@@ -183,37 +184,37 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x060000B9 RID: 185 RVA: 0x00005EEE File Offset: 0x000040EE
+		// Token: 0x060000DA RID: 218 RVA: 0x0000697E File Offset: 0x00004B7E
 		public static void ConvertHiveToReg(string inputHiveFile, string outputRegFile)
 		{
-			new HiveToRegConverter(inputHiveFile).ConvertToReg(outputRegFile);
+			new HiveToRegConverter(inputHiveFile, null).ConvertToReg(outputRegFile, null, false);
 		}
 
-		// Token: 0x060000BA RID: 186 RVA: 0x00005EFC File Offset: 0x000040FC
+		// Token: 0x060000DB RID: 219 RVA: 0x0000698F File Offset: 0x00004B8F
 		public static void ConvertHiveToReg(string inputHiveFile, string outputRegFile, string keyPrefix)
 		{
-			new HiveToRegConverter(inputHiveFile, keyPrefix).ConvertToReg(outputRegFile);
+			new HiveToRegConverter(inputHiveFile, keyPrefix).ConvertToReg(outputRegFile, null, false);
 		}
 
-		// Token: 0x060000BB RID: 187 RVA: 0x00005F0B File Offset: 0x0000410B
+		// Token: 0x060000DC RID: 220 RVA: 0x000069A0 File Offset: 0x00004BA0
 		public static void ConvertHiveToReg(string inputHiveFile, string outputRegFile, string keyPrefix, bool appendExisting)
 		{
 			new HiveToRegConverter(inputHiveFile, keyPrefix).ConvertToReg(outputRegFile, null, appendExisting);
 		}
 
-		// Token: 0x060000BC RID: 188 RVA: 0x00005F1C File Offset: 0x0000411C
+		// Token: 0x060000DD RID: 221 RVA: 0x000069B1 File Offset: 0x00004BB1
 		public static string ConvertByteArrayToRegStrings(byte[] data)
 		{
 			return OfflineRegUtils.ConvertByteArrayToRegStrings(data, 40);
 		}
 
-		// Token: 0x060000BD RID: 189 RVA: 0x00005F28 File Offset: 0x00004128
+		// Token: 0x060000DE RID: 222 RVA: 0x000069BC File Offset: 0x00004BBC
 		public static string ConvertByteArrayToRegStrings(byte[] data, int maxOnALine)
 		{
-			string result = string.Empty;
+			string text = string.Empty;
 			if (-1 == maxOnALine)
 			{
-				result = BitConverter.ToString(data).Replace('-', ',');
+				text = BitConverter.ToString(data).Replace('-', ',');
 			}
 			else
 			{
@@ -222,37 +223,37 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 				StringBuilder stringBuilder = new StringBuilder();
 				while (i > 0)
 				{
-					int num2 = (i > maxOnALine) ? maxOnALine : i;
-					string text = BitConverter.ToString(data, num, num2);
+					int num2 = ((i > maxOnALine) ? maxOnALine : i);
+					string text2 = BitConverter.ToString(data, num, num2);
 					num += num2;
 					i -= num2;
-					text = text.Replace('-', ',');
-					stringBuilder.Append(text);
+					text2 = text2.Replace('-', ',');
+					stringBuilder.Append(text2);
 					if (i > 0)
 					{
 						stringBuilder.Append(",\\");
 						stringBuilder.AppendLine();
 					}
 				}
-				result = stringBuilder.ToString();
+				text = stringBuilder.ToString();
 			}
-			return result;
+			return text;
 		}
 
-		// Token: 0x060000BE RID: 190 RVA: 0x00005FB8 File Offset: 0x000041B8
+		// Token: 0x060000DF RID: 223 RVA: 0x00006A4C File Offset: 0x00004C4C
 		public static RegistryValueType GetValueType(IntPtr handle, string valueName)
 		{
-			uint result = 0U;
 			uint num = 0U;
-			int num2 = OffRegNativeMethods.ORGetValue(handle, null, valueName, out result, null, ref num);
-			if (num2 != 0)
+			uint num2 = 0U;
+			int num3 = OffRegNativeMethods.ORGetValue(handle, null, valueName, out num, null, ref num2);
+			if (num3 != 0)
 			{
-				throw new Win32Exception(num2);
+				throw new Win32Exception(num3);
 			}
-			return (RegistryValueType)result;
+			return (RegistryValueType)num;
 		}
 
-		// Token: 0x060000BF RID: 191 RVA: 0x00005FE4 File Offset: 0x000041E4
+		// Token: 0x060000E0 RID: 224 RVA: 0x00006A78 File Offset: 0x00004C78
 		public static List<KeyValuePair<string, RegistryValueType>> GetValueNamesAndTypes(IntPtr handle)
 		{
 			if (handle == IntPtr.Zero)
@@ -261,6 +262,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 			uint num = 0U;
 			StringBuilder stringBuilder = new StringBuilder(1024);
+			new List<string>();
 			List<KeyValuePair<string, RegistryValueType>> list = new List<KeyValuePair<string, RegistryValueType>>();
 			int num3;
 			for (;;)
@@ -268,18 +270,19 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 				uint capacity = (uint)stringBuilder.Capacity;
 				uint num2 = 0U;
 				num3 = OffRegNativeMethods.OREnumValue(handle, num, stringBuilder, ref capacity, out num2, IntPtr.Zero, IntPtr.Zero);
-				if (num3 != 0)
+				int num4 = num3;
+				if (num4 != 0)
 				{
-					if (num3 != 259)
+					if (num4 != 259)
 					{
 						break;
 					}
 				}
 				else
 				{
-					string key = stringBuilder.ToString();
-					RegistryValueType value = (RegistryValueType)num2;
-					list.Add(new KeyValuePair<string, RegistryValueType>(key, value));
+					string text = stringBuilder.ToString();
+					RegistryValueType registryValueType = (RegistryValueType)num2;
+					list.Add(new KeyValuePair<string, RegistryValueType>(text, registryValueType));
 					num += 1U;
 				}
 				if (num3 == 259)
@@ -287,26 +290,27 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 					return list;
 				}
 			}
-			throw new Win32Exception(num3);
+			Win32Exception ex = new Win32Exception(num3);
+			throw ex;
 		}
 
-		// Token: 0x060000C0 RID: 192 RVA: 0x00006080 File Offset: 0x00004280
+		// Token: 0x060000E1 RID: 225 RVA: 0x00006B2C File Offset: 0x00004D2C
 		public static string[] GetValueNames(IntPtr handle)
 		{
 			if (handle == IntPtr.Zero)
 			{
-				throw new ArgumentNullException("handle", "Handle cannot be empty.");
+				throw new ArgumentNullException("handle");
 			}
 			return (from a in OfflineRegUtils.GetValueNamesAndTypes(handle)
-			select a.Key).ToArray<string>();
+				select a.Key).ToArray<string>();
 		}
 
-		// Token: 0x060000C1 RID: 193 RVA: 0x000060DC File Offset: 0x000042DC
+		// Token: 0x060000E2 RID: 226 RVA: 0x00006B80 File Offset: 0x00004D80
 		public static string GetClass(IntPtr handle)
 		{
 			if (handle == IntPtr.Zero)
 			{
-				throw new ArgumentNullException("handle", "Handle cannot be empty.");
+				throw new ArgumentNullException("handle");
 			}
 			StringBuilder stringBuilder = new StringBuilder(128);
 			uint num = (uint)stringBuilder.Capacity;
@@ -326,12 +330,12 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return stringBuilder.ToString();
 		}
 
-		// Token: 0x060000C2 RID: 194 RVA: 0x000061C8 File Offset: 0x000043C8
+		// Token: 0x060000E3 RID: 227 RVA: 0x00006C64 File Offset: 0x00004E64
 		public static byte[] GetValue(IntPtr handle, string valueName)
 		{
 			if (handle == IntPtr.Zero)
 			{
-				throw new ArgumentNullException("handle", "Handle cannot be empty.");
+				throw new ArgumentNullException("handle");
 			}
 			uint num = 0U;
 			uint num2 = 0U;
@@ -349,12 +353,12 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return array;
 		}
 
-		// Token: 0x060000C3 RID: 195 RVA: 0x00006230 File Offset: 0x00004430
+		// Token: 0x060000E4 RID: 228 RVA: 0x00006CC8 File Offset: 0x00004EC8
 		public static string[] GetSubKeys(IntPtr registryKey)
 		{
 			if (registryKey == IntPtr.Zero)
 			{
-				throw new ArgumentNullException("registryKey", "registryKey pointer cannot be empty.");
+				throw new ArgumentNullException("handle");
 			}
 			uint num = 0U;
 			StringBuilder stringBuilder = new StringBuilder(1024);
@@ -366,9 +370,10 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 				IntPtr zero = IntPtr.Zero;
 				uint capacity = (uint)stringBuilder.Capacity;
 				num3 = OffRegNativeMethods.OREnumKey(registryKey, num, stringBuilder, ref capacity, null, ref num2, ref zero);
-				if (num3 != 0)
+				int num4 = num3;
+				if (num4 != 0)
 				{
-					if (num3 != 259)
+					if (num4 != 259)
 					{
 						break;
 					}
@@ -383,12 +388,13 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 					goto Block_4;
 				}
 			}
-			throw new Win32Exception(num3);
+			Win32Exception ex = new Win32Exception(num3);
+			throw ex;
 			Block_4:
 			return list.ToArray();
 		}
 
-		// Token: 0x060000C4 RID: 196 RVA: 0x000062C8 File Offset: 0x000044C8
+		// Token: 0x060000E5 RID: 229 RVA: 0x00006D64 File Offset: 0x00004F64
 		public static byte[] GetRawRegistrySecurity(IntPtr handle)
 		{
 			if (handle == IntPtr.Zero)
@@ -411,7 +417,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return array;
 		}
 
-		// Token: 0x060000C5 RID: 197 RVA: 0x00006328 File Offset: 0x00004528
+		// Token: 0x060000E6 RID: 230 RVA: 0x00006DC8 File Offset: 0x00004FC8
 		public static void SetRawRegistrySecurity(IntPtr handle, byte[] buf)
 		{
 			if (handle == IntPtr.Zero)
@@ -425,7 +431,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x060000C6 RID: 198 RVA: 0x00006364 File Offset: 0x00004564
+		// Token: 0x060000E7 RID: 231 RVA: 0x00006E04 File Offset: 0x00005004
 		public static RegistrySecurity GetRegistrySecurity(IntPtr handle)
 		{
 			if (handle == IntPtr.Zero)
@@ -439,23 +445,19 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return registrySecurity;
 		}
 
-		// Token: 0x060000C7 RID: 199 RVA: 0x000063A8 File Offset: 0x000045A8
+		// Token: 0x060000E8 RID: 232 RVA: 0x00006E4C File Offset: 0x0000504C
 		public static int GetVirtualFlags(IntPtr handle)
 		{
 			if (handle == IntPtr.Zero)
 			{
 				throw new ArgumentNullException("handle");
 			}
-			int result = 0;
-			int num = OffRegNativeMethods.ORGetVirtualFlags(handle, ref result);
-			if (num != 0)
-			{
-				throw new Win32Exception(num);
-			}
-			return result;
+			int num = 0;
+			OffRegNativeMethods.ORGetVirtualFlags(handle, ref num);
+			return num;
 		}
 
-		// Token: 0x060000C8 RID: 200 RVA: 0x000063E4 File Offset: 0x000045E4
+		// Token: 0x060000E9 RID: 233 RVA: 0x00006E80 File Offset: 0x00005080
 		public static int ExtractFromHive(string hivePath, RegistryValueType type, string targetPath)
 		{
 			if (string.IsNullOrEmpty("hivePath"))
@@ -470,13 +472,13 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			{
 				throw new FileNotFoundException("Hive file {0} does not exist", hivePath);
 			}
-			int result = 0;
+			int num = 0;
 			bool flag = false;
-			using (ORRegistryKey orregistryKey = ORRegistryKey.OpenHive(hivePath))
+			using (ORRegistryKey orregistryKey = ORRegistryKey.OpenHive(hivePath, null))
 			{
-				using (ORRegistryKey orregistryKey2 = ORRegistryKey.CreateEmptyHive())
+				using (ORRegistryKey orregistryKey2 = ORRegistryKey.CreateEmptyHive(null))
 				{
-					flag = (0 < (result = OfflineRegUtils.ExtractFromHiveRecursive(orregistryKey, type, orregistryKey2)));
+					flag = 0 < (num = OfflineRegUtils.ExtractFromHiveRecursive(orregistryKey, type, orregistryKey2));
 					if (flag)
 					{
 						orregistryKey2.SaveHive(targetPath);
@@ -487,31 +489,33 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 					orregistryKey.SaveHive(hivePath);
 				}
 			}
-			return result;
+			return num;
 		}
 
-		// Token: 0x060000C9 RID: 201 RVA: 0x0000649C File Offset: 0x0000469C
+		// Token: 0x060000EA RID: 234 RVA: 0x00006F54 File Offset: 0x00005154
 		private static int ExtractFromHiveRecursive(ORRegistryKey srcHiveRoot, RegistryValueType type, ORRegistryKey dstHiveRoot)
 		{
 			int num = 0;
 			string fullName = srcHiveRoot.FullName;
-			foreach (string text in from p in srcHiveRoot.ValueNameAndTypes
-			where p.Value == RegistryValueType.MultiString
-			select p into q
-			select q.Key)
+			List<KeyValuePair<string, RegistryValueType>> valueNameAndTypes = srcHiveRoot.ValueNameAndTypes;
+			IEnumerable<string> enumerable = from p in valueNameAndTypes
+				where p.Value == RegistryValueType.MultiString
+				select p into q
+				select q.Key;
+			foreach (string text in enumerable)
 			{
-				string valueName = string.IsNullOrEmpty(text) ? null : text;
-				string[] multiStringValue = srcHiveRoot.GetMultiStringValue(valueName);
+				string text2 = (string.IsNullOrEmpty(text) ? null : text);
+				string[] multiStringValue = srcHiveRoot.GetMultiStringValue(text2);
 				using (ORRegistryKey orregistryKey = dstHiveRoot.CreateSubKey(fullName))
 				{
-					orregistryKey.SetValue(valueName, multiStringValue);
+					orregistryKey.SetValue(text2, multiStringValue);
 					num++;
 				}
-				srcHiveRoot.DeleteValue(valueName);
+				srcHiveRoot.DeleteValue(text2);
 			}
-			foreach (string subkeyname in srcHiveRoot.SubKeys)
+			foreach (string text3 in srcHiveRoot.SubKeys)
 			{
-				using (ORRegistryKey orregistryKey2 = srcHiveRoot.OpenSubKey(subkeyname))
+				using (ORRegistryKey orregistryKey2 = srcHiveRoot.OpenSubKey(text3))
 				{
 					num += OfflineRegUtils.ExtractFromHiveRecursive(orregistryKey2, type, dstHiveRoot);
 				}
@@ -519,10 +523,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return num;
 		}
 
-		// Token: 0x04000041 RID: 65
-		private static readonly char[] BSLASH_DELIMITER = new char[]
-		{
-			'\\'
-		};
+		// Token: 0x04000057 RID: 87
+		private static readonly char[] BSLASH_DELIMITER = new char[] { '\\' };
 	}
 }

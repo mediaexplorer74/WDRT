@@ -1,18 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{BB6E51C1-BC8B-40D8-8777-27BF97B2105C}</ProjectGuid>
+    <ProjectGuid>{8C726962-D7A3-4054-B90F-0583259F9672}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation</RootNamespace>
     <AssemblyName>Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFramework>net48</TargetFramework>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+  <PropertyGroup>
+    <NoStdLib>True</NoStdLib>
+    <EnableDefaultItems>False</EnableDefaultItems>
+  </PropertyGroup>
+  <PropertyGroup />
+
+   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
@@ -21,6 +25,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -30,24 +35,19 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.Linq" />
-  </ItemGroup>
-  <ItemGroup>
-    <AppDesigner Include="Properties\" />
-  </ItemGroup>
+ 
   <ItemGroup>
     <Compile Include="BitmapExtensions.cs" />
     <Compile Include="Connectivity\LumiaConnectivity.cs" />
     <Compile Include="LumiaSupport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Services\DataPackageService.cs" />
     <Compile Include="Services\LumiaAdaptation.cs" />
     <Compile Include="Services\ProcessManager.cs" />
@@ -56,40 +56,59 @@
     <Compile Include="Services\Thor2Service.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resources" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\LumiaLogo.png" />
     <EmbeddedResource Include="Resources\MicrosoftLumia.png" />
     <EmbeddedResource Include="Resources\NokiaLumia.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Common\Microsoft.WindowsDeviceRecoveryTool.Common.csproj">
-      <Project>{64a43b64-7647-425c-b0e6-2e27da6dbdda}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9660}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Core\Microsoft.WindowsDeviceRecoveryTool.Core.csproj">
-      <Project>{55a80c0e-e3d4-43eb-8c91-d6ef18bfa9dc}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9661}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.LogicCommon\Microsoft.WindowsDeviceRecoveryTool.LogicCommon.csproj">
-      <Project>{2adf7f14-aa94-4a70-b28f-668964626e8f}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9670}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.LogicCommon</Name>
     </ProjectReference>
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Lucid\Microsoft.WindowsDeviceRecoveryTool.Lucid.csproj">
-      <Project>{adee4bcd-be8f-4ec5-8d00-aa6442b86415}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9671}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.Lucid</Name>
     </ProjectReference>
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Model\Microsoft.WindowsDeviceRecoveryTool.Model.csproj">
-      <Project>{0fcb723b-55fa-4794-8262-8ec9d399f6e3}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9675}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\mscorlib\mscorlib.csproj">
+      <Project>{8C726962-D7A3-4054-B90F-0583259F968E}</Project>
+      <Name>mscorlib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Nokia.Lucid\Nokia.Lucid.csproj">
-      <Project>{0ba1a6f4-e417-4ab3-ab1d-264cc7735f25}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9683}</Project>
       <Name>Nokia.Lucid</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nokia.Mira\Nokia.Mira.csproj">
-      <Project>{a3fd0999-a422-44d1-9c14-23a16af09d58}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9686}</Project>
       <Name>Nokia.Mira</Name>
     </ProjectReference>
+    <ProjectReference Include="..\System.Drawing\System.Drawing.csproj">
+      <Project>{8C726962-D7A3-4054-B90F-0583259F968F}</Project>
+      <Name>System.Drawing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\System\System.csproj">
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9692}</Project>
+      <Name>System</Name>
+    </ProjectReference>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
 </Project>

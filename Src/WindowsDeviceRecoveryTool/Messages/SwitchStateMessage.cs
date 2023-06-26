@@ -2,23 +2,23 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Messages
 {
-	// Token: 0x0200006F RID: 111
+	// Token: 0x020000B6 RID: 182
 	public class SwitchStateMessage
 	{
-		// Token: 0x06000333 RID: 819 RVA: 0x00010458 File Offset: 0x0000E658
+		// Token: 0x060005B1 RID: 1457 RVA: 0x00016287 File Offset: 0x00014487
 		public SwitchStateMessage()
 		{
 		}
 
-		// Token: 0x06000334 RID: 820 RVA: 0x00010463 File Offset: 0x0000E663
+		// Token: 0x060005B2 RID: 1458 RVA: 0x0001B8CD File Offset: 0x00019ACD
 		public SwitchStateMessage(string state)
 		{
 			this.State = state;
 		}
 
-		// Token: 0x170000A4 RID: 164
-		// (get) Token: 0x06000335 RID: 821 RVA: 0x00010478 File Offset: 0x0000E678
-		// (set) Token: 0x06000336 RID: 822 RVA: 0x0001048F File Offset: 0x0000E68F
+		// Token: 0x17000154 RID: 340
+		// (get) Token: 0x060005B3 RID: 1459 RVA: 0x0001B8DF File Offset: 0x00019ADF
+		// (set) Token: 0x060005B4 RID: 1460 RVA: 0x0001B8E7 File Offset: 0x00019AE7
 		public string State { get; set; }
 	}
 }

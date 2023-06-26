@@ -6,7 +6,8 @@ namespace FFUComponents
 	internal class AsyncResult<TResult> : AsyncResultNoResult
 	{
 		// Token: 0x06000009 RID: 9 RVA: 0x00002242 File Offset: 0x00000442
-		public AsyncResult(AsyncCallback asyncCallback, object state) : base(asyncCallback, state)
+		public AsyncResult(AsyncCallback asyncCallback, object state)
+			: base(asyncCallback, state)
 		{
 		}
 

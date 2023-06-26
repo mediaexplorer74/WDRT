@@ -54,8 +54,8 @@ namespace Nokia.Lucid.TcpServer
 			try
 			{
 				IL_4D:
-				IPEndPoint localEP = new IPEndPoint(IPAddress.Any, portNumber);
-				this.listener.Bind(localEP);
+				IPEndPoint ipendPoint = new IPEndPoint(IPAddress.Any, portNumber);
+				this.listener.Bind(ipendPoint);
 			}
 			catch (SocketException ex)
 			{
@@ -66,9 +66,7 @@ namespace Nokia.Lucid.TcpServer
 				if (ex.ErrorCode == 10048 && portNumber < num)
 				{
 					portNumber++;
-
-					//RnD
-					//goto IL_4D;
+					goto IL_4D;
 				}
 				throw;
 			}
@@ -76,7 +74,7 @@ namespace Nokia.Lucid.TcpServer
 			this.listener.Listen(1);
 			this.cancelServer = new CancellationTokenSource();
 			CancellationToken token = this.cancelServer.Token;
-			this.serverThread = new Task(delegate()
+			this.serverThread = new Task(delegate
 			{
 				this.ServerExecution(token);
 			});
@@ -210,9 +208,9 @@ namespace Nokia.Lucid.TcpServer
 					}
 					else
 					{
-						byte[] dst = new byte[num];
-						Buffer.BlockCopy(array, 0, dst, 0, num);
-						this.SendToDevice(ref dst);
+						byte[] array2 = new byte[num];
+						Buffer.BlockCopy(array, 0, array2, 0, num);
+						this.SendToDevice(ref array2);
 					}
 				}
 				catch (SocketException)

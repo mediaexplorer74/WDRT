@@ -84,21 +84,18 @@ namespace Nokia.Lucid.DeviceInformation
 		// Token: 0x06000098 RID: 152 RVA: 0x00005250 File Offset: 0x00003450
 		public static SP_DEVICE_INTERFACE_DATA GetDeviceInterface(this INativeDeviceInfoSet deviceInfoSet, string path)
 		{
-			SP_DEVICE_INTERFACE_DATA result = new SP_DEVICE_INTERFACE_DATA
+			SP_DEVICE_INTERFACE_DATA sp_DEVICE_INTERFACE_DATA = new SP_DEVICE_INTERFACE_DATA
 			{
 				cbSize = Marshal.SizeOf(typeof(SP_DEVICE_INTERFACE_DATA))
 			};
-			if (SetupApiNativeMethods.SetupDiOpenDeviceInterface(deviceInfoSet.SafeDeviceInfoSetHandle, path, 1, ref result))
+			if (SetupApiNativeMethods.SetupDiOpenDeviceInterface(deviceInfoSet.SafeDeviceInfoSetHandle, path, 1, ref sp_DEVICE_INTERFACE_DATA))
 			{
-				return result;
+				return sp_DEVICE_INTERFACE_DATA;
 			}
 			if (Marshal.GetLastWin32Error() == -536870363)
 			{
-				string message = string.Format(CultureInfo.CurrentCulture, Resources.InvalidOperationException_MessageFormat_CouldNotRetrieveDeviceInfo, new object[]
-				{
-					path
-				});
-				throw new InvalidOperationException(message);
+				string text = string.Format(CultureInfo.CurrentCulture, Resources.InvalidOperationException_MessageFormat_CouldNotRetrieveDeviceInfo, new object[] { path });
+				throw new InvalidOperationException(text);
 			}
 			throw new Win32Exception();
 		}
@@ -106,8 +103,8 @@ namespace Nokia.Lucid.DeviceInformation
 		// Token: 0x06000099 RID: 153 RVA: 0x000052C4 File Offset: 0x000034C4
 		public static void AddDeviceInterfaceClass(this INativeDeviceInfoSet deviceInfoSet, Guid interfaceClass)
 		{
-			IntPtr value = SetupApiNativeMethods.SetupDiGetClassDevsEx(ref interfaceClass, IntPtr.Zero, IntPtr.Zero, 16, deviceInfoSet.SafeDeviceInfoSetHandle, IntPtr.Zero, IntPtr.Zero);
-			if (value == IntPtr.Zero || value == new IntPtr(-1))
+			IntPtr intPtr = SetupApiNativeMethods.SetupDiGetClassDevsEx(ref interfaceClass, IntPtr.Zero, IntPtr.Zero, 16, deviceInfoSet.SafeDeviceInfoSetHandle, IntPtr.Zero, IntPtr.Zero);
+			if (intPtr == IntPtr.Zero || intPtr == new IntPtr(-1))
 			{
 				throw new Win32Exception();
 			}
@@ -139,7 +136,7 @@ namespace Nokia.Lucid.DeviceInformation
 			}
 			IntPtr intPtr = IntPtr.Zero;
 			RuntimeHelpers.PrepareConstrainedRegions();
-			string result;
+			string text2;
 			try
 			{
 				RuntimeHelpers.PrepareConstrainedRegions();
@@ -168,9 +165,9 @@ namespace Nokia.Lucid.DeviceInformation
 				{
 					throw new Win32Exception();
 				}
-				int offset = Marshal.OffsetOf(typeof(SP_DEVICE_INTERFACE_DETAIL_DATA), "DevicePath").ToInt32();
-				string text = Marshal.PtrToStringAuto(intPtr + offset);
-				result = text;
+				int num2 = Marshal.OffsetOf(typeof(SP_DEVICE_INTERFACE_DETAIL_DATA), "DevicePath").ToInt32();
+				string text = Marshal.PtrToStringAuto(intPtr + num2);
+				text2 = text;
 			}
 			finally
 			{
@@ -179,7 +176,7 @@ namespace Nokia.Lucid.DeviceInformation
 					Marshal.FreeHGlobal(intPtr);
 				}
 			}
-			return result;
+			return text2;
 		}
 	}
 }

@@ -10,15 +10,12 @@ using Microsoft.WindowsDeviceRecoveryTool.Framework;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 {
-	// Token: 0x020000C7 RID: 199
+	// Token: 0x02000017 RID: 23
 	[Export]
-	[Region(new string[]
-	{
-		"MainArea"
-	})]
+	[Region(new string[] { "MainArea" })]
 	public partial class DownloadPackageView : Grid
 	{
-		// Token: 0x0600060A RID: 1546 RVA: 0x0001F6AC File Offset: 0x0001D8AC
+		// Token: 0x06000115 RID: 277 RVA: 0x00007FC8 File Offset: 0x000061C8
 		public DownloadPackageView()
 		{
 			this.InitializeComponent();

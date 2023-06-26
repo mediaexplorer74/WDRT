@@ -11,23 +11,24 @@ using System.Windows.Shapes;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 {
-	// Token: 0x0200002D RID: 45
+	// Token: 0x020000CF RID: 207
 	public partial class PhonePowerCanvas : Grid, INotifyPropertyChanged
 	{
-		// Token: 0x06000178 RID: 376 RVA: 0x0000A8E7 File Offset: 0x00008AE7
+		// Token: 0x0600066B RID: 1643 RVA: 0x0001E4AF File Offset: 0x0001C6AF
 		public PhonePowerCanvas()
 		{
 			this.InitializeComponent();
 		}
 
-		// Token: 0x14000003 RID: 3
-		// (add) Token: 0x06000179 RID: 377 RVA: 0x0000A8FC File Offset: 0x00008AFC
-		// (remove) Token: 0x0600017A RID: 378 RVA: 0x0000A938 File Offset: 0x00008B38
+		// Token: 0x1400000C RID: 12
+		// (add) Token: 0x0600066C RID: 1644 RVA: 0x0001E4C0 File Offset: 0x0001C6C0
+		// (remove) Token: 0x0600066D RID: 1645 RVA: 0x0001E4F8 File Offset: 0x0001C6F8
+		[field: DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		// Token: 0x1700004D RID: 77
-		// (get) Token: 0x0600017B RID: 379 RVA: 0x0000A974 File Offset: 0x00008B74
-		// (set) Token: 0x0600017C RID: 380 RVA: 0x0000A996 File Offset: 0x00008B96
+		// Token: 0x17000176 RID: 374
+		// (get) Token: 0x0600066E RID: 1646 RVA: 0x0001E530 File Offset: 0x0001C730
+		// (set) Token: 0x0600066F RID: 1647 RVA: 0x0001E552 File Offset: 0x0001C752
 		public Brush PhoneColor
 		{
 			get
@@ -41,9 +42,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x1700004E RID: 78
-		// (get) Token: 0x0600017D RID: 381 RVA: 0x0000A9B4 File Offset: 0x00008BB4
-		// (set) Token: 0x0600017E RID: 382 RVA: 0x0000A9D6 File Offset: 0x00008BD6
+		// Token: 0x17000177 RID: 375
+		// (get) Token: 0x06000670 RID: 1648 RVA: 0x0001E570 File Offset: 0x0001C770
+		// (set) Token: 0x06000671 RID: 1649 RVA: 0x0001E592 File Offset: 0x0001C792
 		public Brush ButtonColor
 		{
 			get
@@ -57,20 +58,21 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x0600017F RID: 383 RVA: 0x0000A9F4 File Offset: 0x00008BF4
+		// Token: 0x06000672 RID: 1650 RVA: 0x0001E5B0 File Offset: 0x0001C7B0
 		protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
 		{
 			PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-			if (propertyChanged != null)
+			bool flag = propertyChanged != null;
+			if (flag)
 			{
 				propertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 
-		// Token: 0x040000B5 RID: 181
+		// Token: 0x040002EA RID: 746
 		public static readonly DependencyProperty PhoneColorProperty = DependencyProperty.Register("PhoneColor", typeof(Brush), typeof(PhonePowerCanvas), new PropertyMetadata(new SolidColorBrush(Color.FromRgb(0, 0, 0))));
 
-		// Token: 0x040000B6 RID: 182
+		// Token: 0x040002EB RID: 747
 		public static readonly DependencyProperty ButtonColorProperty = DependencyProperty.Register("ButtonColor", typeof(Brush), typeof(PhonePowerCanvas), new PropertyMetadata(new SolidColorBrush(Color.FromRgb(0, 0, 0))));
 	}
 }

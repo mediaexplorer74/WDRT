@@ -5,19 +5,22 @@ using System.Windows.Data;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Styles.Converters
 {
-	// Token: 0x02000016 RID: 22
+	// Token: 0x0200000A RID: 10
 	public class EqualityToBoolConverter : IValueConverter
 	{
-		// Token: 0x06000080 RID: 128 RVA: 0x000039B0 File Offset: 0x00001BB0
+		// Token: 0x06000028 RID: 40 RVA: 0x0000268C File Offset: 0x0000088C
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
 			return parameter != null && parameter.Equals(value);
 		}
 
-		// Token: 0x06000081 RID: 129 RVA: 0x000039D8 File Offset: 0x00001BD8
+		// Token: 0x06000029 RID: 41 RVA: 0x000026B0 File Offset: 0x000008B0
 		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
 		{
-			return (value as bool? == true) ? parameter : DependencyProperty.UnsetValue;
+			bool? flag = value as bool?;
+			bool? flag2 = flag;
+			bool flag3 = true;
+			return ((flag2.GetValueOrDefault() == flag3) & (flag2 != null)) ? parameter : DependencyProperty.UnsetValue;
 		}
 	}
 }

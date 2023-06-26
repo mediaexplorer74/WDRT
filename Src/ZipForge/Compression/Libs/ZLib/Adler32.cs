@@ -13,10 +13,10 @@ namespace ComponentAce.Compression.Libs.ZLib
 				return 1L;
 			}
 			long num = adler & 65535L;
-			long num2 = adler >> 16 & 65535L;
+			long num2 = (adler >> 16) & 65535L;
 			while (len > 0)
 			{
-				int i = (len < 5552) ? len : 5552;
+				int i = ((len < 5552) ? len : 5552);
 				len -= i;
 				while (i >= 16)
 				{
@@ -66,7 +66,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 				num %= 65521L;
 				num2 %= 65521L;
 			}
-			return num2 << 16 | num;
+			return (num2 << 16) | num;
 		}
 
 		// Token: 0x04000435 RID: 1077

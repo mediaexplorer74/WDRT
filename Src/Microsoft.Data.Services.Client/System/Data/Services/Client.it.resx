@@ -1,0 +1,886 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ALinq_AnyAllNotSupportedInOrderBy" xml:space="preserve">
+    <value>Il metodo '{0}' non è supportato dall'opzione query 'orderby'.</value>
+  </data>
+  <data name="ALinq_BinaryNotSupported" xml:space="preserve">
+    <value>Operatore binario '{0}' non supportato.</value>
+  </data>
+  <data name="ALinq_CanOnlyApplyOneKeyPredicate" xml:space="preserve">
+    <value>Impossibile specificare più predicati chiave per lo stesso set di entità.</value>
+  </data>
+  <data name="ALinq_CanOnlyProjectTheLeaf" xml:space="preserve">
+    <value>È possibile prevedere solo l'ultimo tipo di entità nella query da convertire.</value>
+  </data>
+  <data name="ALinq_CannotAddCountOption" xml:space="preserve">
+    <value>Impossibile aggiungere l'opzione count al set di risorse.</value>
+  </data>
+  <data name="ALinq_CannotAddCountOptionConflict" xml:space="preserve">
+    <value>Impossibile aggiungere l'opzione count al set di risorse perché entrerebbe in conflitto con le opzioni count esistenti.</value>
+  </data>
+  <data name="ALinq_CannotConstructKnownEntityTypes" xml:space="preserve">
+    <value>Per la costruzione di istanze di tipi di entità è necessario utilizzare l'inizializzatore di oggetto con il costruttore predefinito.</value>
+  </data>
+  <data name="ALinq_CannotCreateConstantEntity" xml:space="preserve">
+    <value>Riferimenti alle istanze di tipi di entità locali non supportati durante la previsione dei risultati.</value>
+  </data>
+  <data name="ALinq_CannotProjectWithExplicitExpansion" xml:space="preserve">
+    <value>Impossibile creare una proiezione quando nella stessa query è specificata un'espansione esplicita.</value>
+  </data>
+  <data name="ALinq_CannotUseTypeFiltersMultipleTimes" xml:space="preserve">
+    <value>I filtri di tipo non ridondante (OfType&lt;T&gt;, C# 'as' e VB 'TryCast') possono essere utilizzati solo una volta per ciascun set di risorse.</value>
+  </data>
+  <data name="ALinq_CantAddAstoriaQueryOption" xml:space="preserve">
+    <value>Impossibile aggiungere l'opzione query '{0}' perché è in conflitto con le opzioni query dell'espressione LINQ convertita.</value>
+  </data>
+  <data name="ALinq_CantAddDuplicateQueryOption" xml:space="preserve">
+    <value>Impossibile aggiungere l'opzione query duplicata '{0}'.</value>
+  </data>
+  <data name="ALinq_CantAddQueryOption" xml:space="preserve">
+    <value>Opzione query personalizzata non consentita.</value>
+  </data>
+  <data name="ALinq_CantAddQueryOptionStartingWithDollarSign" xml:space="preserve">
+    <value>Impossibile aggiungere l'opzione query '{0}' perché inizia con il carattere riservato '$'.</value>
+  </data>
+  <data name="ALinq_CantCastToUnsupportedPrimitive" xml:space="preserve">
+    <value>Impossibile eseguire il cast nel tipo non supportato '{0}'</value>
+  </data>
+  <data name="ALinq_CantExpand" xml:space="preserve">
+    <value>Opzione di espansione query non consentita.</value>
+  </data>
+  <data name="ALinq_CantNavigateWithoutKeyPredicate" xml:space="preserve">
+    <value>Le singole proprietà possono essere selezionate solo da una singola risorsa o come parte di un tipo. Specificare un predicato chiave per limitare il set di entità a una singola istanza o prevedere la proprietà in un tipo denominato o anonimo.</value>
+  </data>
+  <data name="ALinq_CantReferToPublicField" xml:space="preserve">
+    <value>Riferimenti al campo pubblico '{0}' non supportati nell'espressione dell'opzione query. Utilizzare la proprietà pubblica.</value>
+  </data>
+  <data name="ALinq_CantTranslateExpression" xml:space="preserve">
+    <value>Espressione {0} non supportata.</value>
+  </data>
+  <data name="ALinq_CollectionMemberAccessNotSupportedInNavigation" xml:space="preserve">
+    <value>La navigazione in membri della proprietà di raccolta '{0}' in un'espressione di query 'select' non è supportato.</value>
+  </data>
+  <data name="ALinq_CollectionPropertyNotSupportedInOrderBy" xml:space="preserve">
+    <value>La proprietà di raccolta '{0}' non può essere utilizzata in un'espressione di query 'orderby'. Le proprietà di raccolta non sono supportate dall'opzione di query 'orderby'.</value>
+  </data>
+  <data name="ALinq_CollectionPropertyNotSupportedInWhere" xml:space="preserve">
+    <value>La proprietà di raccolta '{0}' non può essere utilizzata in un'espressione di query 'where'. Le proprietà di raccolta sono supportate solo come origine dei metodi 'any' o 'all' in un'opzione di query 'where'.</value>
+  </data>
+  <data name="ALinq_ConditionalNotSupported" xml:space="preserve">
+    <value>Espressione condizionale non supportata.</value>
+  </data>
+  <data name="ALinq_ConstantNotSupported" xml:space="preserve">
+    <value>Costante per '{0}' non supportata.</value>
+  </data>
+  <data name="ALinq_CouldNotConvert" xml:space="preserve">
+    <value>Impossibile convertire l'espressione {0} costante in stringa.</value>
+  </data>
+  <data name="ALinq_ExpressionCannotEndWithTypeAs" xml:space="preserve">
+    <value>Espressione '{0}' non supportata nel metodo '{1}'. L'espressione non può terminare con TypeAs.</value>
+  </data>
+  <data name="ALinq_ExpressionNotSupportedInProjection" xml:space="preserve">
+    <value>Costruzione o l'inizializzazione di istanze di tipo {0} con l'espressione {1} non supportata.</value>
+  </data>
+  <data name="ALinq_ExpressionNotSupportedInProjectionToEntity" xml:space="preserve">
+    <value>Inizializzazione di istanze del tipo di entità {0} con l'espressione {1} non supportata.</value>
+  </data>
+  <data name="ALinq_FormatQueryOptionNotSupported" xml:space="preserve">
+    <value>L'opzione di query '$format' non è supportata. Utilizzare la proprietà DataServiceContext.Format per impostare il formato desiderato.</value>
+  </data>
+  <data name="ALinq_InvalidExpressionInNavigationPath" xml:space="preserve">
+    <value>'{0}' non è un'espressione valida per il percorso di navigazione. Le uniche operazioni supportate all'interno del corpo dell'espressione lambda sono MemberAccess e TypeAs. L'espressione deve contenere almeno un'operazione MemberAccess e non può terminare con TypeAs.</value>
+  </data>
+  <data name="ALinq_InvalidSourceForAnyAll" xml:space="preserve">
+    <value>Il parametro di origine per il metodo '{0}' deve essere una proprietà di navigazione o una proprietà di raccolta.</value>
+  </data>
+  <data name="ALinq_InvocationNotSupported" xml:space="preserve">
+    <value>Espressioni di chiamata non supportate.</value>
+  </data>
+  <data name="ALinq_LambdaNotSupported" xml:space="preserve">
+    <value>Espressioni lambda non supportate.</value>
+  </data>
+  <data name="ALinq_LinkPropertyNotSupportedInExpression" xml:space="preserve">
+    <value>Impossibile utilizzare la proprietà '{0}' di tipo 'DataServiceStreamLink' nelle espressioni di query 'where' o 'orderby'. Le proprietà di tipo 'DataServiceStreamLink' non sono supportate da queste opzioni query.</value>
+  </data>
+  <data name="ALinq_ListInitNotSupported" xml:space="preserve">
+    <value>Espressioni di inizializzazione elenchi non supportate.</value>
+  </data>
+  <data name="ALinq_MemberAccessNotSupported" xml:space="preserve">
+    <value>Accesso ai membri di '{0}' non supportato.</value>
+  </data>
+  <data name="ALinq_MemberInitNotSupported" xml:space="preserve">
+    <value>Espressioni di inizializzazione membri non supportate.</value>
+  </data>
+  <data name="ALinq_MethodNotSupported" xml:space="preserve">
+    <value>Metodo '{0}' non supportato.</value>
+  </data>
+  <data name="ALinq_MethodNotSupportedForMaxDataServiceVersionLessThanX" xml:space="preserve">
+    <value>Il metodo '{0}' non è supportato quando MaxProtocolVersion è minore di '{1}'.</value>
+  </data>
+  <data name="ALinq_NewArrayNotSupported" xml:space="preserve">
+    <value>Espressioni di creazione nuova matrice non supportate.</value>
+  </data>
+  <data name="ALinq_NewNotSupported" xml:space="preserve">
+    <value>Espressioni di creazione nuovo oggetto non supportate.</value>
+  </data>
+  <data name="ALinq_OfTypeArgumentNotAvailable" xml:space="preserve">
+    <value>Impossibile determinare il tipo di destinazione per un filtro OfType.</value>
+  </data>
+  <data name="ALinq_ParameterNotSupported" xml:space="preserve">
+    <value>Espressione per i parametri non supportata.</value>
+  </data>
+  <data name="ALinq_ProjectionCanOnlyHaveOneProjection" xml:space="preserve">
+    <value>Impossibile convertire più operazioni Linq Select in una singola opzione query 'select'.</value>
+  </data>
+  <data name="ALinq_ProjectionMemberAssignmentMismatch" xml:space="preserve">
+    <value>Impossibile inizializzare un'istanza del tipo di entità '{0}' perché '{1}' e '{2}' non fanno riferimento alla stessa entità di origine.</value>
+  </data>
+  <data name="ALinq_ProjectionOnlyAllowedOnLeafNodes" xml:space="preserve">
+    <value>È possibile specificare l'opzione query 'select' solo dopo l'ultima navigazione.</value>
+  </data>
+  <data name="ALinq_PropertyNamesMustMatchInProjections" xml:space="preserve">
+    <value>Impossibile assegnare il valore della proprietà {0} alla proprietà {1}. Durante la previsione dei risultati in un tipo di entità, è necessario che i nomi di proprietà del tipo di origine e del tipo di destinazione siano corrispondenti per le proprietà da prevedere.</value>
+  </data>
+  <data name="ALinq_QueryOptionOutOfOrder" xml:space="preserve">
+    <value>Impossibile specificare l'opzione query {0} dopo l'opzione query {1}.</value>
+  </data>
+  <data name="ALinq_QueryOptionsOnlyAllowedOnLeafNodes" xml:space="preserve">
+    <value>È possibile specificare solo opzioni query (orderby, where, take, skip) dopo l'ultima navigazione.</value>
+  </data>
+  <data name="ALinq_QueryOptionsOnlyAllowedOnSingletons" xml:space="preserve">
+    <value>Impossibile specificare le opzioni query (orderby, where, take, skip, count) in una singola risorsa.</value>
+  </data>
+  <data name="ALinq_TranslationError" xml:space="preserve">
+    <value>Errore durante la conversione dell'espressione LINQ in URI: {0}</value>
+  </data>
+  <data name="ALinq_TypeAsArgumentNotEntityType" xml:space="preserve">
+    <value>'{0}' non è un tipo di entità. Il tipo di destinazione per un operatore TypeAs deve essere un tipo di entità.</value>
+  </data>
+  <data name="ALinq_TypeAsNotSupportedForMaxDataServiceVersionLessThan3" xml:space="preserve">
+    <value>L'espressione 'TypeAs' non è supportata quando MaxProtocolVersion è minore di '3.0'.</value>
+  </data>
+  <data name="ALinq_TypeBinaryNotSupported" xml:space="preserve">
+    <value>Operazione tra un'espressione e un tipo non supportata.</value>
+  </data>
+  <data name="ALinq_UnaryNotSupported" xml:space="preserve">
+    <value>Operatore unario '{0}' non supportato.</value>
+  </data>
+  <data name="ALinq_UnsupportedExpression" xml:space="preserve">
+    <value>Tipo di espressione {0} non supportato.</value>
+  </data>
+  <data name="AtomMaterializer_CannotAssignNull" xml:space="preserve">
+    <value>Impossibile assegnare il valore Null della proprietà '{0}' a un tipo '{1}'.</value>
+  </data>
+  <data name="AtomMaterializer_CollectionExpectedCollection" xml:space="preserve">
+    <value>La materializzazione della raccolta di livello principale prevede un valore ICollection&lt;&gt;, ma il tipo effettivo è {0}.</value>
+  </data>
+  <data name="AtomMaterializer_DataServiceCollectionNotSupportedForNonEntities" xml:space="preserve">
+    <value>DataServiceCollection può contenere solo tipi di entità. I tipi primitivi e complessi non possono essere contenuti in questo genere di raccolta.</value>
+  </data>
+  <data name="AtomMaterializer_EntryIntoCollectionMismatch" xml:space="preserve">
+    <value>Impossibile aggiungere un elemento entry di tipo '{0}' a una raccolta che contiene istanze di tipo '{1}'. Questo problema può verificarsi quando a un elemento entry esistente di tipo diverso è associato lo stesso valore di identità oppure quando la stessa entità viene prevista in due tipi diversi di una singola query.</value>
+  </data>
+  <data name="AtomMaterializer_EntryToAccessIsNull" xml:space="preserve">
+    <value>L'elemento entry restituito dalla proprietà di navigazione '{0}' è Null e non può essere inizializzato. Prima di accedere a questa proprietà, verificare se sono presenti valori Null.</value>
+  </data>
+  <data name="AtomMaterializer_EntryToInitializeIsNull" xml:space="preserve">
+    <value>L'elemento entry contenente i dati necessari per creare un'istanza di tipo '{0}' è Null e non può essere inizializzato. Prima di accedere a questo elemento entry, verificare se sono presenti valori Null.</value>
+  </data>
+  <data name="AtomMaterializer_InvalidCollectionItem" xml:space="preserve">
+    <value>L'elemento '{0}' non è un elemento della raccolta valido. Il nome dell'elemento della raccolta deve essere 'element' e deve appartenere allo spazio dei nomi 'http://schemas.microsoft.com/ado/2007/08/dataservices'.</value>
+  </data>
+  <data name="AtomMaterializer_InvalidContentTypeEncountered" xml:space="preserve">
+    <value>Il tipo di contenuto della risposta '{0}' non è al momento supportato.</value>
+  </data>
+  <data name="AtomMaterializer_InvalidEntityType" xml:space="preserve">
+    <value>Tipo non corrispondente tra il client e il servizio. Il tipo '{0}' è un tipo di entità, mentre il tipo nel payload di risposta non rappresenta un tipo di entità. Assicurarsi che i tipi definiti nel client corrispondano al modello dati del servizio o aggiornare il riferimento al servizio nel client.</value>
+  </data>
+  <data name="AtomMaterializer_InvalidNonEntityType" xml:space="preserve">
+    <value>Tipo non corrispondente tra il client e il servizio. Il tipo '{0}' non è un tipo di entità, mentre il tipo nel payload di risposta rappresenta un tipo di entità. Assicurarsi che i tipi definiti nel client corrispondano al modello dati del servizio o aggiornare il riferimento al servizio nel client.</value>
+  </data>
+  <data name="AtomMaterializer_InvalidResponsePayload" xml:space="preserve">
+    <value>Il payload di risposta non è valido. Verificare che l'elemento di livello principale sia un elemento Atom o JSON valido o che appartenga allo spazio dei nomi '{0}'.</value>
+  </data>
+  <data name="AtomMaterializer_MaterializationTypeError" xml:space="preserve">
+    <value>Impossibile materializzare i risultati in un tipo di raccolta '{0}' poiché questo non dispone di un costruttore senza parametri.</value>
+  </data>
+  <data name="AtomMaterializer_NoParameterlessCtorForCollectionProperty" xml:space="preserve">
+    <value>Impossibile creare la proprietà di raccolta '{0}' perché il tipo '{1}' non dispone di un costruttore pubblico senza parametri.</value>
+  </data>
+  <data name="AtomMaterializer_ProjectEntityTypeMismatch" xml:space="preserve">
+    <value>Impossibile prevedere un entità di tipo '{0}' perché esiste già un'istanza di tipo '{1}' per '{2}'.</value>
+  </data>
+  <data name="AtomMaterializer_PropertyMissing" xml:space="preserve">
+    <value>Impossibile trovare la proprietà '{0}' prevista durante l'elaborazione di una voce. Prima di accedere a questa proprietà, verificare se sono presenti valori Null.</value>
+  </data>
+  <data name="AtomMaterializer_PropertyNotExpectedEntry" xml:space="preserve">
+    <value>La proprietà '{0}' non è un'entità.</value>
+  </data>
+  <data name="AtomMaterializer_ResetAfterEnumeratorCreationError" xml:space="preserve">
+    <value>La reimpostazione non deve mai essere chiamata per un lettore di raccolta in un enumerabile interno.</value>
+  </data>
+  <data name="AtomMaterializer_TypeShouldBeCollectionError" xml:space="preserve">
+    <value>Impossibile materializzare una raccolta di primitive o complesse senza che il tipo '{0}' sia una raccolta.</value>
+  </data>
+  <data name="AtomParser_SingleEntry_ExpectedFeedOrEntry" xml:space="preserve">
+    <value>Nella risposta dal server era previsto un elemento entry o un feed Atom, mentre è stato trovato un elemento non previsto.</value>
+  </data>
+  <data name="AtomParser_SingleEntry_MultipleFound" xml:space="preserve">
+    <value>Nella risposta dal server era previsto un solo elemento entry Atom, mentre ne è stato trovato più di uno.</value>
+  </data>
+  <data name="AtomParser_SingleEntry_NoneFound" xml:space="preserve">
+    <value>Nella risposta dal server era previsto un solo elemento entry Atom, mentre non ne è stato trovato nessuno.</value>
+  </data>
+  <data name="Batch_ExpectedContentType" xml:space="preserve">
+    <value>Il tipo di contenuto previsto per le richieste in un batch è "multipart/mixed;boundary=batch" non "{0}".</value>
+  </data>
+  <data name="Batch_ExpectedResponse" xml:space="preserve">
+    <value>Risposta con contenuto prevista per la richiesta POST. ID={0}</value>
+  </data>
+  <data name="Batch_IncompleteResponseCount" xml:space="preserve">
+    <value>Non tutte le richieste nel batch hanno una risposta.</value>
+  </data>
+  <data name="Batch_UnexpectedContent" xml:space="preserve">
+    <value>Sezioni impreviste contenute nella risposta Web. ID={0}</value>
+  </data>
+  <data name="ClientTypeCache_NonEntityTypeCannotContainEntityProperties" xml:space="preserve">
+    <value>'{0}' è una proprietà del tipo di entità e non può essere una proprietà del tipo '{1}', che non è un tipo di entità. Solo i tipi di entità possono contenere le proprietà di navigazione.</value>
+  </data>
+  <data name="ClientType_Ambiguous" xml:space="preserve">
+    <value>Il tipo di risoluzione da '{0}' che eredita da '{1}' è ambiguo.</value>
+  </data>
+  <data name="ClientType_CollectionOfCollectionNotSupported" xml:space="preserve">
+    <value>Le proprietà di raccolta di un tipo raccolta non sono supportate.</value>
+  </data>
+  <data name="ClientType_CollectionPropertyNotSupportedInV2AndBelow" xml:space="preserve">
+    <value>Il tipo '{0}' dispone di una proprietà '{1}' che è una proprietà di raccolta. Le proprietà di raccolta sono supportate solo nella versione 'V3' del protocollo e versioni successive.</value>
+  </data>
+  <data name="ClientType_KeysMustBeSimpleTypes" xml:space="preserve">
+    <value>{0} contiene proprietà della chiave dichiarate in un tipo non semplice.</value>
+  </data>
+  <data name="ClientType_KeysOnDifferentDeclaredType" xml:space="preserve">
+    <value>{0} contiene proprietà della chiave dichiarate a diversi livelli all'interno della relativa gerarchia dei tipi.</value>
+  </data>
+  <data name="ClientType_MissingMediaEntryProperty" xml:space="preserve">
+    <value>Il tipo '{0}' contiene un attributo MediaEntry che fa riferimento a una proprietà chiamata '{1}'. Tuttavia, questo tipo non contiene una proprietà '{1}'.</value>
+  </data>
+  <data name="ClientType_MissingMimeTypeDataProperty" xml:space="preserve">
+    <value>Il tipo '{0}' contiene un attributo MimeTypeProperty che fa riferimento alla proprietà di dati '{1}'. Tuttavia, questo tipo non contiene una proprietà '{1}'.</value>
+  </data>
+  <data name="ClientType_MissingMimeTypeProperty" xml:space="preserve">
+    <value>Il tipo '{0}' contiene un attributo MimeTypeProperty che fa riferimento alla proprietà del tipo MIME '{1}'. Tuttavia, questo tipo non contiene una proprietà '{1}'.</value>
+  </data>
+  <data name="ClientType_MissingOpenProperty" xml:space="preserve">
+    <value>Proprietà '{0}:{1}' dell'oggetto aperto non definita.</value>
+  </data>
+  <data name="ClientType_MissingProperty" xml:space="preserve">
+    <value>Il tipo chiuso {0} non dispone di una proprietà impostabile {1} corrispondente.</value>
+  </data>
+  <data name="ClientType_MultipleImplementationNotSupported" xml:space="preserve">
+    <value>Non sono supportate più implementazioni di ICollection&lt;T&gt;.</value>
+  </data>
+  <data name="ClientType_MultipleTypesWithSameName" xml:space="preserve">
+    <value>Sono stati trovati più tipi con lo stesso nome '{0}'. I nomi dei tipi devono essere univoci.</value>
+  </data>
+  <data name="ClientType_NoSettableFields" xml:space="preserve">
+    <value>Il tipo '{0}' non contiene proprietà impostabili.</value>
+  </data>
+  <data name="ClientType_NullOpenProperties" xml:space="preserve">
+    <value>La proprietà di tipo open '{0}' ha restituito un'istanza Null.</value>
+  </data>
+  <data name="ClientType_UnsupportedType" xml:space="preserve">
+    <value>Il tipo '{0}' non è supportato dalla libreria client.</value>
+  </data>
+  <data name="Clienttype_MultipleOpenProperty" xml:space="preserve">
+    <value>{0} contiene più definizioni per OpenObjectAttribute.</value>
+  </data>
+  <data name="Collection_ComplexTypesInCollectionOfPrimitiveTypesNotAllowed" xml:space="preserve">
+    <value>Una proprietà di raccolta di tipi primitivi non può contenere un elemento di tipo complesso.</value>
+  </data>
+  <data name="Collection_NullCollectionItemsNotSupported" xml:space="preserve">
+    <value>Il valore di un elemento nella proprietà di raccolta è Null. Le proprietà di raccolta che contengono elementi con valori Null non sono supportate.</value>
+  </data>
+  <data name="Collection_NullCollectionNotSupported" xml:space="preserve">
+    <value>Il valore della proprietà '{0}' è Null. Le proprietà raccolta di tipi primitivi o complessi non possono essere Null.</value>
+  </data>
+  <data name="Collection_NullCollectionReference" xml:space="preserve">
+    <value>{0}.{1} deve restituire una raccolta di proprietà open non Null.</value>
+  </data>
+  <data name="Collection_NullNonPropertyCollectionNotSupported" xml:space="preserve">
+    <value>Il valore della raccolta del tipo di elementi '{0}' è Null. Il valore di una raccolta non può essere Null.</value>
+  </data>
+  <data name="Collection_PrimitiveTypesInCollectionOfComplexTypesNotAllowed" xml:space="preserve">
+    <value>Una proprietà di raccolta di tipi complessi non può contenere un elemento di tipo primitivo.</value>
+  </data>
+  <data name="Content_EntityIsNotEntityType" xml:space="preserve">
+    <value>Per questa operazione l'entità deve essere di un tipo di entità. Contrassegnarne le proprietà chiave oppure assegnare alla classe l'attributo DataServiceEntityAttribute</value>
+  </data>
+  <data name="Content_EntityWithoutKey" xml:space="preserve">
+    <value>Per questa operazione l'entità deve essere di un tipo di entità e deve disporre di almeno una proprietà chiave.</value>
+  </data>
+  <data name="Context_AddLinkCollectionOnly" xml:space="preserve">
+    <value>I metodi AddLink e DeleteLink possono essere utilizzati solo se sourceProperty è una raccolta.</value>
+  </data>
+  <data name="Context_AddRelatedObjectCollectionOnly" xml:space="preserve">
+    <value>Il metodo AddRelatedObject può essere utilizzato solo se sourceProperty è una raccolta.</value>
+  </data>
+  <data name="Context_AddRelatedObjectSourceDeleted" xml:space="preserve">
+    <value>Il metodo AddRelatedObject può essere utilizzato solo se l'origine dell'entità è in uno stato non eliminato.</value>
+  </data>
+  <data name="Context_AsyncAlreadyDone" xml:space="preserve">
+    <value>Risultato asincrono già completato.</value>
+  </data>
+  <data name="Context_BaseUri" xml:space="preserve">
+    <value>Previsto un URL HTTP assoluto in formato corretto senza una query o un frammento.</value>
+  </data>
+  <data name="Context_BaseUriRequired" xml:space="preserve">
+    <value>Prima di eseguire questa operazione, è necessario impostare la proprietà BaseUri.</value>
+  </data>
+  <data name="Context_BatchExecuteError" xml:space="preserve">
+    <value>Errore relativo alla query durante l'esecuzione batch. Per ulteriori informazioni, vedere l'eccezione interna.</value>
+  </data>
+  <data name="Context_BatchNotSupportedForMediaLink" xml:space="preserve">
+    <value>Salvataggio di entità con l'attributo [MediaEntry] attualmente non supportato in modalità batch. Utilizzare la modalità non batch.</value>
+  </data>
+  <data name="Context_BatchNotSupportedForNamedStreams" xml:space="preserve">
+    <value>Impossibile salvare le modifiche come batch quando a un'entità sono associati uno o più flussi. Riprovare l'operazione SaveChanges senza abilitare le opzioni SaveChangesOptions.Batch e SaveChangesOptions.BatchWithIndependentOperations.</value>
+  </data>
+  <data name="Context_BodyOperationParametersNotAllowedWithGet" xml:space="preserve">
+    <value>Impossibile specificare OperationParameter di tipo BodyOperationParameter quando HttpMethod è impostato su GET.</value>
+  </data>
+  <data name="Context_BothLocationAndIdMustBeSpecified" xml:space="preserve">
+    <value>La risposta deve contenere entrambe le intestazioni 'Location' e 'DataServiceId' o nessuna di esse.</value>
+  </data>
+  <data name="Context_BuildingRequestAndSendingRequestCannotBeUsedTogether" xml:space="preserve">
+    <value>SendingRequest è un evento deprecato. Se si utilizza BuildingRequest, non è possibile utilizzare SendingRequest. In alternativa, utilizzare SendingRequest2.</value>
+  </data>
+  <data name="Context_CannotChangeStateIfAdded" xml:space="preserve">
+    <value>Impossibile modificare un'entità nello stato 'Added' in '{0}'. Può essere modificata solo in 'Detached'.</value>
+  </data>
+  <data name="Context_CannotChangeStateToAdded" xml:space="preserve">
+    <value>Il metodo ChangeState non supporta lo stato 'Added' perché sono necessarie ulteriori informazioni per gli inserimenti. Utilizzare AddObject o AddRelatedObject.</value>
+  </data>
+  <data name="Context_CannotChangeStateToModifiedIfNotUnchanged" xml:space="preserve">
+    <value>Lo stato dell'entità può essere modificato solo in 'Modified' se attualmente è 'Unchanged'.</value>
+  </data>
+  <data name="Context_CannotConvertKey" xml:space="preserve">
+    <value>Impossibile convertire il valore '{0}' in una stringa chiave per un URI.</value>
+  </data>
+  <data name="Context_ChildResourceExists" xml:space="preserve">
+    <value>Tentativo di eliminare un collegamento tra due oggetti non riuscito poiché l'identità dell'oggetto di destinazione del collegamento dipende dal relativo oggetto di origine.</value>
+  </data>
+  <data name="Context_ContentTypeRequiredForNamedStream" xml:space="preserve">
+    <value>Il valore ContentType di un flusso denominato non può essere Null o una stringa vuota.</value>
+  </data>
+  <data name="Context_DidNotOriginateAsync" xml:space="preserve">
+    <value>L'oggetto corrente non ha generato il risultato asincrono.</value>
+  </data>
+  <data name="Context_DifferentEntityAlreadyContained" xml:space="preserve">
+    <value>Il contesto sta già rilevando un'altra entità con lo stesso URI di risorsa.</value>
+  </data>
+  <data name="Context_DuplicateBodyOperationParameterName" xml:space="preserve">
+    <value>Trovati più parametri dell'operazione nel corpo con lo stesso nome. I nomi dei parametri dell'operazione nel corpo devono essere univoci.</value>
+  </data>
+  <data name="Context_DuplicateUriOperationParameterName" xml:space="preserve">
+    <value>Trovati più parametri dell'operazione nell'URI con lo stesso nome. I nomi dei parametri dell'operazione nell'URI devono essere univoci.</value>
+  </data>
+  <data name="Context_EndExecuteExpectedVoidResponse" xml:space="preserve">
+    <value>L'overload di EndExecute per le operazioni e le azioni del servizio nulle ha ricevuto una risposta non nulla dal server.</value>
+  </data>
+  <data name="Context_EntityAlreadyContained" xml:space="preserve">
+    <value>Il contesto sta già rilevando l'entità.</value>
+  </data>
+  <data name="Context_EntityDoesNotContainNamedStream" xml:space="preserve">
+    <value>L'entità non contiene un flusso denominato '{0}'. Assicurarsi che il nome del flusso sia corretto.</value>
+  </data>
+  <data name="Context_EntityMetadataBuilderIsRequired" xml:space="preserve">
+    <value>Un'implementazione di ODataEntityMetadataBuilder è richiesta, ma un valore Null è stato restituito da GetEntityMetadataBuilder.</value>
+  </data>
+  <data name="Context_EntityNotContained" xml:space="preserve">
+    <value>Il contesto non sta attualmente rilevando l'entità.</value>
+  </data>
+  <data name="Context_EntityNotMediaLinkEntry" xml:space="preserve">
+    <value>Per questa operazione è necessario che l'entità specificata sia un elemento Media Link Entry e che sia disponibile il valore ReadStreamUri. Tuttavia, l'entità specificata non è un elemento Media Link Entry né contiene un valore ReadStreamUri valido. Se l'entità è un elemento Media Link Entry, rieseguire una query sul servizio dati per questa entità per ottenere un valore ReadStreamUri valido.</value>
+  </data>
+  <data name="Context_EntitySetName" xml:space="preserve">
+    <value>Previsto un percorso URL relativo senza query o frammento.</value>
+  </data>
+  <data name="Context_ExecuteExpectedVoidResponse" xml:space="preserve">
+    <value>L'overload di Execute per le operazioni e le azioni del servizio nulle ha ricevuto una risposta non nulla dal server.</value>
+  </data>
+  <data name="Context_ExecuteExpectsGetOrPost" xml:space="preserve">
+    <value>HttpMethod deve essere GET o POST.</value>
+  </data>
+  <data name="Context_InternalError" xml:space="preserve">
+    <value>Errore interno di System.Data.Services.Client {0}.</value>
+  </data>
+  <data name="Context_LinkResourceInsertFailure" xml:space="preserve">
+    <value>Impossibile inserire una delle risorse del collegamento.</value>
+  </data>
+  <data name="Context_LocationHeaderExpectsAbsoluteUri" xml:space="preserve">
+    <value>Il valore di intestazione 'Location' specificato nella risposta deve essere un URI assoluto.</value>
+  </data>
+  <data name="Context_MLEWithoutSaveStream" xml:space="preserve">
+    <value>Il tipo di entità {0} è contrassegnato con l'attributo MediaEntry, tuttavia non è stato impostato alcun flusso di salvataggio per l'entità.</value>
+  </data>
+  <data name="Context_MissingOperationParameterName" xml:space="preserve">
+    <value>La proprietà Name di un OperationParameter deve essere impostata su una stringa non vuota e non Null.</value>
+  </data>
+  <data name="Context_MissingSelfAndEditLinkForNamedStream" xml:space="preserve">
+    <value>Nessun elemento self-link o edit-media link per il flusso denominato '{0}'. Assicurarsi che per questo flusso sia specificato l'elemento self-link o edit-media link.</value>
+  </data>
+  <data name="Context_NoContentTypeForMediaLink" xml:space="preserve">
+    <value>Oggetto di collegamento multimediale di tipo '{0}' configurato per l'utilizzo del tipo MIME specificato nella proprietà '{1}'. Il valore della proprietà è tuttavia Null o vuoto.</value>
+  </data>
+  <data name="Context_NoLoadWithInsertEnd" xml:space="preserve">
+    <value>Il contesto non è in grado di caricare la raccolta o il riferimento correlato per gli oggetti nello stato Added.</value>
+  </data>
+  <data name="Context_NoRelationWithDeleteEnd" xml:space="preserve">
+    <value>Lo stato di una o entrambe le entità finali della relazione è Deleted.</value>
+  </data>
+  <data name="Context_NoRelationWithInsertEnd" xml:space="preserve">
+    <value>Lo stato di una o entrambe le entità finali della relazione è Added.</value>
+  </data>
+  <data name="Context_NullElementInOperationParameterArray" xml:space="preserve">
+    <value>La matrice di parametri operazione contiene un elemento Null non consentito.</value>
+  </data>
+  <data name="Context_NullKeysAreNotSupported" xml:space="preserve">
+    <value>La risorsa serializzata ha un valore Null nel membro chiave '{0}'. Valori Null non supportati nei membri chiave.</value>
+  </data>
+  <data name="Context_OnMessageCreatingReturningNull" xml:space="preserve">
+    <value>La proprietà DataServiceContext.Configurations.RequestPipeline.OnMessageCreating non deve restituire un valore null. Restituire un valore non null per questa proprietà.</value>
+  </data>
+  <data name="Context_OperationCanceled" xml:space="preserve">
+    <value>Operazione annullata.</value>
+  </data>
+  <data name="Context_PropertyNotSupportedForMaxDataServiceVersionGreaterThanX" xml:space="preserve">
+    <value>La proprietà '{0}' non è supportata quando MaxProtocolVersion è maggiore di '{1}'.</value>
+  </data>
+  <data name="Context_RelationAlreadyContained" xml:space="preserve">
+    <value>Il contesto sta già rilevando la relazione.</value>
+  </data>
+  <data name="Context_RelationNotRefOrCollection" xml:space="preserve">
+    <value>sourceProperty non è un riferimento o una raccolta del tipo di oggetto della destinazione.</value>
+  </data>
+  <data name="Context_RequestUriIsRelativeBaseUriRequired" xml:space="preserve">
+    <value>Poiché requestUri è un URI relativo, è necessario impostare la proprietà BaseUri in DataServiceContext.</value>
+  </data>
+  <data name="Context_RequestVersionIsBiggerThanProtocolVersion" xml:space="preserve">
+    <value>Per la richiesta è necessario utilizzare la versione {0} del protocollo, ma MaxProtocolVersion per il contesto del servizio dati è impostato su {1}. Impostare MaxProtocolVersion su una versione superiore, quindi ripetere l'operazione.</value>
+  </data>
+  <data name="Context_ResolveEntitySetOrBaseUriRequired" xml:space="preserve">
+    <value>La funzione ResolveEntitySet deve restituire un URI non Null per EntitySet '{0}', altrimenti è necessario impostare la proprietà BaseUri.</value>
+  </data>
+  <data name="Context_ResolveReturnedInvalidUri" xml:space="preserve">
+    <value>L'URI restituito dalla funzione ResolveEntitySet deve essere un URI assoluto corretto con un nome schema "http" o "https" e senza alcuna stringa di query o identificatore di frammento.</value>
+  </data>
+  <data name="Context_ResponseVersionIsBiggerThanProtocolVersion" xml:space="preserve">
+    <value>La versione di risposta è {0}, ma MaxProtocolVersion per il contesto del servizio dati è impostato su {1}. Impostare MaxProtocolVersion sulla versione richiesta dalla risposta, quindi ripetere la richiesta. Se il client non supporta la versione di protocollo richiesta, aggiornare il client.</value>
+  </data>
+  <data name="Context_SendingRequestEventArgsNotHttp" xml:space="preserve">
+    <value>Per questa proprietà sono attualmente consentite solo istanze di HttpWebRequest. Altri sottotipi di WebRequest non supportati.</value>
+  </data>
+  <data name="Context_SendingRequest_InvalidWhenUsingOnMessageCreating" xml:space="preserve">
+    <value>Impossibile utilizzare SendingRequest in combinazione con la proprietà DataServiceContext.Configurations.RequestPipeline.OnMessageCreating. Usare SendingRequest2 con la proprietà DataServiceContext.Configurations.RequestPipeline.OnMessageCreating.</value>
+  </data>
+  <data name="Context_SetLinkReferenceOnly" xml:space="preserve">
+    <value>Il metodo SetLink può essere utilizzato solo se sourceProperty non è una raccolta.</value>
+  </data>
+  <data name="Context_SetSaveStreamOnInvalidEntityState" xml:space="preserve">
+    <value>Chiamata a SetSaveStream in un'entità con stato '{0}' non consentita.</value>
+  </data>
+  <data name="Context_SetSaveStreamOnMediaEntryProperty" xml:space="preserve">
+    <value>Impossibile utilizzare SetSaveStream su entità con tipo {0} per le quali è definita una proprietà media entry.</value>
+  </data>
+  <data name="Context_SetSaveStreamWithoutEditMediaLink" xml:space="preserve">
+    <value>Nessun elemento edit-media link per il flusso multimediale dell'entità. Assicurarsi che per questo flusso sia specificato l'elemento edit-media link.</value>
+  </data>
+  <data name="Context_SetSaveStreamWithoutNamedStreamEditLink" xml:space="preserve">
+    <value>Impossibile modificare il flusso denominato '{0}' poiché non contiene un elemento edit-media link. Assicurarsi che il nome del flusso sia corretto e che sia incluso un elemento edit-media link per questo flusso nell'elemento entry della risposta.</value>
+  </data>
+  <data name="Context_TrackingExpectsAbsoluteUri" xml:space="preserve">
+    <value>Il valore Identity specificato dall'elemento id Atom o dall'intestazione DataServiceId deve essere un URI assoluto.</value>
+  </data>
+  <data name="Context_UnexpectedZeroRawRead" xml:space="preserve">
+    <value>Risultato (&lt;= 0) imprevisto da stream.Read() durante la lettura dei dati non elaborati per la proprietà.</value>
+  </data>
+  <data name="Context_VersionNotSupported" xml:space="preserve">
+    <value>Versione '{0}' della risposta non supportata. La uniche versioni supportate sono: {1}.</value>
+  </data>
+  <data name="DSKAttribute_MustSpecifyAtleastOnePropertyName" xml:space="preserve">
+    <value>L'attributo DataServiceKey deve specificare almeno un nome di proprietà.</value>
+  </data>
+  <data name="DataBinding_BindingOperation_ArrayItemNotEntity" xml:space="preserve">
+    <value>Un valore specificato durante l'operazione '{0}' su DataServiceCollection non è di un tipo di entità con chiave.</value>
+  </data>
+  <data name="DataBinding_BindingOperation_ArrayItemNull" xml:space="preserve">
+    <value>Valori Null non consentiti durante le operazioni '{0}' su DataServiceCollection.</value>
+  </data>
+  <data name="DataBinding_BindingOperation_DetachedSource" xml:space="preserve">
+    <value>Impossibile eseguire le operazioni di aggiunta, aggiornamento o eliminazione su un'entità figlio se l'entità padre è già disconnessa.</value>
+  </data>
+  <data name="DataBinding_CollectionAssociatedWithMultipleEntities" xml:space="preserve">
+    <value>Tentativo di rilevare un oggetto raccolta di tipo '{0}' non riuscito perché l'oggetto è già stato sottoposto a rilevamento.</value>
+  </data>
+  <data name="DataBinding_CollectionChangedUnknownActionCollection" xml:space="preserve">
+    <value>Azione '{0}' imprevista nell'evento OnCollectionChanged generato da un oggetto raccolta di tipo '{1}'.</value>
+  </data>
+  <data name="DataBinding_CollectionPropertySetterValueHasObserver" xml:space="preserve">
+    <value>L'impostazione di un'istanza di DataServiceCollection su una proprietà di entità non è consentita se il rilevamento dell'istanza è già attivo. Si è verificato un errore nella proprietà '{0}' del tipo di entità '{1}'.</value>
+  </data>
+  <data name="DataBinding_ComplexObjectAssociatedWithMultipleEntities" xml:space="preserve">
+    <value>Tentativo di rilevare un oggetto complesso di tipo '{0}' non riuscito poiché l'oggetto complesso è già stato sottoposto a rilevamento.</value>
+  </data>
+  <data name="DataBinding_DataServiceCollectionArgumentMustHaveEntityType" xml:space="preserve">
+    <value>La raccolta DataServiceCollection da sottoporre a rilevamento deve contenere elementi di tipo entità con almeno una proprietà chiave. Nessuna proprietà chiave disponibile per il tipo di elemento '{0}'.</value>
+  </data>
+  <data name="DataBinding_DataServiceCollectionChangedUnknownActionCollection" xml:space="preserve">
+    <value>Azione '{0}' imprevista nell'evento OnCollectionChanged generato da DataServiceCollection.</value>
+  </data>
+  <data name="DataBinding_EntityAlreadyInCollection" xml:space="preserve">
+    <value>Tentativo di aggiungere un'entità di tipo '{0}' a una raccolta in cui la stessa entità esiste già.</value>
+  </data>
+  <data name="DataBinding_NotifyCollectionChangedNotImpl" xml:space="preserve">
+    <value>Tentativo di rilevare un'entità o un tipo complesso non riuscito poiché l'entità o il tipo complesso contiene una proprietà di raccolta di tipo '{0}' che non implementa l'interfaccia INotifyCollectionChanged.</value>
+  </data>
+  <data name="DataBinding_NotifyPropertyChangedNotImpl" xml:space="preserve">
+    <value>Tentativo di rilevare un'entità o un tipo complesso non riuscito. L'entità o il tipo complesso '{0}' non implementa l'interfaccia INotifyPropertyChanged.</value>
+  </data>
+  <data name="DataBinding_Util_UnknownEntitySetName" xml:space="preserve">
+    <value>Per un'entità di tipo '{0}' non è stato specificato il nome del set di entità.</value>
+  </data>
+  <data name="DataServiceClientFormat_AtomEventsOnlySupportedWithAtomFormat" xml:space="preserve">
+    <value>Gli eventi ReadingEntity e WritingEntity sono supportati solo quando si utilizza il formato Atom. Utilizzare il formato Atom o rimuovere tutti i gestori registrati di questi eventi prima di abilitare un altro formato.</value>
+  </data>
+  <data name="DataServiceClientFormat_JsonUnsupportedForLessThanV3" xml:space="preserve">
+    <value>Metodo UseJson non supportato quando MaxProtocolVersion è impostato su un valore minore di V3. Il formato JSON è supportato solo da OData v3 o versioni successive.</value>
+  </data>
+  <data name="DataServiceClientFormat_JsonVerboseUnsupported" xml:space="preserve">
+    <value>Il valore tipo di contenuto '{0}' non è supportato.</value>
+  </data>
+  <data name="DataServiceClientFormat_LoadServiceModelRequired" xml:space="preserve">
+    <value>Quando si chiama il metodo UseJson senza un parametro, è necessario utilizzare la proprietà LoadServiceModel per fornire un'istanza valida di IEdmModel.</value>
+  </data>
+  <data name="DataServiceClientFormat_ValidServiceModelRequiredForJson" xml:space="preserve">
+    <value>Per utilizzare il formato JSON, chiamare prima DataServiceContext.Format.UseJson() e fornire un modello di servizio valido.</value>
+  </data>
+  <data name="DataServiceCollection_CannotDetermineContextFromItems" xml:space="preserve">
+    <value>Impossibile determinare l'oggetto DataServiceContext a cui appartiene l'istanza di DataServiceCollection. L'oggetto DataServiceContext deve essere specificato nel costruttore DataServiceCollection o essere utilizzato per creare l'oggetto DataServiceQuery o QueryOperationResponse che rappresenta l'origine degli elementi di DataServiceCollection.</value>
+  </data>
+  <data name="DataServiceCollection_CannotStopTrackingChildCollection" xml:space="preserve">
+    <value>Impossibile arrestare il rilevamento di DataServiceCollection per le raccolte figlio.</value>
+  </data>
+  <data name="DataServiceCollection_InsertIntoTrackedButNotLoadedCollection" xml:space="preserve">
+    <value>Impossibile aggiungere un elemento alla raccolta. Quando gli elementi di una raccolta DataServiceCollection vengono rilevati da DataServiceContext, non è possibile aggiungere nuovi elementi finché questi non vengono caricati nella raccolta.</value>
+  </data>
+  <data name="DataServiceCollection_LoadAsyncNoParamsWithoutParentEntity" xml:space="preserve">
+    <value>Impossibile chiamare il metodo LoadAsync se DataServiceCollection non è una raccolta figlio di un'entità correlata.</value>
+  </data>
+  <data name="DataServiceCollection_LoadAsyncRequiresDataServiceQuery" xml:space="preserve">
+    <value>Quando si chiama il metodo LoadAsync in DataServiceCollection, è possibile specificare solo un oggetto di tipo DataServiceQuery.</value>
+  </data>
+  <data name="DataServiceCollection_LoadRequiresTargetCollectionObserved" xml:space="preserve">
+    <value>Alla raccolta di destinazione per l'operazione Load deve essere associato DataServiceContext.</value>
+  </data>
+  <data name="DataServiceCollection_MultipleLoadAsyncOperationsAtTheSameTime" xml:space="preserve">
+    <value>L'operazione LoadAsync precedente non è ancora stata completata. Impossibile chiamare nuovamente il metodo LoadAsync in DataServiceCollection finché l'operazione precedente non sarà stata completata.</value>
+  </data>
+  <data name="DataServiceCollection_OperationForTrackedOnly" xml:space="preserve">
+    <value>L'operazione è supportata solo per le raccolte sottoposte a rilevamento.</value>
+  </data>
+  <data name="DataServiceException_GeneralError" xml:space="preserve">
+    <value>Errore durante l'elaborazione della richiesta.</value>
+  </data>
+  <data name="DataServiceQuery_EnumerationNotSupported" xml:space="preserve">
+    <value>Questo framework di destinazione non consente di eseguire l'enumerazione direttamente su una query del servizio dati, in quanto l'enumerazione invia automaticamente una richiesta sincrona al servizio dati. Poiché questo framework supporta solo operazioni asincrone, è necessario chiamare i metodi BeginExecute ed EndExecute per ottenere un risultato di query che supporti l'enumerazione.</value>
+  </data>
+  <data name="DataServiceRequest_FailGetCount" xml:space="preserve">
+    <value>Impossibile ottenere il valore count dal server.</value>
+  </data>
+  <data name="Deserialize_Current" xml:space="preserve">
+    <value>Il tipo '{1}' del valore corrente non è compatibile con il tipo '{0}' previsto.</value>
+  </data>
+  <data name="Deserialize_ExpectingSimpleValue" xml:space="preserve">
+    <value>Errore durante l'elaborazione del flusso di risposta. L'elemento XML include contenuto misto.</value>
+  </data>
+  <data name="Deserialize_GetEnumerator" xml:space="preserve">
+    <value>Questa interfaccia IEnumerable supporta solo un'unica enumerazione.</value>
+  </data>
+  <data name="Deserialize_MismatchAtomLinkEntryPropertyIsCollection" xml:space="preserve">
+    <value>Errore durante l'elaborazione del flusso di risposta. Il payload Atom contiene un elemento entry e la proprietà '{0}' è una raccolta.</value>
+  </data>
+  <data name="Deserialize_MismatchAtomLinkFeedPropertyNotCollection" xml:space="preserve">
+    <value>Errore durante l'elaborazione del flusso di risposta. Il payload Atom contiene un elemento feed e la proprietà '{0}' non è una raccolta.</value>
+  </data>
+  <data name="Deserialize_MismatchAtomLinkLocalSimple" xml:space="preserve">
+    <value>Errore durante l'elaborazione del flusso di risposta. Il payload Atom contiene un collegamento e l'oggetto locale contiene un valore semplice.</value>
+  </data>
+  <data name="Deserialize_MissingIdElement" xml:space="preserve">
+    <value>Errore durante l'elaborazione del flusso di risposta. Elemento id mancante nella risposta.</value>
+  </data>
+  <data name="Deserialize_MixedTextWithComment" xml:space="preserve">
+    <value>Errore durante l'elaborazione del flusso di risposta. Valore dell'elemento frammisto con commento non supportato.</value>
+  </data>
+  <data name="Deserialize_NoLocationHeader" xml:space="preserve">
+    <value>La risposta a questa richiesta POST non contiene un'intestazione 'location'. Condizione non supportata dal client.</value>
+  </data>
+  <data name="Deserialize_ServerException" xml:space="preserve">
+    <value>Errore durante l'elaborazione del flusso di risposta. Errore del server. Messaggio:
+{0}</value>
+  </data>
+  <data name="EdmValueUtils_CannotConvertTypeToClrValue" xml:space="preserve">
+    <value>Impossibile convertire un valore con genere primitivo '{0}' in un valore di oggetto primitivo.</value>
+  </data>
+  <data name="EdmValueUtils_IncorrectPrimitiveTypeKind" xml:space="preserve">
+    <value>Trovati tipi primitivi di generi incompatibili. Il tipo '{0}' è del genere '{2}' anziché del genere previsto '{1}'.</value>
+  </data>
+  <data name="EdmValueUtils_IncorrectPrimitiveTypeKindNoTypeName" xml:space="preserve">
+    <value>Trovati tipi primitivi di generi incompatibili. Trovato genere del tipo '{0}' anziché il genere previsto '{1}'.</value>
+  </data>
+  <data name="EdmValueUtils_UnsupportedPrimitiveType" xml:space="preserve">
+    <value>Trovato il tipo '{0}' per un valore primitivo. In OData '{0}' non è un tipo primitivo supportato.</value>
+  </data>
+  <data name="EntityDescriptor_MissingSelfEditLink" xml:space="preserve">
+    <value>L'entità con Identity '{0}' non contiene un elemento self-link o edit-link ad essa associato. Assicurarsi che l'entità contenga un elemento self-link o edit-link ad essa associato.</value>
+  </data>
+  <data name="EpmSourceTree_CollectionPropertyCannotBeMapped" xml:space="preserve">
+    <value>La proprietà '{0}' nel tipo '{1}' è una raccolta. Non è possibile eseguire il mapping delle proprietà di raccolta con il mapping di una proprietà di entità.</value>
+  </data>
+  <data name="EpmSourceTree_DuplicateEpmAttrsWithSameSourceName" xml:space="preserve">
+    <value>Il valore '{0}' della proprietà PropertyName in più EntityPropertyMappingAttribute nel tipo di risorsa '{1}' è stato specificato più di una volta.</value>
+  </data>
+  <data name="EpmSourceTree_EndsWithNonPrimitiveType" xml:space="preserve">
+    <value>La proprietà '{0}' specificata alla fine della proprietà PropertyName di EntityPropertyMappingAttribute in un tipo di risorsa non è un tipo primitivo.</value>
+  </data>
+  <data name="EpmSourceTree_InaccessiblePropertyOnType" xml:space="preserve">
+    <value>La proprietà '{0}' nel tipo '{1}' non è presente oppure non è accessibile.</value>
+  </data>
+  <data name="EpmSourceTree_InvalidSourcePath" xml:space="preserve">
+    <value>Il valore '{1}' della proprietà PropertyName di EntityPropertyMappingAttribute nel tipo '{0}' non è valido.</value>
+  </data>
+  <data name="EpmSourceTree_NamedStreamCannotBeMapped" xml:space="preserve">
+    <value>La proprietà '{0}' nel tipo '{1}' è di tipo 'DataServiceStreamLink'. Impossibile eseguire il mapping delle proprietà di flusso con il mapping di una proprietà di entità.</value>
+  </data>
+  <data name="EpmSourceTree_SpatialTypeCannotBeMapped" xml:space="preserve">
+    <value>La proprietà '{0}' nel tipo '{1}' è un tipo spaziale. Impossibile eseguire il mapping delle proprietà di tipo spaziale con il mapping di una proprietà di entità.</value>
+  </data>
+  <data name="EpmTargetTree_AttributeInMiddle" xml:space="preserve">
+    <value>L'identificatore di attributo '{0}' è specificato nella parte centrale della proprietà TargetName di EntityPropertyMappingAttribute.</value>
+  </data>
+  <data name="EpmTargetTree_DuplicateEpmAttrsWithSameTargetName" xml:space="preserve">
+    <value>È stato specificato lo stesso valore per la proprietà TargetName '{0}' in più EntityPropertyMappingAttribute nel tipo di risorsa '{1}'. Le proprietà in conflitto sono '{2}' e '{3}'.</value>
+  </data>
+  <data name="EpmTargetTree_InvalidTargetPath" xml:space="preserve">
+    <value>Il percorso della proprietà TargetName '{0}' impostato in EntityPropertyMappingAttribute non è valido.</value>
+  </data>
+  <data name="General_InternalError" xml:space="preserve">
+    <value>Errore interno '{0}'.</value>
+  </data>
+  <data name="HttpProcessUtility_ClosingQuoteNotFound" xml:space="preserve">
+    <value>Il valore del parametro '{0}' del tipo MIME non è corretto. Impossibile trovare le virgolette di chiusura corrispondenti alle virgolette di apertura presenti all'inizio del parametro.</value>
+  </data>
+  <data name="HttpProcessUtility_ContentTypeMissing" xml:space="preserve">
+    <value>Valore intestazione Content-Type mancante.</value>
+  </data>
+  <data name="HttpProcessUtility_EncodingNotSupported" xml:space="preserve">
+    <value>Set di caratteri '{0}' non supportato.</value>
+  </data>
+  <data name="HttpProcessUtility_EscapeCharAtEnd" xml:space="preserve">
+    <value>Il valore del parametro '{0}' del tipo MIME non è corretto perché termina con il carattere di escape. In un valore di parametro i caratteri di escape devono sempre essere seguiti da un carattere.</value>
+  </data>
+  <data name="HttpProcessUtility_EscapeCharWithoutQuotes" xml:space="preserve">
+    <value>Il valore del parametro '{0}' del tipo MIME non è corretto perché contiene caratteri di escape anche se non è racchiuso tra virgolette.</value>
+  </data>
+  <data name="HttpProcessUtility_MediaTypeMissingValue" xml:space="preserve">
+    <value>Valore di parametro mancante per il tipo di supporto.</value>
+  </data>
+  <data name="HttpProcessUtility_MediaTypeRequiresSemicolonBeforeParameter" xml:space="preserve">
+    <value>Il tipo di supporto richiede un carattere ';' prima di una definizione di parametro.</value>
+  </data>
+  <data name="HttpProcessUtility_MediaTypeRequiresSlash" xml:space="preserve">
+    <value>Il tipo di supporto richiede un carattere '/'.</value>
+  </data>
+  <data name="HttpProcessUtility_MediaTypeRequiresSubType" xml:space="preserve">
+    <value>Il tipo di supporto richiede una definizione di sottotipo.</value>
+  </data>
+  <data name="HttpProcessUtility_MediaTypeUnspecified" xml:space="preserve">
+    <value>Tipo di supporto non specificato.</value>
+  </data>
+  <data name="MaterializeFromAtom_CollectionKeyNotPresentInLinkTable" xml:space="preserve">
+    <value>La raccolta non fa parte dell'elemento entry corrente</value>
+  </data>
+  <data name="MaterializeFromAtom_CountNotPresent" xml:space="preserve">
+    <value>Il valore Count non è incluso nel flusso di risposta.</value>
+  </data>
+  <data name="MaterializeFromAtom_GetNestLinkForFlatCollection" xml:space="preserve">
+    <value>La risposta non contiene raccolte annidate. In sostituzione, utilizzare Null come elemento Key.</value>
+  </data>
+  <data name="MaterializeFromAtom_TopLevelLinkNotAvailable" xml:space="preserve">
+    <value>L'elemento link di livello principale è disponibile solo dopo l'enumerazione della risposta.</value>
+  </data>
+  <data name="ODataMetadataBuilder_MissingEntityInstanceUri" xml:space="preserve">
+    <value>Impossibile trovare le annotazioni 'OData.EntityInstanceUri' e 'OData.EntitySetUriSuffix' per il set di entità '{0}'. Una di queste annotazioni è richiesta.</value>
+  </data>
+  <data name="ODataMetadataBuilder_MissingEntitySetUri" xml:space="preserve">
+    <value>Il set di entità '{0}' non ha l'annotazione 'OData.EntitySetUri'. Questa annotazione è richiesta.</value>
+  </data>
+  <data name="ODataMetadataBuilder_MissingSegmentForEntitySetUriSuffix" xml:space="preserve">
+    <value>Il set di entità '{0}' ha un URI '{1}' senza segmenti di percorso. Impossibile aggiungere un suffisso URI di un set di entità a un URI senza segmenti di percorso.</value>
+  </data>
+  <data name="ODataRequestMessage_GetStreamMethodNotSupported" xml:space="preserve">
+    <value>Metodo GetStream non supportato.</value>
+  </data>
+  <data name="Serializer_InvalidCollectionParamterItemType" xml:space="preserve">
+    <value>Il parametro dell'operazione denominato '{0}' contiene un elemento della raccolta di genere del tipo Edm '{1}'. Un elemento della raccolta deve essere un tipo primitivo o un genere del tipo Edm complesso.</value>
+  </data>
+  <data name="Serializer_InvalidParameterType" xml:space="preserve">
+    <value>Il parametro dell'operazione denominato '{0}' è di genere del tipo Edm '{1}'. Un parametro dell'operazione deve essere un tipo primitivo, un tipo complesso o una raccolta di tipi primitivi o complessi.</value>
+  </data>
+  <data name="Serializer_LoopsNotAllowedInComplexTypes" xml:space="preserve">
+    <value>Rilevato un ciclo circolare durante la serializzazione delle proprietà '{0}'. Assicurarsi che i cicli non siano presenti nelle proprietà che restituiscono una raccolta o un tipo complesso.</value>
+  </data>
+  <data name="Serializer_LoopsNotAllowedInNonPropertyComplexTypes" xml:space="preserve">
+    <value>Rilevato un ciclo circolare durante la serializzazione del tipo complesso '{0}'. Assicurarsi che i cicli non siano presenti in una raccolta o in un tipo complesso.</value>
+  </data>
+  <data name="Serializer_NullCollectionParamterItemValue" xml:space="preserve">
+    <value>Il parametro dell'operazione denominato '{0}' contiene un elemento della raccolta Null. Gli elementi di una raccolta non devono essere Null.</value>
+  </data>
+  <data name="Serializer_UriDoesNotContainParameterAlias" xml:space="preserve">
+    <value>Alias del parametro '{0}' non presente nell'URI della richiesta. Tutti i parametri passati come alias devono essere presenti nell'URI della richiesta.</value>
+  </data>
+  <data name="Util_EmptyArray" xml:space="preserve">
+    <value>Matrice vuota.</value>
+  </data>
+  <data name="Util_EmptyString" xml:space="preserve">
+    <value>Stringa vuota.</value>
+  </data>
+  <data name="Util_NullArrayElement" xml:space="preserve">
+    <value>La matrice contiene un elemento Null.</value>
+  </data>
+  <data name="WebUtil_CollectionTypeNotSupportedInV2OrBelow" xml:space="preserve">
+    <value>Il tipo '{0}' è un tipo di raccolta. I tipi di raccolta sono supportati sono nella versione del protocollo 'V3' e versioni successive.</value>
+  </data>
+  <data name="WebUtil_TypeMismatchInCollection" xml:space="preserve">
+    <value>Un elemento della proprietà di raccolta '{0}' non è del tipo corretto. Tutti gli elementi della proprietà di raccolta devono essere del tipo di elemento della raccolta.</value>
+  </data>
+  <data name="WebUtil_TypeMismatchInNonPropertyCollection" xml:space="preserve">
+    <value>In una raccolta del tipo di elementi '{0}' è presente un elemento di tipo non corretto. Tutti gli elementi della raccolta devono essere del tipo di elemento della raccolta.</value>
+  </data>
+</root>

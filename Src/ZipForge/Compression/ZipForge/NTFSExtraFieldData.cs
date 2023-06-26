@@ -8,7 +8,8 @@ namespace ComponentAce.Compression.ZipForge
 	internal class NTFSExtraFieldData : ExtraFieldData
 	{
 		// Token: 0x06000709 RID: 1801 RVA: 0x0002B531 File Offset: 0x0002A531
-		public NTFSExtraFieldData() : this(0L, 0L, 0L)
+		public NTFSExtraFieldData()
+			: this(0L, 0L, 0L)
 		{
 		}
 
@@ -43,37 +44,37 @@ namespace ComponentAce.Compression.ZipForge
 			ushort num2 = 0;
 			binaryReader.ReadInt32();
 			num2 += 4;
-			long fileModificationTime = 0L;
-			long fileLastAccessTime = 0L;
-			long fileCreationTime = 0L;
+			long num3 = 0L;
+			long num4 = 0L;
+			long num5 = 0L;
 			ArrayList arrayList = new ArrayList();
 			while (num2 < num)
 			{
-				ushort num3 = binaryReader.ReadUInt16();
+				ushort num6 = binaryReader.ReadUInt16();
 				num2 += 2;
-				ushort num4 = binaryReader.ReadUInt16();
+				ushort num7 = binaryReader.ReadUInt16();
 				num2 += 2;
-				if (num3 == 1)
+				if (num6 == 1)
 				{
-					fileModificationTime = binaryReader.ReadInt64();
+					num3 = binaryReader.ReadInt64();
 					num2 += 8;
-					fileLastAccessTime = binaryReader.ReadInt64();
+					num4 = binaryReader.ReadInt64();
 					num2 += 8;
-					fileCreationTime = binaryReader.ReadInt64();
+					num5 = binaryReader.ReadInt64();
 					num2 += 8;
 				}
 				else
 				{
 					NTFSExtraFieldData.NTFSAttributeTag ntfsattributeTag = default(NTFSExtraFieldData.NTFSAttributeTag);
-					ntfsattributeTag.AttrTag = num3;
-					ntfsattributeTag.AttrSize = num4;
-					ntfsattributeTag.AttributeData = new byte[(int)num4];
-					binaryReader.Read(ntfsattributeTag.AttributeData, 0, (int)num4);
-					num2 += num4;
+					ntfsattributeTag.AttrTag = num6;
+					ntfsattributeTag.AttrSize = num7;
+					ntfsattributeTag.AttributeData = new byte[(int)num7];
+					binaryReader.Read(ntfsattributeTag.AttributeData, 0, (int)num7);
+					num2 += num7;
 					arrayList.Add(ntfsattributeTag);
 				}
 			}
-			return new NTFSExtraFieldData(fileModificationTime, fileLastAccessTime, fileCreationTime)
+			return new NTFSExtraFieldData(num3, num4, num5)
 			{
 				Tags = (NTFSExtraFieldData.NTFSAttributeTag[])arrayList.ToArray(typeof(NTFSExtraFieldData.NTFSAttributeTag))
 			};
@@ -165,7 +166,7 @@ namespace ComponentAce.Compression.ZipForge
 			{
 				foreach (NTFSExtraFieldData.NTFSAttributeTag ntfsattributeTag in this._attributes)
 				{
-					num += (ushort)(4 + ntfsattributeTag.AttrSize);
+					num += 4 + ntfsattributeTag.AttrSize;
 				}
 			}
 			return num;
@@ -176,8 +177,8 @@ namespace ComponentAce.Compression.ZipForge
 		{
 			MemoryStream memoryStream = new MemoryStream();
 			BinaryWriter binaryWriter = new BinaryWriter(memoryStream);
-			int value = 0;
-			binaryWriter.Write(value);
+			int num = 0;
+			binaryWriter.Write(num);
 			if (this._fileModificationTime != 0L)
 			{
 				binaryWriter.Write(1);

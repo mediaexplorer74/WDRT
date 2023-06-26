@@ -10,19 +10,19 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.Enums;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 {
-	// Token: 0x02000097 RID: 151
+	// Token: 0x02000042 RID: 66
 	[Export]
 	public class AwaitRecoveryAfterEmergencyDeviceViewModel : BaseViewModel, ICanHandle<DeviceConnectedMessage>, ICanHandle
 	{
-		// Token: 0x06000429 RID: 1065 RVA: 0x00014082 File Offset: 0x00012282
+		// Token: 0x060002AB RID: 683 RVA: 0x0000F46D File Offset: 0x0000D66D
 		[ImportingConstructor]
 		public AwaitRecoveryAfterEmergencyDeviceViewModel(Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext)
 		{
 			this.AppContext = appContext;
 		}
 
-		// Token: 0x170000DA RID: 218
-		// (get) Token: 0x0600042A RID: 1066 RVA: 0x00014098 File Offset: 0x00012298
+		// Token: 0x170000B2 RID: 178
+		// (get) Token: 0x060002AC RID: 684 RVA: 0x0000F480 File Offset: 0x0000D680
 		public string RebootPhoneInstructions
 		{
 			get
@@ -31,9 +31,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x170000DB RID: 219
-		// (get) Token: 0x0600042B RID: 1067 RVA: 0x000140B4 File Offset: 0x000122B4
-		// (set) Token: 0x0600042C RID: 1068 RVA: 0x000140CC File Offset: 0x000122CC
+		// Token: 0x170000B3 RID: 179
+		// (get) Token: 0x060002AD RID: 685 RVA: 0x0000F49C File Offset: 0x0000D69C
+		// (set) Token: 0x060002AE RID: 686 RVA: 0x0000F4B4 File Offset: 0x0000D6B4
 		public bool AreInstructionsVisible
 		{
 			get
@@ -47,8 +47,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x170000DC RID: 220
-		// (get) Token: 0x0600042D RID: 1069 RVA: 0x00014158 File Offset: 0x00012358
+		// Token: 0x170000B4 RID: 180
+		// (get) Token: 0x060002AF RID: 687 RVA: 0x0000F538 File Offset: 0x0000D738
 		public bool IsCancelVisible
 		{
 			get
@@ -57,9 +57,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x170000DD RID: 221
-		// (get) Token: 0x0600042E RID: 1070 RVA: 0x00014170 File Offset: 0x00012370
-		// (set) Token: 0x0600042F RID: 1071 RVA: 0x00014188 File Offset: 0x00012388
+		// Token: 0x170000B5 RID: 181
+		// (get) Token: 0x060002B0 RID: 688 RVA: 0x0000F550 File Offset: 0x0000D750
+		// (set) Token: 0x060002B1 RID: 689 RVA: 0x0000F568 File Offset: 0x0000D768
 		public Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext AppContext
 		{
 			get
@@ -72,8 +72,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x170000DE RID: 222
-		// (get) Token: 0x06000430 RID: 1072 RVA: 0x000141D8 File Offset: 0x000123D8
+		// Token: 0x170000B6 RID: 182
+		// (get) Token: 0x060002B2 RID: 690 RVA: 0x0000F5A8 File Offset: 0x0000D7A8
 		public override string PreviousStateName
 		{
 			get
@@ -82,7 +82,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x06000431 RID: 1073 RVA: 0x000141F0 File Offset: 0x000123F0
+		// Token: 0x060002B3 RID: 691 RVA: 0x0000F5C0 File Offset: 0x0000D7C0
 		public override void OnStarted()
 		{
 			this.timer = new Timer(new TimerCallback(this.OnTimerCallback), null, 30000, 0);
@@ -90,42 +90,40 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			base.EventAggregator.Publish<IsBackButtonMessage>(new IsBackButtonMessage(false));
 			base.EventAggregator.Publish<BlockWindowMessage>(new BlockWindowMessage(true, null, null));
 			this.AreInstructionsVisible = false;
-			//base.Commands.Run((LumiaController c) => c.StartLumiaDetection(DetectionType.RecoveryModeAfterEmergencyFlashing, CancellationToken.None));
+			base.Commands.Run((LumiaController c) => c.StartLumiaDetection(DetectionType.RecoveryModeAfterEmergencyFlashing, CancellationToken.None));
 		}
 
-		// Token: 0x06000432 RID: 1074 RVA: 0x000142E9 File Offset: 0x000124E9
+		// Token: 0x060002B4 RID: 692 RVA: 0x0000F6B5 File Offset: 0x0000D8B5
 		private void OnTimerCallback(object state)
 		{
 			this.timer.Dispose();
 			this.AreInstructionsVisible = true;
 		}
 
-		// Token: 0x06000433 RID: 1075 RVA: 0x00014300 File Offset: 0x00012500
+		// Token: 0x060002B5 RID: 693 RVA: 0x0000F6CC File Offset: 0x0000D8CC
 		public override void OnStopped()
 		{
 			this.timer.Dispose();
-			//base.Commands.Run((LumiaController c) => c.StopLumiaDetection());
+			base.Commands.Run((LumiaController c) => c.StopLumiaDetection());
 		}
 
-		// Token: 0x06000434 RID: 1076 RVA: 0x00014368 File Offset: 0x00012568
+		// Token: 0x060002B6 RID: 694 RVA: 0x0000F734 File Offset: 0x0000D934
 		public void Handle(DeviceConnectedMessage message)
 		{
-			if (base.IsStarted && message.Phone.Type == PhoneTypes.Lumia && this.appContext.CurrentPhone != null)
+			bool flag = base.IsStarted && message.Phone.Type == PhoneTypes.Lumia && this.appContext.CurrentPhone != null;
+			if (flag)
 			{
-				//base.Commands.Run((FlowController a) =>
-                //{
-                //    a.FinishAwaitRecoveryAfterEmergency(false, CancellationToken.None);
-                //});
+				base.Commands.Run((FlowController a) => a.FinishAwaitRecoveryAfterEmergency(false, CancellationToken.None));
 			}
 		}
 
-		// Token: 0x040001D9 RID: 473
+		// Token: 0x0400013B RID: 315
 		private Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext;
 
-		// Token: 0x040001DA RID: 474
+		// Token: 0x0400013C RID: 316
 		private Timer timer;
 
-		// Token: 0x040001DB RID: 475
+		// Token: 0x0400013D RID: 317
 		private bool areInstructionsVisible;
 	}
 }

@@ -2,18 +2,18 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.BaseTypes
 {
-	// Token: 0x02000005 RID: 5
+	// Token: 0x02000012 RID: 18
 	public class BaseStateMachineErrorEventArgs : EventArgs
 	{
-		// Token: 0x06000047 RID: 71 RVA: 0x00003291 File Offset: 0x00001491
+		// Token: 0x0600007E RID: 126 RVA: 0x00003831 File Offset: 0x00001A31
 		public BaseStateMachineErrorEventArgs(Error error)
 		{
 			this.Error = error;
 		}
 
-		// Token: 0x17000009 RID: 9
-		// (get) Token: 0x06000048 RID: 72 RVA: 0x000032A4 File Offset: 0x000014A4
-		// (set) Token: 0x06000049 RID: 73 RVA: 0x000032BB File Offset: 0x000014BB
+		// Token: 0x1700000D RID: 13
+		// (get) Token: 0x0600007F RID: 127 RVA: 0x00003843 File Offset: 0x00001A43
+		// (set) Token: 0x06000080 RID: 128 RVA: 0x0000384B File Offset: 0x00001A4B
 		public Error Error { get; private set; }
 	}
 }

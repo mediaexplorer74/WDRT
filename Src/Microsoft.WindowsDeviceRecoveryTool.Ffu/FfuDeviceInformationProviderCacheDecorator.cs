@@ -7,7 +7,7 @@ using Microsoft.WindowsDeviceRecoveryTool.Core.Cache;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Ffu
 {
-	// Token: 0x02000003 RID: 3
+	// Token: 0x02000002 RID: 2
 	[Export(typeof(IFfuDeviceInformationProvider))]
 	internal sealed class FfuDeviceInformationProviderCacheDecorator : IFfuDeviceInformationProvider, IDeviceInformationProvider<FfuDeviceInformation>
 	{

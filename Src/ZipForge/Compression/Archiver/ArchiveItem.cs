@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using ComponentAce.Compression.Exception1;
+using ComponentAce.Compression.Exception;
 using ComponentAce.Compression.ZipForge;
 
 namespace ComponentAce.Compression.Archiver
@@ -110,8 +110,8 @@ namespace ComponentAce.Compression.Archiver
 		// Token: 0x06000526 RID: 1318 RVA: 0x00023570 File Offset: 0x00022570
 		internal DateTime getLastWriteTime()
 		{
-			uint dosDateTime = (uint)((int)this.LastModFileDate << 16 | (int)this.LastModFileTime);
-			return CompressionUtils.DosDateTimeToDateTime(dosDateTime);
+			uint num = (uint)(((int)this.LastModFileDate << 16) | (int)this.LastModFileTime);
+			return CompressionUtils.DosDateTimeToDateTime(num);
 		}
 
 		// Token: 0x170000E1 RID: 225
@@ -163,10 +163,7 @@ namespace ComponentAce.Compression.Archiver
 			bool flag = FileUtils.DirectotyExists(fileName);
 			if (!flag && !File.Exists(fileName))
 			{
-				throw ExceptionBuilder.Exception(ErrorCode.FileNotFound, new object[]
-				{
-					fileName
-				});
+				throw ExceptionBuilder.Exception(ErrorCode.FileNotFound, new object[] { fileName });
 			}
 			this._compressedSize = 0L;
 			if (!flag)
@@ -205,7 +202,8 @@ namespace ComponentAce.Compression.Archiver
 		}
 
 		// Token: 0x0600052C RID: 1324 RVA: 0x0002381E File Offset: 0x0002281E
-		public ArchiveItem(string fileName) : this(fileName, "", StorePathMode.RelativePath)
+		public ArchiveItem(string fileName)
+			: this(fileName, "", StorePathMode.RelativePath)
 		{
 		}
 

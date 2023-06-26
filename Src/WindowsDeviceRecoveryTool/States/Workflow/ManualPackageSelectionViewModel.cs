@@ -11,20 +11,20 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.Enums;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 {
-	// Token: 0x020000D0 RID: 208
+	// Token: 0x0200001D RID: 29
 	[Export]
-	public class ManualPackageSelectionViewModel : BaseViewModel, ICanHandle<PackageDirectoryMessage>, ICanHandle<FfuFilePlatformIdMessage>, ICanHandle
+	public class ManualPackageSelectionViewModel : BaseViewModel, ICanHandle<PackageDirectoryMessage>, ICanHandle, ICanHandle<FfuFilePlatformIdMessage>
 	{
-		// Token: 0x0600065B RID: 1627 RVA: 0x00020EF7 File Offset: 0x0001F0F7
+		// Token: 0x0600014B RID: 331 RVA: 0x00008CEC File Offset: 0x00006EEC
 		[ImportingConstructor]
 		public ManualPackageSelectionViewModel(Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext)
 		{
 			this.appContext = appContext;
 		}
 
-		// Token: 0x17000175 RID: 373
-		// (get) Token: 0x0600065C RID: 1628 RVA: 0x00020F0C File Offset: 0x0001F10C
-		// (set) Token: 0x0600065D RID: 1629 RVA: 0x00020F24 File Offset: 0x0001F124
+		// Token: 0x17000056 RID: 86
+		// (get) Token: 0x0600014C RID: 332 RVA: 0x00008D00 File Offset: 0x00006F00
+		// (set) Token: 0x0600014D RID: 333 RVA: 0x00008D18 File Offset: 0x00006F18
 		public Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext AppContext
 		{
 			get
@@ -37,29 +37,31 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x17000176 RID: 374
-		// (get) Token: 0x0600065E RID: 1630 RVA: 0x00020F74 File Offset: 0x0001F174
-		// (set) Token: 0x0600065F RID: 1631 RVA: 0x00020FD8 File Offset: 0x0001F1D8
+		// Token: 0x17000057 RID: 87
+		// (get) Token: 0x0600014E RID: 334 RVA: 0x00008D58 File Offset: 0x00006F58
+		// (set) Token: 0x0600014F RID: 335 RVA: 0x00008D98 File Offset: 0x00006F98
 		public string FfuFilePath
 		{
 			get
 			{
-				string result;
-				if (this.appContext.CurrentPhone != null)
+				bool flag = this.appContext.CurrentPhone != null;
+				string text;
+				if (flag)
 				{
-					result = this.appContext.CurrentPhone.PackageFilePath;
+					text = this.appContext.CurrentPhone.PackageFilePath;
 				}
 				else
 				{
-					result = string.Empty;
+					text = string.Empty;
 				}
-				return result;
+				return text;
 			}
 			set
 			{
-				if (this.appContext.CurrentPhone != null)
+				bool flag = this.appContext.CurrentPhone != null;
+				if (flag)
 				{
-					base.SetValue<string>(() => this.FfuFilePath, delegate()
+					base.SetValue<string>(() => this.FfuFilePath, delegate
 					{
 						this.appContext.CurrentPhone.PackageFilePath = value;
 					});
@@ -69,38 +71,40 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x17000177 RID: 375
-		// (get) Token: 0x06000660 RID: 1632 RVA: 0x000210D8 File Offset: 0x0001F2D8
+		// Token: 0x17000058 RID: 88
+		// (get) Token: 0x06000150 RID: 336 RVA: 0x00008E80 File Offset: 0x00007080
 		public string FilePathDescription
 		{
 			get
 			{
-				string result;
-				if (!string.IsNullOrEmpty(this.FfuFilePath))
+				bool flag = !string.IsNullOrEmpty(this.FfuFilePath);
+				string text;
+				if (flag)
 				{
-					result = string.Format(LocalizationManager.GetTranslation("PackageFilePath"), this.FfuFilePath);
+					text = string.Format(LocalizationManager.GetTranslation("PackageFilePath"), this.FfuFilePath);
 				}
 				else
 				{
-					result = LocalizationManager.GetTranslation("PackagePathNotSet");
+					text = LocalizationManager.GetTranslation("PackagePathNotSet");
 				}
-				return result;
+				return text;
 			}
 		}
 
-		// Token: 0x17000178 RID: 376
-		// (get) Token: 0x06000661 RID: 1633 RVA: 0x0002111C File Offset: 0x0001F31C
+		// Token: 0x17000059 RID: 89
+		// (get) Token: 0x06000151 RID: 337 RVA: 0x00008EC8 File Offset: 0x000070C8
 		public bool IsNextCommandEnabled
 		{
 			get
 			{
-				return this.appContext.CurrentPhone != null && (this.PlatformId != null || this.appContext.CurrentPhone.Type == PhoneTypes.Lumia) && !string.IsNullOrEmpty(this.FfuFilePath) && this.Compatibility;
+				bool flag = this.appContext.CurrentPhone != null && (this.PlatformId != null || this.appContext.CurrentPhone.Type == PhoneTypes.Lumia);
+				return flag && !string.IsNullOrEmpty(this.FfuFilePath) && this.Compatibility;
 			}
 		}
 
-		// Token: 0x17000179 RID: 377
-		// (get) Token: 0x06000662 RID: 1634 RVA: 0x00021184 File Offset: 0x0001F384
-		// (set) Token: 0x06000663 RID: 1635 RVA: 0x0002119C File Offset: 0x0001F39C
+		// Token: 0x1700005A RID: 90
+		// (get) Token: 0x06000152 RID: 338 RVA: 0x00008F28 File Offset: 0x00007128
+		// (set) Token: 0x06000153 RID: 339 RVA: 0x00008F40 File Offset: 0x00007140
 		public string StatusInfo
 		{
 			get
@@ -113,9 +117,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x1700017A RID: 378
-		// (get) Token: 0x06000664 RID: 1636 RVA: 0x000211EC File Offset: 0x0001F3EC
-		// (set) Token: 0x06000665 RID: 1637 RVA: 0x00021204 File Offset: 0x0001F404
+		// Token: 0x1700005B RID: 91
+		// (get) Token: 0x06000154 RID: 340 RVA: 0x00008F80 File Offset: 0x00007180
+		// (set) Token: 0x06000155 RID: 341 RVA: 0x00008F98 File Offset: 0x00007198
 		public PlatformId PlatformId
 		{
 			get
@@ -128,9 +132,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x1700017B RID: 379
-		// (get) Token: 0x06000666 RID: 1638 RVA: 0x00021254 File Offset: 0x0001F454
-		// (set) Token: 0x06000667 RID: 1639 RVA: 0x0002126C File Offset: 0x0001F46C
+		// Token: 0x1700005C RID: 92
+		// (get) Token: 0x06000156 RID: 342 RVA: 0x00008FD8 File Offset: 0x000071D8
+		// (set) Token: 0x06000157 RID: 343 RVA: 0x00008FF0 File Offset: 0x000071F0
 		public bool Compatibility
 		{
 			get
@@ -144,9 +148,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x1700017C RID: 380
-		// (get) Token: 0x06000668 RID: 1640 RVA: 0x000212F8 File Offset: 0x0001F4F8
-		// (set) Token: 0x06000669 RID: 1641 RVA: 0x00021310 File Offset: 0x0001F510
+		// Token: 0x1700005D RID: 93
+		// (get) Token: 0x06000158 RID: 344 RVA: 0x00009074 File Offset: 0x00007274
+		// (set) Token: 0x06000159 RID: 345 RVA: 0x0000908C File Offset: 0x0000728C
 		public bool CheckingPlatformId
 		{
 			get
@@ -159,18 +163,20 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x0600066A RID: 1642 RVA: 0x00021360 File Offset: 0x0001F560
+		// Token: 0x0600015A RID: 346 RVA: 0x000090CC File Offset: 0x000072CC
 		public void Handle(PackageDirectoryMessage message)
 		{
-			if (base.IsStarted)
+			bool isStarted = base.IsStarted;
+			if (isStarted)
 			{
 				this.PlatformId = null;
 				this.FfuFilePath = message.Directory;
-				if (!string.IsNullOrEmpty(this.FfuFilePath) && this.appContext.CurrentPhone.Type != PhoneTypes.Lumia)
+				bool flag = !string.IsNullOrEmpty(this.FfuFilePath) && this.appContext.CurrentPhone.Type > PhoneTypes.Lumia;
+				if (flag)
 				{
 					this.CheckingPlatformId = true;
 					this.StatusInfo = LocalizationManager.GetTranslation("FFUCheckingFile");
-					//base.Commands.Run((FfuController c) => c.ReadFfuFilePlatformId(this.FfuFilePath, CancellationToken.None));
+					base.Commands.Run((FfuController c) => c.ReadFfuFilePlatformId(this.FfuFilePath, CancellationToken.None));
 				}
 				else
 				{
@@ -179,38 +185,44 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x0600066B RID: 1643 RVA: 0x0002147C File Offset: 0x0001F67C
+		// Token: 0x0600015B RID: 347 RVA: 0x000091D8 File Offset: 0x000073D8
 		public void Handle(FfuFilePlatformIdMessage message)
 		{
 			this.PlatformId = message.PlatformId;
 			this.CheckingPlatformId = false;
-			if (this.appContext.CurrentPhone != null)
+			bool flag = this.appContext.CurrentPhone == null;
+			if (!flag)
 			{
 				this.CheckCompatibility();
 			}
 		}
 
-		// Token: 0x0600066C RID: 1644 RVA: 0x000214C0 File Offset: 0x0001F6C0
+		// Token: 0x0600015C RID: 348 RVA: 0x00009218 File Offset: 0x00007418
 		private void CheckCompatibility()
 		{
-			if (this.appContext.CurrentPhone.Type == PhoneTypes.Analog)
+			bool flag = this.appContext.CurrentPhone.Type == PhoneTypes.Analog;
+			if (flag)
 			{
 				this.Compatibility = true;
 				this.StatusInfo = (this.PlatformId.IsCompatibleWithDevicePlatformId(this.appContext.CurrentPhone.PlatformId) ? "File OK" : "Package do not match the device!");
 			}
-			else if (this.appContext.CurrentPhone.Type != PhoneTypes.Lumia)
-			{
-				this.Compatibility = this.PlatformId.IsCompatibleWithDevicePlatformId(this.appContext.CurrentPhone.PlatformId);
-				this.StatusInfo = (this.Compatibility ? "File OK" : "Selected file is not compatible with connected phone!");
-			}
 			else
 			{
-				this.Compatibility = true;
-				this.StatusInfo = "Compatibility forced to match for Lumia phones";
+				bool flag2 = this.appContext.CurrentPhone.Type > PhoneTypes.Lumia;
+				if (flag2)
+				{
+					this.Compatibility = this.PlatformId.IsCompatibleWithDevicePlatformId(this.appContext.CurrentPhone.PlatformId);
+					this.StatusInfo = (this.Compatibility ? "File OK" : "Selected file is not compatible with connected phone!");
+				}
+				else
+				{
+					this.Compatibility = true;
+					this.StatusInfo = "Compatibility forced to match for Lumia phones";
+				}
 			}
 		}
 
-		// Token: 0x0600066D RID: 1645 RVA: 0x00021594 File Offset: 0x0001F794
+		// Token: 0x0600015D RID: 349 RVA: 0x000092E8 File Offset: 0x000074E8
 		public override void OnStarted()
 		{
 			base.OnStarted();
@@ -223,19 +235,19 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			this.Compatibility = false;
 		}
 
-		// Token: 0x040002AD RID: 685
+		// Token: 0x040000B7 RID: 183
 		private Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext;
 
-		// Token: 0x040002AE RID: 686
+		// Token: 0x040000B8 RID: 184
 		private PlatformId platformId;
 
-		// Token: 0x040002AF RID: 687
+		// Token: 0x040000B9 RID: 185
 		private bool checkingPlatformId;
 
-		// Token: 0x040002B0 RID: 688
+		// Token: 0x040000BA RID: 186
 		private bool compatibility;
 
-		// Token: 0x040002B1 RID: 689
+		// Token: 0x040000BB RID: 187
 		private string statusInfo;
 	}
 }

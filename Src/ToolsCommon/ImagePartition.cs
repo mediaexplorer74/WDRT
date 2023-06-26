@@ -3,43 +3,43 @@ using System.IO;
 
 namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 {
-	// Token: 0x0200001A RID: 26
+	// Token: 0x02000020 RID: 32
 	public class ImagePartition
 	{
-		// Token: 0x060000F2 RID: 242 RVA: 0x00004FC0 File Offset: 0x000031C0
+		// Token: 0x06000112 RID: 274 RVA: 0x00007789 File Offset: 0x00005989
 		protected ImagePartition()
 		{
 		}
 
-		// Token: 0x060000F3 RID: 243 RVA: 0x00006CDD File Offset: 0x00004EDD
+		// Token: 0x06000113 RID: 275 RVA: 0x00007791 File Offset: 0x00005991
 		public ImagePartition(string name, string root)
 		{
 			this.Name = name;
 			this.Root = root;
 		}
 
-		// Token: 0x1700000D RID: 13
-		// (get) Token: 0x060000F4 RID: 244 RVA: 0x00006CF3 File Offset: 0x00004EF3
-		// (set) Token: 0x060000F5 RID: 245 RVA: 0x00006CFB File Offset: 0x00004EFB
+		// Token: 0x17000015 RID: 21
+		// (get) Token: 0x06000114 RID: 276 RVA: 0x000077A7 File Offset: 0x000059A7
+		// (set) Token: 0x06000115 RID: 277 RVA: 0x000077AF File Offset: 0x000059AF
 		public string PhysicalDeviceId { get; protected set; }
 
-		// Token: 0x1700000E RID: 14
-		// (get) Token: 0x060000F6 RID: 246 RVA: 0x00006D04 File Offset: 0x00004F04
-		// (set) Token: 0x060000F7 RID: 247 RVA: 0x00006D0C File Offset: 0x00004F0C
+		// Token: 0x17000016 RID: 22
+		// (get) Token: 0x06000116 RID: 278 RVA: 0x000077B8 File Offset: 0x000059B8
+		// (set) Token: 0x06000117 RID: 279 RVA: 0x000077C0 File Offset: 0x000059C0
 		public string Name { get; protected set; }
 
-		// Token: 0x1700000F RID: 15
-		// (get) Token: 0x060000F8 RID: 248 RVA: 0x00006D15 File Offset: 0x00004F15
-		// (set) Token: 0x060000F9 RID: 249 RVA: 0x00006D1D File Offset: 0x00004F1D
+		// Token: 0x17000017 RID: 23
+		// (get) Token: 0x06000118 RID: 280 RVA: 0x000077C9 File Offset: 0x000059C9
+		// (set) Token: 0x06000119 RID: 281 RVA: 0x000077D1 File Offset: 0x000059D1
 		public string Root { get; protected set; }
 
-		// Token: 0x17000010 RID: 16
-		// (get) Token: 0x060000FA RID: 250 RVA: 0x00006D26 File Offset: 0x00004F26
-		// (set) Token: 0x060000FB RID: 251 RVA: 0x00006D2E File Offset: 0x00004F2E
+		// Token: 0x17000018 RID: 24
+		// (get) Token: 0x0600011A RID: 282 RVA: 0x000077DA File Offset: 0x000059DA
+		// (set) Token: 0x0600011B RID: 283 RVA: 0x000077E2 File Offset: 0x000059E2
 		public DriveInfo MountedDriveInfo { get; protected set; }
 
-		// Token: 0x17000011 RID: 17
-		// (get) Token: 0x060000FC RID: 252 RVA: 0x00006D38 File Offset: 0x00004F38
+		// Token: 0x17000019 RID: 25
+		// (get) Token: 0x0600011C RID: 284 RVA: 0x000077EC File Offset: 0x000059EC
 		public FileInfo[] Files
 		{
 			get
@@ -53,7 +53,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x0400004C RID: 76
+		// Token: 0x04000063 RID: 99
 		private FileInfo[] _files;
 	}
 }

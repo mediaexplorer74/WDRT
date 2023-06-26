@@ -1,0 +1,892 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccentColor" xml:space="preserve">
+    <value>輔色</value>
+  </data>
+  <data name="AccentColorBlack" xml:space="preserve">
+    <value>黑色</value>
+  </data>
+  <data name="AccentColorBlue" xml:space="preserve">
+    <value>藍色</value>
+  </data>
+  <data name="AccentColorCobalt" xml:space="preserve">
+    <value>深藍色</value>
+  </data>
+  <data name="AccentColorCrimson" xml:space="preserve">
+    <value>深紅色</value>
+  </data>
+  <data name="AccentColorEmerald" xml:space="preserve">
+    <value>深綠色</value>
+  </data>
+  <data name="AccentColorIndigo" xml:space="preserve">
+    <value>靛藍色</value>
+  </data>
+  <data name="AccentColorMauve" xml:space="preserve">
+    <value>紫紅色</value>
+  </data>
+  <data name="AccentColorSienna" xml:space="preserve">
+    <value>黃褐色</value>
+  </data>
+  <data name="AddressForm" xml:space="preserve">
+    <value>位址</value>
+  </data>
+  <data name="AllFilesSize" xml:space="preserve">
+    <value>所有檔案大小:{0}</value>
+  </data>
+  <data name="AnotherInstanceAlreadyRunning" xml:space="preserve">
+    <value>已有另一個 {0} 的例項正在執行中。</value>
+  </data>
+  <data name="ApplicationData" xml:space="preserve">
+    <value>備份資訊</value>
+  </data>
+  <data name="ApplicationUpdate" xml:space="preserve">
+    <value>應用程式更新</value>
+  </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>是否確定？</value>
+  </data>
+  <data name="AutomaticPackageFileSelection" xml:space="preserve">
+    <value>正在為連線的手機搜尋正確的套件。</value>
+  </data>
+  <data name="AutomaticPackageSelection" xml:space="preserve">
+    <value>自動選擇套件</value>
+  </data>
+  <data name="AvailablePackageIsOlder" xml:space="preserve">
+    <value>可用的軟體比手機上的版本舊。</value>
+  </data>
+  <data name="AwaitRecoveryAfterEmergencyFlashingInstruction" xml:space="preserve">
+    <value>復原作業成功，正在等候手機回應。
+如果電池電量不足，可能會花上最多 30 分鐘。</value>
+  </data>
+  <data name="BatteryCheckHeader" xml:space="preserve">
+    <value>檢查電池</value>
+  </data>
+  <data name="BatteryCheckingCancelled" xml:space="preserve">
+    <value>電池檢查已取消。</value>
+  </data>
+  <data name="BatteryWarning" xml:space="preserve">
+    <value>確認您的電池電量至少有 25%。 否則可能會損壞您的手機。</value>
+  </data>
+  <data name="ButtonBrowse" xml:space="preserve">
+    <value>瀏覽</value>
+  </data>
+  <data name="ButtonCancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="ButtonChangePackagePath" xml:space="preserve">
+    <value>變更套件路徑</value>
+  </data>
+  <data name="ButtonClean" xml:space="preserve">
+    <value>清除所有應用程式資料</value>
+  </data>
+  <data name="ButtonCleanOneCategory" xml:space="preserve">
+    <value>清除</value>
+  </data>
+  <data name="ButtonCollectLogs" xml:space="preserve">
+    <value>匯出</value>
+  </data>
+  <data name="ButtonContinue" xml:space="preserve">
+    <value>繼續</value>
+  </data>
+  <data name="ButtonDelete" xml:space="preserve">
+    <value>刪除</value>
+  </data>
+  <data name="ButtonExit" xml:space="preserve">
+    <value>結束</value>
+  </data>
+  <data name="ButtonFinish" xml:space="preserve">
+    <value>完成</value>
+  </data>
+  <data name="ButtonInstall" xml:space="preserve">
+    <value>安裝</value>
+  </data>
+  <data name="ButtonInstallSoftware" xml:space="preserve">
+    <value>安裝軟體</value>
+  </data>
+  <data name="ButtonMyPhoneIsNotOnTheList" xml:space="preserve">
+    <value>我的手機未列在清單中</value>
+  </data>
+  <data name="ButtonMyPhoneWasNotDetected" xml:space="preserve">
+    <value>偵測不到我的手機</value>
+  </data>
+  <data name="ButtonNewFolder" xml:space="preserve">
+    <value>新資料夾</value>
+  </data>
+  <data name="ButtonNext" xml:space="preserve">
+    <value>下一步</value>
+  </data>
+  <data name="ButtonNo" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="ButtonOff" xml:space="preserve">
+    <value>關</value>
+  </data>
+  <data name="ButtonOk" xml:space="preserve">
+    <value>確定</value>
+  </data>
+  <data name="ButtonOn" xml:space="preserve">
+    <value>開</value>
+  </data>
+  <data name="ButtonReset" xml:space="preserve">
+    <value>重設為預設值</value>
+  </data>
+  <data name="ButtonTryAgain" xml:space="preserve">
+    <value>請再試一次</value>
+  </data>
+  <data name="ButtonYes" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="CapsLockIsOn" xml:space="preserve">
+    <value>已開啟 Caps Lock (大寫鎖定)</value>
+  </data>
+  <data name="CheckLatestPackageHeader" xml:space="preserve">
+    <value>手機資訊</value>
+  </data>
+  <data name="CheckingAlreadyDownloadedFiles" xml:space="preserve">
+    <value>正在檢查已下載檔案的相容性</value>
+  </data>
+  <data name="CheckingAppUpdate" xml:space="preserve">
+    <value>正在檢查可用的應用程式更新</value>
+  </data>
+  <data name="CheckingFirmwareAvailability" xml:space="preserve">
+    <value>正在檢查軟體可用性</value>
+  </data>
+  <data name="CheckingPackageIntegrity" xml:space="preserve">
+    <value>正在檢查套件完整性</value>
+  </data>
+  <data name="CleanUserDataQuestion" xml:space="preserve">
+    <value>是否確定要刪除所有應用程式資料 (報告、手機軟體套件、記錄檔案)?</value>
+  </data>
+  <data name="CollectingLogFilesInfo" xml:space="preserve">
+    <value>正在收集記錄檔案。 請稍候。</value>
+  </data>
+  <data name="ComputerBatteryWarning" xml:space="preserve">
+    <value>您電腦上的電池電量不足。， 請將電腦接上充電器並再試一次。</value>
+  </data>
+  <data name="ConnectPhone" xml:space="preserve">
+    <value>將您的手機連線</value>
+  </data>
+  <data name="ConnectPhoneWithUsbCable" xml:space="preserve">
+    <value>將 USB 傳輸線連接至手機。</value>
+  </data>
+  <data name="ConnectedDeviceCannotBeRecovered" xml:space="preserve">
+    <value>連線的手機無法復原。</value>
+  </data>
+  <data name="CouldNotDetectPhone" xml:space="preserve">
+    <value>偵測不到您的手機</value>
+  </data>
+  <data name="CreatingNewFolderMessage" xml:space="preserve">
+    <value>建立新資料夾</value>
+  </data>
+  <data name="CurrentFirmwareVersion" xml:space="preserve">
+    <value>安裝的軟體版本:</value>
+  </data>
+  <data name="CustomPackagesPath" xml:space="preserve">
+    <value>使用自訂套件路徑</value>
+  </data>
+  <data name="DeleteLogsQuestion" xml:space="preserve">
+    <value>是否確定要刪除記錄檔案?</value>
+  </data>
+  <data name="DeletePackagesQuestion" xml:space="preserve">
+    <value>是否確定要刪除軟體復原檔案?</value>
+  </data>
+  <data name="DeleteReportsQuestion" xml:space="preserve">
+    <value>是否確定要刪除報告檔案?</value>
+  </data>
+  <data name="DeletingLogFilesInfo" xml:space="preserve">
+    <value>正在刪除記錄檔案</value>
+  </data>
+  <data name="DeletingPackagesInfo" xml:space="preserve">
+    <value>正在刪除軟體復原檔案</value>
+  </data>
+  <data name="DeletingReportsInfo" xml:space="preserve">
+    <value>正在刪除報告檔案</value>
+  </data>
+  <data name="DetailsHeader" xml:space="preserve">
+    <value>詳細資料</value>
+  </data>
+  <data name="Device" xml:space="preserve">
+    <value>手機</value>
+  </data>
+  <data name="DeviceFlashing" xml:space="preserve">
+    <value>軟體套件安裝</value>
+  </data>
+  <data name="DeviceInUefiMode" xml:space="preserve">
+    <value>Lumia 手機</value>
+  </data>
+  <data name="DeviceSelectionHeader" xml:space="preserve">
+    <value>手機選擇</value>
+  </data>
+  <data name="DirectoryNotSet" xml:space="preserve">
+    <value>未選擇目錄或目錄不存在。</value>
+  </data>
+  <data name="DisclaimerBackupInfo" xml:space="preserve">
+    <value>安裝時，手機上的個人內容會被清除。 建議您在手機上製作備份，請使用:</value>
+  </data>
+  <data name="DisclaimerHeader" xml:space="preserve">
+    <value>免責聲明</value>
+  </data>
+  <data name="DisclaimerInfoInstallationDuration" xml:space="preserve">
+    <value>安裝軟體應該會耗時約 15 分鐘。 軟體套件的下載時間取決於網路速度。</value>
+  </data>
+  <data name="DisconnectPhone" xml:space="preserve">
+    <value>中斷 USB 傳輸線與手機的連線。</value>
+  </data>
+  <data name="DowngradeSoftwareQuestion" xml:space="preserve">
+    <value>您嘗試安裝的軟體比手機現有的版本舊。 您希望繼續嗎？</value>
+  </data>
+  <data name="DownloadCancelled" xml:space="preserve">
+    <value>下載已遭取消</value>
+  </data>
+  <data name="DownloadProgressExactMinute" xml:space="preserve">
+    <value>約剩 {0} 分鐘</value>
+  </data>
+  <data name="DownloadProgressMinute" xml:space="preserve">
+    <value>約剩一分鐘</value>
+  </data>
+  <data name="DownloadProgressMinuteLess" xml:space="preserve">
+    <value>剩下不到一分鐘</value>
+  </data>
+  <data name="DownloadingCancelMessage" xml:space="preserve">
+    <value>這將取消下載。 已下載的檔案不會刪除。 您可以稍後再繼續下載。</value>
+  </data>
+  <data name="DownloadingEmergencyPackage" xml:space="preserve">
+    <value>正在下載緊急套件</value>
+  </data>
+  <data name="DownloadingFiles" xml:space="preserve">
+    <value>正在下載檔案: {0}/{1} ({2})</value>
+  </data>
+  <data name="DownloadingInstallPacket" xml:space="preserve">
+    <value>正在下載新版本</value>
+  </data>
+  <data name="DownloadingPackage" xml:space="preserve">
+    <value>正在下載套件</value>
+  </data>
+  <data name="EmergencyFlashingMessage" xml:space="preserve">
+    <value>正在進行緊急寫入</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>錯誤</value>
+  </data>
+  <data name="ErrorDescription_AutoUpdateException" xml:space="preserve">
+    <value>與伺服器的連線似乎有問題。 檢查您的網際網路連線。 確認您的 Proxy、防火牆與防毒設定正確。 也請檢查您的時間與日期設定。</value>
+  </data>
+  <data name="ErrorDescription_CannotAccessDirectoryException" xml:space="preserve">
+    <value>您似乎沒有該目錄的必要權限。 請變更目錄路徑或變更目錄權限。</value>
+  </data>
+  <data name="ErrorDescription_DeviceNotFoundException" xml:space="preserve">
+    <value>找不到手機。</value>
+  </data>
+  <data name="ErrorDescription_DownloadPackageException" xml:space="preserve">
+    <value>請檢查 Proxy 設定是否都正確，並按一下 [{0}]。 若要取消下載程序，請按一下 [{1}]。</value>
+  </data>
+  <data name="ErrorDescription_EmergencyPackageNotFoundOnServerException" xml:space="preserve">
+    <value>目前不支援緊急寫入您的手機</value>
+  </data>
+  <data name="ErrorDescription_FirmwareFileNotFoundException" xml:space="preserve">
+    <value>軟體套件不完整。 一個以上的檔案遺失。 重新下載套件，或選取其他軟體。</value>
+  </data>
+  <data name="ErrorDescription_HtcDeviceCommunicationException" xml:space="preserve">
+    <value>重新啟動裝置進入{0}模式。</value>
+  </data>
+  <data name="ErrorDescription_HtcPackageFileCheckException" xml:space="preserve">
+    <value>重新下載 ROM 套件檔案。</value>
+  </data>
+  <data name="ErrorDescription_HtcServiceControlException" xml:space="preserve">
+    <value>檢查 {0} 服務是否已停止。</value>
+  </data>
+  <data name="ErrorDescription_HtcUsbCommunicationException" xml:space="preserve">
+    <value>重新啟動裝置進入 {0}。
+檢查裝置 USB 連線。</value>
+  </data>
+  <data name="ErrorDescription_HtcUsbPortOpenException" xml:space="preserve">
+    <value>檢查是否有其他應用程式佔用連接埠。
+檢查裝置 USB 連線。</value>
+  </data>
+  <data name="ErrorDescription_InvalidOperationException" xml:space="preserve">
+    <value>請重新啟動應用程式。</value>
+  </data>
+  <data name="ErrorDescription_NoInternetConnectionException" xml:space="preserve">
+    <value>無法完成最近的作業，因為沒有啟用網際網路連線。</value>
+  </data>
+  <data name="ErrorDescription_NotEnoughSpaceException" xml:space="preserve">
+    <value>{1} 磁碟上找不到 {0}。 釋出一些空間，並再試一次。</value>
+  </data>
+  <data name="ErrorDescription_OperationCanceledException" xml:space="preserve">
+    <value>操作已取消。</value>
+  </data>
+  <data name="ErrorDescription_PackageNotFoundException" xml:space="preserve">
+    <value>沒有此手機可用的軟體套件。</value>
+  </data>
+  <data name="ErrorDescription_PlannedServiceBreakException" xml:space="preserve">
+    <value>服務在 {0} 到 {1} 之間無法使用。 請稍後再試一次。</value>
+  </data>
+  <data name="ErrorDescription_ReadPhoneInformationException" xml:space="preserve">
+    <value>無法從您的手機讀取資訊。</value>
+  </data>
+  <data name="ErrorDescription_RestartApplicationException" xml:space="preserve">
+    <value>請中斷所有手機連線，然後重新啟動應用程式。 如果問題持續發生，請解除安裝 {0} 並下載最新版的應用程式。</value>
+  </data>
+  <data name="ErrorDescription_UnknownError" xml:space="preserve">
+    <value>操作無法完成。</value>
+  </data>
+  <data name="ErrorDescription_WebException" xml:space="preserve">
+    <value>與伺服器的連線似乎有問題。 檢查您的網際網路連線。 確認您的 Proxy、防火牆與防毒設定正確。</value>
+  </data>
+  <data name="ErrorDetails_NotEnoughSpaceOnTheDiskException" xml:space="preserve">
+    <value>在磁碟 {0} 上進行更新所需的最低可用空間為 {1}。 釋出一些空間，並再試一次。</value>
+  </data>
+  <data name="ErrorHeader" xml:space="preserve">
+    <value>很抱歉，發生問題</value>
+  </data>
+  <data name="Error_AutoUpdateException" xml:space="preserve">
+    <value>檢查應用程式更新失敗</value>
+  </data>
+  <data name="Error_CannotAccessDirectoryException" xml:space="preserve">
+    <value>無法存取目錄</value>
+  </data>
+  <data name="Error_DeviceNotFoundException" xml:space="preserve">
+    <value>找不到手機</value>
+  </data>
+  <data name="Error_DownloadPackageException" xml:space="preserve">
+    <value>下載軟體套件時發生問題</value>
+  </data>
+  <data name="Error_EmergencyPackageNotFoundOnServerException" xml:space="preserve">
+    <value>找不到緊急套件</value>
+  </data>
+  <data name="Error_FileNotFoundException" xml:space="preserve">
+    <value>找不到檔案或路徑: {0}</value>
+  </data>
+  <data name="Error_FirmwareFileNotFoundException" xml:space="preserve">
+    <value>找不到軟體檔案</value>
+  </data>
+  <data name="Error_HtcDeviceCommunicationException" xml:space="preserve">
+    <value>裝置通訊錯誤</value>
+  </data>
+  <data name="Error_HtcDeviceHandshakingException" xml:space="preserve">
+    <value>裝置信號交換錯誤</value>
+  </data>
+  <data name="Error_HtcPackageFileCheckException" xml:space="preserve">
+    <value>套件檔案檢查錯誤</value>
+  </data>
+  <data name="Error_HtcServiceControlException" xml:space="preserve">
+    <value>服務控制錯誤</value>
+  </data>
+  <data name="Error_HtcUsbCommunicationException" xml:space="preserve">
+    <value>USB 通訊錯誤</value>
+  </data>
+  <data name="Error_HtcUsbPortOpenException" xml:space="preserve">
+    <value>USB 連接埠開啟錯誤</value>
+  </data>
+  <data name="Error_InvalidOperationException" xml:space="preserve">
+    <value>操作失敗</value>
+  </data>
+  <data name="Error_NoInternetConnectionException" xml:space="preserve">
+    <value>沒有網際網路連線</value>
+  </data>
+  <data name="Error_NotEnoughSpaceException" xml:space="preserve">
+    <value>磁碟的空間不足</value>
+  </data>
+  <data name="Error_NotEnoughSpaceOnTheDiskException" xml:space="preserve">
+    <value>磁碟的空間不足</value>
+  </data>
+  <data name="Error_OperationCanceledException" xml:space="preserve">
+    <value>操作已取消</value>
+  </data>
+  <data name="Error_PackageNotFoundException" xml:space="preserve">
+    <value>找不到變異版套件</value>
+  </data>
+  <data name="Error_PlannedServiceBreakException" xml:space="preserve">
+    <value>無法連線至伺服器</value>
+  </data>
+  <data name="Error_ReadPhoneInformationException" xml:space="preserve">
+    <value>讀取手機資訊失敗</value>
+  </data>
+  <data name="Error_RestartApplicationException" xml:space="preserve">
+    <value>重新啟動應用程式</value>
+  </data>
+  <data name="Error_SoftwareInstallationFailed" xml:space="preserve">
+    <value>軟體安裝失敗。 請嘗試重新啟動手機，然後嘗試再次安裝軟體。 若偵測不到手機，請使用 [歡迎使用] 畫面上的 [{0}] 按鈕。</value>
+  </data>
+  <data name="Error_SoftwareIsNotCorrectlySignedException" xml:space="preserve">
+    <value>軟體沒有正確簽章，或是簽章不適用於此手機。</value>
+  </data>
+  <data name="Error_UnauthorizedAccessException" xml:space="preserve">
+    <value>存取遭拒</value>
+  </data>
+  <data name="Error_UnknownError" xml:space="preserve">
+    <value>發生未知的錯誤</value>
+  </data>
+  <data name="Error_WebException" xml:space="preserve">
+    <value>無法連線至伺服器</value>
+  </data>
+  <data name="FFUCheckingDirectory" xml:space="preserve">
+    <value>正在檢查目錄</value>
+  </data>
+  <data name="FFUCheckingFile" xml:space="preserve">
+    <value>正在檢查所選檔案</value>
+  </data>
+  <data name="FFUFamily" xml:space="preserve">
+    <value>系列:</value>
+  </data>
+  <data name="FFUManufacturer" xml:space="preserve">
+    <value>製造商:</value>
+  </data>
+  <data name="FFUProductName" xml:space="preserve">
+    <value>產品名稱:</value>
+  </data>
+  <data name="FFUVersion" xml:space="preserve">
+    <value>版本:</value>
+  </data>
+  <data name="FirmwareIntegrityError" xml:space="preserve">
+    <value>軟體套件 {0} 已損毀。 重新下載套件，或選取其他軟體。</value>
+  </data>
+  <data name="FirmwareVersion" xml:space="preserve">
+    <value>韌體版本: </value>
+  </data>
+  <data name="FirmwareVersionUnknown" xml:space="preserve">
+    <value>韌體版本: 未知</value>
+  </data>
+  <data name="FlashCancelMessage" xml:space="preserve">
+    <value>軟體套件安裝正在進行中。 取消可能會損壞手機。 是否確定要取消動作?</value>
+  </data>
+  <data name="FlashWarningMessage1" xml:space="preserve">
+    <value>請勿使用手機。 請勿中斷連接傳輸線。 請勿關閉手機。 否則您的手機可能會停止運作。</value>
+  </data>
+  <data name="FlashWarningMessage2" xml:space="preserve">
+    <value>安裝時，您的手機會重新啟動，螢幕會變成空白。
+您可忽略所有與 USB 傳輸線連接相關的 Windows 通知。</value>
+  </data>
+  <data name="Flashing" xml:space="preserve">
+    <value>正在將軟體安裝至您的手機</value>
+  </data>
+  <data name="FlashingMessageChangeToFlashMode" xml:space="preserve">
+    <value>正在將手機切換到寫入模式</value>
+  </data>
+  <data name="FlashingMessageCheckingAntiTheftStatus" xml:space="preserve">
+    <value>正在檢查防竊保護狀態</value>
+  </data>
+  <data name="FlashingMessageConnectingWithPhone" xml:space="preserve">
+    <value>正在連接手機</value>
+  </data>
+  <data name="FlashingMessageInstallingSoftware" xml:space="preserve">
+    <value>正在安裝軟體</value>
+  </data>
+  <data name="FlashingMessageOperationStarted" xml:space="preserve">
+    <value>軟體安裝已啟動</value>
+  </data>
+  <data name="FlashingResult" xml:space="preserve">
+    <value>軟體套件安裝結果</value>
+  </data>
+  <data name="HtcBootloaderMode" xml:space="preserve">
+    <value>HTC {0} 模式</value>
+  </data>
+  <data name="HtcPackageNotFound" xml:space="preserve">
+    <value>伺服器上找不到軟體套件</value>
+  </data>
+  <data name="KeepButtonTillImage" xml:space="preserve">
+    <value>請按住按鈕不放，直到看見與畫面上內容相同的影像。</value>
+  </data>
+  <data name="KeepButtonsTillImage" xml:space="preserve">
+    <value>請按住按鈕不放，直到看見與畫面上內容相同的影像。</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>語言</value>
+  </data>
+  <data name="LogFiles" xml:space="preserve">
+    <value>記錄檔案</value>
+  </data>
+  <data name="LumiaBatteryChecking" xml:space="preserve">
+    <value>手機電池電量不足。 您可繼續進行，但可能會損壞您的手機。</value>
+  </data>
+  <data name="ManualDeviceSelection" xml:space="preserve">
+    <value>手機選擇</value>
+  </data>
+  <data name="ManualRestartHtcInfo" xml:space="preserve">
+    <value>無法讀取手機資訊。 請依以下步驟繼續，或按一下 [{0}] 以取消程序。</value>
+  </data>
+  <data name="ManufacturerDetectionFailed" xml:space="preserve">
+    <value>很抱歉，無法判斷手機的製造商。</value>
+  </data>
+  <data name="ManufacturerHeader" xml:space="preserve">
+    <value>手機製造商</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>{0} 模式</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>型號: </value>
+  </data>
+  <data name="ModelUnknown" xml:space="preserve">
+    <value>型號: 未知</value>
+  </data>
+  <data name="MoreThanOnePackageFound" xml:space="preserve">
+    <value>找到超過一個套件 - 請選擇一個再按一下 [{0}] 以繼續。</value>
+  </data>
+  <data name="Network" xml:space="preserve">
+    <value>網路</value>
+  </data>
+  <data name="NoPackagesFoundSelectAnotherDirectory" xml:space="preserve">
+    <value>找不到正確套件。 請選擇其他目錄或手動選擇套件。</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>找不到</value>
+  </data>
+  <data name="OnePackageFound" xml:space="preserve">
+    <value>找到一個套件，適用於: {0}。 請按一下 [{1}] 以繼續，或選擇其他資料夾或檔案。</value>
+  </data>
+  <data name="OperatingSystemUnknown" xml:space="preserve">
+    <value>作業系統版本: 未知</value>
+  </data>
+  <data name="OperatingSystemVersion" xml:space="preserve">
+    <value>作業系統版本: </value>
+  </data>
+  <data name="OperationFailed" xml:space="preserve">
+    <value>操作結束，結果失敗</value>
+  </data>
+  <data name="OperationPassed" xml:space="preserve">
+    <value>操作成功完成</value>
+  </data>
+  <data name="PackageDirectory" xml:space="preserve">
+    <value>套件目錄: {0}</value>
+  </data>
+  <data name="PackageFileHeader" xml:space="preserve">
+    <value>套件檔案</value>
+  </data>
+  <data name="PackageFilePath" xml:space="preserve">
+    <value>套件路徑: {0}</value>
+  </data>
+  <data name="PackageIntegrityCheck" xml:space="preserve">
+    <value>套件完整性檢查</value>
+  </data>
+  <data name="PackageNotFound" xml:space="preserve">
+    <value>沒有此手機可用的套件。</value>
+  </data>
+  <data name="PackagePathNotSet" xml:space="preserve">
+    <value>未設定套件路徑</value>
+  </data>
+  <data name="PackageSelection" xml:space="preserve">
+    <value>套件選擇</value>
+  </data>
+  <data name="Packages" xml:space="preserve">
+    <value>套件</value>
+  </data>
+  <data name="PackagesPath" xml:space="preserve">
+    <value>套件路徑</value>
+  </data>
+  <data name="PasswordForm" xml:space="preserve">
+    <value>密碼</value>
+  </data>
+  <data name="PhoneAddedHeader" xml:space="preserve">
+    <value>手機已連線</value>
+  </data>
+  <data name="PhoneAddedMessage" xml:space="preserve">
+    <value>已連線新手機 {0}。</value>
+  </data>
+  <data name="PhoneIsUpToDate" xml:space="preserve">
+    <value>您已擁有最新版軟體。</value>
+  </data>
+  <data name="PhoneRemovedHeader" xml:space="preserve">
+    <value>手機已中斷連線</value>
+  </data>
+  <data name="PhoneRemovedMessage" xml:space="preserve">
+    <value>已中斷連線手機 {0}。</value>
+  </data>
+  <data name="PhoneRestart" xml:space="preserve">
+    <value>手機重新啟動</value>
+  </data>
+  <data name="PhoneSettingsBackupPathWin10" xml:space="preserve">
+    <value>設定 &gt; 更新與復原 &gt; 備份</value>
+  </data>
+  <data name="PhoneSettingsBackupPathWin8" xml:space="preserve">
+    <value>設定 &gt; 備份</value>
+  </data>
+  <data name="PleaseConnectDevice" xml:space="preserve">
+    <value>請連線您的手機</value>
+  </data>
+  <data name="PleaseConnectOneDevice" xml:space="preserve">
+    <value>請僅連線一台手機</value>
+  </data>
+  <data name="PleaseSelectAFolder" xml:space="preserve">
+    <value>請選擇資料夾</value>
+  </data>
+  <data name="PleaseSelectDeviceToContinue" xml:space="preserve">
+    <value>請選擇手機以繼續</value>
+  </data>
+  <data name="PleaseSelectManufacturer" xml:space="preserve">
+    <value>請在下方選擇正確項目:</value>
+  </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>請稍候</value>
+  </data>
+  <data name="PortForm" xml:space="preserve">
+    <value>連接埠</value>
+  </data>
+  <data name="Preferences" xml:space="preserve">
+    <value>喜好設定</value>
+  </data>
+  <data name="PressPowerAndVolumeDown" xml:space="preserve">
+    <value>請同時按下 [電源] 按鈕與 [調小音量] 按鈕。</value>
+  </data>
+  <data name="PressThePowerButton" xml:space="preserve">
+    <value>請按下 [電源] 按鈕。 </value>
+  </data>
+  <data name="PressThePowerButtonUntilSwitchOff" xml:space="preserve">
+    <value>按住 [電源] 按鈕，直到手機震動。</value>
+  </data>
+  <data name="PressVolumeUpVolumeDown" xml:space="preserve">
+    <value>當手機震動時，請同時按下 [調大音量] 鍵與 [調小音量] 鍵。</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>隱私權策略</value>
+  </data>
+  <data name="ReadingDeviceInfo" xml:space="preserve">
+    <value>正在讀取手機資訊</value>
+  </data>
+  <data name="RebootHtc" xml:space="preserve">
+    <value>您現在可以重新啟動手機返回正常模式。 若要重新啟動手機，請按住電源按鈕一段時間。</value>
+  </data>
+  <data name="RebootPhoneInstructions" xml:space="preserve">
+    <value>找不到手機。
+請同時按下 [電源] 按鈕與 [調小音量] 按鈕，嘗試將手機重新開機。
+按住按鈕，直到手機震動。</value>
+  </data>
+  <data name="ReinstallSoftware" xml:space="preserve">
+    <value>重新安裝軟體</value>
+  </data>
+  <data name="ReleasePowerPressVolumeUp" xml:space="preserve">
+    <value>當手機震動時，請放開 [電源] 按鈕並按下 [調大音量] 按鈕。</value>
+  </data>
+  <data name="RemovingPackages" xml:space="preserve">
+    <value>正在移除套件</value>
+  </data>
+  <data name="RemovingReports" xml:space="preserve">
+    <value>正在移除報告</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>報告</value>
+  </data>
+  <data name="ResetSettingsQuestion" xml:space="preserve">
+    <value>您確定要將所有設定重設為預設值嗎？</value>
+  </data>
+  <data name="RestartDeviceHeader" xml:space="preserve">
+    <value>重新啟動手機</value>
+  </data>
+  <data name="SelectDeviceToRecover" xml:space="preserve">
+    <value>選擇您要復原的手機</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="SoftwareInstallation" xml:space="preserve">
+    <value>軟體安裝</value>
+  </data>
+  <data name="SoftwareOnServer" xml:space="preserve">
+    <value>伺服器上的可用軟體</value>
+  </data>
+  <data name="SoftwarePackage" xml:space="preserve">
+    <value>軟體套件</value>
+  </data>
+  <data name="SthWentWrongMessage" xml:space="preserve">
+    <value>發生錯誤</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>摘要</value>
+  </data>
+  <data name="Survey1" xml:space="preserve">
+    <value>調查</value>
+  </data>
+  <data name="Survey_Button_ContinueNoSubmit1" xml:space="preserve">
+    <value>不提交繼續</value>
+  </data>
+  <data name="Survey_Button_SubmitAndContinue1" xml:space="preserve">
+    <value>提交並繼續復原</value>
+  </data>
+  <data name="Survey_Choice_AppsNotWorking1" xml:space="preserve">
+    <value>我的應用程式不如預期正常運作</value>
+  </data>
+  <data name="Survey_Choice_DeviceNotWorking1" xml:space="preserve">
+    <value>我的裝置不如預期正常運作</value>
+  </data>
+  <data name="Survey_Choice_PerformanceIssues1" xml:space="preserve">
+    <value>正在發生效能問題</value>
+  </data>
+  <data name="Survey_Choice_PrevVersionFaster1" xml:space="preserve">
+    <value>舊版的速度似乎較快</value>
+  </data>
+  <data name="Survey_Choice_PrevVersionMoreReliable1" xml:space="preserve">
+    <value>舊版似乎較可靠</value>
+  </data>
+  <data name="Survey_Header1" xml:space="preserve">
+    <value>為何復原您的裝置？</value>
+  </data>
+  <data name="Survey_TellUsMore1" xml:space="preserve">
+    <value>請多告訴我們一點</value>
+  </data>
+  <data name="Theme" xml:space="preserve">
+    <value>佈景主題</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>深色</value>
+  </data>
+  <data name="ThemeHighContrast" xml:space="preserve">
+    <value>高對比</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>淺色</value>
+  </data>
+  <data name="ThereIsMandatoryApplicationUpdate" xml:space="preserve">
+    <value>有強制的應用程式更新 {0}。</value>
+  </data>
+  <data name="ThisUpdateMustBeInstalled" xml:space="preserve">
+    <value>必須安裝這個 {0} 更新且無法略過。 更新前無法使用應用程式。
+請先拔除所有裝置，再安裝此更新。</value>
+  </data>
+  <data name="TraceEnabled" xml:space="preserve">
+    <value>建立記錄檔案</value>
+  </data>
+  <data name="Troubleshooting" xml:space="preserve">
+    <value>疑難排解</value>
+  </data>
+  <data name="TurnOffPhone" xml:space="preserve">
+    <value>請關閉手機電源。</value>
+  </data>
+  <data name="UpdateAvailable" xml:space="preserve">
+    <value>您的手機有一個更新</value>
+  </data>
+  <data name="UseProxyServer" xml:space="preserve">
+    <value>使用 Proxy 伺服器</value>
+  </data>
+  <data name="UserNameForm" xml:space="preserve">
+    <value>使用者名稱</value>
+  </data>
+  <data name="VerifyingDownloadedFiles" xml:space="preserve">
+    <value>正在確認下載的檔案</value>
+  </data>
+  <data name="WaitUntilPhoneTurnsOn" xml:space="preserve">
+    <value>等待手機開機。</value>
+  </data>
+  <data name="WaitingForConnection" xml:space="preserve">
+    <value>正在等待連線</value>
+  </data>
+  <data name="WelcomeHeader" xml:space="preserve">
+    <value>歡迎使用</value>
+  </data>
+</root>

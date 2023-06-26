@@ -22,9 +22,9 @@
 	<converters:TextCombinatorConverter
 		x:Key="TextCombinator" />
 	<converters:GenericBoolConverter
+		x:Key="VisibilityFixedHeightConverter"
 		FalseValue="{x:Static Visibility.Hidden}"
-		TrueValue="{x:Static Visibility.Visible}"
-		x:Key="VisibilityFixedHeightConverter" />
+		TrueValue="{x:Static Visibility.Visible}" />
 	<converters:SalesNameConverter
 		x:Key="SalesNameConverter" />
 	<converters:EqualToVisibilityConverter

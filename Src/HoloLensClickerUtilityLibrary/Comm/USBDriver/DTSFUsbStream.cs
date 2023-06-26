@@ -27,19 +27,13 @@ namespace ClickerUtilityLibrary.Comm.USBDriver
 				bool isInvalid = this.deviceHandle.IsInvalid;
 				if (isInvalid)
 				{
-					throw new IOException(string.Format(CultureInfo.CurrentCulture, "Handle for {0} is invalid.", new object[]
-					{
-						deviceName
-					}));
+					throw new IOException(string.Format(CultureInfo.CurrentCulture, "Handle for {0} is invalid.", new object[] { deviceName }));
 				}
 				this.InitializeDevice();
 				bool flag2 = !ThreadPool.BindHandle(this.deviceHandle);
 				if (flag2)
 				{
-					throw new IOException(string.Format(CultureInfo.CurrentCulture, "BindHandle on device {0} failed.", new object[]
-					{
-						deviceName
-					}));
+					throw new IOException(string.Format(CultureInfo.CurrentCulture, "BindHandle on device {0} failed.", new object[] { deviceName }));
 				}
 			}
 			catch (Exception)
@@ -78,10 +72,10 @@ namespace ClickerUtilityLibrary.Comm.USBDriver
 				throw new ArgumentException("Argument_InvalidOffLen");
 			}
 			this.SetPipePolicy(this.bulkInPipeId, 3U, timeout);
-			uint result;
+			uint num;
 			fixed (byte* ptr = buffer)
 			{
-				bool flag5 = !NativeMethods.WinUsbReadPipe(this.usbHandle, this.bulkInPipeId, ptr + offset, (uint)count, out result, (NativeOverlapped*)((void*)IntPtr.Zero));
+				bool flag5 = !NativeMethods.WinUsbReadPipe(this.usbHandle, this.bulkInPipeId, ptr + offset, (uint)count, out num, (NativeOverlapped*)(void*)IntPtr.Zero);
 				if (flag5)
 				{
 					int lastWin32Error = Marshal.GetLastWin32Error();
@@ -92,7 +86,7 @@ namespace ClickerUtilityLibrary.Comm.USBDriver
 					}
 				}
 			}
-			return (int)result;
+			return (int)num;
 		}
 
 		// Token: 0x06000162 RID: 354 RVA: 0x00008B64 File Offset: 0x00006D64
@@ -127,7 +121,7 @@ namespace ClickerUtilityLibrary.Comm.USBDriver
 			fixed (byte* ptr = buffer)
 			{
 				uint num;
-				bool flag5 = !NativeMethods.WinUsbWritePipe(this.usbHandle, this.bulkOutPipeId, ptr + offset, (uint)count, out num, (NativeOverlapped*)((void*)IntPtr.Zero));
+				bool flag5 = !NativeMethods.WinUsbWritePipe(this.usbHandle, this.bulkOutPipeId, ptr + offset, (uint)count, out num, (NativeOverlapped*)(void*)IntPtr.Zero);
 				if (flag5)
 				{
 					int lastWin32Error = Marshal.GetLastWin32Error();
@@ -177,7 +171,7 @@ namespace ClickerUtilityLibrary.Comm.USBDriver
 				throw new IOException("WinUsb Query Interface Settings failed.");
 			}
 			byte b2;
-			for (byte b = 0; b < winUsbInterfaceDescriptor.NumEndpoints; b = (byte)(b2 + 1))
+			for (byte b = 0; b < winUsbInterfaceDescriptor.NumEndpoints; b = b2 + 1)
 			{
 				bool flag3 = !NativeMethods.WinUsbQueryPipe(this.usbHandle, 0, b, ref winUsbPipeInformation);
 				if (flag3)

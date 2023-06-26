@@ -7,21 +7,22 @@ using Microsoft.WindowsDeviceRecoveryTool.Model;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Helpers
 {
-	// Token: 0x0200000A RID: 10
+	// Token: 0x02000030 RID: 48
 	internal sealed class EnvironmentInfo : IEnvironmentInfo
 	{
-		// Token: 0x06000057 RID: 87 RVA: 0x000028A0 File Offset: 0x00000AA0
+		// Token: 0x06000310 RID: 784 RVA: 0x0000C4FC File Offset: 0x0000A6FC
 		public EnvironmentInfo(ApplicationInfo applicationInfo)
 		{
-			if (applicationInfo == null)
+			bool flag = applicationInfo == null;
+			if (flag)
 			{
 				throw new ArgumentNullException("applicationInfo");
 			}
 			this.applicationInfo = applicationInfo;
 		}
 
-		// Token: 0x1700001D RID: 29
-		// (get) Token: 0x06000058 RID: 88 RVA: 0x000028D4 File Offset: 0x00000AD4
+		// Token: 0x170000D2 RID: 210
+		// (get) Token: 0x06000311 RID: 785 RVA: 0x0000C52C File Offset: 0x0000A72C
 		public string UserSiteLanguage
 		{
 			get
@@ -30,8 +31,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Helpers
 			}
 		}
 
-		// Token: 0x1700001E RID: 30
-		// (get) Token: 0x06000059 RID: 89 RVA: 0x000028F0 File Offset: 0x00000AF0
+		// Token: 0x170000D3 RID: 211
+		// (get) Token: 0x06000312 RID: 786 RVA: 0x0000C548 File Offset: 0x0000A748
 		public PhysicalAddress[] PhysicalAddressList
 		{
 			get
@@ -46,8 +47,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Helpers
 			}
 		}
 
-		// Token: 0x1700001F RID: 31
-		// (get) Token: 0x0600005A RID: 90 RVA: 0x00002948 File Offset: 0x00000B48
+		// Token: 0x170000D4 RID: 212
+		// (get) Token: 0x06000313 RID: 787 RVA: 0x0000C594 File Offset: 0x0000A794
 		public IPAddress[] IPAddressList
 		{
 			get
@@ -58,8 +59,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Helpers
 			}
 		}
 
-		// Token: 0x17000020 RID: 32
-		// (get) Token: 0x0600005B RID: 91 RVA: 0x00002970 File Offset: 0x00000B70
+		// Token: 0x170000D5 RID: 213
+		// (get) Token: 0x06000314 RID: 788 RVA: 0x0000C5BC File Offset: 0x0000A7BC
 		public string ApplicationName
 		{
 			get
@@ -68,8 +69,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Helpers
 			}
 		}
 
-		// Token: 0x17000021 RID: 33
-		// (get) Token: 0x0600005C RID: 92 RVA: 0x00002990 File Offset: 0x00000B90
+		// Token: 0x170000D6 RID: 214
+		// (get) Token: 0x06000315 RID: 789 RVA: 0x0000C5DC File Offset: 0x0000A7DC
 		public string ApplicationVersion
 		{
 			get
@@ -78,8 +79,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Helpers
 			}
 		}
 
-		// Token: 0x17000022 RID: 34
-		// (get) Token: 0x0600005D RID: 93 RVA: 0x000029B0 File Offset: 0x00000BB0
+		// Token: 0x170000D7 RID: 215
+		// (get) Token: 0x06000316 RID: 790 RVA: 0x0000C5FC File Offset: 0x0000A7FC
 		public string ApplicationVendor
 		{
 			get
@@ -88,8 +89,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Helpers
 			}
 		}
 
-		// Token: 0x17000023 RID: 35
-		// (get) Token: 0x0600005E RID: 94 RVA: 0x000029D0 File Offset: 0x00000BD0
+		// Token: 0x170000D8 RID: 216
+		// (get) Token: 0x06000317 RID: 791 RVA: 0x0000C61C File Offset: 0x0000A81C
 		public string NasVersion
 		{
 			get
@@ -98,8 +99,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Helpers
 			}
 		}
 
-		// Token: 0x17000024 RID: 36
-		// (get) Token: 0x0600005F RID: 95 RVA: 0x000029E8 File Offset: 0x00000BE8
+		// Token: 0x170000D9 RID: 217
+		// (get) Token: 0x06000318 RID: 792 RVA: 0x0000C634 File Offset: 0x0000A834
 		public string PapiVersion
 		{
 			get
@@ -108,8 +109,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Helpers
 			}
 		}
 
-		// Token: 0x17000025 RID: 37
-		// (get) Token: 0x06000060 RID: 96 RVA: 0x00002A00 File Offset: 0x00000C00
+		// Token: 0x170000DA RID: 218
+		// (get) Token: 0x06000319 RID: 793 RVA: 0x0000C64C File Offset: 0x0000A84C
 		public string CapiVersion
 		{
 			get
@@ -118,8 +119,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Helpers
 			}
 		}
 
-		// Token: 0x17000026 RID: 38
-		// (get) Token: 0x06000061 RID: 97 RVA: 0x00002A18 File Offset: 0x00000C18
+		// Token: 0x170000DB RID: 219
+		// (get) Token: 0x0600031A RID: 794 RVA: 0x0000C664 File Offset: 0x0000A864
 		public string FuseVersion
 		{
 			get
@@ -128,8 +129,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Helpers
 			}
 		}
 
-		// Token: 0x17000027 RID: 39
-		// (get) Token: 0x06000062 RID: 98 RVA: 0x00002A30 File Offset: 0x00000C30
+		// Token: 0x170000DC RID: 220
+		// (get) Token: 0x0600031B RID: 795 RVA: 0x0000C67C File Offset: 0x0000A87C
 		public string OSVersion
 		{
 			get
@@ -138,7 +139,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Helpers
 			}
 		}
 
-		// Token: 0x04000019 RID: 25
+		// Token: 0x0400013F RID: 319
 		private readonly ApplicationInfo applicationInfo;
 	}
 }

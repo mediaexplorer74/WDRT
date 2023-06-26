@@ -1,63 +1,62 @@
 <StackPanel
 	x:Class="Microsoft.WindowsDeviceRecoveryTool.States.Settings.NetworkView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:localization="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Localization;assembly=Microsoft.WindowsDeviceRecoveryTool.Localization" xmlns:textBoxes="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Controls.TextBoxes" xmlns:validation="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Controls.TextBoxes.Validation" xmlns:threading="clr-namespace:System.Windows.Threading;assembly=WindowsBase" xmlns:controls="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Controls"
 	KeyboardNavigation.TabNavigation="Continue"
-	Width="250"
-	HorizontalAlignment="Left" 
-    xmlns:settings="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.States.Settings"
+	FrameworkElement.Width="250"
+	FrameworkElement.HorizontalAlignment="Left" xmlns:settings="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.States.Settings"
 	Loaded="NetworkView_OnLoaded"
 	Unloaded="NetworkView_OnUnloaded">
 	<FrameworkElement.Resources>
 		<ResourceDictionary>
 			<threading:DispatcherTimer
-				Interval="0:0:0.1"
 				x:Key="CapsLockTimer"
+				Interval="0:0:0.1"
 				Tick="CapsLockTimer_OnTick" />
 		</ResourceDictionary>
 	</FrameworkElement.Resources>
 	<TextBlock
-		Style="{DynamicResource BasicTextStyle}"
-		Margin="0,0,0,5"
-		Text="UseProxyServer" />
+		FrameworkElement.Style="{DynamicResource BasicTextStyle}"
+		FrameworkElement.Margin="0,0,0,5"
+		TextBlock.Text="{localization:Localization UseProxyServer}" />
 	<StackPanel
 		Orientation="Horizontal">
 		<TextBlock
-			Style="{DynamicResource BasicTextStyle}"
-			FontWeight="Bold"
-			VerticalAlignment="Center"
-			MinWidth="100"
-			Margin="0,0,20,0"
-			Text="{Binding UseManualProxy, Converter={StaticResource BoolToOffOnConverter}}" />
+			FrameworkElement.Style="{DynamicResource BasicTextStyle}"
+			TextBlock.FontWeight="Bold"
+			FrameworkElement.VerticalAlignment="Center"
+			FrameworkElement.MinWidth="100"
+			FrameworkElement.Margin="0,0,20,0"
+			TextBlock.Text="{Binding UseManualProxy, Converter='{StaticResource BoolToOffOnConverter}'}" />
 		<controls:InvokableToggleButton
 			x:Name="UseManualProxyCheckBox"
-			Style="{DynamicResource ToggleSwitchStyle}"
+			FrameworkElement.Style="{DynamicResource ToggleSwitchStyle}"
 			IsChecked="{Binding UseManualProxy, Mode=TwoWay}"
-			AutomationProperties.Name="UseProxyServer" />
+			AutomationProperties.Name="{localization:Localization UseProxyServer}" />
 	</StackPanel>
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition
-				Width="Auto" />
+				ColumnDefinition.Width="Auto" />
 			<ColumnDefinition
-				Width="*" />
+				ColumnDefinition.Width="*" />
 		</Grid.ColumnDefinitions>
 		<StackPanel
 			Orientation="Vertical"
 			Grid.Column="0">
 			<TextBlock
-				HorizontalAlignment="Left"
-				VerticalAlignment="Center"
-				Style="{DynamicResource BasicTextStyle}"
-				Margin="0,10,0,5"
-				Text="AddressForm" />
+				FrameworkElement.HorizontalAlignment="Left"
+				FrameworkElement.VerticalAlignment="Center"
+				FrameworkElement.Style="{DynamicResource BasicTextStyle}"
+				FrameworkElement.Margin="0,10,0,5"
+				TextBlock.Text="{localization:Localization AddressForm}" />
 			<AdornerDecorator>
-				<TextBox
-					Name="AddressBox"
-					Style="{DynamicResource TextBox}"
+				<validation:ValidatedTextBox
+					x:Name="AddressBox"
+					FrameworkElement.Style="{DynamicResource {x:Type TextBox}}"
 					TextWrapping="NoWrap"
-					HorizontalAlignment="Left"
-					Width="165"
-					IsEnabled="{Binding IsChecked, ElementName=UseManualProxyCheckBox}"
-					AutomationProperties.Name="AddressForm">
+					FrameworkElement.HorizontalAlignment="Left"
+					FrameworkElement.Width="165"
+					UIElement.IsEnabled="{Binding IsChecked, ElementName=UseManualProxyCheckBox}"
+					AutomationProperties.Name="{localization:Localization AddressForm}">
 					<TextBox.Text>
 						<Binding
 							Path="ProxyAddress"
@@ -67,62 +66,67 @@
 							</Binding.ValidationRules>
 						</Binding>
 					</TextBox.Text>
-				</TextBox>
+				</validation:ValidatedTextBox>
 			</AdornerDecorator>
 		</StackPanel>
 		<StackPanel
 			Orientation="Vertical"
-			Margin="10,0,0,0"
+			FrameworkElement.Margin="10,0,0,0"
 			Grid.Column="1">
 			<TextBlock
-				HorizontalAlignment="Left"
-				Style="{DynamicResource BasicTextStyle}"
-				Margin="0,10,0,5"
-				Text="PortForm" />
-			<TextBox
+				FrameworkElement.HorizontalAlignment="Left"
+				FrameworkElement.Style="{DynamicResource BasicTextStyle}"
+				FrameworkElement.Margin="0,10,0,5"
+				TextBlock.Text="{localization:Localization PortForm}" />
+			<textBoxes:NumericTextBox
 				x:Name="PortBox"
-				HorizontalAlignment="Stretch"
-				Style="{DynamicResource TextBox}"
-				IsEnabled="{Binding IsChecked, ElementName=UseManualProxyCheckBox}"
-				Text="{Binding ProxyPort, Mode=TwoWay}"
-				AutomationProperties.Name="PortForm" />
+				MinValue="0"
+				MaxValue="65535"
+				FrameworkElement.HorizontalAlignment="Stretch"
+				FrameworkElement.Style="{DynamicResource {x:Type TextBox}}"
+				UIElement.IsEnabled="{Binding IsChecked, ElementName=UseManualProxyCheckBox}"
+				TextBox.Text="{Binding ProxyPort, Mode=TwoWay}"
+				AutomationProperties.Name="{localization:Localization PortForm}" />
 		</StackPanel>
 	</Grid>
 	<TextBlock
-		HorizontalAlignment="Left"
-		VerticalAlignment="Center"
-		Style="{DynamicResource BasicTextStyle}"
-		Margin="0,10,0,5"
-		Text="UserNameForm" />
+		FrameworkElement.HorizontalAlignment="Left"
+		FrameworkElement.VerticalAlignment="Center"
+		FrameworkElement.Style="{DynamicResource BasicTextStyle}"
+		FrameworkElement.Margin="0,10,0,5"
+		TextBlock.Text="{localization:Localization UserNameForm}" />
 	<TextBox
-		Name="UserNameBox"
-		HorizontalAlignment="Stretch"
+		FrameworkElement.Name="UserNameBox"
+		FrameworkElement.HorizontalAlignment="Stretch"
 		TextWrapping="NoWrap"
-		Text="{Binding ProxyUsername, Mode=TwoWay}"
-		IsEnabled="{Binding IsChecked, ElementName=UseManualProxyCheckBox}"
-		AutomationProperties.Name="UserNameForm" />
+		TextBox.Text="{Binding ProxyUsername, Mode=TwoWay}"
+		UIElement.IsEnabled="{Binding IsChecked, ElementName=UseManualProxyCheckBox}"
+		AutomationProperties.Name="{localization:Localization UserNameForm}"
+		x:Name="UserNameBox" />
 	<TextBlock
-		HorizontalAlignment="Left"
-		VerticalAlignment="Top"
-		Style="{DynamicResource BasicTextStyle}"
-		Margin="0,10,0,5"
-		Text="PasswordForm" />
+		FrameworkElement.HorizontalAlignment="Left"
+		FrameworkElement.VerticalAlignment="Top"
+		FrameworkElement.Style="{DynamicResource BasicTextStyle}"
+		FrameworkElement.Margin="0,10,0,5"
+		TextBlock.Text="{localization:Localization PasswordForm}" />
 	<PasswordBox
 		Name="PasswordBox"
-		IsEnabled="{Binding IsChecked, ElementName=UseManualProxyCheckBox}"
-		AutomationProperties.Name="PasswordForm" />
+		textBoxes:PasswordHelper.Attach="True"
+		UIElement.IsEnabled="{Binding IsChecked, ElementName=UseManualProxyCheckBox}"
+		textBoxes:PasswordHelper.Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+		AutomationProperties.Name="{localization:Localization PasswordForm}" />
 	<TextBlock
 		Name="CapsLockTextBlock"
-		HorizontalAlignment="Center"
-		Margin="0,5,0,0"
-		IsEnabled="False"
-		Text="CapsLockIsOn">
+		FrameworkElement.HorizontalAlignment="Center"
+		FrameworkElement.Margin="0,5,0,0"
+		UIElement.IsEnabled="False"
+		TextBlock.Text="{localization:Localization CapsLockIsOn}">
 		<FrameworkElement.Style>
 			<Style
 				TargetType="{x:Type TextBlock}">
 				<Style.Triggers>
 					<Trigger
-						Property="IsEnabled"
+						Property="UIElement.IsEnabled"
 						Value="False">
 						<TriggerBase.EnterActions>
 							<BeginStoryboard>

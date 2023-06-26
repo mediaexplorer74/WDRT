@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Microsoft.WindowsDeviceRecoveryTool.Common.Tracing;
 using Microsoft.WindowsDeviceRecoveryTool.StateMachine.DefaultTypes;
 using Microsoft.WindowsDeviceRecoveryTool.StateMachine.Exceptions;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.BaseTypes
 {
-	// Token: 0x02000003 RID: 3
+	// Token: 0x02000011 RID: 17
 	public class BaseStateMachine
 	{
-		// Token: 0x06000025 RID: 37 RVA: 0x00002810 File Offset: 0x00000A10
+		// Token: 0x0600005C RID: 92 RVA: 0x00002E08 File Offset: 0x00001008
 		public BaseStateMachine()
 		{
 			this.CurrentState = BaseState.NullObject();
@@ -18,33 +19,38 @@ namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.BaseTypes
 		}
 
 		// Token: 0x14000005 RID: 5
-		// (add) Token: 0x06000026 RID: 38 RVA: 0x00002844 File Offset: 0x00000A44
-		// (remove) Token: 0x06000027 RID: 39 RVA: 0x00002880 File Offset: 0x00000A80
+		// (add) Token: 0x0600005D RID: 93 RVA: 0x00002E3C File Offset: 0x0000103C
+		// (remove) Token: 0x0600005E RID: 94 RVA: 0x00002E74 File Offset: 0x00001074
+		[field: DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event EventHandler MachineStarted;
 
 		// Token: 0x14000006 RID: 6
-		// (add) Token: 0x06000028 RID: 40 RVA: 0x000028BC File Offset: 0x00000ABC
-		// (remove) Token: 0x06000029 RID: 41 RVA: 0x000028F8 File Offset: 0x00000AF8
+		// (add) Token: 0x0600005F RID: 95 RVA: 0x00002EAC File Offset: 0x000010AC
+		// (remove) Token: 0x06000060 RID: 96 RVA: 0x00002EE4 File Offset: 0x000010E4
+		[field: DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event EventHandler<TransitionEventArgs> MachineEnded;
 
 		// Token: 0x14000007 RID: 7
-		// (add) Token: 0x0600002A RID: 42 RVA: 0x00002934 File Offset: 0x00000B34
-		// (remove) Token: 0x0600002B RID: 43 RVA: 0x00002970 File Offset: 0x00000B70
+		// (add) Token: 0x06000061 RID: 97 RVA: 0x00002F1C File Offset: 0x0000111C
+		// (remove) Token: 0x06000062 RID: 98 RVA: 0x00002F54 File Offset: 0x00001154
+		[field: DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event EventHandler MachineStopped;
 
 		// Token: 0x14000008 RID: 8
-		// (add) Token: 0x0600002C RID: 44 RVA: 0x000029AC File Offset: 0x00000BAC
-		// (remove) Token: 0x0600002D RID: 45 RVA: 0x000029E8 File Offset: 0x00000BE8
+		// (add) Token: 0x06000063 RID: 99 RVA: 0x00002F8C File Offset: 0x0000118C
+		// (remove) Token: 0x06000064 RID: 100 RVA: 0x00002FC4 File Offset: 0x000011C4
+		[field: DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event EventHandler<BaseStateMachineErrorEventArgs> MachineErrored;
 
 		// Token: 0x14000009 RID: 9
-		// (add) Token: 0x0600002E RID: 46 RVA: 0x00002A24 File Offset: 0x00000C24
-		// (remove) Token: 0x0600002F RID: 47 RVA: 0x00002A60 File Offset: 0x00000C60
+		// (add) Token: 0x06000065 RID: 101 RVA: 0x00002FFC File Offset: 0x000011FC
+		// (remove) Token: 0x06000066 RID: 102 RVA: 0x00003034 File Offset: 0x00001234
+		[field: DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event Action<BaseState, BaseState> CurrentStateChanged;
 
-		// Token: 0x17000007 RID: 7
-		// (get) Token: 0x06000030 RID: 48 RVA: 0x00002A9C File Offset: 0x00000C9C
-		// (set) Token: 0x06000031 RID: 49 RVA: 0x00002AB4 File Offset: 0x00000CB4
+		// Token: 0x1700000B RID: 11
+		// (get) Token: 0x06000067 RID: 103 RVA: 0x0000306C File Offset: 0x0000126C
+		// (set) Token: 0x06000068 RID: 104 RVA: 0x00003084 File Offset: 0x00001284
 		public string MachineName
 		{
 			get
@@ -57,9 +63,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.BaseTypes
 			}
 		}
 
-		// Token: 0x17000008 RID: 8
-		// (get) Token: 0x06000032 RID: 50 RVA: 0x00002AD0 File Offset: 0x00000CD0
-		// (set) Token: 0x06000033 RID: 51 RVA: 0x00002AE8 File Offset: 0x00000CE8
+		// Token: 0x1700000C RID: 12
+		// (get) Token: 0x06000069 RID: 105 RVA: 0x000030A0 File Offset: 0x000012A0
+		// (set) Token: 0x0600006A RID: 106 RVA: 0x000030B8 File Offset: 0x000012B8
 		public BaseState CurrentState
 		{
 			get
@@ -68,35 +74,38 @@ namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.BaseTypes
 			}
 			private set
 			{
-				BaseState previousState = this.currentState;
+				BaseState baseState = this.currentState;
 				this.currentState = value;
-				this.RaiseCurrentStateChanged(previousState, this.currentState);
+				this.RaiseCurrentStateChanged(baseState, this.currentState);
 			}
 		}
 
-		// Token: 0x06000034 RID: 52 RVA: 0x00002B14 File Offset: 0x00000D14
+		// Token: 0x0600006B RID: 107 RVA: 0x000030E4 File Offset: 0x000012E4
 		public void AddState(BaseState state)
 		{
-			if (!this.CheckIsRunning())
+			bool flag = !this.CheckIsRunning();
+			if (flag)
 			{
 				state.MachineName = this.MachineName;
 				this.states.Add(state);
 			}
 		}
 
-		// Token: 0x06000035 RID: 53 RVA: 0x00002B48 File Offset: 0x00000D48
+		// Token: 0x0600006C RID: 108 RVA: 0x0000311B File Offset: 0x0000131B
 		public void SetStartState(BaseState state)
 		{
 			this.states.Remove(state);
 			this.states.Insert(0, state);
 		}
 
-		// Token: 0x06000036 RID: 54 RVA: 0x00002B68 File Offset: 0x00000D68
+		// Token: 0x0600006D RID: 109 RVA: 0x0000313C File Offset: 0x0000133C
 		public virtual void Start()
 		{
-			lock (this.sync)
+			object obj = this.sync;
+			lock (obj)
 			{
-				if (!this.CheckIsRunning())
+				bool flag2 = !this.CheckIsRunning();
+				if (flag2)
 				{
 					this.RaiseStateMachineEvent(this.MachineStarted);
 					this.StartStateMachine();
@@ -104,12 +113,14 @@ namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.BaseTypes
 			}
 		}
 
-		// Token: 0x06000037 RID: 55 RVA: 0x00002BD0 File Offset: 0x00000DD0
+		// Token: 0x0600006E RID: 110 RVA: 0x000031A0 File Offset: 0x000013A0
 		public virtual void Stop()
 		{
-			lock (this.sync)
+			object obj = this.sync;
+			lock (obj)
 			{
-				if (this.CheckIsRunning())
+				bool flag2 = this.CheckIsRunning();
+				if (flag2)
 				{
 					this.StopStateMachine();
 					this.RaiseStateMachineEvent(this.MachineStopped);
@@ -117,56 +128,62 @@ namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.BaseTypes
 			}
 		}
 
-		// Token: 0x06000038 RID: 56 RVA: 0x00002C38 File Offset: 0x00000E38
+		// Token: 0x0600006F RID: 111 RVA: 0x00003200 File Offset: 0x00001400
 		public virtual void NextState()
 		{
 			this.NextState(TransitionEventArgs.Empty);
 		}
 
-		// Token: 0x06000039 RID: 57 RVA: 0x00002C48 File Offset: 0x00000E48
+		// Token: 0x06000070 RID: 112 RVA: 0x00003210 File Offset: 0x00001410
 		public bool CheckIsRunning()
 		{
 			return this.machineState == BaseStateMachine.StateMachineState.Running;
 		}
 
-		// Token: 0x0600003A RID: 58 RVA: 0x00002C64 File Offset: 0x00000E64
+		// Token: 0x06000071 RID: 113 RVA: 0x0000322C File Offset: 0x0000142C
 		private void RaiseCurrentStateChanged(BaseState previousState, BaseState newState)
 		{
 			Action<BaseState, BaseState> currentStateChanged = this.CurrentStateChanged;
-			if (currentStateChanged != null)
+			bool flag = currentStateChanged != null;
+			if (flag)
 			{
 				currentStateChanged(previousState, newState);
 			}
 		}
 
-		// Token: 0x0600003B RID: 59 RVA: 0x00002C8C File Offset: 0x00000E8C
+		// Token: 0x06000072 RID: 114 RVA: 0x00003254 File Offset: 0x00001454
 		private void NextState(TransitionEventArgs eventArgs)
 		{
-			lock (this.sync)
+			object obj = this.sync;
+			lock (obj)
 			{
-				if (this.CheckIsRunning())
+				bool flag2 = this.CheckIsRunning();
+				if (flag2)
 				{
 					this.SetNextState(eventArgs);
 				}
 			}
 		}
 
-		// Token: 0x0600003C RID: 60 RVA: 0x00002CE8 File Offset: 0x00000EE8
+		// Token: 0x06000073 RID: 115 RVA: 0x000032A8 File Offset: 0x000014A8
 		private void ErroredState(Error error)
 		{
-			lock (this.sync)
+			object obj = this.sync;
+			lock (obj)
 			{
-				if (this.CheckIsRunning())
+				bool flag2 = this.CheckIsRunning();
+				if (flag2)
 				{
 					this.SetErrorState(error);
 				}
 			}
 		}
 
-		// Token: 0x0600003D RID: 61 RVA: 0x00002D44 File Offset: 0x00000F44
+		// Token: 0x06000074 RID: 116 RVA: 0x000032FC File Offset: 0x000014FC
 		private void StartStateMachine()
 		{
-			if (this.states.Count == 0)
+			bool flag = this.states.Count == 0;
+			if (flag)
 			{
 				UnexpectedErrorException ex = new UnexpectedErrorException("No states to run state machine!");
 				Tracer<BaseStateMachine>.WriteError(ex);
@@ -179,27 +196,29 @@ namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.BaseTypes
 			this.CurrentState.Start();
 		}
 
-		// Token: 0x0600003E RID: 62 RVA: 0x00002DD4 File Offset: 0x00000FD4
+		// Token: 0x06000075 RID: 117 RVA: 0x00003388 File Offset: 0x00001588
 		private string StopStateMachine()
 		{
 			this.machineState = BaseStateMachine.StateMachineState.Stopped;
-			string result = string.Empty;
+			string text = string.Empty;
 			EndState endState = this.CurrentState as EndState;
-			if (endState != null)
+			bool flag = endState != null;
+			if (flag)
 			{
-				result = endState.Status;
+				text = endState.Status;
 			}
 			this.CurrentState.Finished -= this.CurrentStateFinished;
 			this.CurrentState.Errored -= this.CurrentStateErrored;
 			this.CurrentState.Stop();
 			this.CurrentState = BaseState.NullObject();
-			return result;
+			return text;
 		}
 
-		// Token: 0x0600003F RID: 63 RVA: 0x00002E5C File Offset: 0x0000105C
+		// Token: 0x06000076 RID: 118 RVA: 0x00003410 File Offset: 0x00001610
 		private void SetNextState(TransitionEventArgs eventArgs)
 		{
-			if (this.CheckIsRunning())
+			bool flag = !this.CheckIsRunning();
+			if (!flag)
 			{
 				BaseState baseState = this.CurrentState.NextState(eventArgs);
 				this.CurrentState.Stop();
@@ -222,24 +241,28 @@ namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.BaseTypes
 					Tracer<BaseStateMachine>.WriteError(ex2, "Cannot start a state", new object[0]);
 					this.CurrentStateErrored(this.CurrentState, new Error(new InternalException(string.Empty, ex2)));
 				}
-				if (this.IsCurrentStateEndState())
+				bool flag2 = this.IsCurrentStateEndState();
+				if (flag2)
 				{
-					string status = this.StopStateMachine();
+					string text = this.StopStateMachine();
 					EventHandler<TransitionEventArgs> machineEnded = this.MachineEnded;
-					if (machineEnded != null)
+					bool flag3 = machineEnded != null;
+					if (flag3)
 					{
-						machineEnded(this, new TransitionEventArgs(status));
+						machineEnded(this, new TransitionEventArgs(text));
 					}
 				}
 			}
 		}
 
-		// Token: 0x06000040 RID: 64 RVA: 0x00002FC4 File Offset: 0x000011C4
+		// Token: 0x06000077 RID: 119 RVA: 0x00003578 File Offset: 0x00001778
 		private void SetErrorState(Error error)
 		{
-			if (this.CheckIsRunning())
+			bool flag = !this.CheckIsRunning();
+			if (!flag)
 			{
-				if (this.IsCurrentStateEndErrorState())
+				bool flag2 = this.IsCurrentStateEndErrorState();
+				if (flag2)
 				{
 					this.StopStateMachine();
 					this.RaiseStateMachineErroredEvent(error);
@@ -247,7 +270,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.BaseTypes
 				else
 				{
 					BaseErrorState baseErrorState = this.CurrentState.NextErrorState(error);
-					if (baseErrorState != this.CurrentState)
+					bool flag3 = baseErrorState != this.CurrentState;
+					if (flag3)
 					{
 						this.CurrentState.Stop();
 						this.CurrentState.Finished -= this.CurrentStateFinished;
@@ -261,104 +285,108 @@ namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.BaseTypes
 			}
 		}
 
-		// Token: 0x06000041 RID: 65 RVA: 0x00003094 File Offset: 0x00001294
+		// Token: 0x06000078 RID: 120 RVA: 0x0000364C File Offset: 0x0000184C
 		private void CurrentStateFinished(object sender, TransitionEventArgs eventArgs)
 		{
 			BaseState baseState = sender as BaseState;
-			lock (this.sync)
+			object obj = this.sync;
+			lock (obj)
 			{
-				if (this.CurrentState == baseState)
+				bool flag2 = this.CurrentState == baseState;
+				if (flag2)
 				{
 					this.NextState(eventArgs);
 				}
 				else
 				{
-					Tracer<BaseStateMachine>.WriteWarning(string.Concat(new object[]
-					{
-						"Blocked state change attempt from:",
-						this.CurrentState,
-						" to:",
-						baseState
-					}), new object[0]);
+					string text = "Blocked state change attempt from:";
+					BaseState baseState2 = this.CurrentState;
+					string text2 = ((baseState2 != null) ? baseState2.ToString() : null);
+					string text3 = " to:";
+					BaseState baseState3 = baseState;
+					Tracer<BaseStateMachine>.WriteWarning(text + text2 + text3 + ((baseState3 != null) ? baseState3.ToString() : null), new object[0]);
 				}
 			}
 		}
 
-		// Token: 0x06000042 RID: 66 RVA: 0x0000313C File Offset: 0x0000133C
+		// Token: 0x06000079 RID: 121 RVA: 0x000036E8 File Offset: 0x000018E8
 		private void CurrentStateErrored(object sender, Error error)
 		{
 			BaseState baseState = sender as BaseState;
-			lock (this.sync)
+			object obj = this.sync;
+			lock (obj)
 			{
-				if (this.CurrentState == baseState)
+				bool flag2 = this.CurrentState == baseState;
+				if (flag2)
 				{
 					this.ErroredState(error);
 				}
 				else
 				{
-					Tracer<BaseStateMachine>.WriteWarning(string.Concat(new object[]
-					{
-						"Blocked state change attempt from:",
-						this.CurrentState,
-						" to:",
-						baseState
-					}), new object[0]);
+					string text = "Blocked state change attempt from:";
+					BaseState baseState2 = this.CurrentState;
+					string text2 = ((baseState2 != null) ? baseState2.ToString() : null);
+					string text3 = " to:";
+					BaseState baseState3 = baseState;
+					Tracer<BaseStateMachine>.WriteWarning(text + text2 + text3 + ((baseState3 != null) ? baseState3.ToString() : null), new object[0]);
 				}
 			}
 		}
 
-		// Token: 0x06000043 RID: 67 RVA: 0x000031E4 File Offset: 0x000013E4
+		// Token: 0x0600007A RID: 122 RVA: 0x00003784 File Offset: 0x00001984
 		private bool IsCurrentStateEndState()
 		{
 			return this.CurrentState.DefaultTransition == null && this.CurrentState.ConditionalTransitions.Count == 0;
 		}
 
-		// Token: 0x06000044 RID: 68 RVA: 0x0000321C File Offset: 0x0000141C
+		// Token: 0x0600007B RID: 123 RVA: 0x000037BC File Offset: 0x000019BC
 		private bool IsCurrentStateEndErrorState()
 		{
 			return this.CurrentState is ErrorEndState;
 		}
 
-		// Token: 0x06000045 RID: 69 RVA: 0x0000323C File Offset: 0x0000143C
+		// Token: 0x0600007C RID: 124 RVA: 0x000037DC File Offset: 0x000019DC
 		private void RaiseStateMachineEvent(EventHandler eventHandler)
 		{
-			if (eventHandler != null)
+			bool flag = eventHandler != null;
+			if (flag)
 			{
 				eventHandler(this, EventArgs.Empty);
 			}
 		}
 
-		// Token: 0x06000046 RID: 70 RVA: 0x00003264 File Offset: 0x00001464
+		// Token: 0x0600007D RID: 125 RVA: 0x00003804 File Offset: 0x00001A04
 		private void RaiseStateMachineErroredEvent(Error error)
 		{
 			EventHandler<BaseStateMachineErrorEventArgs> machineErrored = this.MachineErrored;
-			if (machineErrored != null)
+			bool flag = machineErrored != null;
+			if (flag)
 			{
 				machineErrored(this, new BaseStateMachineErrorEventArgs(error));
 			}
 		}
 
-		// Token: 0x0400000B RID: 11
+		// Token: 0x04000016 RID: 22
 		private readonly object sync = new object();
 
-		// Token: 0x0400000C RID: 12
+		// Token: 0x04000017 RID: 23
 		private readonly List<BaseState> states;
 
-		// Token: 0x0400000D RID: 13
+		// Token: 0x04000018 RID: 24
 		private BaseStateMachine.StateMachineState machineState;
 
-		// Token: 0x0400000E RID: 14
+		// Token: 0x04000019 RID: 25
 		private BaseState currentState;
 
-		// Token: 0x0400000F RID: 15
+		// Token: 0x0400001A RID: 26
 		private string machineName;
 
-		// Token: 0x02000004 RID: 4
+		// Token: 0x02000018 RID: 24
 		private enum StateMachineState
 		{
-			// Token: 0x04000016 RID: 22
+			// Token: 0x04000027 RID: 39
 			Running,
-			// Token: 0x04000017 RID: 23
+			// Token: 0x04000028 RID: 40
 			Stopped
 		}
 	}

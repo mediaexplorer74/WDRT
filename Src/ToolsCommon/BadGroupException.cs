@@ -3,27 +3,30 @@ using System.Runtime.Serialization;
 
 namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 {
-	// Token: 0x0200000F RID: 15
+	// Token: 0x02000014 RID: 20
 	[Serializable]
 	public class BadGroupException : ParseException
 	{
-		// Token: 0x06000077 RID: 119 RVA: 0x000051A5 File Offset: 0x000033A5
-		public BadGroupException(string message) : base(message)
+		// Token: 0x0600008D RID: 141 RVA: 0x00005912 File Offset: 0x00003B12
+		public BadGroupException(string message)
+			: base(message)
 		{
 		}
 
-		// Token: 0x06000078 RID: 120 RVA: 0x000050B3 File Offset: 0x000032B3
+		// Token: 0x0600008E RID: 142 RVA: 0x0000591B File Offset: 0x00003B1B
 		public BadGroupException()
 		{
 		}
 
-		// Token: 0x06000079 RID: 121 RVA: 0x000050BB File Offset: 0x000032BB
-		public BadGroupException(string message, Exception except) : base("Program error:" + message, except)
+		// Token: 0x0600008F RID: 143 RVA: 0x00005923 File Offset: 0x00003B23
+		public BadGroupException(string message, Exception except)
+			: base("Program error:" + message, except)
 		{
 		}
 
-		// Token: 0x0600007A RID: 122 RVA: 0x000050CF File Offset: 0x000032CF
-		protected BadGroupException(SerializationInfo info, StreamingContext context) : base(info, context)
+		// Token: 0x06000090 RID: 144 RVA: 0x00005937 File Offset: 0x00003B37
+		protected BadGroupException(SerializationInfo info, StreamingContext context)
+			: base(info, context)
 		{
 		}
 	}

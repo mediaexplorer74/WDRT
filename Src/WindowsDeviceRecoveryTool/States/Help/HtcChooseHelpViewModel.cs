@@ -6,13 +6,13 @@ using Microsoft.WindowsDeviceRecoveryTool.Messages;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Help
 {
-	// Token: 0x0200007D RID: 125
+	// Token: 0x02000062 RID: 98
 	[Export]
 	public class HtcChooseHelpViewModel : BaseViewModel
 	{
-		// Token: 0x170000BD RID: 189
-		// (get) Token: 0x06000396 RID: 918 RVA: 0x0001149C File Offset: 0x0000F69C
-		// (set) Token: 0x06000397 RID: 919 RVA: 0x000114B4 File Offset: 0x0000F6B4
+		// Token: 0x170000E6 RID: 230
+		// (get) Token: 0x060003A6 RID: 934 RVA: 0x00014450 File Offset: 0x00012650
+		// (set) Token: 0x060003A7 RID: 935 RVA: 0x00014468 File Offset: 0x00012668
 		public string HTCBootloaderModeText
 		{
 			get
@@ -25,7 +25,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Help
 			}
 		}
 
-		// Token: 0x06000398 RID: 920 RVA: 0x000114F4 File Offset: 0x0000F6F4
+		// Token: 0x060003A8 RID: 936 RVA: 0x000144A4 File Offset: 0x000126A4
 		public override void OnStarted()
 		{
 			this.HTCBootloaderModeText = string.Format(LocalizationManager.GetTranslation("HtcBootloaderMode"), "boot-loader");
@@ -33,7 +33,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Help
 			base.EventAggregator.Publish<HelpScreenChangedMessage>(new HelpScreenChangedMessage(HelpTabs.HtcChoose));
 		}
 
-		// Token: 0x040001A4 RID: 420
+		// Token: 0x040001A8 RID: 424
 		private string htcBootloaderModeText;
 	}
 }

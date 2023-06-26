@@ -2,14 +2,14 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 {
-	// Token: 0x020000B5 RID: 181
+	// Token: 0x0200000E RID: 14
 	internal enum ManualDeviceTypeSelectionState
 	{
-		// Token: 0x0400024B RID: 587
+		// Token: 0x04000070 RID: 112
 		FfuSelection,
-		// Token: 0x0400024C RID: 588
+		// Token: 0x04000071 RID: 113
 		TypeDesignatorSelection,
-		// Token: 0x0400024D RID: 589
+		// Token: 0x04000072 RID: 114
 		DeviceCannotBeRecovered
 	}
 }

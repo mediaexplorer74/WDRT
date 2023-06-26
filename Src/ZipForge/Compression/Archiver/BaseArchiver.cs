@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Management;
 using System.Text;
-using ComponentAce.Compression.Exception1;
+using ComponentAce.Compression.Exception;
 using ComponentAce.Compression.Interfaces;
 using ComponentAce.Compression.ZipForge;
 using ComponentAce.Compression.ZipForge.Encryption;
@@ -81,8 +81,8 @@ namespace ComponentAce.Compression.Archiver
 		// Token: 0x06000541 RID: 1345 RVA: 0x00023AF8 File Offset: 0x00022AF8
 		private void DirItemLocalHeaderExtraFieldsNeededHandler(object sender, EventArgs e)
 		{
-			DirItem item = (DirItem)sender;
-			this.ReadLocalHeaderExtraFields(item);
+			DirItem dirItem = (DirItem)sender;
+			this.ReadLocalHeaderExtraFields(dirItem);
 		}
 
 		// Token: 0x06000542 RID: 1346 RVA: 0x00023B14 File Offset: 0x00022B14
@@ -90,20 +90,20 @@ namespace ComponentAce.Compression.Archiver
 		{
 			long position = this._compressedStream.Position;
 			int volumeNumber = this._volumeNumber;
-			uint lastVolumeNumber = 0U;
+			uint num = 0U;
 			DirItem dirItem = new DirItem();
 			if (this.SpanningMode != SpanningMode.None)
 			{
 				if (this._currentItemsHandler.FZip64)
 				{
-					lastVolumeNumber = this._currentItemsHandler.Zip64CentralDirEndLocator.TotalNumberOfDisks - 1U;
+					num = this._currentItemsHandler.Zip64CentralDirEndLocator.TotalNumberOfDisks - 1U;
 				}
 				else
 				{
-					lastVolumeNumber = (uint)this._currentItemsHandler.CentralDirEnd.DiskNumber;
+					num = (uint)this._currentItemsHandler.CentralDirEnd.DiskNumber;
 				}
 				uint diskStartNumber = item.DiskStartNumber;
-				this.OpenVolume(false, false, (int)diskStartNumber, (int)lastVolumeNumber);
+				this.OpenVolume(false, false, (int)diskStartNumber, (int)num);
 			}
 			this._compressedStream.Seek(item.RelativeLocalHeaderOffset, SeekOrigin.Begin);
 			byte[] array = new byte[DirItem.LocalHeaderSize()];
@@ -113,7 +113,7 @@ namespace ComponentAce.Compression.Archiver
 			item.LoadLocalHeaderExtraFieldsFromStream(this._compressedStream, dirItem.ExtraFieldsLenRead);
 			if (this.SpanningMode != SpanningMode.None)
 			{
-				this.OpenVolume(false, false, volumeNumber, (int)lastVolumeNumber);
+				this.OpenVolume(false, false, volumeNumber, (int)num);
 			}
 			this._compressedStream.Seek(position, SeekOrigin.Begin);
 		}
@@ -207,24 +207,21 @@ namespace ComponentAce.Compression.Archiver
 			long num = 0L;
 			long num2 = 0L;
 			uint maxValue = uint.MaxValue;
-			int blockSize = (int)this.GetBlockSize(dirItem);
+			int num3 = (int)this.GetBlockSize(dirItem);
 			currentItemStream.Position = 0L;
-			bool encrypted = !CompressionUtils.IsNullOrEmpty(dirItem.Password);
-			this.DoCompress(encrypted, dirItem, blockSize, currentItemStream, compressedStream, ref num, ref num2, ref maxValue);
-			bool result;
+			bool flag = !CompressionUtils.IsNullOrEmpty(dirItem.Password);
+			this.DoCompress(flag, dirItem, num3, currentItemStream, compressedStream, ref num, ref num2, ref maxValue);
+			bool flag2;
 			if (num == length)
 			{
-				result = true;
+				flag2 = true;
 				if (this._zip64Mode == Zip64Mode.Always && dirItem.ExtraFields.Zip64ExtraField == null)
 				{
 					dirItem.ExtraFields.AddExtraField(new Zip64ExtraFieldData(), dirItem);
 				}
 				if (dirItem.IsHugeFile && this._zip64Mode == Zip64Mode.Disabled)
 				{
-					throw ExceptionBuilder.Exception(ErrorCode.HugeFileModeIsNotEnabled, new object[]
-					{
-						dirItem.SrcFileName
-					});
+					throw ExceptionBuilder.Exception(ErrorCode.HugeFileModeIsNotEnabled, new object[] { dirItem.SrcFileName });
 				}
 				if (length == 0L)
 				{
@@ -235,15 +232,11 @@ namespace ComponentAce.Compression.Archiver
 			{
 				if (!this._progressCancel)
 				{
-					throw ExceptionBuilder.Exception(ErrorCode.InvalidFormat, new object[]
-					{
-						currentItemStream.Length,
-						num
-					});
+					throw ExceptionBuilder.Exception(ErrorCode.InvalidFormat, new object[] { currentItemStream.Length, num });
 				}
-				result = false;
+				flag2 = false;
 			}
-			return result;
+			return flag2;
 		}
 
 		// Token: 0x0600054C RID: 1356 RVA: 0x00023E48 File Offset: 0x00022E48
@@ -266,7 +259,7 @@ namespace ComponentAce.Compression.Archiver
 			long compressedSize = d.CompressedSize;
 			long uncompressedSize = d.UncompressedSize;
 			double num = 1.0 / Math.Log(2.0);
-			return (long)Math.Pow(2.0, Math.Round(Math.Log((double)((1L + uncompressedSize / compressedSize) * (size + size / 2L + 12L + 255L) & -256L)) * num));
+			return (long)Math.Pow(2.0, Math.Round(Math.Log((double)(((1L + uncompressedSize / compressedSize) * (size + size / 2L + 12L + 255L)) & -256L)) * num));
 		}
 
 		// Token: 0x0600054E RID: 1358 RVA: 0x00023F1C File Offset: 0x00022F1C
@@ -275,20 +268,20 @@ namespace ComponentAce.Compression.Archiver
 			this._currentProcessedItem = dirItem;
 			this._decompressedStream = wfs;
 			byte[] array = null;
-			bool result = false;
+			bool flag = false;
 			this._skipFile = false;
 			long num = dirItem.CompressedSize;
 			if (encrypted)
 			{
 				num -= (long)(decrypter.GetFileStorageStartBlockSize() + decrypter.GetFileStorageEndBlockSize());
 				int num2 = (int)rfs.Position;
-				bool flag;
+				bool flag2;
 				do
 				{
 					rfs.Position = (long)num2;
 					decrypter.LoadFileStorageStartBlock(rfs, rfs.Position);
-					flag = !decrypter.CheckPassword(this._password, dirItem);
-					if (flag)
+					flag2 = !decrypter.CheckPassword(this._password, dirItem);
+					if (flag2)
 					{
 						this.DoOnPassword(dirItem.Name, ref this._password, ref this._skipFile);
 						if (decrypter.Password != this._password && !this._skipFile)
@@ -297,12 +290,12 @@ namespace ComponentAce.Compression.Archiver
 						}
 					}
 				}
-				while (flag && !this._skipFile);
+				while (flag2 && !this._skipFile);
 				if (this._skipFile)
 				{
 					actualDecompressedSize = dirItem.UncompressedSize;
 					crc32 = 0U;
-					return result;
+					return flag;
 				}
 			}
 			array = new byte[1048578];
@@ -330,7 +323,7 @@ namespace ComponentAce.Compression.Archiver
 					}
 					if (!this.ReadFromStream(ref array, num4, ref rfs, ref volumeNumber, lastVolumeNumber))
 					{
-						return result;
+						return flag;
 					}
 					if (encrypted)
 					{
@@ -339,7 +332,7 @@ namespace ComponentAce.Compression.Archiver
 					long num5;
 					if (!compressor.DecompressBlock((int)num4, num3 + num4 >= num, array, out num5))
 					{
-						return result;
+						return flag;
 					}
 					actualDecompressedSize += num5;
 				}
@@ -360,37 +353,37 @@ namespace ComponentAce.Compression.Archiver
 		// Token: 0x0600054F RID: 1359 RVA: 0x00024158 File Offset: 0x00023158
 		private void decompressor_OnDecompressedBufferReady(byte[] buffer, int outBytes, out bool stopDecompression)
 		{
-			TimeSpan timeElapsed = new TimeSpan(DateTime.Now.Ticks - this._currentItemOperationStartTime.Ticks);
-			double progress = (double)this._currentItemBytesProcessed / (double)this._currentItemSize * 100.0;
-			TimeSpan timeLeft;
+			TimeSpan timeSpan = new TimeSpan(DateTime.Now.Ticks - this._currentItemOperationStartTime.Ticks);
+			double num = (double)this._currentItemBytesProcessed / (double)this._currentItemSize * 100.0;
+			TimeSpan timeSpan2;
 			if (this._currentItemBytesProcessed > 0L)
 			{
-				double num = (double)this._currentItemBytesProcessed / (double)timeElapsed.Ticks;
-				timeLeft = new TimeSpan((long)((double)(this._currentItemSize - this._currentItemBytesProcessed) / num));
+				double num2 = (double)this._currentItemBytesProcessed / (double)timeSpan.Ticks;
+				timeSpan2 = new TimeSpan((long)((double)(this._currentItemSize - this._currentItemBytesProcessed) / num2));
 			}
 			else
 			{
-				timeLeft = new TimeSpan(0L);
+				timeSpan2 = new TimeSpan(0L);
 			}
-			TimeSpan timeElapsed2 = new TimeSpan(DateTime.Now.Ticks - this._operationStartTime.Ticks);
-			TimeSpan timeLeft2;
+			TimeSpan timeSpan3 = new TimeSpan(DateTime.Now.Ticks - this._operationStartTime.Ticks);
+			TimeSpan timeSpan4;
 			if (this._totalProcessedFilesSize > 0L)
 			{
-				double num2 = (double)this._totalProcessedFilesSize / (double)timeElapsed2.Ticks;
-				timeLeft2 = new TimeSpan((long)((double)(this._toProcessFilesTotalSize - this._totalProcessedFilesSize) / num2));
+				double num3 = (double)this._totalProcessedFilesSize / (double)timeSpan3.Ticks;
+				timeSpan4 = new TimeSpan((long)((double)(this._toProcessFilesTotalSize - this._totalProcessedFilesSize) / num3));
 			}
 			else
 			{
-				timeLeft2 = new TimeSpan(0L);
+				timeSpan4 = new TimeSpan(0L);
 			}
-			double num3 = (double)this._totalProcessedFilesSize / (double)this._toProcessFilesTotalSize * 100.0;
-			if (num3 > 100.0)
+			double num4 = (double)this._totalProcessedFilesSize / (double)this._toProcessFilesTotalSize * 100.0;
+			if (num4 > 100.0)
 			{
-				num3 = 100.0;
+				num4 = 100.0;
 			}
 			stopDecompression = false;
-			this.DoOnFileProgress(this._currentProcessedItem.Name, progress, timeElapsed, timeLeft, ProcessOperation.Extract, ProgressPhase.Process, ref stopDecompression);
-			this.DoOnOverallProgress(num3, timeElapsed2, timeLeft2, ProcessOperation.Extract, ProgressPhase.Process, ref stopDecompression);
+			this.DoOnFileProgress(this._currentProcessedItem.Name, num, timeSpan, timeSpan2, ProcessOperation.Extract, ProgressPhase.Process, ref stopDecompression);
+			this.DoOnOverallProgress(num4, timeSpan3, timeSpan4, ProcessOperation.Extract, ProgressPhase.Process, ref stopDecompression);
 			if (!stopDecompression)
 			{
 				stopDecompression = !this.WriteToStreamWithOnDiskFull(buffer, 0, outBytes, this._decompressedStream);
@@ -420,24 +413,24 @@ namespace ComponentAce.Compression.Archiver
 			}
 			long num = 0L;
 			long compressedSize = item.CompressedSize;
-			int lastVolumeNumber = (int)((this._itemsHandler as DirManager).FZip64 ? (this._currentItemsHandler.Zip64CentralDirEndLocator.TotalNumberOfDisks - 1U) : ((uint)this._currentItemsHandler.CentralDirEnd.DiskNumber));
+			int num2 = (int)((this._itemsHandler as DirManager).FZip64 ? (this._currentItemsHandler.Zip64CentralDirEndLocator.TotalNumberOfDisks - 1U) : ((uint)this._currentItemsHandler.CentralDirEnd.DiskNumber));
 			int diskStartNumber = (int)item.DiskStartNumber;
 			int dataOffset = item.GetDataOffset();
 			compressedStream.Seek((long)dataOffset, SeekOrigin.Current);
 			this._currentItemOperationStartTime = DateTime.Now;
-			long num2 = (long)((ulong)item.ActualCompressionMethod);
+			long num3 = (long)((ulong)item.ActualCompressionMethod);
 			this._skipFile = false;
 			bool flag2;
-			if (num2 < 255L)
+			if (num3 < 255L)
 			{
 				uint maxValue;
-				flag2 = this.ZipDecompress(flag, ref diskStartNumber, lastVolumeNumber, out num, ref compressedStream, destinationStream, out maxValue, baseZipForgeCryptoTransform, item);
+				flag2 = this.ZipDecompress(flag, ref diskStartNumber, num2, out num, ref compressedStream, destinationStream, out maxValue, baseZipForgeCryptoTransform, item);
 			}
 			else
 			{
-				long num3 = 0L;
+				long num4 = 0L;
 				uint maxValue = uint.MaxValue;
-				flag2 = this.FXCDecompress(flag, ref num3, ref num, ref compressedStream, ref destinationStream, ref diskStartNumber, lastVolumeNumber, ref maxValue, item);
+				flag2 = this.FXCDecompress(flag, ref num4, ref num, ref compressedStream, ref destinationStream, ref diskStartNumber, num2, ref maxValue, item);
 			}
 			if (this._skipFile)
 			{
@@ -470,8 +463,8 @@ namespace ComponentAce.Compression.Archiver
 			}
 			byte[] bytes = (this._itemsHandler.ItemsArray[itemNo] as DirItem).ExtraFields.GetBytes(ExtraFieldsTarget.LocalHeaderExtraFields);
 			(this._itemsHandler.ItemsArray[itemNo] as DirItem).WriteLocalHeaderToStream(compressedStream, 0);
-			byte[] buffer = (this._itemsHandler.ItemsArray[itemNo] as DirItem).IsGeneralPurposeFlagBitSet(11) ? Encoding.UTF8.GetBytes(text) : Encoding.GetEncoding(this._oemCodePage).GetBytes(text);
-			compressedStream.Write(buffer, 0, (int)(this._itemsHandler.ItemsArray[itemNo] as DirItem).NameLength);
+			byte[] array = ((this._itemsHandler.ItemsArray[itemNo] as DirItem).IsGeneralPurposeFlagBitSet(11) ? Encoding.UTF8.GetBytes(text) : Encoding.GetEncoding(this._oemCodePage).GetBytes(text));
+			compressedStream.Write(array, 0, (int)(this._itemsHandler.ItemsArray[itemNo] as DirItem).NameLength);
 			compressedStream.Write(bytes, 0, bytes.Length);
 			long num = (long)((ulong)(this._itemsHandler.ItemsArrayBackup[itemNoInBackupArray] as DirItem).CommentLength);
 			num += (this._itemsHandler.ItemsArrayBackup[itemNoInBackupArray] as DirItem).CompressedSize;
@@ -486,9 +479,9 @@ namespace ComponentAce.Compression.Archiver
 		protected internal override bool AddFromNewSource(int itemNo, Stream compressedStream, ref FailureAction action)
 		{
 			Stream stream = null;
-			long oldPosition = 0L;
+			long num = 0L;
 			string text = string.Empty;
-			bool result = false;
+			bool flag = false;
 			this.SetCompMethod();
 			DirItem dirItem = this._itemsHandler.ItemsArray[itemNo] as DirItem;
 			this._currentItemOperationStartTime = DateTime.Now;
@@ -517,7 +510,7 @@ namespace ComponentAce.Compression.Archiver
 					dirItem.SetGeneralPurposeFlagBit(11);
 				}
 				dirItem.IsHugeFile = false;
-				oldPosition = 0L;
+				num = 0L;
 				if (dirItem.Stream == null)
 				{
 					if ((dirItem.ExternalAttributes & FileAttributes.Directory) == (FileAttributes)0)
@@ -527,12 +520,9 @@ namespace ComponentAce.Compression.Archiver
 							stream = new FileStream(dirItem.SrcFileName, FileMode.Open, FileAccess.Read, this._archiverOptions.ShareMode);
 							goto IL_1C4;
 						}
-						catch (Exception innerException)
+						catch (Exception ex)
 						{
-							throw ExceptionBuilder.Exception(ErrorCode.CannotOpenFile, new object[]
-							{
-								this._itemsHandler.ItemsArray[itemNo].SrcFileName
-							}, innerException);
+							throw ExceptionBuilder.Exception(ErrorCode.CannotOpenFile, new object[] { this._itemsHandler.ItemsArray[itemNo].SrcFileName }, ex);
 						}
 					}
 					stream = null;
@@ -540,7 +530,7 @@ namespace ComponentAce.Compression.Archiver
 				else
 				{
 					stream = dirItem.Stream;
-					oldPosition = stream.Position;
+					num = stream.Position;
 					stream.Position = (long)dirItem.StreamPosition;
 				}
 				IL_1C4:
@@ -549,19 +539,11 @@ namespace ComponentAce.Compression.Archiver
 					dirItem.ExtraFields.AddExtraField(new Zip64ExtraFieldData(), dirItem);
 				}
 				dirItem.RelativeLocalHeaderOffset = this._compressedStream.Position;
-				dirItem.ExtractVersion = (ushort)((dirItem.IsHugeFile 
-					|| (stream != null 
-					&& stream.Length >= (long)((int)-1))) 
-					? ((this._currentItemsHandler.CentralDirEnd.Signature 
-					== this.GetCentralDirEndSignature()) ? 16685 : 45) 
-					: (this.IsFlexCompress() ? 16660 : 20));
-
-				dirItem.UncompressedSize = (long)((ulong)((stream != null) 
-					? ((uint)stream.Length) 
-					: 0U));
+				dirItem.ExtractVersion = ((dirItem.IsHugeFile || (stream != null && stream.Length >= (long)((ulong)(-1)))) ? ((this._currentItemsHandler.CentralDirEnd.Signature == this.GetCentralDirEndSignature()) ? 16685 : 45) : (this.IsFlexCompress() ? 16660 : 20));
+				dirItem.UncompressedSize = (long)((ulong)((stream != null) ? ((uint)stream.Length) : 0U));
 				if (this._zip64Mode == Zip64Mode.Disabled && dirItem.IsHugeFile)
 				{
-					base.CloseStream(itemNo, ref stream, oldPosition);
+					base.CloseStream(itemNo, ref stream, num);
 					throw ExceptionBuilder.Exception(ErrorCode.HugeFileModeIsNotEnabled);
 				}
 				if (this._spanningMode != SpanningMode.None)
@@ -599,7 +581,7 @@ namespace ComponentAce.Compression.Archiver
 					dirItem.ExtraFields.WriteToStream(compressedStream, 0L, ExtraFieldsTarget.LocalHeaderExtraFields);
 					if (this._progressCancel)
 					{
-						base.CloseStream(itemNo, ref stream, oldPosition);
+						base.CloseStream(itemNo, ref stream, num);
 						return false;
 					}
 					compressedStream.Seek(0L, SeekOrigin.End);
@@ -623,7 +605,7 @@ namespace ComponentAce.Compression.Archiver
 						File.Delete(text);
 					}
 				}
-				base.CloseStream(itemNo, ref stream, oldPosition);
+				base.CloseStream(itemNo, ref stream, num);
 				if (dirItem.Operation == ProcessOperation.Add || dirItem.Operation == ProcessOperation.Move)
 				{
 					this.DoOnFileProgress(dirItem.SrcFileName, 100.0, DateTime.Now - this._currentItemOperationStartTime, new TimeSpan(0L), dirItem.Operation, ProgressPhase.End, ref this._progressCancel);
@@ -632,30 +614,30 @@ namespace ComponentAce.Compression.Archiver
 				{
 					this.DoOnFileProgress(dirItem.Name, 100.0, DateTime.Now - this._currentItemOperationStartTime, new TimeSpan(0L), dirItem.Operation, ProgressPhase.End, ref this._progressCancel);
 				}
-				result = true;
+				flag = true;
 			}
-			catch (ArchiverException ex)
+			catch (ArchiverException ex2)
 			{
-				base.CloseStream(itemNo, ref stream, oldPosition);
+				base.CloseStream(itemNo, ref stream, num);
 				if (this._compressedStream == null)
 				{
 					action = FailureAction.Abort;
 				}
 				else if (dirItem.Operation == ProcessOperation.Update)
 				{
-					this.DoOnProcessFileFailure(dirItem.Name, dirItem.Operation, ex.ErrorCode, ex.Args, ex.Message, ex.InnerException, ref action);
+					this.DoOnProcessFileFailure(dirItem.Name, dirItem.Operation, ex2.ErrorCode, ex2.Args, ex2.Message, ex2.InnerException, ref action);
 				}
 				else
 				{
-					this.DoOnProcessFileFailure(dirItem.SrcFileName, dirItem.Operation, ex.ErrorCode, ex.Args, ex.Message, ex, ref action);
+					this.DoOnProcessFileFailure(dirItem.SrcFileName, dirItem.Operation, ex2.ErrorCode, ex2.Args, ex2.Message, ex2, ref action);
 				}
 			}
 			catch (Exception)
 			{
-				base.CloseStream(itemNo, ref stream, oldPosition);
+				base.CloseStream(itemNo, ref stream, num);
 				throw;
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x06000555 RID: 1365 RVA: 0x00024C78 File Offset: 0x00023C78
@@ -724,22 +706,22 @@ namespace ComponentAce.Compression.Archiver
 		protected internal override void FillDirItem(int itemNo, string fileName)
 		{
 			bool flag = FileUtils.DirectotyExists(fileName);
-			string fileName2 = FileUtils.StripSlash(fileName);
-			FileAttributes attr;
+			string text = FileUtils.StripSlash(fileName);
+			FileAttributes fileAttributes;
 			if (File.Exists(fileName))
 			{
-				attr = FileUtils.GetAttributes(fileName2);
+				fileAttributes = FileUtils.GetAttributes(text);
 			}
 			else if (flag)
 			{
-				attr = FileAttributes.Directory;
+				fileAttributes = FileAttributes.Directory;
 			}
 			else
 			{
-				attr = FileAttributes.Archive;
+				fileAttributes = FileAttributes.Archive;
 			}
 			string archiveFileName = CompressionUtils.GetArchiveFileName(fileName, FileUtils.GetCurrentDirectory(), this._archiverOptions.StorePath);
-			this.FillDirItem(itemNo, fileName, archiveFileName, flag, true, attr);
+			this.FillDirItem(itemNo, fileName, archiveFileName, flag, true, fileAttributes);
 		}
 
 		// Token: 0x0600055A RID: 1370 RVA: 0x00024E9C File Offset: 0x00023E9C
@@ -770,10 +752,10 @@ namespace ComponentAce.Compression.Archiver
 			dirItem.IsModified = true;
 			dirItem.Password = this._password;
 			dirItem.SrcFileName = text;
-			dirItem.CompressionMode = (byte)((!isDirectory) ? this._compressionMode : 0);
+			dirItem.CompressionMode = ((!isDirectory) ? this._compressionMode : 0);
 			dirItem.ActualCompressionMethod = this._compressionMethod;
 			dirItem.Signature = this.GetCentralDirSignature();
-			dirItem.ExtractVersion = (ushort)((this._currentItemsHandler.CentralDirEnd.Signature == this.GetCentralDirEndSignature()) ? 16660 : 20);
+			dirItem.ExtractVersion = ((this._currentItemsHandler.CentralDirEnd.Signature == this.GetCentralDirEndSignature()) ? 16660 : 20);
 			dirItem.VersionMadeBy = 20;
 			if (this._password != "")
 			{
@@ -816,7 +798,7 @@ namespace ComponentAce.Compression.Archiver
 			}
 			dirItem.ActualCompressionMethod = this._compressionMethod;
 			dirItem.Signature = this.GetCentralDirSignature();
-			dirItem.ExtractVersion = (ushort)((this._currentItemsHandler.CentralDirEnd.Signature == this.GetCentralDirEndSignature()) ? 16660 : 20);
+			dirItem.ExtractVersion = ((this._currentItemsHandler.CentralDirEnd.Signature == this.GetCentralDirEndSignature()) ? 16660 : 20);
 			dirItem.VersionMadeBy = 20;
 			if (this._password != "")
 			{
@@ -843,17 +825,17 @@ namespace ComponentAce.Compression.Archiver
 			{
 				throw ExceptionBuilder.Exception(ErrorCode.IndexOutOfBounds, new ArgumentOutOfRangeException("itemNo"));
 			}
-			uint lastVolumeNumber;
+			uint num;
 			if (this._currentItemsHandler.FZip64)
 			{
-				lastVolumeNumber = this._currentItemsHandler.Zip64CentralDirEndLocator.TotalNumberOfDisks - 1U;
+				num = this._currentItemsHandler.Zip64CentralDirEndLocator.TotalNumberOfDisks - 1U;
 			}
 			else
 			{
-				lastVolumeNumber = (uint)this._currentItemsHandler.CentralDirEnd.DiskNumber;
+				num = (uint)this._currentItemsHandler.CentralDirEnd.DiskNumber;
 			}
 			uint diskStartNumber = (this._currentItemsHandler.ItemsArray[itemNo] as DirItem).DiskStartNumber;
-			this.OpenVolume(false, false, (int)diskStartNumber, (int)lastVolumeNumber);
+			this.OpenVolume(false, false, (int)diskStartNumber, (int)num);
 			this._compressedStream.Position = (this._currentItemsHandler.ItemsArray[itemNo] as DirItem).RelativeLocalHeaderOffset;
 			if (!this.InternalDecompressFile(this._compressedStream, destStream, this._currentItemsHandler.ItemsArray[itemNo] as DirItem) && !this._progressCancel && !this._isExtractCorruptedFiles && !this._skipFile)
 			{
@@ -865,8 +847,8 @@ namespace ComponentAce.Compression.Archiver
 		protected override DateTime GetLastModificationDateTime(IItem baseItem)
 		{
 			DirItem dirItem = baseItem as DirItem;
-			uint dosDateTime = (uint)((int)dirItem.LastModificationDate << 16 | (int)dirItem.LastModificationTime);
-			return CompressionUtils.DosDateTimeToDateTime(dosDateTime);
+			uint num = (uint)(((int)dirItem.LastModificationDate << 16) | (int)dirItem.LastModificationTime);
+			return CompressionUtils.DosDateTimeToDateTime(num);
 		}
 
 		// Token: 0x0600055E RID: 1374 RVA: 0x00025238 File Offset: 0x00024238
@@ -886,8 +868,8 @@ namespace ComponentAce.Compression.Archiver
 			}
 			else
 			{
-				uint dosDateTime = (uint)((int)(this._currentItemsHandler.ItemsArray[itemNo] as DirItem).LastModificationDate << 16 | (int)(this._currentItemsHandler.ItemsArray[itemNo] as DirItem).LastModificationTime);
-				FileUtils.SetFileLastWriteTime(fileStream.Name, CompressionUtils.DosDateTimeToDateTime(dosDateTime));
+				uint num = (uint)(((int)(this._currentItemsHandler.ItemsArray[itemNo] as DirItem).LastModificationDate << 16) | (int)(this._currentItemsHandler.ItemsArray[itemNo] as DirItem).LastModificationTime);
+				FileUtils.SetFileLastWriteTime(fileStream.Name, CompressionUtils.DosDateTimeToDateTime(num));
 			}
 		}
 
@@ -899,8 +881,7 @@ namespace ComponentAce.Compression.Archiver
 			if (flag)
 			{
 				(this._currentItemsHandler.ItemsArray[num] as DirItem).CompressionMode = 0;
-				(this._currentItemsHandler.ItemsArray[num] as DirItem).ActualCompressionMethod = 
-					(ushort)((this._compressionMethod < 255) ? 0 : 255);
+				(this._currentItemsHandler.ItemsArray[num] as DirItem).ActualCompressionMethod = ((this._compressionMethod < 255) ? 0 : 255);
 			}
 			return num;
 		}
@@ -1020,8 +1001,8 @@ namespace ComponentAce.Compression.Archiver
 			{
 				throw ExceptionBuilder.Exception(ErrorCode.InvalidVolumeName);
 			}
-			string str = fullPath.Substring(0, num + 1);
-			ManagementObject managementObject = new ManagementObject("Win32_LogicalDisk.DeviceID='" + str + "'");
+			string text = fullPath.Substring(0, num + 1);
+			ManagementObject managementObject = new ManagementObject("Win32_LogicalDisk.DeviceID='" + text + "'");
 			return long.Parse(managementObject.Properties["FreeSpace"].Value.ToString());
 		}
 
@@ -1041,10 +1022,10 @@ namespace ComponentAce.Compression.Archiver
 				while (num < count)
 				{
 					long num2 = this.GetFreeDriveSpace(this._volumeFileName);
-					long val = this._spanningOptions.GetVolumeSize(volumeNumber) - stream.Length;
+					long num3 = this._spanningOptions.GetVolumeSize(volumeNumber) - stream.Length;
 					if (this._spanningOptions.GetVolumeSize(volumeNumber) != -1L)
 					{
-						num2 = Math.Min(num2, val);
+						num2 = Math.Min(num2, num3);
 					}
 					if (num2 < 0L)
 					{
@@ -1052,9 +1033,9 @@ namespace ComponentAce.Compression.Archiver
 					}
 					if ((requiredFreeSpace == -1 || count - num + (long)requiredFreeSpace <= num2) && Math.Min(count - num, num2) > 0L)
 					{
-						long num3 = Math.Min(count - num, num2);
-						stream.Write(buffer, (int)num, (int)num3);
-						num += num3;
+						long num4 = Math.Min(count - num, num2);
+						stream.Write(buffer, (int)num, (int)num4);
+						num += num4;
 					}
 					if (stream is FileStream && this.SpanningMode == SpanningMode.Spanning)
 					{
@@ -1104,10 +1085,10 @@ namespace ComponentAce.Compression.Archiver
 				num2 = Math.Min(size, 1000000L);
 			}
 			long num3;
-			long count;
-			for (num3 = 0L; num3 < num; num3 += this.WriteToStream(this._tempBuffer, count, ref destStream, ref volumeNumber, requiredFreeSpace))
+			long num4;
+			for (num3 = 0L; num3 < num; num3 += this.WriteToStream(this._tempBuffer, num4, ref destStream, ref volumeNumber, requiredFreeSpace))
 			{
-				count = (long)srcStream.Read(this._tempBuffer, 0, (int)num2);
+				num4 = (long)srcStream.Read(this._tempBuffer, 0, (int)num2);
 			}
 			return num3;
 		}
@@ -1202,22 +1183,22 @@ namespace ComponentAce.Compression.Archiver
 						this.ReopenFileStream(text);
 						if (this.SpanningMode == SpanningMode.Spanning)
 						{
-							string lpVolumeName;
+							string text2;
 							if (volumeNumber < 0)
 							{
-								lpVolumeName = "pkback# " + string.Format("##0", 1);
+								text2 = "pkback# " + string.Format("##0", 1);
 							}
 							else
 							{
-								lpVolumeName = "pkback# " + string.Format("##0", volumeNumber + 1);
+								text2 = "pkback# " + string.Format("##0", volumeNumber + 1);
 							}
-							Compression1.SetVolumeLabel(CompressionUtils.ExtractFileDrive(text), lpVolumeName);
+							Compression.SetVolumeLabel(CompressionUtils.ExtractFileDrive(text), text2);
 						}
 					}
 				}
 				else
 				{
-					string b = text;
+					string text3 = text;
 					flag = false;
 					if (this._volumeNumber != volumeNumber)
 					{
@@ -1239,7 +1220,7 @@ namespace ComponentAce.Compression.Archiver
 							}
 							if (!flag)
 							{
-								if (!(text != b) && this._spanningMode != SpanningMode.Spanning)
+								if (!(text != text3) && this._spanningMode != SpanningMode.Spanning)
 								{
 									goto IL_1B7;
 								}
@@ -1334,14 +1315,14 @@ namespace ComponentAce.Compression.Archiver
 				return;
 			}
 			this._spanningMode = SpanningMode.Splitting;
-			string fileName = this._fileName;
-			this.MakeDefaultVolumeName(ref fileName, (int)(this._currentItemsHandler.CentralDirEnd.DiskNumber - 1));
-			if (!File.Exists(fileName))
+			string text = this._fileName;
+			this.MakeDefaultVolumeName(ref text, (int)(this._currentItemsHandler.CentralDirEnd.DiskNumber - 1));
+			if (!File.Exists(text))
 			{
 				this._spanningOptions.AdvancedNaming = !this._spanningOptions.AdvancedNaming;
-				fileName = this._fileName;
-				this.MakeDefaultVolumeName(ref fileName, (int)(this._currentItemsHandler.CentralDirEnd.DiskNumber - 1));
-				if (!File.Exists(fileName))
+				text = this._fileName;
+				this.MakeDefaultVolumeName(ref text, (int)(this._currentItemsHandler.CentralDirEnd.DiskNumber - 1));
+				if (!File.Exists(text))
 				{
 					this._spanningOptions.AdvancedNaming = !this._spanningOptions.AdvancedNaming;
 					this._spanningMode = SpanningMode.Spanning;
@@ -1433,7 +1414,7 @@ namespace ComponentAce.Compression.Archiver
 			{
 				throw ExceptionBuilder.Exception(ErrorCode.NoOnRequestFirstVolumeHandler);
 			}
-			cancel = (!File.Exists(volumeFileName) && this._fileOpenMode != FileMode.Create);
+			cancel = !File.Exists(volumeFileName) && this._fileOpenMode != FileMode.Create;
 		}
 
 		// Token: 0x06000577 RID: 1399 RVA: 0x00025E54 File Offset: 0x00024E54
@@ -1581,10 +1562,7 @@ namespace ComponentAce.Compression.Archiver
 			}
 			if (!File.Exists(this.SFXStub))
 			{
-				throw ExceptionBuilder.Exception(ErrorCode.FileNotFound, new object[]
-				{
-					this.SFXStub
-				});
+				throw ExceptionBuilder.Exception(ErrorCode.FileNotFound, new object[] { this.SFXStub });
 			}
 			if (this.SpanningMode != SpanningMode.None)
 			{
@@ -1611,7 +1589,7 @@ namespace ComponentAce.Compression.Archiver
 				else
 				{
 					stream = new FileStream(this._fileName, FileMode.Open, FileAccess.Read, FileShare.None);
-					dirManager = (this.CreateNewItemsHandler(stream, false) as DirManager);
+					dirManager = this.CreateNewItemsHandler(stream, false) as DirManager;
 					try
 					{
 						dirManager.LoadItemsArray();
@@ -1628,7 +1606,7 @@ namespace ComponentAce.Compression.Archiver
 				}
 				CompressionUtils.CopyStream(stream2, stream3);
 				CompressionUtils.CopyStream(stream, stream3, stream.Length);
-				dirManager = (this.CreateNewItemsHandler(stream3, false) as DirManager);
+				dirManager = this.CreateNewItemsHandler(stream3, false) as DirManager;
 				dirManager.LoadItemsArray();
 				dirManager.SaveDir(false);
 			}
@@ -1680,10 +1658,7 @@ namespace ComponentAce.Compression.Archiver
 					throw;
 				}
 			}
-			throw ExceptionBuilder.Exception(ErrorCode.FileNotFound, new object[]
-			{
-				fileMask
-			});
+			throw ExceptionBuilder.Exception(ErrorCode.FileNotFound, new object[] { fileMask });
 		}
 
 		// Token: 0x06000587 RID: 1415 RVA: 0x00026358 File Offset: 0x00025358
@@ -1719,17 +1694,14 @@ namespace ComponentAce.Compression.Archiver
 					throw;
 				}
 			}
-			throw ExceptionBuilder.Exception(ErrorCode.FileNotFound, new object[]
-			{
-				fileMask
-			});
+			throw ExceptionBuilder.Exception(ErrorCode.FileNotFound, new object[] { fileMask });
 		}
 
 		// Token: 0x06000588 RID: 1416 RVA: 0x00026460 File Offset: 0x00025460
 		public bool IsFilePasswordValid(string fileName, string password)
 		{
 			base.CheckInactive();
-			bool result = false;
+			bool flag = false;
 			BaseArchiveItem baseArchiveItem = new ArchiveItem();
 			if (this.FindFirst(fileName, ref baseArchiveItem))
 			{
@@ -1743,14 +1715,14 @@ namespace ComponentAce.Compression.Archiver
 					{
 						cryptoTransform.GenerateKey(password);
 						cryptoTransform.LoadFileStorageStartBlock(this._compressedStream, this._compressedStream.Position);
-						result = cryptoTransform.CheckPassword(password, this._currentItemsHandler.ItemsArray[(baseArchiveItem as ArchiveItem).Handle.ItemNo] as DirItem);
+						flag = cryptoTransform.CheckPassword(password, this._currentItemsHandler.ItemsArray[(baseArchiveItem as ArchiveItem).Handle.ItemNo] as DirItem);
 					}
 					else
 					{
 						byte[] array = new byte[50];
 						if (this._compressedStream.Read(array, 0, 50) != 50)
 						{
-							return result;
+							return flag;
 						}
 						FXCFileHeader fxcfileHeader = new FXCFileHeader();
 						fxcfileHeader.LoadFromByteArray(array, 0U);
@@ -1759,19 +1731,16 @@ namespace ComponentAce.Compression.Archiver
 						this.FXCDecryptBuffer((int)fxcfileHeader2.CryptoAlgorithm, ref fxcfileHeader2.ControlBlock, 16L, password);
 						uint maxValue = uint.MaxValue;
 						ZipUtil.UpdateCRC32(fxcfileHeader2.ControlBlock, 16U, ref maxValue);
-						result = (~maxValue == fxcfileHeader2.ControlBlockCrc32);
+						flag = ~maxValue == fxcfileHeader2.ControlBlockCrc32;
 					}
 				}
 				else
 				{
-					result = true;
+					flag = true;
 				}
-				return result;
+				return flag;
 			}
-			throw ExceptionBuilder.Exception(ErrorCode.FileNotFound, new object[]
-			{
-				fileName
-			});
+			throw ExceptionBuilder.Exception(ErrorCode.FileNotFound, new object[] { fileName });
 		}
 
 		// Token: 0x06000589 RID: 1417 RVA: 0x00026672 File Offset: 0x00025672
@@ -1887,7 +1856,7 @@ namespace ComponentAce.Compression.Archiver
 		// Token: 0x06000597 RID: 1431 RVA: 0x0002679C File Offset: 0x0002579C
 		public void RepairArchive(string outputFileName)
 		{
-			bool extractCorruptedFiles = false;
+			bool flag = false;
 			string text = "";
 			if (this._isOpened)
 			{
@@ -1920,19 +1889,16 @@ namespace ComponentAce.Compression.Archiver
 					File.Delete(text);
 				}
 			}
-			catch (Exception innerException)
+			catch (Exception ex)
 			{
-				throw ExceptionBuilder.Exception(ErrorCode.CannotCreateOutputFile, new object[]
-				{
-					text
-				}, innerException);
+				throw ExceptionBuilder.Exception(ErrorCode.CannotCreateOutputFile, new object[] { text }, ex);
 			}
 			try
 			{
 				bool isOpenCorruptedArchives = this._isOpenCorruptedArchives;
 				this._isOpenCorruptedArchives = true;
 				this.OpenArchive(FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-				extractCorruptedFiles = this.ExtractCorruptedFiles;
+				flag = this.ExtractCorruptedFiles;
 				this.ExtractCorruptedFiles = true;
 				base.GetType();
 				BaseArchiver baseArchiver = this.CreateArchiver();
@@ -1977,7 +1943,7 @@ namespace ComponentAce.Compression.Archiver
 				fileStream.Close();
 				this.CloseArchive();
 				BaseArchiver baseArchiver = null;
-				this.ExtractCorruptedFiles = extractCorruptedFiles;
+				this.ExtractCorruptedFiles = flag;
 			}
 			if (outputFileName == "")
 			{
@@ -1989,7 +1955,7 @@ namespace ComponentAce.Compression.Archiver
 		// Token: 0x06000598 RID: 1432 RVA: 0x00026AA0 File Offset: 0x00025AA0
 		public bool IsValidArchiveFile()
 		{
-			bool result;
+			bool flag;
 			if (!this._isOpened)
 			{
 				if (File.Exists(this._fileName))
@@ -2004,18 +1970,18 @@ namespace ComponentAce.Compression.Archiver
 						{
 							if (this._currentItemsHandler.HasCentralDirEnd())
 							{
-								result = true;
+								flag = true;
 							}
 							else
 							{
 								try
 								{
 									this._currentItemsHandler.LoadItemsArray();
-									result = true;
+									flag = true;
 								}
 								catch
 								{
-									result = false;
+									flag = false;
 								}
 							}
 						}
@@ -2024,7 +1990,7 @@ namespace ComponentAce.Compression.Archiver
 							this._isOpenCorruptedArchives = isOpenCorruptedArchives;
 							this._itemsHandler = null;
 						}
-						return result;
+						return flag;
 					}
 					finally
 					{
@@ -2032,13 +1998,13 @@ namespace ComponentAce.Compression.Archiver
 						this._compressedStream = null;
 					}
 				}
-				result = false;
+				flag = false;
 			}
 			else
 			{
-				result = true;
+				flag = true;
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x170000E3 RID: 227

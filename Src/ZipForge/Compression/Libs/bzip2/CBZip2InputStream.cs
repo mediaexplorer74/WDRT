@@ -112,7 +112,7 @@ namespace ComponentAce.Compression.Libs.bzip2
 			{
 				return -1;
 			}
-			int result = this.currentChar;
+			int num = this.currentChar;
 			switch (this.currentState)
 			{
 			case 3:
@@ -128,7 +128,7 @@ namespace ComponentAce.Compression.Libs.bzip2
 				this.setupNoRandPartC();
 				break;
 			}
-			return result;
+			return num;
 		}
 
 		// Token: 0x0600017A RID: 378 RVA: 0x0001167C File Offset: 0x0001067C
@@ -188,7 +188,7 @@ namespace ComponentAce.Compression.Libs.bzip2
 			{
 				CBZip2InputStream.crcError();
 			}
-			this.computedCombinedCRC = (this.computedCombinedCRC << 1 | SupportClass.URShift(this.computedCombinedCRC, 31));
+			this.computedCombinedCRC = (this.computedCombinedCRC << 1) | SupportClass.URShift(this.computedCombinedCRC, 31);
 			this.computedCombinedCRC ^= this.computedBlockCRC;
 		}
 
@@ -269,12 +269,12 @@ namespace ComponentAce.Compression.Libs.bzip2
 					CBZip2InputStream.compressedStreamEOF();
 				}
 				int num = (int)c;
-				this.bsBuff = (this.bsBuff << 8 | (num & 255));
+				this.bsBuff = (this.bsBuff << 8) | (num & 255);
 				this.bsLive += 8;
 			}
-			int result = this.bsBuff >> this.bsLive - n & (1 << n) - 1;
+			int num2 = (this.bsBuff >> this.bsLive - n) & ((1 << n) - 1);
 			this.bsLive -= n;
-			return result;
+			return num2;
 		}
 
 		// Token: 0x06000184 RID: 388 RVA: 0x0001194C File Offset: 0x0001094C
@@ -287,10 +287,10 @@ namespace ComponentAce.Compression.Libs.bzip2
 		private int bsGetint()
 		{
 			int num = 0;
-			num = (num << 8 | this.bsR(8));
-			num = (num << 8 | this.bsR(8));
-			num = (num << 8 | this.bsR(8));
-			return num << 8 | this.bsR(8);
+			num = (num << 8) | this.bsR(8);
+			num = (num << 8) | this.bsR(8);
+			num = (num << 8) | this.bsR(8);
+			return (num << 8) | this.bsR(8);
 		}
 
 		// Token: 0x06000186 RID: 390 RVA: 0x00011998 File Offset: 0x00010998
@@ -486,7 +486,7 @@ namespace ComponentAce.Compression.Libs.bzip2
 			int num6 = this.minLens[num5];
 			int j;
 			int num8;
-			for (j = this.bsR(num6); j > this.limit[num5][num6]; j = (j << 1 | num8))
+			for (j = this.bsR(num6); j > this.limit[num5][num6]; j = (j << 1) | num8)
 			{
 				num6++;
 				while (this.bsLive < 1)
@@ -505,10 +505,10 @@ namespace ComponentAce.Compression.Libs.bzip2
 						CBZip2InputStream.compressedStreamEOF();
 					}
 					int num7 = (int)c;
-					this.bsBuff = (this.bsBuff << 8 | (num7 & 255));
+					this.bsBuff = (this.bsBuff << 8) | (num7 & 255);
 					this.bsLive += 8;
 				}
-				num8 = (this.bsBuff >> this.bsLive - 1 & 1);
+				num8 = (this.bsBuff >> this.bsLive - 1) & 1;
 				this.bsLive--;
 			}
 			int num9 = this.perm[num5][j - this.base_Renamed[num5][num6]];
@@ -539,7 +539,7 @@ namespace ComponentAce.Compression.Libs.bzip2
 						int num12 = this.minLens[num11];
 						int l;
 						int num14;
-						for (l = this.bsR(num12); l > this.limit[num11][num12]; l = (l << 1 | num14))
+						for (l = this.bsR(num12); l > this.limit[num11][num12]; l = (l << 1) | num14)
 						{
 							num12++;
 							while (this.bsLive < 1)
@@ -558,10 +558,10 @@ namespace ComponentAce.Compression.Libs.bzip2
 									CBZip2InputStream.compressedStreamEOF();
 								}
 								int num13 = (int)c2;
-								this.bsBuff = (this.bsBuff << 8 | (num13 & 255));
+								this.bsBuff = (this.bsBuff << 8) | (num13 & 255);
 								this.bsLive += 8;
 							}
-							num14 = (this.bsBuff >> this.bsLive - 1 & 1);
+							num14 = (this.bsBuff >> this.bsLive - 1) & 1;
 							this.bsLive--;
 						}
 						num9 = this.perm[num11][l - this.base_Renamed[num11][num12]];
@@ -615,7 +615,7 @@ namespace ComponentAce.Compression.Libs.bzip2
 					int num16 = this.minLens[num15];
 					int n;
 					int num18;
-					for (n = this.bsR(num16); n > this.limit[num15][num16]; n = (n << 1 | num18))
+					for (n = this.bsR(num16); n > this.limit[num15][num16]; n = (n << 1) | num18)
 					{
 						num16++;
 						while (this.bsLive < 1)
@@ -630,10 +630,10 @@ namespace ComponentAce.Compression.Libs.bzip2
 								CBZip2InputStream.compressedStreamEOF();
 							}
 							int num17 = (int)c5;
-							this.bsBuff = (this.bsBuff << 8 | (num17 & 255));
+							this.bsBuff = (this.bsBuff << 8) | (num17 & 255);
 							this.bsLive += 8;
 						}
-						num18 = (this.bsBuff >> this.bsLive - 1 & 1);
+						num18 = (this.bsBuff >> this.bsLive - 1) & 1;
 						this.bsLive--;
 					}
 					num9 = this.perm[num15][n - this.base_Renamed[num15][num16]];
@@ -904,16 +904,16 @@ namespace ComponentAce.Compression.Libs.bzip2
 		{
 			get
 			{
-				long result;
+				long num;
 				if (this.bsStream != null && this.bsStream.CanSeek)
 				{
-					result = this.bsStream.Position;
+					num = this.bsStream.Position;
 				}
 				else
 				{
-					result = this.position;
+					num = this.position;
 				}
-				return result;
+				return num;
 			}
 			set
 			{

@@ -11,10 +11,10 @@ using System.Windows.Navigation;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 {
-	// Token: 0x0200003F RID: 63
+	// Token: 0x020000DB RID: 219
 	public partial class SettingsControl : Grid
 	{
-		// Token: 0x06000237 RID: 567 RVA: 0x0000E75C File Offset: 0x0000C95C
+		// Token: 0x060006E8 RID: 1768 RVA: 0x0001F810 File Offset: 0x0001DA10
 		public SettingsControl()
 		{
 			this.InitializeComponent();
@@ -23,9 +23,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			base.GotFocus += this.SettingsControlGotFocus;
 		}
 
-		// Token: 0x14000005 RID: 5
-		// (add) Token: 0x06000238 RID: 568 RVA: 0x0000E7B8 File Offset: 0x0000C9B8
-		// (remove) Token: 0x06000239 RID: 569 RVA: 0x0000E7C8 File Offset: 0x0000C9C8
+		// Token: 0x1400000E RID: 14
+		// (add) Token: 0x060006E9 RID: 1769 RVA: 0x0001F86B File Offset: 0x0001DA6B
+		// (remove) Token: 0x060006EA RID: 1770 RVA: 0x0001F87B File Offset: 0x0001DA7B
 		public event RoutedEventHandler Open
 		{
 			add
@@ -38,9 +38,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x14000006 RID: 6
-		// (add) Token: 0x0600023A RID: 570 RVA: 0x0000E7D8 File Offset: 0x0000C9D8
-		// (remove) Token: 0x0600023B RID: 571 RVA: 0x0000E7E8 File Offset: 0x0000C9E8
+		// Token: 0x1400000F RID: 15
+		// (add) Token: 0x060006EB RID: 1771 RVA: 0x0001F88B File Offset: 0x0001DA8B
+		// (remove) Token: 0x060006EC RID: 1772 RVA: 0x0001F89B File Offset: 0x0001DA9B
 		public event RoutedEventHandler Close
 		{
 			add
@@ -53,9 +53,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x17000066 RID: 102
-		// (get) Token: 0x0600023C RID: 572 RVA: 0x0000E7F8 File Offset: 0x0000C9F8
-		// (set) Token: 0x0600023D RID: 573 RVA: 0x0000E81A File Offset: 0x0000CA1A
+		// Token: 0x17000195 RID: 405
+		// (get) Token: 0x060006ED RID: 1773 RVA: 0x0001F8AC File Offset: 0x0001DAAC
+		// (set) Token: 0x060006EE RID: 1774 RVA: 0x0001F8CE File Offset: 0x0001DACE
 		public bool IsOpened
 		{
 			get
@@ -68,59 +68,63 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x0600023E RID: 574 RVA: 0x0000E82F File Offset: 0x0000CA2F
+		// Token: 0x060006EF RID: 1775 RVA: 0x0001F8E3 File Offset: 0x0001DAE3
 		protected override void OnMouseEnter(MouseEventArgs e)
 		{
 			this.timer.Stop();
 			base.OnMouseEnter(e);
 		}
 
-		// Token: 0x0600023F RID: 575 RVA: 0x0000E846 File Offset: 0x0000CA46
+		// Token: 0x060006F0 RID: 1776 RVA: 0x0001F8FA File Offset: 0x0001DAFA
 		protected override void OnMouseLeave(MouseEventArgs e)
 		{
 			this.timer.Start();
 			base.OnMouseLeave(e);
 		}
 
-		// Token: 0x06000240 RID: 576 RVA: 0x0000E860 File Offset: 0x0000CA60
+		// Token: 0x060006F1 RID: 1777 RVA: 0x0001F914 File Offset: 0x0001DB14
 		protected override void OnPreviewMouseLeftButtonDown(MouseButtonEventArgs e)
 		{
-			if (!this.IsOpened)
+			bool flag = !this.IsOpened;
+			if (flag)
 			{
 				base.SetCurrentValue(SettingsControl.IsOpenedProperty, true);
 			}
 		}
 
-		// Token: 0x06000241 RID: 577 RVA: 0x0000E88C File Offset: 0x0000CA8C
+		// Token: 0x060006F2 RID: 1778 RVA: 0x0001F944 File Offset: 0x0001DB44
 		protected override void OnPreviewMouseRightButtonDown(MouseButtonEventArgs e)
 		{
-			if (!this.IsOpened)
+			bool flag = !this.IsOpened;
+			if (flag)
 			{
 				base.SetCurrentValue(SettingsControl.IsOpenedProperty, true);
 			}
 		}
 
-		// Token: 0x06000242 RID: 578 RVA: 0x0000E8B8 File Offset: 0x0000CAB8
+		// Token: 0x060006F3 RID: 1779 RVA: 0x0001F973 File Offset: 0x0001DB73
 		protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
 		{
 			e.Handled = true;
 			base.OnMouseLeftButtonDown(e);
 		}
 
-		// Token: 0x06000243 RID: 579 RVA: 0x0000E8CB File Offset: 0x0000CACB
+		// Token: 0x060006F4 RID: 1780 RVA: 0x0001F986 File Offset: 0x0001DB86
 		protected override void OnMouseRightButtonDown(MouseButtonEventArgs e)
 		{
 			e.Handled = true;
 			base.OnMouseRightButtonDown(e);
 		}
 
-		// Token: 0x06000244 RID: 580 RVA: 0x0000E8E0 File Offset: 0x0000CAE0
+		// Token: 0x060006F5 RID: 1781 RVA: 0x0001F99C File Offset: 0x0001DB9C
 		private static void OnIsOpenedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{
 			SettingsControl settingsControl = d as SettingsControl;
-			if (settingsControl != null && (bool)e.NewValue != (bool)e.OldValue)
+			bool flag = settingsControl != null && (bool)e.NewValue != (bool)e.OldValue;
+			if (flag)
 			{
-				if ((bool)e.NewValue)
+				bool flag2 = (bool)e.NewValue;
+				if (flag2)
 				{
 					settingsControl.RaiseOpenEvent();
 					settingsControl.timer.Start();
@@ -133,12 +137,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x06000245 RID: 581 RVA: 0x0000E9A0 File Offset: 0x0000CBA0
+		// Token: 0x060006F6 RID: 1782 RVA: 0x0001FA16 File Offset: 0x0001DC16
 		private void TimerOnElapsed(object sender, ElapsedEventArgs elapsedEventArgs)
 		{
-			base.Dispatcher.BeginInvoke(new Action(delegate()
+			base.Dispatcher.BeginInvoke(new Action(delegate
 			{
-				if (!base.IsMouseOver && !base.IsFocused)
+				bool flag = !base.IsMouseOver && !base.IsFocused;
+				if (flag)
 				{
 					this.timer.Stop();
 					base.SetCurrentValue(SettingsControl.IsOpenedProperty, false);
@@ -146,51 +151,52 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}), new object[0]);
 		}
 
-		// Token: 0x06000246 RID: 582 RVA: 0x0000E9C4 File Offset: 0x0000CBC4
+		// Token: 0x060006F7 RID: 1783 RVA: 0x0001FA38 File Offset: 0x0001DC38
 		private void RaiseCloseEvent()
 		{
-			RoutedEventArgs e = new RoutedEventArgs(SettingsControl.CloseEvent);
-			base.RaiseEvent(e);
+			RoutedEventArgs routedEventArgs = new RoutedEventArgs(SettingsControl.CloseEvent);
+			base.RaiseEvent(routedEventArgs);
 		}
 
-		// Token: 0x06000247 RID: 583 RVA: 0x0000E9E8 File Offset: 0x0000CBE8
+		// Token: 0x060006F8 RID: 1784 RVA: 0x0001FA5C File Offset: 0x0001DC5C
 		private void RaiseOpenEvent()
 		{
-			RoutedEventArgs e = new RoutedEventArgs(SettingsControl.OpenEvent);
-			base.RaiseEvent(e);
+			RoutedEventArgs routedEventArgs = new RoutedEventArgs(SettingsControl.OpenEvent);
+			base.RaiseEvent(routedEventArgs);
 		}
 
-		// Token: 0x06000248 RID: 584 RVA: 0x0000EA09 File Offset: 0x0000CC09
+		// Token: 0x060006F9 RID: 1785 RVA: 0x0001FA7D File Offset: 0x0001DC7D
 		private void SettingsButtonOnClick(object sender, RoutedEventArgs e)
 		{
 			base.SetCurrentValue(SettingsControl.IsOpenedProperty, false);
 		}
 
-		// Token: 0x06000249 RID: 585 RVA: 0x0000EA20 File Offset: 0x0000CC20
+		// Token: 0x060006FA RID: 1786 RVA: 0x0001FA94 File Offset: 0x0001DC94
 		private void SettingsControlGotFocus(object sender, RoutedEventArgs e)
 		{
 			this.timer.Stop();
-			if (!this.IsOpened)
+			bool flag = !this.IsOpened;
+			if (flag)
 			{
 				base.Focus();
 				base.SetCurrentValue(SettingsControl.IsOpenedProperty, true);
 			}
 		}
 
-		// Token: 0x0600024A RID: 586 RVA: 0x0000EA5F File Offset: 0x0000CC5F
+		// Token: 0x060006FB RID: 1787 RVA: 0x0001FAD6 File Offset: 0x0001DCD6
 		private void HyperlinkButtonOnRequestNavigate(object sender, RequestNavigateEventArgs e)
 		{
 			Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
 			e.Handled = true;
 		}
 
-		// Token: 0x0600024B RID: 587 RVA: 0x0000EA80 File Offset: 0x0000CC80
+		// Token: 0x060006FC RID: 1788 RVA: 0x0001FA7D File Offset: 0x0001DC7D
 		private void HelpButtonOnClick(object sender, RoutedEventArgs e)
 		{
 			base.SetCurrentValue(SettingsControl.IsOpenedProperty, false);
 		}
 
-		// Token: 0x06000250 RID: 592 RVA: 0x0000EB78 File Offset: 0x0000CD78
+		// Token: 0x06000700 RID: 1792 RVA: 0x0001FBD8 File Offset: 0x0001DDD8
 		// Note: this type is marked as 'beforefieldinit'.
 		static SettingsControl()
 		{
@@ -198,12 +204,10 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			SettingsControl.CloseEvent = EventManager.RegisterRoutedEvent("Close", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(SettingsControl));
 		}
 
-		// Token: 0x040000EA RID: 234
+		// Token: 0x0400031C RID: 796
 		public static readonly DependencyProperty IsOpenedProperty = DependencyProperty.Register("IsOpened", typeof(bool), typeof(SettingsControl), new PropertyMetadata(false, new PropertyChangedCallback(SettingsControl.OnIsOpenedChanged)));
 
-		// Token: 0x040000ED RID: 237
+		// Token: 0x0400031F RID: 799
 		private readonly Timer timer;
-        private static RoutedEvent OpenEvent;
-        private static RoutedEvent CloseEvent;
-    }
+	}
 }

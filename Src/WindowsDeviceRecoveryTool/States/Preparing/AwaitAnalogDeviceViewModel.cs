@@ -10,19 +10,19 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.Enums;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 {
-	// Token: 0x0200009B RID: 155
+	// Token: 0x02000046 RID: 70
 	[Export]
 	public class AwaitAnalogDeviceViewModel : BaseViewModel, ICanHandle<DeviceConnectedMessage>, ICanHandle
 	{
-		// Token: 0x06000441 RID: 1089 RVA: 0x000146C7 File Offset: 0x000128C7
+		// Token: 0x060002C3 RID: 707 RVA: 0x0000FA60 File Offset: 0x0000DC60
 		[ImportingConstructor]
 		public AwaitAnalogDeviceViewModel(Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext)
 		{
 			this.AppContext = appContext;
 		}
 
-		// Token: 0x170000E0 RID: 224
-		// (get) Token: 0x06000442 RID: 1090 RVA: 0x000146DC File Offset: 0x000128DC
+		// Token: 0x170000B8 RID: 184
+		// (get) Token: 0x060002C4 RID: 708 RVA: 0x0000FA74 File Offset: 0x0000DC74
 		public override string PreviousStateName
 		{
 			get
@@ -31,9 +31,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x170000E1 RID: 225
-		// (get) Token: 0x06000443 RID: 1091 RVA: 0x000146F4 File Offset: 0x000128F4
-		// (set) Token: 0x06000444 RID: 1092 RVA: 0x0001470C File Offset: 0x0001290C
+		// Token: 0x170000B9 RID: 185
+		// (get) Token: 0x060002C5 RID: 709 RVA: 0x0000FA8C File Offset: 0x0000DC8C
+		// (set) Token: 0x060002C6 RID: 710 RVA: 0x0000FAA4 File Offset: 0x0000DCA4
 		public Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext AppContext
 		{
 			get
@@ -46,36 +46,38 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x06000445 RID: 1093 RVA: 0x00014764 File Offset: 0x00012964
+		// Token: 0x060002C7 RID: 711 RVA: 0x0000FAE4 File Offset: 0x0000DCE4
 		public override void OnStarted()
 		{
 			base.EventAggregator.Publish<HeaderMessage>(new HeaderMessage(LocalizationManager.GetTranslation("StartRecoveryManually"), ""));
 			base.EventAggregator.Publish<IsBackButtonMessage>(new IsBackButtonMessage(true));
 			base.EventAggregator.Publish<BlockWindowMessage>(new BlockWindowMessage(false, null, null));
 			DetectionParameters detectionParams = new DetectionParameters(PhoneTypes.Analog, PhoneModes.Flash);
-			//base.Commands.Run((FlowController c) => c.StartDeviceDetection(detectionParams));
+			base.Commands.Run((FlowController c) => c.StartDeviceDetection(detectionParams));
 		}
 
-		// Token: 0x06000446 RID: 1094 RVA: 0x00014834 File Offset: 0x00012A34
+		// Token: 0x060002C8 RID: 712 RVA: 0x0000FBB8 File Offset: 0x0000DDB8
 		public override void OnStopped()
 		{
-			//base.Commands.Run((FlowController c) => c.StopDeviceDetection());
+			base.Commands.Run((FlowController c) => c.StopDeviceDetection());
 		}
 
-		// Token: 0x06000447 RID: 1095 RVA: 0x00014890 File Offset: 0x00012A90
+		// Token: 0x060002C9 RID: 713 RVA: 0x0000FC14 File Offset: 0x0000DE14
 		public void Handle(DeviceConnectedMessage message)
 		{
-			if (base.IsStarted)
+			bool isStarted = base.IsStarted;
+			if (isStarted)
 			{
-				if (message.Phone.Type == PhoneTypes.Analog)
+				bool flag = message.Phone.Type == PhoneTypes.Analog;
+				if (flag)
 				{
 					this.appContext.CurrentPhone = message.Phone;
-					//base.Commands.Run((AppController a) => a.SwitchToState("ReadingDeviceInfoState"));
+					base.Commands.Run((AppController a) => a.SwitchToState("ReadingDeviceInfoState"));
 				}
 			}
 		}
 
-		// Token: 0x040001E0 RID: 480
+		// Token: 0x04000142 RID: 322
 		private Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext;
 	}
 }

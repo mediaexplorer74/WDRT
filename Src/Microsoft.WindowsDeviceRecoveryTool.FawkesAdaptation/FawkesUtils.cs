@@ -4,10 +4,10 @@ using Microsoft.WindowsDeviceRecoveryTool.Model;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.FawkesAdaptation
 {
-	// Token: 0x0200000D RID: 13
+	// Token: 0x02000005 RID: 5
 	public static class FawkesUtils
 	{
-		// Token: 0x0600006C RID: 108 RVA: 0x000037DC File Offset: 0x000019DC
+		// Token: 0x0600000E RID: 14 RVA: 0x00002190 File Offset: 0x00000390
 		public static bool TryParseImageVersion(string versionString, out ImageVersion imageVersion)
 		{
 			imageVersion = null;
@@ -15,39 +15,35 @@ namespace Microsoft.WindowsDeviceRecoveryTool.FawkesAdaptation
 			{
 				return false;
 			}
-			string[] array = versionString.Split(new char[]
-			{
-				'.',
-				'-'
-			});
+			string[] array = versionString.Split(new char[] { '.', '-' });
 			if (array.Length == 0)
 			{
 				imageVersion = new ImageVersion(0);
 				return true;
 			}
-			byte minor = 0;
-			short buildNumber = 0;
-			byte major;
-			if (!byte.TryParse(array[0], out major))
+			byte b = 0;
+			short num = 0;
+			byte b2;
+			if (!byte.TryParse(array[0], out b2))
 			{
 				return false;
 			}
 			if (array.Length > 1)
 			{
-				if (!byte.TryParse(array[1], out minor))
+				if (!byte.TryParse(array[1], out b))
 				{
 					return false;
 				}
-				if (array.Length > 2 && !short.TryParse(array[2], out buildNumber))
+				if (array.Length > 2 && !short.TryParse(array[2], out num))
 				{
 					return false;
 				}
 			}
-			imageVersion = new ImageVersion(major, minor, buildNumber);
+			imageVersion = new ImageVersion(b2, b, num);
 			return true;
 		}
 
-		// Token: 0x0600006D RID: 109 RVA: 0x00003867 File Offset: 0x00001A67
+		// Token: 0x0600000F RID: 15 RVA: 0x00002214 File Offset: 0x00000414
 		internal static void WriteFawkesDeviceInfo(this Phone phone, FawkesDeviceInfo deviceInfo)
 		{
 			phone.HardwareId = deviceInfo.HardwareId;
@@ -55,7 +51,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.FawkesAdaptation
 			phone.SoftwareVersion = deviceInfo.FirmwareVersion.ToString();
 		}
 
-		// Token: 0x0600006E RID: 110 RVA: 0x00003892 File Offset: 0x00001A92
+		// Token: 0x06000010 RID: 16 RVA: 0x0000223F File Offset: 0x0000043F
 		internal static FawkesDeviceInfo ReadFawkesDeviceInfo(this Phone phone)
 		{
 			return new FawkesDeviceInfo(phone.SoftwareVersion, phone.HardwareId, phone.SalesName);

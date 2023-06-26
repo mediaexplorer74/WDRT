@@ -1,8 +1,9 @@
 <ContentControl
 	x:Class="Microsoft.WindowsDeviceRecoveryTool.Controls.DeviceSwInfoControl" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:controls="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Controls" xmlns:localization="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Localization;assembly=Microsoft.WindowsDeviceRecoveryTool.Localization" xmlns:enums="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Model.Enums;assembly=Microsoft.WindowsDeviceRecoveryTool.Model"
-	Name="DeviceSwInfoControlName"
+	FrameworkElement.Name="DeviceSwInfoControlName"
 	KeyboardNavigation.TabNavigation="None"
-	Focusable="False">
+	UIElement.Focusable="False"
+	x:Name="DeviceSwInfoControlName">
 	<FrameworkElement.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
@@ -15,28 +16,28 @@
 		Orientation="Horizontal">
 		<Grid>
 			<Image
-				Width="90"
-				Margin="5 5 10 5"
-				HorizontalAlignment="Left"
-				VerticalAlignment="Center"
-				Stretch="Uniform"
-				Source="{StaticResource AnalogDeviceIconImage}"
-				Visibility="{Binding Type, Converter={StaticResource EqualToVisibilityConverter}, ConverterParameter={x:Static enums:PhoneTypes.Analog}}" />
+				FrameworkElement.Width="90"
+				FrameworkElement.Margin="5 5 10 5"
+				FrameworkElement.HorizontalAlignment="Left"
+				FrameworkElement.VerticalAlignment="Center"
+				Image.Stretch="Uniform"
+				Image.Source="{StaticResource AnalogDeviceIconImage}"
+				UIElement.Visibility="{Binding Type, Converter='{StaticResource EqualToVisibilityConverter}', ConverterParameter='{x:Static enums:PhoneTypes.Analog}'}" />
 			<Image
-				Width="90"
-				Margin="5 5 10 5"
-				HorizontalAlignment="Left"
-				VerticalAlignment="Center"
-				Stretch="Uniform"
-				Source="{StaticResource FawkesDeviceIconImage}"
-				Visibility="{Binding Type, Converter={StaticResource EqualToVisibilityConverter}, ConverterParameter={x:Static enums:PhoneTypes.HoloLensAccessory}}" />
+				FrameworkElement.Width="90"
+				FrameworkElement.Margin="5 5 10 5"
+				FrameworkElement.HorizontalAlignment="Left"
+				FrameworkElement.VerticalAlignment="Center"
+				Image.Stretch="Uniform"
+				Image.Source="{StaticResource FawkesDeviceIconImage}"
+				UIElement.Visibility="{Binding Type, Converter='{StaticResource EqualToVisibilityConverter}', ConverterParameter='{x:Static enums:PhoneTypes.HoloLensAccessory}'}" />
 			<Image
-				Width="90"
-				Margin="5 5 10 5"
-				HorizontalAlignment="Left"
-				VerticalAlignment="Center"
-				Stretch="Uniform"
-				Source="{StaticResource DeviceIconImage}">
+				FrameworkElement.Width="90"
+				FrameworkElement.Margin="5 5 10 5"
+				FrameworkElement.HorizontalAlignment="Left"
+				FrameworkElement.VerticalAlignment="Center"
+				Image.Stretch="Uniform"
+				Image.Source="{StaticResource DeviceIconImage}">
 				<FrameworkElement.Style>
 					<Style
 						TargetType="{x:Type Image}">
@@ -47,7 +48,7 @@
 									<enums:PhoneTypes>HoloLensAccessory</enums:PhoneTypes>
 								</DataTrigger.Value>
 								<Setter
-									Property="Visibility"
+									Property="UIElement.Visibility"
 									Value="Collapsed" />
 							</DataTrigger>
 							<DataTrigger
@@ -56,7 +57,7 @@
 									<enums:PhoneTypes>Analog</enums:PhoneTypes>
 								</DataTrigger.Value>
 								<Setter
-									Property="Visibility"
+									Property="UIElement.Visibility"
 									Value="Collapsed" />
 							</DataTrigger>
 						</Style.Triggers>
@@ -65,15 +66,16 @@
 			</Image>
 		</Grid>
 		<StackPanel
-			Name="MainStackPanel"
-			HorizontalAlignment="Left"
-			VerticalAlignment="Center"
-			Margin="0 0 5 0">
+			FrameworkElement.Name="MainStackPanel"
+			FrameworkElement.HorizontalAlignment="Left"
+			FrameworkElement.VerticalAlignment="Center"
+			FrameworkElement.Margin="0 0 5 0"
+			x:Name="MainStackPanel">
 			<controls:LocalizationTextBlock
-				Style="{StaticResource MediumTextStyle}"
-				TextWrapping="NoWrap"
-				TextTrimming="CharacterEllipsis"
-				Focusable="True"
+				FrameworkElement.Style="{StaticResource MediumTextStyle}"
+				TextBlock.TextWrapping="NoWrap"
+				TextBlock.TextTrimming="CharacterEllipsis"
+				UIElement.Focusable="True"
 				LocalizationText="{localization:Localization Model}"
 				NullValue="{localization:Localization ModelUnknown}"
 				FocusVisualStyle="{x:Null}">
@@ -93,14 +95,14 @@
 				</TextBlock.Text>
 			</controls:LocalizationTextBlock>
 			<controls:LocalizationTextBlock
-				Style="{StaticResource MediumTextStyle}"
-				TextWrapping="NoWrap"
-				TextTrimming="CharacterEllipsis"
-				Foreground="{DynamicResource ApplicationSecondaryForegroundThemeBrush}"
-				Focusable="True"
+				FrameworkElement.Style="{StaticResource MediumTextStyle}"
+				TextBlock.TextWrapping="NoWrap"
+				TextBlock.TextTrimming="CharacterEllipsis"
+				TextBlock.Foreground="{DynamicResource ApplicationSecondaryForegroundThemeBrush}"
+				UIElement.Focusable="True"
 				LocalizationText="{localization:Localization FirmwareVersion}"
 				NullValue="{localization:Localization FirmwareVersionUnknown}"
-				Visibility="{Binding ElementName=DeviceSwInfoControlName, Path=FirmwareVersionVisibility}"
+				UIElement.Visibility="{Binding ElementName=DeviceSwInfoControlName, Path=FirmwareVersionVisibility}"
 				FocusVisualStyle="{x:Null}">
 				<TextBlock.Text>
 					<MultiBinding
@@ -117,14 +119,14 @@
 				</TextBlock.Text>
 			</controls:LocalizationTextBlock>
 			<controls:LocalizationTextBlock
-				Style="{StaticResource MediumTextStyle}"
-				TextWrapping="NoWrap"
-				TextTrimming="CharacterEllipsis"
-				Foreground="{DynamicResource ApplicationSecondaryForegroundThemeBrush}"
-				Focusable="True"
+				FrameworkElement.Style="{StaticResource MediumTextStyle}"
+				TextBlock.TextWrapping="NoWrap"
+				TextBlock.TextTrimming="CharacterEllipsis"
+				TextBlock.Foreground="{DynamicResource ApplicationSecondaryForegroundThemeBrush}"
+				UIElement.Focusable="True"
 				LocalizationText="{localization:Localization OperatingSystemVersion}"
 				NullValue="{localization:Localization OperatingSystemUnknown}"
-				Visibility="{Binding ElementName=DeviceSwInfoControlName, Path=AkVersionVisibility}"
+				UIElement.Visibility="{Binding ElementName=DeviceSwInfoControlName, Path=AkVersionVisibility}"
 				FocusVisualStyle="{x:Null}">
 				<TextBlock.Text>
 					<MultiBinding

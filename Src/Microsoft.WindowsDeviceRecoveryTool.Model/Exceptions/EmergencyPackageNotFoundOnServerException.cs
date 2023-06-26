@@ -3,27 +3,31 @@ using System.Runtime.Serialization;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model.Exceptions
 {
-	// Token: 0x02000014 RID: 20
+	// Token: 0x02000025 RID: 37
 	[Serializable]
 	public class EmergencyPackageNotFoundOnServerException : Exception
 	{
-		// Token: 0x0600009F RID: 159 RVA: 0x00003252 File Offset: 0x00001452
-		public EmergencyPackageNotFoundOnServerException() : base("Emergency package was not found on server")
+		// Token: 0x060001F2 RID: 498 RVA: 0x000063A6 File Offset: 0x000045A6
+		public EmergencyPackageNotFoundOnServerException()
+			: base("Emergency package was not found on server")
 		{
 		}
 
-		// Token: 0x060000A0 RID: 160 RVA: 0x00003262 File Offset: 0x00001462
-		public EmergencyPackageNotFoundOnServerException(string message) : base(message)
+		// Token: 0x060001F3 RID: 499 RVA: 0x00006350 File Offset: 0x00004550
+		public EmergencyPackageNotFoundOnServerException(string message)
+			: base(message)
 		{
 		}
 
-		// Token: 0x060000A1 RID: 161 RVA: 0x0000326E File Offset: 0x0000146E
-		public EmergencyPackageNotFoundOnServerException(string message, Exception innerException) : base(message, innerException)
+		// Token: 0x060001F4 RID: 500 RVA: 0x0000635B File Offset: 0x0000455B
+		public EmergencyPackageNotFoundOnServerException(string message, Exception innerException)
+			: base(message, innerException)
 		{
 		}
 
-		// Token: 0x060000A2 RID: 162 RVA: 0x0000327B File Offset: 0x0000147B
-		protected EmergencyPackageNotFoundOnServerException(SerializationInfo info, StreamingContext context) : base(info, context)
+		// Token: 0x060001F5 RID: 501 RVA: 0x00006367 File Offset: 0x00004567
+		protected EmergencyPackageNotFoundOnServerException(SerializationInfo info, StreamingContext context)
+			: base(info, context)
 		{
 		}
 	}

@@ -11,31 +11,31 @@ using Microsoft.WindowsDeviceRecoveryTool.Framework;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 {
-	// Token: 0x020000A9 RID: 169
-	[Region(new string[]
-	{
-		"MainArea"
-	})]
+	// Token: 0x02000054 RID: 84
 	[Export]
+	[Region(new string[] { "MainArea" })]
 	public partial class DeviceSelectionView : Grid
 	{
-		// Token: 0x060004D2 RID: 1234 RVA: 0x00018808 File Offset: 0x00016A08
+		// Token: 0x06000353 RID: 851 RVA: 0x00012B94 File Offset: 0x00010D94
 		public DeviceSelectionView()
 		{
 			this.InitializeComponent();
 		}
 
-		// Token: 0x060004D3 RID: 1235 RVA: 0x0001881C File Offset: 0x00016A1C
+		// Token: 0x06000354 RID: 852 RVA: 0x00012BA8 File Offset: 0x00010DA8
 		private void DevicesListBoxOnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
 			ListBox listBox = sender as ListBox;
-			if (listBox != null)
+			bool flag = listBox != null;
+			if (flag)
 			{
 				FrameworkElement frameworkElement = listBox.ItemContainerGenerator.ContainerFromItem(listBox.SelectedItem) as FrameworkElement;
-				if (frameworkElement != null && this.selectedItem != null && object.Equals(frameworkElement, this.selectedItem))
+				bool flag2 = frameworkElement != null && this.selectedItem != null && object.Equals(frameworkElement, this.selectedItem);
+				if (flag2)
 				{
 					DeviceSelectionViewModel deviceSelectionViewModel = (DeviceSelectionViewModel)base.DataContext;
-					if (deviceSelectionViewModel.SelectTileCommand.CanExecute(this.selectedItem.DataContext))
+					bool flag3 = deviceSelectionViewModel.SelectTileCommand.CanExecute(this.selectedItem.DataContext);
+					if (flag3)
 					{
 						deviceSelectionViewModel.SelectTileCommand.Execute(this.selectedItem.DataContext);
 					}
@@ -43,17 +43,20 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x060004D4 RID: 1236 RVA: 0x000188B8 File Offset: 0x00016AB8
+		// Token: 0x06000355 RID: 853 RVA: 0x00012C44 File Offset: 0x00010E44
 		private void DevicesListBoxOnPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs args)
 		{
 			ListBox listBox = sender as ListBox;
-			if (args != null && listBox != null)
+			bool flag = args != null && listBox != null;
+			if (flag)
 			{
 				DependencyObject dependencyObject = args.OriginalSource as DependencyObject;
-				if (dependencyObject != null)
+				bool flag2 = dependencyObject != null;
+				if (flag2)
 				{
 					ListBoxItem listBoxItem = ItemsControl.ContainerFromElement(listBox, dependencyObject) as ListBoxItem;
-					if (listBoxItem != null)
+					bool flag3 = listBoxItem != null;
+					if (flag3)
 					{
 						this.selectedItem = listBoxItem;
 					}
@@ -61,17 +64,20 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x060004D5 RID: 1237 RVA: 0x00018914 File Offset: 0x00016B14
+		// Token: 0x06000356 RID: 854 RVA: 0x00012CA4 File Offset: 0x00010EA4
 		private void DevicesListBoxOnFocusedItemKeyPressed(object sender, KeyEventArgs e)
 		{
-			if (e.Key == Key.Space || e.Key == Key.Return)
+			bool flag = e.Key != Key.Space && e.Key != Key.Return;
+			if (!flag)
 			{
 				ListBoxItem listBoxItem = e.OriginalSource as ListBoxItem;
-				if (listBoxItem != null)
+				bool flag2 = listBoxItem == null;
+				if (!flag2)
 				{
 					DeviceSelectionViewModel deviceSelectionViewModel = (DeviceSelectionViewModel)base.DataContext;
 					ICommand selectTileCommand = deviceSelectionViewModel.SelectTileCommand;
-					if (selectTileCommand.CanExecute(listBoxItem.DataContext))
+					bool flag3 = selectTileCommand.CanExecute(listBoxItem.DataContext);
+					if (flag3)
 					{
 						selectTileCommand.Execute(listBoxItem.DataContext);
 					}
@@ -79,7 +85,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x04000218 RID: 536
+		// Token: 0x04000179 RID: 377
 		private FrameworkElement selectedItem;
 	}
 }

@@ -3,7 +3,7 @@
 namespace Nokia.Mira.Chunks
 {
 	// Token: 0x02000008 RID: 8
-	public sealed class ChunkRaw
+	internal sealed class ChunkRaw
 	{
 		// Token: 0x06000014 RID: 20 RVA: 0x00002430 File Offset: 0x00000630
 		public ChunkRaw(long begin, long current)

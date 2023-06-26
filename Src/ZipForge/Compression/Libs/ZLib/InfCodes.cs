@@ -37,7 +37,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 			int num3 = s.BitB;
 			int i = s.BitK;
 			int num4 = s.WritePos;
-			int num5 = (num4 < s.ReadPos) ? (s.ReadPos - num4 - 1) : (s.End - num4);
+			int num5 = ((num4 < s.ReadPos) ? (s.ReadPos - num4 - 1) : (s.End - num4));
 			for (;;)
 			{
 				int num6;
@@ -85,7 +85,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 						num3 |= (int)(z.next_in[num++] & byte.MaxValue) << i;
 						i += 8;
 					}
-					this.count += (num3 & ZLibUtil.inflate_mask[num6]);
+					this.count += num3 & ZLibUtil.inflate_mask[num6];
 					num3 >>= num6;
 					i -= num6;
 					this.need = (int)this.dbits;
@@ -108,7 +108,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 						num3 |= (int)(z.next_in[num++] & byte.MaxValue) << i;
 						i += 8;
 					}
-					this.dist += (num3 & ZLibUtil.inflate_mask[num6]);
+					this.dist += num3 & ZLibUtil.inflate_mask[num6];
 					num3 >>= num6;
 					i -= num6;
 					this.mode = InflateCodesMode.COPY;
@@ -178,7 +178,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 				}
 				if ((num8 & 16) != 0)
 				{
-					this.get_Renamed = (num8 & 15);
+					this.get_Renamed = num8 & 15;
 					this.count = this.tree[num7 + 2];
 					this.mode = InflateCodesMode.LENEXT;
 					continue;
@@ -214,7 +214,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 				num8 = this.tree[num7];
 				if ((num8 & 16) != 0)
 				{
-					this.get_Renamed = (num8 & 15);
+					this.get_Renamed = num8 & 15;
 					this.dist = this.tree[num7 + 2];
 					this.mode = InflateCodesMode.DISTEXT;
 					continue;
@@ -355,7 +355,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 			s.WritePos = num4;
 			r = s.inflate_flush(z, r);
 			num4 = s.WritePos;
-			int num9 = (num4 < s.ReadPos) ? (s.ReadPos - num4 - 1) : (s.End - num4);
+			int num9 = ((num4 < s.ReadPos) ? (s.ReadPos - num4 - 1) : (s.End - num4));
 			if (s.ReadPos != s.WritePos)
 			{
 				s.BitB = num3;
@@ -400,7 +400,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 			int num3 = s.BitB;
 			int i = s.BitK;
 			int num4 = s.WritePos;
-			int num5 = (num4 < s.ReadPos) ? (s.ReadPos - num4 - 1) : (s.End - num4);
+			int num5 = ((num4 < s.ReadPos) ? (s.ReadPos - num4 - 1) : (s.End - num4));
 			int num6 = ZLibUtil.inflate_mask[bl];
 			int num7 = ZLibUtil.inflate_mask[bd];
 			int num9;
@@ -432,7 +432,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 								goto IL_4D3;
 							}
 							num8 += tl[(tl_index + num8) * 3 + 2];
-							num8 += (num3 & ZLibUtil.inflate_mask[num9]);
+							num8 += num3 & ZLibUtil.inflate_mask[num9];
 							if ((num9 = tl[(tl_index + num8) * 3]) == 0)
 							{
 								goto Block_20;
@@ -446,7 +446,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 							num2--;
 							num3 |= (int)(z.next_in[num++] & byte.MaxValue) << i;
 						}
-						num8 = (num3 & num7);
+						num8 = num3 & num7;
 						num9 = td[(td_index + num8) * 3];
 						for (;;)
 						{
@@ -461,7 +461,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 								goto IL_3D9;
 							}
 							num8 += td[(td_index + num8) * 3 + 2];
-							num8 += (num3 & ZLibUtil.inflate_mask[num9]);
+							num8 += num3 & ZLibUtil.inflate_mask[num9];
 							num9 = td[(td_index + num8) * 3];
 						}
 						num9 &= 15;

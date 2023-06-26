@@ -3,10 +3,10 @@ using Microsoft.WindowsDeviceRecoveryTool.LogicCommon;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.McjAdaptation.Services
 {
-	// Token: 0x02000007 RID: 7
+	// Token: 0x02000006 RID: 6
 	public class SalesNameProvider : BaseSalesNameProvider
 	{
-		// Token: 0x06000035 RID: 53 RVA: 0x000031F4 File Offset: 0x000013F4
+		// Token: 0x06000026 RID: 38 RVA: 0x00002BCC File Offset: 0x00000DCC
 		public override string NameForVidPid(string vid, string pid)
 		{
 			return base.NameForVidPid(vid, pid);

@@ -3,48 +3,48 @@
 	KeyboardNavigation.TabNavigation="None" xmlns:workflow="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.States.Workflow">
 	<Grid.ColumnDefinitions>
 		<ColumnDefinition
-			Width="*" />
+			ColumnDefinition.Width="*" />
 		<ColumnDefinition
-			Width="Auto" />
+			ColumnDefinition.Width="Auto" />
 	</Grid.ColumnDefinitions>
 	<Grid.RowDefinitions>
 		<RowDefinition
-			Height="Auto" />
+			RowDefinition.Height="Auto" />
 		<RowDefinition
-			Height="*" />
+			RowDefinition.Height="*" />
 	</Grid.RowDefinitions>
 	<TextBlock
 		Grid.Row="0"
 		Grid.ColumnSpan="2"
-		Text="The connected device may not be supported..."
-		Style="{DynamicResource SubheaderTextStyle}"
-		Focusable="True"
+		TextBlock.Text="The connected device may not be supported..."
+		FrameworkElement.Style="{DynamicResource SubheaderTextStyle}"
+		UIElement.Focusable="True"
 		FocusVisualStyle="{x:Null}" />
 	<StackPanel
 		Orientation="Vertical"
 		Grid.Column="0"
 		Grid.Row="1"
-		Margin="0,200,0,0">
+		FrameworkElement.Margin="0,200,0,0">
 		<TextBlock
-			Text="1. Disconnect your device"
-			Style="{StaticResource BasicTextStyle}"
-			Focusable="True"
+			TextBlock.Text="1. Disconnect your device"
+			FrameworkElement.Style="{StaticResource BasicTextStyle}"
+			UIElement.Focusable="True"
 			FocusVisualStyle="{x:Null}" />
 		<TextBlock
-			Text="2. Press the Back button"
-			Style="{StaticResource BasicTextStyle}"
-			Focusable="True"
+			TextBlock.Text="2. Press the Back button"
+			FrameworkElement.Style="{StaticResource BasicTextStyle}"
+			UIElement.Focusable="True"
 			FocusVisualStyle="{x:Null}" />
 		<TextBlock
-			Text="3. Connect supported device"
-			Style="{StaticResource BasicTextStyle}"
-			Focusable="True"
+			TextBlock.Text="3. Connect supported device"
+			FrameworkElement.Style="{StaticResource BasicTextStyle}"
+			UIElement.Focusable="True"
 			FocusVisualStyle="{x:Null}" />
 	</StackPanel>
 	<Image
 		Grid.Row="1"
 		Grid.Column="1"
-		MaxHeight="600"
-		Margin="50,0,0,50"
-		Source="../../Resources/UnsupportedDevice.png" />
+		FrameworkElement.MaxHeight="600"
+		FrameworkElement.Margin="50,0,0,50"
+		Image.Source="../../Resources/UnsupportedDevice.png" />
 </Grid>

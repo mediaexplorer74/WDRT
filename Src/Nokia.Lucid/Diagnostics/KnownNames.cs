@@ -8,8 +8,8 @@ namespace Nokia.Lucid.Diagnostics
 		// Token: 0x060000FC RID: 252 RVA: 0x0000A0FC File Offset: 0x000082FC
 		public static bool TryGetInterfaceClassName(Guid interfaceClass, out string identifier)
 		{
-			Guid b = new Guid(2782707472U, 25904, 4562, 144, 31, 0, 192, 79, 185, 81, 237);
-			identifier = ((interfaceClass == b) ? "GUID_DEVINTERFACE_USB_DEVICE" : null);
+			Guid guid = new Guid(2782707472U, 25904, 4562, 144, 31, 0, 192, 79, 185, 81, 237);
+			identifier = ((interfaceClass == guid) ? "GUID_DEVINTERFACE_USB_DEVICE" : null);
 			return identifier != null;
 		}
 

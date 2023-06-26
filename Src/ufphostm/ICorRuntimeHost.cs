@@ -3,6 +3,6 @@ using System.Runtime.CompilerServices;
 
 // Token: 0x020000A1 RID: 161
 [NativeCppClass]
-public struct ICorRuntimeHost
+internal struct ICorRuntimeHost
 {
 }

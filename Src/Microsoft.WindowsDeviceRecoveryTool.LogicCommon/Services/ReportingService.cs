@@ -7,20 +7,20 @@ using Microsoft.WindowsDeviceRecoveryTool.Model;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 {
-	// Token: 0x0200003F RID: 63
+	// Token: 0x02000011 RID: 17
 	[Export(typeof(ReportingService))]
 	[PartCreationPolicy(CreationPolicy.Shared)]
 	public class ReportingService
 	{
-		// Token: 0x06000357 RID: 855 RVA: 0x0000FEC4 File Offset: 0x0000E0C4
+		// Token: 0x060000D4 RID: 212 RVA: 0x0000508C File Offset: 0x0000328C
 		[ImportingConstructor]
 		public ReportingService(MsrReportingService msrReportingService)
 		{
 			this.msrReportingService = msrReportingService;
 		}
 
-		// Token: 0x170000F4 RID: 244
-		// (get) Token: 0x06000358 RID: 856 RVA: 0x0000FED8 File Offset: 0x0000E0D8
+		// Token: 0x1700001B RID: 27
+		// (get) Token: 0x060000D5 RID: 213 RVA: 0x000050A0 File Offset: 0x000032A0
 		public MsrReportingService MsrReportingService
 		{
 			get
@@ -29,55 +29,55 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 			}
 		}
 
-		// Token: 0x06000359 RID: 857 RVA: 0x0000FEF0 File Offset: 0x0000E0F0
+		// Token: 0x060000D6 RID: 214 RVA: 0x000050B8 File Offset: 0x000032B8
 		public void SetDownloadByteInformation(Phone phone, ReportOperationType reportOperationType, long currentDownloadedSize, long packageSize, bool isResumed)
 		{
 			this.msrReportingService.SetDownloadByteInformation(phone, reportOperationType, currentDownloadedSize, packageSize, isResumed);
 		}
 
-		// Token: 0x0600035A RID: 858 RVA: 0x0000FF06 File Offset: 0x0000E106
+		// Token: 0x060000D7 RID: 215 RVA: 0x000050CE File Offset: 0x000032CE
 		public void OperationStarted(Phone phone, ReportOperationType reportOperationType)
 		{
 			this.msrReportingService.OperationStarted(phone, reportOperationType);
 		}
 
-		// Token: 0x0600035B RID: 859 RVA: 0x0000FF17 File Offset: 0x0000E117
+		// Token: 0x060000D8 RID: 216 RVA: 0x000050DF File Offset: 0x000032DF
 		public void OperationSucceded(Phone phone, ReportOperationType reportOperationType)
 		{
 			this.msrReportingService.OperationSucceded(phone, reportOperationType);
 		}
 
-		// Token: 0x0600035C RID: 860 RVA: 0x0000FF28 File Offset: 0x0000E128
+		// Token: 0x060000D9 RID: 217 RVA: 0x000050F0 File Offset: 0x000032F0
 		public void PartialOperationSucceded(Phone phone, ReportOperationType reportOperationType, UriData uriData)
 		{
 			this.msrReportingService.PartialOperationSucceded(phone, reportOperationType, uriData);
 		}
 
-		// Token: 0x0600035D RID: 861 RVA: 0x0000FF3A File Offset: 0x0000E13A
+		// Token: 0x060000DA RID: 218 RVA: 0x00005102 File Offset: 0x00003302
 		public void OperationFailed(Phone phone, ReportOperationType reportOperationType, UriData resultUriData, Exception ex)
 		{
 			this.msrReportingService.OperationFailed(phone, reportOperationType, resultUriData, ex);
 		}
 
-		// Token: 0x0600035E RID: 862 RVA: 0x0000FF4E File Offset: 0x0000E14E
+		// Token: 0x060000DB RID: 219 RVA: 0x00005116 File Offset: 0x00003316
 		public void SendSessionReports()
 		{
 			this.msrReportingService.SendSessionReports();
 		}
 
-		// Token: 0x0600035F RID: 863 RVA: 0x0000FF5D File Offset: 0x0000E15D
+		// Token: 0x060000DC RID: 220 RVA: 0x00005125 File Offset: 0x00003325
 		public void SurveySucceded(SurveyReport survey)
 		{
 			this.msrReportingService.SurveySucceded(survey);
 		}
 
-		// Token: 0x06000360 RID: 864 RVA: 0x0000FF6D File Offset: 0x0000E16D
+		// Token: 0x060000DD RID: 221 RVA: 0x00005135 File Offset: 0x00003335
 		public void StartFlowSession()
 		{
 			this.msrReportingService.StartFlowSession();
 		}
 
-		// Token: 0x04000194 RID: 404
+		// Token: 0x04000045 RID: 69
 		private readonly MsrReportingService msrReportingService;
 	}
 }

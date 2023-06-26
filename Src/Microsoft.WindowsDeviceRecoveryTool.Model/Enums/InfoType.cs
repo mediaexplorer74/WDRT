@@ -2,32 +2,32 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model.Enums
 {
-	// Token: 0x02000048 RID: 72
+	// Token: 0x02000049 RID: 73
 	public enum InfoType
 	{
-		// Token: 0x040001E9 RID: 489
+		// Token: 0x04000202 RID: 514
 		Psn,
-		// Token: 0x040001EA RID: 490
+		// Token: 0x04000203 RID: 515
 		ProductCode,
-		// Token: 0x040001EB RID: 491
+		// Token: 0x04000204 RID: 516
 		ModuleCode,
-		// Token: 0x040001EC RID: 492
+		// Token: 0x04000205 RID: 517
 		BasicProductCode,
-		// Token: 0x040001ED RID: 493
+		// Token: 0x04000206 RID: 518
 		HwVersion,
-		// Token: 0x040001EE RID: 494
+		// Token: 0x04000207 RID: 519
 		SwVersion,
-		// Token: 0x040001EF RID: 495
+		// Token: 0x04000208 RID: 520
 		AkVersion,
-		// Token: 0x040001F0 RID: 496
+		// Token: 0x04000209 RID: 521
 		SerialNumber,
-		// Token: 0x040001F1 RID: 497
+		// Token: 0x0400020A RID: 522
 		PublicId,
-		// Token: 0x040001F2 RID: 498
+		// Token: 0x0400020B RID: 523
 		BtId,
-		// Token: 0x040001F3 RID: 499
+		// Token: 0x0400020C RID: 524
 		WlanMac,
-		// Token: 0x040001F4 RID: 500
+		// Token: 0x0400020D RID: 525
 		BatteryLevel
 	}
 }

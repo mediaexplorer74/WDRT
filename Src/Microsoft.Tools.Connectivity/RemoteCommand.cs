@@ -78,7 +78,7 @@ namespace Microsoft.Tools.Connectivity
 		public int Execute()
 		{
 			this.RemoteDevice.EnsureConnection();
-			CallbackHandler outputCallback = new CallbackHandler(delegate(uint flags, string data)
+			CallbackHandler callbackHandler = new CallbackHandler(delegate(uint flags, string data)
 			{
 				if (this.OutputCallback != null)
 				{
@@ -89,14 +89,11 @@ namespace Microsoft.Tools.Connectivity
 					this.outputString.Append(data);
 				}
 			});
-			string command = this.commandText;
+			string text = this.commandText;
 			this.outputString.Clear();
 			try
 			{
-				this.ExitCode = (int)this.RemoteDevice.SirepClient.LaunchWithOutput((uint)this.Timeout.TotalMilliseconds, 
-					command, this.argumentsText, 
-					this.WorkingFolder, 0U, 
-					/*outputCallback*/null);
+				this.ExitCode = (int)this.RemoteDevice.SirepClient.LaunchWithOutput((uint)this.Timeout.TotalMilliseconds, text, this.argumentsText, this.WorkingFolder, 0U, callbackHandler);
 			}
 			catch (COMException ex)
 			{
@@ -116,20 +113,16 @@ namespace Microsoft.Tools.Connectivity
 				{
 					this.Execute();
 				}
-				catch (Exception exception1)
+				catch (Exception ex)
 				{
-					exception = exception1;
+					exception = ex;
 				}
 				finally
 				{
 					completedEvent.Set();
 				}
 			});
-			switch (WaitHandle.WaitAny(new WaitHandle[]
-			{
-				completedEvent,
-				cancelEvent
-			}))
+			switch (WaitHandle.WaitAny(new WaitHandle[] { completedEvent, cancelEvent }))
 			{
 			case 0:
 				if (exception != null)
@@ -147,20 +140,17 @@ namespace Microsoft.Tools.Connectivity
 		public int CreateProcess()
 		{
 			this.RemoteDevice.EnsureConnection();
-			int result = 0;
+			int num = 0;
 			this.outputString.Clear();
 			try
 			{
-				result = (int)this.RemoteDevice.SirepClient.CreateProcess(
-					this.commandText, 
-					this.argumentsText, 
-					this.WorkingFolder, 0U);
+				num = (int)this.RemoteDevice.SirepClient.CreateProcess(this.commandText, this.argumentsText, this.WorkingFolder, 0U);
 			}
 			catch (COMException ex)
 			{
 				this.RemoteDevice.ExceptionHandler(ex);
 			}
-			return result;
+			return num;
 		}
 
 		// Token: 0x0400008E RID: 142

@@ -16,79 +16,50 @@ namespace Nokia.Mira.Primitives
 	public sealed class DownloadTask
 	{
 		// Token: 0x060000BB RID: 187 RVA: 0x00003AB8 File Offset: 0x00001CB8
-		public DownloadTask(IHttpWebRequestFactory httpWebRequestFactory, 
-			string fileName, CancellationToken cancellationToken, 
-			IProgress<DownloadProgressInfo> progress, 
-			DownloadSettings downloadSettings, 
-			IDownloadStrategyFactory downloadStrategyFactory, 
-			IDownloadPool downloadPool) : 
-			this(httpWebRequestFactory, fileName, 
-				DownloadTask.GetTemporaryFileName(fileName), 
-				DownloadTask.GetMetadataFileName(fileName), 
-				new EnvironmentSetup(DownloadTask.GetTemporaryFileName(fileName)), 
-				cancellationToken, progress, downloadSettings, 
-				downloadStrategyFactory, downloadPool)
+		internal DownloadTask(IHttpWebRequestFactory httpWebRequestFactory, string fileName, CancellationToken cancellationToken, IProgress<DownloadProgressInfo> progress, DownloadSettings downloadSettings, IDownloadStrategyFactory downloadStrategyFactory, IDownloadPool downloadPool)
+			: this(httpWebRequestFactory, fileName, DownloadTask.GetTemporaryFileName(fileName), DownloadTask.GetMetadataFileName(fileName), new EnvironmentSetup(DownloadTask.GetTemporaryFileName(fileName)), cancellationToken, progress, downloadSettings, downloadStrategyFactory, downloadPool)
 		{
 		}
 
-        // Token: 0x060000BC RID: 188 RVA: 0x00003C58 File Offset: 0x00001E58
-        public DownloadTask(IHttpWebRequestFactory httpWebRequestFactory, 
-			string fileName, 
-			string temporaryFileName, 
-			string metadataFileName, 
-			EnvironmentSetup environmentSetup, 
-			CancellationToken cancellationToken, 
-			IProgress<DownloadProgressInfo> progress, 
-			DownloadSettings downloadSettings, 
-			IDownloadStrategyFactory downloadStrategyFactory,
-			IDownloadPool downloadPool)
+		// Token: 0x060000BC RID: 188 RVA: 0x00003C58 File Offset: 0x00001E58
+		internal DownloadTask(IHttpWebRequestFactory httpWebRequestFactory, string fileName, string temporaryFileName, string metadataFileName, EnvironmentSetup environmentSetup, CancellationToken cancellationToken, IProgress<DownloadProgressInfo> progress, DownloadSettings downloadSettings, IDownloadStrategyFactory downloadStrategyFactory, IDownloadPool downloadPool)
 		{
-			//DownloadTask _this = this;
-            this.fileName = fileName;
-            this.temporaryFileName = temporaryFileName;
-            this.cancellationToken = cancellationToken;
-            this.downloadSettings = downloadSettings;
-            this.downloadPool = downloadPool;
+			DownloadTask <>4__this = this;
+			this.fileName = fileName;
+			this.temporaryFileName = temporaryFileName;
+			this.cancellationToken = cancellationToken;
+			this.downloadSettings = downloadSettings;
+			this.downloadPool = downloadPool;
 			this.progress = progress;
 			this.blockingDispatcher = new BlockingDispatcher<DownloadProgressInfo>(new Action<DownloadProgressInfo>(this.OnProgressDispatched));
 			this.AddEmptyTask();
-			this.downloadStrategyLazy = new Lazy<IDownloadStrategy>(delegate()
+			this.downloadStrategyLazy = new Lazy<IDownloadStrategy>(delegate
 			{
-				this.cancellationToken.ThrowIfCancellationRequested();
-				if (!this.downloadSettings.OverwriteExistingFile 
-				&& File.Exists(this.fileName))
+				<>4__this.cancellationToken.ThrowIfCancellationRequested();
+				if (!<>4__this.downloadSettings.OverwriteExistingFile && File.Exists(<>4__this.fileName))
 				{
-					throw new InvalidOperationException(
-						"Target file already exists.");
+					throw new InvalidOperationException("Target file already exists.");
 				}
 				environmentSetup.EnsureTargetDirectory();
-				this.streamContainer = new MetadataStreamContainer(metadataFileName);
-				IChunkInformationReader reader = 
-				new ChunkInformationXmlReader(this.streamContainer);
-				
+				<>4__this.streamContainer = new MetadataStreamContainer(metadataFileName);
+				IChunkInformationReader chunkInformationReader = new ChunkInformationXmlReader(<>4__this.streamContainer);
 				ChunkInformation[] array;
 				if (downloadSettings.ResumeDownload)
 				{
-					array = environmentSetup.PrepareForResumedDownload(
-						downloadSettings.ChunkSize, reader)
-					      .ToArray<ChunkInformation>();
+					array = environmentSetup.PrepareForResumedDownload(downloadSettings.ChunkSize, chunkInformationReader).ToArray<ChunkInformation>();
 				}
 				else
 				{
 					array = new ChunkInformation[0];
 					environmentSetup.PrepareForNewDownload();
 				}
-				
-				HttpWebRequest request = httpWebRequestFactory.Create();
+				HttpWebRequest httpWebRequest = httpWebRequestFactory.Create();
 				IChunkInformationProvider chunkInformationProvider = new CollectionBasedChunkInformationProvider(array, downloadSettings.ChunkSize);
 				ChunkInformation chunkInformation = chunkInformationProvider.Current;
-				IWebResponse response = request.GetResponse(chunkInformation.Current, chunkInformation.End, cancellationToken);
-				
-				IChunkInformationWriter chunkInformationWriter = 
-					new ChunkInformationXmlWriter(this.streamContainer);
+				IWebResponse response = httpWebRequest.GetResponse(chunkInformation.Current, chunkInformation.End, cancellationToken);
+				IChunkInformationWriter chunkInformationWriter = new ChunkInformationXmlWriter(<>4__this.streamContainer);
 				chunkInformationProvider.MoveNext();
-				return downloadStrategyFactory.Create(this.temporaryFileName, downloadSettings, httpWebRequestFactory, chunkInformationWriter, array, chunkInformationProvider, response, chunkInformation, cancellationToken, 
-					new Action<DownloadProgressInfo>(this.blockingDispatcher.Dispatch));
+				return downloadStrategyFactory.Create(<>4__this.temporaryFileName, downloadSettings, httpWebRequestFactory, chunkInformationWriter, array, chunkInformationProvider, response, chunkInformation, cancellationToken, new Action<DownloadProgressInfo>(<>4__this.blockingDispatcher.Dispatch));
 			});
 		}
 
@@ -160,17 +131,17 @@ namespace Nokia.Mira.Primitives
 		// Token: 0x060000C3 RID: 195 RVA: 0x00003E20 File Offset: 0x00002020
 		private static string GetMetadataFileName(string fileName)
 		{
-			string path = Path.GetDirectoryName(fileName) ?? string.Empty;
-			string str = Path.GetFileName(fileName);
-			return Path.Combine(path, str + ".metadata");
+			string text = Path.GetDirectoryName(fileName) ?? string.Empty;
+			string text2 = Path.GetFileName(fileName);
+			return Path.Combine(text, text2 + ".metadata");
 		}
 
 		// Token: 0x060000C4 RID: 196 RVA: 0x00003E58 File Offset: 0x00002058
 		private static string GetTemporaryFileName(string fileName)
 		{
-			string path = Path.GetDirectoryName(fileName) ?? string.Empty;
-			string str = Path.GetFileName(fileName);
-			return Path.Combine(path, str + ".tmp");
+			string text = Path.GetDirectoryName(fileName) ?? string.Empty;
+			string text2 = Path.GetFileName(fileName);
+			return Path.Combine(text, text2 + ".tmp");
 		}
 
 		// Token: 0x060000C5 RID: 197 RVA: 0x00003EA4 File Offset: 0x000020A4
@@ -209,13 +180,12 @@ namespace Nokia.Mira.Primitives
 		private void OnLastChunkStarted()
 		{
 			this.isRunningToCompletion = true;
-			Task.Factory.ContinueWhenAll((from ch in this.chunks
-			select ch.Value).ToArray<Task>(), delegate(Task[] tasks)
+			Task.Factory.ContinueWhenAll(this.chunks.Select((Lazy<Task> ch) => ch.Value).ToArray<Task>(), delegate(Task[] tasks)
 			{
-				IEnumerable<AggregateException> source = (from t in tasks
-				where t.IsFaulted && t.Exception != null
-				select t.Exception).ToArray<AggregateException>();
-				if (source.Any<AggregateException>())
+				IEnumerable<AggregateException> enumerable = (from t in tasks
+					where t.IsFaulted && t.Exception != null
+					select t.Exception).ToArray<AggregateException>();
+				if (enumerable.Any<AggregateException>())
 				{
 					try
 					{
@@ -233,7 +203,7 @@ namespace Nokia.Mira.Primitives
 					}
 					finally
 					{
-						this.completionSource.SetException(source.SelectMany((AggregateException ex) => ex.InnerExceptions));
+						this.completionSource.SetException(enumerable.SelectMany((AggregateException ex) => ex.InnerExceptions));
 					}
 					return;
 				}
@@ -263,9 +233,10 @@ namespace Nokia.Mira.Primitives
 				{
 					this.OnCompleted();
 				}
-				catch (Exception exception)
+				catch (Exception ex)
 				{
-					this.completionSource.SetException(exception);
+					Exception ex2;
+					this.completionSource.SetException(ex2);
 					return;
 				}
 				this.completionSource.SetResult(null);

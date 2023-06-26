@@ -30,8 +30,8 @@ namespace ComponentAce.Compression.ZipForge
 		{
 			BinaryReader binaryReader = new BinaryReader(source);
 			ushort num = binaryReader.ReadUInt16();
-			byte[] data = binaryReader.ReadBytes((int)num);
-			return new ExtraFieldData(extraFieldId, num, data);
+			byte[] array = binaryReader.ReadBytes((int)num);
+			return new ExtraFieldData(extraFieldId, num, array);
 		}
 
 		// Token: 0x060006D4 RID: 1748 RVA: 0x0002ACDB File Offset: 0x00029CDB

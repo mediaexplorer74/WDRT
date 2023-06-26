@@ -61,8 +61,8 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 		// Token: 0x06000145 RID: 325 RVA: 0x000117CC File Offset: 0x0000F9CC
 		public static void ExecuteMtpOpcode(IPortableDevice device, uint opcode, out uint hresult, out uint responseCode)
 		{
-			PortableDeviceApiLib.IPortableDevicePropVariantCollection mtpParameters = (PortableDeviceApiLib.IPortableDevicePropVariantCollection)((PortableDevicePropVariantCollection)Activator.CreateInstance(Type.GetTypeFromCLSID(new Guid("08A99E2F-6D6D-4B80-AF5A-BAF2BCBE4CB9"))));
-			WpdUtils.ExecuteMtpOpcode(device, opcode, mtpParameters, out hresult, out responseCode);
+			PortableDeviceApiLib.IPortableDevicePropVariantCollection portableDevicePropVariantCollection = (PortableDeviceApiLib.IPortableDevicePropVariantCollection)((PortableDevicePropVariantCollection)Activator.CreateInstance(Type.GetTypeFromCLSID(new Guid("08A99E2F-6D6D-4B80-AF5A-BAF2BCBE4CB9"))));
+			WpdUtils.ExecuteMtpOpcode(device, opcode, portableDevicePropVariantCollection, out hresult, out responseCode);
 		}
 
 		// Token: 0x06000146 RID: 326 RVA: 0x00011804 File Offset: 0x0000FA04
@@ -111,19 +111,19 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 				hresult = (uint)num;
 				if (hresult == 0U)
 				{
-					string value = null;
-					portableDeviceValues2.GetStringValue(ref PortableDevicePKeys.WPD_PROPERTY_MTP_EXT_TRANSFER_CONTEXT, out value);
+					string text = null;
+					portableDeviceValues2.GetStringValue(ref PortableDevicePKeys.WPD_PROPERTY_MTP_EXT_TRANSFER_CONTEXT, out text);
 					uint num2 = 0U;
 					portableDeviceValues2.GetUnsignedIntegerValue(ref PortableDevicePKeys.WPD_PROPERTY_MTP_EXT_TRANSFER_TOTAL_DATA_SIZE, out num2);
 					while (num2 > 0U)
 					{
-						IntPtr source = (IntPtr)0;
+						IntPtr intPtr = 0;
 						uint num3 = Math.Min(num2, (uint)array.Length);
 						uint num4 = 0U;
 						portableDeviceValues.Clear();
 						portableDeviceValues2 = null;
 						WpdUtils.SetCommand(portableDeviceValues, PortableDevicePKeys.WPD_COMMAND_MTP_EXT_READ_DATA);
-						portableDeviceValues.SetStringValue(ref PortableDevicePKeys.WPD_PROPERTY_MTP_EXT_TRANSFER_CONTEXT, value);
+						portableDeviceValues.SetStringValue(ref PortableDevicePKeys.WPD_PROPERTY_MTP_EXT_TRANSFER_CONTEXT, text);
 						portableDeviceValues.SetBufferValue(ref PortableDevicePKeys.WPD_PROPERTY_MTP_EXT_TRANSFER_DATA, gchandle.AddrOfPinnedObject(), num3);
 						portableDeviceValues.SetUnsignedIntegerValue(ref PortableDevicePKeys.WPD_PROPERTY_MTP_EXT_TRANSFER_NUM_BYTES_TO_READ, num3);
 						device.SendCommand(0U, portableDeviceValues, out portableDeviceValues2);
@@ -133,15 +133,15 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 						{
 							return;
 						}
-						portableDeviceValues2.GetBufferValue(ref PortableDevicePKeys.WPD_PROPERTY_MTP_EXT_TRANSFER_DATA, out source, out num4);
-						Marshal.Copy(source, array2, 0, (int)num4);
+						portableDeviceValues2.GetBufferValue(ref PortableDevicePKeys.WPD_PROPERTY_MTP_EXT_TRANSFER_DATA, out intPtr, out num4);
+						Marshal.Copy(intPtr, array2, 0, (int)num4);
 						stream.Write(array2, 0, (int)num4);
 						num2 -= num4;
 					}
 					portableDeviceValues.Clear();
 					portableDeviceValues2 = null;
 					WpdUtils.SetCommand(portableDeviceValues, PortableDevicePKeys.WPD_COMMAND_MTP_EXT_END_DATA_TRANSFER);
-					portableDeviceValues.SetStringValue(ref PortableDevicePKeys.WPD_PROPERTY_MTP_EXT_TRANSFER_CONTEXT, value);
+					portableDeviceValues.SetStringValue(ref PortableDevicePKeys.WPD_PROPERTY_MTP_EXT_TRANSFER_CONTEXT, text);
 					device.SendCommand(0U, portableDeviceValues, out portableDeviceValues2);
 					portableDeviceValues2.GetErrorValue(ref PortableDevicePKeys.WPD_PROPERTY_COMMON_HRESULT, out num);
 					hresult = (uint)num;
@@ -178,8 +178,8 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 				hresult = (uint)num;
 				if (hresult == 0U)
 				{
-					string value = null;
-					portableDeviceValues2.GetStringValue(ref PortableDevicePKeys.WPD_PROPERTY_MTP_EXT_TRANSFER_CONTEXT, out value);
+					string text = null;
+					portableDeviceValues2.GetStringValue(ref PortableDevicePKeys.WPD_PROPERTY_MTP_EXT_TRANSFER_CONTEXT, out text);
 					while (streamSize > 0U)
 					{
 						uint num2 = Math.Min(streamSize, (uint)array.Length);
@@ -188,7 +188,7 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 						portableDeviceValues2 = null;
 						stream.Read(array, 0, (int)num2);
 						WpdUtils.SetCommand(portableDeviceValues, PortableDevicePKeys.WPD_COMMAND_MTP_EXT_WRITE_DATA);
-						portableDeviceValues.SetStringValue(ref PortableDevicePKeys.WPD_PROPERTY_MTP_EXT_TRANSFER_CONTEXT, value);
+						portableDeviceValues.SetStringValue(ref PortableDevicePKeys.WPD_PROPERTY_MTP_EXT_TRANSFER_CONTEXT, text);
 						portableDeviceValues.SetUnsignedIntegerValue(ref PortableDevicePKeys.WPD_PROPERTY_MTP_EXT_TRANSFER_NUM_BYTES_TO_WRITE, num2);
 						portableDeviceValues.SetBufferValue(ref PortableDevicePKeys.WPD_PROPERTY_MTP_EXT_TRANSFER_DATA, gchandle.AddrOfPinnedObject(), num2);
 						device.SendCommand(0U, portableDeviceValues, out portableDeviceValues2);
@@ -209,7 +209,7 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 					portableDeviceValues.Clear();
 					portableDeviceValues2 = null;
 					WpdUtils.SetCommand(portableDeviceValues, PortableDevicePKeys.WPD_COMMAND_MTP_EXT_END_DATA_TRANSFER);
-					portableDeviceValues.SetStringValue(ref PortableDevicePKeys.WPD_PROPERTY_MTP_EXT_TRANSFER_CONTEXT, value);
+					portableDeviceValues.SetStringValue(ref PortableDevicePKeys.WPD_PROPERTY_MTP_EXT_TRANSFER_CONTEXT, text);
 					device.SendCommand(0U, portableDeviceValues, out portableDeviceValues2);
 					portableDeviceValues2.GetErrorValue(ref PortableDevicePKeys.WPD_PROPERTY_COMMON_HRESULT, out num);
 					hresult = (uint)num;
@@ -245,12 +245,12 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 				portableDeviceServiceManager.GetDeviceServices(deviceId, ref PortableDeviceGuids.GUID_DEVINTERFACE_WPD_SERVICE, null, ref num);
 				string[] array = new string[num];
 				portableDeviceServiceManager.GetDeviceServices(deviceId, ref PortableDeviceGuids.GUID_DEVINTERFACE_WPD_SERVICE, array, ref num);
-				foreach (string pszPnPServiceID in array)
+				foreach (string text in array)
 				{
 					IPortableDeviceService portableDeviceService = (PortableDeviceService)Activator.CreateInstance(Type.GetTypeFromCLSID(new Guid("EF5DB4C2-9312-422C-9152-411CD9C4DD84")));
-					portableDeviceService.Open(pszPnPServiceID, portableDeviceValues);
-					string pszObjectID = null;
-					portableDeviceService.GetServiceObjectID(out pszObjectID);
+					portableDeviceService.Open(text, portableDeviceValues);
+					string text2 = null;
+					portableDeviceService.GetServiceObjectID(out text2);
 					IPortableDeviceContent2 portableDeviceContent = null;
 					portableDeviceService.Content(out portableDeviceContent);
 					IPortableDeviceProperties portableDeviceProperties = null;
@@ -258,10 +258,10 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 					PortableDeviceApiLib.IPortableDeviceKeyCollection portableDeviceKeyCollection = (PortableDeviceApiLib.IPortableDeviceKeyCollection)((PortableDeviceKeyCollection)Activator.CreateInstance(Type.GetTypeFromCLSID(new Guid("DE2D022D-2480-43BE-97F0-D1FA2CF98F4F"))));
 					portableDeviceKeyCollection.Add(ref PortableDevicePKeys.WPD_OBJECT_NAME);
 					PortableDeviceApiLib.IPortableDeviceValues portableDeviceValues2 = null;
-					portableDeviceProperties.GetValues(pszObjectID, portableDeviceKeyCollection, out portableDeviceValues2);
-					string a = null;
-					portableDeviceValues2.GetStringValue(ref PortableDevicePKeys.WPD_OBJECT_NAME, out a);
-					if (a == serviceName)
+					portableDeviceProperties.GetValues(text2, portableDeviceKeyCollection, out portableDeviceValues2);
+					string text3 = null;
+					portableDeviceValues2.GetStringValue(ref PortableDevicePKeys.WPD_OBJECT_NAME, out text3);
+					if (text3 == serviceName)
 					{
 						wpdService = portableDeviceService;
 						break;
@@ -281,15 +281,15 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 			try
 			{
 				values = null;
-				string pszObjectID = null;
-				service.GetServiceObjectID(out pszObjectID);
+				string text = null;
+				service.GetServiceObjectID(out text);
 				IPortableDeviceContent2 portableDeviceContent = null;
 				service.Content(out portableDeviceContent);
 				IPortableDeviceProperties portableDeviceProperties = null;
 				portableDeviceContent.Properties(out portableDeviceProperties);
 				PortableDeviceApiLib.IPortableDeviceKeyCollection portableDeviceKeyCollection = (PortableDeviceApiLib.IPortableDeviceKeyCollection)((PortableDeviceKeyCollection)Activator.CreateInstance(Type.GetTypeFromCLSID(new Guid("DE2D022D-2480-43BE-97F0-D1FA2CF98F4F"))));
 				portableDeviceKeyCollection.Add(ref key);
-				portableDeviceProperties.GetValues(pszObjectID, portableDeviceKeyCollection, out values);
+				portableDeviceProperties.GetValues(text, portableDeviceKeyCollection, out values);
 			}
 			catch (Exception)
 			{
@@ -300,66 +300,66 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 		// Token: 0x0600014B RID: 331 RVA: 0x00011EA0 File Offset: 0x000100A0
 		public static string GetServicePropertyStringValue(IPortableDeviceService service, _tagpropertykey key)
 		{
-			string result;
+			string text2;
 			try
 			{
 				PortableDeviceApiLib.IPortableDeviceValues portableDeviceValues = null;
 				string text = null;
 				WpdUtils.GetServiceProperty(service, key, out portableDeviceValues);
 				portableDeviceValues.GetStringValue(ref key, out text);
-				result = text;
+				text2 = text;
 			}
 			catch (Exception)
 			{
 				throw new MtpException();
 			}
-			return result;
+			return text2;
 		}
 
 		// Token: 0x0600014C RID: 332 RVA: 0x00011EE0 File Offset: 0x000100E0
 		public static ushort[] GetServicePropertyUint16Array(IPortableDeviceService service, _tagpropertykey key)
 		{
-			ushort[] result;
+			ushort[] array3;
 			try
 			{
 				PortableDeviceApiLib.IPortableDeviceValues portableDeviceValues = null;
 				uint num = 0U;
 				WpdUtils.GetServiceProperty(service, key, out portableDeviceValues);
-				IntPtr source;
-				portableDeviceValues.GetBufferValue(ref key, out source, out num);
+				IntPtr intPtr;
+				portableDeviceValues.GetBufferValue(ref key, out intPtr, out num);
 				short[] array = new short[num / 2U];
 				ushort[] array2 = new ushort[num / 2U];
-				Marshal.Copy(source, array, 0, array.Length);
+				Marshal.Copy(intPtr, array, 0, array.Length);
 				for (int i = 0; i < array.Length; i++)
 				{
 					array2[i] = (ushort)array[i];
 				}
-				result = array2;
+				array3 = array2;
 			}
 			catch (Exception)
 			{
 				throw new MtpException();
 			}
-			return result;
+			return array3;
 		}
 
 		// Token: 0x0600014D RID: 333 RVA: 0x00011F64 File Offset: 0x00010164
 		public static uint GetServicePropertyUnsignedIntegerValue(IPortableDeviceService service, _tagpropertykey key)
 		{
-			uint result;
+			uint num2;
 			try
 			{
 				PortableDeviceApiLib.IPortableDeviceValues portableDeviceValues = null;
 				uint num = 0U;
 				WpdUtils.GetServiceProperty(service, key, out portableDeviceValues);
 				portableDeviceValues.GetUnsignedIntegerValue(ref key, out num);
-				result = num;
+				num2 = num;
 			}
 			catch (Exception)
 			{
 				throw new MtpException();
 			}
-			return result;
+			return num2;
 		}
 
 		// Token: 0x0600014E RID: 334 RVA: 0x00011FA4 File Offset: 0x000101A4
@@ -372,9 +372,9 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 				WpdUtils.GetServiceProperty(service, key, out portableDeviceValues);
 				tag_inner_PROPVARIANT tag_inner_PROPVARIANT;
 				portableDeviceValues.GetValue(ref key, out tag_inner_PROPVARIANT);
-				IntPtr ptr = Marshal.AllocHGlobal(Marshal.SizeOf(tag_inner_PROPVARIANT));
-				Marshal.StructureToPtr(tag_inner_PROPVARIANT, ptr, false);
-				byteValue = ((WpdUtils.WpdVariant)Marshal.PtrToStructure(ptr, typeof(WpdUtils.WpdVariant))).byteValue;
+				IntPtr intPtr = Marshal.AllocHGlobal(Marshal.SizeOf(tag_inner_PROPVARIANT));
+				Marshal.StructureToPtr(tag_inner_PROPVARIANT, intPtr, false);
+				byteValue = ((WpdUtils.WpdVariant)Marshal.PtrToStructure(intPtr, typeof(WpdUtils.WpdVariant))).byteValue;
 			}
 			catch (Exception)
 			{
@@ -386,20 +386,20 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 		// Token: 0x0600014F RID: 335 RVA: 0x00012020 File Offset: 0x00010220
 		public static Guid GetServicePropertyGuid(IPortableDeviceService service, _tagpropertykey key)
 		{
-			Guid result;
+			Guid guid;
 			try
 			{
 				PortableDeviceApiLib.IPortableDeviceValues portableDeviceValues = null;
 				Guid empty = Guid.Empty;
 				WpdUtils.GetServiceProperty(service, key, out portableDeviceValues);
 				portableDeviceValues.GetGuidValue(ref key, out empty);
-				result = empty;
+				guid = empty;
 			}
 			catch (Exception)
 			{
 				throw new MtpException();
 			}
-			return result;
+			return guid;
 		}
 
 		// Token: 0x0400037C RID: 892

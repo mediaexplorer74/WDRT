@@ -2,18 +2,18 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Messages
 {
-	// Token: 0x0200006B RID: 107
+	// Token: 0x020000B2 RID: 178
 	public class WaitMessage
 	{
-		// Token: 0x06000323 RID: 803 RVA: 0x00010338 File Offset: 0x0000E538
+		// Token: 0x060005A1 RID: 1441 RVA: 0x0001B80F File Offset: 0x00019A0F
 		public WaitMessage(int seconds)
 		{
 			this.WaitSeconds = seconds;
 		}
 
-		// Token: 0x1700009E RID: 158
-		// (get) Token: 0x06000324 RID: 804 RVA: 0x0001034C File Offset: 0x0000E54C
-		// (set) Token: 0x06000325 RID: 805 RVA: 0x00010363 File Offset: 0x0000E563
+		// Token: 0x1700014E RID: 334
+		// (get) Token: 0x060005A2 RID: 1442 RVA: 0x0001B821 File Offset: 0x00019A21
+		// (set) Token: 0x060005A3 RID: 1443 RVA: 0x0001B829 File Offset: 0x00019A29
 		public int WaitSeconds { get; private set; }
 	}
 }

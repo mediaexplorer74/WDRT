@@ -1,34 +1,34 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-// Token: 0x020001D5 RID: 469
+// Token: 0x02000262 RID: 610
 [NativeCppClass]
 [UnsafeValueType]
 internal struct FfuReader
 {
-	// Token: 0x020001D6 RID: 470
-	[CLSCompliant(false)]
+	// Token: 0x02000263 RID: 611
 	[NativeCppClass]
+	[CLSCompliant(false)]
 	public struct WriteRequest
 	{
 	}
 
-	// Token: 0x020001D7 RID: 471
-	[NativeCppClass]
+	// Token: 0x02000264 RID: 612
 	[CLSCompliant(false)]
+	[NativeCppClass]
 	public struct BlockDataEntry
 	{
 	}
 
-	// Token: 0x020001D8 RID: 472
-	//[NativeCppClass]
+	// Token: 0x02000265 RID: 613
+	[NativeCppClass]
 	[CLSCompliant(false)]
 	public enum AccessMethod
 	{
 
 	}
 
-	// Token: 0x020001D9 RID: 473
+	// Token: 0x02000266 RID: 614
 	[UnsafeValueType]
 	[NativeCppClass]
 	[CLSCompliant(false)]
@@ -36,7 +36,7 @@ internal struct FfuReader
 	{
 	}
 
-	// Token: 0x020001DA RID: 474
+	// Token: 0x02000267 RID: 615
 	[NativeCppClass]
 	[UnsafeValueType]
 	internal struct FullFlashSecurityHeader

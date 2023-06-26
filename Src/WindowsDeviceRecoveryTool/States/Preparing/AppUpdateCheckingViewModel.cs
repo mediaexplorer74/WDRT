@@ -10,20 +10,20 @@ using Microsoft.WindowsDeviceRecoveryTool.Messages;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 {
-	// Token: 0x02000096 RID: 150
+	// Token: 0x02000041 RID: 65
 	[Export]
 	public class AppUpdateCheckingViewModel : BaseViewModel, ICanHandle<ApplicationUpdateMessage>, ICanHandle
 	{
-		// Token: 0x0600041D RID: 1053 RVA: 0x00013D8F File Offset: 0x00011F8F
+		// Token: 0x0600029F RID: 671 RVA: 0x0000F1C4 File Offset: 0x0000D3C4
 		[ImportingConstructor]
 		public AppUpdateCheckingViewModel(Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext)
 		{
 			this.AppContext = appContext;
 		}
 
-		// Token: 0x170000D6 RID: 214
-		// (get) Token: 0x0600041E RID: 1054 RVA: 0x00013DA4 File Offset: 0x00011FA4
-		// (set) Token: 0x0600041F RID: 1055 RVA: 0x00013DBC File Offset: 0x00011FBC
+		// Token: 0x170000AE RID: 174
+		// (get) Token: 0x060002A0 RID: 672 RVA: 0x0000F1D8 File Offset: 0x0000D3D8
+		// (set) Token: 0x060002A1 RID: 673 RVA: 0x0000F1F0 File Offset: 0x0000D3F0
 		public Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext AppContext
 		{
 			get
@@ -36,9 +36,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x170000D7 RID: 215
-		// (get) Token: 0x06000420 RID: 1056 RVA: 0x00013E0C File Offset: 0x0001200C
-		// (set) Token: 0x06000421 RID: 1057 RVA: 0x00013E24 File Offset: 0x00012024
+		// Token: 0x170000AF RID: 175
+		// (get) Token: 0x060002A2 RID: 674 RVA: 0x0000F230 File Offset: 0x0000D430
+		// (set) Token: 0x060002A3 RID: 675 RVA: 0x0000F248 File Offset: 0x0000D448
 		public bool IsChecking
 		{
 			get
@@ -51,9 +51,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x170000D8 RID: 216
-		// (get) Token: 0x06000422 RID: 1058 RVA: 0x00013E74 File Offset: 0x00012074
-		// (set) Token: 0x06000423 RID: 1059 RVA: 0x00013E8C File Offset: 0x0001208C
+		// Token: 0x170000B0 RID: 176
+		// (get) Token: 0x060002A4 RID: 676 RVA: 0x0000F288 File Offset: 0x0000D488
+		// (set) Token: 0x060002A5 RID: 677 RVA: 0x0000F2A0 File Offset: 0x0000D4A0
 		public string Version
 		{
 			get
@@ -66,9 +66,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x170000D9 RID: 217
-		// (get) Token: 0x06000424 RID: 1060 RVA: 0x00013EDC File Offset: 0x000120DC
-		// (set) Token: 0x06000425 RID: 1061 RVA: 0x00013EF4 File Offset: 0x000120F4
+		// Token: 0x170000B1 RID: 177
+		// (get) Token: 0x060002A6 RID: 678 RVA: 0x0000F2E0 File Offset: 0x0000D4E0
+		// (set) Token: 0x060002A7 RID: 679 RVA: 0x0000F2F8 File Offset: 0x0000D4F8
 		public string Description
 		{
 			get
@@ -81,21 +81,17 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x06000426 RID: 1062 RVA: 0x00013F44 File Offset: 0x00012144
+		// Token: 0x060002A8 RID: 680 RVA: 0x0000F338 File Offset: 0x0000D538
 		public override void OnStarted()
 		{
-			base.EventAggregator.Publish<HeaderMessage>(
-				new HeaderMessage(LocalizationManager.GetTranslation("ApplicationUpdate"), ""));
-			base.EventAggregator.Publish<IsBackButtonMessage>(
-				new IsBackButtonMessage(false));
-			base.EventAggregator.Publish<BlockWindowMessage>(
-				new BlockWindowMessage(false, null, null));
+			base.EventAggregator.Publish<HeaderMessage>(new HeaderMessage(LocalizationManager.GetTranslation("ApplicationUpdate"), ""));
+			base.EventAggregator.Publish<IsBackButtonMessage>(new IsBackButtonMessage(false));
+			base.EventAggregator.Publish<BlockWindowMessage>(new BlockWindowMessage(false, null, null));
 			this.IsChecking = true;
-			//RnD
 			base.Commands.Run((AppController c) => c.CheckForAppUpdate(null, CancellationToken.None));
 		}
 
-		// Token: 0x06000427 RID: 1063 RVA: 0x0001401F File Offset: 0x0001221F
+		// Token: 0x060002A9 RID: 681 RVA: 0x0000F40A File Offset: 0x0000D60A
 		public void Handle(ApplicationUpdateMessage message)
 		{
 			this.Description = this.ReplaceTagByNewLine(message.Update.Description);
@@ -103,22 +99,22 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			this.IsChecking = false;
 		}
 
-		// Token: 0x06000428 RID: 1064 RVA: 0x00014054 File Offset: 0x00012254
+		// Token: 0x060002AA RID: 682 RVA: 0x0000F440 File Offset: 0x0000D640
 		private string ReplaceTagByNewLine(string text)
 		{
 			return (text != null) ? Regex.Replace(text, "<br>", "\n", RegexOptions.IgnoreCase) : string.Empty;
 		}
 
-		// Token: 0x040001D5 RID: 469
+		// Token: 0x04000137 RID: 311
 		private Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext;
 
-		// Token: 0x040001D6 RID: 470
+		// Token: 0x04000138 RID: 312
 		private string version;
 
-		// Token: 0x040001D7 RID: 471
+		// Token: 0x04000139 RID: 313
 		private string description;
 
-		// Token: 0x040001D8 RID: 472
+		// Token: 0x0400013A RID: 314
 		private bool isChecking;
 	}
 }

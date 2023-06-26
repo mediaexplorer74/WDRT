@@ -24,10 +24,10 @@ namespace Nokia.Mira.Chunks
 		// Token: 0x0600000A RID: 10 RVA: 0x000021D8 File Offset: 0x000003D8
 		public ReadOnlyCollection<ChunkRaw> Read()
 		{
-			ReadOnlyCollection<ChunkRaw> result;
+			ReadOnlyCollection<ChunkRaw> readOnlyCollection;
 			try
 			{
-				result = Array.AsReadOnly<ChunkRaw>(this.ReadWebFileInformation().Chunks.Select(delegate(ChunkSerializable ch)
+				readOnlyCollection = Array.AsReadOnly<ChunkRaw>(this.ReadWebFileInformation().Chunks.Select(delegate(ChunkSerializable ch)
 				{
 					long value = ch.Begin.Value;
 					long? num = ch.Current;
@@ -36,9 +36,9 @@ namespace Nokia.Mira.Chunks
 			}
 			catch (Exception)
 			{
-				result = Array.AsReadOnly<ChunkRaw>(Enumerable.Empty<ChunkRaw>().ToArray<ChunkRaw>());
+				readOnlyCollection = Array.AsReadOnly<ChunkRaw>(Enumerable.Empty<ChunkRaw>().ToArray<ChunkRaw>());
 			}
-			return result;
+			return readOnlyCollection;
 		}
 
 		// Token: 0x0600000B RID: 11 RVA: 0x00002244 File Offset: 0x00000444
@@ -46,14 +46,14 @@ namespace Nokia.Mira.Chunks
 		{
 			XmlSerializer xmlSerializer = new XmlSerializer(typeof(WebFileSerializable));
 			Stream stream;
-			WebFileSerializable result;
+			WebFileSerializable webFileSerializable2;
 			using (this.streamContainer.ReserveStream(out stream))
 			{
 				WebFileSerializable webFileSerializable = (WebFileSerializable)xmlSerializer.Deserialize(stream);
 				this.VerifyWebFileInformation(webFileSerializable);
-				result = webFileSerializable;
+				webFileSerializable2 = webFileSerializable;
 			}
-			return result;
+			return webFileSerializable2;
 		}
 
 		// Token: 0x0600000C RID: 12 RVA: 0x00002306 File Offset: 0x00000506

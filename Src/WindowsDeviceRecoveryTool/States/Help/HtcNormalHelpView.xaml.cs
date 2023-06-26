@@ -10,15 +10,12 @@ using Microsoft.WindowsDeviceRecoveryTool.Framework;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Help
 {
-	// Token: 0x0200007E RID: 126
+	// Token: 0x02000063 RID: 99
 	[Export]
-	[Region(new string[]
-	{
-		"HelpMainArea"
-	})]
+	[Region(new string[] { "HelpMainArea" })]
 	public partial class HtcNormalHelpView : UserControl
 	{
-		// Token: 0x0600039A RID: 922 RVA: 0x00011557 File Offset: 0x0000F757
+		// Token: 0x060003AA RID: 938 RVA: 0x000144FF File Offset: 0x000126FF
 		public HtcNormalHelpView()
 		{
 			this.InitializeComponent();

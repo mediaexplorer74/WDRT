@@ -2,7 +2,7 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model.Exceptions
 {
-	// Token: 0x02000039 RID: 57
+	// Token: 0x02000030 RID: 48
 	public class FirmwareFileNotFoundException : Exception
 	{
 	}

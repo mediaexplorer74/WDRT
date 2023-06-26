@@ -13,17 +13,20 @@ namespace Microsoft.WindowsPhone.Imaging.ImageSignerApp
 		}
 
 		// Token: 0x06000010 RID: 16 RVA: 0x00002962 File Offset: 0x00000B62
-		public ImageSignerException(string message) : base(message)
+		public ImageSignerException(string message)
+			: base(message)
 		{
 		}
 
 		// Token: 0x06000011 RID: 17 RVA: 0x0000296B File Offset: 0x00000B6B
-		public ImageSignerException(string message, Exception innerException) : base(message, innerException)
+		public ImageSignerException(string message, Exception innerException)
+			: base(message, innerException)
 		{
 		}
 
 		// Token: 0x06000012 RID: 18 RVA: 0x00002975 File Offset: 0x00000B75
-		protected ImageSignerException(SerializationInfo info, StreamingContext context) : base(info, context)
+		protected ImageSignerException(SerializationInfo info, StreamingContext context)
+			: base(info, context)
 		{
 		}
 

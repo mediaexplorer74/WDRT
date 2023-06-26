@@ -6,12 +6,12 @@ using Microsoft.WindowsDeviceRecoveryTool.Messages;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Help
 {
-	// Token: 0x0200007B RID: 123
+	// Token: 0x02000060 RID: 96
 	[Export]
 	public class HtcBootloaderHelpViewModel : BaseViewModel
 	{
-		// Token: 0x170000BC RID: 188
-		// (get) Token: 0x06000390 RID: 912 RVA: 0x00011380 File Offset: 0x0000F580
+		// Token: 0x170000E5 RID: 229
+		// (get) Token: 0x060003A0 RID: 928 RVA: 0x00014348 File Offset: 0x00012548
 		public string GoToMyPhoneHasNotBeenDetectedText
 		{
 			get
@@ -20,7 +20,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Help
 			}
 		}
 
-		// Token: 0x06000391 RID: 913 RVA: 0x000113AC File Offset: 0x0000F5AC
+		// Token: 0x060003A1 RID: 929 RVA: 0x00014374 File Offset: 0x00012574
 		public override void OnStarted()
 		{
 			base.EventAggregator.Publish<HeaderMessage>(new HeaderMessage(LocalizationManager.GetTranslation("Help"), string.Format(LocalizationManager.GetTranslation("HtcBootloaderMode"), "boot-loader")));

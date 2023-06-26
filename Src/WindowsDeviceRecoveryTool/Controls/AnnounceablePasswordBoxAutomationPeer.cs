@@ -5,16 +5,17 @@ using System.Windows.Controls;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 {
-	// Token: 0x02000007 RID: 7
+	// Token: 0x020000C1 RID: 193
 	public class AnnounceablePasswordBoxAutomationPeer : PasswordBoxAutomationPeer, IValueProvider
 	{
-		// Token: 0x06000048 RID: 72 RVA: 0x00003357 File Offset: 0x00001557
-		public AnnounceablePasswordBoxAutomationPeer(PasswordBox owner) : base(owner)
+		// Token: 0x060005EA RID: 1514 RVA: 0x0001C84A File Offset: 0x0001AA4A
+		public AnnounceablePasswordBoxAutomationPeer(PasswordBox owner)
+			: base(owner)
 		{
 		}
 
-		// Token: 0x17000015 RID: 21
-		// (get) Token: 0x06000049 RID: 73 RVA: 0x00003364 File Offset: 0x00001564
+		// Token: 0x1700015F RID: 351
+		// (get) Token: 0x060005EB RID: 1515 RVA: 0x0001C858 File Offset: 0x0001AA58
 		string IValueProvider.Value
 		{
 			get

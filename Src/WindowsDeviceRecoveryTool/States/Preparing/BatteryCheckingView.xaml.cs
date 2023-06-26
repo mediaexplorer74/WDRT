@@ -10,15 +10,12 @@ using Microsoft.WindowsDeviceRecoveryTool.Framework;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 {
-	// Token: 0x02000093 RID: 147
+	// Token: 0x0200003E RID: 62
 	[Export]
-	[Region(new string[]
-	{
-		"MainArea"
-	})]
+	[Region(new string[] { "MainArea" })]
 	public partial class BatteryCheckingView : Grid
 	{
-		// Token: 0x06000405 RID: 1029 RVA: 0x000136AC File Offset: 0x000118AC
+		// Token: 0x06000287 RID: 647 RVA: 0x0000EB5A File Offset: 0x0000CD5A
 		public BatteryCheckingView()
 		{
 			this.InitializeComponent();

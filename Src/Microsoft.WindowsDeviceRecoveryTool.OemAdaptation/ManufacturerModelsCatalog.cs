@@ -6,10 +6,10 @@ using Microsoft.WindowsDeviceRecoveryTool.OemAdaptation.Primitives;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.OemAdaptation
 {
-	// Token: 0x02000007 RID: 7
+	// Token: 0x02000002 RID: 2
 	public sealed class ManufacturerModelsCatalog
 	{
-		// Token: 0x06000016 RID: 22 RVA: 0x00002258 File Offset: 0x00000458
+		// Token: 0x06000001 RID: 1 RVA: 0x00002050 File Offset: 0x00000250
 		public ManufacturerModelsCatalog(ManufacturerInfo manufacturerInfo, IEnumerable<ModelInfo> modelInfos)
 		{
 			if (manufacturerInfo == null)
@@ -29,23 +29,23 @@ namespace Microsoft.WindowsDeviceRecoveryTool.OemAdaptation
 			this.Models = array;
 		}
 
-		// Token: 0x17000009 RID: 9
-		// (get) Token: 0x06000017 RID: 23 RVA: 0x000022AC File Offset: 0x000004AC
-		// (set) Token: 0x06000018 RID: 24 RVA: 0x000022B4 File Offset: 0x000004B4
+		// Token: 0x17000001 RID: 1
+		// (get) Token: 0x06000002 RID: 2 RVA: 0x000020A3 File Offset: 0x000002A3
+		// (set) Token: 0x06000003 RID: 3 RVA: 0x000020AB File Offset: 0x000002AB
 		public ManufacturerInfo ManufacturerInfo { get; private set; }
 
-		// Token: 0x1700000A RID: 10
-		// (get) Token: 0x06000019 RID: 25 RVA: 0x000022BD File Offset: 0x000004BD
-		// (set) Token: 0x0600001A RID: 26 RVA: 0x000022C5 File Offset: 0x000004C5
+		// Token: 0x17000002 RID: 2
+		// (get) Token: 0x06000004 RID: 4 RVA: 0x000020B4 File Offset: 0x000002B4
+		// (set) Token: 0x06000005 RID: 5 RVA: 0x000020BC File Offset: 0x000002BC
 		public ModelInfo[] Models { get; private set; }
 
-		// Token: 0x0600001B RID: 27 RVA: 0x000022DB File Offset: 0x000004DB
+		// Token: 0x06000006 RID: 6 RVA: 0x000020C5 File Offset: 0x000002C5
 		public DeviceDetectionInformation[] GetDeviceDetectionInformations()
 		{
 			return this.Models.SelectMany((ModelInfo m) => m.DetectionInfo.DeviceDetectionInformations).ToArray<DeviceDetectionInformation>();
 		}
 
-		// Token: 0x0600001C RID: 28 RVA: 0x00002360 File Offset: 0x00000560
+		// Token: 0x06000007 RID: 7 RVA: 0x000020F8 File Offset: 0x000002F8
 		public bool TryGetModelInfo(string deviceReturnedVariantName, out ModelInfo modelInfo)
 		{
 			if (string.IsNullOrEmpty(deviceReturnedVariantName))
@@ -53,7 +53,27 @@ namespace Microsoft.WindowsDeviceRecoveryTool.OemAdaptation
 				modelInfo = null;
 				return false;
 			}
-			ModelInfo modelInfo2 = this.Models.FirstOrDefault((ModelInfo m) => m.Variants.Any((VariantInfo v) => v.IdentificationInfo.DeviceReturnedValues.Any((string dv) => deviceReturnedVariantName.IndexOf(dv, StringComparison.OrdinalIgnoreCase) >= 0)));
+			Func<string, bool> <>9__2;
+			Func<VariantInfo, bool> <>9__1;
+			ModelInfo modelInfo2 = this.Models.FirstOrDefault(delegate(ModelInfo m)
+			{
+				IEnumerable<VariantInfo> variants = m.Variants;
+				Func<VariantInfo, bool> func;
+				if ((func = <>9__1) == null)
+				{
+					func = (<>9__1 = delegate(VariantInfo v)
+					{
+						IEnumerable<string> deviceReturnedValues = v.IdentificationInfo.DeviceReturnedValues;
+						Func<string, bool> func2;
+						if ((func2 = <>9__2) == null)
+						{
+							func2 = (<>9__2 = (string dv) => deviceReturnedVariantName.IndexOf(dv, StringComparison.OrdinalIgnoreCase) >= 0);
+						}
+						return deviceReturnedValues.Any(func2);
+					});
+				}
+				return variants.Any(func);
+			});
 			if (modelInfo2 == null)
 			{
 				modelInfo = null;

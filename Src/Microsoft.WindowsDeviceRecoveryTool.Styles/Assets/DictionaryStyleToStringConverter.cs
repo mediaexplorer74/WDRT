@@ -4,16 +4,16 @@ using System.Windows.Data;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Styles.Assets
 {
-	// Token: 0x02000004 RID: 4
+	// Token: 0x02000018 RID: 24
 	public class DictionaryStyleToStringConverter : IValueConverter
 	{
-		// Token: 0x0600000F RID: 15 RVA: 0x000021A0 File Offset: 0x000003A0
+		// Token: 0x0600007D RID: 125 RVA: 0x00003620 File Offset: 0x00001820
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
 			return StyleLogic.GetStyle((string)value);
 		}
 
-		// Token: 0x06000010 RID: 16 RVA: 0x000021C0 File Offset: 0x000003C0
+		// Token: 0x0600007E RID: 126 RVA: 0x00003640 File Offset: 0x00001840
 		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
 		{
 			DictionaryStyle dictionaryStyle = (DictionaryStyle)value;

@@ -11,17 +11,16 @@ using Microsoft.WindowsDeviceRecoveryTool.Framework;
 using Microsoft.WindowsDeviceRecoveryTool.Localization;
 using Microsoft.WindowsDeviceRecoveryTool.Messages;
 using Microsoft.WindowsDeviceRecoveryTool.Model;
-//using Microsoft.WindowsDeviceRecoveryTool.Properties;
-using Microsoft.WindowsDeviceRecoveryTool.Styles.Assets;
 using Microsoft.WindowsDeviceRecoveryTool.Properties;
+using Microsoft.WindowsDeviceRecoveryTool.Styles.Assets;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 {
-	// Token: 0x020000D9 RID: 217
+	// Token: 0x02000032 RID: 50
 	[Export]
-	public class PreferencesViewModel : BaseViewModel, ICanHandle<ThemeColorChangedMessage>, ICanHandle<LanguageChangedMessage>, ICanHandle
+	public class PreferencesViewModel : BaseViewModel, ICanHandle<ThemeColorChangedMessage>, ICanHandle, ICanHandle<LanguageChangedMessage>
 	{
-		// Token: 0x060006B2 RID: 1714 RVA: 0x00022F00 File Offset: 0x00021100
+		// Token: 0x0600021B RID: 539 RVA: 0x0000CBE8 File Offset: 0x0000ADE8
 		[ImportingConstructor]
 		public PreferencesViewModel()
 		{
@@ -31,15 +30,15 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 				this.styles = StyleLogic.Styles;
 				base.RaisePropertyChanged<ReadOnlyCollection<DictionaryStyle>>(() => this.Styles);
 				this.FillStyles();
-				IEnumerable<CultureInfo> baseList = LocalizationManager.Instance().Languages();
-				Collection<ExtendedCultureInfo> source = ExtendedCultureInfo.CreateLanguagesList(baseList);
-				this.Languages = CollectionViewSource.GetDefaultView(source);
+				IEnumerable<CultureInfo> enumerable = LocalizationManager.Instance().Languages();
+				Collection<ExtendedCultureInfo> collection = ExtendedCultureInfo.CreateLanguagesList(enumerable);
+				this.Languages = CollectionViewSource.GetDefaultView(collection);
 				this.Languages.SortDescriptions.Add(new SortDescription("ExtendedDisplayName", ListSortDirection.Ascending));
 				this.Languages.MoveCurrentTo(LocalizationManager.Instance().CurrentLanguage);
 			}
-			catch (Exception error)
+			catch (Exception ex)
 			{
-				Tracer<PreferencesViewModel>.WriteError(error);
+				Tracer<PreferencesViewModel>.WriteError(ex);
 				throw;
 			}
 			finally
@@ -48,9 +47,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 			}
 		}
 
-		// Token: 0x1700018A RID: 394
-		// (get) Token: 0x060006B3 RID: 1715 RVA: 0x00023044 File Offset: 0x00021244
-		// (set) Token: 0x060006B4 RID: 1716 RVA: 0x00023068 File Offset: 0x00021268
+		// Token: 0x17000092 RID: 146
+		// (get) Token: 0x0600021C RID: 540 RVA: 0x0000CD24 File Offset: 0x0000AF24
+		// (set) Token: 0x0600021D RID: 541 RVA: 0x0000CD48 File Offset: 0x0000AF48
 		public CultureInfo SelectedLanguage
 		{
 			get
@@ -60,7 +59,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 			set
 			{
 				this.Languages.MoveCurrentTo(value);
-				if (!LocalizationManager.Instance().CurrentLanguage.Equals(value))
+				bool flag = !LocalizationManager.Instance().CurrentLanguage.Equals(value);
+				if (flag)
 				{
 					LocalizationManager.Instance().CurrentLanguage = value;
 					ApplicationInfo.CurrentLanguageInRegistry = LocalizationManager.Instance().CurrentLanguage;
@@ -70,9 +70,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 			}
 		}
 
-		// Token: 0x1700018B RID: 395
-		// (get) Token: 0x060006B5 RID: 1717 RVA: 0x000230C8 File Offset: 0x000212C8
-		// (set) Token: 0x060006B6 RID: 1718 RVA: 0x000230EC File Offset: 0x000212EC
+		// Token: 0x17000093 RID: 147
+		// (get) Token: 0x0600021E RID: 542 RVA: 0x0000CDAC File Offset: 0x0000AFAC
+		// (set) Token: 0x0600021F RID: 543 RVA: 0x0000CDD0 File Offset: 0x0000AFD0
 		public ThemeStyle SelectedTheme
 		{
 			get
@@ -81,22 +81,23 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 			}
 			set
 			{
-				if (value.Name != Settings.Default.Theme)
+				bool flag = value.Name != Settings.Default.Theme;
+				if (flag)
 				{
 					Settings.Default.Theme = value.Name;
 					base.RaisePropertyChanged<ThemeStyle>(() => this.SelectedTheme);
-					if (this.reloadTheme)
+					bool flag2 = this.reloadTheme;
+					if (flag2)
 					{
-						//RnD
-						//StyleLogic.LoadTheme(Settings.GetSelectedThemeFileName());
+						StyleLogic.LoadTheme(Settings.GetSelectedThemeFileName());
 					}
 				}
 			}
 		}
 
-		// Token: 0x1700018C RID: 396
-		// (get) Token: 0x060006B7 RID: 1719 RVA: 0x00023180 File Offset: 0x00021380
-		// (set) Token: 0x060006B8 RID: 1720 RVA: 0x0002319C File Offset: 0x0002139C
+		// Token: 0x17000094 RID: 148
+		// (get) Token: 0x06000220 RID: 544 RVA: 0x0000CE58 File Offset: 0x0000B058
+		// (set) Token: 0x06000221 RID: 545 RVA: 0x0000CE74 File Offset: 0x0000B074
 		public string SelectedColor
 		{
 			get
@@ -105,22 +106,23 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 			}
 			set
 			{
-				if (value != Settings.Default.Style)
+				bool flag = value != Settings.Default.Style;
+				if (flag)
 				{
 					Settings.Default.Style = value;
 					base.RaisePropertyChanged<string>(() => this.SelectedColor);
-					if (this.reloadTheme)
+					bool flag2 = this.reloadTheme;
+					if (flag2)
 					{
-						//RnD
-						//StyleLogic.LoadTheme(Settings.GetSelectedThemeFileName());
+						StyleLogic.LoadTheme(Settings.GetSelectedThemeFileName());
 					}
 				}
 			}
 		}
 
-		// Token: 0x1700018D RID: 397
-		// (get) Token: 0x060006B9 RID: 1721 RVA: 0x00023224 File Offset: 0x00021424
-		// (set) Token: 0x060006BA RID: 1722 RVA: 0x0002323C File Offset: 0x0002143C
+		// Token: 0x17000095 RID: 149
+		// (get) Token: 0x06000222 RID: 546 RVA: 0x0000CEF4 File Offset: 0x0000B0F4
+		// (set) Token: 0x06000223 RID: 547 RVA: 0x0000CF0C File Offset: 0x0000B10C
 		public List<ThemeStyle> ThemeList
 		{
 			get
@@ -133,9 +135,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 			}
 		}
 
-		// Token: 0x1700018E RID: 398
-		// (get) Token: 0x060006BB RID: 1723 RVA: 0x0002328C File Offset: 0x0002148C
-		// (set) Token: 0x060006BC RID: 1724 RVA: 0x000232A4 File Offset: 0x000214A4
+		// Token: 0x17000096 RID: 150
+		// (get) Token: 0x06000224 RID: 548 RVA: 0x0000CF4C File Offset: 0x0000B14C
+		// (set) Token: 0x06000225 RID: 549 RVA: 0x0000CF64 File Offset: 0x0000B164
 		public ICollectionView Languages
 		{
 			get
@@ -148,9 +150,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 			}
 		}
 
-		// Token: 0x1700018F RID: 399
-		// (get) Token: 0x060006BD RID: 1725 RVA: 0x000232F4 File Offset: 0x000214F4
-		// (set) Token: 0x060006BE RID: 1726 RVA: 0x0002330C File Offset: 0x0002150C
+		// Token: 0x17000097 RID: 151
+		// (get) Token: 0x06000226 RID: 550 RVA: 0x0000CFA4 File Offset: 0x0000B1A4
+		// (set) Token: 0x06000227 RID: 551 RVA: 0x0000CFBC File Offset: 0x0000B1BC
 		public ICollectionView StylesView
 		{
 			get
@@ -163,8 +165,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 			}
 		}
 
-		// Token: 0x17000190 RID: 400
-		// (get) Token: 0x060006BF RID: 1727 RVA: 0x0002335C File Offset: 0x0002155C
+		// Token: 0x17000098 RID: 152
+		// (get) Token: 0x06000228 RID: 552 RVA: 0x0000CFFC File Offset: 0x0000B1FC
 		public ReadOnlyCollection<DictionaryStyle> Styles
 		{
 			get
@@ -173,7 +175,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 			}
 		}
 
-		// Token: 0x060006C0 RID: 1728 RVA: 0x0002337C File Offset: 0x0002157C
+		// Token: 0x06000229 RID: 553 RVA: 0x0000D01C File Offset: 0x0000B21C
 		private void FillStyles()
 		{
 			this.StylesView = CollectionViewSource.GetDefaultView(this.Styles);
@@ -181,31 +183,33 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 			this.StylesView.MoveCurrentTo(StyleLogic.CurrentStyle);
 		}
 
-		// Token: 0x060006C1 RID: 1729 RVA: 0x000233C9 File Offset: 0x000215C9
+		// Token: 0x0600022A RID: 554 RVA: 0x0000D069 File Offset: 0x0000B269
 		public override void OnStarted()
 		{
 			this.UpdatePageHeaders();
 		}
 
-		// Token: 0x060006C2 RID: 1730 RVA: 0x000233D3 File Offset: 0x000215D3
+		// Token: 0x0600022B RID: 555 RVA: 0x0000D073 File Offset: 0x0000B273
 		public override void OnStopped()
 		{
 			Settings.Default.Save();
 		}
 
-		// Token: 0x060006C3 RID: 1731 RVA: 0x000233E4 File Offset: 0x000215E4
+		// Token: 0x0600022C RID: 556 RVA: 0x0000D084 File Offset: 0x0000B284
 		public void Handle(ThemeColorChangedMessage message)
 		{
 			bool flag = false;
 			try
 			{
 				this.reloadTheme = false;
-				if (!string.IsNullOrEmpty(message.Color) && message.Color != Settings.Default.Style)
+				bool flag2 = !string.IsNullOrEmpty(message.Color) && message.Color != Settings.Default.Style;
+				if (flag2)
 				{
 					this.SelectedColor = message.Color;
 					flag = true;
 				}
-				if (!string.IsNullOrEmpty(message.Theme) && message.Theme != Settings.Default.Theme)
+				bool flag3 = !string.IsNullOrEmpty(message.Theme) && message.Theme != Settings.Default.Theme;
+				if (flag3)
 				{
 					this.SelectedTheme = this.GetTheme(message.Theme);
 					flag = true;
@@ -214,46 +218,47 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 			finally
 			{
 				this.reloadTheme = true;
-				if (flag)
+				bool flag4 = flag;
+				if (flag4)
 				{
-					//RnD
-					//StyleLogic.LoadTheme(Settings.GetSelectedThemeFileName());
+					StyleLogic.LoadTheme(Settings.GetSelectedThemeFileName());
 				}
 			}
 		}
 
-		// Token: 0x060006C4 RID: 1732 RVA: 0x000234B4 File Offset: 0x000216B4
+		// Token: 0x0600022D RID: 557 RVA: 0x0000D148 File Offset: 0x0000B348
 		public void Handle(LanguageChangedMessage message)
 		{
-			if (message.Language != null && !object.Equals(message.Language, LocalizationManager.Instance().CurrentLanguage))
+			bool flag = message.Language != null && !object.Equals(message.Language, LocalizationManager.Instance().CurrentLanguage);
+			if (flag)
 			{
 				this.SelectedLanguage = message.Language;
 			}
 			this.UpdatePageHeaders();
 		}
 
-		// Token: 0x060006C5 RID: 1733 RVA: 0x0002352C File Offset: 0x0002172C
+		// Token: 0x0600022E RID: 558 RVA: 0x0000D194 File Offset: 0x0000B394
 		private ThemeStyle GetTheme(string name)
 		{
 			return this.themeList.FirstOrDefault((ThemeStyle t) => t.Name.Equals(name));
 		}
 
-		// Token: 0x060006C6 RID: 1734 RVA: 0x00023562 File Offset: 0x00021762
+		// Token: 0x0600022F RID: 559 RVA: 0x0000D1CA File Offset: 0x0000B3CA
 		private void UpdatePageHeaders()
 		{
 			base.EventAggregator.Publish<HeaderMessage>(new HeaderMessage(LocalizationManager.GetTranslation("Settings"), LocalizationManager.GetTranslation("Preferences")));
 		}
 
-		// Token: 0x040002CE RID: 718
+		// Token: 0x04000107 RID: 263
 		private readonly IList<DictionaryStyle> styles;
 
-		// Token: 0x040002CF RID: 719
+		// Token: 0x04000108 RID: 264
 		private ICollectionView languages;
 
-		// Token: 0x040002D0 RID: 720
+		// Token: 0x04000109 RID: 265
 		private ICollectionView stylesView;
 
-		// Token: 0x040002D1 RID: 721
+		// Token: 0x0400010A RID: 266
 		private List<ThemeStyle> themeList = new List<ThemeStyle>
 		{
 			new ThemeStyle("ThemeDark"),
@@ -261,7 +266,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 			new ThemeStyle("ThemeHighContrast")
 		};
 
-		// Token: 0x040002D2 RID: 722
+		// Token: 0x0400010B RID: 267
 		private bool reloadTheme = true;
 	}
 }

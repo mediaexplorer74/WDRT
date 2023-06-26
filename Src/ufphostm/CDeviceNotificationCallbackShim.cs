@@ -3,6 +3,6 @@ using System.Runtime.CompilerServices;
 
 // Token: 0x02000047 RID: 71
 [NativeCppClass]
-public struct CDeviceNotificationCallbackShim
+internal struct CDeviceNotificationCallbackShim
 {
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using ComponentAce.Compression.Archiver;
-using ComponentAce.Compression.Exception1;
+using ComponentAce.Compression.Exception;
 
 namespace ComponentAce.Compression.Tar
 {
@@ -52,10 +52,7 @@ namespace ComponentAce.Compression.Tar
 			}
 			if (!stream.CanWrite)
 			{
-				throw ExceptionBuilder.Exception(ErrorCode.StreamDoesNotSupportWriting, new object[]
-				{
-					"stream"
-				});
+				throw ExceptionBuilder.Exception(ErrorCode.StreamDoesNotSupportWriting, new object[] { "stream" });
 			}
 			bool flag = false;
 			bool flag2;
@@ -71,13 +68,13 @@ namespace ComponentAce.Compression.Tar
 					flag2 = true;
 					break;
 				}
-				catch (IOException innerException)
+				catch (IOException ex)
 				{
 					if (writeToStreamFailureDelegate == null)
 					{
 						throw;
 					}
-					writeToStreamFailureDelegate(innerException, ref flag);
+					writeToStreamFailureDelegate(ex, ref flag);
 					flag2 = true;
 				}
 			}
@@ -114,32 +111,29 @@ namespace ComponentAce.Compression.Tar
 			}
 			if (!stream.CanRead)
 			{
-				throw ExceptionBuilder.Exception(ErrorCode.StreamDoesNotSupportReading, new object[]
-				{
-					"stream"
-				});
+				throw ExceptionBuilder.Exception(ErrorCode.StreamDoesNotSupportReading, new object[] { "stream" });
 			}
 			readedBytesCount = 0;
 			MemoryStream memoryStream = new MemoryStream();
-			byte[] buffer2 = new byte[count];
+			byte[] array = new byte[count];
 			bool flag = false;
 			bool flag2;
 			do
 			{
 				try
 				{
-					readedBytesCount = stream.Read(buffer2, 0, count);
+					readedBytesCount = stream.Read(array, 0, count);
 					if (readedBytesCount > 0)
 					{
-						memoryStream.Write(buffer2, 0, readedBytesCount);
+						memoryStream.Write(array, 0, readedBytesCount);
 						while (count - readedBytesCount > 0)
 						{
-							int num = stream.Read(buffer2, 0, count - readedBytesCount);
+							int num = stream.Read(array, 0, count - readedBytesCount);
 							if (num == 0)
 							{
 								break;
 							}
-							memoryStream.Write(buffer2, 0, num);
+							memoryStream.Write(array, 0, num);
 							readedBytesCount += num;
 						}
 					}
@@ -150,13 +144,13 @@ namespace ComponentAce.Compression.Tar
 					flag2 = true;
 					break;
 				}
-				catch (IOException innerException)
+				catch (IOException ex)
 				{
 					if (readFromStreamFailureDelegate == null)
 					{
 						throw;
 					}
-					readFromStreamFailureDelegate(innerException, ref flag);
+					readFromStreamFailureDelegate(ex, ref flag);
 					flag2 = true;
 				}
 			}
@@ -164,11 +158,7 @@ namespace ComponentAce.Compression.Tar
 			memoryStream.Seek(0L, SeekOrigin.Begin);
 			if (memoryStream.Length != (long)count)
 			{
-				throw ExceptionBuilder.Exception(ErrorCode.InvalidReadedBytesCount, new object[]
-				{
-					count,
-					memoryStream.Length
-				});
+				throw ExceptionBuilder.Exception(ErrorCode.InvalidReadedBytesCount, new object[] { count, memoryStream.Length });
 			}
 			Buffer.BlockCopy(memoryStream.ToArray(), 0, buffer, offset, (int)memoryStream.Length);
 			return !flag2;

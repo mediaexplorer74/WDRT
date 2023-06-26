@@ -10,7 +10,7 @@ namespace Nokia.Lucid.IsiStream
 		// Token: 0x06000049 RID: 73 RVA: 0x000027B8 File Offset: 0x000009B8
 		public static byte LeaseObjectId()
 		{
-			byte result;
+			byte b;
 			try
 			{
 				int num = Enumerable.Range(1, 239).Except(PhonetObjectIdManager.ObjectIds).First<int>();
@@ -18,13 +18,13 @@ namespace Nokia.Lucid.IsiStream
 				{
 					PhonetObjectIdManager.ObjectIds.Add(num);
 				}
-				result = (byte)num;
+				b = (byte)num;
 			}
 			catch (Exception)
 			{
 				throw new IndexOutOfRangeException("Max amount of streams already created, all ObjectIds already in use");
 			}
-			return result;
+			return b;
 		}
 
 		// Token: 0x0600004A RID: 74 RVA: 0x00002810 File Offset: 0x00000A10

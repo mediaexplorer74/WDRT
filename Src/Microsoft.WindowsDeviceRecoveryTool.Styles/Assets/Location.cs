@@ -2,10 +2,10 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Styles.Assets
 {
-	// Token: 0x02000006 RID: 6
+	// Token: 0x0200001A RID: 26
 	public class Location
 	{
-		// Token: 0x0600001C RID: 28 RVA: 0x0000248D File Offset: 0x0000068D
+		// Token: 0x06000089 RID: 137 RVA: 0x000038A5 File Offset: 0x00001AA5
 		public Location(string countryNativeName, string countryEnglishName, string ietfLanguageTag, int geoId)
 		{
 			this.CountryNativeName = countryNativeName;
@@ -14,23 +14,24 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Styles.Assets
 			this.GeoId = geoId;
 		}
 
-		// Token: 0x17000008 RID: 8
-		// (get) Token: 0x0600001D RID: 29 RVA: 0x000024BC File Offset: 0x000006BC
-		// (set) Token: 0x0600001E RID: 30 RVA: 0x0000250B File Offset: 0x0000070B
+		// Token: 0x1700000C RID: 12
+		// (get) Token: 0x0600008A RID: 138 RVA: 0x000038D0 File Offset: 0x00001AD0
+		// (set) Token: 0x0600008B RID: 139 RVA: 0x0000391C File Offset: 0x00001B1C
 		public string CountryNativeName
 		{
 			get
 			{
-				string result;
-				if (this.countryNativeName == this.CountryEnglishName)
+				bool flag = this.countryNativeName == this.CountryEnglishName;
+				string text;
+				if (flag)
 				{
-					result = this.countryNativeName;
+					text = this.countryNativeName;
 				}
 				else
 				{
-					result = this.countryNativeName + " (" + this.CountryEnglishName + ")";
+					text = this.countryNativeName + " (" + this.CountryEnglishName + ")";
 				}
-				return result;
+				return text;
 			}
 			private set
 			{
@@ -38,22 +39,22 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Styles.Assets
 			}
 		}
 
-		// Token: 0x17000009 RID: 9
-		// (get) Token: 0x0600001F RID: 31 RVA: 0x00002518 File Offset: 0x00000718
-		// (set) Token: 0x06000020 RID: 32 RVA: 0x0000252F File Offset: 0x0000072F
+		// Token: 0x1700000D RID: 13
+		// (get) Token: 0x0600008C RID: 140 RVA: 0x00003926 File Offset: 0x00001B26
+		// (set) Token: 0x0600008D RID: 141 RVA: 0x0000392E File Offset: 0x00001B2E
 		public string CountryEnglishName { get; private set; }
 
-		// Token: 0x1700000A RID: 10
-		// (get) Token: 0x06000021 RID: 33 RVA: 0x00002538 File Offset: 0x00000738
-		// (set) Token: 0x06000022 RID: 34 RVA: 0x0000254F File Offset: 0x0000074F
+		// Token: 0x1700000E RID: 14
+		// (get) Token: 0x0600008E RID: 142 RVA: 0x00003937 File Offset: 0x00001B37
+		// (set) Token: 0x0600008F RID: 143 RVA: 0x0000393F File Offset: 0x00001B3F
 		public string IetfLanguageTag { get; private set; }
 
-		// Token: 0x1700000B RID: 11
-		// (get) Token: 0x06000023 RID: 35 RVA: 0x00002558 File Offset: 0x00000758
-		// (set) Token: 0x06000024 RID: 36 RVA: 0x0000256F File Offset: 0x0000076F
+		// Token: 0x1700000F RID: 15
+		// (get) Token: 0x06000090 RID: 144 RVA: 0x00003948 File Offset: 0x00001B48
+		// (set) Token: 0x06000091 RID: 145 RVA: 0x00003950 File Offset: 0x00001B50
 		public int GeoId { get; private set; }
 
-		// Token: 0x04000008 RID: 8
+		// Token: 0x04000020 RID: 32
 		private string countryNativeName;
 	}
 }

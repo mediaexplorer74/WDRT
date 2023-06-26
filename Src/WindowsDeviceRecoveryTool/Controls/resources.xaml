@@ -1,6 +1,7 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:presentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
 	<DrawingImage
-		x:Key="VariantPackageImage">
+		x:Key="VariantPackageImage"
+		presentationOptions:Freeze="True">
 		<DrawingImage.Drawing>
 			<DrawingGroup>
 				<GeometryDrawing
@@ -14,14 +15,15 @@
 					Brush="{DynamicResource ProgressBarForegroundThemeBrush}">
 					<GeometryDrawing.Geometry>
 						<PathGeometry
-							Figures="M0,0 M11,8 H20 V16 H28 V31 H11 M22,8 V14 H28 M40,40" />
+							PathGeometry.Figures="M0,0 M11,8 H20 V16 H28 V31 H11 M22,8 V14 H28 M40,40" />
 					</GeometryDrawing.Geometry>
 				</GeometryDrawing>
 			</DrawingGroup>
 		</DrawingImage.Drawing>
 	</DrawingImage>
 	<DrawingImage
-		x:Key="DeviceIconImage">
+		x:Key="DeviceIconImage"
+		presentationOptions:Freeze="True">
 		<DrawingImage.Drawing>
 			<DrawingGroup>
 				<GeometryDrawing
@@ -35,7 +37,7 @@
 					Brush="{DynamicResource ProgressBarForegroundThemeBrush}">
 					<GeometryDrawing.Geometry>
 						<PathGeometry
-							Figures="M23,87.5 L23,96.5 35.5,96.5 35.5,87.5 z M5.5,8.5 L5.5,83 53.5,83 53.5,8.5 z M0.5,0.5 L5.5,0.5 53.5,0.5 58.5,0.5 58.5,8.5 58.5,83 58.5,101.5 53.5,101.5 5.5,101.5 0.5,101.5 0.5,83 0.5,8.5">
+							PathGeometry.Figures="M23,87.5 L23,96.5 35.5,96.5 35.5,87.5 z M5.5,8.5 L5.5,83 53.5,83 53.5,8.5 z M0.5,0.5 L5.5,0.5 53.5,0.5 58.5,0.5 58.5,8.5 58.5,83 58.5,101.5 53.5,101.5 5.5,101.5 0.5,101.5 0.5,83 0.5,8.5">
 							<Geometry.Transform>
 								<TranslateTransform
 									X="30"
@@ -48,7 +50,8 @@
 		</DrawingImage.Drawing>
 	</DrawingImage>
 	<DrawingImage
-		x:Key="FawkesDeviceIconImage">
+		x:Key="FawkesDeviceIconImage"
+		presentationOptions:Freeze="True">
 		<DrawingImage.Drawing>
 			<GeometryDrawing
 				Brush="{DynamicResource ProgressBarForegroundThemeBrush}">
@@ -62,7 +65,8 @@
 		</DrawingImage.Drawing>
 	</DrawingImage>
 	<DrawingImage
-		x:Key="AnalogDeviceIconImage">
+		x:Key="AnalogDeviceIconImage"
+		presentationOptions:Freeze="True">
 		<DrawingImage.Drawing>
 			<GeometryDrawing
 				Brush="{DynamicResource ProgressBarForegroundThemeBrush}">

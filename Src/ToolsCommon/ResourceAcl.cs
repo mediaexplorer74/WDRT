@@ -8,24 +8,20 @@ using System.Xml.Serialization;
 
 namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 {
-	// Token: 0x02000040 RID: 64
+	// Token: 0x0200004E RID: 78
 	public abstract class ResourceAcl
 	{
-		// Token: 0x17000021 RID: 33
-		// (get) Token: 0x0600018D RID: 397 RVA: 0x00008B32 File Offset: 0x00006D32
-		// (set) Token: 0x0600018E RID: 398 RVA: 0x00008B5D File Offset: 0x00006D5D
+		// Token: 0x17000026 RID: 38
+		// (get) Token: 0x060001A6 RID: 422 RVA: 0x0000940C File Offset: 0x0000760C
+		// (set) Token: 0x060001A7 RID: 423 RVA: 0x00009428 File Offset: 0x00007628
 		[XmlAttribute("DACL")]
 		public string ExplicitDACL
 		{
 			get
 			{
-				if (!this.m_explicitDaclProcessed)
+				if (this.m_nos != null)
 				{
-					this.m_explicitDaclProcessed = true;
-					if (this.m_nos != null)
-					{
-						this.m_explicitDacl = this.ComputeExplicitDACL();
-					}
+					this.m_explicitDacl = this.ComputeExplicitDACL();
 				}
 				return this.m_explicitDacl;
 			}
@@ -35,21 +31,21 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x17000022 RID: 34
-		// (get) Token: 0x0600018F RID: 399
-		// (set) Token: 0x06000190 RID: 400
+		// Token: 0x17000027 RID: 39
+		// (get) Token: 0x060001A8 RID: 424
+		// (set) Token: 0x060001A9 RID: 425
 		[XmlAttribute("SACL")]
 		public abstract string MandatoryIntegrityLabel { get; set; }
 
-		// Token: 0x17000023 RID: 35
-		// (get) Token: 0x06000191 RID: 401 RVA: 0x00008B66 File Offset: 0x00006D66
-		// (set) Token: 0x06000192 RID: 402 RVA: 0x00008BA2 File Offset: 0x00006DA2
+		// Token: 0x17000028 RID: 40
+		// (get) Token: 0x060001AA RID: 426 RVA: 0x00009431 File Offset: 0x00007631
+		// (set) Token: 0x060001AB RID: 427 RVA: 0x00009465 File Offset: 0x00007665
 		[XmlAttribute("Owner")]
 		public string Owner
 		{
 			get
 			{
-				if (this.m_owner == null && this.m_nos != null)
+				if (this.m_nos != null)
 				{
 					this.m_owner = this.m_nos.GetSecurityDescriptorSddlForm(AccessControlSections.Owner | AccessControlSections.Group);
 					this.m_owner = SddlNormalizer.FixOwnerSddl(this.m_owner);
@@ -62,15 +58,15 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x17000024 RID: 36
-		// (get) Token: 0x06000193 RID: 403 RVA: 0x00008BAC File Offset: 0x00006DAC
-		// (set) Token: 0x06000194 RID: 404 RVA: 0x00008C1F File Offset: 0x00006E1F
+		// Token: 0x17000029 RID: 41
+		// (get) Token: 0x060001AC RID: 428 RVA: 0x00009470 File Offset: 0x00007670
+		// (set) Token: 0x060001AD RID: 429 RVA: 0x000094DB File Offset: 0x000076DB
 		[XmlAttribute]
 		public string ElementID
 		{
 			get
 			{
-				if (this.m_elementId == null && !string.IsNullOrEmpty(this.m_path))
+				if (!string.IsNullOrEmpty(this.m_path))
 				{
 					StringBuilder stringBuilder = new StringBuilder();
 					stringBuilder.Append(this.TypeString);
@@ -85,9 +81,9 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x17000025 RID: 37
-		// (get) Token: 0x06000195 RID: 405 RVA: 0x00008C28 File Offset: 0x00006E28
-		// (set) Token: 0x06000196 RID: 406 RVA: 0x00008CE8 File Offset: 0x00006EE8
+		// Token: 0x1700002A RID: 42
+		// (get) Token: 0x060001AE RID: 430 RVA: 0x000094E4 File Offset: 0x000076E4
+		// (set) Token: 0x060001AF RID: 431 RVA: 0x000095A4 File Offset: 0x000077A4
 		[XmlAttribute]
 		public virtual string AttributeHash
 		{
@@ -124,9 +120,9 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x17000026 RID: 38
-		// (get) Token: 0x06000197 RID: 407 RVA: 0x00008CF1 File Offset: 0x00006EF1
-		// (set) Token: 0x06000198 RID: 408 RVA: 0x00008CF9 File Offset: 0x00006EF9
+		// Token: 0x1700002B RID: 43
+		// (get) Token: 0x060001B0 RID: 432 RVA: 0x000095AD File Offset: 0x000077AD
+		// (set) Token: 0x060001B1 RID: 433 RVA: 0x000095B5 File Offset: 0x000077B5
 		[XmlAttribute]
 		public string Path
 		{
@@ -140,9 +136,9 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x17000027 RID: 39
-		// (get) Token: 0x06000199 RID: 409 RVA: 0x00008D02 File Offset: 0x00006F02
-		// (set) Token: 0x0600019A RID: 410 RVA: 0x00008D30 File Offset: 0x00006F30
+		// Token: 0x1700002C RID: 44
+		// (get) Token: 0x060001B2 RID: 434 RVA: 0x000095BE File Offset: 0x000077BE
+		// (set) Token: 0x060001B3 RID: 435 RVA: 0x000095EC File Offset: 0x000077EC
 		[XmlIgnore]
 		public string Protected
 		{
@@ -164,23 +160,18 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x17000028 RID: 40
-		// (get) Token: 0x0600019B RID: 411 RVA: 0x00008D4C File Offset: 0x00006F4C
+		// Token: 0x1700002D RID: 45
+		// (get) Token: 0x060001B4 RID: 436 RVA: 0x00009608 File Offset: 0x00007808
 		public bool IsEmpty
 		{
 			get
 			{
-				if (!this.m_isEmptyProcessed)
-				{
-					this.m_isEmptyProcessed = true;
-					this.m_isEmpty = (string.IsNullOrEmpty(this.ExplicitDACL) && string.IsNullOrEmpty(this.MandatoryIntegrityLabel) && !this.DACLProtected);
-				}
-				return this.m_isEmpty;
+				return string.IsNullOrEmpty(this.ExplicitDACL) && string.IsNullOrEmpty(this.MandatoryIntegrityLabel) && !this.DACLProtected;
 			}
 		}
 
-		// Token: 0x17000029 RID: 41
-		// (get) Token: 0x0600019C RID: 412 RVA: 0x00008D9C File Offset: 0x00006F9C
+		// Token: 0x1700002E RID: 46
+		// (get) Token: 0x060001B5 RID: 437 RVA: 0x00009640 File Offset: 0x00007840
 		public string DACL
 		{
 			get
@@ -198,23 +189,23 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x1700002A RID: 42
-		// (get) Token: 0x0600019D RID: 413 RVA: 0x00008DE4 File Offset: 0x00006FE4
+		// Token: 0x1700002F RID: 47
+		// (get) Token: 0x060001B6 RID: 438 RVA: 0x00009688 File Offset: 0x00007888
 		public string FullACL
 		{
 			get
 			{
-				string result = string.Empty;
+				string text = string.Empty;
 				if (this.m_nos != null)
 				{
-					result = this.m_nos.GetSecurityDescriptorSddlForm(AccessControlSections.All);
+					text = this.m_nos.GetSecurityDescriptorSddlForm(AccessControlSections.All);
 				}
-				return result;
+				return text;
 			}
 		}
 
-		// Token: 0x1700002B RID: 43
-		// (get) Token: 0x0600019E RID: 414 RVA: 0x00008E0E File Offset: 0x0000700E
+		// Token: 0x17000030 RID: 48
+		// (get) Token: 0x060001B7 RID: 439 RVA: 0x000096B2 File Offset: 0x000078B2
 		public static ResourceAclComparer Comparer
 		{
 			get
@@ -223,16 +214,16 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x1700002C RID: 44
-		// (get) Token: 0x0600019F RID: 415
+		// Token: 0x17000031 RID: 49
+		// (get) Token: 0x060001B8 RID: 440
 		public abstract NativeObjectSecurity ObjectSecurity { get; }
 
-		// Token: 0x1700002D RID: 45
-		// (get) Token: 0x060001A0 RID: 416
+		// Token: 0x17000032 RID: 50
+		// (get) Token: 0x060001B9 RID: 441
 		protected abstract string TypeString { get; }
 
-		// Token: 0x1700002E RID: 46
-		// (get) Token: 0x060001A1 RID: 417 RVA: 0x00008E15 File Offset: 0x00007015
+		// Token: 0x17000033 RID: 51
+		// (get) Token: 0x060001BA RID: 442 RVA: 0x000096B9 File Offset: 0x000078B9
 		protected AuthorizationRuleCollection AccessRules
 		{
 			get
@@ -245,8 +236,8 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x1700002F RID: 47
-		// (get) Token: 0x060001A2 RID: 418 RVA: 0x00008E4A File Offset: 0x0000704A
+		// Token: 0x17000034 RID: 52
+		// (get) Token: 0x060001BB RID: 443 RVA: 0x000096EE File Offset: 0x000078EE
 		public bool PreserveInheritance
 		{
 			get
@@ -255,8 +246,8 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x17000030 RID: 48
-		// (get) Token: 0x060001A3 RID: 419 RVA: 0x00008E75 File Offset: 0x00007075
+		// Token: 0x17000035 RID: 53
+		// (get) Token: 0x060001BC RID: 444 RVA: 0x00009719 File Offset: 0x00007919
 		public bool DACLProtected
 		{
 			get
@@ -265,63 +256,51 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x060001A4 RID: 420
+		// Token: 0x060001BD RID: 445
 		protected abstract string ComputeExplicitDACL();
 
-		// Token: 0x040000CC RID: 204
+		// Token: 0x0400012F RID: 303
 		protected string m_explicitDacl;
 
-		// Token: 0x040000CD RID: 205
-		protected bool m_explicitDaclProcessed;
-
-		// Token: 0x040000CE RID: 206
+		// Token: 0x04000130 RID: 304
 		protected string m_macLabel;
 
-		// Token: 0x040000CF RID: 207
-		protected bool m_macLablelProcessed;
-
-		// Token: 0x040000D0 RID: 208
+		// Token: 0x04000131 RID: 305
 		protected string m_owner;
 
-		// Token: 0x040000D1 RID: 209
+		// Token: 0x04000132 RID: 306
 		protected string m_elementId;
 
-		// Token: 0x040000D2 RID: 210
+		// Token: 0x04000133 RID: 307
 		protected string m_attributeHash;
 
-		// Token: 0x040000D3 RID: 211
+		// Token: 0x04000134 RID: 308
 		protected string m_path;
 
-		// Token: 0x040000D4 RID: 212
+		// Token: 0x04000135 RID: 309
 		protected bool m_isProtected;
 
-		// Token: 0x040000D5 RID: 213
-		protected bool m_isEmptyProcessed;
-
-		// Token: 0x040000D6 RID: 214
-		protected bool m_isEmpty;
-
-		// Token: 0x040000D7 RID: 215
+		// Token: 0x04000136 RID: 310
 		private static readonly ResourceAclComparer ResourceAclComparer = new ResourceAclComparer();
 
-		// Token: 0x040000D8 RID: 216
+		// Token: 0x04000137 RID: 311
 		[CLSCompliant(false)]
 		protected NativeObjectSecurity m_nos;
 
-		// Token: 0x040000D9 RID: 217
+		// Token: 0x04000138 RID: 312
 		[CLSCompliant(false)]
 		protected AuthorizationRuleCollection m_accessRules;
 
-		// Token: 0x040000DA RID: 218
+		// Token: 0x04000139 RID: 313
 		protected string m_fullPath = string.Empty;
 
-		// Token: 0x040000DB RID: 219
+		// Token: 0x0400013A RID: 314
 		protected static readonly Regex regexExtractMIL = new Regex("(?<MIL>\\(ML[^\\)]*\\))", RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
-		// Token: 0x040000DC RID: 220
+		// Token: 0x0400013B RID: 315
 		protected static readonly Regex regexStripDacl = new Regex("^D:", RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
-		// Token: 0x040000DD RID: 221
+		// Token: 0x0400013C RID: 316
 		protected static readonly Regex regexStripDriveLetter = new Regex("^[A-Z]:", RegexOptions.IgnoreCase | RegexOptions.Compiled);
 	}
 }

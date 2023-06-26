@@ -18,7 +18,8 @@ namespace ComponentAce.Compression.ZipForge
 		}
 
 		// Token: 0x060006E9 RID: 1769 RVA: 0x0002AFA9 File Offset: 0x00029FA9
-		public Zip64ExtraFieldData() : this(0L, 0L, 0L, 0U)
+		public Zip64ExtraFieldData()
+			: this(0L, 0L, 0L, 0U)
 		{
 		}
 
@@ -28,30 +29,30 @@ namespace ComponentAce.Compression.ZipForge
 			BinaryReader binaryReader = new BinaryReader(source);
 			ushort num = binaryReader.ReadUInt16();
 			ushort num2 = 0;
-			long uncompSize = -1L;
-			long compSize = -1L;
-			long localHeaderOffset = -1L;
-			uint diskNumberStart = uint.MaxValue;
-			if (item.UncompressedSize == (long)((int)-1))
+			long num3 = -1L;
+			long num4 = -1L;
+			long num5 = -1L;
+			uint num6 = uint.MaxValue;
+			if (item.UncompressedSize == (long)((ulong)(-1)))
 			{
-				uncompSize = binaryReader.ReadInt64();
+				num3 = binaryReader.ReadInt64();
 				num2 += 8;
 			}
-			if (item.CompressedSize == (long)((int)-1))
+			if (item.CompressedSize == (long)((ulong)(-1)))
 			{
-				compSize = binaryReader.ReadInt64();
+				num4 = binaryReader.ReadInt64();
 				num2 += 8;
 			}
-			if (item.RelativeLocalHeaderOffset == (long)((int)-1))
+			if (item.RelativeLocalHeaderOffset == (long)((ulong)(-1)))
 			{
-				localHeaderOffset = binaryReader.ReadInt64();
+				num5 = binaryReader.ReadInt64();
 				num2 += 8;
 			}
 			if (num2 < num)
 			{
-				diskNumberStart = binaryReader.ReadUInt32();
+				num6 = binaryReader.ReadUInt32();
 			}
-			return new Zip64ExtraFieldData(uncompSize, compSize, localHeaderOffset, diskNumberStart);
+			return new Zip64ExtraFieldData(num3, num4, num5, num6);
 		}
 
 		// Token: 0x060006EB RID: 1771 RVA: 0x0002B03F File Offset: 0x0002A03F

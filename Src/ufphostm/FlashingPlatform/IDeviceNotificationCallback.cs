@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-namespace FlashingPlatform1
+namespace FlashingPlatform
 {
 	// Token: 0x02000086 RID: 134
 	[NativeCppClass]
-    public struct IDeviceNotificationCallback
+	internal struct IDeviceNotificationCallback
 	{
 	}
 }

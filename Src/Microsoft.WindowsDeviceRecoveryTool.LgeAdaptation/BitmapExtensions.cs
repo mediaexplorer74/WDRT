@@ -11,14 +11,14 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LgeAdaptation
 		// Token: 0x06000001 RID: 1 RVA: 0x00002050 File Offset: 0x00000250
 		public static byte[] ToBytes(this Bitmap bitmap)
 		{
-			byte[] result;
+			byte[] array;
 			using (MemoryStream memoryStream = new MemoryStream())
 			{
 				bitmap.Save(memoryStream, ImageFormat.Png);
 				memoryStream.Seek(0L, SeekOrigin.Begin);
-				result = memoryStream.ToArray();
+				array = memoryStream.ToArray();
 			}
-			return result;
+			return array;
 		}
 	}
 }

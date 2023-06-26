@@ -1,19 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{ADEE4BCD-BE8F-4EC5-8D00-AA6442B86415}</ProjectGuid>
+    <ProjectGuid>{8C726962-D7A3-4054-B90F-0583259F9671}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Microsoft.WindowsDeviceRecoveryTool.Lucid</RootNamespace>
     <AssemblyName>Microsoft.WindowsDeviceRecoveryTool.Lucid</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFramework>net48</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+  <PropertyGroup>
+    <NoStdLib>True</NoStdLib>
+    <EnableDefaultItems>False</EnableDefaultItems>
+  </PropertyGroup>
+  <PropertyGroup />
+
+   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -21,23 +24,19 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.Core" />
-  </ItemGroup>
-  <ItemGroup>
-    <AppDesigner Include="Properties\" />
-  </ItemGroup>
+ 
   <ItemGroup>
     <Compile Include="ILucidService.cs" />
     <Compile Include="LucidExtensions.cs" />
@@ -52,17 +51,24 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Common\Microsoft.WindowsDeviceRecoveryTool.Common.csproj">
-      <Project>{64a43b64-7647-425c-b0e6-2e27da6dbdda}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9660}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Core\Microsoft.WindowsDeviceRecoveryTool.Core.csproj">
-      <Project>{55a80c0e-e3d4-43eb-8c91-d6ef18bfa9dc}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9661}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\mscorlib\mscorlib.csproj">
+      <Project>{8C726962-D7A3-4054-B90F-0583259F968E}</Project>
+      <Name>mscorlib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Nokia.Lucid\Nokia.Lucid.csproj">
-      <Project>{0ba1a6f4-e417-4ab3-ab1d-264cc7735f25}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9683}</Project>
       <Name>Nokia.Lucid</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
 </Project>

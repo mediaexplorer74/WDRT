@@ -2,74 +2,74 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model.Enums
 {
-	// Token: 0x02000027 RID: 39
+	// Token: 0x02000043 RID: 67
 	public enum PhoneTypes
 	{
-		// Token: 0x040000D0 RID: 208
+		// Token: 0x04000109 RID: 265
 		All = -1,
-		// Token: 0x040000D1 RID: 209
+		// Token: 0x0400010A RID: 266
 		Lumia,
-		// Token: 0x040000D2 RID: 210
+		// Token: 0x0400010B RID: 267
 		Htc,
-		// Token: 0x040000D3 RID: 211
+		// Token: 0x0400010C RID: 268
 		Analog,
-		// Token: 0x040000D4 RID: 212
+		// Token: 0x0400010D RID: 269
 		Lg,
-		// Token: 0x040000D5 RID: 213
+		// Token: 0x0400010E RID: 270
 		Mcj,
-		// Token: 0x040000D6 RID: 214
+		// Token: 0x0400010F RID: 271
 		Blu,
-		// Token: 0x040000D7 RID: 215
+		// Token: 0x04000110 RID: 272
 		Alcatel,
-		// Token: 0x040000D8 RID: 216
+		// Token: 0x04000111 RID: 273
 		HoloLensAccessory,
-		// Token: 0x040000D9 RID: 217
+		// Token: 0x04000112 RID: 274
 		Acer,
-		// Token: 0x040000DA RID: 218
+		// Token: 0x04000113 RID: 275
 		Trinity,
-		// Token: 0x040000DB RID: 219
+		// Token: 0x04000114 RID: 276
 		Unistrong,
-		// Token: 0x040000DC RID: 220
+		// Token: 0x04000115 RID: 277
 		YEZZ,
-		// Token: 0x040000DD RID: 221
+		// Token: 0x04000116 RID: 278
 		Micromax,
-		// Token: 0x040000DE RID: 222
+		// Token: 0x04000117 RID: 279
 		Funker,
-		// Token: 0x040000DF RID: 223
+		// Token: 0x04000118 RID: 280
 		Diginnos,
-		// Token: 0x040000E0 RID: 224
+		// Token: 0x04000119 RID: 281
 		VAIO,
-		// Token: 0x040000E1 RID: 225
+		// Token: 0x0400011A RID: 282
 		HP,
-		// Token: 0x040000E2 RID: 226
+		// Token: 0x0400011B RID: 283
 		Inversenet,
-		// Token: 0x040000E3 RID: 227
+		// Token: 0x0400011C RID: 284
 		Freetel,
-		// Token: 0x040000E4 RID: 228
+		// Token: 0x0400011D RID: 285
 		XOLO,
-		// Token: 0x040000E5 RID: 229
+		// Token: 0x0400011E RID: 286
 		KM,
-		// Token: 0x040000E6 RID: 230
+		// Token: 0x0400011F RID: 287
 		Jenesis,
-		// Token: 0x040000E7 RID: 231
+		// Token: 0x04000120 RID: 288
 		Gomobile,
-		// Token: 0x040000E8 RID: 232
+		// Token: 0x04000121 RID: 289
 		Lenovo,
-		// Token: 0x040000E9 RID: 233
+		// Token: 0x04000122 RID: 290
 		Zebra,
-		// Token: 0x040000EA RID: 234
+		// Token: 0x04000123 RID: 291
 		Honeywell,
-		// Token: 0x040000EB RID: 235
+		// Token: 0x04000124 RID: 292
 		Panasonic,
-		// Token: 0x040000EC RID: 236
+		// Token: 0x04000125 RID: 293
 		TrekStor,
-		// Token: 0x040000ED RID: 237
+		// Token: 0x04000126 RID: 294
 		Wileyfox,
-		// Token: 0x040000EE RID: 238
+		// Token: 0x04000127 RID: 295
 		UnknownWp = 98,
-		// Token: 0x040000EF RID: 239
+		// Token: 0x04000128 RID: 296
 		Generic,
-		// Token: 0x040000F0 RID: 240
+		// Token: 0x04000129 RID: 297
 		None
 	}
 }

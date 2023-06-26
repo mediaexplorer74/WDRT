@@ -37,10 +37,7 @@ namespace FFUComponents
 		{
 			try
 			{
-				this.LogString("FlashingInitialized", sessionId, new string[]
-				{
-					optimizeHint.ToString()
-				});
+				this.LogString("FlashingInitialized", sessionId, new string[] { optimizeHint.ToString() });
 				this.LogString("DeviceInfo", sessionId, new string[]
 				{
 					device.GetType().Name,
@@ -89,8 +86,8 @@ namespace FFUComponents
 			}
 			FileInfo fileInfo = new FileInfo(ffuFilePath);
 			float num = (float)fileInfo.Length / 1024f / 1024f;
-			float flashingSpeed = num / ((float)flashingStopwatch.ElapsedMilliseconds / 1000f);
-			this.LogFlashingCompleted(sessionId, flashingStopwatch.Elapsed.TotalSeconds, flashingSpeed, device);
+			float num2 = num / ((float)flashingStopwatch.ElapsedMilliseconds / 1000f);
+			this.LogFlashingCompleted(sessionId, flashingStopwatch.Elapsed.TotalSeconds, num2, device);
 			this.LogString("FFUInfo", sessionId, new string[]
 			{
 				ffuFilePath,
@@ -105,20 +102,14 @@ namespace FFUComponents
 			this.LogFlashingFailed(sessionId, e.Message);
 			if (e.InnerException != null)
 			{
-				this.LogString("FlashingException", sessionId, new string[]
-				{
-					e.InnerException.ToString()
-				});
+				this.LogString("FlashingException", sessionId, new string[] { e.InnerException.ToString() });
 			}
 		}
 
 		// Token: 0x0600022E RID: 558 RVA: 0x0000A684 File Offset: 0x00008884
 		public void LogThorDeviceUSBConnectionType(Guid sessionId, ConnectionType connectionType)
 		{
-			this.LogString("ThorDeviceUSBConnectionType", sessionId, new string[]
-			{
-				connectionType.ToString()
-			});
+			this.LogString("ThorDeviceUSBConnectionType", sessionId, new string[] { connectionType.ToString() });
 		}
 
 		// Token: 0x0600022F RID: 559 RVA: 0x0000B2E0 File Offset: 0x000094E0
@@ -186,9 +177,9 @@ namespace FFUComponents
 			default:
 			{
 				StringBuilder stringBuilder = new StringBuilder();
-				foreach (string value in values)
+				foreach (string text in values)
 				{
-					stringBuilder.Append(value);
+					stringBuilder.Append(text);
 					stringBuilder.Append(";");
 				}
 				this.logger.Write("Flashing", this.telemetryOptionMeasures, new
@@ -235,11 +226,7 @@ namespace FFUComponents
 			}
 			catch (Exception ex)
 			{
-				this.LogString("GetFFUFileLocationFailed", sessionId, new string[]
-				{
-					ffuFilePath,
-					ex.Message
-				});
+				this.LogString("GetFFUFileLocationFailed", sessionId, new string[] { ffuFilePath, ex.Message });
 			}
 		}
 
@@ -257,10 +244,7 @@ namespace FFUComponents
 		// Token: 0x06000232 RID: 562 RVA: 0x0000B53C File Offset: 0x0000973C
 		private void LogFlashingFailed(Guid sessionId, string message)
 		{
-			this.LogString("FlashingFailed", sessionId, new string[]
-			{
-				message
-			});
+			this.LogString("FlashingFailed", sessionId, new string[] { message });
 		}
 
 		// Token: 0x06000233 RID: 563 RVA: 0x0000B564 File Offset: 0x00009764
@@ -295,10 +279,10 @@ namespace FFUComponents
 				using (BinaryReader binaryReader = new BinaryReader(new FileStream(ffuFilePath, FileMode.Open, FileAccess.Read)))
 				{
 					int num = 52428800;
-					byte[] buffer = new byte[num];
+					byte[] array = new byte[num];
 					Stopwatch stopwatch = new Stopwatch();
 					stopwatch.Start();
-					binaryReader.Read(buffer, 0, num);
+					binaryReader.Read(array, 0, num);
 					stopwatch.Stop();
 					this.LogString("FFUReadSpeed", sessionId, new string[]
 					{
@@ -310,11 +294,7 @@ namespace FFUComponents
 			}
 			catch (Exception ex)
 			{
-				this.LogString("GetFFUReadSpeedFailed", sessionId, new string[]
-				{
-					ffuFilePath,
-					ex.Message
-				});
+				this.LogString("GetFFUReadSpeedFailed", sessionId, new string[] { ffuFilePath, ex.Message });
 			}
 		}
 

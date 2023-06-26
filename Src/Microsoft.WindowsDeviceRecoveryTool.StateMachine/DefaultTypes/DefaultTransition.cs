@@ -3,15 +3,16 @@ using Microsoft.WindowsDeviceRecoveryTool.StateMachine.BaseTypes;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.DefaultTypes
 {
-	// Token: 0x0200000A RID: 10
+	// Token: 0x02000007 RID: 7
 	public class DefaultTransition : BaseTransition
 	{
-		// Token: 0x0600005A RID: 90 RVA: 0x000033F4 File Offset: 0x000015F4
-		public DefaultTransition(BaseState state) : base(state)
+		// Token: 0x0600000E RID: 14 RVA: 0x00002100 File Offset: 0x00000300
+		public DefaultTransition(BaseState state)
+			: base(state)
 		{
 		}
 
-		// Token: 0x0600005B RID: 91 RVA: 0x00003400 File Offset: 0x00001600
+		// Token: 0x0600000F RID: 15 RVA: 0x0000210C File Offset: 0x0000030C
 		public override bool ConditionsAreMet(object sender, TransitionEventArgs eventArgs)
 		{
 			return true;

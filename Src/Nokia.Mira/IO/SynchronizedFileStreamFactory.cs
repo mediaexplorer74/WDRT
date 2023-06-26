@@ -14,7 +14,7 @@ namespace Nokia.Mira.IO
 		// Token: 0x0600003D RID: 61 RVA: 0x00002990 File Offset: 0x00000B90
 		public IFileStream Create(long initialPosition)
 		{
-			IFileStream result;
+			IFileStream fileStream;
 			lock (this.syncRoot)
 			{
 				if (this.coreStream == null)
@@ -22,9 +22,9 @@ namespace Nokia.Mira.IO
 					this.coreStream = new CoreSynchronizedFileStream(this.targetPath);
 				}
 				this.referencesCount++;
-				result = new SynchronizedFileStream(this.coreStream, initialPosition, new Action(this.FileStreamOnDisposed));
+				fileStream = new SynchronizedFileStream(this.coreStream, initialPosition, new Action(this.FileStreamOnDisposed));
 			}
-			return result;
+			return fileStream;
 		}
 
 		// Token: 0x0600003E RID: 62 RVA: 0x00002A0C File Offset: 0x00000C0C

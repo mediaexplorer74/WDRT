@@ -14,20 +14,20 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.Exceptions;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 {
-	// Token: 0x020000C3 RID: 195
+	// Token: 0x02000015 RID: 21
 	[Export]
-	public class AutomaticPackageSelectionViewModel : BaseViewModel, ICanHandle<PackageDirectoryMessage>, ICanHandle<CompatibleFfuFilesMessage>, ICanHandle<DeviceConnectionStatusReadMessage>, ICanHandle
+	public class AutomaticPackageSelectionViewModel : BaseViewModel, ICanHandle<PackageDirectoryMessage>, ICanHandle, ICanHandle<CompatibleFfuFilesMessage>, ICanHandle<DeviceConnectionStatusReadMessage>
 	{
-		// Token: 0x060005D1 RID: 1489 RVA: 0x0001E2FB File Offset: 0x0001C4FB
+		// Token: 0x060000EB RID: 235 RVA: 0x000072AC File Offset: 0x000054AC
 		[ImportingConstructor]
 		public AutomaticPackageSelectionViewModel(Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext)
 		{
 			this.appContext = appContext;
 		}
 
-		// Token: 0x1700014C RID: 332
-		// (get) Token: 0x060005D2 RID: 1490 RVA: 0x0001E310 File Offset: 0x0001C510
-		// (set) Token: 0x060005D3 RID: 1491 RVA: 0x0001E328 File Offset: 0x0001C528
+		// Token: 0x17000038 RID: 56
+		// (get) Token: 0x060000EC RID: 236 RVA: 0x000072C0 File Offset: 0x000054C0
+		// (set) Token: 0x060000ED RID: 237 RVA: 0x000072D8 File Offset: 0x000054D8
 		public List<PackageFileInfo> FoundPackages
 		{
 			get
@@ -41,9 +41,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x1700014D RID: 333
-		// (get) Token: 0x060005D4 RID: 1492 RVA: 0x0001E3B4 File Offset: 0x0001C5B4
-		// (set) Token: 0x060005D5 RID: 1493 RVA: 0x0001E3CC File Offset: 0x0001C5CC
+		// Token: 0x17000039 RID: 57
+		// (get) Token: 0x060000EE RID: 238 RVA: 0x0000735C File Offset: 0x0000555C
+		// (set) Token: 0x060000EF RID: 239 RVA: 0x00007374 File Offset: 0x00005574
 		public PackageFileInfo SelectedPackage
 		{
 			get
@@ -53,18 +53,19 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			set
 			{
 				base.SetValue<PackageFileInfo>(() => this.SelectedPackage, ref this.selectedPackage, value);
-				if (value != null)
+				bool flag = value != null;
+				if (flag)
 				{
 					this.appContext.CurrentPhone.PackageFilePath = value.Path;
 					this.appContext.CurrentPhone.PackageFileInfo = value;
 				}
-				this.NextButtonEnabled = (value != null);
+				this.NextButtonEnabled = value != null;
 			}
 		}
 
-		// Token: 0x1700014E RID: 334
-		// (get) Token: 0x060005D6 RID: 1494 RVA: 0x0001E460 File Offset: 0x0001C660
-		// (set) Token: 0x060005D7 RID: 1495 RVA: 0x0001E478 File Offset: 0x0001C678
+		// Token: 0x1700003A RID: 58
+		// (get) Token: 0x060000F0 RID: 240 RVA: 0x00007400 File Offset: 0x00005600
+		// (set) Token: 0x060000F1 RID: 241 RVA: 0x00007418 File Offset: 0x00005618
 		public Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext AppContext
 		{
 			get
@@ -77,9 +78,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x1700014F RID: 335
-		// (get) Token: 0x060005D8 RID: 1496 RVA: 0x0001E4C8 File Offset: 0x0001C6C8
-		// (set) Token: 0x060005D9 RID: 1497 RVA: 0x0001E4E0 File Offset: 0x0001C6E0
+		// Token: 0x1700003B RID: 59
+		// (get) Token: 0x060000F2 RID: 242 RVA: 0x00007458 File Offset: 0x00005658
+		// (set) Token: 0x060000F3 RID: 243 RVA: 0x00007470 File Offset: 0x00005670
 		public string StatusInfo
 		{
 			get
@@ -92,9 +93,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x17000150 RID: 336
-		// (get) Token: 0x060005DA RID: 1498 RVA: 0x0001E530 File Offset: 0x0001C730
-		// (set) Token: 0x060005DB RID: 1499 RVA: 0x0001E548 File Offset: 0x0001C748
+		// Token: 0x1700003C RID: 60
+		// (get) Token: 0x060000F4 RID: 244 RVA: 0x000074B0 File Offset: 0x000056B0
+		// (set) Token: 0x060000F5 RID: 245 RVA: 0x000074C8 File Offset: 0x000056C8
 		public bool CheckingPackageDirectory
 		{
 			get
@@ -111,9 +112,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x17000151 RID: 337
-		// (get) Token: 0x060005DC RID: 1500 RVA: 0x0001E5F0 File Offset: 0x0001C7F0
-		// (set) Token: 0x060005DD RID: 1501 RVA: 0x0001E608 File Offset: 0x0001C808
+		// Token: 0x1700003D RID: 61
+		// (get) Token: 0x060000F6 RID: 246 RVA: 0x00007568 File Offset: 0x00005768
+		// (set) Token: 0x060000F7 RID: 247 RVA: 0x00007580 File Offset: 0x00005780
 		public bool NextButtonEnabled
 		{
 			get
@@ -126,19 +127,20 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x17000152 RID: 338
-		// (get) Token: 0x060005DE RID: 1502 RVA: 0x0001E658 File Offset: 0x0001C858
+		// Token: 0x1700003E RID: 62
+		// (get) Token: 0x060000F8 RID: 248 RVA: 0x000075C0 File Offset: 0x000057C0
 		public bool PackagesListVisible
 		{
 			get
 			{
-				return this.FoundPackages != null && this.FoundPackages.Any<PackageFileInfo>();
+				bool flag = this.FoundPackages != null;
+				return flag && this.FoundPackages.Any<PackageFileInfo>();
 			}
 		}
 
-		// Token: 0x17000153 RID: 339
-		// (get) Token: 0x060005DF RID: 1503 RVA: 0x0001E688 File Offset: 0x0001C888
-		// (set) Token: 0x060005E0 RID: 1504 RVA: 0x0001E6A0 File Offset: 0x0001C8A0
+		// Token: 0x1700003F RID: 63
+		// (get) Token: 0x060000F9 RID: 249 RVA: 0x000075F0 File Offset: 0x000057F0
+		// (set) Token: 0x060000FA RID: 250 RVA: 0x00007608 File Offset: 0x00005808
 		public string PackageDirectory
 		{
 			get
@@ -152,9 +154,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x17000154 RID: 340
-		// (get) Token: 0x060005E1 RID: 1505 RVA: 0x0001E72C File Offset: 0x0001C92C
-		// (set) Token: 0x060005E2 RID: 1506 RVA: 0x0001E744 File Offset: 0x0001C944
+		// Token: 0x17000040 RID: 64
+		// (get) Token: 0x060000FB RID: 251 RVA: 0x0000768C File Offset: 0x0000588C
+		// (set) Token: 0x060000FC RID: 252 RVA: 0x000076A4 File Offset: 0x000058A4
 		public string PackagePath
 		{
 			get
@@ -167,30 +169,32 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x17000155 RID: 341
-		// (get) Token: 0x060005E3 RID: 1507 RVA: 0x0001E794 File Offset: 0x0001C994
+		// Token: 0x17000041 RID: 65
+		// (get) Token: 0x060000FD RID: 253 RVA: 0x000076E4 File Offset: 0x000058E4
 		public string SelectedDirectoryDescription
 		{
 			get
 			{
-				string result;
-				if (!string.IsNullOrEmpty(this.PackageDirectory))
+				bool flag = !string.IsNullOrEmpty(this.PackageDirectory);
+				string text;
+				if (flag)
 				{
-					result = string.Format(LocalizationManager.GetTranslation("PackageDirectory"), this.PackageDirectory);
+					text = string.Format(LocalizationManager.GetTranslation("PackageDirectory"), this.PackageDirectory);
 				}
 				else
 				{
-					result = LocalizationManager.GetTranslation("DirectoryNotSet");
+					text = LocalizationManager.GetTranslation("DirectoryNotSet");
 				}
-				return result;
+				return text;
 			}
 		}
 
-		// Token: 0x060005E4 RID: 1508 RVA: 0x0001E7D8 File Offset: 0x0001C9D8
+		// Token: 0x060000FE RID: 254 RVA: 0x0000772C File Offset: 0x0000592C
 		public override void OnStarted()
 		{
 			this.PackageDirectory = FileSystemInfo.GetCustomProductsPath();
-			if (string.IsNullOrEmpty(this.PackageDirectory))
+			bool flag = string.IsNullOrEmpty(this.PackageDirectory);
+			if (flag)
 			{
 				this.PackageDirectory = FileSystemInfo.GetLumiaPackagesPath("");
 			}
@@ -201,90 +205,99 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			this.FoundPackages = null;
 			this.PackagePath = string.Empty;
 			this.CheckingPackageDirectory = true;
-			//base.Commands.Run((FlowController c) => c.CheckIfDeviceStillConnected(this.AppContext.CurrentPhone, CancellationToken.None));
+			base.Commands.Run((FlowController c) => c.CheckIfDeviceStillConnected(this.AppContext.CurrentPhone, CancellationToken.None));
 		}
 
-		// Token: 0x060005E5 RID: 1509 RVA: 0x0001E928 File Offset: 0x0001CB28
+		// Token: 0x060000FF RID: 255 RVA: 0x00007870 File Offset: 0x00005A70
 		public void Handle(PackageDirectoryMessage message)
 		{
-			if (base.IsStarted)
+			bool isStarted = base.IsStarted;
+			if (isStarted)
 			{
 				this.PackageDirectory = message.Directory;
-				if (!string.IsNullOrEmpty(this.PackageDirectory))
+				bool flag = !string.IsNullOrEmpty(this.PackageDirectory);
+				if (flag)
 				{
 					this.CheckingPackageDirectory = true;
 				}
 			}
 		}
 
-		// Token: 0x060005E6 RID: 1510 RVA: 0x0001E96C File Offset: 0x0001CB6C
+		// Token: 0x06000100 RID: 256 RVA: 0x000078B4 File Offset: 0x00005AB4
 		public void Handle(CompatibleFfuFilesMessage message)
 		{
-			if (base.IsStarted)
+			bool isStarted = base.IsStarted;
+			if (isStarted)
 			{
 				this.CheckingPackageDirectory = false;
-				switch (message.Packages.Count)
+				int count = message.Packages.Count;
+				int num = count;
+				if (num != 0)
 				{
-				case 0:
-					this.StatusInfo = LocalizationManager.GetTranslation("NoPackagesFoundSelectAnotherDirectory");
-					break;
-				case 1:
-				{
-					this.NextButtonEnabled = true;
-					this.StatusInfo = string.Format(LocalizationManager.GetTranslation("OnePackageFound"), message.Packages.First<PackageFileInfo>().PackageId, LocalizationManager.GetTranslation("ButtonNext"));
-					PackageFileInfo packageFileInfo = message.Packages.First<PackageFileInfo>();
-					this.appContext.CurrentPhone.PackageFileInfo = packageFileInfo;
-					this.appContext.CurrentPhone.PackageFilePath = packageFileInfo.Path;
-					this.PackagePath = packageFileInfo.Path;
-					break;
+					if (num != 1)
+					{
+						this.StatusInfo = string.Format(LocalizationManager.GetTranslation("MoreThanOnePackageFound"), LocalizationManager.GetTranslation("ButtonNext"));
+						this.FoundPackages = message.Packages;
+					}
+					else
+					{
+						this.NextButtonEnabled = true;
+						this.StatusInfo = string.Format(LocalizationManager.GetTranslation("OnePackageFound"), message.Packages.First<PackageFileInfo>().PackageId, LocalizationManager.GetTranslation("ButtonNext"));
+						PackageFileInfo packageFileInfo = message.Packages.First<PackageFileInfo>();
+						this.appContext.CurrentPhone.PackageFileInfo = packageFileInfo;
+						this.appContext.CurrentPhone.PackageFilePath = packageFileInfo.Path;
+						this.PackagePath = packageFileInfo.Path;
+					}
 				}
-				default:
-					this.StatusInfo = string.Format(LocalizationManager.GetTranslation("MoreThanOnePackageFound"), LocalizationManager.GetTranslation("ButtonNext"));
-					this.FoundPackages = message.Packages;
-					break;
+				else
+				{
+					this.StatusInfo = LocalizationManager.GetTranslation("NoPackagesFoundSelectAnotherDirectory");
 				}
 			}
 		}
 
-		// Token: 0x060005E7 RID: 1511 RVA: 0x0001EA74 File Offset: 0x0001CC74
+		// Token: 0x06000101 RID: 257 RVA: 0x000079B8 File Offset: 0x00005BB8
 		public void Handle(DeviceConnectionStatusReadMessage message)
 		{
-			if (base.IsStarted)
+			bool isStarted = base.IsStarted;
+			if (isStarted)
 			{
-				if (!message.Status)
+				bool status = message.Status;
+				if (!status)
 				{
 					throw new DeviceNotFoundException();
 				}
-				if (this.AppContext.CurrentPhone == null || this.AppContext.CurrentPhone.PlatformId == null)
+				bool flag = this.AppContext.CurrentPhone == null || this.AppContext.CurrentPhone.PlatformId == null;
+				if (flag)
 				{
-					//base.Commands.Run((AppController c) => c.SwitchToState("ManualPackageSelectionState"));
+					base.Commands.Run((AppController c) => c.SwitchToState("ManualPackageSelectionState"));
 				}
-				//base.Commands.Run((FlowController c) => c.FindCorrectPackage(this.PackageDirectory, CancellationToken.None));
+				base.Commands.Run((FlowController c) => c.FindCorrectPackage(this.PackageDirectory, CancellationToken.None));
 			}
 		}
 
-		// Token: 0x04000279 RID: 633
+		// Token: 0x04000091 RID: 145
 		private Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext;
 
-		// Token: 0x0400027A RID: 634
+		// Token: 0x04000092 RID: 146
 		private string statusInfo;
 
-		// Token: 0x0400027B RID: 635
+		// Token: 0x04000093 RID: 147
 		private string packageDirectory;
 
-		// Token: 0x0400027C RID: 636
+		// Token: 0x04000094 RID: 148
 		private string packagePath;
 
-		// Token: 0x0400027D RID: 637
+		// Token: 0x04000095 RID: 149
 		private bool checkingPackageDirectory;
 
-		// Token: 0x0400027E RID: 638
+		// Token: 0x04000096 RID: 150
 		private bool nextButtonEnabled;
 
-		// Token: 0x0400027F RID: 639
+		// Token: 0x04000097 RID: 151
 		private List<PackageFileInfo> foundPackages;
 
-		// Token: 0x04000280 RID: 640
+		// Token: 0x04000098 RID: 152
 		private PackageFileInfo selectedPackage;
 	}
 }

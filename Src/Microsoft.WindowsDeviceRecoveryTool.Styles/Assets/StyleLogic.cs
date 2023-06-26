@@ -7,11 +7,11 @@ using System.Windows;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Styles.Assets
 {
-	// Token: 0x02000007 RID: 7
+	// Token: 0x0200001B RID: 27
 	public static class StyleLogic
 	{
-		// Token: 0x1700000C RID: 12
-		// (get) Token: 0x06000025 RID: 37 RVA: 0x00002578 File Offset: 0x00000778
+		// Token: 0x17000010 RID: 16
+		// (get) Token: 0x06000092 RID: 146 RVA: 0x0000395C File Offset: 0x00001B5C
 		public static ReadOnlyCollection<DictionaryStyle> Styles
 		{
 			get
@@ -20,27 +20,29 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Styles.Assets
 			}
 		}
 
-		// Token: 0x1700000D RID: 13
-		// (get) Token: 0x06000026 RID: 38 RVA: 0x00002590 File Offset: 0x00000790
-		// (set) Token: 0x06000027 RID: 39 RVA: 0x000025C4 File Offset: 0x000007C4
+		// Token: 0x17000011 RID: 17
+		// (get) Token: 0x06000093 RID: 147 RVA: 0x00003974 File Offset: 0x00001B74
+		// (set) Token: 0x06000094 RID: 148 RVA: 0x000039A8 File Offset: 0x00001BA8
 		public static DictionaryStyle CurrentStyle
 		{
 			get
 			{
-				DictionaryStyle result;
-				if (StyleLogic.currentStyle == null)
+				bool flag = StyleLogic.currentStyle == null;
+				DictionaryStyle dictionaryStyle;
+				if (flag)
 				{
-					result = StyleLogic.MetroStyles.FirstOrDefault<DictionaryStyle>();
+					dictionaryStyle = StyleLogic.MetroStyles.FirstOrDefault<DictionaryStyle>();
 				}
 				else
 				{
-					result = StyleLogic.currentStyle;
+					dictionaryStyle = StyleLogic.currentStyle;
 				}
-				return result;
+				return dictionaryStyle;
 			}
 			set
 			{
-				if (value == null || !StyleLogic.MetroStyles.Contains(value))
+				bool flag = value == null || !StyleLogic.MetroStyles.Contains(value);
+				if (flag)
 				{
 					StyleLogic.currentStyle = StyleLogic.MetroStyles.FirstOrDefault<DictionaryStyle>();
 				}
@@ -48,36 +50,38 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Styles.Assets
 				{
 					StyleLogic.currentStyle = value;
 				}
-				if (StyleLogic.currentStyle != null)
+				bool flag2 = StyleLogic.currentStyle != null;
+				if (flag2)
 				{
-					Uri resourceLocator = new Uri("Microsoft.WindowsDeviceRecoveryTool.Styles;component/Colors/" + StyleLogic.currentStyle.FileName, UriKind.Relative);
-					ResourceDictionary item = Application.LoadComponent(resourceLocator) as ResourceDictionary;
-					Application.Current.Resources.MergedDictionaries.Insert(0, item);
+					Uri uri = new Uri("Microsoft.WindowsDeviceRecoveryTool.Styles;component/Colors/" + StyleLogic.currentStyle.FileName, UriKind.Relative);
+					ResourceDictionary resourceDictionary = Application.LoadComponent(uri) as ResourceDictionary;
+					Application.Current.Resources.MergedDictionaries.Insert(0, resourceDictionary);
 					Application.Current.Resources.MergedDictionaries.Remove(Application.Current.Resources.MergedDictionaries[1]);
 				}
 			}
 		}
 
-		// Token: 0x06000028 RID: 40 RVA: 0x000026AC File Offset: 0x000008AC
+		// Token: 0x06000095 RID: 149 RVA: 0x00003A60 File Offset: 0x00001C60
 		public static DictionaryStyle GetStyle(string styleName)
 		{
 			string value = styleName.ToLower();
 			return StyleLogic.MetroStyles.First((DictionaryStyle style) => style.Name.ToLower().Equals(value));
 		}
 
-		// Token: 0x06000029 RID: 41 RVA: 0x000026E8 File Offset: 0x000008E8
+		// Token: 0x06000096 RID: 150 RVA: 0x00003A9C File Offset: 0x00001C9C
 		public static void RestoreStyle(string styleName)
 		{
 			DictionaryStyle dictionaryStyle = StyleLogic.FindStyleByName(styleName);
 			StyleLogic.CurrentStyle = dictionaryStyle;
 		}
 
-		// Token: 0x0600002A RID: 42 RVA: 0x00002704 File Offset: 0x00000904
+		// Token: 0x06000097 RID: 151 RVA: 0x00003AB8 File Offset: 0x00001CB8
 		public static DictionaryStyle FindStyleByName(string name)
 		{
 			foreach (DictionaryStyle dictionaryStyle in StyleLogic.Styles)
 			{
-				if (string.CompareOrdinal(dictionaryStyle.Name.ToLower(), name.ToLower()) == 0)
+				bool flag = string.CompareOrdinal(dictionaryStyle.Name.ToLower(), name.ToLower()) == 0;
+				if (flag)
 				{
 					return dictionaryStyle;
 				}
@@ -85,31 +89,31 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Styles.Assets
 			return StyleLogic.CurrentStyle;
 		}
 
-		// Token: 0x0600002B RID: 43 RVA: 0x00002788 File Offset: 0x00000988
+		// Token: 0x06000098 RID: 152 RVA: 0x00003B30 File Offset: 0x00001D30
 		public static void LoadTheme(string name)
 		{
-			Uri resourceLocator = new Uri("Microsoft.WindowsDeviceRecoveryTool.Styles;component/" + name, UriKind.Relative);
-			ResourceDictionary item = Application.LoadComponent(resourceLocator) as ResourceDictionary;
-			Application.Current.Resources.MergedDictionaries.Insert(1, item);
+			Uri uri = new Uri("Microsoft.WindowsDeviceRecoveryTool.Styles;component/" + name, UriKind.Relative);
+			ResourceDictionary resourceDictionary = Application.LoadComponent(uri) as ResourceDictionary;
+			Application.Current.Resources.MergedDictionaries.Insert(1, resourceDictionary);
 			Application.Current.Resources.MergedDictionaries.Remove(Application.Current.Resources.MergedDictionaries[2]);
 			StyleLogic.ResetStyles();
 		}
 
-		// Token: 0x0600002C RID: 44 RVA: 0x000027FC File Offset: 0x000009FC
+		// Token: 0x06000099 RID: 153 RVA: 0x00003BA4 File Offset: 0x00001DA4
 		private static void ResetStyles()
 		{
-			ResourceDictionary item = Application.LoadComponent(new Uri("/Microsoft.WindowsDeviceRecoveryTool.Styles;component/SystemStyles.xaml", UriKind.Relative)) as ResourceDictionary;
-			Application.Current.Resources.MergedDictionaries.Insert(2, item);
+			ResourceDictionary resourceDictionary = Application.LoadComponent(new Uri("/Microsoft.WindowsDeviceRecoveryTool.Styles;component/SystemStyles.xaml", UriKind.Relative)) as ResourceDictionary;
+			Application.Current.Resources.MergedDictionaries.Insert(2, resourceDictionary);
 			Application.Current.Resources.MergedDictionaries.Remove(Application.Current.Resources.MergedDictionaries[3]);
 		}
 
-		// Token: 0x0600002D RID: 45 RVA: 0x00002894 File Offset: 0x00000A94
+		// Token: 0x0600009A RID: 154 RVA: 0x00003C0C File Offset: 0x00001E0C
 		public static bool IfStyleExists(string name)
 		{
 			return StyleLogic.MetroStyles.Any((DictionaryStyle s) => string.Compare(s.Name, name, StringComparison.Ordinal) == 0);
 		}
 
-		// Token: 0x0400000C RID: 12
+		// Token: 0x04000024 RID: 36
 		private static readonly ReadOnlyCollection<DictionaryStyle> MetroStyles = new ReadOnlyCollection<DictionaryStyle>(new List<DictionaryStyle>
 		{
 			new DictionaryStyle("AccentColorEmerald", "EmeraldDictionary.xaml", Color.FromArgb(0, 138, 0)),
@@ -122,7 +126,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Styles.Assets
 			new DictionaryStyle("AccentColorBlack", "BlackDictionary.xaml", Color.Black)
 		});
 
-		// Token: 0x0400000D RID: 13
+		// Token: 0x04000025 RID: 37
 		private static DictionaryStyle currentStyle;
 	}
 }

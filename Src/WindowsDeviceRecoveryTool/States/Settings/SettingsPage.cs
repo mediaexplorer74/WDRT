@@ -2,18 +2,18 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 {
-	// Token: 0x020000B2 RID: 178
+	// Token: 0x0200002C RID: 44
 	public enum SettingsPage
 	{
-		// Token: 0x0400023C RID: 572
+		// Token: 0x040000EF RID: 239
 		Network,
-		// Token: 0x0400023D RID: 573
+		// Token: 0x040000F0 RID: 240
 		Preferences,
-		// Token: 0x0400023E RID: 574
+		// Token: 0x040000F1 RID: 241
 		Troubleshooting,
-		// Token: 0x0400023F RID: 575
+		// Token: 0x040000F2 RID: 242
 		Packages,
-		// Token: 0x04000240 RID: 576
+		// Token: 0x040000F3 RID: 243
 		ApplicationData
 	}
 }

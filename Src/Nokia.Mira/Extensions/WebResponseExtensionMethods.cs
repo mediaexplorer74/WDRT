@@ -20,16 +20,16 @@ namespace Nokia.Mira.Extensions
 			{
 				using (IFileStream fileStream = fileStreamFactory.Create(filePosition))
 				{
-					byte[] buffer = new byte[2048];
+					byte[] array = new byte[2048];
 					for (;;)
 					{
 						token.ThrowIfCancellationRequested();
-						int num3 = responseStream.Read(buffer, 0, 2048);
+						int num3 = responseStream.Read(array, 0, 2048);
 						if (num3 == 0)
 						{
 							break;
 						}
-						fileStream.Write(buffer, 0, num3);
+						fileStream.Write(array, 0, num3);
 						num += (long)num3;
 						num2 += (long)num3;
 						if (num >= 524288L)
@@ -75,25 +75,22 @@ namespace Nokia.Mira.Extensions
 			{
 				return false;
 			}
-			string s = text.Split(new char[]
-			{
-				'/'
-			}).LastOrDefault<string>();
-			bool result;
+			string text2 = text.Split(new char[] { '/' }).LastOrDefault<string>();
+			bool flag;
 			try
 			{
-				long.TryParse(s, out contentLength);
+				long.TryParse(text2, out contentLength);
 				if (contentLength < 0L)
 				{
 					throw new InvalidOperationException("contentLength < 0");
 				}
-				result = true;
+				flag = true;
 			}
 			catch (Exception)
 			{
-				result = false;
+				flag = false;
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x060000DF RID: 223 RVA: 0x00004794 File Offset: 0x00002994

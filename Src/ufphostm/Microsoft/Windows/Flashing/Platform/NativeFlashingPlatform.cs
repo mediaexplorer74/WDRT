@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using FlashingPlatform1;
+using FlashingPlatform;
 
 namespace Microsoft.Windows.Flashing.Platform
 {
 	// Token: 0x0200003F RID: 63
-	public class NativeFlashingPlatform
+	internal class NativeFlashingPlatform
 	{
 		// Token: 0x06000117 RID: 279
 		[DllImport("ufphost.dll")]

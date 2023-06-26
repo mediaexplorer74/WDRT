@@ -6,24 +6,24 @@ using System.Xml.Serialization;
 
 namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 {
-	// Token: 0x0200003D RID: 61
+	// Token: 0x0200004B RID: 75
 	[XmlRoot("PhoneSecurityPolicy")]
 	public class WPSecurityPolicy
 	{
-		// Token: 0x06000174 RID: 372 RVA: 0x000085B8 File Offset: 0x000067B8
+		// Token: 0x0600018B RID: 395 RVA: 0x00008E48 File Offset: 0x00007048
 		public WPSecurityPolicy()
 		{
 		}
 
-		// Token: 0x06000175 RID: 373 RVA: 0x00008618 File Offset: 0x00006818
+		// Token: 0x0600018C RID: 396 RVA: 0x00008EA8 File Offset: 0x000070A8
 		public WPSecurityPolicy(string packageName)
 		{
 			this.m_packageId = packageName;
 		}
 
-		// Token: 0x1700001A RID: 26
-		// (get) Token: 0x06000176 RID: 374 RVA: 0x0000867F File Offset: 0x0000687F
-		// (set) Token: 0x06000177 RID: 375 RVA: 0x00008687 File Offset: 0x00006887
+		// Token: 0x1700001F RID: 31
+		// (get) Token: 0x0600018D RID: 397 RVA: 0x00008F0F File Offset: 0x0000710F
+		// (set) Token: 0x0600018E RID: 398 RVA: 0x00008F17 File Offset: 0x00007117
 		[XmlAttribute]
 		public string Description
 		{
@@ -37,9 +37,9 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x1700001B RID: 27
-		// (get) Token: 0x06000178 RID: 376 RVA: 0x00008690 File Offset: 0x00006890
-		// (set) Token: 0x06000179 RID: 377 RVA: 0x00008698 File Offset: 0x00006898
+		// Token: 0x17000020 RID: 32
+		// (get) Token: 0x0600018F RID: 399 RVA: 0x00008F20 File Offset: 0x00007120
+		// (set) Token: 0x06000190 RID: 400 RVA: 0x00008F28 File Offset: 0x00007128
 		[XmlAttribute]
 		public string Vendor
 		{
@@ -53,9 +53,9 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x1700001C RID: 28
-		// (get) Token: 0x0600017A RID: 378 RVA: 0x000086A1 File Offset: 0x000068A1
-		// (set) Token: 0x0600017B RID: 379 RVA: 0x000086A9 File Offset: 0x000068A9
+		// Token: 0x17000021 RID: 33
+		// (get) Token: 0x06000191 RID: 401 RVA: 0x00008F31 File Offset: 0x00007131
+		// (set) Token: 0x06000192 RID: 402 RVA: 0x00008F39 File Offset: 0x00007139
 		[XmlAttribute]
 		public string RequiredOSVersion
 		{
@@ -69,9 +69,9 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x1700001D RID: 29
-		// (get) Token: 0x0600017C RID: 380 RVA: 0x000086B2 File Offset: 0x000068B2
-		// (set) Token: 0x0600017D RID: 381 RVA: 0x000086BA File Offset: 0x000068BA
+		// Token: 0x17000022 RID: 34
+		// (get) Token: 0x06000193 RID: 403 RVA: 0x00008F42 File Offset: 0x00007142
+		// (set) Token: 0x06000194 RID: 404 RVA: 0x00008F4A File Offset: 0x0000714A
 		[XmlAttribute]
 		public string FileVersion
 		{
@@ -85,9 +85,9 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x1700001E RID: 30
-		// (get) Token: 0x0600017E RID: 382 RVA: 0x000086C3 File Offset: 0x000068C3
-		// (set) Token: 0x0600017F RID: 383 RVA: 0x000086CB File Offset: 0x000068CB
+		// Token: 0x17000023 RID: 35
+		// (get) Token: 0x06000195 RID: 405 RVA: 0x00008F53 File Offset: 0x00007153
+		// (set) Token: 0x06000196 RID: 406 RVA: 0x00008F5B File Offset: 0x0000715B
 		[XmlAttribute]
 		public string HashType
 		{
@@ -101,9 +101,9 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x1700001F RID: 31
-		// (get) Token: 0x06000180 RID: 384 RVA: 0x000086D4 File Offset: 0x000068D4
-		// (set) Token: 0x06000181 RID: 385 RVA: 0x000086DC File Offset: 0x000068DC
+		// Token: 0x17000024 RID: 36
+		// (get) Token: 0x06000197 RID: 407 RVA: 0x00008F64 File Offset: 0x00007164
+		// (set) Token: 0x06000198 RID: 408 RVA: 0x00008F6C File Offset: 0x0000716C
 		[XmlAttribute]
 		public string PackageID
 		{
@@ -117,14 +117,14 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x17000020 RID: 32
-		// (get) Token: 0x06000182 RID: 386 RVA: 0x000086E5 File Offset: 0x000068E5
-		// (set) Token: 0x06000183 RID: 387 RVA: 0x000086F2 File Offset: 0x000068F2
-		[XmlArrayItem(typeof(DirectoryAcl), ElementName = "Directory")]
-		[XmlArrayItem(typeof(FileAcl), ElementName = "File")]
+		// Token: 0x17000025 RID: 37
+		// (get) Token: 0x06000199 RID: 409 RVA: 0x00008F75 File Offset: 0x00007175
+		// (set) Token: 0x0600019A RID: 410 RVA: 0x00008F82 File Offset: 0x00007182
 		[XmlArrayItem(typeof(RegistryAcl), ElementName = "RegKey")]
-		[XmlArrayItem(typeof(RegAclWithFullAcl), ElementName = "RegKeyFullACL")]
+		[XmlArrayItem(typeof(FileAcl), ElementName = "File")]
 		[XmlArrayItem(typeof(RegistryStoredAcl), ElementName = "SDRegValue")]
+		[XmlArrayItem(typeof(DirectoryAcl), ElementName = "Directory")]
+		[XmlArrayItem(typeof(RegAclWithFullAcl), ElementName = "RegKeyFullACL")]
 		public ResourceAcl[] Rules
 		{
 			get
@@ -138,13 +138,13 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x06000184 RID: 388 RVA: 0x0000870B File Offset: 0x0000690B
+		// Token: 0x0600019B RID: 411 RVA: 0x00008F9B File Offset: 0x0000719B
 		public void Add(IEnumerable<ResourceAcl> acls)
 		{
 			this.m_aclCollection.UnionWith(acls);
 		}
 
-		// Token: 0x06000185 RID: 389 RVA: 0x0000871C File Offset: 0x0000691C
+		// Token: 0x0600019C RID: 412 RVA: 0x00008FAC File Offset: 0x000071AC
 		public void SaveToXml(string policyFile)
 		{
 			XmlSerializer xmlSerializer = new XmlSerializer(typeof(WPSecurityPolicy), "urn:Microsoft.WindowsPhone/PhoneSecurityPolicyInternal.v8.00");
@@ -154,7 +154,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x06000186 RID: 390 RVA: 0x00008770 File Offset: 0x00006970
+		// Token: 0x0600019D RID: 413 RVA: 0x00009000 File Offset: 0x00007200
 		public static WPSecurityPolicy LoadFromXml(string policyFile)
 		{
 			if (!LongPathFile.Exists(policyFile))
@@ -162,36 +162,36 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 				throw new FileNotFoundException(string.Format("Policy file {0} does not exist, or cannot be read", policyFile), policyFile);
 			}
 			XmlSerializer xmlSerializer = new XmlSerializer(typeof(WPSecurityPolicy), "urn:Microsoft.WindowsPhone/PhoneSecurityPolicyInternal.v8.00");
-			WPSecurityPolicy result = null;
+			WPSecurityPolicy wpsecurityPolicy = null;
 			using (TextReader textReader = new StreamReader(LongPathFile.OpenRead(policyFile)))
 			{
-				result = (WPSecurityPolicy)xmlSerializer.Deserialize(textReader);
+				wpsecurityPolicy = (WPSecurityPolicy)xmlSerializer.Deserialize(textReader);
 			}
-			return result;
+			return wpsecurityPolicy;
 		}
 
-		// Token: 0x040000C2 RID: 194
+		// Token: 0x04000123 RID: 291
+		private const string WP8PolicyNamespace = "urn:Microsoft.WindowsPhone/PhoneSecurityPolicyInternal.v8.00";
+
+		// Token: 0x04000124 RID: 292
 		private string m_descr = "Mobile Core Policy";
 
-		// Token: 0x040000C3 RID: 195
+		// Token: 0x04000125 RID: 293
 		private string m_vendor = "Microsoft";
 
-		// Token: 0x040000C4 RID: 196
+		// Token: 0x04000126 RID: 294
 		private string m_OSVersion = "8.00";
 
-		// Token: 0x040000C5 RID: 197
+		// Token: 0x04000127 RID: 295
 		private string m_fileVersion = "8.00";
 
-		// Token: 0x040000C6 RID: 198
+		// Token: 0x04000128 RID: 296
 		private string m_hashType = "Sha2";
 
-		// Token: 0x040000C7 RID: 199
+		// Token: 0x04000129 RID: 297
 		private string m_packageId = "";
 
-		// Token: 0x040000C8 RID: 200
+		// Token: 0x0400012A RID: 298
 		private AclCollection m_aclCollection = new AclCollection();
-
-		// Token: 0x040000C9 RID: 201
-		private const string WP8PolicyNamespace = "urn:Microsoft.WindowsPhone/PhoneSecurityPolicyInternal.v8.00";
 	}
 }

@@ -2,7 +2,7 @@
 
 namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 {
-	// Token: 0x02000051 RID: 81
-	// (Invoke) Token: 0x0600024B RID: 587
+	// Token: 0x02000061 RID: 97
+	// (Invoke) Token: 0x06000260 RID: 608
 	public delegate void LogString(string format, params object[] list);
 }

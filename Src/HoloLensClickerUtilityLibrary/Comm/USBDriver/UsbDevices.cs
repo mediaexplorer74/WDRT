@@ -59,7 +59,7 @@ namespace ClickerUtilityLibrary.Comm.USBDriver
 						goto Block_5;
 					}
 				}
-				DeviceInterfaceDetailData* ptr = (DeviceInterfaceDetailData*)((void*)Marshal.AllocHGlobal(num2));
+				DeviceInterfaceDetailData* ptr = (DeviceInterfaceDetailData*)(void*)Marshal.AllocHGlobal(num2);
 				bool flag5 = IntPtr.Size == 4;
 				if (flag5)
 				{
@@ -87,7 +87,7 @@ namespace ClickerUtilityLibrary.Comm.USBDriver
 				Marshal.FreeHGlobal((IntPtr)((void*)ptr));
 				uint num3;
 				uint num4;
-				bool flag8 = NativeMethods.SetupDiGetDeviceRegistryProperty(intPtr, ref deviceInformationData, DeviceRegistryProperties.SPDRP_FRIENDLYNAME, out num3, (byte*)((void*)IntPtr.Zero), 0U, out num4);
+				bool flag8 = NativeMethods.SetupDiGetDeviceRegistryProperty(intPtr, ref deviceInformationData, DeviceRegistryProperties.SPDRP_FRIENDLYNAME, out num3, (byte*)(void*)IntPtr.Zero, 0U, out num4);
 				bool flag9 = !flag8;
 				if (flag9)
 				{
@@ -133,9 +133,9 @@ namespace ClickerUtilityLibrary.Comm.USBDriver
 				}
 				string text3 = Encoding.Unicode.GetString(array);
 				text3 = text3.Remove(text3.Length - 2);
-				UsbDevice value = new UsbDevice(text3, text2, text);
-				string key = text.ToUpper(CultureInfo.InvariantCulture);
-				this.Devices.Add(key, value);
+				UsbDevice usbDevice = new UsbDevice(text3, text2, text);
+				string text4 = text.ToUpper(CultureInfo.InvariantCulture);
+				this.Devices.Add(text4, usbDevice);
 				num++;
 			}
 			int lastWin32Error5 = Marshal.GetLastWin32Error();
@@ -167,7 +167,7 @@ namespace ClickerUtilityLibrary.Comm.USBDriver
 		// Token: 0x0600015E RID: 350 RVA: 0x000085BC File Offset: 0x000067BC
 		public unsafe static UsbDevices.UninstallStatus UninstallDevices(out List<UsbDevice> uninstalledDevices)
 		{
-			UsbDevices.UninstallStatus result = UsbDevices.UninstallStatus.StatusOk;
+			UsbDevices.UninstallStatus uninstallStatus = UsbDevices.UninstallStatus.StatusOk;
 			IntPtr intPtr = NativeMethods.SetupDiGetClassDevs(ref UsbDevices.UsbIfGuid, null, 0, 16);
 			bool flag = IntPtr.Zero == intPtr;
 			if (flag)
@@ -202,7 +202,7 @@ namespace ClickerUtilityLibrary.Comm.USBDriver
 						goto Block_5;
 					}
 				}
-				DeviceInterfaceDetailData* ptr = (DeviceInterfaceDetailData*)((void*)Marshal.AllocHGlobal(num2));
+				DeviceInterfaceDetailData* ptr = (DeviceInterfaceDetailData*)(void*)Marshal.AllocHGlobal(num2);
 				bool flag5 = IntPtr.Size == 4;
 				if (flag5)
 				{
@@ -230,7 +230,7 @@ namespace ClickerUtilityLibrary.Comm.USBDriver
 				Marshal.FreeHGlobal((IntPtr)((void*)ptr));
 				uint num3;
 				uint num4;
-				bool flag8 = NativeMethods.SetupDiGetDeviceRegistryProperty(intPtr, ref deviceInformationData, DeviceRegistryProperties.SPDRP_FRIENDLYNAME, out num3, (byte*)((void*)IntPtr.Zero), 0U, out num4);
+				bool flag8 = NativeMethods.SetupDiGetDeviceRegistryProperty(intPtr, ref deviceInformationData, DeviceRegistryProperties.SPDRP_FRIENDLYNAME, out num3, (byte*)(void*)IntPtr.Zero, 0U, out num4);
 				bool flag9 = !flag8;
 				if (flag9)
 				{
@@ -281,7 +281,7 @@ namespace ClickerUtilityLibrary.Comm.USBDriver
 				bool flag16 = flag15;
 				if (flag16)
 				{
-					result = UsbDevices.UninstallStatus.RebootNeeded;
+					uninstallStatus = UsbDevices.UninstallStatus.RebootNeeded;
 				}
 				bool flag17 = !flag8;
 				if (flag17)
@@ -298,15 +298,15 @@ namespace ClickerUtilityLibrary.Comm.USBDriver
 						goto Block_20;
 					}
 				}
-				UsbDevice item = new UsbDevice(text3, text2, text);
-				uninstalledDevices.Add(item);
+				UsbDevice usbDevice = new UsbDevice(text3, text2, text);
+				uninstalledDevices.Add(usbDevice);
 				num++;
 			}
 			int lastWin32Error6 = Marshal.GetLastWin32Error();
 			bool flag20 = lastWin32Error6 == 259;
 			if (flag20)
 			{
-				return result;
+				return uninstallStatus;
 			}
 			throw new Win32Exception(lastWin32Error6);
 			Block_5:
@@ -329,8 +329,8 @@ namespace ClickerUtilityLibrary.Comm.USBDriver
 			Block_19:
 			return UsbDevices.UninstallStatus.AccessDenied;
 			Block_20:
-			result = UsbDevices.UninstallStatus.ErrorInWow64;
-			return result;
+			uninstallStatus = UsbDevices.UninstallStatus.ErrorInWow64;
+			return uninstallStatus;
 		}
 
 		// Token: 0x0400015D RID: 349

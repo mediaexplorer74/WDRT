@@ -29,9 +29,9 @@ namespace Nokia.Mira.Strategies
 					};
 				}
 				action(num);
-				IChunkInformationCollector @object = new ChunkInformationCollector(chunkInformationWriter, informations);
-				SynchronizedFileStreamFactory fileStreamFactory = new SynchronizedFileStreamFactory(temporaryFileName);
-				return new ChunkedDownloadStrategy(initialResponse, initialChunkInformation, provider, httpWebRequestFactory, fileStreamFactory, downloadSettings.MaxChunks, token, action, new Action<ChunkInformation>(@object.Add));
+				IChunkInformationCollector chunkInformationCollector = new ChunkInformationCollector(chunkInformationWriter, informations);
+				SynchronizedFileStreamFactory synchronizedFileStreamFactory = new SynchronizedFileStreamFactory(temporaryFileName);
+				return new ChunkedDownloadStrategy(initialResponse, initialChunkInformation, provider, httpWebRequestFactory, synchronizedFileStreamFactory, downloadSettings.MaxChunks, token, action, new Action<ChunkInformation>(chunkInformationCollector.Add));
 			}
 			long num2;
 			if (initialResponse.TryGetContentLength(out num2) && num2 == num)
@@ -39,15 +39,15 @@ namespace Nokia.Mira.Strategies
 				initialResponse.Close();
 				return new CompletedDownloadStrategy();
 			}
-			Action<long> reportBytesWritten = delegate(long v)
+			Action<long> action2 = delegate(long v)
 			{
 				chunkInformationWriter.Write(new ChunkRaw[]
 				{
 					new ChunkRaw(0L, v)
 				});
 			};
-			DirectFileStreamFactory fileStreamFactory2 = new DirectFileStreamFactory(temporaryFileName);
-			return new ChunklessDownloadStrategy(initialResponse, fileStreamFactory2, token, action, reportBytesWritten);
+			DirectFileStreamFactory directFileStreamFactory = new DirectFileStreamFactory(temporaryFileName);
+			return new ChunklessDownloadStrategy(initialResponse, directFileStreamFactory, token, action, action2);
 		}
 	}
 }

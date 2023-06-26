@@ -90,16 +90,13 @@ namespace Nokia.Lucid.DeviceDetection
 			DeviceWatcherStatus deviceWatcherStatus = (DeviceWatcherStatus)Interlocked.CompareExchange(ref this.currentStatus, 1, 0);
 			if (deviceWatcherStatus != DeviceWatcherStatus.Created)
 			{
-				string message = string.Format(CultureInfo.CurrentCulture, Resources.InvalidOperationException_MessageFormat_CouldNotStartDeviceWatcher, new object[]
-				{
-					deviceWatcherStatus
-				});
-				throw new InvalidOperationException(message);
+				string text = string.Format(CultureInfo.CurrentCulture, Resources.InvalidOperationException_MessageFormat_CouldNotStartDeviceWatcher, new object[] { deviceWatcherStatus });
+				throw new InvalidOperationException(text);
 			}
 			MessageWindow window = null;
 			AggregateException exception = null;
 			ManualResetEventSlim threadReady = new ManualResetEventSlim();
-			ThreadStart start = delegate()
+			ThreadStart threadStart = delegate
 			{
 				RuntimeHelpers.PrepareConstrainedRegions();
 				try
@@ -130,30 +127,20 @@ namespace Nokia.Lucid.DeviceDetection
 					MessageLoop.Run();
 					if (ex2 != null && window.Exception != null)
 					{
-						throw new AggregateException(new Exception[]
-						{
-							ex2,
-							window.Exception
-						});
+						throw new AggregateException(new Exception[] { ex2, window.Exception });
 					}
 					if (window.Exception != null)
 					{
-						throw new AggregateException(new Exception[]
-						{
-							window.Exception
-						});
+						throw new AggregateException(new Exception[] { window.Exception });
 					}
 					if (ex2 != null)
 					{
-						throw new AggregateException(new Exception[]
-						{
-							ex2
-						});
+						throw new AggregateException(new Exception[] { ex2 });
 					}
 				}
-				catch (AggregateException exception1)
+				catch (AggregateException ex4)
 				{
-					exception = exception1;
+					exception = ex4;
 				}
 				finally
 				{
@@ -163,7 +150,7 @@ namespace Nokia.Lucid.DeviceDetection
 					}
 				}
 			};
-			Thread thread = new Thread(start)
+			Thread thread = new Thread(threadStart)
 			{
 				IsBackground = true
 			};
@@ -175,7 +162,7 @@ namespace Nokia.Lucid.DeviceDetection
 				Interlocked.CompareExchange(ref this.currentStatus, 3, 1);
 				throw exception;
 			}
-			return new DeviceWatcher.InvokeOnceWhenDisposed(delegate()
+			return new DeviceWatcher.InvokeOnceWhenDisposed(delegate
 			{
 				if (window.Status == MessageWindowStatus.Created)
 				{
@@ -238,7 +225,7 @@ namespace Nokia.Lucid.DeviceDetection
 			bool flag;
 			try
 			{
-				flag = (this.compiledFilter != null && this.compiledFilter(deviceIdentifier));
+				flag = this.compiledFilter != null && this.compiledFilter(deviceIdentifier);
 			}
 			catch (Exception ex)
 			{

@@ -3,24 +3,24 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.Enums;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model
 {
-	// Token: 0x02000005 RID: 5
+	// Token: 0x02000004 RID: 4
 	public class DetectionParameters
 	{
-		// Token: 0x0600002F RID: 47 RVA: 0x00002908 File Offset: 0x00000B08
+		// Token: 0x06000025 RID: 37 RVA: 0x000027B5 File Offset: 0x000009B5
 		public DetectionParameters(PhoneTypes phoneTypes, PhoneModes phoneModes)
 		{
 			this.PhoneTypes = phoneTypes;
 			this.PhoneModes = phoneModes;
 		}
 
-		// Token: 0x17000015 RID: 21
-		// (get) Token: 0x06000030 RID: 48 RVA: 0x00002924 File Offset: 0x00000B24
-		// (set) Token: 0x06000031 RID: 49 RVA: 0x0000293B File Offset: 0x00000B3B
+		// Token: 0x17000011 RID: 17
+		// (get) Token: 0x06000026 RID: 38 RVA: 0x000027CF File Offset: 0x000009CF
+		// (set) Token: 0x06000027 RID: 39 RVA: 0x000027D7 File Offset: 0x000009D7
 		public PhoneTypes PhoneTypes { get; private set; }
 
-		// Token: 0x17000016 RID: 22
-		// (get) Token: 0x06000032 RID: 50 RVA: 0x00002944 File Offset: 0x00000B44
-		// (set) Token: 0x06000033 RID: 51 RVA: 0x0000295B File Offset: 0x00000B5B
+		// Token: 0x17000012 RID: 18
+		// (get) Token: 0x06000028 RID: 40 RVA: 0x000027E0 File Offset: 0x000009E0
+		// (set) Token: 0x06000029 RID: 41 RVA: 0x000027E8 File Offset: 0x000009E8
 		public PhoneModes PhoneModes { get; private set; }
 	}
 }

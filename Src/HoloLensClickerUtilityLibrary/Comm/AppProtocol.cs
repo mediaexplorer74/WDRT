@@ -81,97 +81,97 @@ namespace ClickerUtilityLibrary.Comm
 		public bool IsStartOfPacket(byte[] value)
 		{
 			bool flag = value == null;
-			bool result;
+			bool flag2;
 			if (flag)
 			{
-				result = false;
+				flag2 = false;
 			}
 			else
 			{
-				bool flag2 = value.Length < 2;
-				if (flag2)
+				bool flag3 = value.Length < 2;
+				if (flag3)
 				{
-					result = false;
+					flag2 = false;
 				}
 				else
 				{
-					bool flag3 = value[0] == 80 && value[1] == 240;
-					result = flag3;
+					bool flag4 = value[0] == 80 && value[1] == 240;
+					flag2 = flag4;
 				}
 			}
-			return result;
+			return flag2;
 		}
 
 		// Token: 0x060000D5 RID: 213 RVA: 0x00006378 File Offset: 0x00004578
 		public bool IsPacketTypeValid(IPacket packet)
 		{
 			bool flag = packet == null;
-			bool result;
+			bool flag2;
 			if (flag)
 			{
-				result = false;
+				flag2 = false;
 			}
 			else
 			{
-				bool flag2 = packet.Type > 4;
-				result = !flag2;
+				bool flag3 = packet.Type > 4;
+				flag2 = !flag3;
 			}
-			return result;
+			return flag2;
 		}
 
 		// Token: 0x060000D6 RID: 214 RVA: 0x000063AC File Offset: 0x000045AC
 		public bool IsHeaderValid(IPacket packet)
 		{
 			bool flag = packet == null;
-			bool result;
+			bool flag2;
 			if (flag)
 			{
-				result = false;
+				flag2 = false;
 			}
 			else
 			{
 				this.ParseHeader(packet);
-				bool flag2 = !this.IsPacketTypeValid(packet);
-				bool flag3;
-				if (flag2)
+				bool flag3 = !this.IsPacketTypeValid(packet);
+				bool flag4;
+				if (flag3)
 				{
 					packet.Status = FStatus.COMM_H_BAD_PACKET_TYPE;
-					flag3 = false;
+					flag4 = false;
 				}
 				else
 				{
-					bool flag4 = packet.BodySize > 4096;
-					if (flag4)
+					bool flag5 = packet.BodySize > 4096;
+					if (flag5)
 					{
 						packet.Status = FStatus.COMM_H_BAD_BODY_SIZE;
-						flag3 = false;
+						flag4 = false;
 					}
 					else
 					{
-						flag3 = true;
+						flag4 = true;
 					}
 				}
-				result = flag3;
+				flag2 = flag4;
 			}
-			return result;
+			return flag2;
 		}
 
 		// Token: 0x060000D7 RID: 215 RVA: 0x0000641C File Offset: 0x0000461C
 		public bool IsPacketValid(IPacket packet)
 		{
 			bool flag = packet == null;
-			bool result;
+			bool flag2;
 			if (flag)
 			{
-				result = false;
+				flag2 = false;
 			}
 			else
 			{
 				packet.ReceiveTimeStamp = DateTime.Now;
 				packet.IsValid = this.IsHeaderValid(packet);
-				result = packet.IsValid;
+				flag2 = packet.IsValid;
 			}
-			return result;
+			return flag2;
 		}
 
 		// Token: 0x060000D8 RID: 216 RVA: 0x0000645B File Offset: 0x0000465B
@@ -268,10 +268,10 @@ namespace ClickerUtilityLibrary.Comm
 		public string GetBodyAsString(IPacket packet)
 		{
 			bool flag = packet == null;
-			string result;
+			string text;
 			if (flag)
 			{
-				result = null;
+				text = null;
 			}
 			else
 			{
@@ -279,9 +279,9 @@ namespace ClickerUtilityLibrary.Comm
 				byte[] array = new byte[packet.BodySize];
 				Array.Copy(packet.RawPacket, 5, array, 0, packet.BodySize);
 				string @string = asciiencoding.GetString(array);
-				result = @string;
+				text = @string;
 			}
-			return result;
+			return text;
 		}
 
 		// Token: 0x040000C5 RID: 197

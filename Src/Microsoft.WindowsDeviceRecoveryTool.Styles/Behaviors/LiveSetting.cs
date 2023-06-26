@@ -2,12 +2,12 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Styles.Behaviors
 {
-	// Token: 0x0200000A RID: 10
+	// Token: 0x02000013 RID: 19
 	public enum LiveSetting
 	{
-		// Token: 0x04000012 RID: 18
+		// Token: 0x0400000E RID: 14
 		Off,
-		// Token: 0x04000013 RID: 19
+		// Token: 0x0400000F RID: 15
 		Assertive = 2
 	}
 }

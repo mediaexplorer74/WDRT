@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
@@ -20,7 +21,7 @@ namespace SoftwareRepository.Streaming
 	// Token: 0x0200000E RID: 14
 	public class Downloader
 	{
-		// Token: 0x06000039 RID: 57 RVA: 0x00002BEB File Offset: 0x00000DEB
+		// Token: 0x06000039 RID: 57 RVA: 0x00002E3B File Offset: 0x0000103B
 		public Downloader()
 		{
 			this.TimeoutInMilliseconds = 10000;
@@ -30,97 +31,142 @@ namespace SoftwareRepository.Streaming
 		}
 
 		// Token: 0x1700000A RID: 10
-		// (get) Token: 0x0600003A RID: 58 RVA: 0x00002C24 File Offset: 0x00000E24
-		// (set) Token: 0x0600003B RID: 59 RVA: 0x00002C2C File Offset: 0x00000E2C
+		// (get) Token: 0x0600003A RID: 58 RVA: 0x00002E7A File Offset: 0x0000107A
+		// (set) Token: 0x0600003B RID: 59 RVA: 0x00002E82 File Offset: 0x00001082
 		public long ChunkSize { get; set; }
 
 		// Token: 0x1700000B RID: 11
-		// (get) Token: 0x0600003C RID: 60 RVA: 0x00002C35 File Offset: 0x00000E35
-		// (set) Token: 0x0600003D RID: 61 RVA: 0x00002C3D File Offset: 0x00000E3D
+		// (get) Token: 0x0600003C RID: 60 RVA: 0x00002E8B File Offset: 0x0000108B
+		// (set) Token: 0x0600003D RID: 61 RVA: 0x00002E93 File Offset: 0x00001093
 		public int MaxParallelConnections { get; set; }
 
 		// Token: 0x1700000C RID: 12
-		// (get) Token: 0x0600003E RID: 62 RVA: 0x00002C46 File Offset: 0x00000E46
-		// (set) Token: 0x0600003F RID: 63 RVA: 0x00002C4E File Offset: 0x00000E4E
+		// (get) Token: 0x0600003E RID: 62 RVA: 0x00002E9C File Offset: 0x0000109C
+		// (set) Token: 0x0600003F RID: 63 RVA: 0x00002EA4 File Offset: 0x000010A4
 		[SuppressMessage("Microsoft.Design", "CA1056:UriPropertiesShouldNotBeStrings")]
 		public string SoftwareRepositoryAlternativeBaseUrl { get; set; }
 
 		// Token: 0x1700000D RID: 13
-		// (get) Token: 0x06000040 RID: 64 RVA: 0x00002C57 File Offset: 0x00000E57
-		// (set) Token: 0x06000041 RID: 65 RVA: 0x00002C5F File Offset: 0x00000E5F
+		// (get) Token: 0x06000040 RID: 64 RVA: 0x00002EAD File Offset: 0x000010AD
+		// (set) Token: 0x06000041 RID: 65 RVA: 0x00002EB5 File Offset: 0x000010B5
 		public string SoftwareRepositoryAuthenticationToken { get; set; }
 
 		// Token: 0x1700000E RID: 14
-		// (get) Token: 0x06000042 RID: 66 RVA: 0x00002C68 File Offset: 0x00000E68
-		// (set) Token: 0x06000043 RID: 67 RVA: 0x00002C70 File Offset: 0x00000E70
+		// (get) Token: 0x06000042 RID: 66 RVA: 0x00002EBE File Offset: 0x000010BE
+		// (set) Token: 0x06000043 RID: 67 RVA: 0x00002EC6 File Offset: 0x000010C6
 		public IWebProxy SoftwareRepositoryProxy { get; set; }
 
 		// Token: 0x1700000F RID: 15
-		// (get) Token: 0x06000044 RID: 68 RVA: 0x00002C79 File Offset: 0x00000E79
-		// (set) Token: 0x06000045 RID: 69 RVA: 0x00002C81 File Offset: 0x00000E81
+		// (get) Token: 0x06000044 RID: 68 RVA: 0x00002ECF File Offset: 0x000010CF
+		// (set) Token: 0x06000045 RID: 69 RVA: 0x00002ED7 File Offset: 0x000010D7
 		public string SoftwareRepositoryUserAgent { get; set; }
 
 		// Token: 0x17000010 RID: 16
-		// (get) Token: 0x06000046 RID: 70 RVA: 0x00002C8A File Offset: 0x00000E8A
-		// (set) Token: 0x06000047 RID: 71 RVA: 0x00002C92 File Offset: 0x00000E92
+		// (get) Token: 0x06000046 RID: 70 RVA: 0x00002EE0 File Offset: 0x000010E0
+		// (set) Token: 0x06000047 RID: 71 RVA: 0x00002EE8 File Offset: 0x000010E8
 		public int TimeoutInMilliseconds { get; set; }
 
 		// Token: 0x17000011 RID: 17
-		// (get) Token: 0x06000048 RID: 72 RVA: 0x00002C9B File Offset: 0x00000E9B
-		// (set) Token: 0x06000049 RID: 73 RVA: 0x00002CA3 File Offset: 0x00000EA3
+		// (get) Token: 0x06000048 RID: 72 RVA: 0x00002EF1 File Offset: 0x000010F1
+		// (set) Token: 0x06000049 RID: 73 RVA: 0x00002EF9 File Offset: 0x000010F9
 		[SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Auth", Justification = "Acceptable abbreviation")]
 		public bool AllowWindowsAuth { get; set; }
-        
-        // Token: 0x14000001 RID: 1
-        // (add) Token: 0x0600004A RID: 74 RVA: 0x00002CAC File Offset: 0x00000EAC
-        // (remove) Token: 0x0600004B RID: 75 RVA: 0x00002CE4 File Offset: 0x00000EE4
-        public event DownloadReadyEventHandler DownloadReady;
+
+		// Token: 0x14000001 RID: 1
+		// (add) Token: 0x0600004A RID: 74 RVA: 0x00002F04 File Offset: 0x00001104
+		// (remove) Token: 0x0600004B RID: 75 RVA: 0x00002F3C File Offset: 0x0000113C
+		[field: DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		public event DownloadReadyEventHandler DownloadReady;
 
 		// Token: 0x14000002 RID: 2
-		// (add) Token: 0x0600004C RID: 76 RVA: 0x00002D1C File Offset: 0x00000F1C
-		// (remove) Token: 0x0600004D RID: 77 RVA: 0x00002D54 File Offset: 0x00000F54
-		//[SuppressMessage("Microsoft.Design", "CA1009:DeclareEventHandlersCorrectly")]
+		// (add) Token: 0x0600004C RID: 76 RVA: 0x00002F74 File Offset: 0x00001174
+		// (remove) Token: 0x0600004D RID: 77 RVA: 0x00002FAC File Offset: 0x000011AC
+		[SuppressMessage("Microsoft.Design", "CA1009:DeclareEventHandlersCorrectly")]
+		[field: DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event BestUrlSelectionEventHandler OnUrlSelection;
 
-		// Token: 0x0600004E RID: 78 RVA: 0x00002D8C File Offset: 0x00000F8C
+		// Token: 0x0600004E RID: 78 RVA: 0x00002FE4 File Offset: 0x000011E4
 		public async Task GetFileAsync(string packageId, string filename, Streamer streamer)
 		{
 			CancellationTokenSource cts = new CancellationTokenSource();
 			DownloadReadyEventArgs downloadReadyEvent = null;
-			DownloadReadyEventHandler value = delegate(object _, DownloadReadyEventArgs e)
+			DownloadReadyEventHandler readyHandler = delegate(object _, DownloadReadyEventArgs e)
 			{
 				downloadReadyEvent = e;
 			};
-			this.DownloadReady += value;
-			Action<DownloadProgressInfo> action = delegate(DownloadProgressInfo info)
+			this.DownloadReady += readyHandler;
+			Action<DownloadProgressInfo> progressHandler = delegate(DownloadProgressInfo info)
 			{
-				if (info.BytesReceived >= info.TotalBytes)
+				bool flag = info.BytesReceived >= info.TotalBytes;
+				if (flag)
 				{
 					cts.Cancel();
 				}
 			};
-			await this.GetFileAsync(packageId, filename, streamer, cts.Token, new DownloadProgress<DownloadProgressInfo>(action));
+			await this.GetFileAsync(packageId, filename, streamer, cts.Token, new DownloadProgress<DownloadProgressInfo>(progressHandler));
 		}
 
-		// Token: 0x0600004F RID: 79 RVA: 0x00002DEC File Offset: 0x00000FEC
+		// Token: 0x0600004F RID: 79 RVA: 0x00003040 File Offset: 0x00001240
+		public async Task GetFileAsync(string packageId, string filename, Streamer streamer, bool ignoreFilePath)
+		{
+			CancellationTokenSource cts = new CancellationTokenSource();
+			DownloadReadyEventArgs downloadReadyEvent = null;
+			DownloadReadyEventHandler readyHandler = delegate(object _, DownloadReadyEventArgs e)
+			{
+				downloadReadyEvent = e;
+			};
+			this.DownloadReady += readyHandler;
+			Action<DownloadProgressInfo> progressHandler = delegate(DownloadProgressInfo info)
+			{
+				bool flag = info.BytesReceived >= info.TotalBytes;
+				if (flag)
+				{
+					cts.Cancel();
+				}
+			};
+			await this.GetFileAsync(packageId, filename, streamer, cts.Token, new DownloadProgress<DownloadProgressInfo>(progressHandler), ignoreFilePath);
+		}
+
+		// Token: 0x06000050 RID: 80 RVA: 0x000030A4 File Offset: 0x000012A4
 		public async Task GetFileAsync(string packageId, string filename, Streamer streamer, DownloadProgress<DownloadProgressInfo> progress)
 		{
 			await this.GetFileAsync(packageId, filename, streamer, CancellationToken.None, progress);
 		}
 
-		// Token: 0x06000050 RID: 80 RVA: 0x00002E54 File Offset: 0x00001054
+		// Token: 0x06000051 RID: 81 RVA: 0x00003108 File Offset: 0x00001308
+		public async Task GetFileAsync(string packageId, string filename, Streamer streamer, DownloadProgress<DownloadProgressInfo> progress, bool ignoreFilePath)
+		{
+			await this.GetFileAsync(packageId, filename, streamer, CancellationToken.None, progress, ignoreFilePath);
+		}
+
+		// Token: 0x06000052 RID: 82 RVA: 0x00003174 File Offset: 0x00001374
 		public async Task GetFileAsync(string packageId, string filename, Streamer streamer, CancellationToken cancellationToken)
 		{
 			await this.GetFileAsync(packageId, filename, streamer, cancellationToken, null);
 		}
 
-		// Token: 0x06000051 RID: 81 RVA: 0x00002EBC File Offset: 0x000010BC
+		// Token: 0x06000053 RID: 83 RVA: 0x000031D8 File Offset: 0x000013D8
+		public async Task GetFileAsync(string packageId, string filename, Streamer streamer, CancellationToken cancellationToken, bool ignoreFilePath)
+		{
+			await this.GetFileAsync(packageId, filename, streamer, cancellationToken, null, ignoreFilePath);
+		}
+
+		// Token: 0x06000054 RID: 84 RVA: 0x00003244 File Offset: 0x00001444
 		public async Task GetFileAsync(string packageId, string filename, Streamer streamer, CancellationToken cancellationToken, DownloadProgress<DownloadProgressInfo> progress)
+		{
+			await this.GetFileAsync(packageId, filename, streamer, cancellationToken, progress, false);
+		}
+
+		// Token: 0x06000055 RID: 85 RVA: 0x000032B0 File Offset: 0x000014B0
+		public async Task GetFileAsync(string packageId, string filename, Streamer streamer, CancellationToken cancellationToken, DownloadProgress<DownloadProgressInfo> progress, bool ignoreFilePath)
 		{
 			Exception exception = null;
 			int reportStatus = -1;
 			DateTime reportTimeBegin = DateTime.Now;
+			bool isSharedFile = false;
+			string sharedFileURL = null;
 			FileUrlResult fileUrlResult = null;
+			string fileUrl = null;
 			ChunkManager chunkManager = null;
 			SemaphoreSlim syncLock = new SemaphoreSlim(1, 1);
 			Downloader.ProgressWrapper progressWrapper = new Downloader.ProgressWrapper(progress);
@@ -131,97 +177,143 @@ namespace SoftwareRepository.Streaming
 				{
 					FileUrlResult fileUrlResult2 = await this.GetFileUrlAsync(packageId, filename, cancellationToken);
 					fileUrlResult = fileUrlResult2;
+					fileUrlResult2 = null;
 					List<string> fileUrls = fileUrlResult.GetFileUrls();
 					if (fileUrlResult.StatusCode != HttpStatusCode.OK || fileUrls.Count <= 0)
 					{
 						throw new DownloadException(404, "File not found (" + filename + ").");
 					}
-					long streamSize = streamer.GetStream().Length;
-					if (streamSize > fileUrlResult.FileSize)
+					if (!ignoreFilePath)
 					{
-						throw new DownloadException(412, "Incorrect file size, can't resume download. Stream contains more data than expected.");
-					}
-					bool flag = streamSize == fileUrlResult.FileSize;
-					if (flag)
-					{
-						flag = await Downloader.FileIntegrityPreservedAsync(fileUrlResult.Checksum, streamer.GetStream());
-					}
-					if (flag)
-					{
-						this.ReportCompleted(progressWrapper, packageId, filename, fileUrlResult.FileSize);
-						return;
-					}
-					byte[] array = streamer.GetMetadata();
-					if (array != null)
-					{
-						chunkManager = new ChunkManager(DownloadMetadata.Deserialize(array), this.ChunkSize, fileUrlResult.FileSize, filename, streamer, syncLock, cancellationToken);
-						if (streamSize < chunkManager.ProgressBytes)
+						foreach (string url in fileUrls)
 						{
-							array = null;
-							streamer.ClearMetadata();
+							if (url.ToLower().StartsWith("file://"))
+							{
+								isSharedFile = true;
+								sharedFileURL = url;
+								break;
+							}
+							url = null;
+						}
+						List<string>.Enumerator enumerator = default(List<string>.Enumerator);
+					}
+					if (isSharedFile)
+					{
+						urlSelectionResult.UrlResults.Add(new UrlResult
+						{
+							FileUrl = sharedFileURL,
+							IsSelected = true
+						});
+						this.OnUrlSelection(urlSelectionResult);
+						int num = await this.DownloadSharedFileAsync(packageId, filename, sharedFileURL, streamer.DownloadPath, fileUrlResult, progressWrapper);
+						reportStatus = num;
+						if (reportStatus != 200)
+						{
+							urlSelectionResult = new UrlSelectionResult();
+							isSharedFile = false;
+							sharedFileURL = null;
 						}
 					}
-					if (array == null)
+					if (!isSharedFile)
 					{
-						chunkManager = new ChunkManager(this.ChunkSize, fileUrlResult.FileSize, filename, streamer, syncLock, cancellationToken);
+						long streamSize = streamer.GetStream().Length;
+						if (streamSize > fileUrlResult.FileSize)
+						{
+							throw new DownloadException(412, "Incorrect file size, can't resume download. Stream contains more data than expected.");
+						}
+						bool flag = streamSize == fileUrlResult.FileSize;
+						bool flag2 = flag;
+						if (flag2)
+						{
+							bool flag3 = await Downloader.FileIntegrityPreservedAsync(fileUrlResult.Checksum, streamer.GetStream());
+							flag2 = flag3;
+						}
+						if (flag2)
+						{
+							this.ReportCompleted(progressWrapper, packageId, filename, fileUrlResult.FileSize);
+							return;
+						}
+						byte[] savedMetadata = streamer.GetMetadata();
+						if (savedMetadata != null)
+						{
+							chunkManager = new ChunkManager(DownloadMetadata.Deserialize(savedMetadata), this.ChunkSize, fileUrlResult.FileSize, filename, streamer, syncLock, cancellationToken);
+							if (streamSize < chunkManager.ProgressBytes)
+							{
+								savedMetadata = null;
+								streamer.ClearMetadata();
+							}
+						}
+						if (savedMetadata == null)
+						{
+							chunkManager = new ChunkManager(this.ChunkSize, fileUrlResult.FileSize, filename, streamer, syncLock, cancellationToken);
+						}
+						chunkManager.SoftwareRepositoryProxy = this.SoftwareRepositoryProxy;
+						chunkManager.ChunkTimeoutInMilliseconds = new int?(this.TimeoutInMilliseconds);
+						chunkManager.AllowWindowsAuth = this.AllowWindowsAuth;
+						this.OnUrlSelection += delegate(UrlSelectionResult result)
+						{
+							urlSelectionResult = result;
+						};
+						string text = await this.SelectBestUrlAsync(chunkManager.GetTestChunk(), fileUrlResult, streamer, cancellationToken, progressWrapper, chunkManager);
+						fileUrl = text;
+						text = null;
+						chunkManager.FileUrl = fileUrl;
+						if (chunkManager.IsDownloaded)
+						{
+							reportStatus = 200;
+						}
+						else
+						{
+							int num2 = await this.DownloadAsync(chunkManager, fileUrlResult, streamer, progressWrapper);
+							reportStatus = num2;
+						}
+						savedMetadata = null;
 					}
-					chunkManager.SoftwareRepositoryProxy = this.SoftwareRepositoryProxy;
-					chunkManager.ChunkTimeoutInMilliseconds = new int?(this.TimeoutInMilliseconds);
-					chunkManager.AllowWindowsAuth = this.AllowWindowsAuth;
-					this.OnUrlSelection += delegate(UrlSelectionResult result)
-					{
-						urlSelectionResult = result;
-					};
-					string fileUrl = await this.SelectBestUrlAsync(chunkManager.GetTestChunk(), fileUrlResult, streamer, cancellationToken, progressWrapper, chunkManager);
-					chunkManager.FileUrl = fileUrl;
-					if (chunkManager.IsDownloaded)
-					{
-						reportStatus = 200;
-					}
-					else
-					{
-						reportStatus = await this.DownloadAsync(chunkManager, fileUrlResult, streamer, progressWrapper);
-					}
+					fileUrls = null;
 				}
 				catch (OperationCanceledException ex)
 				{
 					reportStatus = 206;
 					exception = ex;
 				}
-				catch (HttpRequestException innerException)
+				catch (HttpRequestException ex2)
 				{
 					reportStatus = 999;
-					exception = new DownloadException(reportStatus, "HttpRequestException.", innerException);
+					exception = new DownloadException(reportStatus, "HttpRequestException.", ex2);
 				}
-				catch (DownloadException ex2)
+				catch (DownloadException ex3)
 				{
-					reportStatus = ex2.StatusCode;
-					exception = ex2;
+					reportStatus = ex3.StatusCode;
+					exception = ex3;
 				}
-				if (chunkManager != null)
+				if (!isSharedFile)
 				{
-					if (chunkManager.IsDownloaded)
+					if (chunkManager != null)
 					{
-						streamer.ClearMetadata();
+						if (chunkManager.IsDownloaded)
+						{
+							streamer.ClearMetadata();
+						}
+						else
+						{
+							chunkManager.SaveMetadata(streamer, true);
+						}
 					}
-					else
-					{
-						chunkManager.SaveMetadata(streamer, true);
-					}
+					await streamer.GetStream().FlushAsync();
 				}
-				await streamer.GetStream().FlushAsync();
 			}
-			catch (Exception innerException2)
+			catch (Exception ex4)
 			{
 				if (reportStatus == -1)
 				{
 					reportStatus = 999;
 				}
-				exception = new DownloadException(999, "Unknown exception.", innerException2);
+				exception = new DownloadException(999, "Unknown exception.", ex4);
 			}
 			if (exception == null)
 			{
-				if (!(await Downloader.FileIntegrityPreservedAsync(fileUrlResult.Checksum, streamer.GetStream())))
+				bool flag4 = await Downloader.FileIntegrityPreservedAsync(fileUrlResult.Checksum, streamer.GetStream());
+				if (!flag4)
 				{
 					reportStatus = 417;
 					exception = new DownloadException(reportStatus, "File integrity error. MD5 checksum of the file does not match with data received from server.");
@@ -233,19 +325,29 @@ namespace SoftwareRepository.Streaming
 			}
 			try
 			{
-				long num = (long)((int)(DateTime.Now - reportTimeBegin).TotalSeconds);
-				if (num <= 0L)
+				TimeSpan downloadTime = DateTime.Now - reportTimeBegin;
+				long downloadTimeInSeconds = (long)((int)downloadTime.TotalSeconds);
+				if (downloadTimeInSeconds <= 0L)
 				{
-					num = 1L;
+					downloadTimeInSeconds = 1L;
 				}
-				List<string> list = new List<string>();
-				list.Add(urlSelectionResult.ToJson());
-				await new Reporter
+				List<string> urls = new List<string>();
+				urls.Add(urlSelectionResult.ToJson());
+				Reporter reporter = new Reporter
 				{
 					SoftwareRepositoryAlternativeBaseUrl = this.SoftwareRepositoryAlternativeBaseUrl,
 					SoftwareRepositoryUserAgent = this.SoftwareRepositoryUserAgent,
 					SoftwareRepositoryProxy = this.SoftwareRepositoryProxy
-				}.SendDownloadReport(packageId, filename, list, reportStatus, num, fileUrlResult.FileSize, Math.Min(this.MaxParallelConnections, chunkManager.TotalChunks), cancellationToken);
+				};
+				int connections = 1;
+				if (!isSharedFile)
+				{
+					connections = Math.Min(this.MaxParallelConnections, chunkManager.TotalChunks);
+				}
+				await reporter.SendDownloadReport(packageId, filename, urls, reportStatus, downloadTimeInSeconds, fileUrlResult.FileSize, connections, cancellationToken);
+				downloadTime = default(TimeSpan);
+				urls = null;
+				reporter = null;
 			}
 			catch (Exception)
 			{
@@ -257,489 +359,500 @@ namespace SoftwareRepository.Streaming
 			this.ReportCompleted(progressWrapper, packageId, filename, fileUrlResult.FileSize);
 		}
 
-        private Task<int> DownloadAsync(ChunkManager chunkManager, FileUrlResult fileUrlResult, Streamer streamer, ProgressWrapper progressWrapper)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void ReportCompleted(ProgressWrapper progressWrapper, string packageId, string filename, long fileSize)
-        {
-            throw new NotImplementedException();
-        }
-
-        // Token: 0x06000052 RID: 82 RVA: 0x00002F2C File Offset: 0x0000112C
-        private static async Task<bool> FileIntegrityPreservedAsync(List<SoftwareFileChecksum> checksums, Stream stream)
+		// Token: 0x06000056 RID: 86 RVA: 0x00003324 File Offset: 0x00001524
+		private static async Task<bool> FileIntegrityPreservedAsync(List<SoftwareFileChecksum> checksums, Stream stream)
 		{
-			Downloader.DisplayClass53_1 f8__locals1 
-				= new Downloader.DisplayClass53_1();
-			f8__locals1.stream = stream;
-			bool result;
-			if (checksums == null)
+			Downloader.<>c__DisplayClass57_0 CS$<>8__locals1 = new Downloader.<>c__DisplayClass57_0();
+			CS$<>8__locals1.stream = stream;
+			bool flag = checksums == null;
+			bool flag2;
+			if (flag)
 			{
-				result = false;
+				flag2 = false;
 			}
 			else
 			{
 				bool ret = false;
 				foreach (SoftwareFileChecksum checksum in checksums)
 				{
-					if (checksum != null && checksum.ChecksumType != null 
-						&& checksum.Value != null)
+					bool flag3 = checksum == null || checksum.ChecksumType == null || checksum.Value == null;
+					if (!flag3)
 					{
-						if (checksum.ChecksumType.ToUpperInvariant() == "MD5")
+						bool flag4 = checksum.ChecksumType.ToUpperInvariant() == "MD5";
+						if (flag4)
 						{
-							Downloader.DisplayClass53_0 f8__locals2 
-								= new Downloader.DisplayClass53_0();
-
-                            f8__locals2.f8__locals1 = f8__locals1;
-							f8__locals2.md5 = MD5.Create();
+							Downloader.<>c__DisplayClass57_1 CS$<>8__locals2 = new Downloader.<>c__DisplayClass57_1();
+							CS$<>8__locals2.CS$<>8__locals1 = CS$<>8__locals1;
+							CS$<>8__locals2.md5 = MD5.Create();
 							try
 							{
-								f8__locals2.f8__locals1.stream.Seek(0L, 
-									SeekOrigin.Begin);
-								
-								byte[] array = await Task.Run<byte[]>(() 
-									=> f8__locals2.md5.ComputeHash(
-										f8__locals2.f8__locals1.stream));
-								
-								string value = Convert.ToBase64String(array);
-								string value2 = BitConverter.ToString(array).Replace("-", string.Empty).ToLowerInvariant();
-								if (!checksum.Value.Equals(value) && !checksum.Value.ToLowerInvariant().Equals(value2))
+								CS$<>8__locals2.CS$<>8__locals1.stream.Seek(0L, SeekOrigin.Begin);
+								byte[] array = await Task.Run<byte[]>(() => CS$<>8__locals2.md5.ComputeHash(CS$<>8__locals2.CS$<>8__locals1.stream));
+								byte[] b = array;
+								array = null;
+								string base64MD5 = Convert.ToBase64String(b);
+								string hexMD5 = BitConverter.ToString(b).Replace("-", string.Empty).ToLowerInvariant();
+								if (!checksum.Value.Equals(base64MD5) && !checksum.Value.ToLowerInvariant().Equals(hexMD5))
 								{
 									return false;
 								}
 								ret = true;
+								b = null;
+								base64MD5 = null;
+								hexMD5 = null;
 							}
 							finally
 							{
-								if (f8__locals2.md5 != null)
+								if (CS$<>8__locals2.md5 != null)
 								{
-									((IDisposable)f8__locals2.md5).Dispose();
+									((IDisposable)CS$<>8__locals2.md5).Dispose();
 								}
 							}
-							f8__locals2 = null;
+							CS$<>8__locals2 = null;
 						}
-						//checksum = null;
+						checksum = null;
 					}
 				}
 				List<SoftwareFileChecksum>.Enumerator enumerator = default(List<SoftwareFileChecksum>.Enumerator);
-				result = ret;
+				flag2 = ret;
 			}
-			return result;
+			return flag2;
 		}
 
-		// Token: 0x06000053 RID: 83 RVA: 0x00002F7C File Offset: 0x0000117C
+		// Token: 0x06000057 RID: 87 RVA: 0x00003370 File Offset: 0x00001570
 		private async Task<FileUrlResult> GetFileUrlAsync(string packageId, string filename, CancellationToken cancellationToken)
 		{
 			FileUrlResult ret = new FileUrlResult();
 			try
 			{
-				string text = "https://api.swrepository.com";
-				if (this.SoftwareRepositoryAlternativeBaseUrl != null)
+				string baseUrl = "https://api.swrepository.com";
+				bool flag = this.SoftwareRepositoryAlternativeBaseUrl != null;
+				if (flag)
 				{
-					text = this.SoftwareRepositoryAlternativeBaseUrl;
+					baseUrl = this.SoftwareRepositoryAlternativeBaseUrl;
 				}
-				Uri requestUri = new Uri(string.Concat(new string[]
-				{
-					text,
-					"/rest-api/discovery/1/package/",
-					packageId,
-					"/file/",
-					filename,
-					"/urls"
-				}));
+				Uri uri = new Uri(string.Concat(new string[] { baseUrl, "/rest-api/discovery/1/package/", packageId, "/file/", filename, "/urls" }));
+				ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 				HttpClient httpClient = null;
-				if (this.SoftwareRepositoryProxy != null)
+				bool flag2 = this.SoftwareRepositoryProxy != null;
+				if (flag2)
 				{
-					httpClient = new HttpClient(new HttpClientHandler
-					{
-						Proxy = this.SoftwareRepositoryProxy,
-						UseProxy = true
-					});
+					HttpClientHandler handler = new HttpClientHandler();
+					handler.Proxy = this.SoftwareRepositoryProxy;
+					handler.UseProxy = true;
+					httpClient = new HttpClient(handler);
+					handler = null;
 				}
 				else
 				{
 					httpClient = new HttpClient();
 				}
-				string input = "SoftwareRepository";
-				if (this.SoftwareRepositoryUserAgent != null)
+				string userAgent = "SoftwareRepository";
+				bool flag3 = this.SoftwareRepositoryUserAgent != null;
+				if (flag3)
 				{
-					input = this.SoftwareRepositoryUserAgent;
+					userAgent = this.SoftwareRepositoryUserAgent;
 				}
-				httpClient.DefaultRequestHeaders.UserAgent.TryParseAdd(input);
-				if (this.SoftwareRepositoryAuthenticationToken != null)
+				httpClient.DefaultRequestHeaders.UserAgent.TryParseAdd(userAgent);
+				bool flag4 = this.SoftwareRepositoryAuthenticationToken != null;
+				if (flag4)
 				{
 					httpClient.DefaultRequestHeaders.Add("X-Authentication", this.SoftwareRepositoryAuthenticationToken);
 					httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", this.SoftwareRepositoryAuthenticationToken);
 				}
 				httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-				HttpResponseMessage httpResponseMessage = await httpClient.GetAsync(requestUri, cancellationToken);
+				HttpResponseMessage httpResponseMessage = await httpClient.GetAsync(uri, cancellationToken);
 				HttpResponseMessage responseMsg = httpResponseMessage;
+				httpResponseMessage = null;
 				if (responseMsg.StatusCode == HttpStatusCode.OK)
 				{
-					string s = await responseMsg.Content.ReadAsStringAsync();
-					ret = (FileUrlResult)new DataContractJsonSerializer(typeof(FileUrlResult)).ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(s)));
+					HttpContent result = responseMsg.Content;
+					string text = await result.ReadAsStringAsync();
+					string jsonString = text;
+					text = null;
+					DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(FileUrlResult));
+					MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(jsonString));
+					ret = (FileUrlResult)ser.ReadObject(ms);
+					result = null;
+					jsonString = null;
+					ser = null;
+					ms = null;
 				}
 				ret.StatusCode = responseMsg.StatusCode;
 				httpClient.Dispose();
+				baseUrl = null;
+				uri = null;
 				httpClient = null;
+				userAgent = null;
 				responseMsg = null;
 			}
 			catch (OperationCanceledException)
 			{
 				throw;
 			}
-			catch (Exception innerException)
+			catch (Exception ex)
 			{
-				throw new DownloadException(999, "Cannot get file url.", innerException);
+				throw new DownloadException(999, "Cannot get file url.", ex);
 			}
 			return ret;
 		}
 
-		// Token: 0x06000054 RID: 84 RVA: 0x00002FDC File Offset: 0x000011DC
-		private async Task<string> SelectBestUrlAsync
-		(
-			DownloadChunk testChunk, 
-			FileUrlResult fileUrlResult, 
-			Streamer streamer, CancellationToken cancellationToken, 
-			Downloader.ProgressWrapper progress, 
-			ChunkManager chunkManager
-		)
+		// Token: 0x06000058 RID: 88 RVA: 0x000033CC File Offset: 0x000015CC
+		private async Task<string> SelectBestUrlAsync(DownloadChunk testChunk, FileUrlResult fileUrlResult, Streamer streamer, CancellationToken cancellationToken, Downloader.ProgressWrapper progress, ChunkManager chunkManager)
 		{
-			Downloader.DisplayClass55_0 f8__locals1 = 
-				new Downloader.DisplayClass55_0();
-			f8__locals1.progress = progress;
-			f8__locals1.chunkManager = chunkManager;
-			f8__locals1.urlSelectionResult = new UrlSelectionResult();
-			f8__locals1.urlSelectionResult.TestBytes = testChunk.Bytes;
+			Downloader.<>c__DisplayClass59_0 CS$<>8__locals1 = new Downloader.<>c__DisplayClass59_0();
+			CS$<>8__locals1.progress = progress;
+			CS$<>8__locals1.chunkManager = chunkManager;
+			CS$<>8__locals1.urlSelectionResult = new UrlSelectionResult();
+			CS$<>8__locals1.urlSelectionResult.TestBytes = testChunk.Bytes;
 			List<string> fileUrls = fileUrlResult.GetFileUrls();
-			
-			string result;
-
-			if (fileUrls.Count == 1)
+			bool flag = fileUrls.Count == 1;
+			string text;
+			if (flag)
 			{
-				f8__locals1.urlSelectionResult.UrlResults.Add(new UrlResult
+				CS$<>8__locals1.urlSelectionResult.UrlResults.Add(new UrlResult
 				{
 					FileUrl = fileUrls.First<string>(),
 					IsSelected = true
 				});
-				if (this.OnUrlSelection != null)
+				bool flag2 = this.OnUrlSelection != null;
+				if (flag2)
 				{
-					this.OnUrlSelection(f8__locals1.urlSelectionResult);
+					this.OnUrlSelection(CS$<>8__locals1.urlSelectionResult);
 				}
-				result = fileUrls.First<string>();
+				text = fileUrls.First<string>();
 			}
 			else
 			{
-				f8__locals1.urlSelectionResult.UrlResults.AddRange(from x in fileUrlResult.GetFileUrls()
-																   select new UrlResult
-																   {
-																	   FileUrl = x
-																   });
-				f8__locals1.ret = null;
-				f8__locals1.exception = null;
-
+				CS$<>8__locals1.urlSelectionResult.UrlResults.AddRange(from x in fileUrlResult.GetFileUrls()
+					select new UrlResult
+					{
+						FileUrl = x
+					});
+				CS$<>8__locals1.ret = null;
+				CS$<>8__locals1.exception = null;
 				Task<int> winner = null;
 				int statusCode = -1;
 				List<DownloadChunk> chunks = new List<DownloadChunk>();
 				List<Task<int>> tasks = new List<Task<int>>();
-				f8__locals1.currentDownloaded =
-					f8__locals1.chunkManager.ProgressBytes;
-				f8__locals1.bestChunk = 0L;
-
+				CS$<>8__locals1.currentDownloaded = CS$<>8__locals1.chunkManager.ProgressBytes;
+				CS$<>8__locals1.bestChunk = 0L;
 				DownloadChunk chunk;
-				DownloadProgressEventHandler progressHandler = delegate (object sender, EventArgs args)
+				DownloadProgressEventHandler progressHandler = delegate(object sender, EventArgs args)
 				{
-					DownloadChunk chunk1 = sender as DownloadChunk;
-					(from x in f8__locals1.urlSelectionResult.UrlResults
-					 where x.FileUrl.Equals(chunk1.Url,
-					 StringComparison.OrdinalIgnoreCase)
-					 select x).ToList<UrlResult>().ForEach(delegate (UrlResult x)
-					 {
-						 x.TestSpeed = chunk1.DownloadSpeed;
-						 x.BytesRead = chunk1.BytesRead;
-					 });
-					if (chunk1.BytesRead > f8__locals1.bestChunk)
+					DownloadChunk chunk = sender as DownloadChunk;
+					CS$<>8__locals1.urlSelectionResult.UrlResults.Where((UrlResult x) => x.FileUrl.Equals(chunk.Url, StringComparison.OrdinalIgnoreCase)).ToList<UrlResult>().ForEach(delegate(UrlResult x)
 					{
-						f8__locals1.bestChunk = chunk1.BytesRead;
-						f8__locals1.progress.Report(
-							new DownloadProgressInfo(
-								f8__locals1.currentDownloaded
-								+ f8__locals1.bestChunk,
-								  f8__locals1.chunkManager.FileSize,
-								  f8__locals1.chunkManager.FileName));
+						x.TestSpeed = chunk.DownloadSpeed;
+						x.BytesRead = chunk.BytesRead;
+					});
+					bool flag3 = chunk.BytesRead > CS$<>8__locals1.bestChunk;
+					if (flag3)
+					{
+						CS$<>8__locals1.bestChunk = chunk.BytesRead;
+						CS$<>8__locals1.progress.Report(new DownloadProgressInfo(CS$<>8__locals1.currentDownloaded + CS$<>8__locals1.bestChunk, CS$<>8__locals1.chunkManager.FileSize, CS$<>8__locals1.chunkManager.FileName));
 					}
 				};
-
-				Downloader.DisplayClass55_2 f8__locals2 =
-					new Downloader.DisplayClass55_2();
-
-				f8__locals2.f8__locals1 = f8__locals1;
-				f8__locals2.cts = new CancellationTokenSource();
+				Downloader.<>c__DisplayClass59_2 CS$<>8__locals2 = new Downloader.<>c__DisplayClass59_2();
+				CS$<>8__locals2.CS$<>8__locals1 = CS$<>8__locals1;
+				CS$<>8__locals2.cts = new CancellationTokenSource();
 				try
 				{
-					using (cancellationToken.Register(delegate ()
+					using (cancellationToken.Register(delegate
 					{
-						f8__locals2.cts.Cancel();
+						CS$<>8__locals2.cts.Cancel();
 					}))
 					{
-						using (List<string>.Enumerator
-							enumerator = fileUrls.GetEnumerator())
+						foreach (string fileUrl in fileUrls)
 						{
-							while (enumerator.MoveNext())
+							chunk = testChunk.Clone();
+							chunk.Url = fileUrl;
+							chunk.OutStream = new MemoryStream();
+							chunk.AllowSeek = false;
+							chunk.DownloadProgress += progressHandler;
+							chunks.Add(chunk);
+							tasks.Add(chunk.Download());
+							chunk = null;
+							fileUrl = null;
+						}
+						List<string>.Enumerator enumerator = default(List<string>.Enumerator);
+						while (statusCode == -1 && tasks.Count > 0)
+						{
+							try
 							{
-								string url = enumerator.Current;
-								DownloadChunk downloadChunk = testChunk.Clone();
-								downloadChunk.Url = url;
-								downloadChunk.OutStream = new MemoryStream();
-								downloadChunk.AllowSeek = false;
-								downloadChunk.DownloadProgress += progressHandler;
-								chunks.Add(downloadChunk);
-								tasks.Add(downloadChunk.Download());
+								Task<Task<int>> anyTask = Task.WhenAny<int>(tasks);
+								Task<int> task = await anyTask;
+								winner = task;
+								task = null;
+								int num = await winner;
+								statusCode = num;
+								anyTask = null;
 							}
-							goto IL_4DF;
-						}
-					IL_2AD:
-						try
-						{
-							Task<int> task = await Task.WhenAny<int>(tasks);
-							winner = task;
-							statusCode = await winner;
-						}
-						catch (OperationCanceledException exception)
-						{
-							f8__locals2.f8__locals1.exception = exception;
-						}
-						catch (Exception exception2)
-						{
-							if (!(f8__locals2.f8__locals1.exception
-								is OperationCanceledException))
+							catch (OperationCanceledException ex)
 							{
-								f8__locals2.f8__locals1.exception = exception2;
+								CS$<>8__locals2.CS$<>8__locals1.exception = ex;
 							}
-						}
-						finally
-						{
-							if (statusCode == -1)
+							catch (Exception ex2)
 							{
-								int index = tasks.IndexOf(winner);
-								tasks.Remove(winner);
-								fileUrls.RemoveAt(index);
-								DownloadChunk chunk1 = chunks[index];
-								Func<Exception, string> walkException = null;
-								walkException = delegate (Exception e)
+								if (!(CS$<>8__locals2.CS$<>8__locals1.exception is OperationCanceledException))
 								{
-									if (e.InnerException != null)
-									{
-										return string.Format(
-											CultureInfo.InvariantCulture, "{0}: {1} ({2})", new object[]
-										{
-											e.GetType().Name,
-											e.Message,
-											walkException(e.InnerException)
-										});
-									}
-									return string.Format(CultureInfo.InvariantCulture, "{0}: {1}", new object[]
+									CS$<>8__locals2.CS$<>8__locals1.exception = ex2;
+								}
+							}
+							finally
+							{
+								if (statusCode == -1)
+								{
+									Downloader.<>c__DisplayClass59_3 CS$<>8__locals3 = new Downloader.<>c__DisplayClass59_3();
+									CS$<>8__locals3.CS$<>8__locals2 = CS$<>8__locals2;
+									int index = tasks.IndexOf(winner);
+									tasks.Remove(winner);
+									fileUrls.RemoveAt(index);
+									CS$<>8__locals3.chunk = chunks[index];
+									CS$<>8__locals3.walkException = null;
+									CS$<>8__locals3.walkException = (Exception e) => (e.InnerException == null) ? string.Format(CultureInfo.InvariantCulture, "{0}: {1}", new object[]
 									{
 										e.GetType().Name,
 										e.Message
+									}) : string.Format(CultureInfo.InvariantCulture, "{0}: {1} ({2})", new object[]
+									{
+										e.GetType().Name,
+										e.Message,
+										CS$<>8__locals3.walkException(e.InnerException)
 									});
-								};
-								(from x in f8__locals2.f8__locals1.urlSelectionResult.UrlResults
-								 where x.FileUrl.Equals(chunk1.Url, StringComparison.OrdinalIgnoreCase)
-								 select x).ToList<UrlResult>().ForEach(delegate (UrlResult x)
-								 {
-									 x.Error = walkException(
-										 f8__locals2.f8__locals1.exception);
-								 });
-								chunk1.OutStream.Dispose();
-								chunk1.DownloadProgress -= progressHandler;
-								chunks.RemoveAt(index);
+									CS$<>8__locals3.CS$<>8__locals2.CS$<>8__locals1.urlSelectionResult.UrlResults.Where((UrlResult x) => x.FileUrl.Equals(CS$<>8__locals3.chunk.Url, StringComparison.OrdinalIgnoreCase)).ToList<UrlResult>().ForEach(delegate(UrlResult x)
+									{
+										x.Error = CS$<>8__locals3.walkException(CS$<>8__locals3.CS$<>8__locals2.CS$<>8__locals1.exception);
+									});
+									CS$<>8__locals3.chunk.OutStream.Dispose();
+									CS$<>8__locals3.chunk.DownloadProgress -= progressHandler;
+									chunks.RemoveAt(index);
+									CS$<>8__locals3 = null;
+								}
 							}
 						}
-					IL_4DF:
-						if (statusCode == -1 && tasks.Count > 0)
-						{
-							goto IL_2AD;
-						}
 					}
-					CancellationTokenRegistration cancellationTokenRegistration
-						= default(CancellationTokenRegistration);
-
-					if (!f8__locals2.cts.IsCancellationRequested)
+					CancellationTokenRegistration cancellationTokenRegistration = default(CancellationTokenRegistration);
+					if (!CS$<>8__locals2.cts.IsCancellationRequested)
 					{
-						f8__locals2.cts.Cancel();
+						CS$<>8__locals2.cts.Cancel();
 					}
 				}
 				finally
 				{
-					if (f8__locals2.cts != null)
+					if (CS$<>8__locals2.cts != null)
 					{
-						((IDisposable)f8__locals2.cts).Dispose();
+						((IDisposable)CS$<>8__locals2.cts).Dispose();
 					}
 				}
-				f8__locals2 = null;
+				CS$<>8__locals2 = null;
 				if (statusCode != -1)
 				{
-					int index2 = tasks.IndexOf(winner);
-					f8__locals1.ret = fileUrls[index2];
-
-					(from x in f8__locals1.urlSelectionResult.UrlResults
-					 where x.FileUrl.Equals(f8__locals1.ret,
-					 StringComparison.OrdinalIgnoreCase)
-					 select x).ToList<UrlResult>().ForEach(delegate (UrlResult x)
-					 {
-						 x.IsSelected = true;
-					 });
-					chunk = chunks[index2];
-					chunk.OutStream.Seek(0L, SeekOrigin.Begin);
-					streamer.GetStream().Seek(chunk.BytesFrom, SeekOrigin.Begin);
-					await chunk.OutStream.CopyToAsync(streamer.GetStream());
+					int winnerIndex = tasks.IndexOf(winner);
+					CS$<>8__locals1.ret = fileUrls[winnerIndex];
+					CS$<>8__locals1.urlSelectionResult.UrlResults.Where((UrlResult x) => x.FileUrl.Equals(CS$<>8__locals1.ret, StringComparison.OrdinalIgnoreCase)).ToList<UrlResult>().ForEach(delegate(UrlResult x)
+					{
+						x.IsSelected = true;
+					});
+					DownloadChunk chunk2 = chunks[winnerIndex];
+					chunk2.OutStream.Seek(0L, SeekOrigin.Begin);
+					streamer.GetStream().Seek(chunk2.BytesFrom, SeekOrigin.Begin);
+					await chunk2.OutStream.CopyToAsync(streamer.GetStream());
 					await streamer.GetStream().FlushAsync();
-					f8__locals1.chunkManager.MarkDownloaded(chunk);
-					f8__locals1.chunkManager.SaveMetadata(streamer, false);
-					chunk = null;
+					CS$<>8__locals1.chunkManager.MarkDownloaded(chunk2);
+					CS$<>8__locals1.chunkManager.SaveMetadata(streamer, false);
+					chunk2 = null;
 				}
-				foreach (DownloadChunk downloadChunk2 in chunks)
+				foreach (DownloadChunk chunk3 in chunks)
 				{
-					downloadChunk2.OutStream.Dispose();
-					downloadChunk2.DownloadProgress -= progressHandler;
+					chunk3.OutStream.Dispose();
+					chunk3.DownloadProgress -= progressHandler;
+					chunk3 = null;
 				}
-				if (statusCode == -1 && f8__locals1.exception != null)
+				List<DownloadChunk>.Enumerator enumerator2 = default(List<DownloadChunk>.Enumerator);
+				if (statusCode == -1 && CS$<>8__locals1.exception != null)
 				{
-					throw f8__locals1.exception;
+					throw CS$<>8__locals1.exception;
 				}
 				if (this.OnUrlSelection != null)
 				{
-					this.OnUrlSelection(f8__locals1.urlSelectionResult);
+					this.OnUrlSelection(CS$<>8__locals1.urlSelectionResult);
 				}
-				result = f8__locals1.ret;
+				text = CS$<>8__locals1.ret;
 			}
-            return result;
-        }//SelectBestUrlAsync
+			return text;
+		}
 
-        
-		//
-		private class DisplayClass53_1
-        {
-            internal Stream stream;
-
-            public DisplayClass53_1()
-            {
-            }
-        }
-
-        private class DisplayClass53_0
-        {
-            internal DisplayClass53_1 f8__locals1;
-            internal MD5 md5;
-
-            public DisplayClass53_0()
-            {
-            }
-        }
-
-		/*
-        public class ProgressWrapper
-        {
-            private DownloadProgress<DownloadProgressInfo> progress;
-
-            public ProgressWrapper(DownloadProgress<DownloadProgressInfo> progress)
-            {
-                this.progress = progress;
-            }           
-        }//ProgressWrapper
-		*/
-
-        private class DisplayClass55_0
-        {
-            internal ProgressWrapper progress;
-            internal ChunkManager chunkManager;
-            internal Streaming.UrlSelectionResult urlSelectionResult;
-            internal string ret;
-            internal Exception exception;
-            internal long currentDownloaded;
-            internal long bestChunk;
-
-            public DisplayClass55_0()
-            {
-            }
-        }
-
-        private class DisplayClass55_2
-        {
-            internal DisplayClass55_0 f8__locals1;
-            internal CancellationTokenSource cts; // cancellation token source
-
-            public DisplayClass55_2()
-            {
-            }
-        }
-    
-
-		// Token: 0x06000055 RID: 85 RVA: 0x00003054 File Offset: 0x00001254
-		//[SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", MessageId = "fileUrlResult")]
-		private async Task<int> DownloadAsync1(ChunkManager chunkManager, FileUrlResult fileUrlResult, Streamer streamer, Downloader.ProgressWrapper progress)
+		// Token: 0x06000059 RID: 89 RVA: 0x00003440 File Offset: 0x00001640
+		[SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", MessageId = "fileUrlResult")]
+		private async Task<int> DownloadAsync(ChunkManager chunkManager, FileUrlResult fileUrlResult, Streamer streamer, Downloader.ProgressWrapper progress)
 		{
-			int maxParallelConnections = this.MaxParallelConnections;
+			int maxConnections = this.MaxParallelConnections;
 			DownloadProgressEventHandler progressHandler = delegate(object sender, EventArgs args)
 			{
 				progress.Report(new DownloadProgressInfo(chunkManager.ProgressBytes, chunkManager.FileSize, chunkManager.FileName));
 			};
 			List<DownloadChunk> chunks = new List<DownloadChunk>();
 			List<Task<int>> tasks = new List<Task<int>>();
-			for (int i = 0; i < maxParallelConnections; i++)
+			int num;
+			for (int i = 0; i < maxConnections; i = num + 1)
 			{
-				DownloadChunk nextChunk = chunkManager.GetNextChunk();
-				if (nextChunk == null)
+				DownloadChunk chunk = chunkManager.GetNextChunk();
+				bool flag = chunk == null;
+				if (flag)
 				{
 					break;
 				}
-				nextChunk.DownloadProgress += progressHandler;
-				chunks.Add(nextChunk);
-				tasks.Add(nextChunk.Download());
+				chunk.DownloadProgress += progressHandler;
+				chunks.Add(chunk);
+				tasks.Add(chunk.Download());
+				chunk = null;
+				num = i;
 			}
 			int ret = 200;
 			while (tasks.Count > 0)
 			{
 				Task<int> task = await Task.WhenAny<int>(tasks);
-				int taskIndex = tasks.IndexOf(task);
-				DownloadChunk chunk = chunks[taskIndex];
-				chunk.DownloadProgress -= progressHandler;
-				int num = await task;
-				if (num != 200 && num != 206)
+				Task<int> completedChunkTask = task;
+				task = null;
+				int taskIndex = tasks.IndexOf(completedChunkTask);
+				DownloadChunk chunk2 = chunks[taskIndex];
+				chunk2.DownloadProgress -= progressHandler;
+				int num2 = await completedChunkTask;
+				int status = num2;
+				if (status != 200 && status != 206)
 				{
-					return num;
+					return status;
 				}
-				chunkManager.MarkDownloaded(chunk);
+				chunkManager.MarkDownloaded(chunk2);
 				chunkManager.SaveMetadata(streamer, false);
-				chunk = chunkManager.GetNextChunk();
-				if (chunk == null)
+				chunk2 = chunkManager.GetNextChunk();
+				if (chunk2 == null)
 				{
 					tasks.RemoveAt(taskIndex);
 					chunks.RemoveAt(taskIndex);
 				}
 				else
 				{
-					chunk.OutStream = streamer.GetStream();
-					chunk.DownloadProgress += progressHandler;
-					chunks[taskIndex] = chunk;
-					tasks[taskIndex] = chunk.Download();
+					chunk2.OutStream = streamer.GetStream();
+					chunk2.DownloadProgress += progressHandler;
+					chunks[taskIndex] = chunk2;
+					tasks[taskIndex] = chunk2.Download();
 				}
-				chunk = null;
+				completedChunkTask = null;
+				chunk2 = null;
 			}
 			streamer.ClearMetadata();
 			return ret;
 		}
 
-		// Token: 0x06000056 RID: 86 RVA: 0x000030B2 File Offset: 0x000012B2
-		private void ReportCompleted1(Downloader.ProgressWrapper progressWrapper, string packageId, string fileName, long fileSize)
+		// Token: 0x0600005A RID: 90 RVA: 0x000034A4 File Offset: 0x000016A4
+		private void ReportCompleted(Downloader.ProgressWrapper progressWrapper, string packageId, string fileName, long fileSize)
 		{
 			progressWrapper.Report(new DownloadProgressInfo(fileSize, fileSize, fileName));
-			if (this.DownloadReady != null)
+			bool flag = this.DownloadReady != null;
+			if (flag)
 			{
 				this.DownloadReady(this, new DownloadReadyEventArgs(packageId, fileName));
 			}
+		}
+
+		// Token: 0x0600005B RID: 91 RVA: 0x000034E8 File Offset: 0x000016E8
+		private async Task<int> DownloadSharedFileAsync(string packageId, string fileName, string sourceURL, string destination, FileUrlResult fileUrlResult, Downloader.ProgressWrapper progress)
+		{
+			Stopwatch sw = new Stopwatch();
+			sw.Start();
+			int resultCode = 0;
+			long fileSize = fileUrlResult.FileSize;
+			FileInfo downloadedFileInfo = null;
+			try
+			{
+				Uri uri = new Uri(sourceURL);
+				string source = uri.LocalPath;
+				FileInfo sourceFileInfo = new FileInfo(source);
+				bool flag = !sourceFileInfo.Exists;
+				if (flag)
+				{
+					resultCode = 404;
+				}
+				DownloadProgressEventHandler progressHandler = delegate(object sender, EventArgs args)
+				{
+					progress.Report(new DownloadProgressInfo(0L, fileSize, fileName));
+				};
+				bool fileIsAlreadyDownloaded = false;
+				downloadedFileInfo = new FileInfo(destination);
+				bool exists = downloadedFileInfo.Exists;
+				if (exists)
+				{
+					progress.Report(new DownloadProgressInfo(downloadedFileInfo.Length, fileSize, fileName));
+					using (FileStream fs = new FileStream(destination, FileMode.Open, FileAccess.Read))
+					{
+						bool flag2 = downloadedFileInfo.Length == fileSize;
+						bool flag3 = flag2;
+						if (flag3)
+						{
+							bool flag4 = await Downloader.FileIntegrityPreservedAsync(fileUrlResult.Checksum, fs);
+							flag3 = flag4;
+						}
+						bool flag5 = flag3;
+						if (flag5)
+						{
+							fileIsAlreadyDownloaded = true;
+							this.ReportCompleted(progress, packageId, fileName, fileUrlResult.FileSize);
+							resultCode = 304;
+						}
+					}
+					FileStream fs = null;
+				}
+				if (!fileIsAlreadyDownloaded)
+				{
+					using (FileStream SourceStream = File.Open(source, FileMode.Open, FileAccess.Read, FileShare.Read))
+					{
+						using (FileStream DestinationStream = File.Create(destination))
+						{
+							byte[] buffer = new byte[this.ChunkSize];
+							int num = await SourceStream.ReadAsync(buffer, 0, buffer.Length);
+							int bytesInBuffer = num;
+							long downloadedFileSize = 0L;
+							while (bytesInBuffer != 0)
+							{
+								await DestinationStream.WriteAsync(buffer, 0, bytesInBuffer);
+								downloadedFileSize += (long)bytesInBuffer;
+								progress.Report(new DownloadProgressInfo(downloadedFileSize, fileSize, fileName));
+								int num2 = await SourceStream.ReadAsync(buffer, 0, buffer.Length);
+								bytesInBuffer = num2;
+							}
+							buffer = null;
+						}
+						FileStream DestinationStream = null;
+					}
+					FileStream SourceStream = null;
+					downloadedFileInfo = new FileInfo(destination);
+					progress.Report(new DownloadProgressInfo(downloadedFileInfo.Length, fileSize, fileName));
+					if (!downloadedFileInfo.Exists)
+					{
+						resultCode = 204;
+					}
+					else if (downloadedFileInfo.Length != fileSize)
+					{
+						downloadedFileInfo.Delete();
+						resultCode = 204;
+					}
+					else
+					{
+						resultCode = 200;
+					}
+				}
+				uri = null;
+				source = null;
+				sourceFileInfo = null;
+			}
+			catch (Exception)
+			{
+				resultCode = 500;
+			}
+			sw.Stop();
+			return resultCode;
 		}
 
 		// Token: 0x0400002A RID: 42
@@ -769,23 +882,25 @@ namespace SoftwareRepository.Streaming
 		// Token: 0x04000032 RID: 50
 		private const int DefaultTimeoutInMilliseconds = 10000;
 
-		// Token: 0x02000029 RID: 41
+		// Token: 0x0200002A RID: 42
 		private class ProgressWrapper
 		{
-			// Token: 0x06000160 RID: 352 RVA: 0x00004501 File Offset: 0x00002701
+			// Token: 0x06000168 RID: 360 RVA: 0x00004B97 File Offset: 0x00002D97
 			internal ProgressWrapper(DownloadProgress<DownloadProgressInfo> listener)
 			{
 				this.Listener = listener;
 			}
 
-			// Token: 0x06000161 RID: 353 RVA: 0x00004518 File Offset: 0x00002718
+			// Token: 0x06000169 RID: 361 RVA: 0x00004BB0 File Offset: 0x00002DB0
 			internal void Report(DownloadProgressInfo report)
 			{
-				if (this.Listener != null)
+				bool flag = this.Listener != null;
+				if (flag)
 				{
 					lock (this)
 					{
-						if (this.LargestReported < report.BytesReceived)
+						bool flag3 = this.LargestReported < report.BytesReceived;
+						if (flag3)
 						{
 							this.Listener.Report(report);
 							this.LargestReported = report.BytesReceived;
@@ -794,10 +909,10 @@ namespace SoftwareRepository.Streaming
 				}
 			}
 
-			// Token: 0x040000C5 RID: 197
+			// Token: 0x040000CB RID: 203
 			private long LargestReported = -1L;
 
-			// Token: 0x040000C6 RID: 198
+			// Token: 0x040000CC RID: 204
 			private DownloadProgress<DownloadProgressInfo> Listener;
 		}
 	}

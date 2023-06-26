@@ -3,16 +3,16 @@ using Microsoft.WindowsDeviceRecoveryTool.StateMachine.BaseTypes;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.DefaultTypes
 {
-	// Token: 0x0200000E RID: 14
+	// Token: 0x0200000A RID: 10
 	public class ErrorEndState : BaseErrorState
 	{
-		// Token: 0x0600006E RID: 110 RVA: 0x0000369E File Offset: 0x0000189E
+		// Token: 0x0600001D RID: 29 RVA: 0x0000232C File Offset: 0x0000052C
 		public override void Start(Error error)
 		{
 			this.RaiseStateErrored(error);
 		}
 
-		// Token: 0x0600006F RID: 111 RVA: 0x000036A9 File Offset: 0x000018A9
+		// Token: 0x0600001E RID: 30 RVA: 0x00002329 File Offset: 0x00000529
 		public override void Stop()
 		{
 		}

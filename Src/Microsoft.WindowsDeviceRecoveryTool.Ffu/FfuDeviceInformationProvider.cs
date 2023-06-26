@@ -11,17 +11,17 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Ffu
 	[Export]
 	internal sealed class FfuDeviceInformationProvider : IFfuDeviceInformationProvider, IDeviceInformationProvider<FfuDeviceInformation>
 	{
-		// Token: 0x0600000A RID: 10 RVA: 0x000020EC File Offset: 0x000002EC
+		// Token: 0x0600000A RID: 10 RVA: 0x000020CC File Offset: 0x000002CC
 		public Task<FfuDeviceInformation> ReadInformationAsync(string usbDeviceInterfaceDevicePath, CancellationToken cancellationToken)
 		{
 			return Task.Run<FfuDeviceInformation>(() => this.ReadInformation(usbDeviceInterfaceDevicePath, cancellationToken), cancellationToken);
 		}
 
-		// Token: 0x0600000B RID: 11 RVA: 0x0000212C File Offset: 0x0000032C
+		// Token: 0x0600000B RID: 11 RVA: 0x0000210C File Offset: 0x0000030C
 		private FfuDeviceInformation ReadInformation(string usbDeviceInterfaceDevicePath, CancellationToken cancellationToken)
 		{
 			cancellationToken.ThrowIfCancellationRequested();
-			FfuDeviceInformation result;
+			FfuDeviceInformation ffuDeviceInformation;
 			using (SimpleIODevice simpleIODevice = new SimpleIODevice(usbDeviceInterfaceDevicePath))
 			{
 				if (!simpleIODevice.IsConnected())
@@ -31,9 +31,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Ffu
 				string deviceFriendlyName = simpleIODevice.DeviceFriendlyName;
 				Guid deviceUniqueID = simpleIODevice.DeviceUniqueID;
 				string usbDevicePath = simpleIODevice.UsbDevicePath;
-				result = new FfuDeviceInformation(deviceFriendlyName, usbDevicePath, deviceUniqueID);
+				ffuDeviceInformation = new FfuDeviceInformation(deviceFriendlyName, usbDevicePath, deviceUniqueID);
 			}
-			return result;
+			return ffuDeviceInformation;
 		}
 	}
 }

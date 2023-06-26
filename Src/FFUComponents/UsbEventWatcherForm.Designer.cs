@@ -14,8 +14,8 @@
 			base.ShowInTaskbar = false;
 			base.MaximizeBox = false;
 			this.MaximumSize = new global::System.Drawing.Size(1, 1);
-			global::System.IntPtr value = global::FFUComponents.NativeMethods.SetParent(base.Handle, (global::System.IntPtr)(-3L));
-			if (global::System.IntPtr.Zero == value)
+			global::System.IntPtr intPtr = global::FFUComponents.NativeMethods.SetParent(base.Handle, (global::System.IntPtr)(-3L));
+			if (global::System.IntPtr.Zero == intPtr)
 			{
 				throw new global::System.ComponentModel.Win32Exception(global::System.Runtime.InteropServices.Marshal.GetLastWin32Error());
 			}

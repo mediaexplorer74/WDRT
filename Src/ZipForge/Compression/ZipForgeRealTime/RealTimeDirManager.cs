@@ -34,15 +34,15 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 				dirItem.RelativeCentralDirectoryOffset = sentBytes;
 				stream.Write(dirItem.GetCentralDirBytes(), 0, DirItem.CentralDirSize());
 				sentBytes += (long)DirItem.CentralDirSize();
-				byte[] buffer = dirItem.IsGeneralPurposeFlagBitSet(11) ? Encoding.UTF8.GetBytes(dirItem.Name) : Encoding.GetEncoding(this.OemCodePage).GetBytes(dirItem.Name);
-				stream.Write(buffer, 0, (int)dirItem.NameLength);
+				byte[] array = (dirItem.IsGeneralPurposeFlagBitSet(11) ? Encoding.UTF8.GetBytes(dirItem.Name) : Encoding.GetEncoding(this.OemCodePage).GetBytes(dirItem.Name));
+				stream.Write(array, 0, (int)dirItem.NameLength);
 				sentBytes += (long)((ulong)dirItem.NameLength);
 				this.SaveCDirExtraFields(stream, i, ref sentBytes);
 				if (!CompressionUtils.IsNullOrEmpty(dirItem.Comment))
 				{
-					byte[] array = dirItem.IsGeneralPurposeFlagBitSet(11) ? Encoding.UTF8.GetBytes(dirItem.Comment) : Encoding.GetEncoding(this.OemCodePage).GetBytes((this.CentralDirectory[i] as DirItem).Comment);
-					stream.Write(array, 0, array.Length);
-					sentBytes += (long)array.Length;
+					byte[] array2 = (dirItem.IsGeneralPurposeFlagBitSet(11) ? Encoding.UTF8.GetBytes(dirItem.Comment) : Encoding.GetEncoding(this.OemCodePage).GetBytes((this.CentralDirectory[i] as DirItem).Comment));
+					stream.Write(array2, 0, array2.Length);
+					sentBytes += (long)array2.Length;
 				}
 			}
 			long num2 = sentBytes - num;
@@ -62,7 +62,7 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 			{
 				this.CentralDirectoryEnd.EntriesCentralDir = ushort.MaxValue;
 			}
-			if (num2 < (long)((int)-1))
+			if (num2 < (long)((ulong)(-1)))
 			{
 				this.CentralDirectoryEnd.CentralDirSize = (uint)num2;
 			}
@@ -70,7 +70,7 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 			{
 				this.CentralDirectoryEnd.CentralDirSize = uint.MaxValue;
 			}
-			if (num < (long)((int)-1))
+			if (num < (long)((ulong)(-1)))
 			{
 				this.CentralDirectoryEnd.OffsetStartDir = (uint)num;
 			}
@@ -87,7 +87,7 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 				this.CentralDirectoryEnd.CommentLength = 0;
 			}
 			this.CentralDirectoryEnd.DiskNumber = 0;
-			if (sentBytes >= (long)((int)-1))
+			if (sentBytes >= (long)((ulong)(-1)))
 			{
 				this.SaveZip64CentralDirEnd(stream, num, ref sentBytes);
 				this.SaveZip64CentralDirEndLocator(stream, ref sentBytes);
@@ -96,9 +96,9 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 			sentBytes += (long)ZipUtil.ZipCentralDirEndSize;
 			if (!CompressionUtils.IsNullOrEmpty(this.ArchiveComment))
 			{
-				byte[] array2 = new byte[(int)this.CentralDirectoryEnd.CommentLength];
-				Array.Copy(CompressionUtils.StringToByteArray(this.ArchiveComment, this.OemCodePage), 0, array2, 0, this.ArchiveComment.Length);
-				stream.Write(array2, 0, (int)this.CentralDirectoryEnd.CommentLength);
+				byte[] array3 = new byte[(int)this.CentralDirectoryEnd.CommentLength];
+				Array.Copy(CompressionUtils.StringToByteArray(this.ArchiveComment, this.OemCodePage), 0, array3, 0, this.ArchiveComment.Length);
+				stream.Write(array3, 0, (int)this.CentralDirectoryEnd.CommentLength);
 				sentBytes += (long)((ulong)this.CentralDirectoryEnd.CommentLength);
 			}
 		}

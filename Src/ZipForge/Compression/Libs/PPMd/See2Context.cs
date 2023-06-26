@@ -3,7 +3,7 @@
 namespace ComponentAce.Compression.Libs.PPMd
 {
 	// Token: 0x02000056 RID: 86
-	public class See2Context
+	internal class See2Context
 	{
 		// Token: 0x060003A1 RID: 929 RVA: 0x0001D9FB File Offset: 0x0001C9FB
 		public void Initialize(uint initialValue)
@@ -29,8 +29,8 @@ namespace ComponentAce.Compression.Libs.PPMd
 				this.Summary += this.Summary;
 				int num = 3;
 				byte shift;
-				this.Shift = (byte)((shift = this.Shift) + 1);
-				this.Count = (byte)(num << (int)(shift & 31));
+				this.Shift = (shift = this.Shift) + 1;
+				this.Count = num << (int)(shift & 31);
 			}
 		}
 

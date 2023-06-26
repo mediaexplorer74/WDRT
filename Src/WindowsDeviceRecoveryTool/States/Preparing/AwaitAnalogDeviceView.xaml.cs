@@ -10,15 +10,12 @@ using Microsoft.WindowsDeviceRecoveryTool.Framework;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 {
-	// Token: 0x0200009A RID: 154
+	// Token: 0x02000045 RID: 69
 	[Export]
-	[Region(new string[]
-	{
-		"MainArea"
-	})]
+	[Region(new string[] { "MainArea" })]
 	public partial class AwaitAnalogDeviceView : Grid
 	{
-		// Token: 0x0600043E RID: 1086 RVA: 0x00014672 File Offset: 0x00012872
+		// Token: 0x060002C0 RID: 704 RVA: 0x0000FA0D File Offset: 0x0000DC0D
 		public AwaitAnalogDeviceView()
 		{
 			this.InitializeComponent();

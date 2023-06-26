@@ -10,7 +10,7 @@ namespace ClickerUtilityLibrary.DataModel
 		// Token: 0x14000004 RID: 4
 		// (add) Token: 0x060000BC RID: 188 RVA: 0x00005B28 File Offset: 0x00003D28
 		// (remove) Token: 0x060000BD RID: 189 RVA: 0x00005B60 File Offset: 0x00003D60
-		//[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		[field: DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		internal event EventHandler<PacketRingBufferEventArgs> PacketRingBufferEvent;
 
 		// Token: 0x060000BE RID: 190 RVA: 0x00005B98 File Offset: 0x00003D98
@@ -47,16 +47,16 @@ namespace ClickerUtilityLibrary.DataModel
 			{
 				int num = this.mHead - this.mTail;
 				bool flag = num < 0;
-				int result;
+				int num2;
 				if (flag)
 				{
-					result = num + this.mSize;
+					num2 = num + this.mSize;
 				}
 				else
 				{
-					result = num;
+					num2 = num;
 				}
-				return result;
+				return num2;
 			}
 		}
 
@@ -74,7 +74,7 @@ namespace ClickerUtilityLibrary.DataModel
 		public bool EnqueuePacket(IPacket packet)
 		{
 			bool flag = !this.IsFull;
-			bool result;
+			bool flag4;
 			if (flag)
 			{
 				object obj = this.mPoolLock;
@@ -89,31 +89,31 @@ namespace ClickerUtilityLibrary.DataModel
 						this.mHead = 0;
 					}
 				}
-				PacketRingBufferEventArgs eventArgs = new PacketRingBufferEventArgs
+				PacketRingBufferEventArgs packetRingBufferEventArgs = new PacketRingBufferEventArgs
 				{
 					Type = PacketRingBufferEventType.PacketEnqueued
 				};
-				this.OnPacketRingBufferEvent(eventArgs);
-				result = true;
+				this.OnPacketRingBufferEvent(packetRingBufferEventArgs);
+				flag4 = true;
 			}
 			else
 			{
-				result = false;
+				flag4 = false;
 			}
-			return result;
+			return flag4;
 		}
 
 		// Token: 0x060000C3 RID: 195 RVA: 0x00005D60 File Offset: 0x00003F60
 		public IPacket DequeuePacket()
 		{
-			IPacket result = null;
+			IPacket packet = null;
 			bool flag = this.Count > 0;
 			if (flag)
 			{
 				object obj = this.mPoolLock;
 				lock (obj)
 				{
-					result = this.mPacketPool[this.mTail];
+					packet = this.mPacketPool[this.mTail];
 					int num = this.mTail + 1;
 					this.mTail = num;
 					bool flag3 = this.mTail == this.mSize;
@@ -122,13 +122,13 @@ namespace ClickerUtilityLibrary.DataModel
 						this.mTail = 0;
 					}
 				}
-				PacketRingBufferEventArgs eventArgs = new PacketRingBufferEventArgs
+				PacketRingBufferEventArgs packetRingBufferEventArgs = new PacketRingBufferEventArgs
 				{
 					Type = PacketRingBufferEventType.PacketDequeued
 				};
-				this.OnPacketRingBufferEvent(eventArgs);
+				this.OnPacketRingBufferEvent(packetRingBufferEventArgs);
 			}
-			return result;
+			return packet;
 		}
 
 		// Token: 0x040000BE RID: 190

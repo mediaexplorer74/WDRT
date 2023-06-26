@@ -7,13 +7,13 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.Enums;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 {
-	// Token: 0x02000004 RID: 4
+	// Token: 0x020000E3 RID: 227
 	[Export]
 	public class AppContext : NotificationObject
 	{
-		// Token: 0x17000009 RID: 9
-		// (get) Token: 0x0600002D RID: 45 RVA: 0x00002CB0 File Offset: 0x00000EB0
-		// (set) Token: 0x0600002E RID: 46 RVA: 0x00002CC8 File Offset: 0x00000EC8
+		// Token: 0x170001A0 RID: 416
+		// (get) Token: 0x0600074E RID: 1870 RVA: 0x00020F9C File Offset: 0x0001F19C
+		// (set) Token: 0x0600074F RID: 1871 RVA: 0x00020FB4 File Offset: 0x0001F1B4
 		public bool IsCloseAppEnabled
 		{
 			get
@@ -26,9 +26,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 			}
 		}
 
-		// Token: 0x1700000A RID: 10
-		// (get) Token: 0x0600002F RID: 47 RVA: 0x00002D18 File Offset: 0x00000F18
-		// (set) Token: 0x06000030 RID: 48 RVA: 0x00002D30 File Offset: 0x00000F30
+		// Token: 0x170001A1 RID: 417
+		// (get) Token: 0x06000750 RID: 1872 RVA: 0x00020FF4 File Offset: 0x0001F1F4
+		// (set) Token: 0x06000751 RID: 1873 RVA: 0x0002100C File Offset: 0x0001F20C
 		public bool IsExecutingBackgroundOperation
 		{
 			get
@@ -41,9 +41,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 			}
 		}
 
-		// Token: 0x1700000B RID: 11
-		// (get) Token: 0x06000031 RID: 49 RVA: 0x00002D80 File Offset: 0x00000F80
-		// (set) Token: 0x06000032 RID: 50 RVA: 0x00002D98 File Offset: 0x00000F98
+		// Token: 0x170001A2 RID: 418
+		// (get) Token: 0x06000752 RID: 1874 RVA: 0x0002104C File Offset: 0x0001F24C
+		// (set) Token: 0x06000753 RID: 1875 RVA: 0x00021064 File Offset: 0x0001F264
 		public bool IsMachineStateRunning
 		{
 			get
@@ -56,9 +56,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 			}
 		}
 
-		// Token: 0x1700000C RID: 12
-		// (get) Token: 0x06000033 RID: 51 RVA: 0x00002DE8 File Offset: 0x00000FE8
-		// (set) Token: 0x06000034 RID: 52 RVA: 0x00002E00 File Offset: 0x00001000
+		// Token: 0x170001A3 RID: 419
+		// (get) Token: 0x06000754 RID: 1876 RVA: 0x000210A4 File Offset: 0x0001F2A4
+		// (set) Token: 0x06000755 RID: 1877 RVA: 0x000210BC File Offset: 0x0001F2BC
 		public bool IsUpdate
 		{
 			get
@@ -71,9 +71,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 			}
 		}
 
-		// Token: 0x1700000D RID: 13
-		// (get) Token: 0x06000035 RID: 53 RVA: 0x00002E50 File Offset: 0x00001050
-		// (set) Token: 0x06000036 RID: 54 RVA: 0x00002E68 File Offset: 0x00001068
+		// Token: 0x170001A4 RID: 420
+		// (get) Token: 0x06000756 RID: 1878 RVA: 0x000210FC File Offset: 0x0001F2FC
+		// (set) Token: 0x06000757 RID: 1879 RVA: 0x00021114 File Offset: 0x0001F314
 		public Phone CurrentPhone
 		{
 			get
@@ -82,24 +82,22 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 			}
 			set
 			{
-				if (value == null)
+				bool flag = value == null;
+				if (flag)
 				{
 					Tracer<AppContext>.WriteInformation("Set current phone to NULL");
 				}
 				else
 				{
-					Tracer<AppContext>.WriteInformation("Set current phone to: {0}", new object[]
-					{
-						value
-					});
+					Tracer<AppContext>.WriteInformation("Set current phone to: {0}", new object[] { value });
 				}
 				base.SetValue<Phone>(() => this.CurrentPhone, ref this.currentPhone, value);
 			}
 		}
 
-		// Token: 0x1700000E RID: 14
-		// (get) Token: 0x06000037 RID: 55 RVA: 0x00002EEC File Offset: 0x000010EC
-		// (set) Token: 0x06000038 RID: 56 RVA: 0x00002F04 File Offset: 0x00001104
+		// Token: 0x170001A5 RID: 421
+		// (get) Token: 0x06000758 RID: 1880 RVA: 0x00021190 File Offset: 0x0001F390
+		// (set) Token: 0x06000759 RID: 1881 RVA: 0x000211A8 File Offset: 0x0001F3A8
 		public PhoneTypes SelectedManufacturer
 		{
 			get
@@ -112,22 +110,22 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 			}
 		}
 
-		// Token: 0x0400000F RID: 15
+		// Token: 0x04000337 RID: 823
 		private bool isMachineStateRunning;
 
-		// Token: 0x04000010 RID: 16
+		// Token: 0x04000338 RID: 824
 		private bool isUpdate;
 
-		// Token: 0x04000011 RID: 17
+		// Token: 0x04000339 RID: 825
 		private bool isCloseAppEnabled = true;
 
-		// Token: 0x04000012 RID: 18
+		// Token: 0x0400033A RID: 826
 		private Phone currentPhone;
 
-		// Token: 0x04000013 RID: 19
+		// Token: 0x0400033B RID: 827
 		private PhoneTypes selectedManufacturer;
 
-		// Token: 0x04000014 RID: 20
+		// Token: 0x0400033C RID: 828
 		private bool isExecutingBackgroundOperation;
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.Diagnostics;
 using System.Threading;
 using System.Windows.Input;
 using System.Windows.Threading;
@@ -17,11 +18,11 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.Enums;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 {
-	// Token: 0x0200008C RID: 140
+	// Token: 0x02000037 RID: 55
 	[Export]
 	public sealed class AutomaticManufacturerSelectionViewModel : BaseViewModel, ICanHandle<SupportedManufacturersMessage>, ICanHandle, INotifyLiveRegionChanged
 	{
-		// Token: 0x060003CB RID: 971 RVA: 0x00012114 File Offset: 0x00010314
+		// Token: 0x0600024D RID: 589 RVA: 0x0000DB18 File Offset: 0x0000BD18
 		[ImportingConstructor]
 		internal AutomaticManufacturerSelectionViewModel(Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext, DetectionHandlerFactory detectionHandlerFactory)
 		{
@@ -39,19 +40,20 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			this.DeviceNotDetectedCommand = new DelegateCommand<object>(new Action<object>(this.OnDeviceNotDetectedCommandExecuted));
 		}
 
-		// Token: 0x14000008 RID: 8
-		// (add) Token: 0x060003CC RID: 972 RVA: 0x000121A4 File Offset: 0x000103A4
-		// (remove) Token: 0x060003CD RID: 973 RVA: 0x000121E0 File Offset: 0x000103E0
+		// Token: 0x14000005 RID: 5
+		// (add) Token: 0x0600024E RID: 590 RVA: 0x0000DB9C File Offset: 0x0000BD9C
+		// (remove) Token: 0x0600024F RID: 591 RVA: 0x0000DBD4 File Offset: 0x0000BDD4
+		[field: DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event EventHandler LiveRegionChanged;
 
-		// Token: 0x170000C4 RID: 196
-		// (get) Token: 0x060003CE RID: 974 RVA: 0x0001221C File Offset: 0x0001041C
-		// (set) Token: 0x060003CF RID: 975 RVA: 0x00012233 File Offset: 0x00010433
+		// Token: 0x1700009C RID: 156
+		// (get) Token: 0x06000250 RID: 592 RVA: 0x0000DC09 File Offset: 0x0000BE09
+		// (set) Token: 0x06000251 RID: 593 RVA: 0x0000DC11 File Offset: 0x0000BE11
 		public ICommand DeviceNotDetectedCommand { get; set; }
 
-		// Token: 0x170000C5 RID: 197
-		// (get) Token: 0x060003D0 RID: 976 RVA: 0x0001223C File Offset: 0x0001043C
-		// (set) Token: 0x060003D1 RID: 977 RVA: 0x00012254 File Offset: 0x00010454
+		// Token: 0x1700009D RID: 157
+		// (get) Token: 0x06000252 RID: 594 RVA: 0x0000DC1C File Offset: 0x0000BE1C
+		// (set) Token: 0x06000253 RID: 595 RVA: 0x0000DC34 File Offset: 0x0000BE34
 		public Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext AppContext
 		{
 			get
@@ -64,9 +66,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x170000C6 RID: 198
-		// (get) Token: 0x060003D2 RID: 978 RVA: 0x000122A4 File Offset: 0x000104A4
-		// (set) Token: 0x060003D3 RID: 979 RVA: 0x000122BC File Offset: 0x000104BC
+		// Token: 0x1700009E RID: 158
+		// (get) Token: 0x06000254 RID: 596 RVA: 0x0000DC74 File Offset: 0x0000BE74
+		// (set) Token: 0x06000255 RID: 597 RVA: 0x0000DC8C File Offset: 0x0000BE8C
 		public bool AnalogSupported
 		{
 			get
@@ -79,9 +81,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x170000C7 RID: 199
-		// (get) Token: 0x060003D4 RID: 980 RVA: 0x0001230C File Offset: 0x0001050C
-		// (set) Token: 0x060003D5 RID: 981 RVA: 0x00012324 File Offset: 0x00010524
+		// Token: 0x1700009F RID: 159
+		// (get) Token: 0x06000256 RID: 598 RVA: 0x0000DCCC File Offset: 0x0000BECC
+		// (set) Token: 0x06000257 RID: 599 RVA: 0x0000DCE4 File Offset: 0x0000BEE4
 		public string LiveText
 		{
 			get
@@ -91,14 +93,15 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			set
 			{
 				base.SetValue<string>(() => this.LiveText, ref this.liveText, value);
-				if (!string.IsNullOrWhiteSpace(this.liveText))
+				bool flag = !string.IsNullOrWhiteSpace(this.liveText);
+				if (flag)
 				{
 					this.OnLiveRegionChanged();
 				}
 			}
 		}
 
-		// Token: 0x060003D6 RID: 982 RVA: 0x0001280C File Offset: 0x00010A0C
+		// Token: 0x06000258 RID: 600 RVA: 0x0000DD4C File Offset: 0x0000BF4C
 		public override async void OnStarted()
 		{
 			base.OnStarted();
@@ -107,8 +110,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			base.EventAggregator.Publish<IsBackButtonMessage>(new IsBackButtonMessage(false));
 			this.AppContext.CurrentPhone = null;
 			this.LiveText = null;
-			//RnD
-			//base.Commands.Run((FlowController c) => c.GetSupportedManufacturers());
+			base.Commands.Run((FlowController c) => c.GetSupportedManufacturers());
 			this.attachedDeviceIds.Clear();
 			using (CancellationTokenSource cancellationTokenSource = new CancellationTokenSource())
 			{
@@ -120,33 +122,33 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 						CancellationToken cancellationToken = cancellationTokenSource.Token;
 						while (!cancellationToken.IsCancellationRequested)
 						{
-							DeviceInfoEventArgs deviceInfoEvent = await deviceMonitor.TakeDeviceInfoEventAsync(cancellationToken);
+							DeviceInfoEventArgs deviceInfoEventArgs = await deviceMonitor.TakeDeviceInfoEventAsync(cancellationToken);
+							DeviceInfoEventArgs deviceInfoEvent = deviceInfoEventArgs;
+							deviceInfoEventArgs = null;
 							if (deviceInfoEvent.DeviceInfoAction == DeviceInfoAction.Attached)
 							{
-								DeviceInfo deviceInfo = deviceInfoEvent.DeviceInfo;
-								Tracer<AutomaticManufacturerSelectionViewModel>.WriteInformation("Attached device detected: {0}", new object[]
-								{
-									deviceInfo.DeviceIdentifier
-								});
+								DeviceInfo device = deviceInfoEvent.DeviceInfo;
+								Tracer<AutomaticManufacturerSelectionViewModel>.WriteInformation("Attached device detected: {0}", new object[] { device.DeviceIdentifier });
 								if (deviceInfoEvent.IsEnumerated)
 								{
-									this.OnDeviceAttachedOnStartup(deviceInfo);
+									this.OnDeviceAttachedOnStartup(device);
 								}
 								else
 								{
-									this.OnDeviceAttached(deviceInfo);
+									this.OnDeviceAttached(device);
 								}
+								device = null;
 							}
 							else if (deviceInfoEvent.DeviceInfoAction == DeviceInfoAction.Detached)
 							{
-								DeviceInfo deviceInfo = deviceInfoEvent.DeviceInfo;
-								Tracer<AutomaticManufacturerSelectionViewModel>.WriteInformation("Detached device detected: {0}", new object[]
-								{
-									deviceInfo.DeviceIdentifier
-								});
-								this.OnDeviceDetached(deviceInfo);
+								DeviceInfo device2 = deviceInfoEvent.DeviceInfo;
+								Tracer<AutomaticManufacturerSelectionViewModel>.WriteInformation("Detached device detected: {0}", new object[] { device2.DeviceIdentifier });
+								this.OnDeviceDetached(device2);
+								device2 = null;
 							}
+							deviceInfoEvent = null;
 						}
+						cancellationToken = default(CancellationToken);
 					}
 					catch (OperationCanceledException)
 					{
@@ -162,28 +164,33 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 						this.internalTokenSource = null;
 					}
 				}
+				IDetectionHandler deviceMonitor = null;
 			}
+			CancellationTokenSource cancellationTokenSource = null;
 		}
 
-		// Token: 0x060003D7 RID: 983 RVA: 0x00012848 File Offset: 0x00010A48
+		// Token: 0x06000259 RID: 601 RVA: 0x0000DD88 File Offset: 0x0000BF88
 		public override void OnStopped()
 		{
 			base.OnStopped();
 			this.switchToDeviceSelectionTimer.IsEnabled = false;
-			if (this.internalTokenSource != null)
+			bool flag = this.internalTokenSource != null;
+			if (flag)
 			{
 				this.internalTokenSource.Cancel();
 			}
 		}
 
-		// Token: 0x060003D8 RID: 984 RVA: 0x00012888 File Offset: 0x00010A88
+		// Token: 0x0600025A RID: 602 RVA: 0x0000DDC8 File Offset: 0x0000BFC8
 		public void Handle(SupportedManufacturersMessage message)
 		{
-			if (base.IsStarted)
+			bool isStarted = base.IsStarted;
+			if (isStarted)
 			{
 				foreach (ManufacturerInfo manufacturerInfo in message.Manufacturers)
 				{
-					if (manufacturerInfo.Type == PhoneTypes.Analog)
+					bool flag = manufacturerInfo.Type == PhoneTypes.Analog;
+					if (flag)
 					{
 						this.AnalogSupported = true;
 						break;
@@ -192,96 +199,99 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x060003D9 RID: 985 RVA: 0x00012908 File Offset: 0x00010B08
+		// Token: 0x0600025B RID: 603 RVA: 0x0000DE40 File Offset: 0x0000C040
 		private void OnDeviceNotDetectedCommandExecuted(object obj)
 		{
 			this.SwitchToManufacturerSelection();
 		}
 
-		// Token: 0x060003DA RID: 986 RVA: 0x00012914 File Offset: 0x00010B14
+		// Token: 0x0600025C RID: 604 RVA: 0x0000DE4C File Offset: 0x0000C04C
 		private void OnDeviceDetached(DeviceInfo device)
 		{
-			if (this.attachedDeviceIds.Remove(device.DeviceIdentifier))
+			bool flag = this.attachedDeviceIds.Remove(device.DeviceIdentifier);
+			if (flag)
 			{
 				this.LiveText = LocalizationManager.GetTranslation("DeviceDisconnected");
 			}
-			if (this.attachedDeviceIds.Count == 0)
+			bool flag2 = this.attachedDeviceIds.Count == 0;
+			if (flag2)
 			{
 				this.switchToDeviceSelectionTimer.IsEnabled = false;
 			}
 		}
 
-		// Token: 0x060003DB RID: 987 RVA: 0x00012974 File Offset: 0x00010B74
+		// Token: 0x0600025D RID: 605 RVA: 0x0000DEA4 File Offset: 0x0000C0A4
 		private void OnDeviceAttached(DeviceInfo device)
 		{
-			if (this.attachedDeviceIds.Add(device.DeviceIdentifier))
+			bool flag = this.attachedDeviceIds.Add(device.DeviceIdentifier);
+			if (flag)
 			{
 				this.LiveText = LocalizationManager.GetTranslation("DeviceConnected");
 			}
 			this.switchToDeviceSelectionTimer.IsEnabled = true;
 		}
 
-		// Token: 0x060003DC RID: 988 RVA: 0x000129BA File Offset: 0x00010BBA
+		// Token: 0x0600025E RID: 606 RVA: 0x0000DEE7 File Offset: 0x0000C0E7
 		private void OnDeviceAttachedOnStartup(DeviceInfo device)
 		{
 			this.SwitchToDeviceSelection();
 		}
 
-		// Token: 0x060003DD RID: 989 RVA: 0x000129C4 File Offset: 0x00010BC4
+		// Token: 0x0600025F RID: 607 RVA: 0x0000DEE7 File Offset: 0x0000C0E7
 		private void OnSwitchToDeviceSelectionTimerTick()
 		{
 			this.SwitchToDeviceSelection();
 		}
 
-		// Token: 0x060003DE RID: 990 RVA: 0x000129CE File Offset: 0x00010BCE
+		// Token: 0x06000260 RID: 608 RVA: 0x0000DEF1 File Offset: 0x0000C0F1
 		private void SwitchToDeviceSelection()
 		{
 			this.SwitchToState("DeviceSelectionState");
 		}
 
-		// Token: 0x060003DF RID: 991 RVA: 0x000129DD File Offset: 0x00010BDD
+		// Token: 0x06000261 RID: 609 RVA: 0x0000DF00 File Offset: 0x0000C100
 		private void SwitchToManufacturerSelection()
 		{
 			this.SwitchToState("ManualManufacturerSelectionState");
 		}
 
-		// Token: 0x060003E0 RID: 992 RVA: 0x000129F4 File Offset: 0x00010BF4
+		// Token: 0x06000262 RID: 610 RVA: 0x0000DF10 File Offset: 0x0000C110
 		private void SwitchToState(string nextState)
 		{
 			this.switchToDeviceSelectionTimer.IsEnabled = false;
-			//RnD
-			//base.Commands.Run((AppController c) => c.SwitchToState(nextState));
+			base.Commands.Run((AppController c) => c.SwitchToState(nextState));
 		}
 
-		// Token: 0x060003E1 RID: 993 RVA: 0x00012A84 File Offset: 0x00010C84
+		// Token: 0x06000263 RID: 611 RVA: 0x0000DFA8 File Offset: 0x0000C1A8
 		private void OnLiveRegionChanged()
 		{
 			EventHandler liveRegionChanged = this.LiveRegionChanged;
-			if (liveRegionChanged != null)
+			bool flag = liveRegionChanged != null;
+			if (flag)
 			{
 				liveRegionChanged(this, EventArgs.Empty);
 			}
 		}
 
-		// Token: 0x040001BA RID: 442
+		// Token: 0x0400011C RID: 284
 		private readonly DetectionHandlerFactory detectionHandlerFactory;
 
-		// Token: 0x040001BB RID: 443
+		// Token: 0x0400011D RID: 285
 		private readonly DispatcherTimer switchToDeviceSelectionTimer;
 
-		// Token: 0x040001BC RID: 444
+		// Token: 0x0400011E RID: 286
 		private readonly HashSet<string> attachedDeviceIds;
 
-		// Token: 0x040001BD RID: 445
+		// Token: 0x0400011F RID: 287
 		private Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext;
 
-		// Token: 0x040001BE RID: 446
+		// Token: 0x04000120 RID: 288
 		private string liveText;
 
-		// Token: 0x040001BF RID: 447
+		// Token: 0x04000121 RID: 289
 		private bool analogSupported;
 
-		// Token: 0x040001C0 RID: 448
+		// Token: 0x04000122 RID: 290
 		private CancellationTokenSource internalTokenSource;
 	}
 }

@@ -2,33 +2,33 @@
 
 namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 {
-	// Token: 0x02000003 RID: 3
+	// Token: 0x02000008 RID: 8
 	public abstract class CmdHandler
 	{
-		// Token: 0x0600003E RID: 62
+		// Token: 0x06000054 RID: 84
 		protected abstract int DoExecution();
 
-		// Token: 0x17000003 RID: 3
-		// (get) Token: 0x0600003F RID: 63
+		// Token: 0x17000008 RID: 8
+		// (get) Token: 0x06000055 RID: 85
 		public abstract string Command { get; }
 
-		// Token: 0x17000004 RID: 4
-		// (get) Token: 0x06000040 RID: 64
+		// Token: 0x17000009 RID: 9
+		// (get) Token: 0x06000056 RID: 86
 		public abstract string Description { get; }
 
-		// Token: 0x06000041 RID: 65 RVA: 0x000034EC File Offset: 0x000016EC
+		// Token: 0x06000057 RID: 87 RVA: 0x00003B5C File Offset: 0x00001D5C
 		public int Execute(string cmdParams, string applicationName)
 		{
 			if (!this._cmdLineParser.ParseString("appName " + cmdParams, true))
 			{
-				string appName = applicationName + " " + this.Command;
-				LogUtil.Message(this._cmdLineParser.UsageString(appName));
+				string text = applicationName + " " + this.Command;
+				LogUtil.Message(this._cmdLineParser.UsageString(text));
 				return -1;
 			}
 			return this.DoExecution();
 		}
 
-		// Token: 0x04000018 RID: 24
+		// Token: 0x04000024 RID: 36
 		protected CommandLineParser _cmdLineParser = new CommandLineParser();
 	}
 }

@@ -19,7 +19,7 @@ namespace FFUComponents
 				eventWatcher = this,
 				contextEvent = new ManualResetEvent(false)
 			};
-			ParameterizedThreadStart start = delegate(object a)
+			ParameterizedThreadStart parameterizedThreadStart = delegate(object a)
 			{
 				bool flag = false;
 				do
@@ -46,7 +46,7 @@ namespace FFUComponents
 				}
 				while (!flag);
 			};
-			Thread thread = new Thread(start);
+			Thread thread = new Thread(parameterizedThreadStart);
 			thread.Start(usbFormArgs);
 			if (!usbFormArgs.contextEvent.WaitOne(UsbEventWatcher.timeout))
 			{
@@ -69,11 +69,11 @@ namespace FFUComponents
 				this.isDisposed = true;
 				try
 				{
-					MethodInvoker method = delegate()
+					MethodInvoker methodInvoker = delegate
 					{
 						this.runningContext.MainForm.Close();
 					};
-					IAsyncResult asyncResult = this.runningContext.MainForm.BeginInvoke(method);
+					IAsyncResult asyncResult = this.runningContext.MainForm.BeginInvoke(methodInvoker);
 					asyncResult.AsyncWaitHandle.WaitOne();
 					this.runningContext.ExitThread();
 					this.runningContext = null;

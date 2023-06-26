@@ -15,7 +15,7 @@ namespace ComponentAce.Encryption
 		// Token: 0x06000052 RID: 82 RVA: 0x0000BA32 File Offset: 0x0000AA32
 		public static int ROL(uint Value, int Shift)
 		{
-			return (int)(Value << Shift | Value >> 32 - Shift);
+			return (int)((Value << Shift) | (Value >> 32 - Shift));
 		}
 
 		// Token: 0x06000053 RID: 83 RVA: 0x0000BA44 File Offset: 0x0000AA44
@@ -95,7 +95,7 @@ namespace ComponentAce.Encryption
 		{
 			while (Size > 0)
 			{
-				Dest[DestOffset++] = (byte)(Src1[Src1Offset++] ^ Src2[Src2Offset++]);
+				Dest[DestOffset++] = Src1[Src1Offset++] ^ Src2[Src2Offset++];
 				Size--;
 			}
 		}
@@ -126,9 +126,9 @@ namespace ComponentAce.Encryption
 		// Token: 0x06000064 RID: 100 RVA: 0x0000BAF8 File Offset: 0x0000AAF8
 		public static int SwapInteger(int i)
 		{
-			byte b = (byte)(i >> 24 & 255);
-			byte b2 = (byte)(i >> 16 & 255);
-			byte b3 = (byte)(i >> 8 & 255);
+			byte b = (byte)((i >> 24) & 255);
+			byte b2 = (byte)((i >> 16) & 255);
+			byte b3 = (byte)((i >> 8) & 255);
 			byte b4 = (byte)(i & 255);
 			return (int)b + ((int)b2 << 8) + ((int)b3 << 16) + ((int)b4 << 24);
 		}
@@ -136,9 +136,9 @@ namespace ComponentAce.Encryption
 		// Token: 0x06000065 RID: 101 RVA: 0x0000BB40 File Offset: 0x0000AB40
 		public static uint SwapInteger(uint i)
 		{
-			byte b = (byte)(i >> 24 & 255U);
-			byte b2 = (byte)(i >> 16 & 255U);
-			byte b3 = (byte)(i >> 8 & 255U);
+			byte b = (byte)((i >> 24) & 255U);
+			byte b2 = (byte)((i >> 16) & 255U);
+			byte b3 = (byte)((i >> 8) & 255U);
 			byte b4 = (byte)(i & 255U);
 			return (uint)((int)b + ((int)b2 << 8) + ((int)b3 << 16) + ((int)b4 << 24));
 		}
@@ -157,8 +157,8 @@ namespace ComponentAce.Encryption
 			{
 				for (int j = source.GetLowerBound(1); j <= source.GetUpperBound(1); j++)
 				{
-					int index = ((source.GetUpperBound(1) - source.GetLowerBound(1) + 1) * i + j) * 4;
-					BitConverter.GetBytes(source[i, j]).CopyTo(array, index);
+					int num = ((source.GetUpperBound(1) - source.GetLowerBound(1) + 1) * i + j) * 4;
+					BitConverter.GetBytes(source[i, j]).CopyTo(array, num);
 				}
 			}
 			return array;

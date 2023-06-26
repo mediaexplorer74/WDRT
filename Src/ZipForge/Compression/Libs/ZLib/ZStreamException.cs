@@ -12,7 +12,8 @@ namespace ComponentAce.Compression.Libs.ZLib
 		}
 
 		// Token: 0x0600087A RID: 2170 RVA: 0x00036509 File Offset: 0x00035509
-		public ZStreamException(string s) : base(s)
+		public ZStreamException(string s)
+			: base(s)
 		{
 		}
 	}

@@ -10,15 +10,12 @@ using Microsoft.WindowsDeviceRecoveryTool.Framework;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 {
-	// Token: 0x02000098 RID: 152
-	[Region(new string[]
-	{
-		"MainArea"
-	})]
+	// Token: 0x02000043 RID: 67
 	[Export]
+	[Region(new string[] { "MainArea" })]
 	public partial class AbsoluteConfirmationView : Grid
 	{
-		// Token: 0x06000435 RID: 1077 RVA: 0x00014425 File Offset: 0x00012625
+		// Token: 0x060002B7 RID: 695 RVA: 0x0000F7E9 File Offset: 0x0000D9E9
 		public AbsoluteConfirmationView()
 		{
 			this.InitializeComponent();

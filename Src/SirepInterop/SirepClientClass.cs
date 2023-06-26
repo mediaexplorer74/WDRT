@@ -58,25 +58,25 @@ namespace Interop.SirepClient
 		// Token: 0x06000055 RID: 85 RVA: 0x00002264 File Offset: 0x00000464
 		public uint CreateProcess(string command, string arguments, string workingDirectory, uint launchFlags)
 		{
-			uint result;
-			int num = NativeMethods.CreateProcessOnTarget(this.sirepClient, command, arguments, workingDirectory, launchFlags, out result);
+			uint num2;
+			int num = NativeMethods.CreateProcessOnTarget(this.sirepClient, command, arguments, workingDirectory, launchFlags, out num2);
 			if (num != 0)
 			{
 				Marshal.ThrowExceptionForHR(num);
 			}
-			return result;
+			return num2;
 		}
 
 		// Token: 0x06000056 RID: 86 RVA: 0x00002290 File Offset: 0x00000490
 		public string GetClientSideClientIdentifier()
 		{
-			string result;
-			int clientSideClientIdentifier = NativeMethods.GetClientSideClientIdentifier(this.sirepClient, out result);
+			string text;
+			int clientSideClientIdentifier = NativeMethods.GetClientSideClientIdentifier(this.sirepClient, out text);
 			if (clientSideClientIdentifier != 0)
 			{
 				Marshal.ThrowExceptionForHR(clientSideClientIdentifier);
 			}
-			return result;
+			return text;
 		}
 
 		// Token: 0x06000057 RID: 87 RVA: 0x000022B8 File Offset: 0x000004B8
@@ -92,25 +92,25 @@ namespace Interop.SirepClient
 		// Token: 0x06000058 RID: 88 RVA: 0x000022DC File Offset: 0x000004DC
 		public uint GetLastProcessHandle()
 		{
-			uint result;
-			int lastProcessHandle = NativeMethods.GetLastProcessHandle(this.sirepClient, out result);
+			uint num;
+			int lastProcessHandle = NativeMethods.GetLastProcessHandle(this.sirepClient, out num);
 			if (lastProcessHandle != 0)
 			{
 				Marshal.ThrowExceptionForHR(lastProcessHandle);
 			}
-			return result;
+			return num;
 		}
 
 		// Token: 0x06000059 RID: 89 RVA: 0x00002304 File Offset: 0x00000504
 		public ulong GetServerSideClientIdentifier()
 		{
-			ulong result;
-			int serverSideClientIdentifier = NativeMethods.GetServerSideClientIdentifier(this.sirepClient, out result);
+			ulong num;
+			int serverSideClientIdentifier = NativeMethods.GetServerSideClientIdentifier(this.sirepClient, out num);
 			if (serverSideClientIdentifier != 0)
 			{
 				Marshal.ThrowExceptionForHR(serverSideClientIdentifier);
 			}
-			return result;
+			return num;
 		}
 
 		// Token: 0x0600005A RID: 90 RVA: 0x00002329 File Offset: 0x00000529
@@ -122,13 +122,13 @@ namespace Interop.SirepClient
 		// Token: 0x0600005B RID: 91 RVA: 0x00002338 File Offset: 0x00000538
 		public bool IsDeviceSideFailure()
 		{
-			bool result;
-			int num = NativeMethods.IsDeviceSideFailure(this.sirepClient, out result);
+			bool flag;
+			int num = NativeMethods.IsDeviceSideFailure(this.sirepClient, out flag);
 			if (num != 0)
 			{
 				Marshal.ThrowExceptionForHR(num);
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x0600005C RID: 92 RVA: 0x00002360 File Offset: 0x00000560
@@ -154,13 +154,13 @@ namespace Interop.SirepClient
 		// Token: 0x0600005E RID: 94 RVA: 0x000023A8 File Offset: 0x000005A8
 		public uint LaunchWithOutput(uint timeoutInMs, string command, string arguments, string workingDirectory, uint launchFlags, ILaunchWithOutputCB outputCallback)
 		{
-			uint result;
-			int num = NativeMethods.LaunchWithOutput(this.sirepClient, timeoutInMs, command, arguments, workingDirectory, launchFlags, outputCallback, out result);
+			uint num2;
+			int num = NativeMethods.LaunchWithOutput(this.sirepClient, timeoutInMs, command, arguments, workingDirectory, launchFlags, outputCallback, out num2);
 			if (num != 0)
 			{
 				Marshal.ThrowExceptionForHR(num);
 			}
-			return result;
+			return num2;
 		}
 
 		// Token: 0x0600005F RID: 95 RVA: 0x000023D8 File Offset: 0x000005D8
@@ -216,13 +216,13 @@ namespace Interop.SirepClient
 		// Token: 0x06000064 RID: 100 RVA: 0x0000248C File Offset: 0x0000068C
 		public uint SirepConnect(uint timeoutInMs, bool runAsync)
 		{
-			uint result;
-			int num = NativeMethods.SirepConnect(this.sirepClient, timeoutInMs, runAsync, out result);
+			uint num2;
+			int num = NativeMethods.SirepConnect(this.sirepClient, timeoutInMs, runAsync, out num2);
 			if (num != 0)
 			{
 				Marshal.ThrowExceptionForHR(num);
 			}
-			return result;
+			return num2;
 		}
 
 		// Token: 0x06000065 RID: 101 RVA: 0x000024B4 File Offset: 0x000006B4
@@ -259,25 +259,25 @@ namespace Interop.SirepClient
 		// Token: 0x06000067 RID: 103 RVA: 0x00002528 File Offset: 0x00000728
 		public uint SirepGetCurrentState()
 		{
-			uint result;
-			int num = NativeMethods.SirepGetCurrentState(this.sirepClient, out result);
+			uint num2;
+			int num = NativeMethods.SirepGetCurrentState(this.sirepClient, out num2);
 			if (num != 0)
 			{
 				Marshal.ThrowExceptionForHR(num);
 			}
-			return result;
+			return num2;
 		}
 
 		// Token: 0x06000068 RID: 104 RVA: 0x00002550 File Offset: 0x00000750
 		public uint SirepGetDeviceInfo(DeviceInfo deviceInfo)
 		{
-			uint result;
-			int num = NativeMethods.SirepGetDeviceInfo(this.sirepClient, deviceInfo, out result);
+			uint num2;
+			int num = NativeMethods.SirepGetDeviceInfo(this.sirepClient, deviceInfo, out num2);
 			if (num != 0)
 			{
 				Marshal.ThrowExceptionForHR(num);
 			}
-			return result;
+			return num2;
 		}
 
 		// Token: 0x06000069 RID: 105 RVA: 0x00002578 File Offset: 0x00000778
@@ -355,37 +355,37 @@ namespace Interop.SirepClient
 		// Token: 0x06000070 RID: 112 RVA: 0x00002688 File Offset: 0x00000888
 		public bool SirepPing([In] uint timeoutInMs)
 		{
-			bool result;
-			int num = NativeMethods.SirepPing(this.sirepClient, timeoutInMs, out result);
+			bool flag;
+			int num = NativeMethods.SirepPing(this.sirepClient, timeoutInMs, out flag);
 			if (num != 0)
 			{
 				Marshal.ThrowExceptionForHR(num);
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x06000071 RID: 113 RVA: 0x000026B0 File Offset: 0x000008B0
 		public uint SirepPutFile(uint timeoutInMs, bool runAsync, string srcFullPath, string destFullPath, bool overwrite)
 		{
-			uint result;
-			int num = NativeMethods.SirepPutFile(this.sirepClient, timeoutInMs, runAsync, srcFullPath, destFullPath, overwrite, out result);
+			uint num2;
+			int num = NativeMethods.SirepPutFile(this.sirepClient, timeoutInMs, runAsync, srcFullPath, destFullPath, overwrite, out num2);
 			if (num != 0)
 			{
 				Marshal.ThrowExceptionForHR(num);
 			}
-			return result;
+			return num2;
 		}
 
 		// Token: 0x06000072 RID: 114 RVA: 0x000026DC File Offset: 0x000008DC
 		public uint SirepPutFile(uint timeoutInMs, bool runAsync, string srcFullPath, string destFullPath)
 		{
-			uint result;
-			int num = NativeMethods.SirepPutFile(this.sirepClient, timeoutInMs, runAsync, srcFullPath, destFullPath, false, out result);
+			uint num2;
+			int num = NativeMethods.SirepPutFile(this.sirepClient, timeoutInMs, runAsync, srcFullPath, destFullPath, false, out num2);
 			if (num != 0)
 			{
 				Marshal.ThrowExceptionForHR(num);
 			}
-			return result;
+			return num2;
 		}
 
 		// Token: 0x06000073 RID: 115 RVA: 0x00002708 File Offset: 0x00000908

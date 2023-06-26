@@ -102,25 +102,25 @@ namespace FFUComponents
 		// Token: 0x06000165 RID: 357 RVA: 0x00007984 File Offset: 0x00005B84
 		public void FlashFFUFile(string ffuFilePath, bool optimizeHint)
 		{
-			Guid sessionId = Guid.NewGuid();
+			Guid guid = Guid.NewGuid();
 			try
 			{
-				this.telemetryLogger.LogFlashingInitialized(sessionId, this, optimizeHint, ffuFilePath);
-				this.telemetryLogger.LogThorDeviceUSBConnectionType(sessionId, this.connectionType);
+				this.telemetryLogger.LogFlashingInitialized(guid, this, optimizeHint, ffuFilePath);
+				this.telemetryLogger.LogThorDeviceUSBConnectionType(guid, this.connectionType);
 				FileInfo fileInfo = new FileInfo(ffuFilePath);
 				long length = fileInfo.Length;
 				ThorDevice.Progress progress = new ThorDevice.Progress(this, length);
-				HandleRef cancelEvent = default(HandleRef);
-				this.telemetryLogger.LogFlashingStarted(sessionId);
+				HandleRef handleRef = default(HandleRef);
+				this.telemetryLogger.LogFlashingStarted(guid);
 				Stopwatch stopwatch = new Stopwatch();
 				stopwatch.Start();
-				this.flashingDevice.FlashFFUFile(ffuFilePath, FlashFlags.Normal, progress, cancelEvent);
+				this.flashingDevice.FlashFFUFile(ffuFilePath, FlashFlags.Normal, progress, handleRef);
 				stopwatch.Stop();
-				this.telemetryLogger.LogFlashingEnded(sessionId, stopwatch, ffuFilePath, this);
+				this.telemetryLogger.LogFlashingEnded(guid, stopwatch, ffuFilePath, this);
 			}
-			catch (Exception e)
+			catch (Exception ex)
 			{
-				this.telemetryLogger.LogFlashingException(sessionId, e);
+				this.telemetryLogger.LogFlashingException(guid, ex);
 				throw;
 			}
 			this.Reboot();
@@ -260,7 +260,7 @@ namespace FFUComponents
 			public override void RegisterProgress(uint progress)
 			{
 				ProgressEventArgs args = new ProgressEventArgs(this.Device, (long)((ulong)progress * (ulong)this.FfuFileSize / 100UL), this.FfuFileSize);
-				Task.Factory.StartNew(delegate()
+				Task.Factory.StartNew(delegate
 				{
 					this.Device.ProgressEvent(this.Device, args);
 				});

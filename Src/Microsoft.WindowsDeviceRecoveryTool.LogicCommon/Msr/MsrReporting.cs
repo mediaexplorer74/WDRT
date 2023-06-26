@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 using Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Helpers;
 using Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Reporting;
@@ -11,15 +12,16 @@ using Microsoft.WindowsDeviceRecoveryTool.Model;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Msr
 {
-	// Token: 0x0200001A RID: 26
+	// Token: 0x02000028 RID: 40
 	public sealed class MsrReporting
 	{
-		// Token: 0x14000007 RID: 7
-		// (add) Token: 0x060000F3 RID: 243 RVA: 0x000061F0 File Offset: 0x000043F0
-		// (remove) Token: 0x060000F4 RID: 244 RVA: 0x0000622C File Offset: 0x0000442C
+		// Token: 0x1400000E RID: 14
+		// (add) Token: 0x060002A6 RID: 678 RVA: 0x00009484 File Offset: 0x00007684
+		// (remove) Token: 0x060002A7 RID: 679 RVA: 0x000094BC File Offset: 0x000076BC
+		[field: DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event Action<ReportSendCompletedEventArgs> SendCompleted;
 
-		// Token: 0x060000F5 RID: 245 RVA: 0x00006268 File Offset: 0x00004468
+		// Token: 0x060002A8 RID: 680 RVA: 0x000094F1 File Offset: 0x000076F1
 		public MsrReporting(MsrReportingService msrReportingService)
 		{
 			this.environmentInfo = new EnvironmentInfo(new ApplicationInfo());
@@ -28,20 +30,22 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Msr
 			this.processingThreadStarted = false;
 		}
 
-		// Token: 0x060000F6 RID: 246 RVA: 0x0000629C File Offset: 0x0000449C
+		// Token: 0x060002A9 RID: 681 RVA: 0x00009524 File Offset: 0x00007724
 		public void SendAsync(IReport report)
 		{
-			ReportStatusAsyncState asyncState = new ReportStatusAsyncState(ReportingOperation.Send, report, null);
-			this.AddToReportQueue(asyncState);
+			ReportStatusAsyncState reportStatusAsyncState = new ReportStatusAsyncState(ReportingOperation.Send, report, null);
+			this.AddToReportQueue(reportStatusAsyncState);
 		}
 
-		// Token: 0x060000F7 RID: 247 RVA: 0x000062BC File Offset: 0x000044BC
+		// Token: 0x060002AA RID: 682 RVA: 0x00009544 File Offset: 0x00007744
 		private void AddToReportQueue(ReportStatusAsyncState asyncState)
 		{
-			lock (((ICollection)this.actionQueue).SyncRoot)
+			object syncRoot = ((ICollection)this.actionQueue).SyncRoot;
+			lock (syncRoot)
 			{
 				this.actionQueue.Enqueue(asyncState);
-				if (!this.processingThreadStarted)
+				bool flag2 = !this.processingThreadStarted;
+				if (flag2)
 				{
 					this.processingThreadStarted = true;
 					ThreadPool.QueueUserWorkItem(new WaitCallback(this.ProcessReportQueueWork));
@@ -49,22 +53,25 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Msr
 			}
 		}
 
-		// Token: 0x060000F8 RID: 248 RVA: 0x00006338 File Offset: 0x00004538
+		// Token: 0x060002AB RID: 683 RVA: 0x000095C0 File Offset: 0x000077C0
 		private void ProcessReportQueueWork(object obj)
 		{
 			do
 			{
+				object syncRoot = ((ICollection)this.actionQueue).SyncRoot;
 				ReportStatusAsyncState reportStatusAsyncState;
-				lock (((ICollection)this.actionQueue).SyncRoot)
+				lock (syncRoot)
 				{
-					if (this.actionQueue.Count <= 0)
+					bool flag2 = this.actionQueue.Count > 0;
+					if (!flag2)
 					{
 						this.processingThreadStarted = false;
 						break;
 					}
 					reportStatusAsyncState = this.actionQueue.Dequeue();
 				}
-				if (reportStatusAsyncState.ReportingOperation == ReportingOperation.Send)
+				bool flag3 = reportStatusAsyncState.ReportingOperation == ReportingOperation.Send;
+				if (flag3)
 				{
 					this.HandleSendRequest(reportStatusAsyncState);
 				}
@@ -72,71 +79,74 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Msr
 			while (this.processingThreadStarted);
 		}
 
-		// Token: 0x060000F9 RID: 249 RVA: 0x000063DC File Offset: 0x000045DC
+		// Token: 0x060002AC RID: 684 RVA: 0x00009658 File Offset: 0x00007858
 		private void HandleSendRequest(ReportStatusAsyncState statusAsyncState)
 		{
-			Exception error = null;
-			ReportUpdateStatus4Parameters parameters = null;
+			Exception ex = null;
+			ReportUpdateStatus4Parameters reportUpdateStatus4Parameters = null;
 			try
 			{
-				parameters = statusAsyncState.Report.CreateReportStatusParameters();
+				reportUpdateStatus4Parameters = statusAsyncState.Report.CreateReportStatusParameters();
 				this.msrReportingService.SendReportAsync(statusAsyncState.Report).Wait();
 			}
-			catch (Exception ex)
+			catch (Exception ex2)
 			{
-				error = ex;
+				ex = ex2;
 			}
 			finally
 			{
-				this.OnSendCompleted(new ReportSendCompletedEventArgs(parameters, statusAsyncState.Report, error, null));
+				this.OnSendCompleted(new ReportSendCompletedEventArgs(reportUpdateStatus4Parameters, statusAsyncState.Report, ex, null));
 			}
 		}
 
-		// Token: 0x060000FA RID: 250 RVA: 0x00006454 File Offset: 0x00004654
+		// Token: 0x060002AD RID: 685 RVA: 0x000096D0 File Offset: 0x000078D0
 		private string FormatString(string source, int maxLength)
 		{
-			string result;
-			if (string.IsNullOrEmpty(source))
+			bool flag = string.IsNullOrEmpty(source);
+			string text;
+			if (flag)
 			{
-				result = "Unknown";
+				text = "Unknown";
 			}
 			else
 			{
-				result = this.Truncate(source, maxLength);
+				text = this.Truncate(source, maxLength);
 			}
-			return result;
+			return text;
 		}
 
-		// Token: 0x060000FB RID: 251 RVA: 0x00006484 File Offset: 0x00004684
+		// Token: 0x060002AE RID: 686 RVA: 0x00009700 File Offset: 0x00007900
 		private string Truncate(string source, int length)
 		{
-			if (source.Length > length)
+			bool flag = source.Length > length;
+			if (flag)
 			{
 				source = source.Substring(0, length);
 			}
 			return source;
 		}
 
-		// Token: 0x060000FC RID: 252 RVA: 0x000064B4 File Offset: 0x000046B4
+		// Token: 0x060002AF RID: 687 RVA: 0x0000972C File Offset: 0x0000792C
 		private void OnSendCompleted(ReportSendCompletedEventArgs e)
 		{
 			Action<ReportSendCompletedEventArgs> sendCompleted = this.SendCompleted;
-			if (sendCompleted != null)
+			bool flag = sendCompleted != null;
+			if (flag)
 			{
 				sendCompleted(e);
 			}
 		}
 
-		// Token: 0x0400007F RID: 127
+		// Token: 0x0400011F RID: 287
 		private readonly Queue<ReportStatusAsyncState> actionQueue;
 
-		// Token: 0x04000080 RID: 128
+		// Token: 0x04000120 RID: 288
 		private MsrReportingService msrReportingService;
 
-		// Token: 0x04000081 RID: 129
+		// Token: 0x04000121 RID: 289
 		private bool processingThreadStarted;
 
-		// Token: 0x04000082 RID: 130
+		// Token: 0x04000122 RID: 290
 		private readonly IEnvironmentInfo environmentInfo;
 	}
 }

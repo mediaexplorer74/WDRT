@@ -8,13 +8,13 @@ using Microsoft.WindowsDeviceRecoveryTool.Properties;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 {
-	// Token: 0x020000AF RID: 175
+	// Token: 0x02000029 RID: 41
 	[Export]
 	public class PackagesViewModel : BaseViewModel, ICanHandle<PackageDirectoryMessage>, ICanHandle
 	{
-		// Token: 0x17000118 RID: 280
-		// (get) Token: 0x06000525 RID: 1317 RVA: 0x0001A994 File Offset: 0x00018B94
-		// (set) Token: 0x06000526 RID: 1318 RVA: 0x0001A9CC File Offset: 0x00018BCC
+		// Token: 0x17000087 RID: 135
+		// (get) Token: 0x060001DE RID: 478 RVA: 0x0000BBA0 File Offset: 0x00009DA0
+		// (set) Token: 0x060001DF RID: 479 RVA: 0x0000BBBC File Offset: 0x00009DBC
 		public string PackagesPath
 		{
 			get
@@ -23,16 +23,16 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 			}
 			set
 			{
-				base.SetValue<string>(() => this.PackagesPath, delegate()
+				base.SetValue<string>(() => this.PackagesPath, delegate
 				{
 					Settings.Default.PackagesPath = value;
 				});
 			}
 		}
 
-		// Token: 0x17000119 RID: 281
-		// (get) Token: 0x06000527 RID: 1319 RVA: 0x0001AA38 File Offset: 0x00018C38
-		// (set) Token: 0x06000528 RID: 1320 RVA: 0x0001AA54 File Offset: 0x00018C54
+		// Token: 0x17000088 RID: 136
+		// (get) Token: 0x060001E0 RID: 480 RVA: 0x0000BC20 File Offset: 0x00009E20
+		// (set) Token: 0x060001E1 RID: 481 RVA: 0x0000BC3C File Offset: 0x00009E3C
 		public bool CustomPackagesPathEnabled
 		{
 			get
@@ -48,8 +48,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 			}
 		}
 
-		// Token: 0x1700011A RID: 282
-		// (get) Token: 0x06000529 RID: 1321 RVA: 0x0001AAFC File Offset: 0x00018CFC
+		// Token: 0x17000089 RID: 137
+		// (get) Token: 0x060001E2 RID: 482 RVA: 0x0000BCD8 File Offset: 0x00009ED8
 		public bool CustomPathVisible
 		{
 			get
@@ -58,10 +58,11 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 			}
 		}
 
-		// Token: 0x0600052A RID: 1322 RVA: 0x0001AB28 File Offset: 0x00018D28
+		// Token: 0x060001E3 RID: 483 RVA: 0x0000BD04 File Offset: 0x00009F04
 		public override void OnStopped()
 		{
-			if (this.CustomPackagesPathEnabled && string.IsNullOrEmpty(this.PackagesPath))
+			bool flag = this.CustomPackagesPathEnabled && string.IsNullOrEmpty(this.PackagesPath);
+			if (flag)
 			{
 				this.CustomPackagesPathEnabled = false;
 			}
@@ -71,7 +72,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 			}
 		}
 
-		// Token: 0x0600052B RID: 1323 RVA: 0x0001AB6C File Offset: 0x00018D6C
+		// Token: 0x060001E4 RID: 484 RVA: 0x0000BD44 File Offset: 0x00009F44
 		public override void OnStarted()
 		{
 			base.EventAggregator.Publish<HeaderMessage>(new HeaderMessage(LocalizationManager.GetTranslation("Settings"), LocalizationManager.GetTranslation("Packages")));
@@ -79,10 +80,11 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 			base.RaisePropertyChanged<string>(() => this.PackagesPath);
 		}
 
-		// Token: 0x0600052C RID: 1324 RVA: 0x0001AC18 File Offset: 0x00018E18
+		// Token: 0x060001E5 RID: 485 RVA: 0x0000BDE4 File Offset: 0x00009FE4
 		public void Handle(PackageDirectoryMessage message)
 		{
-			if (base.IsStarted)
+			bool isStarted = base.IsStarted;
+			if (isStarted)
 			{
 				this.PackagesPath = message.Directory;
 				this.CustomPackagesPathEnabled = !string.IsNullOrEmpty(this.PackagesPath);

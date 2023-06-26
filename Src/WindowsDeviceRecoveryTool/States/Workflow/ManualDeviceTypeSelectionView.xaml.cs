@@ -10,15 +10,12 @@ using Microsoft.WindowsDeviceRecoveryTool.Framework;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 {
-	// Token: 0x020000B7 RID: 183
+	// Token: 0x02000010 RID: 16
 	[Export]
-	[Region(new string[]
-	{
-		"MainArea"
-	})]
+	[Region(new string[] { "MainArea" })]
 	public partial class ManualDeviceTypeSelectionView : Grid
 	{
-		// Token: 0x0600056B RID: 1387 RVA: 0x0001BF75 File Offset: 0x0001A175
+		// Token: 0x060000AE RID: 174 RVA: 0x00005B97 File Offset: 0x00003D97
 		public ManualDeviceTypeSelectionView()
 		{
 			this.InitializeComponent();

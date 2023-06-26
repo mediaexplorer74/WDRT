@@ -11,11 +11,11 @@ using Nokia.Lucid.DeviceInformation;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation
 {
-	// Token: 0x02000006 RID: 6
+	// Token: 0x02000005 RID: 5
 	[Export(typeof(IDeviceSupport))]
 	internal class HtcSupport : IDeviceSupport
 	{
-		// Token: 0x0600000F RID: 15 RVA: 0x0000232D File Offset: 0x0000052D
+		// Token: 0x0600000E RID: 14 RVA: 0x00002277 File Offset: 0x00000477
 		[ImportingConstructor]
 		public HtcSupport(HtcModelsCatalog catalog, ILucidService lucidService)
 		{
@@ -24,7 +24,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation
 		}
 
 		// Token: 0x17000005 RID: 5
-		// (get) Token: 0x06000010 RID: 16 RVA: 0x00002348 File Offset: 0x00000548
+		// (get) Token: 0x0600000F RID: 15 RVA: 0x00002290 File Offset: 0x00000490
 		public Guid Id
 		{
 			get
@@ -33,39 +33,35 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation
 			}
 		}
 
-		// Token: 0x06000011 RID: 17 RVA: 0x00002390 File Offset: 0x00000590
+		// Token: 0x06000010 RID: 16 RVA: 0x000022A8 File Offset: 0x000004A8
 		public DeviceDetectionInformation[] GetDeviceDetectionInformation()
 		{
 			return (from vp in this.catalog.Models.SelectMany((ModelInfo m) => m.VidPidPairs)
-			select new DeviceDetectionInformation(vp, false)).ToArray<DeviceDetectionInformation>();
+				select new DeviceDetectionInformation(vp, false)).ToArray<DeviceDetectionInformation>();
 		}
 
-		// Token: 0x06000012 RID: 18 RVA: 0x000025C8 File Offset: 0x000007C8
+		// Token: 0x06000011 RID: 17 RVA: 0x00002314 File Offset: 0x00000514
 		public async Task UpdateDeviceDetectionDataAsync(DeviceDetectionData detectionData, CancellationToken cancellationToken)
 		{
-			if (detectionData.IsDeviceSupported)
+			bool isDeviceSupported = detectionData.IsDeviceSupported;
+			if (isDeviceSupported)
 			{
 				throw new InvalidOperationException("Device is already supported.");
 			}
-			ModelInfo modelInfo = this.catalog.Models.FirstOrDefault((ModelInfo m) => m.VidPidPairs.Contains(detectionData.VidPidPair, new VidPidPairEqualityComparer()));
-			if (modelInfo != null)
+			ModelInfo model = this.catalog.Models.FirstOrDefault((ModelInfo m) => m.VidPidPairs.Contains(detectionData.VidPidPair, new VidPidPairEqualityComparer()));
+			bool flag = model != null;
+			if (flag)
 			{
-				DeviceInfo deviceInfoForInterfaceGuid = this.lucidService.GetDeviceInfoForInterfaceGuid(detectionData.UsbDeviceInterfaceDevicePath, WellKnownGuids.UsbDeviceInterfaceGuid);
+				DeviceInfo deviceInfo = this.lucidService.GetDeviceInfoForInterfaceGuid(detectionData.UsbDeviceInterfaceDevicePath, WellKnownGuids.UsbDeviceInterfaceGuid);
 				detectionData.IsDeviceSupported = true;
-				detectionData.DeviceSalesName = deviceInfoForInterfaceGuid.ReadBusReportedDeviceDescription();
-				detectionData.DeviceBitmapBytes = modelInfo.Bitmap.ToBytes();
-				Tracer<HtcSupport>.WriteInformation("Detected: {0}. Path: {1}", new object[]
-				{
-					modelInfo.FriendlyName,
-					detectionData.UsbDeviceInterfaceDevicePath
-				});
+				detectionData.DeviceSalesName = deviceInfo.ReadBusReportedDeviceDescription();
+				detectionData.DeviceBitmapBytes = model.Bitmap.ToBytes();
+				Tracer<HtcSupport>.WriteInformation("Detected: {0}. Path: {1}", new object[] { model.FriendlyName, detectionData.UsbDeviceInterfaceDevicePath });
+				deviceInfo = null;
 			}
 			else
 			{
-				Tracer<HtcSupport>.WriteInformation("No HTC device detected. Path: {0}", new object[]
-				{
-					detectionData.UsbDeviceInterfaceDevicePath
-				});
+				Tracer<HtcSupport>.WriteInformation("No HTC device detected. Path: {0}", new object[] { detectionData.UsbDeviceInterfaceDevicePath });
 			}
 		}
 

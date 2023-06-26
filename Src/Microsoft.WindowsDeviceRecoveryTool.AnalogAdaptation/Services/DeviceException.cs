@@ -3,27 +3,30 @@ using System.Runtime.Serialization;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.AnalogAdaptation.Services
 {
-	// Token: 0x02000006 RID: 6
+	// Token: 0x02000005 RID: 5
 	[Serializable]
 	public class DeviceException : Exception
 	{
-		// Token: 0x06000040 RID: 64 RVA: 0x0000466E File Offset: 0x0000286E
+		// Token: 0x06000036 RID: 54 RVA: 0x00003EB8 File Offset: 0x000020B8
 		public DeviceException()
 		{
 		}
 
-		// Token: 0x06000041 RID: 65 RVA: 0x00004679 File Offset: 0x00002879
-		public DeviceException(string message) : base(message)
+		// Token: 0x06000037 RID: 55 RVA: 0x00003EC2 File Offset: 0x000020C2
+		public DeviceException(string message)
+			: base(message)
 		{
 		}
 
-		// Token: 0x06000042 RID: 66 RVA: 0x00004685 File Offset: 0x00002885
-		public DeviceException(string message, Exception innerException) : base(message, innerException)
+		// Token: 0x06000038 RID: 56 RVA: 0x00003ECD File Offset: 0x000020CD
+		public DeviceException(string message, Exception innerException)
+			: base(message, innerException)
 		{
 		}
 
-		// Token: 0x06000043 RID: 67 RVA: 0x00004692 File Offset: 0x00002892
-		protected DeviceException(SerializationInfo info, StreamingContext context) : base(info, context)
+		// Token: 0x06000039 RID: 57 RVA: 0x00003ED9 File Offset: 0x000020D9
+		protected DeviceException(SerializationInfo info, StreamingContext context)
+			: base(info, context)
 		{
 		}
 	}

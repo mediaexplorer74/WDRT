@@ -47,9 +47,9 @@ namespace ComponentAce.Compression.ZipForge.Encryption
 		{
 			MemoryStream memoryStream = new MemoryStream();
 			BinaryWriter binaryWriter = new BinaryWriter(memoryStream);
-			foreach (long value in this.key.fArray)
+			foreach (long num in this.key.fArray)
 			{
-				binaryWriter.Write(value);
+				binaryWriter.Write(num);
 			}
 			return memoryStream.ToArray();
 		}
@@ -100,7 +100,7 @@ namespace ComponentAce.Compression.ZipForge.Encryption
 			for (long num = (long)inputOffset; num < (long)(inputOffset + inputCount); num += 1L)
 			{
 				byte b = inputBuffer[(int)(checked((IntPtr)num))];
-				byte b2 = (byte)(b ^ this.ZipDecryptByte(this.key));
+				byte b2 = b ^ this.ZipDecryptByte(this.key);
 				this.ZipUpdateKeys(b2);
 				binaryWriter.Write(b2);
 			}
@@ -129,8 +129,8 @@ namespace ComponentAce.Compression.ZipForge.Encryption
 			this.zipKeyHeaderBlock[num + 2] = (byte)(this.fileCRCValue >> 24);
 			for (int j = 0; j <= num + 2; j++)
 			{
-				byte value = this.ZipEncryptByte(this.zipKeyHeaderBlock[j]);
-				memoryStream.WriteByte(value);
+				byte b = this.ZipEncryptByte(this.zipKeyHeaderBlock[j]);
+				memoryStream.WriteByte(b);
 			}
 			return memoryStream.ToArray();
 		}
@@ -144,7 +144,7 @@ namespace ComponentAce.Compression.ZipForge.Encryption
 			byte[] bytes = this.zipKeyHeaderBlock.GetBytes();
 			for (int i = 0; i < bytes.Length; i++)
 			{
-				byte b = (byte)(bytes[i] ^ this.ZipDecryptByte(this.key));
+				byte b = bytes[i] ^ this.ZipDecryptByte(this.key);
 				this.ZipUpdateKeys(b);
 				bytes[i] = b;
 			}
@@ -191,7 +191,7 @@ namespace ComponentAce.Compression.ZipForge.Encryption
 		{
 			byte b = this.ZipDecryptByte(this.key);
 			this.ZipUpdateKeys(c);
-			return (byte)(b ^ c);
+			return b ^ c;
 		}
 
 		// Token: 0x0600069E RID: 1694 RVA: 0x0002A3B0 File Offset: 0x000293B0

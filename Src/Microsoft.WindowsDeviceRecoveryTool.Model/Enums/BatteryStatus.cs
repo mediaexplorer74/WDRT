@@ -2,16 +2,16 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model.Enums
 {
-	// Token: 0x0200000D RID: 13
+	// Token: 0x0200003D RID: 61
 	public enum BatteryStatus
 	{
-		// Token: 0x04000040 RID: 64
+		// Token: 0x040000BA RID: 186
 		BatteryOk,
-		// Token: 0x04000041 RID: 65
+		// Token: 0x040000BB RID: 187
 		BatteryNotOkBlock,
-		// Token: 0x04000042 RID: 66
+		// Token: 0x040000BC RID: 188
 		BatteryNotOkDoNotBlock,
-		// Token: 0x04000043 RID: 67
+		// Token: 0x040000BD RID: 189
 		BatteryUnknown
 	}
 }

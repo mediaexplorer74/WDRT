@@ -8,80 +8,80 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.DataPackage;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model
 {
-	// Token: 0x02000053 RID: 83
+	// Token: 0x0200001B RID: 27
 	public class VariantInfo
 	{
-		// Token: 0x17000100 RID: 256
-		// (get) Token: 0x0600029D RID: 669 RVA: 0x00007CF8 File Offset: 0x00005EF8
-		// (set) Token: 0x0600029E RID: 670 RVA: 0x00007D0F File Offset: 0x00005F0F
+		// Token: 0x170000AC RID: 172
+		// (get) Token: 0x06000196 RID: 406 RVA: 0x00005BD5 File Offset: 0x00003DD5
+		// (set) Token: 0x06000197 RID: 407 RVA: 0x00005BDD File Offset: 0x00003DDD
 		public long Id { get; set; }
 
-		// Token: 0x17000101 RID: 257
-		// (get) Token: 0x0600029F RID: 671 RVA: 0x00007D18 File Offset: 0x00005F18
-		// (set) Token: 0x060002A0 RID: 672 RVA: 0x00007D2F File Offset: 0x00005F2F
+		// Token: 0x170000AD RID: 173
+		// (get) Token: 0x06000198 RID: 408 RVA: 0x00005BE6 File Offset: 0x00003DE6
+		// (set) Token: 0x06000199 RID: 409 RVA: 0x00005BEE File Offset: 0x00003DEE
 		public long Size { get; set; }
 
-		// Token: 0x17000102 RID: 258
-		// (get) Token: 0x060002A1 RID: 673 RVA: 0x00007D38 File Offset: 0x00005F38
-		// (set) Token: 0x060002A2 RID: 674 RVA: 0x00007D4F File Offset: 0x00005F4F
+		// Token: 0x170000AE RID: 174
+		// (get) Token: 0x0600019A RID: 410 RVA: 0x00005BF7 File Offset: 0x00003DF7
+		// (set) Token: 0x0600019B RID: 411 RVA: 0x00005BFF File Offset: 0x00003DFF
 		public string Name { get; set; }
 
-		// Token: 0x17000103 RID: 259
-		// (get) Token: 0x060002A3 RID: 675 RVA: 0x00007D58 File Offset: 0x00005F58
-		// (set) Token: 0x060002A4 RID: 676 RVA: 0x00007D6F File Offset: 0x00005F6F
+		// Token: 0x170000AF RID: 175
+		// (get) Token: 0x0600019C RID: 412 RVA: 0x00005C08 File Offset: 0x00003E08
+		// (set) Token: 0x0600019D RID: 413 RVA: 0x00005C10 File Offset: 0x00003E10
 		public string SoftwareVersion { get; set; }
 
-		// Token: 0x17000104 RID: 260
-		// (get) Token: 0x060002A5 RID: 677 RVA: 0x00007D78 File Offset: 0x00005F78
-		// (set) Token: 0x060002A6 RID: 678 RVA: 0x00007D8F File Offset: 0x00005F8F
+		// Token: 0x170000B0 RID: 176
+		// (get) Token: 0x0600019E RID: 414 RVA: 0x00005C19 File Offset: 0x00003E19
+		// (set) Token: 0x0600019F RID: 415 RVA: 0x00005C21 File Offset: 0x00003E21
 		public string VariantVersion { get; set; }
 
-		// Token: 0x17000105 RID: 261
-		// (get) Token: 0x060002A7 RID: 679 RVA: 0x00007D98 File Offset: 0x00005F98
-		// (set) Token: 0x060002A8 RID: 680 RVA: 0x00007DAF File Offset: 0x00005FAF
+		// Token: 0x170000B1 RID: 177
+		// (get) Token: 0x060001A0 RID: 416 RVA: 0x00005C2A File Offset: 0x00003E2A
+		// (set) Token: 0x060001A1 RID: 417 RVA: 0x00005C32 File Offset: 0x00003E32
 		public string AkVersion { get; set; }
 
-		// Token: 0x17000106 RID: 262
-		// (get) Token: 0x060002A9 RID: 681 RVA: 0x00007DB8 File Offset: 0x00005FB8
-		// (set) Token: 0x060002AA RID: 682 RVA: 0x00007DCF File Offset: 0x00005FCF
+		// Token: 0x170000B2 RID: 178
+		// (get) Token: 0x060001A2 RID: 418 RVA: 0x00005C3B File Offset: 0x00003E3B
+		// (set) Token: 0x060001A3 RID: 419 RVA: 0x00005C43 File Offset: 0x00003E43
 		public string ProductCode { get; set; }
 
-		// Token: 0x17000107 RID: 263
-		// (get) Token: 0x060002AB RID: 683 RVA: 0x00007DD8 File Offset: 0x00005FD8
-		// (set) Token: 0x060002AC RID: 684 RVA: 0x00007DEF File Offset: 0x00005FEF
+		// Token: 0x170000B3 RID: 179
+		// (get) Token: 0x060001A4 RID: 420 RVA: 0x00005C4C File Offset: 0x00003E4C
+		// (set) Token: 0x060001A5 RID: 421 RVA: 0x00005C54 File Offset: 0x00003E54
 		public string ProductType { get; set; }
 
-		// Token: 0x17000108 RID: 264
-		// (get) Token: 0x060002AD RID: 685 RVA: 0x00007DF8 File Offset: 0x00005FF8
-		// (set) Token: 0x060002AE RID: 686 RVA: 0x00007E0F File Offset: 0x0000600F
+		// Token: 0x170000B4 RID: 180
+		// (get) Token: 0x060001A6 RID: 422 RVA: 0x00005C5D File Offset: 0x00003E5D
+		// (set) Token: 0x060001A7 RID: 423 RVA: 0x00005C65 File Offset: 0x00003E65
 		public string Path { get; set; }
 
-		// Token: 0x17000109 RID: 265
-		// (get) Token: 0x060002AF RID: 687 RVA: 0x00007E18 File Offset: 0x00006018
-		// (set) Token: 0x060002B0 RID: 688 RVA: 0x00007E2F File Offset: 0x0000602F
+		// Token: 0x170000B5 RID: 181
+		// (get) Token: 0x060001A8 RID: 424 RVA: 0x00005C6E File Offset: 0x00003E6E
+		// (set) Token: 0x060001A9 RID: 425 RVA: 0x00005C76 File Offset: 0x00003E76
 		public string FfuFilePath { get; set; }
 
-		// Token: 0x1700010A RID: 266
-		// (get) Token: 0x060002B1 RID: 689 RVA: 0x00007E38 File Offset: 0x00006038
-		// (set) Token: 0x060002B2 RID: 690 RVA: 0x00007E4F File Offset: 0x0000604F
+		// Token: 0x170000B6 RID: 182
+		// (get) Token: 0x060001AA RID: 426 RVA: 0x00005C7F File Offset: 0x00003E7F
+		// (set) Token: 0x060001AB RID: 427 RVA: 0x00005C87 File Offset: 0x00003E87
 		public bool IsLocal { get; set; }
 
-		// Token: 0x1700010B RID: 267
-		// (get) Token: 0x060002B3 RID: 691 RVA: 0x00007E58 File Offset: 0x00006058
-		// (set) Token: 0x060002B4 RID: 692 RVA: 0x00007E6F File Offset: 0x0000606F
+		// Token: 0x170000B7 RID: 183
+		// (get) Token: 0x060001AC RID: 428 RVA: 0x00005C90 File Offset: 0x00003E90
+		// (set) Token: 0x060001AD RID: 429 RVA: 0x00005C98 File Offset: 0x00003E98
 		public bool OnlyLocal { get; set; }
 
-		// Token: 0x060002B5 RID: 693 RVA: 0x00007E78 File Offset: 0x00006078
+		// Token: 0x060001AE RID: 430 RVA: 0x00005CA4 File Offset: 0x00003EA4
 		public static VariantInfo GetVariantInfo(string vplPath)
 		{
-			string name = string.Empty;
-			string productCode = string.Empty;
-			string softwareVersion = string.Empty;
-			string variantVersion = string.Empty;
-			string productType = string.Empty;
-			string ffuFilePath = string.Empty;
-			string akVersion = string.Empty;
-			string path = System.IO.Path.GetDirectoryName(vplPath) ?? string.Empty;
+			string text = string.Empty;
+			string text2 = string.Empty;
+			string text3 = string.Empty;
+			string text4 = string.Empty;
+			string text5 = string.Empty;
+			string text6 = string.Empty;
+			string text7 = string.Empty;
+			string text8 = System.IO.Path.GetDirectoryName(vplPath) ?? string.Empty;
 			using (Stream stream = new FileStream(vplPath, FileMode.Open, FileAccess.Read))
 			{
 				using (XmlReader xmlReader = XmlReader.Create(stream))
@@ -89,55 +89,102 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 					while (xmlReader.Read())
 					{
 						string localName = xmlReader.LocalName;
-						switch (localName)
+						string text9 = localName;
+						if (text9 != null)
 						{
-						case "ProductCode":
-							productCode = xmlReader.ReadInnerXml();
-							break;
-						case "SwVersion":
-							softwareVersion = xmlReader.ReadInnerXml();
-							break;
-						case "Description":
-							name = xmlReader.ReadInnerXml();
-							break;
-						case "VariantVersion":
-							variantVersion = xmlReader.ReadInnerXml();
-							break;
-						case "TypeDesignator":
-							productType = xmlReader.ReadInnerXml();
-							break;
-						case "AkVersion":
-							akVersion = xmlReader.ReadInnerXml();
-							break;
-						case "Name":
-						{
-							string text = xmlReader.ReadInnerXml();
-							if (text.EndsWith(".ffu"))
+							int length = text9.Length;
+							if (length <= 9)
 							{
-								ffuFilePath = System.IO.Path.Combine(path, text);
+								if (length != 4)
+								{
+									if (length == 9)
+									{
+										char c = text9[0];
+										if (c != 'A')
+										{
+											if (c == 'S')
+											{
+												if (text9 == "SwVersion")
+												{
+													text3 = xmlReader.ReadInnerXml();
+												}
+											}
+										}
+										else if (text9 == "AkVersion")
+										{
+											text7 = xmlReader.ReadInnerXml();
+										}
+									}
+								}
+								else if (text9 == "Name")
+								{
+									string text10 = xmlReader.ReadInnerXml();
+									bool flag = text10.EndsWith(".ffu");
+									if (flag)
+									{
+										text6 = System.IO.Path.Combine(text8, text10);
+									}
+								}
 							}
-							break;
-						}
+							else if (length != 11)
+							{
+								if (length == 14)
+								{
+									char c = text9[0];
+									if (c != 'T')
+									{
+										if (c == 'V')
+										{
+											if (text9 == "VariantVersion")
+											{
+												text4 = xmlReader.ReadInnerXml();
+											}
+										}
+									}
+									else if (text9 == "TypeDesignator")
+									{
+										text5 = xmlReader.ReadInnerXml();
+									}
+								}
+							}
+							else
+							{
+								char c = text9[0];
+								if (c != 'D')
+								{
+									if (c == 'P')
+									{
+										if (text9 == "ProductCode")
+										{
+											text2 = xmlReader.ReadInnerXml();
+										}
+									}
+								}
+								else if (text9 == "Description")
+								{
+									text = xmlReader.ReadInnerXml();
+								}
+							}
 						}
 					}
 				}
 			}
 			return new VariantInfo
 			{
-				Name = name,
-				ProductCode = productCode,
-				ProductType = productType,
-				SoftwareVersion = softwareVersion,
+				Name = text,
+				ProductCode = text2,
+				ProductType = text5,
+				SoftwareVersion = text3,
 				Path = vplPath,
-				AkVersion = akVersion,
-				VariantVersion = variantVersion,
+				AkVersion = text7,
+				VariantVersion = text4,
 				IsLocal = true,
 				Size = VariantInfo.GetVariantSizeOnDisk(vplPath),
-				FfuFilePath = ffuFilePath
+				FfuFilePath = text6
 			};
 		}
 
-		// Token: 0x060002B6 RID: 694 RVA: 0x0000811C File Offset: 0x0000631C
+		// Token: 0x060001AF RID: 431 RVA: 0x00005F5C File Offset: 0x0000415C
 		public static long GetVariantSizeOnDisk(string vplPath)
 		{
 			Tracer<VariantInfo>.LogEntry("GetVariantSizeOnDisk");
@@ -145,28 +192,27 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			VplContent vplContent = new VplContent();
 			vplContent.ParseVplFile(vplPath);
 			string directoryName = System.IO.Path.GetDirectoryName(vplPath);
-			if (string.IsNullOrEmpty(directoryName))
+			bool flag = string.IsNullOrEmpty(directoryName);
+			if (flag)
 			{
 				throw new DirectoryNotFoundException("Vpl directory not found");
 			}
 			List<string> list = (from file in vplContent.FileList
-			where !string.IsNullOrEmpty(file.Name)
-			select file.Name).ToList<string>();
-			foreach (string path in list)
+				where !string.IsNullOrEmpty(file.Name)
+				select file.Name).ToList<string>();
+			foreach (string text in list)
 			{
-				string text = System.IO.Path.Combine(directoryName, path);
-				if (File.Exists(text))
+				string text2 = System.IO.Path.Combine(directoryName, text);
+				bool flag2 = File.Exists(text2);
+				if (flag2)
 				{
-					FileInfo fileInfo = new FileInfo(text);
+					FileInfo fileInfo = new FileInfo(text2);
 					num += fileInfo.Length;
 				}
 			}
 			FileInfo fileInfo2 = new FileInfo(vplPath);
 			num += fileInfo2.Length;
-			Tracer<VariantInfo>.WriteInformation("Size on disk: {0}", new object[]
-			{
-				num
-			});
+			Tracer<VariantInfo>.WriteInformation("Size on disk: {0}", new object[] { num });
 			Tracer<VariantInfo>.LogExit("GetVariantSizeOnDisk");
 			return num;
 		}

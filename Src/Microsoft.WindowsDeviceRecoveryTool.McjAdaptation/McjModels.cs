@@ -11,40 +11,28 @@ namespace Microsoft.WindowsDeviceRecoveryTool.McjAdaptation
 		// Token: 0x06000001 RID: 1 RVA: 0x00002050 File Offset: 0x00000250
 		private static ModelInfo CreateMadosmaQ501ModelInfo()
 		{
-			DeviceDetectionInformation[] deviceDetectionInformations = new DeviceDetectionInformation[]
+			DeviceDetectionInformation[] array = new DeviceDetectionInformation[]
 			{
 				new DeviceDetectionInformation(new VidPidPair("05C6", "9093"), false),
 				new DeviceDetectionInformation(new VidPidPair("045E", "F0CA"), false)
 			};
-			DetectionInfo detectionInfo = new DetectionInfo(deviceDetectionInformations);
-			IdentificationInfo identificationInfo = new IdentificationInfo(new string[]
-			{
-				"MADOSMA Q501"
-			});
+			DetectionInfo detectionInfo = new DetectionInfo(array);
+			IdentificationInfo identificationInfo = new IdentificationInfo(new string[] { "MADOSMA Q501" });
 			VariantInfo variantInfo = new VariantInfo(Resources.FriendlyName_MADOSMA_Q501, identificationInfo, McjMsrQuery.MadosmaQ501Query);
-			return new ModelInfo(Resources.FriendlyName_MADOSMA_Q501, Resources.Madosma, detectionInfo, new VariantInfo[]
-			{
-				variantInfo
-			});
+			return new ModelInfo(Resources.FriendlyName_MADOSMA_Q501, Resources.Madosma, detectionInfo, new VariantInfo[] { variantInfo });
 		}
 
-		// Token: 0x06000002 RID: 2 RVA: 0x000020F4 File Offset: 0x000002F4
+		// Token: 0x06000002 RID: 2 RVA: 0x000020E4 File Offset: 0x000002E4
 		private static ModelInfo CreateMadosmaQ601ModelInfo()
 		{
-			DeviceDetectionInformation[] deviceDetectionInformations = new DeviceDetectionInformation[]
+			DeviceDetectionInformation[] array = new DeviceDetectionInformation[]
 			{
 				new DeviceDetectionInformation(new VidPidPair("045E", "F0CA"), false)
 			};
-			DetectionInfo detectionInfo = new DetectionInfo(deviceDetectionInformations);
-			IdentificationInfo identificationInfo = new IdentificationInfo(new string[]
-			{
-				"Q601"
-			});
+			DetectionInfo detectionInfo = new DetectionInfo(array);
+			IdentificationInfo identificationInfo = new IdentificationInfo(new string[] { "Q601" });
 			VariantInfo variantInfo = new VariantInfo(Resources.FriendlyName_MADOSMA_Q601, identificationInfo, McjMsrQuery.MadosmaQ601Query);
-			return new ModelInfo(Resources.FriendlyName_MADOSMA_Q601, Resources.Madosma_Q601, detectionInfo, new VariantInfo[]
-			{
-				variantInfo
-			});
+			return new ModelInfo(Resources.FriendlyName_MADOSMA_Q601, Resources.Madosma_Q601, detectionInfo, new VariantInfo[] { variantInfo });
 		}
 
 		// Token: 0x04000001 RID: 1

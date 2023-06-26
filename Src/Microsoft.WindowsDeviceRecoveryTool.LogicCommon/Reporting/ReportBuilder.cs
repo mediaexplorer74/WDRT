@@ -10,10 +10,10 @@ using Microsoft.WindowsDeviceRecoveryTool.Model;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Reporting
 {
-	// Token: 0x02000029 RID: 41
+	// Token: 0x02000019 RID: 25
 	public class ReportBuilder
 	{
-		// Token: 0x060001E9 RID: 489 RVA: 0x00009130 File Offset: 0x00007330
+		// Token: 0x060001B0 RID: 432 RVA: 0x00007750 File Offset: 0x00005950
 		public static MsrReport Build(ReportData reportData, bool isInternal)
 		{
 			return new MsrReport(reportData.SessionId)
@@ -59,64 +59,63 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Reporting
 			};
 		}
 
-		// Token: 0x060001EA RID: 490 RVA: 0x00009454 File Offset: 0x00007654
+		// Token: 0x060001B1 RID: 433 RVA: 0x00007A74 File Offset: 0x00005C74
 		private static string GetApiErrorDetails(Exception exception, string prefix = "")
 		{
-			string result;
-			if (exception == null)
+			bool flag = exception == null;
+			string text;
+			if (flag)
 			{
-				result = null;
+				text = null;
 			}
 			else
 			{
-				result = ReportBuilder.Trim(string.Format(CultureInfo.InvariantCulture, "{0}{1}", new object[]
-				{
-					prefix,
-					exception
-				}), 1994);
+				text = ReportBuilder.Trim(string.Format(CultureInfo.InvariantCulture, "{0}{1}", new object[] { prefix, exception }), 1994);
 			}
-			return result;
+			return text;
 		}
 
-		// Token: 0x060001EB RID: 491 RVA: 0x000094A0 File Offset: 0x000076A0
+		// Token: 0x060001B2 RID: 434 RVA: 0x00007ABC File Offset: 0x00005CBC
 		private static string Trim(string baseString, int maxNoOfChars)
 		{
-			string result;
-			if (string.IsNullOrWhiteSpace(baseString))
+			bool flag = string.IsNullOrWhiteSpace(baseString);
+			string text;
+			if (flag)
 			{
-				result = baseString;
+				text = baseString;
 			}
 			else
 			{
-				result = new string(baseString.Take(maxNoOfChars).ToArray<char>());
+				text = new string(baseString.Take(maxNoOfChars).ToArray<char>());
 			}
-			return result;
+			return text;
 		}
 
-		// Token: 0x060001EC RID: 492 RVA: 0x000094D8 File Offset: 0x000076D8
+		// Token: 0x060001B3 RID: 435 RVA: 0x00007AF0 File Offset: 0x00005CF0
 		private static int ApiError(Exception error)
 		{
 			COMException ex = error as COMException;
 			return (ex == null) ? 0 : ex.ErrorCode;
 		}
 
-		// Token: 0x060001ED RID: 493 RVA: 0x00009500 File Offset: 0x00007700
+		// Token: 0x060001B4 RID: 436 RVA: 0x00007B18 File Offset: 0x00005D18
 		private static string GetApiErrorMessage(Exception error, string defaultEmptyValue = "S_OK")
 		{
+			bool flag = error == null;
 			string text;
-			if (error == null)
+			if (flag)
 			{
 				text = defaultEmptyValue;
 			}
 			else
 			{
 				text = error.Message + "|" + error.Source;
-				if (error.InnerException != null)
+				bool flag2 = error.InnerException != null;
+				if (flag2)
 				{
-					string text2 = text;
 					text = string.Concat(new string[]
 					{
-						text2,
+						text,
 						"|",
 						error.InnerException.Message,
 						"|",
@@ -127,7 +126,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Reporting
 			return text;
 		}
 
-		// Token: 0x060001EE RID: 494 RVA: 0x00009594 File Offset: 0x00007794
+		// Token: 0x060001B5 RID: 437 RVA: 0x00007BA0 File Offset: 0x00005DA0
 		public static string AppVersion(bool isInternal)
 		{
 			string text = ReportBuilder.MainAppVersion();
@@ -138,171 +137,176 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Reporting
 			return text;
 		}
 
-		// Token: 0x060001EF RID: 495 RVA: 0x000095C4 File Offset: 0x000077C4
+		// Token: 0x060001B6 RID: 438 RVA: 0x00007BCC File Offset: 0x00005DCC
 		private static string MainAppVersion()
 		{
 			Assembly entryAssembly = Assembly.GetEntryAssembly();
-			string result;
-			if (entryAssembly != null)
+			bool flag = entryAssembly != null;
+			string text4;
+			if (flag)
 			{
 				Version version = entryAssembly.GetName().Version;
 				string text = version.Major.ToString(CultureInfo.InvariantCulture);
 				string text2 = version.Minor.ToString(CultureInfo.InvariantCulture);
 				string text3 = version.Build.ToString(CultureInfo.InvariantCulture);
-				result = string.Concat(new object[]
-				{
-					text,
-					'.',
-					text2,
-					'.',
-					text3
-				});
+				text4 = string.Concat(new string[] { text, ".", text2, ".", text3 });
 			}
 			else
 			{
-				result = string.Empty;
+				text4 = string.Empty;
 			}
-			return result;
+			return text4;
 		}
 
-		// Token: 0x060001F0 RID: 496 RVA: 0x0000967C File Offset: 0x0000787C
+		// Token: 0x060001B7 RID: 439 RVA: 0x00007C74 File Offset: 0x00005E74
 		[Conditional("DAILY")]
 		private static void FormatVersionString(ref string version)
 		{
 			int num;
-			if (int.TryParse(version, out num))
+			bool flag = int.TryParse(version, out num);
+			if (flag)
 			{
-				if (num > 0)
+				bool flag2 = num > 0;
+				if (flag2)
 				{
 					version = num.ToString("0000");
 				}
 			}
 		}
 
-		// Token: 0x060001F1 RID: 497 RVA: 0x000096B8 File Offset: 0x000078B8
+		// Token: 0x060001B8 RID: 440 RVA: 0x00007CAC File Offset: 0x00005EAC
 		private static ReportBuilder.FirmwareGrading FirmwareGradingCheck(string currentFwVersion, string newFirmwareVersion)
 		{
-			ReportBuilder.FirmwareGrading result;
-			if (string.IsNullOrEmpty(currentFwVersion) || string.IsNullOrEmpty(newFirmwareVersion))
+			bool flag = string.IsNullOrEmpty(currentFwVersion) || string.IsNullOrEmpty(newFirmwareVersion);
+			ReportBuilder.FirmwareGrading firmwareGrading;
+			if (flag)
 			{
-				result = ReportBuilder.FirmwareGrading.None;
-			}
-			else if (currentFwVersion == newFirmwareVersion)
-			{
-				result = ReportBuilder.FirmwareGrading.SameVersion;
+				firmwareGrading = ReportBuilder.FirmwareGrading.None;
 			}
 			else
 			{
-				string text = Regex.Replace(currentFwVersion, "[^\\d\\.]", string.Empty);
-				string text2 = Regex.Replace(newFirmwareVersion, "[^\\d\\.]", string.Empty);
-				if (string.IsNullOrEmpty(text) || string.IsNullOrEmpty(text2))
+				bool flag2 = currentFwVersion == newFirmwareVersion;
+				if (flag2)
 				{
-					result = ReportBuilder.FirmwareGrading.None;
+					firmwareGrading = ReportBuilder.FirmwareGrading.SameVersion;
 				}
 				else
 				{
-					ReportBuilder.VersionComparisonResult versionComparisonResult = ReportBuilder.VersionCompare(text, text2);
-					if (versionComparisonResult == ReportBuilder.VersionComparisonResult.FirstIsOlder)
+					string text = Regex.Replace(currentFwVersion, "[^\\d\\.]", string.Empty);
+					string text2 = Regex.Replace(newFirmwareVersion, "[^\\d\\.]", string.Empty);
+					bool flag3 = string.IsNullOrEmpty(text) || string.IsNullOrEmpty(text2);
+					if (flag3)
 					{
-						result = ReportBuilder.FirmwareGrading.Upgrade;
-					}
-					else if (versionComparisonResult == ReportBuilder.VersionComparisonResult.FirstIsNewer)
-					{
-						result = ReportBuilder.FirmwareGrading.Downgrade;
+						firmwareGrading = ReportBuilder.FirmwareGrading.None;
 					}
 					else
 					{
-						result = ReportBuilder.FirmwareGrading.None;
+						ReportBuilder.VersionComparisonResult versionComparisonResult = ReportBuilder.VersionCompare(text, text2);
+						bool flag4 = versionComparisonResult == ReportBuilder.VersionComparisonResult.FirstIsOlder;
+						if (flag4)
+						{
+							firmwareGrading = ReportBuilder.FirmwareGrading.Upgrade;
+						}
+						else
+						{
+							bool flag5 = versionComparisonResult == ReportBuilder.VersionComparisonResult.FirstIsNewer;
+							if (flag5)
+							{
+								firmwareGrading = ReportBuilder.FirmwareGrading.Downgrade;
+							}
+							else
+							{
+								firmwareGrading = ReportBuilder.FirmwareGrading.None;
+							}
+						}
 					}
 				}
 			}
-			return result;
+			return firmwareGrading;
 		}
 
-		// Token: 0x060001F2 RID: 498 RVA: 0x00009774 File Offset: 0x00007974
+		// Token: 0x060001B9 RID: 441 RVA: 0x00007D58 File Offset: 0x00005F58
 		private static ReportBuilder.VersionComparisonResult VersionCompare(string version1, string version2)
 		{
-			if (string.IsNullOrEmpty(version1) || string.IsNullOrEmpty(version2))
+			bool flag = string.IsNullOrEmpty(version1) || string.IsNullOrEmpty(version2);
+			if (flag)
 			{
 				throw new ArgumentException("Version cannot be null or an empty string.");
 			}
 			version1 = version1.Trim();
 			version2 = version2.Trim();
-			string[] array = version1.Split(new char[]
-			{
-				'.'
-			});
-			string[] array2 = version2.Split(new char[]
-			{
-				'.'
-			});
+			string[] array = version1.Split(new char[] { '.' });
+			string[] array2 = version2.Split(new char[] { '.' });
 			int num = Math.Min(array.Length, array2.Length);
 			int i = 0;
 			while (i < num)
 			{
-				string value = array[i].Trim();
-				string value2 = array2[i].Trim();
-				long num2 = Convert.ToInt64(value);
-				long num3 = Convert.ToInt64(value2);
-				ReportBuilder.VersionComparisonResult result;
-				if (num2 > num3)
+				string text = array[i].Trim();
+				string text2 = array2[i].Trim();
+				long num2 = Convert.ToInt64(text);
+				long num3 = Convert.ToInt64(text2);
+				bool flag2 = num2 > num3;
+				ReportBuilder.VersionComparisonResult versionComparisonResult;
+				if (flag2)
 				{
-					result = ReportBuilder.VersionComparisonResult.FirstIsNewer;
+					versionComparisonResult = ReportBuilder.VersionComparisonResult.FirstIsNewer;
 				}
 				else
 				{
-					if (num2 >= num3)
+					bool flag3 = num2 < num3;
+					if (!flag3)
 					{
 						i++;
 						continue;
 					}
-					result = ReportBuilder.VersionComparisonResult.FirstIsOlder;
+					versionComparisonResult = ReportBuilder.VersionComparisonResult.FirstIsOlder;
 				}
-				return result;
+				return versionComparisonResult;
 			}
-			if (array.Length > array2.Length)
+			bool flag4 = array.Length > array2.Length;
+			if (flag4)
 			{
 				return ReportBuilder.VersionComparisonResult.FirstIsNewer;
 			}
 			return (array.Length < array2.Length) ? ReportBuilder.VersionComparisonResult.FirstIsOlder : ReportBuilder.VersionComparisonResult.BothAreSame;
 		}
 
-		// Token: 0x040000EC RID: 236
+		// Token: 0x040000A1 RID: 161
 		private const string InternalPrefix = "[INT]";
 
-		// Token: 0x040000ED RID: 237
+		// Token: 0x040000A2 RID: 162
 		private const string VersionPattern = "[^\\d\\.]";
 
-		// Token: 0x040000EE RID: 238
-		private const int DebugFieldLength = 2000;
-
-		// Token: 0x040000EF RID: 239
-		private const string EmptyErrorDefaultValue = "S_OK";
-
-		// Token: 0x040000F0 RID: 240
+		// Token: 0x040000A3 RID: 163
 		private static EnvironmentInfo environmentInfo = new EnvironmentInfo(new ApplicationInfo());
 
-		// Token: 0x0200002A RID: 42
+		// Token: 0x040000A4 RID: 164
+		private const int DebugFieldLength = 2000;
+
+		// Token: 0x040000A5 RID: 165
+		private const string EmptyErrorDefaultValue = "S_OK";
+
+		// Token: 0x02000056 RID: 86
 		private enum FirmwareGrading
 		{
-			// Token: 0x040000F2 RID: 242
+			// Token: 0x04000204 RID: 516
 			None,
-			// Token: 0x040000F3 RID: 243
+			// Token: 0x04000205 RID: 517
 			Downgrade,
-			// Token: 0x040000F4 RID: 244
+			// Token: 0x04000206 RID: 518
 			SameVersion,
-			// Token: 0x040000F5 RID: 245
+			// Token: 0x04000207 RID: 519
 			Upgrade
 		}
 
-		// Token: 0x0200002B RID: 43
+		// Token: 0x02000057 RID: 87
 		private enum VersionComparisonResult
 		{
-			// Token: 0x040000F7 RID: 247
+			// Token: 0x04000209 RID: 521
 			FirstIsOlder = -1,
-			// Token: 0x040000F8 RID: 248
+			// Token: 0x0400020A RID: 522
 			BothAreSame,
-			// Token: 0x040000F9 RID: 249
+			// Token: 0x0400020B RID: 523
 			FirstIsNewer
 		}
 	}

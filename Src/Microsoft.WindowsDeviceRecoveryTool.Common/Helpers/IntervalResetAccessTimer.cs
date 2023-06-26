@@ -5,10 +5,10 @@ using System.Timers;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Common.Helpers
 {
-	// Token: 0x02000006 RID: 6
+	// Token: 0x02000011 RID: 17
 	public class IntervalResetAccessTimer
 	{
-		// Token: 0x0600000F RID: 15 RVA: 0x000022E8 File Offset: 0x000004E8
+		// Token: 0x06000081 RID: 129 RVA: 0x00003BAC File Offset: 0x00001DAC
 		public IntervalResetAccessTimer(int intervalMillis, bool isAccessAvailableInitialValue)
 		{
 			this.intervalMillis = intervalMillis;
@@ -16,10 +16,11 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Common.Helpers
 			this.modifyIsAccessAvailableValueSemaphore = new SemaphoreSlim(1, 1);
 		}
 
-		// Token: 0x06000010 RID: 16 RVA: 0x00002318 File Offset: 0x00000518
+		// Token: 0x06000082 RID: 130 RVA: 0x00003BD4 File Offset: 0x00001DD4
 		public void StartTimer()
 		{
-			if (this.intervalMillis <= 0)
+			bool flag = this.intervalMillis <= 0;
+			if (flag)
 			{
 				this.isAccessAvailable = true;
 			}
@@ -36,31 +37,34 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Common.Helpers
 			}
 		}
 
-		// Token: 0x06000011 RID: 17 RVA: 0x00002390 File Offset: 0x00000590
+		// Token: 0x06000083 RID: 131 RVA: 0x00003C4C File Offset: 0x00001E4C
 		public void StopTimer()
 		{
-			if (this.intervalTimer != null)
+			bool flag = this.intervalTimer == null;
+			if (!flag)
 			{
 				this.intervalTimer.Stop();
 				this.intervalTimer = null;
 			}
 		}
 
-		// Token: 0x06000012 RID: 18 RVA: 0x000023C4 File Offset: 0x000005C4
+		// Token: 0x06000084 RID: 132 RVA: 0x00003C80 File Offset: 0x00001E80
 		public bool RunIfAccessAvailable(Action actionToRun)
 		{
 			bool flag = this.TryAccessSectionAndSet();
-			if (flag)
+			bool flag2 = flag;
+			if (flag2)
 			{
 				actionToRun();
 			}
 			return flag;
 		}
 
-		// Token: 0x06000013 RID: 19 RVA: 0x00002590 File Offset: 0x00000790
+		// Token: 0x06000085 RID: 133 RVA: 0x00003CA8 File Offset: 0x00001EA8
 		public async Task<bool> RunIfAccessAvailableAsync(Task taskToRun, CancellationToken cancellationToken)
 		{
-			bool result = await this.TryAccessSectionAndSetAsync(cancellationToken);
+			bool flag = await this.TryAccessSectionAndSetAsync(cancellationToken);
+			bool result = flag;
 			if (result)
 			{
 				await taskToRun;
@@ -68,41 +72,44 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Common.Helpers
 			return result;
 		}
 
-		// Token: 0x06000014 RID: 20 RVA: 0x000025EC File Offset: 0x000007EC
+		// Token: 0x06000086 RID: 134 RVA: 0x00003CFC File Offset: 0x00001EFC
 		public bool TryAccessSectionAndSet()
 		{
-			bool result;
-			if (this.intervalMillis <= 0)
+			bool flag = this.intervalMillis <= 0;
+			bool flag2;
+			if (flag)
 			{
-				result = true;
+				flag2 = true;
 			}
 			else
 			{
 				try
 				{
 					this.modifyIsAccessAvailableValueSemaphore.Wait();
-					bool flag = this.isAccessAvailable;
-					if (flag)
+					bool flag3 = this.isAccessAvailable;
+					bool flag4 = flag3;
+					if (flag4)
 					{
 						this.isAccessAvailable = false;
 					}
-					result = flag;
+					flag2 = flag3;
 				}
 				finally
 				{
 					this.modifyIsAccessAvailableValueSemaphore.Release();
 				}
 			}
-			return result;
+			return flag2;
 		}
 
-		// Token: 0x06000015 RID: 21 RVA: 0x000027F8 File Offset: 0x000009F8
+		// Token: 0x06000087 RID: 135 RVA: 0x00003D68 File Offset: 0x00001F68
 		public async Task<bool> TryAccessSectionAndSetAsync(CancellationToken cancellationToken)
 		{
-			bool result;
-			if (this.intervalMillis <= 0)
+			bool flag = this.intervalMillis <= 0;
+			bool flag2;
+			if (flag)
 			{
-				result = true;
+				flag2 = true;
 			}
 			else
 			{
@@ -114,26 +121,26 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Common.Helpers
 					{
 						this.isAccessAvailable = false;
 					}
-					result = value;
+					flag2 = value;
 				}
 				finally
 				{
 					this.modifyIsAccessAvailableValueSemaphore.Release();
 				}
 			}
-			return result;
+			return flag2;
 		}
 
-		// Token: 0x04000006 RID: 6
+		// Token: 0x04000017 RID: 23
 		private readonly int intervalMillis;
 
-		// Token: 0x04000007 RID: 7
+		// Token: 0x04000018 RID: 24
 		private bool isAccessAvailable;
 
-		// Token: 0x04000008 RID: 8
+		// Token: 0x04000019 RID: 25
 		private System.Timers.Timer intervalTimer;
 
-		// Token: 0x04000009 RID: 9
+		// Token: 0x0400001A RID: 26
 		private readonly SemaphoreSlim modifyIsAccessAvailableValueSemaphore;
 	}
 }

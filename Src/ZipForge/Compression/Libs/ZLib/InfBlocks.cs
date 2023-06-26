@@ -139,7 +139,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 			int num3 = this.BitB;
 			int i = this.BitK;
 			int num4 = this.WritePos;
-			int num5 = (num4 < this.ReadPos) ? (this.ReadPos - num4 - 1) : (this.End - num4);
+			int num5 = ((num4 < this.ReadPos) ? (this.ReadPos - num4 - 1) : (this.End - num4));
 			int num6;
 			for (;;)
 			{
@@ -157,14 +157,14 @@ namespace ComponentAce.Compression.Libs.ZLib
 						num3 |= (int)(z.next_in[num++] & byte.MaxValue) << i;
 						i += 8;
 					}
-					num6 = (num3 & 7);
-					this.last = (num6 & 1);
+					num6 = num3 & 7;
+					this.last = num6 & 1;
 					switch (ZLibUtil.URShift(num6, 1))
 					{
 					case 0:
 						num3 = ZLibUtil.URShift(num3, 3);
 						i -= 3;
-						num6 = (i & 7);
+						num6 = i & 7;
 						num3 = ZLibUtil.URShift(num3, num6);
 						i -= num6;
 						this.mode = InflateBlockMode.LENS;
@@ -209,7 +209,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 					{
 						goto Block_8;
 					}
-					this.left = (num3 & 65535);
+					this.left = num3 & 65535;
 					i = (num3 = 0);
 					this.mode = ((this.left != 0) ? InflateBlockMode.STORED : ((this.last != 0) ? InflateBlockMode.DRY : InflateBlockMode.TYPE));
 					continue;
@@ -275,37 +275,30 @@ namespace ComponentAce.Compression.Libs.ZLib
 						num3 |= (int)(z.next_in[num++] & byte.MaxValue) << i;
 						i += 8;
 					}
-					num6 = (this.table = (num3 & 16383));
-					if ((num6 & 31) > 29 || (num6 >> 5 & 31) > 29)
+					num6 = (this.table = num3 & 16383);
+					if ((num6 & 31) > 29 || ((num6 >> 5) & 31) > 29)
 					{
 						goto IL_5A3;
 					}
-					num6 = 258 + (num6 & 31) + (num6 >> 5 & 31);
+					num6 = 258 + (num6 & 31) + ((num6 >> 5) & 31);
 					this.blens = new int[num6];
 					num3 = ZLibUtil.URShift(num3, 14);
 					i -= 14;
 					this.index = 0;
 					this.mode = InflateBlockMode.BTREE;
 					goto IL_6E1;
-                    break;
-                case InflateBlockMode.BTREE:
+				case InflateBlockMode.BTREE:
 					goto IL_6E1;
-					break;
 				case InflateBlockMode.DTREE:
 					goto IL_7B9;
-                    break;
-                case InflateBlockMode.CODES:
+				case InflateBlockMode.CODES:
 					goto IL_B58;
-					break;
 				case InflateBlockMode.DRY:
 					goto IL_C21;
-					break;
 				case InflateBlockMode.DONE:
 					goto IL_CB6;
-					break;
 				case InflateBlockMode.BAD:
 					goto IL_CFD;
-					break;
 				}
 				break;
 				IL_6E1:
@@ -322,7 +315,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 						num3 |= (int)(z.next_in[num++] & byte.MaxValue) << i;
 						i += 8;
 					}
-					this.blens[ZLibUtil.border[this.index++]] = (num3 & 7);
+					this.blens[ZLibUtil.border[this.index++]] = num3 & 7;
 					num3 = ZLibUtil.URShift(num3, 3);
 					i -= 3;
 				}
@@ -338,11 +331,11 @@ namespace ComponentAce.Compression.Libs.ZLib
 				}
 				this.index = 0;
 				this.mode = InflateBlockMode.DTREE;
-				//for (;;)
-				//{
+				for (;;)
+				{
 					IL_7B9:
 					num6 = this.table;
-					if (this.index >= 258 + (num6 & 31) + (num6 >> 5 & 31))
+					if (this.index >= 258 + (num6 & 31) + ((num6 >> 5) & 31))
 					{
 						break;
 					}
@@ -368,8 +361,8 @@ namespace ComponentAce.Compression.Libs.ZLib
 					}
 					else
 					{
-						int num8 = (num7 == 18) ? 7 : (num7 - 14);
-						int num9 = (num7 == 18) ? 11 : 3;
+						int num8 = ((num7 == 18) ? 7 : (num7 - 14));
+						int num9 = ((num7 == 18) ? 11 : 3);
 						while (i < num6 + num8)
 						{
 							if (num2 == 0)
@@ -383,12 +376,12 @@ namespace ComponentAce.Compression.Libs.ZLib
 						}
 						num3 = ZLibUtil.URShift(num3, num6);
 						i -= num6;
-						num9 += (num3 & ZLibUtil.inflate_mask[num8]);
+						num9 += num3 & ZLibUtil.inflate_mask[num8];
 						num3 = ZLibUtil.URShift(num3, num8);
 						i -= num8;
 						num8 = this.index;
 						num6 = this.table;
-						if (num8 + num9 > 258 + (num6 & 31) + (num6 >> 5 & 31) || (num7 == 16 && num8 < 1))
+						if (num8 + num9 > 258 + (num6 & 31) + ((num6 >> 5) & 31) || (num7 == 16 && num8 < 1))
 						{
 							goto IL_9BE;
 						}
@@ -400,7 +393,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 						while (--num9 != 0);
 						this.index = num8;
 					}
-				//}
+				}
 				this.tb[0] = -1;
 				int[] array5 = new int[1];
 				int[] array6 = new int[1];
@@ -409,7 +402,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 				array5[0] = 9;
 				array6[0] = 6;
 				num6 = this.table;
-				num6 = InfTree.inflate_trees_dynamic(257 + (num6 & 31), 1 + (num6 >> 5 & 31), this.blens, array5, array6, array7, array8, this.hufts, z);
+				num6 = InfTree.inflate_trees_dynamic(257 + (num6 & 31), 1 + ((num6 >> 5) & 31), this.blens, array5, array6, array7, array8, this.hufts, z);
 				if (num6 != 0)
 				{
 					goto Block_47;
@@ -597,7 +590,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 			this.WritePos = num4;
 			r = this.inflate_flush(z, r);
 			num4 = this.WritePos;
-			int num10 = (num4 < this.ReadPos) ? (this.ReadPos - num4 - 1) : (this.End - num4);
+			int num10 = ((num4 < this.ReadPos) ? (this.ReadPos - num4 - 1) : (this.End - num4));
 			if (this.ReadPos != this.WritePos)
 			{
 				this.BitB = num3;

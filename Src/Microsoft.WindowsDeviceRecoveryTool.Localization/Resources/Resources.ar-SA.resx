@@ -1,0 +1,892 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccentColor" xml:space="preserve">
+    <value>لون التمييز</value>
+  </data>
+  <data name="AccentColorBlack" xml:space="preserve">
+    <value>أسود</value>
+  </data>
+  <data name="AccentColorBlue" xml:space="preserve">
+    <value>أزرق</value>
+  </data>
+  <data name="AccentColorCobalt" xml:space="preserve">
+    <value>أبيض فضي</value>
+  </data>
+  <data name="AccentColorCrimson" xml:space="preserve">
+    <value>قرمزي</value>
+  </data>
+  <data name="AccentColorEmerald" xml:space="preserve">
+    <value>أخضر زمرّدي</value>
+  </data>
+  <data name="AccentColorIndigo" xml:space="preserve">
+    <value>نيلي</value>
+  </data>
+  <data name="AccentColorMauve" xml:space="preserve">
+    <value>بنفسجي</value>
+  </data>
+  <data name="AccentColorSienna" xml:space="preserve">
+    <value>ترابي</value>
+  </data>
+  <data name="AddressForm" xml:space="preserve">
+    <value>العنوان</value>
+  </data>
+  <data name="AllFilesSize" xml:space="preserve">
+    <value>حجم كل الملفات: {0}</value>
+  </data>
+  <data name="AnotherInstanceAlreadyRunning" xml:space="preserve">
+    <value>يتوفر بديل آخر من {0} قيد التشغيل بالفعل.</value>
+  </data>
+  <data name="ApplicationData" xml:space="preserve">
+    <value>بيانات التطبيق</value>
+  </data>
+  <data name="ApplicationUpdate" xml:space="preserve">
+    <value>تحديث التطبيق</value>
+  </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>هل أنت متأكد؟</value>
+  </data>
+  <data name="AutomaticPackageFileSelection" xml:space="preserve">
+    <value>يتم الآن البحث عن الحزمة الصحيحة للهاتف المتصل.</value>
+  </data>
+  <data name="AutomaticPackageSelection" xml:space="preserve">
+    <value>تحديد الحزمة تلقائيًا</value>
+  </data>
+  <data name="AvailablePackageIsOlder" xml:space="preserve">
+    <value>إن البرنامج المتوفر أقدم من ذلك الموجود على هاتفك.</value>
+  </data>
+  <data name="AwaitRecoveryAfterEmergencyFlashingInstruction" xml:space="preserve">
+    <value>انتظار الهاتف بعد عملية استرداد ناجحة.
+إذا كان مستوى البطارية منخفضًا، فقد تستغرق حتى 30 دقيقة.</value>
+  </data>
+  <data name="BatteryCheckHeader" xml:space="preserve">
+    <value>تحقق من البطارية</value>
+  </data>
+  <data name="BatteryCheckingCancelled" xml:space="preserve">
+    <value>تم إلغاء عملية التحقق من البطارية.</value>
+  </data>
+  <data name="BatteryWarning" xml:space="preserve">
+    <value>تأكد أن مستوى طاقة البطارية لايقل عن 24%. وإلا فقد تتلف هاتفك.</value>
+  </data>
+  <data name="ButtonBrowse" xml:space="preserve">
+    <value>استعراض</value>
+  </data>
+  <data name="ButtonCancel" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
+  <data name="ButtonChangePackagePath" xml:space="preserve">
+    <value>تغيير مسار الحزمة</value>
+  </data>
+  <data name="ButtonClean" xml:space="preserve">
+    <value>مسح كل بيانات التطبيق</value>
+  </data>
+  <data name="ButtonCleanOneCategory" xml:space="preserve">
+    <value>مسح</value>
+  </data>
+  <data name="ButtonCollectLogs" xml:space="preserve">
+    <value>تصدير</value>
+  </data>
+  <data name="ButtonContinue" xml:space="preserve">
+    <value>متابعة</value>
+  </data>
+  <data name="ButtonDelete" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="ButtonExit" xml:space="preserve">
+    <value>إنهاء</value>
+  </data>
+  <data name="ButtonFinish" xml:space="preserve">
+    <value>إنهاء</value>
+  </data>
+  <data name="ButtonInstall" xml:space="preserve">
+    <value>تثبيت</value>
+  </data>
+  <data name="ButtonInstallSoftware" xml:space="preserve">
+    <value>تثبيت البرنامج</value>
+  </data>
+  <data name="ButtonMyPhoneIsNotOnTheList" xml:space="preserve">
+    <value>لا يرد هاتفي في القائمة</value>
+  </data>
+  <data name="ButtonMyPhoneWasNotDetected" xml:space="preserve">
+    <value>لم يتم الكشف عن هاتفي</value>
+  </data>
+  <data name="ButtonNewFolder" xml:space="preserve">
+    <value>مجلد جديد</value>
+  </data>
+  <data name="ButtonNext" xml:space="preserve">
+    <value>التالي</value>
+  </data>
+  <data name="ButtonNo" xml:space="preserve">
+    <value>لا</value>
+  </data>
+  <data name="ButtonOff" xml:space="preserve">
+    <value>إيقاف تشغيل</value>
+  </data>
+  <data name="ButtonOk" xml:space="preserve">
+    <value>موافق</value>
+  </data>
+  <data name="ButtonOn" xml:space="preserve">
+    <value>تشغيل</value>
+  </data>
+  <data name="ButtonReset" xml:space="preserve">
+    <value>إعادة التعيين إلى الإعدادات الافتراضية</value>
+  </data>
+  <data name="ButtonTryAgain" xml:space="preserve">
+    <value>المحاولة مرة أخرى</value>
+  </data>
+  <data name="ButtonYes" xml:space="preserve">
+    <value>نعم</value>
+  </data>
+  <data name="CapsLockIsOn" xml:space="preserve">
+    <value>مفتاح caps lock قيد التشغيل</value>
+  </data>
+  <data name="CheckLatestPackageHeader" xml:space="preserve">
+    <value>معلومات حول الهاتف</value>
+  </data>
+  <data name="CheckingAlreadyDownloadedFiles" xml:space="preserve">
+    <value>يتم الآن التحقق من توافق الملفات التي تم تنزيلها</value>
+  </data>
+  <data name="CheckingAppUpdate" xml:space="preserve">
+    <value>يتم الآن التحقق من توفّر تحديثات للتطبيق</value>
+  </data>
+  <data name="CheckingFirmwareAvailability" xml:space="preserve">
+    <value>يتم الآن التحقق من توفّر البرنامج</value>
+  </data>
+  <data name="CheckingPackageIntegrity" xml:space="preserve">
+    <value>يتم الآن التحقق من تكامل الحزمة</value>
+  </data>
+  <data name="CleanUserDataQuestion" xml:space="preserve">
+    <value>هل تريد بالتأكيد حذف كل بيانات التطبيق (التقارير وحزم برنامج الهاتف وملفات السجل)؟</value>
+  </data>
+  <data name="CollectingLogFilesInfo" xml:space="preserve">
+    <value>تجميع ملفات السجل. يرجى الانتظار.</value>
+  </data>
+  <data name="ComputerBatteryWarning" xml:space="preserve">
+    <value>تعمل البطارية على الكمبيوتر الخاص بك بشكل منخفض. الرجاء توصيل الكمبيوتر بشاحن والمحاولة مرة أخرى.</value>
+  </data>
+  <data name="ConnectPhone" xml:space="preserve">
+    <value>يرجى توصيل هاتفك</value>
+  </data>
+  <data name="ConnectPhoneWithUsbCable" xml:space="preserve">
+    <value>يرجى توصيل كابل USB بالهاتف.</value>
+  </data>
+  <data name="ConnectedDeviceCannotBeRecovered" xml:space="preserve">
+    <value>تعذر استرداد الهاتف المتصل.</value>
+  </data>
+  <data name="CouldNotDetectPhone" xml:space="preserve">
+    <value>تعذر الكشف عن هاتفك</value>
+  </data>
+  <data name="CreatingNewFolderMessage" xml:space="preserve">
+    <value>إنشاء مجلد جديد</value>
+  </data>
+  <data name="CurrentFirmwareVersion" xml:space="preserve">
+    <value>إصدار البرنامج المثبَّت:</value>
+  </data>
+  <data name="CustomPackagesPath" xml:space="preserve">
+    <value>استخدام مسار الحزم المخصص</value>
+  </data>
+  <data name="DeleteLogsQuestion" xml:space="preserve">
+    <value>هل تريد بالتأكيد حذف ملفات السجل؟</value>
+  </data>
+  <data name="DeletePackagesQuestion" xml:space="preserve">
+    <value>هل تريد بالتأكيد حذف ملفات الاسترداد الخاصة بالبرنامج؟</value>
+  </data>
+  <data name="DeleteReportsQuestion" xml:space="preserve">
+    <value>هل تريد بالتأكيد حذف ملفات التقرير؟</value>
+  </data>
+  <data name="DeletingLogFilesInfo" xml:space="preserve">
+    <value>حذف ملفات السجل</value>
+  </data>
+  <data name="DeletingPackagesInfo" xml:space="preserve">
+    <value>حذف ملفات الاسترداد الخاصة بالبرنامج</value>
+  </data>
+  <data name="DeletingReportsInfo" xml:space="preserve">
+    <value>حذف ملفات التقرير</value>
+  </data>
+  <data name="DetailsHeader" xml:space="preserve">
+    <value>التفاصيل</value>
+  </data>
+  <data name="Device" xml:space="preserve">
+    <value>الهاتف</value>
+  </data>
+  <data name="DeviceFlashing" xml:space="preserve">
+    <value>تثبيت حزمة البرنامج</value>
+  </data>
+  <data name="DeviceInUefiMode" xml:space="preserve">
+    <value>هاتف Lumia</value>
+  </data>
+  <data name="DeviceSelectionHeader" xml:space="preserve">
+    <value>تحديد الهاتف</value>
+  </data>
+  <data name="DirectoryNotSet" xml:space="preserve">
+    <value>لم يتم تحديد الدليل أو الدليل غير موجود.</value>
+  </data>
+  <data name="DisclaimerBackupInfo" xml:space="preserve">
+    <value>سيتم مسح محتوى البيانات الشخصية على الهاتف أثناء التثبيت. ننصحك بإجراء نسخ احتياطي على هاتفك، ضمن:</value>
+  </data>
+  <data name="DisclaimerHeader" xml:space="preserve">
+    <value>إخلاء المسؤولية</value>
+  </data>
+  <data name="DisclaimerInfoInstallationDuration" xml:space="preserve">
+    <value>يجب أن يستغرق تثبيت البرنامج حوالي 15 دقيقة. يعتمد وقت التنزيل للبرنامج على سرعة الشبكة.</value>
+  </data>
+  <data name="DisconnectPhone" xml:space="preserve">
+    <value>يرجى فصل كابل USB عن الهاتف.</value>
+  </data>
+  <data name="DowngradeSoftwareQuestion" xml:space="preserve">
+    <value>أنت تحاول تثبيت برنامج أقدم من ذلك المثبّت على هاتفك. هل ترغب في المتابعة؟</value>
+  </data>
+  <data name="DownloadCancelled" xml:space="preserve">
+    <value>تم إلغاء التنزيل</value>
+  </data>
+  <data name="DownloadProgressExactMinute" xml:space="preserve">
+    <value>يتبقى حوالى {0} من الدقائق</value>
+  </data>
+  <data name="DownloadProgressMinute" xml:space="preserve">
+    <value>بقيت نحو دقيقة واحدة</value>
+  </data>
+  <data name="DownloadProgressMinuteLess" xml:space="preserve">
+    <value>بقي أقل من دقيقة</value>
+  </data>
+  <data name="DownloadingCancelMessage" xml:space="preserve">
+    <value>سيؤدي هذا الإجراء إلى إلغاء التنزيل. لن يتم حذف الملفات التي سبق أن تم تنزيلها. يمكنك استئناف التنزيل لاحقًا.</value>
+  </data>
+  <data name="DownloadingEmergencyPackage" xml:space="preserve">
+    <value>تنزيل حزمة الطوارئ</value>
+  </data>
+  <data name="DownloadingFiles" xml:space="preserve">
+    <value>يتم الآن تنزيل الملفات: {0}/{1} ({2})</value>
+  </data>
+  <data name="DownloadingInstallPacket" xml:space="preserve">
+    <value>يتم الآن تنزيل إصدار جديد</value>
+  </data>
+  <data name="DownloadingPackage" xml:space="preserve">
+    <value>يتم الآن تنزيل الحزمة</value>
+  </data>
+  <data name="EmergencyFlashingMessage" xml:space="preserve">
+    <value>وميض حالة الطوارئ</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>خطأ</value>
+  </data>
+  <data name="ErrorDescription_AutoUpdateException" xml:space="preserve">
+    <value>يبدو أن هناك مشكلة في الاتصال بالخادم. تحقق من الاتصال بالإنترنت. تأكد أن الوكيل، وجدار الحماية وإعدادات مكافحة الفيروسات صحيحة. يرجى أيضًا التحقق من إعدادات الوقت والتاريخ.</value>
+  </data>
+  <data name="ErrorDescription_CannotAccessDirectoryException" xml:space="preserve">
+    <value>يبدو أنك لا تملك الإذن المناسب لهذا الدليل. يرجى تغيير مسار الدليل أو أذونات الدليل.</value>
+  </data>
+  <data name="ErrorDescription_DeviceNotFoundException" xml:space="preserve">
+    <value>لم يتم العثور على الهاتف.</value>
+  </data>
+  <data name="ErrorDescription_DownloadPackageException" xml:space="preserve">
+    <value>يرجى التحقق من صحة إعدادات الوكيل والنقر فوق "{0}". إذا أردت إلغاء عملية التنزيل، فيرجى النقر فوق "{1}".</value>
+  </data>
+  <data name="ErrorDescription_EmergencyPackageNotFoundOnServerException" xml:space="preserve">
+    <value>لا يتم دعم وميض حالة الطوارئ على هاتفك حاليًا</value>
+  </data>
+  <data name="ErrorDescription_FirmwareFileNotFoundException" xml:space="preserve">
+    <value>إن حزمة البرنامج غير مكتملة. هناك ملف مفقود أو أكثر. قم بتنزيل الحزمة مرة أخرة أو حدد برنامجًا آخر.</value>
+  </data>
+  <data name="ErrorDescription_HtcDeviceCommunicationException" xml:space="preserve">
+    <value>يرجى إعادة تشغيل الجهاز إلى وضع {0}.</value>
+  </data>
+  <data name="ErrorDescription_HtcPackageFileCheckException" xml:space="preserve">
+    <value>يرجى إعادة تنزيل ملف حزمة ROM.</value>
+  </data>
+  <data name="ErrorDescription_HtcServiceControlException" xml:space="preserve">
+    <value>تحقق مما إذا كانت خدمة {0} قد توقفت.</value>
+  </data>
+  <data name="ErrorDescription_HtcUsbCommunicationException" xml:space="preserve">
+    <value>يرجى إعادة تشغيل الجهاز إلى {0}.
+يرجى التحقق من اتصال USB بالجهاز.</value>
+  </data>
+  <data name="ErrorDescription_HtcUsbPortOpenException" xml:space="preserve">
+    <value>يرجى التحقق مما إذا كان تطبيق آخر يشغل المنفذ.
+يرجى التحقق من اتصال USB بالجهاز.</value>
+  </data>
+  <data name="ErrorDescription_InvalidOperationException" xml:space="preserve">
+    <value>يرجى إعادة تشغيل التطبيق.</value>
+  </data>
+  <data name="ErrorDescription_NoInternetConnectionException" xml:space="preserve">
+    <value>تعذر استكمال آخر عملية وذلك لأن الاتصال بالإنترنت غير نشط.</value>
+  </data>
+  <data name="ErrorDescription_NotEnoughSpaceException" xml:space="preserve">
+    <value>{0} مفقود على القرص {1}. قم بتفريغ مساحة وحاول مرة أخرى.</value>
+  </data>
+  <data name="ErrorDescription_OperationCanceledException" xml:space="preserve">
+    <value>تم إلغاء العملية.</value>
+  </data>
+  <data name="ErrorDescription_PackageNotFoundException" xml:space="preserve">
+    <value>إن حزمة البرنامج غير متوفرة لهذا الهاتف.</value>
+  </data>
+  <data name="ErrorDescription_PlannedServiceBreakException" xml:space="preserve">
+    <value>تكون الخدمة غير متوفرة بين {0} و{1}. الرجاء المحاولة مرة أخرى.</value>
+  </data>
+  <data name="ErrorDescription_ReadPhoneInformationException" xml:space="preserve">
+    <value>تتعذر قراءة المعلومات من هاتفك.</value>
+  </data>
+  <data name="ErrorDescription_RestartApplicationException" xml:space="preserve">
+    <value>يرجى قطع اتصال كل الهواتف وإعادة تشغيل التطبيق. في حال استمرار المشكلة، ألغِ تثبيت {0} وقم بتنزيل أحدث إصدار من التطبيق.</value>
+  </data>
+  <data name="ErrorDescription_UnknownError" xml:space="preserve">
+    <value>يتعذر إكمال العملية.</value>
+  </data>
+  <data name="ErrorDescription_WebException" xml:space="preserve">
+    <value>يبدو أن هناك مشكلة في الاتصال بالخادم. تحقق من الاتصال بالإنترنت. تأكد أن الوكيل، وجدار الحماية وإعدادات مكافحة الفيروسات صحيحة.</value>
+  </data>
+  <data name="ErrorDetails_NotEnoughSpaceOnTheDiskException" xml:space="preserve">
+    <value>الحد الأدنى من المساحة الخالية على القرص {0} المطلوبة للتحديث هو {1}. قم بتفريغ مساحة وحاول مرة أخرى.</value>
+  </data>
+  <data name="ErrorHeader" xml:space="preserve">
+    <value>عذرًا، لقد واجهنا مشكلة</value>
+  </data>
+  <data name="Error_AutoUpdateException" xml:space="preserve">
+    <value>فشل التحقق من توفّر تحديث للتطبيق</value>
+  </data>
+  <data name="Error_CannotAccessDirectoryException" xml:space="preserve">
+    <value>تعذر الوصول إلى الدليل</value>
+  </data>
+  <data name="Error_DeviceNotFoundException" xml:space="preserve">
+    <value>تعذّر العثور على الهاتف</value>
+  </data>
+  <data name="Error_DownloadPackageException" xml:space="preserve">
+    <value>حدثت مشكلة أثناء تنزيل حزمة البرنامج</value>
+  </data>
+  <data name="Error_EmergencyPackageNotFoundOnServerException" xml:space="preserve">
+    <value>تعذر العثور على حزمة الطوارئ</value>
+  </data>
+  <data name="Error_FileNotFoundException" xml:space="preserve">
+    <value>تعذر العثور على الملف أو المسار: "{0}"</value>
+  </data>
+  <data name="Error_FirmwareFileNotFoundException" xml:space="preserve">
+    <value>تعذّر العثور على ملف البرنامج</value>
+  </data>
+  <data name="Error_HtcDeviceCommunicationException" xml:space="preserve">
+    <value>خطأ في الاتصال بالجهاز</value>
+  </data>
+  <data name="Error_HtcDeviceHandshakingException" xml:space="preserve">
+    <value>خطأ في تأكيد الاتصال بالجهاز</value>
+  </data>
+  <data name="Error_HtcPackageFileCheckException" xml:space="preserve">
+    <value>خطأ في التحقق من ملف الحزمة</value>
+  </data>
+  <data name="Error_HtcServiceControlException" xml:space="preserve">
+    <value>خطأ في التحكم بالخدمة</value>
+  </data>
+  <data name="Error_HtcUsbCommunicationException" xml:space="preserve">
+    <value>خطأ في اتصال USB</value>
+  </data>
+  <data name="Error_HtcUsbPortOpenException" xml:space="preserve">
+    <value>خطأ في فتح منفذ USB</value>
+  </data>
+  <data name="Error_InvalidOperationException" xml:space="preserve">
+    <value>فشلت العملية</value>
+  </data>
+  <data name="Error_NoInternetConnectionException" xml:space="preserve">
+    <value>لا يوجد اتصال بالإنترنت</value>
+  </data>
+  <data name="Error_NotEnoughSpaceException" xml:space="preserve">
+    <value>لا توجد مساحة كافية على القرص</value>
+  </data>
+  <data name="Error_NotEnoughSpaceOnTheDiskException" xml:space="preserve">
+    <value>لا توجد مساحة كافية على القرص</value>
+  </data>
+  <data name="Error_OperationCanceledException" xml:space="preserve">
+    <value>تم إلغاء العملية</value>
+  </data>
+  <data name="Error_PackageNotFoundException" xml:space="preserve">
+    <value>تعذر العثور على حزمة المتغير</value>
+  </data>
+  <data name="Error_PlannedServiceBreakException" xml:space="preserve">
+    <value>تعذر الاتصال بالخادم</value>
+  </data>
+  <data name="Error_ReadPhoneInformationException" xml:space="preserve">
+    <value>فشلت عملية قراءة معلومات الهاتف</value>
+  </data>
+  <data name="Error_RestartApplicationException" xml:space="preserve">
+    <value>إعادة تشغيل التطبيق</value>
+  </data>
+  <data name="Error_SoftwareInstallationFailed" xml:space="preserve">
+    <value>فشل تثبيت البرنامج. يرجى محاولة إعادة تشغيل هاتفك ومحاولة تثبيت البرنامج من جديد. إذا لم يتم الكشف عن هاتفك، فيرجى النقر فوق الزر "{0}" على شاشة الترحيب.</value>
+  </data>
+  <data name="Error_SoftwareIsNotCorrectlySignedException" xml:space="preserve">
+    <value>لم يتم توقيع البرنامج بشكل صحيح أو أن البرنامج غير موقع لهذا الهاتف.</value>
+  </data>
+  <data name="Error_UnauthorizedAccessException" xml:space="preserve">
+    <value>تم رفض الوصول</value>
+  </data>
+  <data name="Error_UnknownError" xml:space="preserve">
+    <value>حدثت مشكلة غير معروفة</value>
+  </data>
+  <data name="Error_WebException" xml:space="preserve">
+    <value>تعذر الاتصال بالخادم</value>
+  </data>
+  <data name="FFUCheckingDirectory" xml:space="preserve">
+    <value>يتم الآن التحقق من الدليل</value>
+  </data>
+  <data name="FFUCheckingFile" xml:space="preserve">
+    <value>يتم الآن التحقق من الملف المحدد</value>
+  </data>
+  <data name="FFUFamily" xml:space="preserve">
+    <value>العائلة:</value>
+  </data>
+  <data name="FFUManufacturer" xml:space="preserve">
+    <value>الشركة المصنّعة:</value>
+  </data>
+  <data name="FFUProductName" xml:space="preserve">
+    <value>اسم المنتج:</value>
+  </data>
+  <data name="FFUVersion" xml:space="preserve">
+    <value>الإصدار:</value>
+  </data>
+  <data name="FirmwareIntegrityError" xml:space="preserve">
+    <value>إن حزمة البرنامج {0} تالفة. قم بتنزيل الحزمة مرة أخرة أو حدد برنامجًا آخر.</value>
+  </data>
+  <data name="FirmwareVersion" xml:space="preserve">
+    <value>إصدار البرنامج الثابت: </value>
+  </data>
+  <data name="FirmwareVersionUnknown" xml:space="preserve">
+    <value>إصدار البرنامج الثابت: غير معروف</value>
+  </data>
+  <data name="FlashCancelMessage" xml:space="preserve">
+    <value>إن تثبيت حزمة البرنامج قيد التقدّم. قد يؤدي الإلغاء إلى إلحاق الضرر بهاتفك. هل تريد بالتأكيد إلغاء الإجراء؟</value>
+  </data>
+  <data name="FlashWarningMessage1" xml:space="preserve">
+    <value>لا تستخدم هاتفك. لا تفصل الكابل. لا تطفئ الهاتف. وإلّا فقد يتوقف هاتفك عن العمل.</value>
+  </data>
+  <data name="FlashWarningMessage2" xml:space="preserve">
+    <value>أثناء التثبيت، ستتم إعادة تشغيل هاتفك وستصبح الشاشة بيضاء.
+يمكنك تجاهل إعلامات Windows كلها حول توصيل كابل USB.</value>
+  </data>
+  <data name="Flashing" xml:space="preserve">
+    <value>يتم الآن تثبيت البرنامج على هاتفك</value>
+  </data>
+  <data name="FlashingMessageChangeToFlashMode" xml:space="preserve">
+    <value>تبديل الهاتف إلى وضع الوميض</value>
+  </data>
+  <data name="FlashingMessageCheckingAntiTheftStatus" xml:space="preserve">
+    <value>التحقق من حالة الحماية ضد السرقة</value>
+  </data>
+  <data name="FlashingMessageConnectingWithPhone" xml:space="preserve">
+    <value>الاتصال بالهاتف</value>
+  </data>
+  <data name="FlashingMessageInstallingSoftware" xml:space="preserve">
+    <value>تثبيت البرنامج</value>
+  </data>
+  <data name="FlashingMessageOperationStarted" xml:space="preserve">
+    <value>لقد بدأ تثبيت البرنامج</value>
+  </data>
+  <data name="FlashingResult" xml:space="preserve">
+    <value>نتيجة تثبيت حزمة البرنامج</value>
+  </data>
+  <data name="HtcBootloaderMode" xml:space="preserve">
+    <value>وضع {0} على جهاز HTC</value>
+  </data>
+  <data name="HtcPackageNotFound" xml:space="preserve">
+    <value>تعذر العثور على حزمة البرنامج على الخادم</value>
+  </data>
+  <data name="KeepButtonTillImage" xml:space="preserve">
+    <value>يرجى الضغط باستمرار على الزر إلى أن تظهر صورة مماثلة لتلك المعروضة على الشاشة.</value>
+  </data>
+  <data name="KeepButtonsTillImage" xml:space="preserve">
+    <value>يرجى الضغط باستمرار على الأزرار إلى أن تظهر صورة مماثلة لتلك المعروضة على الشاشة.</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>اللغة</value>
+  </data>
+  <data name="LogFiles" xml:space="preserve">
+    <value>ملفات السجل</value>
+  </data>
+  <data name="LumiaBatteryChecking" xml:space="preserve">
+    <value>طاقة بطارية الهاتف آخذة في الانخفاض. يمكنك المتابعة، ولكن ذلك قد يتلف هاتفك.</value>
+  </data>
+  <data name="ManualDeviceSelection" xml:space="preserve">
+    <value>تحديد الهاتف</value>
+  </data>
+  <data name="ManualRestartHtcInfo" xml:space="preserve">
+    <value>تتعذر قراءة معلومات الهاتف. يرجى اتباع الخطوات أدناه للمتابعة أو النقر فوق "{0}" لإلغاء العملية.</value>
+  </data>
+  <data name="ManufacturerDetectionFailed" xml:space="preserve">
+    <value>عذرًا، تعذّر تحديد الشركة المصنّعة لهاتفك.</value>
+  </data>
+  <data name="ManufacturerHeader" xml:space="preserve">
+    <value>الشركة المصنّعة للهاتف</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>وضع {0}‌</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>الطراز: </value>
+  </data>
+  <data name="ModelUnknown" xml:space="preserve">
+    <value>الطراز: غير معروف</value>
+  </data>
+  <data name="MoreThanOnePackageFound" xml:space="preserve">
+    <value>تم العثور على أكثر من حزمة واحدة - يرجى تحديد حزمة منها والنقر فوق "{0}" للمتابعة.</value>
+  </data>
+  <data name="Network" xml:space="preserve">
+    <value>الشبكة</value>
+  </data>
+  <data name="NoPackagesFoundSelectAnotherDirectory" xml:space="preserve">
+    <value>تعذّر العثور على حزمة صحيحة. يرجى تحديد دليل مختلف أو تحديد الحزمة يدويًا.</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>غير موجود</value>
+  </data>
+  <data name="OnePackageFound" xml:space="preserve">
+    <value>تم العثور على حزمة واحدة لـ: {0}. الرجاء النقر فوق "{1}" للمتابعة أو تحديد مجلد أو ملف مختلف.</value>
+  </data>
+  <data name="OperatingSystemUnknown" xml:space="preserve">
+    <value>إصدار نظام التشغيل: غير معروف</value>
+  </data>
+  <data name="OperatingSystemVersion" xml:space="preserve">
+    <value>إصدار نظام التشغيل: </value>
+  </data>
+  <data name="OperationFailed" xml:space="preserve">
+    <value>انتهت العملية بفشل</value>
+  </data>
+  <data name="OperationPassed" xml:space="preserve">
+    <value>اكتملت العملية بنجاح</value>
+  </data>
+  <data name="PackageDirectory" xml:space="preserve">
+    <value>دليل الحزمة: {0}</value>
+  </data>
+  <data name="PackageFileHeader" xml:space="preserve">
+    <value>ملف الحزمة</value>
+  </data>
+  <data name="PackageFilePath" xml:space="preserve">
+    <value>مسار الحزمة: {0}</value>
+  </data>
+  <data name="PackageIntegrityCheck" xml:space="preserve">
+    <value>التحقق من تكامل الحزمة</value>
+  </data>
+  <data name="PackageNotFound" xml:space="preserve">
+    <value>إن الحزمة غير متوفرة لهذا الهاتف.</value>
+  </data>
+  <data name="PackagePathNotSet" xml:space="preserve">
+    <value>لم يتم تعيين مسار الحزمة</value>
+  </data>
+  <data name="PackageSelection" xml:space="preserve">
+    <value>تحديد الحزمة</value>
+  </data>
+  <data name="Packages" xml:space="preserve">
+    <value>حزم</value>
+  </data>
+  <data name="PackagesPath" xml:space="preserve">
+    <value>مسار الحزم</value>
+  </data>
+  <data name="PasswordForm" xml:space="preserve">
+    <value>كلمة المرور</value>
+  </data>
+  <data name="PhoneAddedHeader" xml:space="preserve">
+    <value>تم توصيل الهاتف</value>
+  </data>
+  <data name="PhoneAddedMessage" xml:space="preserve">
+    <value>تم توصيل الهاتف الجديد {0}.</value>
+  </data>
+  <data name="PhoneIsUpToDate" xml:space="preserve">
+    <value>أنت تملك أحدث إصدار للبرنامج.</value>
+  </data>
+  <data name="PhoneRemovedHeader" xml:space="preserve">
+    <value>تم قطع اتصال الهاتف</value>
+  </data>
+  <data name="PhoneRemovedMessage" xml:space="preserve">
+    <value>تم قطع اتصال الهاتف {0}.</value>
+  </data>
+  <data name="PhoneRestart" xml:space="preserve">
+    <value>إعادة تشغيل الهاتف</value>
+  </data>
+  <data name="PhoneSettingsBackupPathWin10" xml:space="preserve">
+    <value>الإعدادات &gt; التحديث والاسترداد &gt; النسخ الاحتياطي</value>
+  </data>
+  <data name="PhoneSettingsBackupPathWin8" xml:space="preserve">
+    <value>الإعدادات &gt; النسخ الاحتياطي</value>
+  </data>
+  <data name="PleaseConnectDevice" xml:space="preserve">
+    <value>يرجى توصيل هاتفك</value>
+  </data>
+  <data name="PleaseConnectOneDevice" xml:space="preserve">
+    <value>يرجى توصيل هاتف واحد فقط</value>
+  </data>
+  <data name="PleaseSelectAFolder" xml:space="preserve">
+    <value>الرجاء تحديد مجلد</value>
+  </data>
+  <data name="PleaseSelectDeviceToContinue" xml:space="preserve">
+    <value>يرجى تحديد الهاتف للمتابعة</value>
+  </data>
+  <data name="PleaseSelectManufacturer" xml:space="preserve">
+    <value>يرجى تحديد الخيار الصحيح أدناه:</value>
+  </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>يرجى الانتظار</value>
+  </data>
+  <data name="PortForm" xml:space="preserve">
+    <value>المنفذ</value>
+  </data>
+  <data name="Preferences" xml:space="preserve">
+    <value>التفضيلات</value>
+  </data>
+  <data name="PressPowerAndVolumeDown" xml:space="preserve">
+    <value>يرجى الضغط على زر الطاقة وزر "خفض مستوى الصوت" في الوقت نفسه.</value>
+  </data>
+  <data name="PressThePowerButton" xml:space="preserve">
+    <value>يرجى الضغط على زر الطاقة. </value>
+  </data>
+  <data name="PressThePowerButtonUntilSwitchOff" xml:space="preserve">
+    <value>يرجى الضغط باستمرار على زر "الطاقة" إلى أن يهتزّ الهاتف.</value>
+  </data>
+  <data name="PressVolumeUpVolumeDown" xml:space="preserve">
+    <value>عند اهتزاز الهاتف، اضغط على زر "زيادة مستوى الصوت" وزر "خفض مستوى الصوت" في الوقت نفسه.</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>سياسة الخصوصية</value>
+  </data>
+  <data name="ReadingDeviceInfo" xml:space="preserve">
+    <value>تتم الآن قراءة معلومات الهاتف</value>
+  </data>
+  <data name="RebootHtc" xml:space="preserve">
+    <value>يمكنك إعادة تشغيل هاتفك الآن في الوضع الطبيعي. لإعادة تشغيل الهاتف، يرجى الضغط على زر الطاقة باستمرار لبعض الوقت.</value>
+  </data>
+  <data name="RebootPhoneInstructions" xml:space="preserve">
+    <value>تعذر العثور على الهاتف.
+يرجى محاولة إعادة تشغيل هاتفك عبر الضغط على "الطاقة" و"خفض مستوى الصوت" في الوقت نفس.
+يرجى الضغط باستمرار على الأزرار إلى أن يهتزّ الهاتف.</value>
+  </data>
+  <data name="ReinstallSoftware" xml:space="preserve">
+    <value>إعادة تثبيت البرنامج</value>
+  </data>
+  <data name="ReleasePowerPressVolumeUp" xml:space="preserve">
+    <value>عند اهتزاز الهاتف، حرّر زر الطاقة واضغط على "زيادة مستوى الصوت".</value>
+  </data>
+  <data name="RemovingPackages" xml:space="preserve">
+    <value>تتم الآن إزالة الحزم</value>
+  </data>
+  <data name="RemovingReports" xml:space="preserve">
+    <value>تتم الآن إزالة التقارير</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>التقارير</value>
+  </data>
+  <data name="ResetSettingsQuestion" xml:space="preserve">
+    <value>هل ترغب بالفعل في إعادة تعيين جميع الإعدادات إلى القيم الافتراضية؟</value>
+  </data>
+  <data name="RestartDeviceHeader" xml:space="preserve">
+    <value>إعادة تشغيل الهاتف</value>
+  </data>
+  <data name="SelectDeviceToRecover" xml:space="preserve">
+    <value>تحديد الهاتف الذي تريد استرداده</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>الإعدادات</value>
+  </data>
+  <data name="SoftwareInstallation" xml:space="preserve">
+    <value>تثبيت البرنامج</value>
+  </data>
+  <data name="SoftwareOnServer" xml:space="preserve">
+    <value>البرنامج متوفر على الخادم</value>
+  </data>
+  <data name="SoftwarePackage" xml:space="preserve">
+    <value>حزمة البرنامج</value>
+  </data>
+  <data name="SthWentWrongMessage" xml:space="preserve">
+    <value>حدث خطأ في شيء ما</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>ملخص</value>
+  </data>
+  <data name="Survey1" xml:space="preserve">
+    <value>استطلاع</value>
+  </data>
+  <data name="Survey_Button_ContinueNoSubmit1" xml:space="preserve">
+    <value>المتابعة دون إرسال</value>
+  </data>
+  <data name="Survey_Button_SubmitAndContinue1" xml:space="preserve">
+    <value>الإرسال ومتابعة عملية الاسترداد</value>
+  </data>
+  <data name="Survey_Choice_AppsNotWorking1" xml:space="preserve">
+    <value>لا تعمل تطبيقاتي بالشكل المتوقع</value>
+  </data>
+  <data name="Survey_Choice_DeviceNotWorking1" xml:space="preserve">
+    <value>لا يعمل جهازي بالشكل المتوقع</value>
+  </data>
+  <data name="Survey_Choice_PerformanceIssues1" xml:space="preserve">
+    <value>أواجه مشكلات في الأداء</value>
+  </data>
+  <data name="Survey_Choice_PrevVersionFaster1" xml:space="preserve">
+    <value>الإصدار السابق يبدو أسرع في الأداء</value>
+  </data>
+  <data name="Survey_Choice_PrevVersionMoreReliable1" xml:space="preserve">
+    <value>يبدو أنه يمكن الوثوق أكثر بالإصدار السابق</value>
+  </data>
+  <data name="Survey_Header1" xml:space="preserve">
+    <value>لماذا تقوم باسترداد جهازك؟</value>
+  </data>
+  <data name="Survey_TellUsMore1" xml:space="preserve">
+    <value>أخبرنا بالمزيد</value>
+  </data>
+  <data name="Theme" xml:space="preserve">
+    <value>النسق</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>داكن</value>
+  </data>
+  <data name="ThemeHighContrast" xml:space="preserve">
+    <value>تباين عالٍ</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>فاتح</value>
+  </data>
+  <data name="ThereIsMandatoryApplicationUpdate" xml:space="preserve">
+    <value>يتوفر تحديث تطبيق إلزامي {0}.</value>
+  </data>
+  <data name="ThisUpdateMustBeInstalled" xml:space="preserve">
+    <value>يجب تثبيت التحديث {0} هذا ولا يمكن تخطيه. يتعذر استخدام التطبيق إلى أن يتم تحديثه.
+قبل تثبيت هذا التحديث، يرجى فصل كل الأجهزة.</value>
+  </data>
+  <data name="TraceEnabled" xml:space="preserve">
+    <value>إنشاء ملف سجل</value>
+  </data>
+  <data name="Troubleshooting" xml:space="preserve">
+    <value>استكشاف الأخطاء وإصلاحها</value>
+  </data>
+  <data name="TurnOffPhone" xml:space="preserve">
+    <value>يرجى إيقاف تشغيل هاتفك.</value>
+  </data>
+  <data name="UpdateAvailable" xml:space="preserve">
+    <value>يتوفر تحديث لهاتفك</value>
+  </data>
+  <data name="UseProxyServer" xml:space="preserve">
+    <value>استخدام الخادم الوكيل</value>
+  </data>
+  <data name="UserNameForm" xml:space="preserve">
+    <value>اسم المستخدم</value>
+  </data>
+  <data name="VerifyingDownloadedFiles" xml:space="preserve">
+    <value>يتم الآن التحقق من الملفات التي تم تنزيلها</value>
+  </data>
+  <data name="WaitUntilPhoneTurnsOn" xml:space="preserve">
+    <value>انتظر إلى أن يتم تشغيل الهاتف.</value>
+  </data>
+  <data name="WaitingForConnection" xml:space="preserve">
+    <value>يتم الآن انتظار الاتصال</value>
+  </data>
+  <data name="WelcomeHeader" xml:space="preserve">
+    <value>مرحبًا</value>
+  </data>
+</root>

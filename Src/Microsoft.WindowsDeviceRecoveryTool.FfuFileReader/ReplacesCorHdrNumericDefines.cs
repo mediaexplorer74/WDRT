@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-// Token: 0x02000044 RID: 68
-//[NativeCppClass]
+// Token: 0x02000047 RID: 71
+[NativeCppClass]
 internal enum ReplacesCorHdrNumericDefines
 {
 

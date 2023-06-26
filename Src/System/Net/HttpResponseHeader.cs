@@ -1,0 +1,131 @@
+﻿using System;
+
+namespace System.Net
+{
+	/// <summary>The HTTP headers that can be specified in a server response.</summary>
+	// Token: 0x02000103 RID: 259
+	[global::__DynamicallyInvokable]
+	public enum HttpResponseHeader
+	{
+		/// <summary>The Cache-Control header, which specifies caching directives that must be obeyed by all caching mechanisms along the request/response chain.</summary>
+		// Token: 0x04000E72 RID: 3698
+		[global::__DynamicallyInvokable]
+		CacheControl,
+		/// <summary>The Connection header, which specifies options that are desired for a particular connection.</summary>
+		// Token: 0x04000E73 RID: 3699
+		[global::__DynamicallyInvokable]
+		Connection,
+		/// <summary>The Date header, which specifies the date and time at which the response originated.</summary>
+		// Token: 0x04000E74 RID: 3700
+		[global::__DynamicallyInvokable]
+		Date,
+		/// <summary>The Keep-Alive header, which specifies a parameter to be used to maintain a persistent connection.</summary>
+		// Token: 0x04000E75 RID: 3701
+		[global::__DynamicallyInvokable]
+		KeepAlive,
+		/// <summary>The Pragma header, which specifies implementation-specific directives that might apply to any agent along the request/response chain.</summary>
+		// Token: 0x04000E76 RID: 3702
+		[global::__DynamicallyInvokable]
+		Pragma,
+		/// <summary>The Trailer header, which specifies that the indicated header fields are present in the trailer of a message that is encoded with chunked transfer-coding.</summary>
+		// Token: 0x04000E77 RID: 3703
+		[global::__DynamicallyInvokable]
+		Trailer,
+		/// <summary>The Transfer-Encoding header, which specifies what (if any) type of transformation has been applied to the message body.</summary>
+		// Token: 0x04000E78 RID: 3704
+		[global::__DynamicallyInvokable]
+		TransferEncoding,
+		/// <summary>The Upgrade header, which specifies additional communications protocols that the client supports.</summary>
+		// Token: 0x04000E79 RID: 3705
+		[global::__DynamicallyInvokable]
+		Upgrade,
+		/// <summary>The Via header, which specifies intermediate protocols to be used by gateway and proxy agents.</summary>
+		// Token: 0x04000E7A RID: 3706
+		[global::__DynamicallyInvokable]
+		Via,
+		/// <summary>The Warning header, which specifies additional information about that status or transformation of a message that might not be reflected in the message.</summary>
+		// Token: 0x04000E7B RID: 3707
+		[global::__DynamicallyInvokable]
+		Warning,
+		/// <summary>The Allow header, which specifies the set of HTTP methods that are supported.</summary>
+		// Token: 0x04000E7C RID: 3708
+		[global::__DynamicallyInvokable]
+		Allow,
+		/// <summary>The Content-Length header, which specifies the length, in bytes, of the accompanying body data.</summary>
+		// Token: 0x04000E7D RID: 3709
+		[global::__DynamicallyInvokable]
+		ContentLength,
+		/// <summary>The Content-Type header, which specifies the MIME type of the accompanying body data.</summary>
+		// Token: 0x04000E7E RID: 3710
+		[global::__DynamicallyInvokable]
+		ContentType,
+		/// <summary>The Content-Encoding header, which specifies the encodings that have been applied to the accompanying body data.</summary>
+		// Token: 0x04000E7F RID: 3711
+		[global::__DynamicallyInvokable]
+		ContentEncoding,
+		/// <summary>The Content-Langauge header, which specifies the natural language or languages of the accompanying body data.</summary>
+		// Token: 0x04000E80 RID: 3712
+		[global::__DynamicallyInvokable]
+		ContentLanguage,
+		/// <summary>The Content-Location header, which specifies a URI from which the accompanying body can be obtained.</summary>
+		// Token: 0x04000E81 RID: 3713
+		[global::__DynamicallyInvokable]
+		ContentLocation,
+		/// <summary>The Content-MD5 header, which specifies the MD5 digest of the accompanying body data, for the purpose of providing an end-to-end message integrity check.</summary>
+		// Token: 0x04000E82 RID: 3714
+		[global::__DynamicallyInvokable]
+		ContentMd5,
+		/// <summary>The Range header, which specifies the subrange or subranges of the response that the client requests be returned in lieu of the entire response.</summary>
+		// Token: 0x04000E83 RID: 3715
+		[global::__DynamicallyInvokable]
+		ContentRange,
+		/// <summary>The Expires header, which specifies the date and time after which the accompanying body data should be considered stale.</summary>
+		// Token: 0x04000E84 RID: 3716
+		[global::__DynamicallyInvokable]
+		Expires,
+		/// <summary>The Last-Modified header, which specifies the date and time at which the accompanying body data was last modified.</summary>
+		// Token: 0x04000E85 RID: 3717
+		[global::__DynamicallyInvokable]
+		LastModified,
+		/// <summary>The Accept-Ranges header, which specifies the range that is accepted by the server.</summary>
+		// Token: 0x04000E86 RID: 3718
+		[global::__DynamicallyInvokable]
+		AcceptRanges,
+		/// <summary>The Age header, which specifies the time, in seconds, since the response was generated by the originating server.</summary>
+		// Token: 0x04000E87 RID: 3719
+		[global::__DynamicallyInvokable]
+		Age,
+		/// <summary>The Etag header, which specifies the current value for the requested variant.</summary>
+		// Token: 0x04000E88 RID: 3720
+		[global::__DynamicallyInvokable]
+		ETag,
+		/// <summary>The Location header, which specifies a URI to which the client is redirected to obtain the requested resource.</summary>
+		// Token: 0x04000E89 RID: 3721
+		[global::__DynamicallyInvokable]
+		Location,
+		/// <summary>The Proxy-Authenticate header, which specifies that the client must authenticate itself to a proxy.</summary>
+		// Token: 0x04000E8A RID: 3722
+		[global::__DynamicallyInvokable]
+		ProxyAuthenticate,
+		/// <summary>The Retry-After header, which specifies a time (in seconds), or a date and time, after which the client can retry its request.</summary>
+		// Token: 0x04000E8B RID: 3723
+		[global::__DynamicallyInvokable]
+		RetryAfter,
+		/// <summary>The Server header, which specifies information about the originating server agent.</summary>
+		// Token: 0x04000E8C RID: 3724
+		[global::__DynamicallyInvokable]
+		Server,
+		/// <summary>The Set-Cookie header, which specifies cookie data that is presented to the client.</summary>
+		// Token: 0x04000E8D RID: 3725
+		[global::__DynamicallyInvokable]
+		SetCookie,
+		/// <summary>The Vary header, which specifies the request headers that are used to determine whether a cached response is fresh.</summary>
+		// Token: 0x04000E8E RID: 3726
+		[global::__DynamicallyInvokable]
+		Vary,
+		/// <summary>The WWW-Authenticate header, which specifies that the client must authenticate itself to the server.</summary>
+		// Token: 0x04000E8F RID: 3727
+		[global::__DynamicallyInvokable]
+		WwwAuthenticate
+	}
+}

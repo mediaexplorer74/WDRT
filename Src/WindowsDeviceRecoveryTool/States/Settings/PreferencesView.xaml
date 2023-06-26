@@ -2,19 +2,18 @@
 	x:Class="Microsoft.WindowsDeviceRecoveryTool.States.Settings.PreferencesView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:localization="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Localization;assembly=Microsoft.WindowsDeviceRecoveryTool.Localization" xmlns:assets="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Styles.Assets;assembly=Microsoft.WindowsDeviceRecoveryTool.Styles" xmlns:settings="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.States.Settings"
 	Loaded="OnPreferencesViewLoaded">
 	<TextBlock
-		Style="{DynamicResource BasicTextStyle}"
-		Margin="0,0,0,5"
-		Text="{localization:Localization AccentColor}" />
-	
-    <!--ComboBox
+		FrameworkElement.Style="{DynamicResource BasicTextStyle}"
+		FrameworkElement.Margin="0,0,0,5"
+		TextBlock.Text="{localization:Localization AccentColor}" />
+	<ComboBox
 		Name="ColorsComboBox"
-		ItemContainerStyle="{DynamicResource PreferencesComboBoxItem}"
+		ItemsControl.ItemContainerStyle="{DynamicResource PreferencesComboBoxItem}"
 		IsSynchronizedWithCurrentItem="True"
-		HorizontalAlignment="Left"
+		FrameworkElement.HorizontalAlignment="Left"
 		KeyboardNavigation.TabNavigation="Continue"
-		MinWidth="250"
-		ItemsSource="{Binding Path=StylesView}"
-		SelectedItem="{Binding SelectedColor, Mode=TwoWay, Converter={StaticResource StyleNameConverter}}"
+		FrameworkElement.MinWidth="250"
+		ItemsControl.ItemsSource="{Binding Path=StylesView}"
+		SelectedItem="{Binding SelectedColor, Mode=TwoWay, Converter='{StaticResource StyleNameConverter}'}"
 		AutomationProperties.Name="{localization:Localization AccentColor}"
 		SelectionChanged="OnStyleComboBoxSelectionChanged">
 		<ItemsControl.ItemTemplate>
@@ -23,58 +22,54 @@
 				<StackPanel
 					Orientation="Horizontal">
 					<Rectangle
-						Width="15"
-						Height="15"
-						StrokeThickness="1"
-						Fill="{Binding Path=MainColor}"
-						Stroke="{Binding (TextBlock.Foreground), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContentPresenter}}}" />
+						FrameworkElement.Width="15"
+						FrameworkElement.Height="15"
+						Shape.StrokeThickness="1"
+						Shape.Fill="{Binding Path=MainColor}"
+						Shape.Stroke="{Binding (TextBlock.Foreground), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContentPresenter}}}" />
 					<TextBlock
-						Margin="4,0,0,0"
-						Text="{Binding Path=LocalizedName}" />
+						FrameworkElement.Margin="4,0,0,0"
+						TextBlock.Text="{Binding Path=LocalizedName}" />
 				</StackPanel>
 			</DataTemplate>
 		</ItemsControl.ItemTemplate>
-	</ComboBox-->
-    
+	</ComboBox>
 	<TextBlock
-		Style="{DynamicResource BasicTextStyle}"
-		Margin="0,10,0,5"
-		Text="{localization:Localization Theme}" />
-	
-    <!--ComboBox
+		FrameworkElement.Style="{DynamicResource BasicTextStyle}"
+		FrameworkElement.Margin="0,10,0,5"
+		TextBlock.Text="{localization:Localization Theme}" />
+	<ComboBox
 		Name="ThemesComboBox"
-		ItemContainerStyle="{DynamicResource PreferencesComboBoxItem}"
+		ItemsControl.ItemContainerStyle="{DynamicResource PreferencesComboBoxItem}"
 		IsSynchronizedWithCurrentItem="True"
-		MinWidth="250"
-		HorizontalAlignment="Left"
-		ItemsSource="{Binding ThemeList}"
+		FrameworkElement.MinWidth="250"
+		FrameworkElement.HorizontalAlignment="Left"
+		ItemsControl.ItemsSource="{Binding ThemeList}"
 		SelectedItem="{Binding SelectedTheme, Mode=TwoWay}"
-		AutomationProperties.Name="Theme"
-		SelectionChanged="OnStyleComboBoxSelectionChanged" /-->
-	
-    <TextBlock
-		Style="{DynamicResource BasicTextStyle}"
-		Margin="0,10,0,5"
-		Text="{localization:Localization Language}" />
-	
-    <!--ComboBox
+		AutomationProperties.Name="{localization:Localization Theme}"
+		SelectionChanged="OnStyleComboBoxSelectionChanged" />
+	<TextBlock
+		FrameworkElement.Style="{DynamicResource BasicTextStyle}"
+		FrameworkElement.Margin="0,10,0,5"
+		TextBlock.Text="{localization:Localization Language}" />
+	<ComboBox
 		Name="LanguagesComboBox"
-		ItemContainerStyle="{DynamicResource PreferencesLanguageComboBoxItem}"
+		ItemsControl.ItemContainerStyle="{DynamicResource PreferencesLanguageComboBoxItem}"
 		IsSynchronizedWithCurrentItem="True"
-		HorizontalAlignment="Left"
-		MinWidth="250"
+		FrameworkElement.HorizontalAlignment="Left"
+		FrameworkElement.MinWidth="250"
 		DisplayMemberPath="ExtendedDisplayName"
-		ItemsSource="{Binding Languages}"
+		ItemsControl.ItemsSource="{Binding Languages}"
 		SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}"
 		AutomationProperties.Name="{localization:Localization Language}"
 		PreviewKeyDown="OnLanguagesComboBoxPreviewKeyDown"
-		SelectionChanged="OnLanguagesComboBoxSelectionChanged" /-->
-            
+		SelectionChanged="OnLanguagesComboBoxSelectionChanged" />
 	<StackPanel
-		Margin="-5,20,0,0">
+		FrameworkElement.Margin="-5,20,0,0">
 		<Button
-			Name="Reset"
-			Content="{localization:Localization ButtonReset}"
-			Command="{Binding Commands[ResetSettings]}" />
+			FrameworkElement.Name="Reset"
+			ContentControl.Content="{localization:Localization ButtonReset}"
+			ButtonBase.Command="{Binding Commands[ResetSettings]}"
+			x:Name="Reset" />
 	</StackPanel>
 </StackPanel>

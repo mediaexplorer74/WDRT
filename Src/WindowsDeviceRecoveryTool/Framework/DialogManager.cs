@@ -8,16 +8,16 @@ using Microsoft.WindowsDeviceRecoveryTool.Properties;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Framework
 {
-	// Token: 0x02000045 RID: 69
+	// Token: 0x0200007F RID: 127
 	public class DialogManager
 	{
-		// Token: 0x0600026E RID: 622 RVA: 0x0000F0D4 File Offset: 0x0000D2D4
+		// Token: 0x0600045B RID: 1115 RVA: 0x00016287 File Offset: 0x00014487
 		private DialogManager()
 		{
 		}
 
-		// Token: 0x1700006B RID: 107
-		// (get) Token: 0x0600026F RID: 623 RVA: 0x0000F0E0 File Offset: 0x0000D2E0
+		// Token: 0x17000111 RID: 273
+		// (get) Token: 0x0600045C RID: 1116 RVA: 0x00016624 File Offset: 0x00014824
 		public static DialogManager Instance
 		{
 			get
@@ -26,13 +26,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Framework
 			}
 		}
 
-		// Token: 0x06000270 RID: 624 RVA: 0x0000F0F7 File Offset: 0x0000D2F7
+		// Token: 0x0600045D RID: 1117 RVA: 0x0001663B File Offset: 0x0001483B
 		public void SetShellWindow(Window shell)
 		{
 			this.shellWindow = shell;
 		}
 
-		// Token: 0x06000271 RID: 625 RVA: 0x0000F104 File Offset: 0x0000D304
+		// Token: 0x0600045E RID: 1118 RVA: 0x00016648 File Offset: 0x00014848
 		public string OpenFileDialog(string extension, string initialDirectory = null)
 		{
 			Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog
@@ -40,29 +40,34 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Framework
 				DefaultExt = "." + extension.ToLower(CultureInfo.CurrentCulture),
 				Filter = string.Format("{0} files (*.{1})|*.{1}", extension.ToUpper(CultureInfo.CurrentCulture), extension.ToLower(CultureInfo.CurrentCulture))
 			};
-			if (initialDirectory != null)
+			bool flag = initialDirectory != null;
+			if (flag)
 			{
 				openFileDialog.InitialDirectory = initialDirectory;
 			}
-			string result;
-			if (openFileDialog.ShowDialog() == true)
+			bool? flag2 = openFileDialog.ShowDialog();
+			bool? flag3 = flag2;
+			bool flag4 = true;
+			bool flag5 = (flag3.GetValueOrDefault() == flag4) & (flag3 != null);
+			string text;
+			if (flag5)
 			{
-				result = openFileDialog.FileName;
+				text = openFileDialog.FileName;
 			}
 			else
 			{
-				result = null;
+				text = null;
 			}
-			return result;
+			return text;
 		}
 
-		// Token: 0x06000272 RID: 626 RVA: 0x0000F1A8 File Offset: 0x0000D3A8
+		// Token: 0x0600045F RID: 1119 RVA: 0x000166E8 File Offset: 0x000148E8
 		public string OpenDirectoryDialog()
 		{
 			return this.OpenDirectoryDialog(Environment.ExpandEnvironmentVariables(Settings.Default.ZipFilePath));
 		}
 
-		// Token: 0x06000273 RID: 627 RVA: 0x0000F1D0 File Offset: 0x0000D3D0
+		// Token: 0x06000460 RID: 1120 RVA: 0x00016710 File Offset: 0x00014910
 		public string OpenDirectoryDialog(string initPath)
 		{
 			FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog
@@ -70,25 +75,26 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Framework
 				SelectedPath = initPath,
 				Description = LocalizationManager.GetTranslation("PleaseSelectAFolder")
 			};
-			string result;
-			if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+			bool flag = folderBrowserDialog.ShowDialog() == DialogResult.OK;
+			string text;
+			if (flag)
 			{
-				result = folderBrowserDialog.SelectedPath;
+				text = folderBrowserDialog.SelectedPath;
 			}
 			else
 			{
-				result = null;
+				text = null;
 			}
-			return result;
+			return text;
 		}
 
-		// Token: 0x040000F9 RID: 249
+		// Token: 0x0400021A RID: 538
 		private Window shellWindow;
 
-		// Token: 0x02000046 RID: 70
+		// Token: 0x0200012E RID: 302
 		private class Nested
 		{
-			// Token: 0x040000FA RID: 250
+			// Token: 0x040003E6 RID: 998
 			internal static readonly DialogManager NestedInstance = new DialogManager();
 		}
 	}

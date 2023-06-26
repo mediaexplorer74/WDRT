@@ -138,7 +138,7 @@ namespace ComponentAce.Compression.ZipForge.Encryption
 		// Token: 0x060006B7 RID: 1719 RVA: 0x0002A854 File Offset: 0x00029854
 		public override ExtraFieldData GetExtraFieldData()
 		{
-			byte strength = 0;
+			byte b = 0;
 			ushort num = this.keyLengthBytes;
 			if (num != 16)
 			{
@@ -146,19 +146,19 @@ namespace ComponentAce.Compression.ZipForge.Encryption
 				{
 					if (num == 32)
 					{
-						strength = 3;
+						b = 3;
 					}
 				}
 				else
 				{
-					strength = 2;
+					b = 2;
 				}
 			}
 			else
 			{
-				strength = 1;
+				b = 1;
 			}
-			return new AESExtraFieldData(this.version, strength, this.actualCompressionMethod);
+			return new AESExtraFieldData(this.version, b, this.actualCompressionMethod);
 		}
 
 		// Token: 0x060006B8 RID: 1720 RVA: 0x0002A898 File Offset: 0x00029898
@@ -178,10 +178,10 @@ namespace ComponentAce.Compression.ZipForge.Encryption
 		// Token: 0x060006B9 RID: 1721 RVA: 0x0002A8EC File Offset: 0x000298EC
 		public override void LoadFileStorageStartBlock(Stream stream, long offset)
 		{
-			int count = (int)(this.keyLengthBytes / 2);
+			int num = (int)(this.keyLengthBytes / 2);
 			stream.Position = offset;
 			BinaryReader binaryReader = new BinaryReader(stream);
-			this.saltValue = binaryReader.ReadBytes(count);
+			this.saltValue = binaryReader.ReadBytes(num);
 			this.UpdateKeys();
 			this.passwordVerificationValue = binaryReader.ReadBytes(2);
 		}

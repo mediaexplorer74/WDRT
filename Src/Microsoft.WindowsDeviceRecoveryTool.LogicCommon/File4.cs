@@ -2,11 +2,11 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon
 {
-	// Token: 0x02000008 RID: 8
+	// Token: 0x02000004 RID: 4
 	public sealed class File4
 	{
-		// Token: 0x1700000C RID: 12
-		// (get) Token: 0x06000045 RID: 69 RVA: 0x000027D8 File Offset: 0x000009D8
+		// Token: 0x1700000A RID: 10
+		// (get) Token: 0x0600003E RID: 62 RVA: 0x00002670 File Offset: 0x00000870
 		public string FileName
 		{
 			get
@@ -15,8 +15,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon
 			}
 		}
 
-		// Token: 0x1700000D RID: 13
-		// (get) Token: 0x06000046 RID: 70 RVA: 0x000027F0 File Offset: 0x000009F0
+		// Token: 0x1700000B RID: 11
+		// (get) Token: 0x0600003F RID: 63 RVA: 0x00002688 File Offset: 0x00000888
 		public string RelativePath
 		{
 			get
@@ -25,8 +25,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon
 			}
 		}
 
-		// Token: 0x1700000E RID: 14
-		// (get) Token: 0x06000047 RID: 71 RVA: 0x00002808 File Offset: 0x00000A08
+		// Token: 0x1700000C RID: 12
+		// (get) Token: 0x06000040 RID: 64 RVA: 0x000026A0 File Offset: 0x000008A0
 		public long FileSize
 		{
 			get
@@ -35,8 +35,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon
 			}
 		}
 
-		// Token: 0x1700000F RID: 15
-		// (get) Token: 0x06000048 RID: 72 RVA: 0x00002820 File Offset: 0x00000A20
+		// Token: 0x1700000D RID: 13
+		// (get) Token: 0x06000041 RID: 65 RVA: 0x000026B8 File Offset: 0x000008B8
 		public string DownloadUrl
 		{
 			get
@@ -45,8 +45,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon
 			}
 		}
 
-		// Token: 0x17000010 RID: 16
-		// (get) Token: 0x06000049 RID: 73 RVA: 0x00002838 File Offset: 0x00000A38
+		// Token: 0x1700000E RID: 14
+		// (get) Token: 0x06000042 RID: 66 RVA: 0x000026D0 File Offset: 0x000008D0
 		public string Checksum
 		{
 			get
@@ -55,8 +55,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon
 			}
 		}
 
-		// Token: 0x17000011 RID: 17
-		// (get) Token: 0x0600004A RID: 74 RVA: 0x00002850 File Offset: 0x00000A50
+		// Token: 0x1700000F RID: 15
+		// (get) Token: 0x06000043 RID: 67 RVA: 0x000026E8 File Offset: 0x000008E8
 		public int ChecksumType
 		{
 			get
@@ -65,7 +65,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon
 			}
 		}
 
-		// Token: 0x0600004B RID: 75 RVA: 0x00002868 File Offset: 0x00000A68
+		// Token: 0x06000044 RID: 68 RVA: 0x00002700 File Offset: 0x00000900
 		public File4(string fileName, string relativePath, long fileSize, string downloadUrl, string checksum, int checksumType)
 		{
 			this.fileName = fileName;
@@ -76,22 +76,22 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon
 			this.checksumType = checksumType;
 		}
 
-		// Token: 0x04000013 RID: 19
+		// Token: 0x04000010 RID: 16
 		private readonly string fileName;
 
-		// Token: 0x04000014 RID: 20
+		// Token: 0x04000011 RID: 17
 		private readonly string relativePath;
 
-		// Token: 0x04000015 RID: 21
+		// Token: 0x04000012 RID: 18
 		private readonly long fileSize;
 
-		// Token: 0x04000016 RID: 22
+		// Token: 0x04000013 RID: 19
 		private readonly string downloadUrl;
 
-		// Token: 0x04000017 RID: 23
+		// Token: 0x04000014 RID: 20
 		private readonly string checksum;
 
-		// Token: 0x04000018 RID: 24
+		// Token: 0x04000015 RID: 21
 		private readonly int checksumType;
 	}
 }

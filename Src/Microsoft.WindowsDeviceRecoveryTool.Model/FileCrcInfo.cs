@@ -3,26 +3,26 @@ using System.IO;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model
 {
-	// Token: 0x02000046 RID: 70
+	// Token: 0x0200000F RID: 15
 	public class FileCrcInfo
 	{
-		// Token: 0x17000096 RID: 150
-		// (get) Token: 0x060001A6 RID: 422 RVA: 0x00004E6C File Offset: 0x0000306C
-		// (set) Token: 0x060001A7 RID: 423 RVA: 0x00004E83 File Offset: 0x00003083
+		// Token: 0x17000037 RID: 55
+		// (get) Token: 0x06000086 RID: 134 RVA: 0x00002F15 File Offset: 0x00001115
+		// (set) Token: 0x06000087 RID: 135 RVA: 0x00002F1D File Offset: 0x0000111D
 		public string FileName { get; set; }
 
-		// Token: 0x17000097 RID: 151
-		// (get) Token: 0x060001A8 RID: 424 RVA: 0x00004E8C File Offset: 0x0000308C
-		// (set) Token: 0x060001A9 RID: 425 RVA: 0x00004EA3 File Offset: 0x000030A3
+		// Token: 0x17000038 RID: 56
+		// (get) Token: 0x06000088 RID: 136 RVA: 0x00002F26 File Offset: 0x00001126
+		// (set) Token: 0x06000089 RID: 137 RVA: 0x00002F2E File Offset: 0x0000112E
 		public bool Optional { get; set; }
 
-		// Token: 0x17000098 RID: 152
-		// (get) Token: 0x060001AA RID: 426 RVA: 0x00004EAC File Offset: 0x000030AC
-		// (set) Token: 0x060001AB RID: 427 RVA: 0x00004EC3 File Offset: 0x000030C3
+		// Token: 0x17000039 RID: 57
+		// (get) Token: 0x0600008A RID: 138 RVA: 0x00002F37 File Offset: 0x00001137
+		// (set) Token: 0x0600008B RID: 139 RVA: 0x00002F3F File Offset: 0x0000113F
 		public string Directory { get; set; }
 
-		// Token: 0x17000099 RID: 153
-		// (get) Token: 0x060001AC RID: 428 RVA: 0x00004ECC File Offset: 0x000030CC
+		// Token: 0x1700003A RID: 58
+		// (get) Token: 0x0600008C RID: 140 RVA: 0x00002F48 File Offset: 0x00001148
 		public string FilePath
 		{
 			get
@@ -31,9 +31,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x1700009A RID: 154
-		// (get) Token: 0x060001AD RID: 429 RVA: 0x00004EF0 File Offset: 0x000030F0
-		// (set) Token: 0x060001AE RID: 430 RVA: 0x00004F07 File Offset: 0x00003107
+		// Token: 0x1700003B RID: 59
+		// (get) Token: 0x0600008D RID: 141 RVA: 0x00002F6B File Offset: 0x0000116B
+		// (set) Token: 0x0600008E RID: 142 RVA: 0x00002F73 File Offset: 0x00001173
 		public string Crc { get; set; }
 	}
 }

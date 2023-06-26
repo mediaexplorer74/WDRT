@@ -1,18 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{50B3916F-8919-4251-BC8B-B65F0C78EF5C}</ProjectGuid>
+    <ProjectGuid>{8C726962-D7A3-4054-B90F-0583259F965F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Microsoft.WindowsDeviceRecoveryTool.BusinessLogic</RootNamespace>
     <AssemblyName>Microsoft.WindowsDeviceRecoveryTool.BusinessLogic</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFramework>net48</TargetFramework>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+  <PropertyGroup>
+    <NoStdLib>True</NoStdLib>
+    <EnableDefaultItems>False</EnableDefaultItems>
+  </PropertyGroup>
+  <PropertyGroup />
+
+   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
@@ -21,6 +25,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -30,15 +35,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.Core" />
-  </ItemGroup>
-  <ItemGroup>
-    <AppDesigner Include="Properties\" />
-  </ItemGroup>
+ 
   <ItemGroup>
     <Compile Include="LogicContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -46,21 +45,32 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Common\Microsoft.WindowsDeviceRecoveryTool.Common.csproj">
-      <Project>{64a43b64-7647-425c-b0e6-2e27da6dbdda}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9660}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.LogicCommon\Microsoft.WindowsDeviceRecoveryTool.LogicCommon.csproj">
-      <Project>{2adf7f14-aa94-4a70-b28f-668964626e8f}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9670}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.LogicCommon</Name>
     </ProjectReference>
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation\Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation.csproj">
-      <Project>{bb6e51c1-bc8b-40d8-8777-27bf97b2105c}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9672}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation</Name>
     </ProjectReference>
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Model\Microsoft.WindowsDeviceRecoveryTool.Model.csproj">
-      <Project>{0fcb723b-55fa-4794-8262-8ec9d399f6e3}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9675}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\mscorlib\mscorlib.csproj">
+      <Project>{8C726962-D7A3-4054-B90F-0583259F968E}</Project>
+      <Name>mscorlib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\System\System.csproj">
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9692}</Project>
+      <Name>System</Name>
+    </ProjectReference>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
 </Project>

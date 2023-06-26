@@ -7,18 +7,18 @@ using Microsoft.WindowsDeviceRecoveryTool.Common;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model
 {
-	// Token: 0x02000020 RID: 32
+	// Token: 0x0200000D RID: 13
 	public class Credentials : NotificationObject
 	{
-		// Token: 0x060000ED RID: 237 RVA: 0x000038E4 File Offset: 0x00001AE4
+		// Token: 0x06000072 RID: 114 RVA: 0x00002C88 File Offset: 0x00000E88
 		public Credentials()
 		{
 			this.InitializeEntropy();
 		}
 
-		// Token: 0x1700005D RID: 93
-		// (get) Token: 0x060000EE RID: 238 RVA: 0x000038F8 File Offset: 0x00001AF8
-		// (set) Token: 0x060000EF RID: 239 RVA: 0x00003910 File Offset: 0x00001B10
+		// Token: 0x17000031 RID: 49
+		// (get) Token: 0x06000073 RID: 115 RVA: 0x00002C9C File Offset: 0x00000E9C
+		// (set) Token: 0x06000074 RID: 116 RVA: 0x00002CB4 File Offset: 0x00000EB4
 		public string UserName
 		{
 			get
@@ -31,9 +31,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x1700005E RID: 94
-		// (get) Token: 0x060000F0 RID: 240 RVA: 0x00003960 File Offset: 0x00001B60
-		// (set) Token: 0x060000F1 RID: 241 RVA: 0x00003978 File Offset: 0x00001B78
+		// Token: 0x17000032 RID: 50
+		// (get) Token: 0x06000075 RID: 117 RVA: 0x00002CF4 File Offset: 0x00000EF4
+		// (set) Token: 0x06000076 RID: 118 RVA: 0x00002D0C File Offset: 0x00000F0C
 		public bool AccountBlocked
 		{
 			get
@@ -46,9 +46,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x1700005F RID: 95
-		// (get) Token: 0x060000F2 RID: 242 RVA: 0x000039C8 File Offset: 0x00001BC8
-		// (set) Token: 0x060000F3 RID: 243 RVA: 0x000039E0 File Offset: 0x00001BE0
+		// Token: 0x17000033 RID: 51
+		// (get) Token: 0x06000077 RID: 119 RVA: 0x00002D4C File Offset: 0x00000F4C
+		// (set) Token: 0x06000078 RID: 120 RVA: 0x00002D64 File Offset: 0x00000F64
 		public string Password
 		{
 			get
@@ -61,74 +61,70 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x060000F4 RID: 244 RVA: 0x00003A30 File Offset: 0x00001C30
+		// Token: 0x06000079 RID: 121 RVA: 0x00002DA4 File Offset: 0x00000FA4
 		public string EncryptString(string input)
 		{
 			byte[] bytes = Encoding.Unicode.GetBytes(input);
-			byte[] inArray = ProtectedData.Protect(bytes, this.entropy, DataProtectionScope.CurrentUser);
-			return Convert.ToBase64String(inArray);
+			byte[] array = ProtectedData.Protect(bytes, this.entropy, DataProtectionScope.CurrentUser);
+			return Convert.ToBase64String(array);
 		}
 
-		// Token: 0x060000F5 RID: 245 RVA: 0x00003A64 File Offset: 0x00001C64
+		// Token: 0x0600007A RID: 122 RVA: 0x00002DD8 File Offset: 0x00000FD8
 		public string DecryptString(string input)
 		{
-			string result;
+			string text;
 			try
 			{
-				if (!string.IsNullOrEmpty(input))
+				bool flag = !string.IsNullOrEmpty(input);
+				if (flag)
 				{
-					byte[] bytes = ProtectedData.Unprotect(Convert.FromBase64String(input), this.entropy, DataProtectionScope.CurrentUser);
-					result = Encoding.Unicode.GetString(bytes);
+					byte[] array = ProtectedData.Unprotect(Convert.FromBase64String(input), this.entropy, DataProtectionScope.CurrentUser);
+					text = Encoding.Unicode.GetString(array);
 				}
 				else
 				{
-					result = string.Empty;
+					text = string.Empty;
 				}
 			}
 			catch
 			{
-				result = string.Empty;
+				text = string.Empty;
 			}
-			return result;
+			return text;
 		}
 
-		// Token: 0x060000F6 RID: 246 RVA: 0x00003AC4 File Offset: 0x00001CC4
+		// Token: 0x0600007B RID: 123 RVA: 0x00002E3C File Offset: 0x0000103C
 		public string ToInsecureString(SecureString input)
 		{
 			IntPtr intPtr = Marshal.SecureStringToBSTR(input);
-			string result;
+			string text;
 			try
 			{
-				result = Marshal.PtrToStringBSTR(intPtr);
+				text = Marshal.PtrToStringBSTR(intPtr);
 			}
 			finally
 			{
 				Marshal.ZeroFreeBSTR(intPtr);
 			}
-			return result;
+			return text;
 		}
 
-		// Token: 0x060000F7 RID: 247 RVA: 0x00003B04 File Offset: 0x00001D04
+		// Token: 0x0600007C RID: 124 RVA: 0x00002E7C File Offset: 0x0000107C
 		private void InitializeEntropy()
 		{
 			this.entropy = Encoding.Unicode.GetBytes("Windows Phone Recovery Tool, salt and papper entropy");
 		}
 
-        public string DecryptString(object proxyPassword)
-        {
-            throw new NotImplementedException();
-        }
+		// Token: 0x04000037 RID: 55
+		private string userName;
 
-        // Token: 0x040000AA RID: 170
-        private string userName;
-
-		// Token: 0x040000AB RID: 171
+		// Token: 0x04000038 RID: 56
 		private string password;
 
-		// Token: 0x040000AC RID: 172
+		// Token: 0x04000039 RID: 57
 		private bool accountBlocked;
 
-		// Token: 0x040000AD RID: 173
+		// Token: 0x0400003A RID: 58
 		private byte[] entropy;
 	}
 }

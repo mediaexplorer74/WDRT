@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Text;
 using ComponentAce.Compression.Archiver;
-using ComponentAce.Compression.Exception1;
+using ComponentAce.Compression.Exception;
 using ComponentAce.Compression.Interfaces;
 
 namespace ComponentAce.Compression.Tar
@@ -17,17 +17,17 @@ namespace ComponentAce.Compression.Tar
 		{
 			this._itemsHandler.ItemsArray[itemNoInBackupArray].WriteLocalHeaderToStream(compressedStream, 0);
 			long uncompressedSize = this._itemsHandler.ItemsArrayBackup[itemNoInBackupArray].UncompressedSize;
-			long count = uncompressedSize / 512L * 512L + ((uncompressedSize % 512L == 0L) ? 0L : 512L);
-			CompressionUtils.CopyStream(backupFileStream, this._compressedStream, count);
+			long num = uncompressedSize / 512L * 512L + ((uncompressedSize % 512L == 0L) ? 0L : 512L);
+			CompressionUtils.CopyStream(backupFileStream, this._compressedStream, num);
 		}
 
 		// Token: 0x060003AA RID: 938 RVA: 0x0001DB8C File Offset: 0x0001CB8C
 		protected override long GetEndOfTheDataStreamPosition(int itemNo)
 		{
-			int index = this._itemsHandler.ItemsArrayBackup.Count - 1;
-			long uncompressedSize = this._itemsHandler.ItemsArrayBackup[index].UncompressedSize;
-			long num = uncompressedSize / 512L * 512L + ((uncompressedSize % 512L == 0L) ? 0L : 512L);
-			return this._itemsHandler.ItemsArrayBackup[index].RelativeLocalHeaderOffset + (long)this._itemsHandler.ItemsArrayBackup[index].GetLocalHeaderSize() + num;
+			int num = this._itemsHandler.ItemsArrayBackup.Count - 1;
+			long uncompressedSize = this._itemsHandler.ItemsArrayBackup[num].UncompressedSize;
+			long num2 = uncompressedSize / 512L * 512L + ((uncompressedSize % 512L == 0L) ? 0L : 512L);
+			return this._itemsHandler.ItemsArrayBackup[num].RelativeLocalHeaderOffset + (long)this._itemsHandler.ItemsArrayBackup[num].GetLocalHeaderSize() + num2;
 		}
 
 		// Token: 0x060003AB RID: 939 RVA: 0x0001DC1C File Offset: 0x0001CC1C
@@ -38,39 +38,39 @@ namespace ComponentAce.Compression.Tar
 			while (processedBytesCount < uncompressedSize)
 			{
 				long num = uncompressedSize - processedBytesCount;
-				long num2 = (num > (long)blockSize) ? ((long)blockSize) : num;
+				long num2 = ((num > (long)blockSize) ? ((long)blockSize) : num);
 				this._totalProcessedFilesSize += num2;
 				if (this._progressEnabled)
 				{
 					DateTime now = DateTime.Now;
-					TimeSpan timeLeft = new TimeSpan(0L);
+					TimeSpan timeSpan = new TimeSpan(0L);
 					if (processedBytesCount != 0L)
 					{
-						timeLeft = new TimeSpan(uncompressedSize * (now.Ticks - this._currentItemOperationStartTime.Ticks) / processedBytesCount) - (now - this._currentItemOperationStartTime);
+						timeSpan = new TimeSpan(uncompressedSize * (now.Ticks - this._currentItemOperationStartTime.Ticks) / processedBytesCount) - (now - this._currentItemOperationStartTime);
 					}
-					this.DoOnFileProgress(item.Name, (double)processedBytesCount / (double)uncompressedSize * 100.0, now - this._currentItemOperationStartTime, timeLeft, item.Operation, ProgressPhase.Process, ref this._progressCancel);
+					this.DoOnFileProgress(item.Name, (double)processedBytesCount / (double)uncompressedSize * 100.0, now - this._currentItemOperationStartTime, timeSpan, item.Operation, ProgressPhase.Process, ref this._progressCancel);
 					if (this._progressCancel)
 					{
 						break;
 					}
-					TimeSpan timeLeft2 = new TimeSpan(0L);
+					TimeSpan timeSpan2 = new TimeSpan(0L);
 					if (this._totalProcessedFilesSize != 0L)
 					{
-						timeLeft2 = new TimeSpan(this._toProcessFilesTotalSize * (now.Ticks - this._operationStartTime.Ticks) / this._totalProcessedFilesSize) - (now - this._operationStartTime);
+						timeSpan2 = new TimeSpan(this._toProcessFilesTotalSize * (now.Ticks - this._operationStartTime.Ticks) / this._totalProcessedFilesSize) - (now - this._operationStartTime);
 					}
-					this.DoOnOverallProgress((double)this._totalProcessedFilesSize / (double)this._toProcessFilesTotalSize * 100.0, now - this._operationStartTime, timeLeft2, item.Operation, ProgressPhase.Process, ref this._progressCancel);
+					this.DoOnOverallProgress((double)this._totalProcessedFilesSize / (double)this._toProcessFilesTotalSize * 100.0, now - this._operationStartTime, timeSpan2, item.Operation, ProgressPhase.Process, ref this._progressCancel);
 					if (this._progressCancel)
 					{
 						break;
 					}
 				}
-				byte[] buffer = new byte[num2];
-				if ((long)streamCompressFrom.Read(buffer, 0, (int)num2) != num2)
+				byte[] array = new byte[num2];
+				if ((long)streamCompressFrom.Read(array, 0, (int)num2) != num2)
 				{
 					break;
 				}
-				MemoryStream data = new MemoryStream(buffer);
-				tarWriter.WriteContent(num2, data);
+				MemoryStream memoryStream = new MemoryStream(array);
+				tarWriter.WriteContent(num2, memoryStream);
 				processedBytesCount += num2;
 				compSize += num2;
 			}
@@ -121,36 +121,36 @@ namespace ComponentAce.Compression.Tar
 				}
 				num -= (long)num4;
 				num3 += (long)num4;
-				TimeSpan timeElapsed = new TimeSpan(DateTime.Now.Ticks - this._currentItemOperationStartTime.Ticks);
-				double progress = (double)num3 / (double)uncompressedSize * 100.0;
-				TimeSpan timeLeft;
+				TimeSpan timeSpan = new TimeSpan(DateTime.Now.Ticks - this._currentItemOperationStartTime.Ticks);
+				double num5 = (double)num3 / (double)uncompressedSize * 100.0;
+				TimeSpan timeSpan2;
 				if (num3 > 0L)
 				{
-					double num5 = (double)num3 / (double)timeElapsed.Ticks;
-					timeLeft = new TimeSpan((long)((double)(uncompressedSize - num3) / num5));
+					double num6 = (double)num3 / (double)timeSpan.Ticks;
+					timeSpan2 = new TimeSpan((long)((double)(uncompressedSize - num3) / num6));
 				}
 				else
 				{
-					timeLeft = new TimeSpan(0L);
+					timeSpan2 = new TimeSpan(0L);
 				}
-				TimeSpan timeElapsed2 = new TimeSpan(DateTime.Now.Ticks - this._operationStartTime.Ticks);
-				TimeSpan timeLeft2;
+				TimeSpan timeSpan3 = new TimeSpan(DateTime.Now.Ticks - this._operationStartTime.Ticks);
+				TimeSpan timeSpan4;
 				if (this._totalProcessedFilesSize > 0L)
 				{
-					double num6 = (double)this._totalProcessedFilesSize / (double)timeElapsed2.Ticks;
-					timeLeft2 = new TimeSpan((long)((double)(this._toProcessFilesTotalSize - this._totalProcessedFilesSize) / num6));
+					double num7 = (double)this._totalProcessedFilesSize / (double)timeSpan3.Ticks;
+					timeSpan4 = new TimeSpan((long)((double)(this._toProcessFilesTotalSize - this._totalProcessedFilesSize) / num7));
 				}
 				else
 				{
-					timeLeft2 = new TimeSpan(0L);
+					timeSpan4 = new TimeSpan(0L);
 				}
-				double num7 = (double)this._totalProcessedFilesSize / (double)this._toProcessFilesTotalSize * 100.0;
-				if (num7 > 100.0)
+				double num8 = (double)this._totalProcessedFilesSize / (double)this._toProcessFilesTotalSize * 100.0;
+				if (num8 > 100.0)
 				{
-					num7 = 100.0;
+					num8 = 100.0;
 				}
-				this.DoOnFileProgress(this._itemsHandler.ItemsArray[itemNo].Name, progress, timeElapsed, timeLeft, ProcessOperation.Extract, ProgressPhase.Process, ref flag);
-				this.DoOnOverallProgress(num7, timeElapsed2, timeLeft2, ProcessOperation.Extract, ProgressPhase.Process, ref flag);
+				this.DoOnFileProgress(this._itemsHandler.ItemsArray[itemNo].Name, num5, timeSpan, timeSpan2, ProcessOperation.Extract, ProgressPhase.Process, ref flag);
+				this.DoOnOverallProgress(num8, timeSpan3, timeSpan4, ProcessOperation.Extract, ProgressPhase.Process, ref flag);
 				this._totalProcessedFilesSize += num2;
 				num3 += num2;
 				if (!flag)
@@ -172,22 +172,22 @@ namespace ComponentAce.Compression.Tar
 		protected internal override void FillDirItem(int itemNo, string fileName)
 		{
 			bool flag = FileUtils.DirectotyExists(fileName);
-			string fileName2 = FileUtils.StripSlash(fileName);
-			FileAttributes attr;
+			string text = FileUtils.StripSlash(fileName);
+			FileAttributes fileAttributes;
 			if (File.Exists(fileName))
 			{
-				attr = FileUtils.GetAttributes(fileName2);
+				fileAttributes = FileUtils.GetAttributes(text);
 			}
 			else if (flag)
 			{
-				attr = FileAttributes.Directory;
+				fileAttributes = FileAttributes.Directory;
 			}
 			else
 			{
-				attr = FileAttributes.Archive;
+				fileAttributes = FileAttributes.Archive;
 			}
 			string archiveFileName = CompressionUtils.GetArchiveFileName(fileName, FileUtils.GetCurrentDirectory(), this._archiverOptions.StorePath);
-			this.FillDirItem(itemNo, fileName, archiveFileName, flag, true, attr);
+			this.FillDirItem(itemNo, fileName, archiveFileName, flag, true, fileAttributes);
 		}
 
 		// Token: 0x060003B2 RID: 946 RVA: 0x0001E0EC File Offset: 0x0001D0EC
@@ -198,12 +198,12 @@ namespace ComponentAce.Compression.Tar
 				return;
 			}
 			string text = FileUtils.StripSlash(fileName);
-			DateTime lastFileModificationTime = retrieveFileDate ? File.GetLastWriteTime(text) : DateTime.Now;
+			DateTime dateTime = (retrieveFileDate ? File.GetLastWriteTime(text) : DateTime.Now);
 			TarItem tarItem = new TarItem(arcFileName, this._oemCodePage, new DoOnStreamOperationFailureDelegate(base.DoOnWriteToStreamFailure), new DoOnStreamOperationFailureDelegate(base.DoOnReadFromStreamFailure));
 			this._itemsHandler.ItemsArray[itemNo] = tarItem;
 			tarItem.IsModified = true;
 			tarItem.SrcFileName = text;
-			tarItem.LastFileModificationTime = lastFileModificationTime;
+			tarItem.LastFileModificationTime = dateTime;
 			tarItem.Crc32 = uint.MaxValue;
 			tarItem.UncompressedSize = 0L;
 			tarItem.ExternalAttributes = attr;
@@ -280,8 +280,8 @@ namespace ComponentAce.Compression.Tar
 		// Token: 0x060003B6 RID: 950 RVA: 0x0001E2DC File Offset: 0x0001D2DC
 		protected override void AddNewItemToItemsHandler()
 		{
-			TarItem item = new TarItem(new DoOnStreamOperationFailureDelegate(base.DoOnWriteToStreamFailure), new DoOnStreamOperationFailureDelegate(base.DoOnReadFromStreamFailure));
-			this._itemsHandler.ItemsArray.AddItem(item);
+			TarItem tarItem = new TarItem(new DoOnStreamOperationFailureDelegate(base.DoOnWriteToStreamFailure), new DoOnStreamOperationFailureDelegate(base.DoOnReadFromStreamFailure));
+			this._itemsHandler.ItemsArray.AddItem(tarItem);
 		}
 
 		// Token: 0x060003B7 RID: 951 RVA: 0x0001E318 File Offset: 0x0001D318

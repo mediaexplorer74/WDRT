@@ -7,7 +7,8 @@ namespace FFUComponents
 	internal class TimeoutHelper
 	{
 		// Token: 0x06000154 RID: 340 RVA: 0x000077EE File Offset: 0x000059EE
-		public TimeoutHelper(int timeoutMilliseconds) : this(TimeSpan.FromMilliseconds((double)timeoutMilliseconds))
+		public TimeoutHelper(int timeoutMilliseconds)
+			: this(TimeSpan.FromMilliseconds((double)timeoutMilliseconds))
 		{
 		}
 

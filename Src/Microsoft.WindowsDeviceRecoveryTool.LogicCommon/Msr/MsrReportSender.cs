@@ -14,18 +14,20 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.Enums;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Msr
 {
-	// Token: 0x0200001B RID: 27
+	// Token: 0x02000029 RID: 41
 	public sealed class MsrReportSender
 	{
-		// Token: 0x14000008 RID: 8
-		// (add) Token: 0x060000FD RID: 253 RVA: 0x000064DC File Offset: 0x000046DC
-		// (remove) Token: 0x060000FE RID: 254 RVA: 0x00006518 File Offset: 0x00004718
+		// Token: 0x1400000F RID: 15
+		// (add) Token: 0x060002B0 RID: 688 RVA: 0x00009754 File Offset: 0x00007954
+		// (remove) Token: 0x060002B1 RID: 689 RVA: 0x0000978C File Offset: 0x0000798C
+		[field: DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event Action SessionReportsSendingCompleted;
 
-		// Token: 0x060000FF RID: 255 RVA: 0x00006554 File Offset: 0x00004754
+		// Token: 0x060002B2 RID: 690 RVA: 0x000097C4 File Offset: 0x000079C4
 		public MsrReportSender(MsrReporting msrReporting)
 		{
-			if (msrReporting == null)
+			bool flag = msrReporting == null;
+			if (flag)
 			{
 				throw new ArgumentNullException("msrReporting");
 			}
@@ -35,95 +37,91 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Msr
 			this.msrReporting.SendCompleted += this.MsrReportSendCompleted;
 		}
 
-		// Token: 0x06000100 RID: 256 RVA: 0x000065C4 File Offset: 0x000047C4
+		// Token: 0x060002B3 RID: 691 RVA: 0x00009830 File Offset: 0x00007A30
 		public void SendReport(ReportData reportData, bool isInternal)
 		{
-			Tracer<MsrReportSender>.WriteInformation("Sending report {0} | {1}", new object[]
-			{
-				reportData.Description,
-				reportData.UriData
-			});
+			Tracer<MsrReportSender>.WriteInformation("Sending report {0} | {1}", new object[] { reportData.Description, reportData.UriData });
 			try
 			{
 				bool flag = false;
-				MsrReport report = ReportBuilder.Build(reportData, isInternal);
-				if (!flag)
+				MsrReport msrReport = ReportBuilder.Build(reportData, isInternal);
+				bool flag2 = !flag;
+				if (flag2)
 				{
-					this.msrReporting.SendAsync(report);
+					this.msrReporting.SendAsync(msrReport);
 				}
 			}
-			catch (Exception error)
+			catch (Exception ex)
 			{
-				Tracer<MsrReportSender>.WriteError(error, "Sending report failed.", new object[0]);
+				Tracer<MsrReportSender>.WriteError(ex, "Sending report failed.", new object[0]);
 			}
 		}
 
-		// Token: 0x06000101 RID: 257 RVA: 0x00006648 File Offset: 0x00004848
+		// Token: 0x060002B4 RID: 692 RVA: 0x000098B4 File Offset: 0x00007AB4
 		public void SendReport(SurveyReport report, bool isInternal)
 		{
-			Tracer<MsrReportSender>.WriteInformation("Sending report {0} | {1}", new object[]
-			{
-				report.ManufacturerHardwareModel,
-				report.ManufacturerHardwareVariant
-			});
+			Tracer<MsrReportSender>.WriteInformation("Sending report {0} | {1}", new object[] { report.ManufacturerHardwareModel, report.ManufacturerHardwareVariant });
 			try
 			{
-				if (!false)
+				bool flag = false;
+				bool flag2 = !flag;
+				if (flag2)
 				{
 					this.msrReporting.SendAsync(report);
 				}
 			}
-			catch (Exception error)
+			catch (Exception ex)
 			{
-				Tracer<MsrReportSender>.WriteError(error, "Sending report failed.", new object[0]);
+				Tracer<MsrReportSender>.WriteError(ex, "Sending report failed.", new object[0]);
 			}
 		}
 
-		// Token: 0x06000102 RID: 258 RVA: 0x000066C0 File Offset: 0x000048C0
+		// Token: 0x060002B5 RID: 693 RVA: 0x0000992C File Offset: 0x00007B2C
 		public void SaveLocalReport(ReportData reportData)
 		{
-			Tracer<MsrReportSender>.WriteInformation("Saving report locally: {0}", new object[]
-			{
-				reportData.PhoneInfo
-			});
+			Tracer<MsrReportSender>.WriteInformation("Saving report locally: {0}", new object[] { reportData.PhoneInfo });
 			try
 			{
-				MsrReport report = ReportBuilder.Build(reportData, ApplicationInfo.IsInternal());
-				if (string.IsNullOrWhiteSpace(reportData.LocalPath))
+				MsrReport msrReport = ReportBuilder.Build(reportData, ApplicationInfo.IsInternal());
+				bool flag = string.IsNullOrWhiteSpace(reportData.LocalPath);
+				if (flag)
 				{
 					reportData.LocalPath = this.BuildReportFilename("Not sent\\", reportData.PhoneInfo.Imei, reportData.Description, ReportFileType.Binary);
 				}
-				this.ioHelper.SerializeReport(reportData.LocalPath, report);
+				this.ioHelper.SerializeReport(reportData.LocalPath, msrReport);
 			}
-			catch (Exception error)
+			catch (Exception ex)
 			{
-				Tracer<MsrReportSender>.WriteError(error, "Saving local report failed.", new object[0]);
+				Tracer<MsrReportSender>.WriteError(ex, "Saving local report failed.", new object[0]);
 			}
 		}
 
-		// Token: 0x06000103 RID: 259 RVA: 0x00006770 File Offset: 0x00004970
+		// Token: 0x060002B6 RID: 694 RVA: 0x000099D4 File Offset: 0x00007BD4
 		public void SendOldReports()
 		{
-			if (!this.workerHelper.IsBusy)
+			bool flag = !this.workerHelper.IsBusy;
+			if (flag)
 			{
 				this.workerHelper.RunWorkerAsync();
 			}
 		}
 
-		// Token: 0x06000104 RID: 260 RVA: 0x0000679C File Offset: 0x0000499C
+		// Token: 0x060002B7 RID: 695 RVA: 0x00009A04 File Offset: 0x00007C04
 		public void RemoveLocalReport(string localPath)
 		{
-			if (!string.IsNullOrWhiteSpace(localPath))
+			bool flag = !string.IsNullOrWhiteSpace(localPath);
+			if (flag)
 			{
 				this.ioHelper.DeleteFile(localPath);
 			}
 		}
 
-		// Token: 0x06000105 RID: 261 RVA: 0x000067C4 File Offset: 0x000049C4
+		// Token: 0x060002B8 RID: 696 RVA: 0x00009A30 File Offset: 0x00007C30
 		public void SendSessionReports(List<ReportData> reportDataList, bool isInternal)
 		{
 			this.sendingReportQueue = new List<IReport>();
-			lock (this.sendingReportQueue)
+			List<IReport> list = this.sendingReportQueue;
+			lock (list)
 			{
 				try
 				{
@@ -132,40 +130,42 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Msr
 						reportData.EndDataCollecting();
 						bool flag2 = false;
 						MsrReport msrReport = ReportBuilder.Build(reportData, isInternal);
-						if (!flag2)
+						bool flag3 = !flag2;
+						if (flag3)
 						{
 							this.sendingReportQueue.Add(msrReport);
 							this.msrReporting.SendAsync(msrReport);
 						}
 					}
 				}
-				catch (Exception error)
+				catch (Exception ex)
 				{
-					Tracer<MsrReportSender>.WriteError(error, "Sending report failed.", new object[0]);
+					Tracer<MsrReportSender>.WriteError(ex, "Sending report failed.", new object[0]);
 				}
 			}
 			this.TrySendSessionReportsCompletedEvent();
 		}
 
-		// Token: 0x06000106 RID: 262 RVA: 0x000068C0 File Offset: 0x00004AC0
+		// Token: 0x060002B9 RID: 697 RVA: 0x00009B20 File Offset: 0x00007D20
 		private void SaveSentReport(ReportSendCompletedEventArgs e)
 		{
-			string reportPath = this.BuildReportFilename("Sent\\", e.Parameters.Ext1.Replace(":", string.Empty).Replace(" ", string.Empty), e.Parameters.Ext2, ReportFileType.Xml);
-			this.ioHelper.SaveReport(reportPath, e.Parameters);
+			string text = this.BuildReportFilename("Sent\\", e.Parameters.Ext1.Replace(":", string.Empty).Replace(" ", string.Empty), e.Parameters.Ext2, ReportFileType.Xml);
+			this.ioHelper.SaveReport(text, e.Parameters);
 		}
 
-		// Token: 0x06000107 RID: 263 RVA: 0x00006924 File Offset: 0x00004B24
+		// Token: 0x060002BA RID: 698 RVA: 0x00009B84 File Offset: 0x00007D84
 		private void SaveNotSentReport(ReportSendCompletedEventArgs e)
 		{
 			IReport report = e.Report;
-			if (string.IsNullOrWhiteSpace(report.LocalPath))
+			bool flag = string.IsNullOrWhiteSpace(report.LocalPath);
+			if (flag)
 			{
 				report.LocalPath = this.BuildReportFilename("Not sent\\", report.Imei, report.ActionDescription, ReportFileType.Binary);
 			}
 			this.ioHelper.SerializeReport(report.LocalPath, report);
 		}
 
-		// Token: 0x06000108 RID: 264 RVA: 0x00006980 File Offset: 0x00004B80
+		// Token: 0x060002BB RID: 699 RVA: 0x00009BDC File Offset: 0x00007DDC
 		private void SendOldReports(object sender, DoWorkEventArgs e)
 		{
 			string text = Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.AppDataPath(SpecialFolder.Reports) + "Not sent\\";
@@ -188,32 +188,32 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Msr
 						Report report2 = this.ioHelper.DeserializeFireReport(text2);
 						report = report2.ConvertToMsrReport();
 					}
-					catch (Exception error)
+					catch (Exception ex)
 					{
-						Tracer<MsrReportSender>.WriteError(error, "Old report deserialization failed", new object[0]);
+						Tracer<MsrReportSender>.WriteError(ex, "Old report deserialization failed", new object[0]);
 						this.ioHelper.DeleteFile(text2);
-						goto IL_A1;
+						goto IL_A2;
 					}
 				}
-				goto IL_92;
-				IL_A1:
+				goto IL_93;
+				IL_A2:
 				i++;
 				continue;
-				IL_92:
+				IL_93:
 				this.msrReporting.SendAsync(report);
-				goto IL_A1;
+				goto IL_A2;
 			}
 		}
 
-		// Token: 0x06000109 RID: 265 RVA: 0x00006A64 File Offset: 0x00004C64
+		// Token: 0x060002BC RID: 700 RVA: 0x00009CB4 File Offset: 0x00007EB4
 		[Conditional("DEBUG")]
 		private void SaveInternalReport(IReport report, ref bool handled)
 		{
 			Tracer<MsrReportSender>.LogEntry("SaveInternalReport");
 			try
 			{
-				string reportPath = this.BuildReportFilename("Internal\\", report.Imei, report.ActionDescription, ReportFileType.Csv);
-				this.ioHelper.SaveReportAsCsv(reportPath, report);
+				string text = this.BuildReportFilename("Internal\\", report.Imei, report.ActionDescription, ReportFileType.Csv);
+				this.ioHelper.SaveReportAsCsv(text, report);
 				this.RemoveLocalReport(report.LocalPath);
 				handled = true;
 			}
@@ -223,10 +223,11 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Msr
 			Tracer<MsrReportSender>.LogExit("SaveInternalReport");
 		}
 
-		// Token: 0x0600010A RID: 266 RVA: 0x00006ADC File Offset: 0x00004CDC
+		// Token: 0x060002BD RID: 701 RVA: 0x00009D28 File Offset: 0x00007F28
 		private void MsrReportSendCompleted(ReportSendCompletedEventArgs e)
 		{
-			if (e.Error != null)
+			bool flag = e.Error != null;
+			if (flag)
 			{
 				try
 				{
@@ -234,10 +235,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Msr
 				}
 				catch (Exception ex)
 				{
-					Tracer<MsrReportSender>.WriteInformation("SaveNotSentReport failed: {0}", new object[]
-					{
-						ex.Message
-					});
+					Tracer<MsrReportSender>.WriteInformation("SaveNotSentReport failed: {0}", new object[] { ex.Message });
 				}
 			}
 			else
@@ -248,17 +246,16 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Msr
 					this.SaveSentReport(e);
 					this.RemoveLocalReport(e.Report.LocalPath);
 				}
-				catch (Exception ex)
+				catch (Exception ex2)
 				{
-					Tracer<MsrReportSender>.WriteInformation("SaveSentReport failed: {0}", new object[]
-					{
-						ex.Message
-					});
+					Tracer<MsrReportSender>.WriteInformation("SaveSentReport failed: {0}", new object[] { ex2.Message });
 				}
 			}
-			if (this.sendingReportQueue != null && this.sendingReportQueue.Contains(e.Report))
+			bool flag2 = this.sendingReportQueue != null && this.sendingReportQueue.Contains(e.Report);
+			if (flag2)
 			{
-				lock (this.sendingReportQueue)
+				List<IReport> list = this.sendingReportQueue;
+				lock (list)
 				{
 					this.sendingReportQueue.Remove(e.Report);
 				}
@@ -266,46 +263,42 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Msr
 			}
 		}
 
-		// Token: 0x0600010B RID: 267 RVA: 0x00006C08 File Offset: 0x00004E08
+		// Token: 0x060002BE RID: 702 RVA: 0x00009E48 File Offset: 0x00008048
 		private void TrySendSessionReportsCompletedEvent()
 		{
-			if (this.sendingReportQueue != null && !this.sendingReportQueue.Any<IReport>())
+			bool flag = this.sendingReportQueue == null || this.sendingReportQueue.Any<IReport>();
+			if (!flag)
 			{
 				Action sessionReportsSendingCompleted = this.SessionReportsSendingCompleted;
-				if (sessionReportsSendingCompleted != null)
+				bool flag2 = sessionReportsSendingCompleted != null;
+				if (flag2)
 				{
 					sessionReportsSendingCompleted();
 				}
 			}
 		}
 
-		// Token: 0x0600010C RID: 268 RVA: 0x00006C50 File Offset: 0x00004E50
+		// Token: 0x060002BF RID: 703 RVA: 0x00009E8C File Offset: 0x0000808C
 		private string BuildReportFilename(string subDirectory, string imei, string reportDescription, ReportFileType reportFileType)
 		{
 			string text = Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.AppDataPath(SpecialFolder.Reports) + subDirectory;
 			this.ioHelper.CreateDir(text);
 			DateTime utcNow = DateTime.UtcNow;
 			string reportFileExtension = this.ioHelper.GetReportFileExtension(reportFileType);
-			string str = string.Format("msr_{0:yyyyMMdd}_{0:HHmmss_ff}_{1}_{2}.{3}", new object[]
-			{
-				utcNow,
-				imei,
-				reportDescription,
-				reportFileExtension
-			});
-			return text + str;
+			string text2 = string.Format("msr_{0:yyyyMMdd}_{0:HHmmss_ff}_{1}_{2}.{3}", new object[] { utcNow, imei, reportDescription, reportFileExtension });
+			return text + text2;
 		}
 
-		// Token: 0x04000084 RID: 132
+		// Token: 0x04000124 RID: 292
 		private MsrReporting msrReporting;
 
-		// Token: 0x04000085 RID: 133
+		// Token: 0x04000125 RID: 293
 		private WorkerHelper workerHelper;
 
-		// Token: 0x04000086 RID: 134
+		// Token: 0x04000126 RID: 294
 		private IOHelper ioHelper;
 
-		// Token: 0x04000087 RID: 135
+		// Token: 0x04000127 RID: 295
 		private List<IReport> sendingReportQueue;
 	}
 }

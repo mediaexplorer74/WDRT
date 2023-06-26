@@ -9,20 +9,20 @@ using Microsoft.WindowsDeviceRecoveryTool.Messages;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 {
-	// Token: 0x020000AA RID: 170
+	// Token: 0x02000055 RID: 85
 	[Export]
 	public class ReadingDeviceInfoWithThorViewModel : BaseViewModel
 	{
-		// Token: 0x060004D9 RID: 1241 RVA: 0x00018A13 File Offset: 0x00016C13
+		// Token: 0x0600035A RID: 858 RVA: 0x00012DA1 File Offset: 0x00010FA1
 		[ImportingConstructor]
 		public ReadingDeviceInfoWithThorViewModel(Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext)
 		{
 			this.AppContext = appContext;
 		}
 
-		// Token: 0x170000FE RID: 254
-		// (get) Token: 0x060004DA RID: 1242 RVA: 0x00018A28 File Offset: 0x00016C28
-		// (set) Token: 0x060004DB RID: 1243 RVA: 0x00018A40 File Offset: 0x00016C40
+		// Token: 0x170000D6 RID: 214
+		// (get) Token: 0x0600035B RID: 859 RVA: 0x00012DB4 File Offset: 0x00010FB4
+		// (set) Token: 0x0600035C RID: 860 RVA: 0x00012DCC File Offset: 0x00010FCC
 		public Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext AppContext
 		{
 			get
@@ -35,8 +35,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x170000FF RID: 255
-		// (get) Token: 0x060004DC RID: 1244 RVA: 0x00018A90 File Offset: 0x00016C90
+		// Token: 0x170000D7 RID: 215
+		// (get) Token: 0x0600035D RID: 861 RVA: 0x00012E0C File Offset: 0x0001100C
 		public override string PreviousStateName
 		{
 			get
@@ -45,17 +45,16 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x060004DD RID: 1245 RVA: 0x00018AA8 File Offset: 0x00016CA8
+		// Token: 0x0600035E RID: 862 RVA: 0x00012E24 File Offset: 0x00011024
 		public override void OnStarted()
 		{
 			base.EventAggregator.Publish<HeaderMessage>(new HeaderMessage(LocalizationManager.GetTranslation("ReadingDeviceInfo"), ""));
 			base.EventAggregator.Publish<IsBackButtonMessage>(new IsBackButtonMessage(false));
 			base.EventAggregator.Publish<BlockWindowMessage>(new BlockWindowMessage(true, null, null));
-			//RnD
-			//base.Commands.Run((LumiaController c) => c.TryReadMissingInfoWithThor(null, CancellationToken.None));
+			base.Commands.Run((LumiaController c) => c.TryReadMissingInfoWithThor(null, CancellationToken.None));
 		}
 
-		// Token: 0x0400021B RID: 539
+		// Token: 0x0400017C RID: 380
 		private Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext;
 	}
 }

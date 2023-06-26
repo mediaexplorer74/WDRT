@@ -2,14 +2,14 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Reporting.Enums
 {
-	// Token: 0x02000023 RID: 35
+	// Token: 0x02000021 RID: 33
 	public enum ReportFileType
 	{
-		// Token: 0x04000095 RID: 149
+		// Token: 0x040000FF RID: 255
 		Xml,
-		// Token: 0x04000096 RID: 150
+		// Token: 0x04000100 RID: 256
 		Binary,
-		// Token: 0x04000097 RID: 151
+		// Token: 0x04000101 RID: 257
 		Csv
 	}
 }

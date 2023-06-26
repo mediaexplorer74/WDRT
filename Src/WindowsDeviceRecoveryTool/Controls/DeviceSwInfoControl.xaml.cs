@@ -8,18 +8,18 @@ using System.Windows.Markup;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 {
-	// Token: 0x02000028 RID: 40
+	// Token: 0x020000CB RID: 203
 	public partial class DeviceSwInfoControl : ContentControl
 	{
-		// Token: 0x06000132 RID: 306 RVA: 0x00009CD4 File Offset: 0x00007ED4
+		// Token: 0x0600063F RID: 1599 RVA: 0x0001DD33 File Offset: 0x0001BF33
 		public DeviceSwInfoControl()
 		{
 			this.InitializeComponent();
 		}
 
-		// Token: 0x17000038 RID: 56
-		// (get) Token: 0x06000133 RID: 307 RVA: 0x00009CE8 File Offset: 0x00007EE8
-		// (set) Token: 0x06000134 RID: 308 RVA: 0x00009D0A File Offset: 0x00007F0A
+		// Token: 0x17000169 RID: 361
+		// (get) Token: 0x06000640 RID: 1600 RVA: 0x0001DD44 File Offset: 0x0001BF44
+		// (set) Token: 0x06000641 RID: 1601 RVA: 0x0001DD66 File Offset: 0x0001BF66
 		public Visibility AkVersionVisibility
 		{
 			get
@@ -32,9 +32,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x17000039 RID: 57
-		// (get) Token: 0x06000135 RID: 309 RVA: 0x00009D20 File Offset: 0x00007F20
-		// (set) Token: 0x06000136 RID: 310 RVA: 0x00009D42 File Offset: 0x00007F42
+		// Token: 0x1700016A RID: 362
+		// (get) Token: 0x06000642 RID: 1602 RVA: 0x0001DD7C File Offset: 0x0001BF7C
+		// (set) Token: 0x06000643 RID: 1603 RVA: 0x0001DD9E File Offset: 0x0001BF9E
 		public Visibility FirmwareVersionVisibility
 		{
 			get
@@ -47,10 +47,10 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x04000092 RID: 146
+		// Token: 0x040002D6 RID: 726
 		public static readonly DependencyProperty AkVersionVisibilityProperty = DependencyProperty.Register("AkVersionVisibility", typeof(Visibility), typeof(DeviceSwInfoControl), null);
 
-		// Token: 0x04000093 RID: 147
+		// Token: 0x040002D7 RID: 727
 		public static readonly DependencyProperty FirmwareVersionVisibilityProperty = DependencyProperty.Register("FirmwareVersionVisibility", typeof(Visibility), typeof(DeviceSwInfoControl), null);
 	}
 }

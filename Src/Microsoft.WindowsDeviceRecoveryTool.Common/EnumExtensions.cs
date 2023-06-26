@@ -7,7 +7,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Common
 	// Token: 0x02000004 RID: 4
 	public static class EnumExtensions
 	{
-		// Token: 0x0600000A RID: 10 RVA: 0x00002260 File Offset: 0x00000460
+		// Token: 0x06000009 RID: 9 RVA: 0x000021C8 File Offset: 0x000003C8
 		public static string GetDescription(this Enum enumType)
 		{
 			FieldInfo field = enumType.GetType().GetField(enumType.ToString());

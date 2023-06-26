@@ -10,39 +10,30 @@ namespace Nokia.Lucid.Diagnostics
 	internal sealed class UsbDeviceIoTraceSource : TraceSource
 	{
 		// Token: 0x0600012E RID: 302 RVA: 0x0000B154 File Offset: 0x00009354
-		private UsbDeviceIoTraceSource() : base("Nokia.Lucid.UsbDeviceIo")
+		private UsbDeviceIoTraceSource()
+			: base("Nokia.Lucid.UsbDeviceIo")
 		{
 		}
 
 		// Token: 0x0600012F RID: 303 RVA: 0x0000B164 File Offset: 0x00009364
 		public void DeviceIoInformation(string infoString)
 		{
-			string messageText = string.Format(CultureInfo.InvariantCulture, "Message: {0}", new object[]
-			{
-				infoString
-			});
-			this.TraceEvent(TraceEventType.Verbose, UsbDeviceIoTraceEventId.GenericTrace, messageText);
+			string text = string.Format(CultureInfo.InvariantCulture, "Message: {0}", new object[] { infoString });
+			this.TraceEvent(TraceEventType.Verbose, UsbDeviceIoTraceEventId.GenericTrace, text);
 		}
 
 		// Token: 0x06000130 RID: 304 RVA: 0x0000B198 File Offset: 0x00009398
 		public void DeviceIoError(Exception exception)
 		{
-			string messageText = string.Format(CultureInfo.InvariantCulture, "Exception:\r\n{0}", new object[]
-			{
-				exception
-			});
-			this.TraceEvent(TraceEventType.Error, UsbDeviceIoTraceEventId.GenericTrace, messageText);
+			string text = string.Format(CultureInfo.InvariantCulture, "Exception:\r\n{0}", new object[] { exception });
+			this.TraceEvent(TraceEventType.Error, UsbDeviceIoTraceEventId.GenericTrace, text);
 		}
 
 		// Token: 0x06000131 RID: 305 RVA: 0x0000B1CC File Offset: 0x000093CC
 		public void DeviceIoErrorWin32(Win32Exception exception)
 		{
-			string messageText = string.Format(CultureInfo.InvariantCulture, "StatusCode: {0}\r\nWin32Exception:\r\n{1}", new object[]
-			{
-				exception.NativeErrorCode,
-				exception
-			});
-			this.TraceEvent(TraceEventType.Error, UsbDeviceIoTraceEventId.GenericTrace, messageText);
+			string text = string.Format(CultureInfo.InvariantCulture, "StatusCode: {0}\r\nWin32Exception:\r\n{1}", new object[] { exception.NativeErrorCode, exception });
+			this.TraceEvent(TraceEventType.Error, UsbDeviceIoTraceEventId.GenericTrace, text);
 		}
 
 		// Token: 0x06000132 RID: 306 RVA: 0x0000B20C File Offset: 0x0000940C
@@ -50,19 +41,13 @@ namespace Nokia.Lucid.Diagnostics
 		{
 			if (base.Switch.Level == SourceLevels.Information)
 			{
-				string messageText = string.Format(CultureInfo.InvariantCulture, ">> {0}", new object[]
-				{
-					this.FormatMessageTruncated(message)
-				});
-				this.TraceEvent(TraceEventType.Information, UsbDeviceIoTraceEventId.GenericTrace, messageText);
+				string text = string.Format(CultureInfo.InvariantCulture, ">> {0}", new object[] { this.FormatMessageTruncated(message) });
+				this.TraceEvent(TraceEventType.Information, UsbDeviceIoTraceEventId.GenericTrace, text);
 			}
 			if (base.Switch.Level >= SourceLevels.Verbose)
 			{
-				string messageText2 = string.Format(CultureInfo.InvariantCulture, ">> {0}", new object[]
-				{
-					this.FormatMessage(message)
-				});
-				this.TraceEvent(TraceEventType.Information, UsbDeviceIoTraceEventId.GenericTrace, messageText2);
+				string text2 = string.Format(CultureInfo.InvariantCulture, ">> {0}", new object[] { this.FormatMessage(message) });
+				this.TraceEvent(TraceEventType.Information, UsbDeviceIoTraceEventId.GenericTrace, text2);
 			}
 		}
 
@@ -71,19 +56,13 @@ namespace Nokia.Lucid.Diagnostics
 		{
 			if (base.Switch.Level == SourceLevels.Information)
 			{
-				string messageText = string.Format(CultureInfo.InvariantCulture, "<< {0}", new object[]
-				{
-					this.FormatMessageTruncated(message)
-				});
-				this.TraceEvent(TraceEventType.Information, UsbDeviceIoTraceEventId.GenericTrace, messageText);
+				string text = string.Format(CultureInfo.InvariantCulture, "<< {0}", new object[] { this.FormatMessageTruncated(message) });
+				this.TraceEvent(TraceEventType.Information, UsbDeviceIoTraceEventId.GenericTrace, text);
 			}
 			if (base.Switch.Level >= SourceLevels.Verbose)
 			{
-				string messageText2 = string.Format(CultureInfo.InvariantCulture, "<< {0}", new object[]
-				{
-					this.FormatMessage(message)
-				});
-				this.TraceEvent(TraceEventType.Information, UsbDeviceIoTraceEventId.GenericTrace, messageText2);
+				string text2 = string.Format(CultureInfo.InvariantCulture, "<< {0}", new object[] { this.FormatMessage(message) });
+				this.TraceEvent(TraceEventType.Information, UsbDeviceIoTraceEventId.GenericTrace, text2);
 			}
 		}
 

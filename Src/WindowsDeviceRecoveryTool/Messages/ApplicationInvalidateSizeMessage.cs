@@ -2,28 +2,28 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Messages
 {
-	// Token: 0x02000052 RID: 82
+	// Token: 0x0200009A RID: 154
 	public class ApplicationInvalidateSizeMessage
 	{
-		// Token: 0x060002B8 RID: 696 RVA: 0x0000FBA0 File Offset: 0x0000DDA0
+		// Token: 0x06000536 RID: 1334 RVA: 0x0001B304 File Offset: 0x00019504
 		public ApplicationInvalidateSizeMessage(ApplicationInvalidateSizeMessage.DataType type)
 		{
 			this.Type = type;
 		}
 
-		// Token: 0x17000076 RID: 118
-		// (get) Token: 0x060002B9 RID: 697 RVA: 0x0000FBB4 File Offset: 0x0000DDB4
-		// (set) Token: 0x060002BA RID: 698 RVA: 0x0000FBCB File Offset: 0x0000DDCB
+		// Token: 0x17000126 RID: 294
+		// (get) Token: 0x06000537 RID: 1335 RVA: 0x0001B316 File Offset: 0x00019516
+		// (set) Token: 0x06000538 RID: 1336 RVA: 0x0001B31E File Offset: 0x0001951E
 		public ApplicationInvalidateSizeMessage.DataType Type { get; private set; }
 
-		// Token: 0x02000053 RID: 83
+		// Token: 0x02000142 RID: 322
 		public enum DataType
 		{
-			// Token: 0x0400010F RID: 271
+			// Token: 0x0400040B RID: 1035
 			Logs,
-			// Token: 0x04000110 RID: 272
+			// Token: 0x0400040C RID: 1036
 			Reports,
-			// Token: 0x04000111 RID: 273
+			// Token: 0x0400040D RID: 1037
 			Packages
 		}
 	}

@@ -67,12 +67,12 @@ namespace Microsoft.Tools.Connectivity
 		{
 			get
 			{
-				IPAddress result = null;
+				IPAddress ipaddress = null;
 				if (this.ipEndPoint != null)
 				{
-					result = this.ipEndPoint.Address;
+					ipaddress = this.ipEndPoint.Address;
 				}
-				return result;
+				return ipaddress;
 			}
 		}
 
@@ -129,7 +129,7 @@ namespace Microsoft.Tools.Connectivity
 
 		// Token: 0x17000016 RID: 22
 		// (get) Token: 0x0600002D RID: 45 RVA: 0x000024C5 File Offset: 0x000006C5
-		public SirepClientClass SirepClient
+		internal SirepClientClass SirepClient
 		{
 			get
 			{
@@ -143,18 +143,21 @@ namespace Microsoft.Tools.Connectivity
 		public event EventHandler Disconnected;
 
 		// Token: 0x06000030 RID: 48 RVA: 0x0000253D File Offset: 0x0000073D
-		public RemoteDevice(Guid uniqueId) : this()
+		public RemoteDevice(Guid uniqueId)
+			: this()
 		{
 			this.uniqueId = uniqueId;
 		}
 
 		// Token: 0x06000031 RID: 49 RVA: 0x0000254C File Offset: 0x0000074C
-		public RemoteDevice(IPAddress ipAddress) : this(new IPEndPoint(ipAddress, 0))
+		public RemoteDevice(IPAddress ipAddress)
+			: this(new IPEndPoint(ipAddress, 0))
 		{
 		}
 
 		// Token: 0x06000032 RID: 50 RVA: 0x0000255B File Offset: 0x0000075B
-		public RemoteDevice(IPEndPoint ipEndPoint) : this()
+		public RemoteDevice(IPEndPoint ipEndPoint)
+			: this()
 		{
 			this.ipEndPoint = ipEndPoint;
 		}
@@ -186,10 +189,7 @@ namespace Microsoft.Tools.Connectivity
 		{
 			if (!this.UniqueId.Equals(Guid.Empty))
 			{
-				this.Discover(new Guid[]
-				{
-					this.uniqueId
-				});
+				this.Discover(new Guid[] { this.uniqueId });
 				return;
 			}
 			this.Discover(null);
@@ -198,10 +198,7 @@ namespace Microsoft.Tools.Connectivity
 		// Token: 0x06000036 RID: 54 RVA: 0x00002664 File Offset: 0x00000864
 		public void Discover(Guid uniqueId)
 		{
-			this.Discover(new Guid[]
-			{
-				uniqueId
-			});
+			this.Discover(new Guid[] { uniqueId });
 		}
 
 		// Token: 0x06000037 RID: 55 RVA: 0x0000268C File Offset: 0x0000088C
@@ -211,14 +208,14 @@ namespace Microsoft.Tools.Connectivity
 			{
 				this.Disconnect();
 			}
-			TimeSpan timeout = this.Timeout;
+			TimeSpan timeSpan = this.Timeout;
 			bool flag = false;
 			if (candidateIds != null && candidateIds.Count<Guid>() > 0)
 			{
-				timeout = TimeSpan.FromTicks(this.Timeout.Ticks / 2L);
+				timeSpan = TimeSpan.FromTicks(this.Timeout.Ticks / 2L);
 				try
 				{
-					this.DiscoverInternal(candidateIds, this.ipEndPoint, timeout, candidateIds.First<Guid>());
+					this.DiscoverInternal(candidateIds, this.ipEndPoint, timeSpan, candidateIds.First<Guid>());
 					flag = true;
 				}
 				catch (TimeoutException)
@@ -227,7 +224,7 @@ namespace Microsoft.Tools.Connectivity
 			}
 			if (!flag)
 			{
-				this.DiscoverInternal(candidateIds, this.ipEndPoint, timeout, Guid.Empty);
+				this.DiscoverInternal(candidateIds, this.ipEndPoint, timeSpan, Guid.Empty);
 				flag = true;
 			}
 		}
@@ -235,10 +232,7 @@ namespace Microsoft.Tools.Connectivity
 		// Token: 0x06000038 RID: 56 RVA: 0x0000272C File Offset: 0x0000092C
 		public void Discover(Guid uniqueId, AutoResetEvent cancelEvent)
 		{
-			this.Discover(new Guid[]
-			{
-				this.UniqueId
-			}, cancelEvent);
+			this.Discover(new Guid[] { this.UniqueId }, cancelEvent);
 		}
 
 		// Token: 0x06000039 RID: 57 RVA: 0x000027BC File Offset: 0x000009BC
@@ -252,20 +246,16 @@ namespace Microsoft.Tools.Connectivity
 				{
 					this.Discover(candidateIds);
 				}
-				catch (Exception exception1)
+				catch (Exception ex)
 				{
-					exception = exception1;
+					exception = ex;
 				}
 				finally
 				{
 					completedEvent.Set();
 				}
 			});
-			switch (WaitHandle.WaitAny(new WaitHandle[]
-			{
-				completedEvent,
-				cancelEvent
-			}))
+			switch (WaitHandle.WaitAny(new WaitHandle[] { completedEvent, cancelEvent }))
 			{
 			case 0:
 				if (exception != null)
@@ -293,16 +283,16 @@ namespace Microsoft.Tools.Connectivity
 			{
 				throw new OperationFailedException("Device wasn't found");
 			}
-			SirepEndpointInfo localEndpoint = default;
-			localEndpoint.wszIPAddress = "127.0.0.1";
-			localEndpoint.usSirepPort = 0;
-			localEndpoint.usEchoPort = 0;
-			localEndpoint.usProtocol2Port = 0;
-			SirepEndpointInfo remoteEndpoint = default;
-			remoteEndpoint.wszIPAddress = this.ipEndPoint.Address.ToString();
-			remoteEndpoint.usSirepPort = 0;
-			remoteEndpoint.usEchoPort = 0;
-			remoteEndpoint.usProtocol2Port = (ushort)this.ipEndPoint.Port;
+			SirepEndpointInfo sirepEndpointInfo;
+			sirepEndpointInfo.wszIPAddress = "127.0.0.1";
+			sirepEndpointInfo.usSirepPort = 0;
+			sirepEndpointInfo.usEchoPort = 0;
+			sirepEndpointInfo.usProtocol2Port = 0;
+			SirepEndpointInfo sirepEndpointInfo2;
+			sirepEndpointInfo2.wszIPAddress = this.ipEndPoint.Address.ToString();
+			sirepEndpointInfo2.usSirepPort = 0;
+			sirepEndpointInfo2.usEchoPort = 0;
+			sirepEndpointInfo2.usProtocol2Port = (ushort)this.ipEndPoint.Port;
 			if (!string.IsNullOrWhiteSpace(this.UserName))
 			{
 				this.sirepClient.SirepUser(this.UserName, this.securePassword);
@@ -310,11 +300,10 @@ namespace Microsoft.Tools.Connectivity
 			this.sirepClient.Disconnect += this.RemoteDeviceDisconnected;
 			try
 			{
-				this.sirepClient.SirepInitializeWithEndpoints(localEndpoint, remoteEndpoint);
+				this.sirepClient.SirepInitializeWithEndpoints(sirepEndpointInfo, sirepEndpointInfo2);
 				this.sirepClient.SirepSetSshPort((ushort)this.SshPort);
 				this.sirepClient.SirepConnect((uint)this.Timeout.TotalMilliseconds, false);
-				//RnD
-				this.protocol = default;//(RemoteDevice.TransportProtocol)this.sirepClient.SirepUsedProtocol();
+				this.protocol = (RemoteDevice.TransportProtocol)this.sirepClient.SirepUsedProtocol();
 				this.IsConnected = true;
 			}
 			catch (COMException ex)
@@ -334,20 +323,16 @@ namespace Microsoft.Tools.Connectivity
 				{
 					this.Connect();
 				}
-				catch (Exception exception1)
+				catch (Exception ex)
 				{
-					exception = exception1;
+					exception = ex;
 				}
 				finally
 				{
 					completedEvent.Set();
 				}
 			});
-			switch (WaitHandle.WaitAny(new WaitHandle[]
-			{
-				completedEvent,
-				cancelEvent
-			}))
+			switch (WaitHandle.WaitAny(new WaitHandle[] { completedEvent, cancelEvent }))
 			{
 			case 0:
 				if (exception != null)
@@ -378,16 +363,16 @@ namespace Microsoft.Tools.Connectivity
 		// Token: 0x0600003D RID: 61 RVA: 0x00002AC0 File Offset: 0x00000CC0
 		public bool Ping()
 		{
-			bool result = false;
+			bool flag = false;
 			try
 			{
-				result = this.sirepClient.SirepPing((uint)this.Timeout.TotalMilliseconds);
+				flag = this.sirepClient.SirepPing((uint)this.Timeout.TotalMilliseconds);
 			}
 			catch (COMException ex)
 			{
 				this.ExceptionHandler(ex);
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x0600003E RID: 62 RVA: 0x00002B74 File Offset: 0x00000D74
@@ -405,20 +390,16 @@ namespace Microsoft.Tools.Connectivity
 						ping = this.Ping();
 					}
 				}
-				catch (Exception exception1)
+				catch (Exception ex)
 				{
-					exception = exception1;
+					exception = ex;
 				}
 				finally
 				{
 					completedEvent.Set();
 				}
 			});
-			switch (WaitHandle.WaitAny(new WaitHandle[]
-			{
-				completedEvent,
-				cancelEvent
-			}))
+			switch (WaitHandle.WaitAny(new WaitHandle[] { completedEvent, cancelEvent }))
 			{
 			case 0:
 				if (exception != null)
@@ -638,16 +619,16 @@ namespace Microsoft.Tools.Connectivity
 		// Token: 0x06000055 RID: 85 RVA: 0x00002FB0 File Offset: 0x000011B0
 		internal int ProtocolRevision()
 		{
-			int result = -1;
+			int num = -1;
 			try
 			{
-				result = this.sirepClient.GetSirepProtocolRevision();
+				num = this.sirepClient.GetSirepProtocolRevision();
 			}
 			catch (COMException ex)
 			{
 				this.ExceptionHandler(ex);
 			}
-			return result;
+			return num;
 		}
 
 		// Token: 0x06000056 RID: 86 RVA: 0x00002FE8 File Offset: 0x000011E8
@@ -668,7 +649,7 @@ namespace Microsoft.Tools.Connectivity
 		// Token: 0x06000058 RID: 88 RVA: 0x00003008 File Offset: 0x00001208
 		internal void ExceptionHandler(COMException ex, string message)
 		{
-			string message2 = (!string.IsNullOrWhiteSpace(message)) ? message : ex.Message;
+			string text = ((!string.IsNullOrWhiteSpace(message)) ? message : ex.Message);
 			int errorCode = ex.ErrorCode;
 			if (errorCode <= -2147023436)
 			{
@@ -683,16 +664,16 @@ namespace Microsoft.Tools.Connectivity
 					case -2147024892:
 						goto IL_112;
 					case -2147024891:
-						throw new AccessDeniedException(message2, ex);
+						throw new AccessDeniedException(text, ex);
 					default:
 						if (errorCode != -2147023436)
 						{
 							goto IL_112;
 						}
-						throw new TimeoutException(message2, ex);
+						throw new TimeoutException(text, ex);
 					}
 				}
-				throw new ArgumentException(message2, ex);
+				throw new ArgumentException(text, ex);
 			}
 			if (errorCode <= -2145648626)
 			{
@@ -712,7 +693,7 @@ namespace Microsoft.Tools.Connectivity
 					{
 						this.Disconnect();
 					}
-					throw new OperationFailedException(message2, ex);
+					throw new OperationFailedException(text, ex);
 				case -2147014841:
 				case -2147014840:
 				case -2147014839:
@@ -726,7 +707,7 @@ namespace Microsoft.Tools.Connectivity
 					{
 						goto IL_112;
 					}
-					throw new AccessDeniedException(message2, ex);
+					throw new AccessDeniedException(text, ex);
 				}
 			}
 			else if (errorCode != -1988886504)
@@ -735,12 +716,12 @@ namespace Microsoft.Tools.Connectivity
 				{
 					goto IL_112;
 				}
-				throw new DirectoryNotFoundException(message2, ex);
+				throw new DirectoryNotFoundException(text, ex);
 			}
 			IL_E4:
-			throw new FileNotFoundException(message2, ex);
+			throw new FileNotFoundException(text, ex);
 			IL_112:
-			throw new OperationFailedException(message2, ex);
+			throw new OperationFailedException(text, ex);
 		}
 
 		// Token: 0x06000059 RID: 89 RVA: 0x00003130 File Offset: 0x00001330

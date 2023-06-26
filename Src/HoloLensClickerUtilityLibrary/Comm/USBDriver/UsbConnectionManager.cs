@@ -128,13 +128,13 @@ namespace ClickerUtilityLibrary.Comm.USBDriver
 			if (flag)
 			{
 				UsbDevices usbDevices = new UsbDevices();
-				string key = deviceInterfaceSymbolicLinkName.ToUpper(CultureInfo.InvariantCulture);
-				bool flag2 = usbDevices.Devices.ContainsKey(key);
+				string text = deviceInterfaceSymbolicLinkName.ToUpper(CultureInfo.InvariantCulture);
+				bool flag2 = usbDevices.Devices.ContainsKey(text);
 				if (!flag2)
 				{
 					return;
 				}
-				this.Device = usbDevices.Devices[key];
+				this.Device = usbDevices.Devices[text];
 			}
 			bool flag3 = string.Equals(deviceInterfaceSymbolicLinkName, this.Device.DeviceInterfaceSymbolicLinkName, StringComparison.CurrentCultureIgnoreCase);
 			bool flag4 = flag3 && this.mDeviceState == UsbConnectionManager.DeviceState.Disconnected;
@@ -173,22 +173,22 @@ namespace ClickerUtilityLibrary.Comm.USBDriver
 				}
 				else
 				{
-					string deviceInterfaceSymbolicLinkName;
+					string text;
 					fixed (ushort* ptr = &EventData.u.DeviceInterface.SymbolicLink.FixedElementField)
 					{
-						deviceInterfaceSymbolicLinkName = Marshal.PtrToStringUni(new IntPtr((void*)ptr));
+						text = Marshal.PtrToStringUni(new IntPtr((void*)ptr));
 					}
-					this.OnUsbDeviceDisconnect(deviceInterfaceSymbolicLinkName);
+					this.OnUsbDeviceDisconnect(text);
 				}
 			}
 			else
 			{
-				string deviceInterfaceSymbolicLinkName;
+				string text;
 				fixed (ushort* ptr2 = &EventData.u.DeviceInterface.SymbolicLink.FixedElementField)
 				{
-					deviceInterfaceSymbolicLinkName = Marshal.PtrToStringUni(new IntPtr((void*)ptr2));
+					text = Marshal.PtrToStringUni(new IntPtr((void*)ptr2));
 				}
-				this.OnUsbDeviceConnect(deviceInterfaceSymbolicLinkName);
+				this.OnUsbDeviceConnect(text);
 			}
 			return 0U;
 		}

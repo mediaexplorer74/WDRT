@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using ComponentAce.Compression.Exception1;
+using ComponentAce.Compression.Exception;
 using ComponentAce.Compression.Libs.bzip2;
 
 namespace ComponentAce.Compression.Archiver
@@ -38,8 +38,8 @@ namespace ComponentAce.Compression.Archiver
 			{
 				throw ExceptionBuilder.Exception(ErrorCode.CompressionEngineIsNotInitialized);
 			}
-			MemoryStream input = new MemoryStream(sourceBuffer, 0, (int)currentBlockSize);
-			this.CopyStream(input, this.compressStream);
+			MemoryStream memoryStream = new MemoryStream(sourceBuffer, 0, (int)currentBlockSize);
+			this.CopyStream(memoryStream, this.compressStream);
 			if (isFinalBlock)
 			{
 				this.compressStream.Close();
@@ -124,23 +124,23 @@ namespace ComponentAce.Compression.Archiver
 			MemoryStream memoryStream = new MemoryStream();
 			long num2 = (long)this.CopyStream(this.decompressStream, memoryStream, (int)this.decompressStream.Length);
 			num += this.decompressStream.Position;
-			byte[] buffer = memoryStream.ToArray();
+			byte[] array = memoryStream.ToArray();
 			decompressedDataSize = num2;
 			bool flag;
-			base.DoOnDecompressedBufferReady(buffer, (int)num2, out flag);
+			base.DoOnDecompressedBufferReady(array, (int)num2, out flag);
 			endOfFileDiscovered = this.decompressStream.IsStreamEndReached;
 			if (endOfFileDiscovered)
 			{
 				long num3 = (long)sourceBuffer.Length - num;
-				byte[] array = new byte[num3];
-				Buffer.BlockCopy(sourceBuffer, (int)num, array, 0, (int)num3);
-				sourceBuffer = array;
+				byte[] array2 = new byte[num3];
+				Buffer.BlockCopy(sourceBuffer, (int)num, array2, 0, (int)num3);
+				sourceBuffer = array2;
 			}
 			else
 			{
-				byte[] array2 = new byte[this.sourceStream.Length - this.sourceStream.Position];
-				this.sourceStream.Read(array2, 0, (int)(this.sourceStream.Length - this.sourceStream.Position));
-				sourceBuffer = array2;
+				byte[] array3 = new byte[this.sourceStream.Length - this.sourceStream.Position];
+				this.sourceStream.Read(array3, 0, (int)(this.sourceStream.Length - this.sourceStream.Position));
+				sourceBuffer = array3;
 			}
 			return true;
 		}
@@ -168,18 +168,18 @@ namespace ComponentAce.Compression.Archiver
 		// Token: 0x0600020F RID: 527 RVA: 0x00015E34 File Offset: 0x00014E34
 		private int CopyStream(Stream input, Stream output, int readSize)
 		{
-			byte[] buffer;
+			byte[] array;
 			if (readSize > 2048)
 			{
-				buffer = new byte[readSize];
+				array = new byte[readSize];
 			}
 			else
 			{
-				buffer = this.tempBuffer;
+				array = this.tempBuffer;
 			}
-			int result = input.Read(buffer, 0, readSize);
-			output.Write(buffer, 0, readSize);
-			return result;
+			int num = input.Read(array, 0, readSize);
+			output.Write(array, 0, readSize);
+			return num;
 		}
 
 		// Token: 0x0400013A RID: 314

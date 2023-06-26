@@ -62,9 +62,9 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 			{
 				this.device.PutFile(remoteFilePath, localFilePath, true);
 			}
-			catch (Exception innerException)
+			catch (Exception ex)
 			{
-				throw new DeviceException(string.Format("Unexpected failure when copying {0} to {1}", localFilePath, remoteFilePath), innerException);
+				throw new DeviceException(string.Format("Unexpected failure when copying {0} to {1}", localFilePath, remoteFilePath), ex);
 			}
 		}
 
@@ -75,9 +75,9 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 			{
 				this.device.GetFile(remoteFilePath, localFilePath, true);
 			}
-			catch (Exception innerException)
+			catch (Exception ex)
 			{
-				throw new DeviceException(string.Format("Unexpected failure when copying {0} to {1}", remoteFilePath, localFilePath), innerException);
+				throw new DeviceException(string.Format("Unexpected failure when copying {0} to {1}", remoteFilePath, localFilePath), ex);
 			}
 		}
 
@@ -95,42 +95,42 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 					this.device.RunCommand("cmd.exe", string.Format("/c del {0}", remoteFilePath));
 				}
 			}
-			catch (Exception innerException)
+			catch (Exception ex)
 			{
-				throw new DeviceException(string.Format("Unexpected failure when deleting {0}", remoteFilePath), innerException);
+				throw new DeviceException(string.Format("Unexpected failure when deleting {0}", remoteFilePath), ex);
 			}
 		}
 
 		// Token: 0x0600008B RID: 139 RVA: 0x000036D8 File Offset: 0x000018D8
 		public bool IsIpDevice()
 		{
-			bool result;
+			bool flag;
 			try
 			{
 				this.ExecuteCommand(IpDeviceCommunicator.DEVICE_UPDATE_PROPERTY_FIRMWARE_VERSION, null);
-				result = true;
+				flag = true;
 			}
 			catch (Exception)
 			{
-				result = false;
+				flag = false;
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x0600008C RID: 140 RVA: 0x0000370C File Offset: 0x0000190C
 		public bool IsServicingSupported()
 		{
-			bool result;
+			bool flag;
 			try
 			{
 				this.ExecuteCommand(IpDeviceCommunicator.APPLY_UPDATE_COMMAND_STATUS, null);
-				result = true;
+				flag = true;
 			}
 			catch (Exception)
 			{
-				result = false;
+				flag = false;
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x04000024 RID: 36
@@ -205,12 +205,12 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 			// Token: 0x1700002D RID: 45
 			// (get) Token: 0x0600008E RID: 142 RVA: 0x000038C4 File Offset: 0x00001AC4
 			// (set) Token: 0x0600008F RID: 143 RVA: 0x000038CC File Offset: 0x00001ACC
-			private protected string Command { get; private set; }
+			private protected string Command { protected get; private set; }
 
 			// Token: 0x1700002E RID: 46
 			// (get) Token: 0x06000090 RID: 144 RVA: 0x000038D5 File Offset: 0x00001AD5
 			// (set) Token: 0x06000091 RID: 145 RVA: 0x000038DD File Offset: 0x00001ADD
-			private protected string AlternateCommand {  get; private set; }
+			private protected string AlternateCommand { protected get; private set; }
 
 			// Token: 0x06000092 RID: 146 RVA: 0x000038E6 File Offset: 0x00001AE6
 			public IpDeviceCommand(string command, string alternateCommand, string args)
@@ -247,7 +247,8 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 		public class IpDeviceDeviceUpdateUtilCommand : IpDeviceCommunicator.IpDeviceCommand
 		{
 			// Token: 0x06000096 RID: 150 RVA: 0x0000393E File Offset: 0x00001B3E
-			public IpDeviceDeviceUpdateUtilCommand(string args, string secondaryArgs = null) : base("C:\\Windows\\System32\\DeviceUpdateUtil.exe", "DeviceUpdateUtil.exe", args)
+			public IpDeviceDeviceUpdateUtilCommand(string args, string secondaryArgs = null)
+				: base("C:\\Windows\\System32\\DeviceUpdateUtil.exe", "DeviceUpdateUtil.exe", args)
 			{
 				this.secondaryArgs = secondaryArgs;
 			}
@@ -271,10 +272,10 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 			// Token: 0x06000099 RID: 153 RVA: 0x00003988 File Offset: 0x00001B88
 			public override string Execute(RemoteDevice device, string additionalArgs)
 			{
-				string result;
+				string text;
 				try
 				{
-					result = this.Execute(device, additionalArgs, false);
+					text = this.Execute(device, additionalArgs, false);
 				}
 				catch (DeviceException ex)
 				{
@@ -282,9 +283,9 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 					{
 						throw;
 					}
-					result = this.Execute(device, additionalArgs, true);
+					text = this.Execute(device, additionalArgs, true);
 				}
-				return result;
+				return text;
 			}
 
 			// Token: 0x0600009A RID: 154 RVA: 0x000039D0 File Offset: 0x00001BD0
@@ -303,9 +304,9 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 						text = device.RunCommand(base.AlternateCommand, useSecondaryArgs ? this.SecondaryArgs(additionalArgs) : base.Args(additionalArgs));
 					}
 				}
-				catch (Exception innerException)
+				catch (Exception ex)
 				{
-					throw new DeviceException(string.Format("Unexpected failure for command \"{0}\"", fullCommandString), innerException);
+					throw new DeviceException(string.Format("Unexpected failure for command \"{0}\"", fullCommandString), ex);
 				}
 				if (!text.Contains(';'))
 				{
@@ -316,19 +317,19 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 				{
 					num = int.Parse(text.Substring(text.LastIndexOf(';') + 1));
 				}
-				catch (Exception innerException2)
+				catch (Exception ex2)
 				{
-					throw new DeviceException(string.Format("Unexpected status for command \"{0}\"\n{1}", fullCommandString), innerException2);
+					throw new DeviceException(string.Format("Unexpected status for command \"{0}\"\n{1}", fullCommandString), ex2);
 				}
 				if (num == 4317)
 				{
-					Exception ex = new InvalidOperationException(string.Format("Command \"{0}\" failed with status {1}", fullCommandString, num));
-					throw new DeviceException(ex.Message, ex);
+					Exception ex3 = new InvalidOperationException(string.Format("Command \"{0}\" failed with status {1}", fullCommandString, num));
+					throw new DeviceException(ex3.Message, ex3);
 				}
 				if (num == 87)
 				{
-					Exception ex2 = new ArgumentException(string.Format("Command \"{0}\" failed with status {1}", fullCommandString, num));
-					throw new DeviceException(ex2.Message, ex2);
+					Exception ex4 = new ArgumentException(string.Format("Command \"{0}\" failed with status {1}", fullCommandString, num));
+					throw new DeviceException(ex4.Message, ex4);
 				}
 				if (num != 0)
 				{
@@ -360,7 +361,8 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 		public class IpDeviceApplyUpdateCommand : IpDeviceCommunicator.IpDeviceCommand
 		{
 			// Token: 0x0600009B RID: 155 RVA: 0x00003B38 File Offset: 0x00001D38
-			public IpDeviceApplyUpdateCommand(string args, bool log = true, bool ignoreFailure = false, int? timeoutSeconds = null) : base("C:\\Windows\\System32\\ApplyUpdate.exe", "ApplyUpdate.exe", log ? string.Format("-log {0} {1}", "C:\\Data\\ProgramData\\Update\\ApplyUpdate.log", args) : args)
+			public IpDeviceApplyUpdateCommand(string args, bool log = true, bool ignoreFailure = false, int? timeoutSeconds = null)
+				: base("C:\\Windows\\System32\\ApplyUpdate.exe", "ApplyUpdate.exe", log ? string.Format("-log {0} {1}", "C:\\Data\\ProgramData\\Update\\ApplyUpdate.log", args) : args)
 			{
 				this.ignoreFailure = ignoreFailure;
 				this.timeoutSeconds = timeoutSeconds;
@@ -397,19 +399,19 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 						text = remoteCommand2.Output;
 					}
 				}
-				catch (Exception innerException)
+				catch (Exception ex)
 				{
-					throw new DeviceException(string.Format("Unexpected failure for command \"{0}\"", fullCommandString), innerException);
+					throw new DeviceException(string.Format("Unexpected failure for command \"{0}\"", fullCommandString), ex);
 				}
 				if (!this.ignoreFailure && num != 0)
 				{
-					string arg;
 					string text2;
 					string text3;
-					bool flag = IpDeviceCommunicator.IpDeviceApplyUpdateCommand.ParseResponse(text, out arg, out text2, out text3);
+					string text4;
+					bool flag = IpDeviceCommunicator.IpDeviceApplyUpdateCommand.ParseResponse(text, out text2, out text3, out text4);
 					if (flag)
 					{
-						throw new DeviceException(string.Format("Command \"{0}\" failed\n{1}", fullCommandString, arg));
+						throw new DeviceException(string.Format("Command \"{0}\" failed\n{1}", fullCommandString, text2));
 					}
 				}
 				return text;
@@ -418,11 +420,7 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 			// Token: 0x0600009D RID: 157 RVA: 0x00003C94 File Offset: 0x00001E94
 			public static bool ParseResponse(string response, out string errorLine, out string updateState, out string updateProgress)
 			{
-				string[] array = response.Split(new string[]
-				{
-					"\r\n",
-					"\n"
-				}, StringSplitOptions.RemoveEmptyEntries);
+				string[] array = response.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
 				string text = "Unknown failure";
 				bool flag = false;
 				errorLine = "";
@@ -432,10 +430,7 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 				{
 					if (text2.StartsWith("INFO: UpdateState"))
 					{
-						updateState = text2.Split(new string[]
-						{
-							"INFO: "
-						}, StringSplitOptions.RemoveEmptyEntries)[0];
+						updateState = text2.Split(new string[] { "INFO: " }, StringSplitOptions.RemoveEmptyEntries)[0];
 					}
 					else if (text2.StartsWith("INFO: ProgressStateInstall"))
 					{
@@ -454,10 +449,7 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 						}
 						else
 						{
-							text = text2.Split(new string[]
-							{
-								"ERROR: "
-							}, StringSplitOptions.RemoveEmptyEntries)[0];
+							text = text2.Split(new string[] { "ERROR: " }, StringSplitOptions.RemoveEmptyEntries)[0];
 						}
 					}
 				}

@@ -3,22 +3,23 @@ using Microsoft.WindowsDeviceRecoveryTool.StateMachine.BaseTypes;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.Transitions
 {
-	// Token: 0x02000018 RID: 24
+	// Token: 0x02000004 RID: 4
 	public class StateStatusTransition : BaseTransition
 	{
-		// Token: 0x06000094 RID: 148 RVA: 0x00003B8F File Offset: 0x00001D8F
-		public StateStatusTransition(BaseState next, string statusKey) : base(next)
+		// Token: 0x06000004 RID: 4 RVA: 0x0000209B File Offset: 0x0000029B
+		public StateStatusTransition(BaseState next, string statusKey)
+			: base(next)
 		{
 			this.statusKey = statusKey;
 		}
 
-		// Token: 0x06000095 RID: 149 RVA: 0x00003BA4 File Offset: 0x00001DA4
+		// Token: 0x06000005 RID: 5 RVA: 0x000020B0 File Offset: 0x000002B0
 		public override bool ConditionsAreMet(object sender, TransitionEventArgs eventArgs)
 		{
 			return eventArgs.Status == this.statusKey;
 		}
 
-		// Token: 0x04000028 RID: 40
+		// Token: 0x04000002 RID: 2
 		private readonly string statusKey;
 	}
 }

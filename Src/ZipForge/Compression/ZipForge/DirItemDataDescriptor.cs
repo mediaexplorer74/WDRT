@@ -56,7 +56,7 @@ namespace ComponentAce.Compression.ZipForge
 			{
 				stream.Seek(offset, SeekOrigin.Current);
 			}
-			bool includeSignature = true;
+			bool flag = true;
 			BinaryReader binaryReader = new BinaryReader(stream);
 			int num = binaryReader.ReadInt32();
 			if (num == 134695760)
@@ -65,22 +65,22 @@ namespace ComponentAce.Compression.ZipForge
 			}
 			else
 			{
-				includeSignature = false;
+				flag = false;
 			}
-			uint crc = (uint)num;
-			long compressedSize;
-			long uncompressedSize;
+			uint num2 = (uint)num;
+			long num3;
+			long num4;
 			if (isZip64)
 			{
-				compressedSize = binaryReader.ReadInt64();
-				uncompressedSize = binaryReader.ReadInt64();
+				num3 = binaryReader.ReadInt64();
+				num4 = binaryReader.ReadInt64();
 			}
 			else
 			{
-				compressedSize = (long)binaryReader.ReadInt32();
-				uncompressedSize = (long)binaryReader.ReadInt32();
+				num3 = (long)binaryReader.ReadInt32();
+				num4 = (long)binaryReader.ReadInt32();
 			}
-			return new DirItemDataDescriptor(crc, compressedSize, uncompressedSize, isZip64, includeSignature);
+			return new DirItemDataDescriptor(num2, num3, num4, isZip64, flag);
 		}
 
 		// Token: 0x17000120 RID: 288

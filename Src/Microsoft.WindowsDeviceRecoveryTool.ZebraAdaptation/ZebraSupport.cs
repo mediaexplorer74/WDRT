@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Threading;
@@ -13,12 +14,12 @@ using Microsoft.WindowsDeviceRecoveryTool.ZebraAdaptation.Properties;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.ZebraAdaptation
 {
-	// Token: 0x02000006 RID: 6
+	// Token: 0x02000004 RID: 4
 	[Export(typeof(IDeviceSupport))]
 	internal class ZebraSupport : IDeviceSupport
 	{
-		// Token: 0x1700000C RID: 12
-		// (get) Token: 0x06000027 RID: 39 RVA: 0x00002855 File Offset: 0x00000A55
+		// Token: 0x17000001 RID: 1
+		// (get) Token: 0x06000004 RID: 4 RVA: 0x0000211C File Offset: 0x0000031C
 		public Guid Id
 		{
 			get
@@ -27,24 +28,21 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ZebraAdaptation
 			}
 		}
 
-		// Token: 0x06000028 RID: 40 RVA: 0x0000285C File Offset: 0x00000A5C
+		// Token: 0x06000005 RID: 5 RVA: 0x00002123 File Offset: 0x00000323
 		[ImportingConstructor]
 		public ZebraSupport(IMtpDeviceInfoProvider mtpDeviceInfoProvider)
 		{
 			this.mtpDeviceInfoProvider = mtpDeviceInfoProvider;
-			this.catalog = new ManufacturerModelsCatalog(ZebraSupport.ManufacturerInfo, new ModelInfo[]
-			{
-				ZebraModels.TC700JModel
-			});
+			this.catalog = new ManufacturerModelsCatalog(ZebraSupport.ManufacturerInfo, new ModelInfo[] { ZebraModels.TC700JModel });
 		}
 
-		// Token: 0x06000029 RID: 41 RVA: 0x00002896 File Offset: 0x00000A96
+		// Token: 0x06000006 RID: 6 RVA: 0x00002150 File Offset: 0x00000350
 		public DeviceDetectionInformation[] GetDeviceDetectionInformation()
 		{
 			return this.catalog.GetDeviceDetectionInformations();
 		}
 
-		// Token: 0x0600002A RID: 42 RVA: 0x00002AFC File Offset: 0x00000CFC
+		// Token: 0x06000007 RID: 7 RVA: 0x00002160 File Offset: 0x00000360
 		public async Task UpdateDeviceDetectionDataAsync(DeviceDetectionData detectionData, CancellationToken cancellationToken)
 		{
 			if (detectionData.IsDeviceSupported)
@@ -53,40 +51,45 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ZebraAdaptation
 			}
 			cancellationToken.ThrowIfCancellationRequested();
 			VidPidPair vidPidPair = detectionData.VidPidPair;
-			string devicePath = detectionData.UsbDeviceInterfaceDevicePath;
-			if (this.catalog.Models.FirstOrDefault((ModelInfo m) => m.DetectionInfo.DeviceDetectionInformations.Any((DeviceDetectionInformation di) => di.VidPidPair == vidPidPair)) == null)
+			string usbDeviceInterfaceDevicePath = detectionData.UsbDeviceInterfaceDevicePath;
+			Func<DeviceDetectionInformation, bool> <>9__1;
+			if (this.catalog.Models.FirstOrDefault(delegate(ModelInfo m)
 			{
-				Tracer<ZebraSupport>.WriteInformation("No Zebra device detected. Path: {0}", new object[]
+				IEnumerable<DeviceDetectionInformation> deviceDetectionInformations = m.DetectionInfo.DeviceDetectionInformations;
+				Func<DeviceDetectionInformation, bool> func;
+				if ((func = <>9__1) == null)
 				{
-					detectionData.UsbDeviceInterfaceDevicePath
-				});
+					func = (<>9__1 = (DeviceDetectionInformation di) => di.VidPidPair == vidPidPair);
+				}
+				return deviceDetectionInformations.Any(func);
+			}) == null)
+			{
+				Tracer<ZebraSupport>.WriteInformation("No Zebra device detected. Path: {0}", new object[] { detectionData.UsbDeviceInterfaceDevicePath });
 			}
 			else
 			{
-				MtpInterfaceInfo deviceInfo = await this.mtpDeviceInfoProvider.ReadInformationAsync(devicePath, cancellationToken);
-				string mtpDeviceDescription = deviceInfo.Description;
+				string description = (await this.mtpDeviceInfoProvider.ReadInformationAsync(usbDeviceInterfaceDevicePath, cancellationToken)).Description;
 				ModelInfo modelInfo;
-				if (this.catalog.TryGetModelInfo(mtpDeviceDescription, out modelInfo))
+				if (this.catalog.TryGetModelInfo(description, out modelInfo))
 				{
 					string name = modelInfo.Name;
-					byte[] deviceBitmapBytes = modelInfo.Bitmap.ToBytes();
-					detectionData.DeviceBitmapBytes = deviceBitmapBytes;
+					detectionData.DeviceBitmapBytes = modelInfo.Bitmap.ToBytes();
 					detectionData.DeviceSalesName = name;
 					detectionData.IsDeviceSupported = true;
 				}
 			}
 		}
 
-		// Token: 0x0400000C RID: 12
+		// Token: 0x04000003 RID: 3
 		private readonly IMtpDeviceInfoProvider mtpDeviceInfoProvider;
 
-		// Token: 0x0400000D RID: 13
+		// Token: 0x04000004 RID: 4
 		private static readonly Guid SupportGuid = new Guid("E41DFB86-BD53-46DF-88BD-BECE11D45A12");
 
-		// Token: 0x0400000E RID: 14
+		// Token: 0x04000005 RID: 5
 		private static readonly ManufacturerInfo ManufacturerInfo = new ManufacturerInfo(Resources.FriendlyName_Maufacturer, Resources.Zebra_Logo);
 
-		// Token: 0x0400000F RID: 15
+		// Token: 0x04000006 RID: 6
 		private readonly ManufacturerModelsCatalog catalog;
 	}
 }

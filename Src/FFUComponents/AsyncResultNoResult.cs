@@ -47,10 +47,10 @@ namespace FFUComponents
 		{
 			if (!this.IsCompleted)
 			{
-				TimeSpan timeout = TimeSpan.FromMinutes(2.0);
+				TimeSpan timeSpan = TimeSpan.FromMinutes(2.0);
 				try
 				{
-					if (!this.AsyncWaitHandle.WaitOne(timeout, false))
+					if (!this.AsyncWaitHandle.WaitOne(timeSpan, false))
 					{
 						throw new TimeoutException();
 					}

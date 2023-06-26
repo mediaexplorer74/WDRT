@@ -10,20 +10,20 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.Exceptions.HTC;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Error
 {
-	// Token: 0x020000BF RID: 191
+	// Token: 0x02000071 RID: 113
 	[Export]
 	public class ErrorViewModel : BaseViewModel, ICanHandle<ErrorMessage>, ICanHandle
 	{
-		// Token: 0x060005BA RID: 1466 RVA: 0x0001DAE4 File Offset: 0x0001BCE4
+		// Token: 0x060003E4 RID: 996 RVA: 0x000150E4 File Offset: 0x000132E4
 		[ImportingConstructor]
 		public ErrorViewModel(Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext)
 		{
 			this.AppContext = appContext;
 		}
 
-		// Token: 0x17000145 RID: 325
-		// (get) Token: 0x060005BB RID: 1467 RVA: 0x0001DAF8 File Offset: 0x0001BCF8
-		// (set) Token: 0x060005BC RID: 1468 RVA: 0x0001DB10 File Offset: 0x0001BD10
+		// Token: 0x170000F0 RID: 240
+		// (get) Token: 0x060003E5 RID: 997 RVA: 0x000150F8 File Offset: 0x000132F8
+		// (set) Token: 0x060003E6 RID: 998 RVA: 0x00015110 File Offset: 0x00013310
 		public Exception Exception
 		{
 			get
@@ -36,9 +36,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Error
 			}
 		}
 
-		// Token: 0x17000146 RID: 326
-		// (get) Token: 0x060005BD RID: 1469 RVA: 0x0001DB60 File Offset: 0x0001BD60
-		// (set) Token: 0x060005BE RID: 1470 RVA: 0x0001DB78 File Offset: 0x0001BD78
+		// Token: 0x170000F1 RID: 241
+		// (get) Token: 0x060003E7 RID: 999 RVA: 0x00015150 File Offset: 0x00013350
+		// (set) Token: 0x060003E8 RID: 1000 RVA: 0x00015168 File Offset: 0x00013368
 		public Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext AppContext
 		{
 			get
@@ -51,9 +51,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Error
 			}
 		}
 
-		// Token: 0x17000147 RID: 327
-		// (get) Token: 0x060005BF RID: 1471 RVA: 0x0001DBC8 File Offset: 0x0001BDC8
-		// (set) Token: 0x060005C0 RID: 1472 RVA: 0x0001DBE0 File Offset: 0x0001BDE0
+		// Token: 0x170000F2 RID: 242
+		// (get) Token: 0x060003E9 RID: 1001 RVA: 0x000151A8 File Offset: 0x000133A8
+		// (set) Token: 0x060003EA RID: 1002 RVA: 0x000151C0 File Offset: 0x000133C0
 		public bool ExpanderExpanded
 		{
 			get
@@ -66,84 +66,89 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Error
 			}
 		}
 
-		// Token: 0x17000148 RID: 328
-		// (get) Token: 0x060005C1 RID: 1473 RVA: 0x0001DC30 File Offset: 0x0001BE30
+		// Token: 0x170000F3 RID: 243
+		// (get) Token: 0x060003EB RID: 1003 RVA: 0x00015200 File Offset: 0x00013400
 		public string ErrorHeader
 		{
 			get
 			{
 				AutoUpdateNotEnoughSpaceException ex = this.Exception as AutoUpdateNotEnoughSpaceException;
-				string translation;
-				if (ex != null)
+				bool flag = ex != null;
+				string text;
+				if (flag)
 				{
-					translation = LocalizationManager.GetTranslation("Error_NotEnoughSpaceException");
+					text = LocalizationManager.GetTranslation("Error_NotEnoughSpaceException");
 				}
 				else
 				{
-					translation = LocalizationManager.GetTranslation("Error_" + this.Exception.GetType().Name);
+					text = LocalizationManager.GetTranslation("Error_" + this.Exception.GetType().Name);
 				}
-				return translation;
+				return text;
 			}
 		}
 
-		// Token: 0x17000149 RID: 329
-		// (get) Token: 0x060005C2 RID: 1474 RVA: 0x0001DC84 File Offset: 0x0001BE84
+		// Token: 0x170000F4 RID: 244
+		// (get) Token: 0x060003EC RID: 1004 RVA: 0x00015254 File Offset: 0x00013454
 		public string ErrorDescription
 		{
 			get
 			{
 				NotEnoughSpaceException ex = this.Exception as NotEnoughSpaceException;
-				string result;
-				if (ex != null && ex.Needed == 0L)
+				bool flag = ex != null && ex.Needed == 0L;
+				string text;
+				if (flag)
 				{
-					result = string.Empty;
+					text = string.Empty;
 				}
 				else
 				{
 					string customErrorMessage = this.GetCustomErrorMessage();
-					if (!string.IsNullOrWhiteSpace(customErrorMessage))
+					bool flag2 = !string.IsNullOrWhiteSpace(customErrorMessage);
+					if (flag2)
 					{
-						result = customErrorMessage;
+						text = customErrorMessage;
 					}
 					else
 					{
 						DownloadPackageException ex2 = this.Exception as DownloadPackageException;
-						if (ex2 != null)
+						bool flag3 = ex2 != null;
+						if (flag3)
 						{
 							string translation = LocalizationManager.GetTranslation("ErrorDescription_" + ex2.GetType().Name);
-							result = string.Format(translation, LocalizationManager.GetTranslation("ButtonTryAgain"), LocalizationManager.GetTranslation("ButtonExit"));
+							text = string.Format(translation, LocalizationManager.GetTranslation("ButtonTryAgain"), LocalizationManager.GetTranslation("ButtonExit"));
 						}
 						else
 						{
-							result = LocalizationManager.GetTranslation("ErrorDescription_" + this.Exception.GetType().Name);
+							text = LocalizationManager.GetTranslation("ErrorDescription_" + this.Exception.GetType().Name);
 						}
 					}
 				}
-				return result;
+				return text;
 			}
 		}
 
-		// Token: 0x1700014A RID: 330
-		// (get) Token: 0x060005C3 RID: 1475 RVA: 0x0001DD54 File Offset: 0x0001BF54
+		// Token: 0x170000F5 RID: 245
+		// (get) Token: 0x060003ED RID: 1005 RVA: 0x00015324 File Offset: 0x00013524
 		public string ErrorDetails
 		{
 			get
 			{
-				string result;
-				if (this.Exception != null)
+				bool flag = this.Exception != null;
+				string text;
+				if (flag)
 				{
-					result = this.Exception.Message;
+					text = this.Exception.Message;
 				}
 				else
 				{
-					result = null;
+					text = null;
 				}
-				return result;
+				return text;
 			}
 		}
 
-		// Token: 0x1700014B RID: 331
-		// (get) Token: 0x060005C4 RID: 1476 RVA: 0x0001DD84 File Offset: 0x0001BF84
+		// Token: 0x170000F6 RID: 246
+		// (get) Token: 0x060003EE RID: 1006 RVA: 0x00015354 File Offset: 0x00013554
 		public bool ErrorDetailsVisibile
 		{
 			get
@@ -152,7 +157,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Error
 			}
 		}
 
-		// Token: 0x060005C5 RID: 1477 RVA: 0x0001DDE0 File Offset: 0x0001BFE0
+		// Token: 0x060003EF RID: 1007 RVA: 0x000153B0 File Offset: 0x000135B0
 		public void Handle(ErrorMessage message)
 		{
 			this.Exception = message.Exception;
@@ -162,87 +167,97 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Error
 			base.RaisePropertyChanged<bool>(() => this.ErrorDetailsVisibile);
 		}
 
-		// Token: 0x060005C6 RID: 1478 RVA: 0x0001DEE8 File Offset: 0x0001C0E8
+		// Token: 0x060003F0 RID: 1008 RVA: 0x000154A4 File Offset: 0x000136A4
 		public override void OnStarted()
 		{
 			base.OnStarted();
 			base.EventAggregator.Publish<HeaderMessage>(new HeaderMessage(LocalizationManager.GetTranslation("Error"), ""));
 			base.EventAggregator.Publish<IsBackButtonMessage>(new IsBackButtonMessage(false));
 			base.EventAggregator.Publish<BlockWindowMessage>(new BlockWindowMessage(false, null, null));
-			if (this.Exception != null)
+			bool flag = this.Exception != null;
+			if (flag)
 			{
 				Tracer<ErrorViewModel>.WriteError(this.Exception);
 			}
 			this.ExpanderExpanded = false;
 		}
 
-		// Token: 0x060005C7 RID: 1479 RVA: 0x0001DF68 File Offset: 0x0001C168
+		// Token: 0x060003F1 RID: 1009 RVA: 0x00015524 File Offset: 0x00013724
 		private string GetCustomErrorMessage()
 		{
 			NotEnoughSpaceException ex = this.Exception as NotEnoughSpaceException;
-			string result;
-			if (ex != null)
+			bool flag = ex != null;
+			string text;
+			if (flag)
 			{
 				string translation = LocalizationManager.GetTranslation("ErrorDescription_" + this.Exception.GetType().Name);
-				long num = (ex.Needed - ex.Available) / 1024L / 1024L;
-				result = string.Format(translation, num + "MB", ex.Disk);
+				text = string.Format(translation, ((ex.Needed - ex.Available) / 1024L / 1024L).ToString() + "MB", ex.Disk);
 			}
 			else
 			{
 				AutoUpdateNotEnoughSpaceException ex2 = this.Exception as AutoUpdateNotEnoughSpaceException;
-				if (ex2 != null)
+				bool flag2 = ex2 != null;
+				if (flag2)
 				{
-					string translation = LocalizationManager.GetTranslation("ErrorDescription_NotEnoughSpaceException");
-					long num = (ex2.Needed - ex2.Available) / 1024L / 1024L;
-					result = string.Format(translation, num + "MB", ex2.Disk);
+					string translation2 = LocalizationManager.GetTranslation("ErrorDescription_NotEnoughSpaceException");
+					text = string.Format(translation2, ((ex2.Needed - ex2.Available) / 1024L / 1024L).ToString() + "MB", ex2.Disk);
 				}
 				else
 				{
 					UnauthorizedAccessException ex3 = this.Exception as UnauthorizedAccessException;
-					if (ex3 != null)
+					bool flag3 = ex3 != null;
+					if (flag3)
 					{
-						result = ex3.Message;
+						text = ex3.Message;
 					}
 					else
 					{
 						PlannedServiceBreakException ex4 = this.Exception as PlannedServiceBreakException;
-						if (ex4 != null)
+						bool flag4 = ex4 != null;
+						if (flag4)
 						{
-							string translation = LocalizationManager.GetTranslation("ErrorDescription_" + ex4.GetType().Name);
-							result = string.Format(translation, ex4.Start, ex4.End);
-						}
-						else if (this.Exception is HtcDeviceHandshakingException || this.Exception is HtcDeviceCommunicationException)
-						{
-							string translation = LocalizationManager.GetTranslation("ErrorDescription_HtcDeviceCommunicationException");
-							result = string.Format(translation, "boot-loader");
+							string translation3 = LocalizationManager.GetTranslation("ErrorDescription_" + ex4.GetType().Name);
+							text = string.Format(translation3, ex4.Start, ex4.End);
 						}
 						else
 						{
-							HtcUsbCommunicationException ex5 = this.Exception as HtcUsbCommunicationException;
-							if (ex5 != null)
+							bool flag5 = this.Exception is HtcDeviceHandshakingException || this.Exception is HtcDeviceCommunicationException;
+							if (flag5)
 							{
-								string translation = LocalizationManager.GetTranslation("ErrorDescription_" + ex5.GetType().Name);
-								result = string.Format(translation, "boot-loader");
+								string translation4 = LocalizationManager.GetTranslation("ErrorDescription_HtcDeviceCommunicationException");
+								text = string.Format(translation4, "boot-loader");
 							}
 							else
 							{
-								HtcServiceControlException ex6 = this.Exception as HtcServiceControlException;
-								if (ex6 != null)
+								HtcUsbCommunicationException ex5 = this.Exception as HtcUsbCommunicationException;
+								bool flag6 = ex5 != null;
+								if (flag6)
 								{
-									string translation = LocalizationManager.GetTranslation("ErrorDescription_" + ex6.GetType().Name);
-									result = string.Format(translation, "WcesComm");
+									string translation5 = LocalizationManager.GetTranslation("ErrorDescription_" + ex5.GetType().Name);
+									text = string.Format(translation5, "boot-loader");
 								}
 								else
 								{
-									RestartApplicationException ex7 = this.Exception as RestartApplicationException;
-									if (ex7 != null)
+									HtcServiceControlException ex6 = this.Exception as HtcServiceControlException;
+									bool flag7 = ex6 != null;
+									if (flag7)
 									{
-										string translation = LocalizationManager.GetTranslation("ErrorDescription_" + ex7.GetType().Name);
-										result = string.Format(translation, AppInfo.AppTitle());
+										string translation6 = LocalizationManager.GetTranslation("ErrorDescription_" + ex6.GetType().Name);
+										text = string.Format(translation6, "WcesComm");
 									}
 									else
 									{
-										result = null;
+										RestartApplicationException ex7 = this.Exception as RestartApplicationException;
+										bool flag8 = ex7 != null;
+										if (flag8)
+										{
+											string translation7 = LocalizationManager.GetTranslation("ErrorDescription_" + ex7.GetType().Name);
+											text = string.Format(translation7, AppInfo.AppTitle());
+										}
+										else
+										{
+											text = null;
+										}
 									}
 								}
 							}
@@ -250,16 +265,16 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Error
 					}
 				}
 			}
-			return result;
+			return text;
 		}
 
-		// Token: 0x04000271 RID: 625
+		// Token: 0x040001C0 RID: 448
 		private Exception exception;
 
-		// Token: 0x04000272 RID: 626
+		// Token: 0x040001C1 RID: 449
 		private Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext;
 
-		// Token: 0x04000273 RID: 627
+		// Token: 0x040001C2 RID: 450
 		private bool expanderExpanded;
 	}
 }

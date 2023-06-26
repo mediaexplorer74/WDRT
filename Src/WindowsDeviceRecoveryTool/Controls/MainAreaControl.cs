@@ -4,21 +4,19 @@ using System.Windows.Controls;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 {
-	// Token: 0x02000037 RID: 55
+	// Token: 0x020000D6 RID: 214
 	public class MainAreaControl : ContentControl
 	{
-        private static RoutedEvent ContentChangedEvent;
-
-        // Token: 0x06000200 RID: 512 RVA: 0x0000DD24 File Offset: 0x0000BF24
-        static MainAreaControl()
+		// Token: 0x060006B7 RID: 1719 RVA: 0x0001F0BC File Offset: 0x0001D2BC
+		static MainAreaControl()
 		{
 			MainAreaControl.ContentChangedEvent = EventManager.RegisterRoutedEvent("ContentChanged", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(MainAreaControl));
 			ContentControl.ContentProperty.OverrideMetadata(typeof(MainAreaControl), new FrameworkPropertyMetadata(new PropertyChangedCallback(MainAreaControl.OnContentPropertyChanged)));
 		}
 
-		// Token: 0x14000004 RID: 4
-		// (add) Token: 0x06000201 RID: 513 RVA: 0x0000DD7D File Offset: 0x0000BF7D
-		// (remove) Token: 0x06000202 RID: 514 RVA: 0x0000DD8D File Offset: 0x0000BF8D
+		// Token: 0x1400000D RID: 13
+		// (add) Token: 0x060006B8 RID: 1720 RVA: 0x0001F114 File Offset: 0x0001D314
+		// (remove) Token: 0x060006B9 RID: 1721 RVA: 0x0001F124 File Offset: 0x0001D324
 		public event RoutedEventHandler ContentChanged
 		{
 			add
@@ -31,21 +29,22 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x06000203 RID: 515 RVA: 0x0000DDA0 File Offset: 0x0000BFA0
+		// Token: 0x060006BA RID: 1722 RVA: 0x0001F134 File Offset: 0x0001D334
 		private static void OnContentPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{
 			MainAreaControl mainAreaControl = d as MainAreaControl;
-			if (mainAreaControl != null && e.NewValue != e.OldValue)
+			bool flag = mainAreaControl != null && e.NewValue != e.OldValue;
+			if (flag)
 			{
 				mainAreaControl.RaiseContentChangedEvent();
 			}
 		}
 
-		// Token: 0x06000204 RID: 516 RVA: 0x0000DDDC File Offset: 0x0000BFDC
+		// Token: 0x060006BB RID: 1723 RVA: 0x0001F170 File Offset: 0x0001D370
 		private void RaiseContentChangedEvent()
 		{
-			RoutedEventArgs e = new RoutedEventArgs(MainAreaControl.ContentChangedEvent);
-			base.RaiseEvent(e);
+			RoutedEventArgs routedEventArgs = new RoutedEventArgs(MainAreaControl.ContentChangedEvent);
+			base.RaiseEvent(routedEventArgs);
 		}
 	}
 }

@@ -4,11 +4,12 @@ using Microsoft.WindowsDeviceRecoveryTool.StateMachine.DefaultTypes;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.Transitions
 {
-	// Token: 0x02000016 RID: 22
+	// Token: 0x02000002 RID: 2
 	public class PropagateErrorTransition : ErrorTransition
 	{
-		// Token: 0x06000091 RID: 145 RVA: 0x00003B41 File Offset: 0x00001D41
-		public PropagateErrorTransition() : base(new ErrorEndState())
+		// Token: 0x06000001 RID: 1 RVA: 0x00002050 File Offset: 0x00000250
+		public PropagateErrorTransition()
+			: base(new ErrorEndState())
 		{
 		}
 	}

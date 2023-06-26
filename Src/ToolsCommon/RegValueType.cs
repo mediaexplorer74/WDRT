@@ -3,28 +3,28 @@ using System.Xml.Serialization;
 
 namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 {
-	// Token: 0x0200004C RID: 76
+	// Token: 0x0200005B RID: 91
 	public enum RegValueType
 	{
-		// Token: 0x04000100 RID: 256
+		// Token: 0x04000160 RID: 352
 		[XmlEnum(Name = "REG_SZ")]
 		String,
-		// Token: 0x04000101 RID: 257
+		// Token: 0x04000161 RID: 353
 		[XmlEnum(Name = "REG_EXPAND_SZ")]
 		ExpandString,
-		// Token: 0x04000102 RID: 258
+		// Token: 0x04000162 RID: 354
 		[XmlEnum(Name = "REG_BINARY")]
 		Binary,
-		// Token: 0x04000103 RID: 259
+		// Token: 0x04000163 RID: 355
 		[XmlEnum(Name = "REG_DWORD")]
 		DWord,
-		// Token: 0x04000104 RID: 260
+		// Token: 0x04000164 RID: 356
 		[XmlEnum(Name = "REG_MULTI_SZ")]
 		MultiString,
-		// Token: 0x04000105 RID: 261
+		// Token: 0x04000165 RID: 357
 		[XmlEnum(Name = "REG_QWORD")]
 		QWord,
-		// Token: 0x04000106 RID: 262
+		// Token: 0x04000166 RID: 358
 		[XmlEnum(Name = "REG_HEX")]
 		Hex
 	}

@@ -13,17 +13,20 @@ namespace FFUComponents
 		}
 
 		// Token: 0x06000045 RID: 69 RVA: 0x00002F48 File Offset: 0x00001148
-		public FFUException(string message) : base(message)
+		public FFUException(string message)
+			: base(message)
 		{
 		}
 
 		// Token: 0x06000046 RID: 70 RVA: 0x00002F51 File Offset: 0x00001151
-		public FFUException(string message, Exception innerException) : base(message, innerException)
+		public FFUException(string message, Exception innerException)
+			: base(message, innerException)
 		{
 		}
 
 		// Token: 0x06000047 RID: 71 RVA: 0x00002F5C File Offset: 0x0000115C
-		protected FFUException(SerializationInfo info, StreamingContext context) : base(info, context)
+		protected FFUException(SerializationInfo info, StreamingContext context)
+			: base(info, context)
 		{
 			if (info == null)
 			{
@@ -42,7 +45,8 @@ namespace FFUComponents
 		}
 
 		// Token: 0x06000049 RID: 73 RVA: 0x00002FF0 File Offset: 0x000011F0
-		public FFUException(string deviceName, Guid deviceId, string message) : base(message)
+		public FFUException(string deviceName, Guid deviceId, string message)
+			: base(message)
 		{
 			this.DeviceFriendlyName = deviceName;
 			this.DeviceUniqueID = deviceId;
@@ -59,7 +63,8 @@ namespace FFUComponents
 		}
 
 		// Token: 0x0600004B RID: 75 RVA: 0x0000302A File Offset: 0x0000122A
-		public FFUException(IFFUDevice device, string message, Exception e) : base(message, e)
+		public FFUException(IFFUDevice device, string message, Exception e)
+			: base(message, e)
 		{
 			if (device != null)
 			{

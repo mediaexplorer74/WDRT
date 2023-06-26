@@ -27,7 +27,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.FawkesAdaptation
 			}
 		}
 
-		// Token: 0x06000003 RID: 3 RVA: 0x00002060 File Offset: 0x00000260
+		// Token: 0x06000003 RID: 3 RVA: 0x0000205F File Offset: 0x0000025F
 		public DeviceDetectionInformation[] GetDeviceDetectionInformation()
 		{
 			return new DeviceDetectionInformation[]
@@ -36,15 +36,14 @@ namespace Microsoft.WindowsDeviceRecoveryTool.FawkesAdaptation
 			};
 		}
 
-		// Token: 0x06000004 RID: 4 RVA: 0x00002144 File Offset: 0x00000344
+		// Token: 0x06000004 RID: 4 RVA: 0x00002078 File Offset: 0x00000278
 		public async Task UpdateDeviceDetectionDataAsync(DeviceDetectionData detectionData, CancellationToken cancellationToken)
 		{
 			if (detectionData.IsDeviceSupported)
 			{
 				throw new InvalidOperationException("Device is already supported.");
 			}
-			VidPidPair vidPidPair = detectionData.VidPidPair;
-			if (!(vidPidPair != FawkesSupport.FawkesVidPid))
+			if (!(detectionData.VidPidPair != FawkesSupport.FawkesVidPid))
 			{
 				detectionData.IsDeviceSupported = true;
 				detectionData.DeviceBitmapBytes = Resources.FawkesTile.ToBytes();

@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.IO;
 using ComponentAce.Compression.Archiver;
-using ComponentAce.Compression.Exception1;
+using ComponentAce.Compression.Exception;
 using ComponentAce.Compression.Interfaces;
 using ComponentAce.Compression.Tar;
 
@@ -55,9 +55,9 @@ namespace ComponentAce.Compression.GZip
 		// Token: 0x060002E8 RID: 744 RVA: 0x00018B10 File Offset: 0x00017B10
 		public void LoadItemsArray()
 		{
-			GzipItem item = new GzipItem(this._writeToStreamFailureDelegate, this._readFromStreamFailureDelegate);
-			this._gzipReader.ReadItem(ref item);
-			this.ItemsArray.AddItem(item);
+			GzipItem gzipItem = new GzipItem(this._writeToStreamFailureDelegate, this._readFromStreamFailureDelegate);
+			this._gzipReader.ReadItem(ref gzipItem);
+			this.ItemsArray.AddItem(gzipItem);
 		}
 
 		// Token: 0x060002E9 RID: 745 RVA: 0x00018B48 File Offset: 0x00017B48

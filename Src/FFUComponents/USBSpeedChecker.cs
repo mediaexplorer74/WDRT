@@ -21,39 +21,32 @@ namespace FFUComponents
 		// Token: 0x0600018A RID: 394 RVA: 0x0000830C File Offset: 0x0000650C
 		public ConnectionType GetConnectionSpeed()
 		{
-			char[] separator = new char[]
-			{
-				'#'
-			};
-			string[] array = this.UsbDevicePath.Split(separator);
-			string arg = array[1];
-			string arg2 = array[2];
-			string devinstId = string.Format("usb\\{0}\\{1}", arg, arg2);
-			ConnectionType result;
+			char[] array = new char[] { '#' };
+			string[] array2 = this.UsbDevicePath.Split(array);
+			string text = array2[1];
+			string text2 = array2[2];
+			string text3 = string.Format("usb\\{0}\\{1}", text, text2);
+			ConnectionType connectionType;
 			try
 			{
-				DeviceSet deviceSet = new DeviceSet(devinstId);
+				DeviceSet deviceSet = new DeviceSet(text3);
 				uint address = deviceSet.GetAddress();
 				string parentId = deviceSet.GetParentId();
 				DeviceSet deviceSet2 = new DeviceSet(parentId);
 				string hubDevicePath = deviceSet2.GetHubDevicePath();
 				USB_NODE_CONNECTION_INFORMATION_EX_V2 usb_NODE_CONNECTION_INFORMATION_EX_V = new USB_NODE_CONNECTION_INFORMATION_EX_V2(address);
 				SafeFileHandle safeFileHandle2;
-				SafeFileHandle safeFileHandle = safeFileHandle2 = NativeMethods.CreateFile(hubDevicePath, 0U, 3U, IntPtr.Zero, 3U, 0U, IntPtr.Zero);
+				SafeFileHandle safeFileHandle = (safeFileHandle2 = NativeMethods.CreateFile(hubDevicePath, 0U, 3U, IntPtr.Zero, 3U, 0U, IntPtr.Zero));
 				bool flag;
 				try
 				{
 					if (safeFileHandle.IsInvalid)
 					{
-						int lastWin32Error = Marshal.GetLastWin32Error();
-						throw new FFUException(string.Format(CultureInfo.CurrentCulture, Resources.ERROR_INVALID_HANDLE, new object[]
-						{
-							hubDevicePath,
-							lastWin32Error
-						}));
+						int num = Marshal.GetLastWin32Error();
+						throw new FFUException(string.Format(CultureInfo.CurrentCulture, Resources.ERROR_INVALID_HANDLE, new object[] { hubDevicePath, num }));
 					}
-					uint num;
-					flag = NativeMethods.DeviceIoControl(safeFileHandle, NativeMethods.IOCTL_USB_GET_NODE_CONNECTION_INFORMATION_EX_V2, usb_NODE_CONNECTION_INFORMATION_EX_V, (uint)Marshal.SizeOf<USB_NODE_CONNECTION_INFORMATION_EX_V2>(usb_NODE_CONNECTION_INFORMATION_EX_V), usb_NODE_CONNECTION_INFORMATION_EX_V, (uint)Marshal.SizeOf<USB_NODE_CONNECTION_INFORMATION_EX_V2>(usb_NODE_CONNECTION_INFORMATION_EX_V), out num, IntPtr.Zero);
+					uint num2;
+					flag = NativeMethods.DeviceIoControl(safeFileHandle, NativeMethods.IOCTL_USB_GET_NODE_CONNECTION_INFORMATION_EX_V2, usb_NODE_CONNECTION_INFORMATION_EX_V, (uint)Marshal.SizeOf<USB_NODE_CONNECTION_INFORMATION_EX_V2>(usb_NODE_CONNECTION_INFORMATION_EX_V), usb_NODE_CONNECTION_INFORMATION_EX_V, (uint)Marshal.SizeOf<USB_NODE_CONNECTION_INFORMATION_EX_V2>(usb_NODE_CONNECTION_INFORMATION_EX_V), out num2, IntPtr.Zero);
 				}
 				finally
 				{
@@ -64,26 +57,23 @@ namespace FFUComponents
 				}
 				if (!flag)
 				{
-					int lastWin32Error = Marshal.GetLastWin32Error();
-					throw new FFUException(string.Format(CultureInfo.CurrentCulture, Resources.ERROR_DEVICE_IO_CONTROL, new object[]
-					{
-						lastWin32Error
-					}));
+					int num = Marshal.GetLastWin32Error();
+					throw new FFUException(string.Format(CultureInfo.CurrentCulture, Resources.ERROR_DEVICE_IO_CONTROL, new object[] { num }));
 				}
 				if ((usb_NODE_CONNECTION_INFORMATION_EX_V.Flags & 1U) == 1U)
 				{
-					result = ConnectionType.SuperSpeed3;
+					connectionType = ConnectionType.SuperSpeed3;
 				}
 				else
 				{
-					result = ConnectionType.HighSpeed;
+					connectionType = ConnectionType.HighSpeed;
 				}
 			}
 			catch (FFUException)
 			{
 				throw;
 			}
-			return result;
+			return connectionType;
 		}
 
 		// Token: 0x0400017A RID: 378

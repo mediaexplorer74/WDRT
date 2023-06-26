@@ -5,7 +5,7 @@ using System.Windows;
 
 namespace Microsoft.WindowsDeviceRecoveryTool
 {
-	// Token: 0x02000002 RID: 2
+	// Token: 0x02000006 RID: 6
 	public partial class App : Application
 	{
 	}

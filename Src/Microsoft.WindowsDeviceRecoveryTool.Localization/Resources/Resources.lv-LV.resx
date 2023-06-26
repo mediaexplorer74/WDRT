@@ -1,0 +1,892 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccentColor" xml:space="preserve">
+    <value>Izcēluma krāsa</value>
+  </data>
+  <data name="AccentColorBlack" xml:space="preserve">
+    <value>Melna</value>
+  </data>
+  <data name="AccentColorBlue" xml:space="preserve">
+    <value>Zila</value>
+  </data>
+  <data name="AccentColorCobalt" xml:space="preserve">
+    <value>Kobaltzila</value>
+  </data>
+  <data name="AccentColorCrimson" xml:space="preserve">
+    <value>Aveņsarkana</value>
+  </data>
+  <data name="AccentColorEmerald" xml:space="preserve">
+    <value>Smaragdzaļa</value>
+  </data>
+  <data name="AccentColorIndigo" xml:space="preserve">
+    <value>Indigo</value>
+  </data>
+  <data name="AccentColorMauve" xml:space="preserve">
+    <value>Sārti violeta</value>
+  </data>
+  <data name="AccentColorSienna" xml:space="preserve">
+    <value>Gaiši brūna</value>
+  </data>
+  <data name="AddressForm" xml:space="preserve">
+    <value>Adrese</value>
+  </data>
+  <data name="AllFilesSize" xml:space="preserve">
+    <value>Visu failu lielums: {0}</value>
+  </data>
+  <data name="AnotherInstanceAlreadyRunning" xml:space="preserve">
+    <value>Jau darbojas cits {0} gadījums.</value>
+  </data>
+  <data name="ApplicationData" xml:space="preserve">
+    <value>Programmas dati</value>
+  </data>
+  <data name="ApplicationUpdate" xml:space="preserve">
+    <value>Programmas atjauninājums</value>
+  </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>Vai esat pārliecināts?</value>
+  </data>
+  <data name="AutomaticPackageFileSelection" xml:space="preserve">
+    <value>Meklē pareizo pakotni pievienotajam tālrunim.</value>
+  </data>
+  <data name="AutomaticPackageSelection" xml:space="preserve">
+    <value>Pakotnes automātiskā atlase</value>
+  </data>
+  <data name="AvailablePackageIsOlder" xml:space="preserve">
+    <value>Pieejamā programmatūra ir vecāka par to, kas ir jūsu tālrunī.</value>
+  </data>
+  <data name="AwaitRecoveryAfterEmergencyFlashingInstruction" xml:space="preserve">
+    <value>Gaida tālruņa darbību pēc veiksmīgas atkopšanas operācijas.
+Ja akumulators nav pietiekami uzlādēts, var paiet pat 30 minūtes.</value>
+  </data>
+  <data name="BatteryCheckHeader" xml:space="preserve">
+    <value>Pārbaudiet akumulatoru</value>
+  </data>
+  <data name="BatteryCheckingCancelled" xml:space="preserve">
+    <value>Akumulatora pārbaude tika atcelta.</value>
+  </data>
+  <data name="BatteryWarning" xml:space="preserve">
+    <value>Pārliecinieties, vai akumulatora uzlādes līmenis ir vismaz 25%. Pretējā gadījumā var tikt sabojāts tālrunis.</value>
+  </data>
+  <data name="ButtonBrowse" xml:space="preserve">
+    <value>Pārlūkot</value>
+  </data>
+  <data name="ButtonCancel" xml:space="preserve">
+    <value>Atcelt</value>
+  </data>
+  <data name="ButtonChangePackagePath" xml:space="preserve">
+    <value>Mainīt pakotnes ceļu</value>
+  </data>
+  <data name="ButtonClean" xml:space="preserve">
+    <value>Notīrīt visus programmu datus</value>
+  </data>
+  <data name="ButtonCleanOneCategory" xml:space="preserve">
+    <value>Notīrīt</value>
+  </data>
+  <data name="ButtonCollectLogs" xml:space="preserve">
+    <value>Eksportēt</value>
+  </data>
+  <data name="ButtonContinue" xml:space="preserve">
+    <value>Turpināt</value>
+  </data>
+  <data name="ButtonDelete" xml:space="preserve">
+    <value>Dzēst</value>
+  </data>
+  <data name="ButtonExit" xml:space="preserve">
+    <value>Iziet</value>
+  </data>
+  <data name="ButtonFinish" xml:space="preserve">
+    <value>Pabeigt</value>
+  </data>
+  <data name="ButtonInstall" xml:space="preserve">
+    <value>Instalēt</value>
+  </data>
+  <data name="ButtonInstallSoftware" xml:space="preserve">
+    <value>Instalēt programmatūru</value>
+  </data>
+  <data name="ButtonMyPhoneIsNotOnTheList" xml:space="preserve">
+    <value>Sarakstā nav mana tālruņa</value>
+  </data>
+  <data name="ButtonMyPhoneWasNotDetected" xml:space="preserve">
+    <value>Mans tālrunis netika noteikts</value>
+  </data>
+  <data name="ButtonNewFolder" xml:space="preserve">
+    <value>Jauna mape</value>
+  </data>
+  <data name="ButtonNext" xml:space="preserve">
+    <value>Tālāk</value>
+  </data>
+  <data name="ButtonNo" xml:space="preserve">
+    <value>Nē</value>
+  </data>
+  <data name="ButtonOff" xml:space="preserve">
+    <value>Izslēgts</value>
+  </data>
+  <data name="ButtonOk" xml:space="preserve">
+    <value>Labi</value>
+  </data>
+  <data name="ButtonOn" xml:space="preserve">
+    <value>Ieslēgts</value>
+  </data>
+  <data name="ButtonReset" xml:space="preserve">
+    <value>Atiestatīt uz noklusējuma vērtību</value>
+  </data>
+  <data name="ButtonTryAgain" xml:space="preserve">
+    <value>Mēģināt vēlreiz</value>
+  </data>
+  <data name="ButtonYes" xml:space="preserve">
+    <value>Jā</value>
+  </data>
+  <data name="CapsLockIsOn" xml:space="preserve">
+    <value>Ir ieslēgts burtslēgs</value>
+  </data>
+  <data name="CheckLatestPackageHeader" xml:space="preserve">
+    <value>Tālruņa informācija</value>
+  </data>
+  <data name="CheckingAlreadyDownloadedFiles" xml:space="preserve">
+    <value>Notiek lejupielādēto failu saderības pārbaude</value>
+  </data>
+  <data name="CheckingAppUpdate" xml:space="preserve">
+    <value>Pārbauda, vai nav pieejami programmas atjauninājumi</value>
+  </data>
+  <data name="CheckingFirmwareAvailability" xml:space="preserve">
+    <value>Programmatūras pieejamības pārbaude</value>
+  </data>
+  <data name="CheckingPackageIntegrity" xml:space="preserve">
+    <value>Notiek pakotnes integritātes pārbaude</value>
+  </data>
+  <data name="CleanUserDataQuestion" xml:space="preserve">
+    <value>Vai tiešām vēlaties izdzēst visus programmu datus (atskaites, tālruņa programmatūras pakotnes, žurnālfailus)?</value>
+  </data>
+  <data name="CollectingLogFilesInfo" xml:space="preserve">
+    <value>Notiek žurnālfailu vākšana. Lūdzu, uzgaidiet.</value>
+  </data>
+  <data name="ComputerBatteryWarning" xml:space="preserve">
+    <value>Zems datora akumulatora uzlādes līmenis. Lūdzu, pievienojiet datoru lādētājam un mēģiniet vēlreiz.</value>
+  </data>
+  <data name="ConnectPhone" xml:space="preserve">
+    <value>Pievienojiet tālruni</value>
+  </data>
+  <data name="ConnectPhoneWithUsbCable" xml:space="preserve">
+    <value>Pievienojiet tālrunim USB kabeli.</value>
+  </data>
+  <data name="ConnectedDeviceCannotBeRecovered" xml:space="preserve">
+    <value>Pievienoto tālruni nevar atkopt.</value>
+  </data>
+  <data name="CouldNotDetectPhone" xml:space="preserve">
+    <value>Nevarēja noteikt jūsu tālruni</value>
+  </data>
+  <data name="CreatingNewFolderMessage" xml:space="preserve">
+    <value>Izveidot jaunu mapi</value>
+  </data>
+  <data name="CurrentFirmwareVersion" xml:space="preserve">
+    <value>Instalētās programmatūras versija:</value>
+  </data>
+  <data name="CustomPackagesPath" xml:space="preserve">
+    <value>Lietot pielāgotu pakotņu ceļu</value>
+  </data>
+  <data name="DeleteLogsQuestion" xml:space="preserve">
+    <value>Vai tiešām vēlaties izdzēst žurnālfailus?</value>
+  </data>
+  <data name="DeletePackagesQuestion" xml:space="preserve">
+    <value>Vai tiešām vēlaties izdzēst programmatūras atkopšanas failus?</value>
+  </data>
+  <data name="DeleteReportsQuestion" xml:space="preserve">
+    <value>Vai tiešām vēlaties izdzēst atskaišu failus?</value>
+  </data>
+  <data name="DeletingLogFilesInfo" xml:space="preserve">
+    <value>Notiek žurnālfailu dzēšana</value>
+  </data>
+  <data name="DeletingPackagesInfo" xml:space="preserve">
+    <value>Notiek programmatūras atkopšanas failu dzēšana</value>
+  </data>
+  <data name="DeletingReportsInfo" xml:space="preserve">
+    <value>Notiek atskaišu failu dzēšana</value>
+  </data>
+  <data name="DetailsHeader" xml:space="preserve">
+    <value>Detalizēta informācija</value>
+  </data>
+  <data name="Device" xml:space="preserve">
+    <value>Tālrunis</value>
+  </data>
+  <data name="DeviceFlashing" xml:space="preserve">
+    <value>Programmatūras pakotnes instalēšana</value>
+  </data>
+  <data name="DeviceInUefiMode" xml:space="preserve">
+    <value>Lumia tālrunis</value>
+  </data>
+  <data name="DeviceSelectionHeader" xml:space="preserve">
+    <value>Tālruņa atlase</value>
+  </data>
+  <data name="DirectoryNotSet" xml:space="preserve">
+    <value>Direktorijs nav atlasīts vai nepastāv.</value>
+  </data>
+  <data name="DisclaimerBackupInfo" xml:space="preserve">
+    <value>Instalēšanas laikā personiskais saturs tālrunī tiks izdzēsts. Ieteicams tālrunī izveidot dublējumkopiju šeit:</value>
+  </data>
+  <data name="DisclaimerHeader" xml:space="preserve">
+    <value>Atruna</value>
+  </data>
+  <data name="DisclaimerInfoInstallationDuration" xml:space="preserve">
+    <value>Programmatūras instalēšana varētu ilgt aptuveni 15 minūtes. Programmatūras pakotnes lejupielādes laiks ir atkarīgs no tīkla ātruma.</value>
+  </data>
+  <data name="DisconnectPhone" xml:space="preserve">
+    <value>Atvienojiet USB kabeli no tālruņa.</value>
+  </data>
+  <data name="DowngradeSoftwareQuestion" xml:space="preserve">
+    <value>Jūs mēģināt instalēt programmatūru, kas ir vecāka par to, kas instalēta jūsu tālrunī. Vai vēlaties turpināt?</value>
+  </data>
+  <data name="DownloadCancelled" xml:space="preserve">
+    <value>Lejupielāde tika atcelta</value>
+  </data>
+  <data name="DownloadProgressExactMinute" xml:space="preserve">
+    <value>Atlikušas aptuveni {0} minūtes</value>
+  </data>
+  <data name="DownloadProgressMinute" xml:space="preserve">
+    <value>Atlikusi apmēram viena minūte</value>
+  </data>
+  <data name="DownloadProgressMinuteLess" xml:space="preserve">
+    <value>Atlikusi mazāk nekā viena minūte</value>
+  </data>
+  <data name="DownloadingCancelMessage" xml:space="preserve">
+    <value>Šī darbība atcels lejupielādi. Jau lejupielādētie faili netiks dzēsti. Lejupielādi vēlāk varēsiet atsākt.</value>
+  </data>
+  <data name="DownloadingEmergencyPackage" xml:space="preserve">
+    <value>Notiek ārkārtas pakotnes lejupielāde</value>
+  </data>
+  <data name="DownloadingFiles" xml:space="preserve">
+    <value>Notiek failu lejupielāde: {0}/{1} ({2})</value>
+  </data>
+  <data name="DownloadingInstallPacket" xml:space="preserve">
+    <value>Jaunas versijas lejupielāde</value>
+  </data>
+  <data name="DownloadingPackage" xml:space="preserve">
+    <value>Pakotnes lejupielāde</value>
+  </data>
+  <data name="EmergencyFlashingMessage" xml:space="preserve">
+    <value>Ārkārtas pārprogrammēšana</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Kļūda</value>
+  </data>
+  <data name="ErrorDescription_AutoUpdateException" xml:space="preserve">
+    <value>Šķiet, ka radusies problēma izveidot savienojumu ar serveri. Pārbaudiet interneta savienojumu. Pārliecinieties, vai starpniekservera, ugunsmūra un aizsardzības pret vīrusiem iestatījumi ir pareizi. Pārbaudiet arī laika un datuma iestatījumus.</value>
+  </data>
+  <data name="ErrorDescription_CannotAccessDirectoryException" xml:space="preserve">
+    <value>Šķiet, jums nav vajadzīgo atļauju šim direktorijam. Lūdzu, mainiet direktorija ceļu vai mainiet direktorija atļaujas.</value>
+  </data>
+  <data name="ErrorDescription_DeviceNotFoundException" xml:space="preserve">
+    <value>Tālrunis netika atrasts.</value>
+  </data>
+  <data name="ErrorDescription_DownloadPackageException" xml:space="preserve">
+    <value>Lūdzu, pārbaudiet, vai starpniekservera iestatījumi ir pareizi, un noklikšķiniet uz "{0}". Ja vēlaties atcelt lejupielādes procesu, lūdzu, noklikšķiniet uz "{1}".</value>
+  </data>
+  <data name="ErrorDescription_EmergencyPackageNotFoundOnServerException" xml:space="preserve">
+    <value>Ārkārtas pārprogrammēšana jūsu tālrunim pašlaik netiek atbalstīta</value>
+  </data>
+  <data name="ErrorDescription_FirmwareFileNotFoundException" xml:space="preserve">
+    <value>Programmatūras pakotne ir nepilnīga. Trūkst vismaz viena faila. Lejupielādējiet pakotni vēlreiz vai atlasiet citu programmatūru.</value>
+  </data>
+  <data name="ErrorDescription_HtcDeviceCommunicationException" xml:space="preserve">
+    <value>Restartējiet ierīci režīmā {0}.</value>
+  </data>
+  <data name="ErrorDescription_HtcPackageFileCheckException" xml:space="preserve">
+    <value>Atkārtoti lejupielādējiet ROM pakotnes failu.</value>
+  </data>
+  <data name="ErrorDescription_HtcServiceControlException" xml:space="preserve">
+    <value>Pārbaudiet, vai ir apturēts pakalpojums {0}.</value>
+  </data>
+  <data name="ErrorDescription_HtcUsbCommunicationException" xml:space="preserve">
+    <value>Restartējiet ierīci režīmā {0}.
+Pārbaudiet ierīces USB savienojumu.</value>
+  </data>
+  <data name="ErrorDescription_HtcUsbPortOpenException" xml:space="preserve">
+    <value>Pārbaudiet, vai portu neaizņemt cita programma.
+Pārbaudiet ierīces USB savienojumu.</value>
+  </data>
+  <data name="ErrorDescription_InvalidOperationException" xml:space="preserve">
+    <value>Lūdzu, restartējiet programmu.</value>
+  </data>
+  <data name="ErrorDescription_NoInternetConnectionException" xml:space="preserve">
+    <value>Nevarēja veikt pēdējo darbību, jo savienojums ar internetu nav aktīvs.</value>
+  </data>
+  <data name="ErrorDescription_NotEnoughSpaceException" xml:space="preserve">
+    <value>Diskā {1} trūkst {0}. Atbrīvojiet daļu vietas un mēģiniet vēlreiz.</value>
+  </data>
+  <data name="ErrorDescription_OperationCanceledException" xml:space="preserve">
+    <value>Darbība tika atcelta.</value>
+  </data>
+  <data name="ErrorDescription_PackageNotFoundException" xml:space="preserve">
+    <value>Šim tālrunim nav pieejama programmatūras pakotne.</value>
+  </data>
+  <data name="ErrorDescription_PlannedServiceBreakException" xml:space="preserve">
+    <value>Pakalpojums nav pieejams laikā no {0} līdz {1}. Lūdzu, mēģiniet vēlreiz vēlāk.</value>
+  </data>
+  <data name="ErrorDescription_ReadPhoneInformationException" xml:space="preserve">
+    <value>Nevarēja lasīt informāciju no jūsu tālruņa.</value>
+  </data>
+  <data name="ErrorDescription_RestartApplicationException" xml:space="preserve">
+    <value>Lūdzu, atvienojiet visus tālruņus un restartējiet lietojumprogrammu. Ja problēma joprojām pastāv, atinstalējiet {0} un lejupielādējiet jaunāko programmas versiju.</value>
+  </data>
+  <data name="ErrorDescription_UnknownError" xml:space="preserve">
+    <value>Darbību nevarēja pabeigt.</value>
+  </data>
+  <data name="ErrorDescription_WebException" xml:space="preserve">
+    <value>Šķiet, ka radusies problēma izveidot savienojumu ar serveri. Pārbaudiet interneta savienojumu. Pārliecinieties, vai starpniekservera, ugunsmūra un aizsardzības pret vīrusiem iestatījumi ir pareizi.</value>
+  </data>
+  <data name="ErrorDetails_NotEnoughSpaceOnTheDiskException" xml:space="preserve">
+    <value>Minimālā atjauninājumam nepieciešamā vieta diskā {0} ir {1}. Atbrīvojiet daļu vietas un mēģiniet vēlreiz.</value>
+  </data>
+  <data name="ErrorHeader" xml:space="preserve">
+    <value>Diemžēl radās kļūda</value>
+  </data>
+  <data name="Error_AutoUpdateException" xml:space="preserve">
+    <value>Neizdevās pārbaudīt programmas atjauninājumu</value>
+  </data>
+  <data name="Error_CannotAccessDirectoryException" xml:space="preserve">
+    <value>Nevar piekļūt direktorijam</value>
+  </data>
+  <data name="Error_DeviceNotFoundException" xml:space="preserve">
+    <value>Tālruni nevarēja atrast</value>
+  </data>
+  <data name="Error_DownloadPackageException" xml:space="preserve">
+    <value>Lejupielādējot programmatūras pakotni, radās problēma</value>
+  </data>
+  <data name="Error_EmergencyPackageNotFoundOnServerException" xml:space="preserve">
+    <value>Ārkārtas pakotne netika atrasta</value>
+  </data>
+  <data name="Error_FileNotFoundException" xml:space="preserve">
+    <value>Fails vai ceļš: "{0}" netika atrasts</value>
+  </data>
+  <data name="Error_FirmwareFileNotFoundException" xml:space="preserve">
+    <value>Programmatūras fails nav atrasts</value>
+  </data>
+  <data name="Error_HtcDeviceCommunicationException" xml:space="preserve">
+    <value>Ierīces sakaru kļūda</value>
+  </data>
+  <data name="Error_HtcDeviceHandshakingException" xml:space="preserve">
+    <value>Ierīces rokspiešanas kļūda</value>
+  </data>
+  <data name="Error_HtcPackageFileCheckException" xml:space="preserve">
+    <value>Pakotnes faila pārbaudes kļūda</value>
+  </data>
+  <data name="Error_HtcServiceControlException" xml:space="preserve">
+    <value>Pakalpojumu vadības kļūda</value>
+  </data>
+  <data name="Error_HtcUsbCommunicationException" xml:space="preserve">
+    <value>USB sakaru kļūda</value>
+  </data>
+  <data name="Error_HtcUsbPortOpenException" xml:space="preserve">
+    <value>Atvērta USB porta kļūda</value>
+  </data>
+  <data name="Error_InvalidOperationException" xml:space="preserve">
+    <value>Darbība neizdevās</value>
+  </data>
+  <data name="Error_NoInternetConnectionException" xml:space="preserve">
+    <value>Nav interneta savienojuma</value>
+  </data>
+  <data name="Error_NotEnoughSpaceException" xml:space="preserve">
+    <value>Diskā nepietiek vietas</value>
+  </data>
+  <data name="Error_NotEnoughSpaceOnTheDiskException" xml:space="preserve">
+    <value>Diskā nepietiek vietas</value>
+  </data>
+  <data name="Error_OperationCanceledException" xml:space="preserve">
+    <value>Darbība atcelta</value>
+  </data>
+  <data name="Error_PackageNotFoundException" xml:space="preserve">
+    <value>Varianta pakotne nav atrasta</value>
+  </data>
+  <data name="Error_PlannedServiceBreakException" xml:space="preserve">
+    <value>Nevarēja izveidot savienojumu ar serveri</value>
+  </data>
+  <data name="Error_ReadPhoneInformationException" xml:space="preserve">
+    <value>Tālruņa informācijas lasīšana neizdevās</value>
+  </data>
+  <data name="Error_RestartApplicationException" xml:space="preserve">
+    <value>Restartēt lietojumprogrammu</value>
+  </data>
+  <data name="Error_SoftwareInstallationFailed" xml:space="preserve">
+    <value>Nesekmīga programmatūras instalēšana. Lūdzu, mēģiniet restartēt tālruni un vēlreiz mēģiniet instalēt programmatūru. Ja jūsu tālrunis nav noteikts, ekrānā Esiet sveicināts! izmantojiet pogu "{0}".</value>
+  </data>
+  <data name="Error_SoftwareIsNotCorrectlySignedException" xml:space="preserve">
+    <value>Šī programmatūra nav pareizi parakstīta vai tā nav parakstīta šim tālrunim.</value>
+  </data>
+  <data name="Error_UnauthorizedAccessException" xml:space="preserve">
+    <value>Piekļuve liegta</value>
+  </data>
+  <data name="Error_UnknownError" xml:space="preserve">
+    <value>Radās nezināma kļūda</value>
+  </data>
+  <data name="Error_WebException" xml:space="preserve">
+    <value>Nevarēja izveidot savienojumu ar serveri</value>
+  </data>
+  <data name="FFUCheckingDirectory" xml:space="preserve">
+    <value>Notiek direktorija pārbaude</value>
+  </data>
+  <data name="FFUCheckingFile" xml:space="preserve">
+    <value>Notiek atlasītā faila pārbaude</value>
+  </data>
+  <data name="FFUFamily" xml:space="preserve">
+    <value>Saime:</value>
+  </data>
+  <data name="FFUManufacturer" xml:space="preserve">
+    <value>Ražotājs:</value>
+  </data>
+  <data name="FFUProductName" xml:space="preserve">
+    <value>Produkta nosaukums:</value>
+  </data>
+  <data name="FFUVersion" xml:space="preserve">
+    <value>Versija:</value>
+  </data>
+  <data name="FirmwareIntegrityError" xml:space="preserve">
+    <value>Programmatūras pakotne {0} ir bojāta. Lejupielādējiet pakotni vēlreiz vai atlasiet citu programmatūru.</value>
+  </data>
+  <data name="FirmwareVersion" xml:space="preserve">
+    <value>Aparātprogrammatūras versija: </value>
+  </data>
+  <data name="FirmwareVersionUnknown" xml:space="preserve">
+    <value>Aparātprogrammatūras versija: nezināma</value>
+  </data>
+  <data name="FlashCancelMessage" xml:space="preserve">
+    <value>Notiek programmatūras pakotnes instalēšana. To atceļot, varat sabojāt savu tālruni. Vai tiešām vēlaties atcelt šo darbību?</value>
+  </data>
+  <data name="FlashWarningMessage1" xml:space="preserve">
+    <value>Neizmantojiet tālruni. Neatvienojiet kabeli. Neizslēdziet tālruni. Pretējā gadījumā jūsu tālrunis, iespējams, vairs nedarbosies.</value>
+  </data>
+  <data name="FlashWarningMessage2" xml:space="preserve">
+    <value>Instalēšanas laikā jūsu tālrunis tiek restartēts un tā ekrānā nekas nav redzams.
+Varat ignorēt visus Windows paziņojumus par USB kabeļa savienojumu.</value>
+  </data>
+  <data name="Flashing" xml:space="preserve">
+    <value>Notiek programmatūras instalēšana jūsu tālrunī</value>
+  </data>
+  <data name="FlashingMessageChangeToFlashMode" xml:space="preserve">
+    <value>Notiek tālruņa pārslēgšana pārprogrammēšanas režīmā</value>
+  </data>
+  <data name="FlashingMessageCheckingAntiTheftStatus" xml:space="preserve">
+    <value>Notiek pretzagļu aizsardzības statusa pārbaude</value>
+  </data>
+  <data name="FlashingMessageConnectingWithPhone" xml:space="preserve">
+    <value>Notiek savienojuma izveide ar tālruni</value>
+  </data>
+  <data name="FlashingMessageInstallingSoftware" xml:space="preserve">
+    <value>Notiek programmatūras instalēšana</value>
+  </data>
+  <data name="FlashingMessageOperationStarted" xml:space="preserve">
+    <value>Sākta programmatūras instalēšana</value>
+  </data>
+  <data name="FlashingResult" xml:space="preserve">
+    <value>Programmatūras pakotnes instalēšanas rezultāts</value>
+  </data>
+  <data name="HtcBootloaderMode" xml:space="preserve">
+    <value>HTC {0} režīms</value>
+  </data>
+  <data name="HtcPackageNotFound" xml:space="preserve">
+    <value>Programmatūras pakotne serverī nav atrasta</value>
+  </data>
+  <data name="KeepButtonTillImage" xml:space="preserve">
+    <value>Turiet pogu nospiestu, līdz tiek parādīts ekrānā redzamais attēls.</value>
+  </data>
+  <data name="KeepButtonsTillImage" xml:space="preserve">
+    <value>Turiet pogas nospiestas, līdz tiek parādīts ekrānā redzamais attēls.</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Valoda</value>
+  </data>
+  <data name="LogFiles" xml:space="preserve">
+    <value>Žurnālfaili</value>
+  </data>
+  <data name="LumiaBatteryChecking" xml:space="preserve">
+    <value>Tālruņa akumulatora uzlādes līmenis ir zems. Varat turpināt strādāt, taču tas var sabojāt tālruni.</value>
+  </data>
+  <data name="ManualDeviceSelection" xml:space="preserve">
+    <value>Tālruņa atlase</value>
+  </data>
+  <data name="ManualRestartHtcInfo" xml:space="preserve">
+    <value>Tālruņa informāciju nevarēja lasīt. Lai turpinātu, izpildiet turpmāk aprakstītās darbības, vai noklikšķiniet uz "{0}", lai atceltu procesu.</value>
+  </data>
+  <data name="ManufacturerDetectionFailed" xml:space="preserve">
+    <value>Diemžēl nevarējām noteikt jūsu tālruņa ražotāju.</value>
+  </data>
+  <data name="ManufacturerHeader" xml:space="preserve">
+    <value>Tālruņa ražotājs</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>{0} režīms</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Modelis: </value>
+  </data>
+  <data name="ModelUnknown" xml:space="preserve">
+    <value>Modelis: nezināms</value>
+  </data>
+  <data name="MoreThanOnePackageFound" xml:space="preserve">
+    <value>Atrasta vairāk nekā viena pakotne — lūdzu, atlasiet vienu pakotni un, lai turpinātu, noklikšķiniet uz "{0}".</value>
+  </data>
+  <data name="Network" xml:space="preserve">
+    <value>Tīkls</value>
+  </data>
+  <data name="NoPackagesFoundSelectAnotherDirectory" xml:space="preserve">
+    <value>Nevarēja atrast pareizo pakotni. Lūdzu, atlasiet citu direktoriju vai atlasiet pakotni manuāli.</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>Nav atrasts</value>
+  </data>
+  <data name="OnePackageFound" xml:space="preserve">
+    <value>Atrasta viena pakotne: {0}. Lai turpinātu, noklikšķiniet uz "{1}", vai atlasiet citu mapi vai failu.</value>
+  </data>
+  <data name="OperatingSystemUnknown" xml:space="preserve">
+    <value>Operētājsistēmas versija: nezināma</value>
+  </data>
+  <data name="OperatingSystemVersion" xml:space="preserve">
+    <value>Operētājsistēmas versija: </value>
+  </data>
+  <data name="OperationFailed" xml:space="preserve">
+    <value>Darbība neizdevās</value>
+  </data>
+  <data name="OperationPassed" xml:space="preserve">
+    <value>Darbība veiksmīgi pabeigta</value>
+  </data>
+  <data name="PackageDirectory" xml:space="preserve">
+    <value>Pakotnes direktorijs: {0}</value>
+  </data>
+  <data name="PackageFileHeader" xml:space="preserve">
+    <value>Pakotnes fails</value>
+  </data>
+  <data name="PackageFilePath" xml:space="preserve">
+    <value>Pakotnes ceļš: {0}</value>
+  </data>
+  <data name="PackageIntegrityCheck" xml:space="preserve">
+    <value>Pakotnes integritātes pārbaude</value>
+  </data>
+  <data name="PackageNotFound" xml:space="preserve">
+    <value>Pakotne nav pieejama šim tālrunim.</value>
+  </data>
+  <data name="PackagePathNotSet" xml:space="preserve">
+    <value>Pakotnes ceļš nav iestatīts</value>
+  </data>
+  <data name="PackageSelection" xml:space="preserve">
+    <value>Pakotnes atlase</value>
+  </data>
+  <data name="Packages" xml:space="preserve">
+    <value>Pakotnes</value>
+  </data>
+  <data name="PackagesPath" xml:space="preserve">
+    <value>Pakotņu ceļš</value>
+  </data>
+  <data name="PasswordForm" xml:space="preserve">
+    <value>Parole</value>
+  </data>
+  <data name="PhoneAddedHeader" xml:space="preserve">
+    <value>Tālrunis pievienots</value>
+  </data>
+  <data name="PhoneAddedMessage" xml:space="preserve">
+    <value>Ir pievienots jauns tālrunis {0}.</value>
+  </data>
+  <data name="PhoneIsUpToDate" xml:space="preserve">
+    <value>Jums ir jaunākā pieejamā programmatūras versija.</value>
+  </data>
+  <data name="PhoneRemovedHeader" xml:space="preserve">
+    <value>Tālrunis atvienots</value>
+  </data>
+  <data name="PhoneRemovedMessage" xml:space="preserve">
+    <value>Tālrunis {0} ir atvienots.</value>
+  </data>
+  <data name="PhoneRestart" xml:space="preserve">
+    <value>Tālruņa restartēšana</value>
+  </data>
+  <data name="PhoneSettingsBackupPathWin10" xml:space="preserve">
+    <value>Iestatījumi &gt; Atjaunināšana un atkopšana &gt; Dublēšana</value>
+  </data>
+  <data name="PhoneSettingsBackupPathWin8" xml:space="preserve">
+    <value>Iestatījumi &gt; dublēšana</value>
+  </data>
+  <data name="PleaseConnectDevice" xml:space="preserve">
+    <value>Lūdzu, pievienojiet savu tālruni</value>
+  </data>
+  <data name="PleaseConnectOneDevice" xml:space="preserve">
+    <value>Lūdzu, pievienojiet tikai vienu tālruni</value>
+  </data>
+  <data name="PleaseSelectAFolder" xml:space="preserve">
+    <value>Lūdzu, atlasiet mapi</value>
+  </data>
+  <data name="PleaseSelectDeviceToContinue" xml:space="preserve">
+    <value>Lai turpinātu, atlasiet tālruni</value>
+  </data>
+  <data name="PleaseSelectManufacturer" xml:space="preserve">
+    <value>Lūdzu, atlasiet pareizo:</value>
+  </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>Lūdzu, uzgaidiet</value>
+  </data>
+  <data name="PortForm" xml:space="preserve">
+    <value>Ports</value>
+  </data>
+  <data name="Preferences" xml:space="preserve">
+    <value>Preferences</value>
+  </data>
+  <data name="PressPowerAndVolumeDown" xml:space="preserve">
+    <value>Vienlaikus nospiediet barošanas un skaļuma samazināšanas pogas.</value>
+  </data>
+  <data name="PressThePowerButton" xml:space="preserve">
+    <value>Nospiediet barošanas pogu. </value>
+  </data>
+  <data name="PressThePowerButtonUntilSwitchOff" xml:space="preserve">
+    <value>Nospiediet un turiet nospiestu barošanas pogu, līdz tālrunis sāk vibrēt.</value>
+  </data>
+  <data name="PressVolumeUpVolumeDown" xml:space="preserve">
+    <value>Kad tālrunis ievibrējas, vienlaikus nospiediet skaļuma palielināšanas un skaļuma samazināšanas pogas.</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Konfidencialitātes politika</value>
+  </data>
+  <data name="ReadingDeviceInfo" xml:space="preserve">
+    <value>Notiek tālruņa informācijas lasīšana</value>
+  </data>
+  <data name="RebootHtc" xml:space="preserve">
+    <value>Tagad varat restartēt tālruni parastajā režīmā. Lai restartētu tālruni, nospiediet barošanas pogu un kādu brīdi to pieturiet.</value>
+  </data>
+  <data name="RebootPhoneInstructions" xml:space="preserve">
+    <value>Tālruni nevarēja atrast.
+Lūdzu, mēģiniet atsāknēt tālruni, vienlaikus nospiežot barošanas pogu un skaļuma samazināšanas pogu.
+Turiet pogas nospiestas, līdz tālrunis ievibrējas.</value>
+  </data>
+  <data name="ReinstallSoftware" xml:space="preserve">
+    <value>Pārinstalēt programmatūru</value>
+  </data>
+  <data name="ReleasePowerPressVolumeUp" xml:space="preserve">
+    <value>Kad tālrunis ievibrējas, atlaidiet barošanas pogu un nospiediet skaļuma palielināšanas pogu.</value>
+  </data>
+  <data name="RemovingPackages" xml:space="preserve">
+    <value>Notiek pakotņu noņemšana</value>
+  </data>
+  <data name="RemovingReports" xml:space="preserve">
+    <value>Notiek atskaišu noņemšana</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>Atskaites</value>
+  </data>
+  <data name="ResetSettingsQuestion" xml:space="preserve">
+    <value>Vai tiešām vēlaties atiestatīt visu iestatījumu noklusējuma vērtības?</value>
+  </data>
+  <data name="RestartDeviceHeader" xml:space="preserve">
+    <value>Restartējiet tālruni</value>
+  </data>
+  <data name="SelectDeviceToRecover" xml:space="preserve">
+    <value>Atlasiet tālruni, kuru vēlaties atkopt</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Iestatījumi</value>
+  </data>
+  <data name="SoftwareInstallation" xml:space="preserve">
+    <value>Programmatūras instalēšana</value>
+  </data>
+  <data name="SoftwareOnServer" xml:space="preserve">
+    <value>Serverī pieejama programmatūra</value>
+  </data>
+  <data name="SoftwarePackage" xml:space="preserve">
+    <value>Programmatūras pakotne</value>
+  </data>
+  <data name="SthWentWrongMessage" xml:space="preserve">
+    <value>Diemžēl radās problēma</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>Kopsavilkums</value>
+  </data>
+  <data name="Survey1" xml:space="preserve">
+    <value>Aptauja</value>
+  </data>
+  <data name="Survey_Button_ContinueNoSubmit1" xml:space="preserve">
+    <value>Turpināt neiesniedzot</value>
+  </data>
+  <data name="Survey_Button_SubmitAndContinue1" xml:space="preserve">
+    <value>Iesniegt un turpināt atkopšanu</value>
+  </data>
+  <data name="Survey_Choice_AppsNotWorking1" xml:space="preserve">
+    <value>Programmas nedarbojas, kā paredzēts</value>
+  </data>
+  <data name="Survey_Choice_DeviceNotWorking1" xml:space="preserve">
+    <value>Ierīce nedarbojas, kā paredzēts</value>
+  </data>
+  <data name="Survey_Choice_PerformanceIssues1" xml:space="preserve">
+    <value>Radās veiktspējas problēmas</value>
+  </data>
+  <data name="Survey_Choice_PrevVersionFaster1" xml:space="preserve">
+    <value>Iepriekšējā versija darbojās ātrāk</value>
+  </data>
+  <data name="Survey_Choice_PrevVersionMoreReliable1" xml:space="preserve">
+    <value>Iepriekšējā versija bija uzticamāka</value>
+  </data>
+  <data name="Survey_Header1" xml:space="preserve">
+    <value>Kāpēc ierīce ir jāatkopj?</value>
+  </data>
+  <data name="Survey_TellUsMore1" xml:space="preserve">
+    <value>Pastāstiet mums vairāk</value>
+  </data>
+  <data name="Theme" xml:space="preserve">
+    <value>Dizains</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>Tumšs</value>
+  </data>
+  <data name="ThemeHighContrast" xml:space="preserve">
+    <value>Liels kontrasts</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>Gaišs</value>
+  </data>
+  <data name="ThereIsMandatoryApplicationUpdate" xml:space="preserve">
+    <value>Pieejams obligāts programmas atjauninājums {0}.</value>
+  </data>
+  <data name="ThisUpdateMustBeInstalled" xml:space="preserve">
+    <value>Šis {0} atjauninājums ir jāinstalē, un to nevar izlaist. Lietojumprogrammu nevar izmantot, kamēr tā nav atjaunināta.
+Pirms šī atjauninājuma instalēšanas, lūdzu, atvienojiet visas ierīces.</value>
+  </data>
+  <data name="TraceEnabled" xml:space="preserve">
+    <value>Izveidot žurnālfailu</value>
+  </data>
+  <data name="Troubleshooting" xml:space="preserve">
+    <value>Problēmu novēršana</value>
+  </data>
+  <data name="TurnOffPhone" xml:space="preserve">
+    <value>Izslēdziet tālruni.</value>
+  </data>
+  <data name="UpdateAvailable" xml:space="preserve">
+    <value>Jūsu tālrunim pieejams atjauninājums</value>
+  </data>
+  <data name="UseProxyServer" xml:space="preserve">
+    <value>Izmantot starpniekserveri</value>
+  </data>
+  <data name="UserNameForm" xml:space="preserve">
+    <value>Lietotājvārds</value>
+  </data>
+  <data name="VerifyingDownloadedFiles" xml:space="preserve">
+    <value>Notiek lejupielādēto failu verificēšana</value>
+  </data>
+  <data name="WaitUntilPhoneTurnsOn" xml:space="preserve">
+    <value>Uzgaidiet, līdz tālrunis ieslēdzas.</value>
+  </data>
+  <data name="WaitingForConnection" xml:space="preserve">
+    <value>Gaida savienojumu</value>
+  </data>
+  <data name="WelcomeHeader" xml:space="preserve">
+    <value>Esiet sveicināts!</value>
+  </data>
+</root>

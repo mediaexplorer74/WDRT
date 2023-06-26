@@ -2,10 +2,10 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model
 {
-	// Token: 0x02000025 RID: 37
+	// Token: 0x0200000E RID: 14
 	public class DeviceIdentifier
 	{
-		// Token: 0x0600012F RID: 303 RVA: 0x00004488 File Offset: 0x00002688
+		// Token: 0x0600007D RID: 125 RVA: 0x00002E94 File Offset: 0x00001094
 		public DeviceIdentifier(string vid, string pid, params int[] mi)
 		{
 			this.Vid = vid;
@@ -13,32 +13,32 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			this.Mi = mi;
 		}
 
-		// Token: 0x06000130 RID: 304 RVA: 0x000044AB File Offset: 0x000026AB
+		// Token: 0x0600007E RID: 126 RVA: 0x00002EB6 File Offset: 0x000010B6
 		public DeviceIdentifier(string vid, string pid)
 		{
 			this.Vid = vid;
 			this.Pid = pid;
 		}
 
-		// Token: 0x06000131 RID: 305 RVA: 0x000044C6 File Offset: 0x000026C6
+		// Token: 0x0600007F RID: 127 RVA: 0x00002ED0 File Offset: 0x000010D0
 		public DeviceIdentifier(string vid)
 		{
 			this.Vid = vid;
 		}
 
-		// Token: 0x17000078 RID: 120
-		// (get) Token: 0x06000132 RID: 306 RVA: 0x000044DC File Offset: 0x000026DC
-		// (set) Token: 0x06000133 RID: 307 RVA: 0x000044F3 File Offset: 0x000026F3
+		// Token: 0x17000034 RID: 52
+		// (get) Token: 0x06000080 RID: 128 RVA: 0x00002EE2 File Offset: 0x000010E2
+		// (set) Token: 0x06000081 RID: 129 RVA: 0x00002EEA File Offset: 0x000010EA
 		public string Vid { get; private set; }
 
-		// Token: 0x17000079 RID: 121
-		// (get) Token: 0x06000134 RID: 308 RVA: 0x000044FC File Offset: 0x000026FC
-		// (set) Token: 0x06000135 RID: 309 RVA: 0x00004513 File Offset: 0x00002713
+		// Token: 0x17000035 RID: 53
+		// (get) Token: 0x06000082 RID: 130 RVA: 0x00002EF3 File Offset: 0x000010F3
+		// (set) Token: 0x06000083 RID: 131 RVA: 0x00002EFB File Offset: 0x000010FB
 		public string Pid { get; private set; }
 
-		// Token: 0x1700007A RID: 122
-		// (get) Token: 0x06000136 RID: 310 RVA: 0x0000451C File Offset: 0x0000271C
-		// (set) Token: 0x06000137 RID: 311 RVA: 0x00004533 File Offset: 0x00002733
+		// Token: 0x17000036 RID: 54
+		// (get) Token: 0x06000084 RID: 132 RVA: 0x00002F04 File Offset: 0x00001104
+		// (set) Token: 0x06000085 RID: 133 RVA: 0x00002F0C File Offset: 0x0000110C
 		public int[] Mi { get; private set; }
 	}
 }

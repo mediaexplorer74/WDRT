@@ -6,15 +6,15 @@ using System.Xml.Serialization;
 
 namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 {
-	// Token: 0x02000044 RID: 68
+	// Token: 0x02000052 RID: 82
 	public class RegistryAcl : ResourceAcl
 	{
-		// Token: 0x060001BC RID: 444 RVA: 0x00008F49 File Offset: 0x00007149
+		// Token: 0x060001D5 RID: 469 RVA: 0x00009CA3 File Offset: 0x00007EA3
 		public RegistryAcl()
 		{
 		}
 
-		// Token: 0x060001BD RID: 445 RVA: 0x0000942C File Offset: 0x0000762C
+		// Token: 0x060001D6 RID: 470 RVA: 0x00009CAC File Offset: 0x00007EAC
 		public RegistryAcl(ORRegistryKey key)
 		{
 			if (key == null)
@@ -27,31 +27,27 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			this.m_fullPath = key.FullName;
 		}
 
-		// Token: 0x17000037 RID: 55
-		// (get) Token: 0x060001BE RID: 446 RVA: 0x00009478 File Offset: 0x00007678
-		// (set) Token: 0x060001BF RID: 447 RVA: 0x00009012 File Offset: 0x00007212
+		// Token: 0x1700003C RID: 60
+		// (get) Token: 0x060001D7 RID: 471 RVA: 0x00009CF8 File Offset: 0x00007EF8
+		// (set) Token: 0x060001D8 RID: 472 RVA: 0x00009D6E File Offset: 0x00007F6E
 		[XmlAttribute("SACL")]
 		public override string MandatoryIntegrityLabel
 		{
 			get
 			{
-				if (!this.m_macLablelProcessed)
+				if (this.m_nos != null)
 				{
-					this.m_macLablelProcessed = true;
-					if (this.m_nos != null)
+					this.m_macLabel = null;
+					string text = SecurityUtils.ConvertSDToStringSD(this.m_nos.GetSecurityDescriptorBinaryForm(), (SecurityInformationFlags)24U);
+					if (!string.IsNullOrEmpty(text))
 					{
-						this.m_macLabel = null;
-						string text = SecurityUtils.ConvertSDToStringSD(this.m_nos.GetSecurityDescriptorBinaryForm(), (SecurityInformationFlags)24U);
-						if (!string.IsNullOrEmpty(text))
+						Match match = ResourceAcl.regexExtractMIL.Match(text);
+						if (match.Success)
 						{
-							Match match = ResourceAcl.regexExtractMIL.Match(text);
-							if (match.Success)
+							Group group = match.Groups["MIL"];
+							if (group != null)
 							{
-								Group group = match.Groups["MIL"];
-								if (group != null)
-								{
-									this.m_macLabel = SddlNormalizer.FixAceSddl(group.Value);
-								}
+								this.m_macLabel = SddlNormalizer.FixAceSddl(group.Value);
 							}
 						}
 					}
@@ -64,24 +60,24 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x17000038 RID: 56
-		// (get) Token: 0x060001C0 RID: 448 RVA: 0x00009500 File Offset: 0x00007700
+		// Token: 0x1700003D RID: 61
+		// (get) Token: 0x060001D9 RID: 473 RVA: 0x00009D78 File Offset: 0x00007F78
 		public override NativeObjectSecurity ObjectSecurity
 		{
 			get
 			{
-				if (this.m_objectSecurity == null && this.m_nos != null)
+				RegistrySecurity registrySecurity = null;
+				if (this.m_nos != null)
 				{
-					RegistrySecurity registrySecurity = new RegistrySecurity();
+					registrySecurity = new RegistrySecurity();
 					registrySecurity.SetSecurityDescriptorBinaryForm(this.m_nos.GetSecurityDescriptorBinaryForm());
-					this.m_objectSecurity = registrySecurity;
 				}
-				return this.m_objectSecurity;
+				return registrySecurity;
 			}
 		}
 
-		// Token: 0x17000039 RID: 57
-		// (get) Token: 0x060001C1 RID: 449 RVA: 0x00009543 File Offset: 0x00007743
+		// Token: 0x1700003E RID: 62
+		// (get) Token: 0x060001DA RID: 474 RVA: 0x00009DA7 File Offset: 0x00007FA7
 		protected override string TypeString
 		{
 			get
@@ -90,7 +86,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x060001C2 RID: 450 RVA: 0x0000954C File Offset: 0x0000774C
+		// Token: 0x060001DB RID: 475 RVA: 0x00009DB0 File Offset: 0x00007FB0
 		protected override string ComputeExplicitDACL()
 		{
 			RegistrySecurity registrySecurity = this.m_key.RegistrySecurity;
@@ -121,10 +117,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return SddlNormalizer.FixAceSddl(text);
 		}
 
-		// Token: 0x040000E3 RID: 227
+		// Token: 0x04000140 RID: 320
 		private ORRegistryKey m_key;
-
-		// Token: 0x040000E4 RID: 228
-		private NativeObjectSecurity m_objectSecurity;
 	}
 }

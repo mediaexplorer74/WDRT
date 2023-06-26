@@ -179,10 +179,10 @@ namespace ComponentAce.Encryption
 		// Token: 0x06000031 RID: 49 RVA: 0x00002770 File Offset: 0x00001770
 		public int MaxKeySize()
 		{
-			int result = 0;
 			int num = 0;
-			this.GetContext(ref num, ref result, ref num);
-			return result;
+			int num2 = 0;
+			this.GetContext(ref num2, ref num, ref num2);
+			return num;
 		}
 
 		// Token: 0x06000032 RID: 50 RVA: 0x0000278E File Offset: 0x0000178E
@@ -263,6 +263,7 @@ namespace ComponentAce.Encryption
 				}
 				break;
 			case CipherBlockMode.CTR:
+			{
 				Source.CopyTo(Dest, num);
 				for (int i = 0; i < DataSize; i++)
 				{
@@ -272,8 +273,7 @@ namespace ComponentAce.Encryption
 						{
 							if (this.ctrMode_Nonce[j] < 255)
 							{
-								this.ctrMode_Nonce[j] = 
-										(byte)(this.ctrMode_Nonce[j] + 1);
+								this.ctrMode_Nonce[j] = this.ctrMode_Nonce[j] + 1;
 								break;
 							}
 							this.ctrMode_Nonce[j] = 0;
@@ -287,6 +287,7 @@ namespace ComponentAce.Encryption
 					Dest[i] ^= this.ctrMode_EncryptionBlock[num3];
 				}
 				break;
+			}
 			case CipherBlockMode.CBC:
 			case CipherBlockMode.CFB:
 			case CipherBlockMode.OFB:
@@ -359,6 +360,7 @@ namespace ComponentAce.Encryption
 				}
 				break;
 			case CipherBlockMode.CTR:
+			{
 				Source.CopyTo(Dest, num);
 				for (int i = 0; i < DataSize; i++)
 				{
@@ -368,8 +370,7 @@ namespace ComponentAce.Encryption
 						{
 							if (this.ctrMode_Nonce[j] < 255)
 							{
-								this.ctrMode_Nonce[j] =
-										(byte)(this.ctrMode_Nonce[j] + 1);
+								this.ctrMode_Nonce[j] = this.ctrMode_Nonce[j] + 1;
 								break;
 							}
 							this.ctrMode_Nonce[j] = 0;
@@ -383,6 +384,7 @@ namespace ComponentAce.Encryption
 					Dest[i] ^= this.ctrMode_EncryptionBlock[num3];
 				}
 				return;
+			}
 			case CipherBlockMode.CBC:
 			case CipherBlockMode.CFB:
 			case CipherBlockMode.OFB:

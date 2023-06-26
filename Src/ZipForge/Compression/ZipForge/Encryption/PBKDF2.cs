@@ -36,7 +36,7 @@ namespace ComponentAce.Compression.ZipForge.Encryption
 		private byte[] Int(uint i)
 		{
 			byte[] bytes = BitConverter.GetBytes(i);
-			byte[] result = new byte[]
+			byte[] array = new byte[]
 			{
 				bytes[3],
 				bytes[2],
@@ -47,7 +47,7 @@ namespace ComponentAce.Compression.ZipForge.Encryption
 			{
 				return bytes;
 			}
-			return result;
+			return array;
 		}
 
 		// Token: 0x06000672 RID: 1650 RVA: 0x00029D4C File Offset: 0x00028D4C
@@ -89,17 +89,17 @@ namespace ComponentAce.Compression.ZipForge.Encryption
 					}
 				}
 				this.block += 1U;
-				byte[] src = array4;
+				byte[] array5 = array4;
 				int num2 = cb - i;
 				if (num2 <= 20)
 				{
-					Buffer.BlockCopy(src, 0, array, i, num2);
+					Buffer.BlockCopy(array5, 0, array, i, num2);
 					i += num2;
-					Buffer.BlockCopy(src, num2, this.buffer, this.startIndex, 20 - num2);
+					Buffer.BlockCopy(array5, num2, this.buffer, this.startIndex, 20 - num2);
 					this.endIndex += 20 - num2;
 					return array;
 				}
-				Buffer.BlockCopy(src, 0, array, i, 20);
+				Buffer.BlockCopy(array5, 0, array, i, 20);
 				i += 20;
 			}
 			return array;

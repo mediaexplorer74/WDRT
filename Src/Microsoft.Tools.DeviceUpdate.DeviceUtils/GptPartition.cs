@@ -48,16 +48,16 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 		{
 			int num = (int)(index * partitionEntrySize);
 			num += 32;
-			ulong firstLBA = BitConverter.ToUInt64(data, num);
+			ulong num2 = BitConverter.ToUInt64(data, num);
 			num += 8;
-			ulong lastLBA = BitConverter.ToUInt64(data, num);
+			ulong num3 = BitConverter.ToUInt64(data, num);
 			num += 8;
 			num += 8;
-			int count = (int)(partitionEntrySize - 56U);
-			string @string = Encoding.Unicode.GetString(data, num, count);
-			char[] trimChars = new char[1];
-			string name = @string.TrimEnd(trimChars);
-			partition = new GptPartition(firstLBA, lastLBA, name);
+			int num4 = (int)(partitionEntrySize - 56U);
+			string @string = Encoding.Unicode.GetString(data, num, num4);
+			char[] array = new char[1];
+			string text = @string.TrimEnd(array);
+			partition = new GptPartition(num2, num3, text);
 			return true;
 		}
 	}

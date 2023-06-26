@@ -12,33 +12,26 @@ namespace Nokia.Mira.Strategies
 		// Token: 0x060000D8 RID: 216 RVA: 0x00004550 File Offset: 0x00002750
 		public ChunklessDownloadStrategy(IWebResponse response, IFileStreamFactory fileStreamFactory, CancellationToken token, Action<long> reportBytesDownloaded, Action<long> reportBytesWritten)
 		{
-			ChunklessDownloadStrategy.DisplayClass4 f8__locals1 
-				= new ChunklessDownloadStrategy.DisplayClass4();
-			f8__locals1.response = response;
-			f8__locals1.fileStreamFactory = fileStreamFactory;
-			f8__locals1.token = token;
-			f8__locals1.reportBytesDownloaded = reportBytesDownloaded;
-			f8__locals1.reportBytesWritten = reportBytesWritten;
-			
-			//RnD
-			//base..ctor();
-			
+			ChunklessDownloadStrategy.<>c__DisplayClass4 CS$<>8__locals1 = new ChunklessDownloadStrategy.<>c__DisplayClass4();
+			CS$<>8__locals1.response = response;
+			CS$<>8__locals1.fileStreamFactory = fileStreamFactory;
+			CS$<>8__locals1.token = token;
+			CS$<>8__locals1.reportBytesDownloaded = reportBytesDownloaded;
+			CS$<>8__locals1.reportBytesWritten = reportBytesWritten;
+			base..ctor();
 			long bytesWritten = 0L;
 			Action<long> bytesWrittenAction = delegate(long v)
 			{
 				bytesWritten += v;
-				f8__locals1.reportBytesWritten(bytesWritten);
-				f8__locals1.reportBytesDownloaded(v);
+				CS$<>8__locals1.reportBytesWritten(bytesWritten);
+				CS$<>8__locals1.reportBytesDownloaded(v);
 			};
-			this.taskLazy = new Lazy<Task>(() => Task.Factory.StartNew(
-				delegate()
+			this.taskLazy = new Lazy<Task>(() => Task.Factory.StartNew(delegate
 			{
-				f8__locals1.response.DownloadResponseStream(
-					f8__locals1.token, f8__locals1.fileStreamFactory, 
-					bytesWrittenAction);
-			}, f8__locals1.token).ContinueWith<Task>(delegate(Task t)
+				CS$<>8__locals1.response.DownloadResponseStream(CS$<>8__locals1.token, CS$<>8__locals1.fileStreamFactory, bytesWrittenAction);
+			}, CS$<>8__locals1.token).ContinueWith<Task>(delegate(Task t)
 			{
-				f8__locals1.response.Close();
+				CS$<>8__locals1.response.Close();
 				return t;
 			}).Unwrap());
 		}
@@ -57,18 +50,5 @@ namespace Nokia.Mira.Strategies
 
 		// Token: 0x04000072 RID: 114
 		private Lazy<Task> taskLazy;
-
-        private class DisplayClass4
-        {
-            internal IWebResponse response;
-            internal IFileStreamFactory fileStreamFactory;
-            internal CancellationToken token;
-            internal Action<long> reportBytesDownloaded;
-            internal Action<long> reportBytesWritten;
-
-            public DisplayClass4()
-            {
-            }
-        }
-    }
+	}
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using ComponentAce.Compression.Archiver;
-using ComponentAce.Compression.Exception1;
+using ComponentAce.Compression.Exception;
 
 namespace ComponentAce.Compression.Tar
 {
@@ -17,10 +17,7 @@ namespace ComponentAce.Compression.Tar
 			}
 			if (!writeStream.CanWrite)
 			{
-				throw ExceptionBuilder.Exception(ErrorCode.StreamDoesNotSupportWriting, new object[]
-				{
-					"writeStream"
-				});
+				throw ExceptionBuilder.Exception(ErrorCode.StreamDoesNotSupportWriting, new object[] { "writeStream" });
 			}
 			this._codePage = codepage;
 			this._outStream = writeStream;
@@ -47,10 +44,7 @@ namespace ComponentAce.Compression.Tar
 			}
 			if (!data.CanRead)
 			{
-				throw ExceptionBuilder.Exception(ErrorCode.StreamDoesNotSupportReading, new object[]
-				{
-					"data"
-				});
+				throw ExceptionBuilder.Exception(ErrorCode.StreamDoesNotSupportReading, new object[] { "data" });
 			}
 			this.WriteHeader(name, lastModificationTime, dataSizeInBytes, userId, groupId, mode, typeFlag);
 			this.WriteContent(dataSizeInBytes, data);
@@ -88,8 +82,8 @@ namespace ComponentAce.Compression.Tar
 				{
 					while (count > 0L)
 					{
-						byte[] buffer = new byte[1];
-						if (!ReadWriteHelper.WriteToStream(buffer, 0, 1, this.OutStream, this._writeToStreamFailureDelegate))
+						byte[] array = new byte[1];
+						if (!ReadWriteHelper.WriteToStream(array, 0, 1, this.OutStream, this._writeToStreamFailureDelegate))
 						{
 							throw ExceptionBuilder.Exception(ErrorCode.WriteToTheStreamFailed);
 						}
@@ -131,8 +125,8 @@ namespace ComponentAce.Compression.Tar
 			}
 			while (size < 512L)
 			{
-				byte[] buffer = new byte[1];
-				if (!ReadWriteHelper.WriteToStream(buffer, 0, 1, this.OutStream, this._writeToStreamFailureDelegate))
+				byte[] array = new byte[1];
+				if (!ReadWriteHelper.WriteToStream(array, 0, 1, this.OutStream, this._writeToStreamFailureDelegate))
 				{
 					throw ExceptionBuilder.Exception(ErrorCode.WriteToTheStreamFailed);
 				}

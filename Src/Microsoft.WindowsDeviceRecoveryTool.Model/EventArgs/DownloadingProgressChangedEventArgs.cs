@@ -2,10 +2,10 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model.EventArgs
 {
-	// Token: 0x02000030 RID: 48
+	// Token: 0x0200001F RID: 31
 	public class DownloadingProgressChangedEventArgs
 	{
-		// Token: 0x0600014B RID: 331 RVA: 0x000048A4 File Offset: 0x00002AA4
+		// Token: 0x060001C2 RID: 450 RVA: 0x000061B1 File Offset: 0x000043B1
 		public DownloadingProgressChangedEventArgs(int percentage, long downloadedSize, long totalSize, double bytesPerSecond, long secondsLeft, string message = null)
 		{
 			this.Percentage = percentage;
@@ -16,34 +16,34 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model.EventArgs
 			this.SecondsLeft = secondsLeft;
 		}
 
-		// Token: 0x17000082 RID: 130
-		// (get) Token: 0x0600014C RID: 332 RVA: 0x000048E4 File Offset: 0x00002AE4
-		// (set) Token: 0x0600014D RID: 333 RVA: 0x000048FB File Offset: 0x00002AFB
+		// Token: 0x170000BF RID: 191
+		// (get) Token: 0x060001C3 RID: 451 RVA: 0x000061EE File Offset: 0x000043EE
+		// (set) Token: 0x060001C4 RID: 452 RVA: 0x000061F6 File Offset: 0x000043F6
 		public int Percentage { get; private set; }
 
-		// Token: 0x17000083 RID: 131
-		// (get) Token: 0x0600014E RID: 334 RVA: 0x00004904 File Offset: 0x00002B04
-		// (set) Token: 0x0600014F RID: 335 RVA: 0x0000491B File Offset: 0x00002B1B
+		// Token: 0x170000C0 RID: 192
+		// (get) Token: 0x060001C5 RID: 453 RVA: 0x000061FF File Offset: 0x000043FF
+		// (set) Token: 0x060001C6 RID: 454 RVA: 0x00006207 File Offset: 0x00004407
 		public string Message { get; private set; }
 
-		// Token: 0x17000084 RID: 132
-		// (get) Token: 0x06000150 RID: 336 RVA: 0x00004924 File Offset: 0x00002B24
-		// (set) Token: 0x06000151 RID: 337 RVA: 0x0000493B File Offset: 0x00002B3B
+		// Token: 0x170000C1 RID: 193
+		// (get) Token: 0x060001C7 RID: 455 RVA: 0x00006210 File Offset: 0x00004410
+		// (set) Token: 0x060001C8 RID: 456 RVA: 0x00006218 File Offset: 0x00004418
 		public long TotalSize { get; private set; }
 
-		// Token: 0x17000085 RID: 133
-		// (get) Token: 0x06000152 RID: 338 RVA: 0x00004944 File Offset: 0x00002B44
-		// (set) Token: 0x06000153 RID: 339 RVA: 0x0000495B File Offset: 0x00002B5B
+		// Token: 0x170000C2 RID: 194
+		// (get) Token: 0x060001C9 RID: 457 RVA: 0x00006221 File Offset: 0x00004421
+		// (set) Token: 0x060001CA RID: 458 RVA: 0x00006229 File Offset: 0x00004429
 		public long DownloadedSize { get; private set; }
 
-		// Token: 0x17000086 RID: 134
-		// (get) Token: 0x06000154 RID: 340 RVA: 0x00004964 File Offset: 0x00002B64
-		// (set) Token: 0x06000155 RID: 341 RVA: 0x0000497B File Offset: 0x00002B7B
+		// Token: 0x170000C3 RID: 195
+		// (get) Token: 0x060001CB RID: 459 RVA: 0x00006232 File Offset: 0x00004432
+		// (set) Token: 0x060001CC RID: 460 RVA: 0x0000623A File Offset: 0x0000443A
 		public long SecondsLeft { get; private set; }
 
-		// Token: 0x17000087 RID: 135
-		// (get) Token: 0x06000156 RID: 342 RVA: 0x00004984 File Offset: 0x00002B84
-		// (set) Token: 0x06000157 RID: 343 RVA: 0x0000499B File Offset: 0x00002B9B
+		// Token: 0x170000C4 RID: 196
+		// (get) Token: 0x060001CD RID: 461 RVA: 0x00006243 File Offset: 0x00004443
+		// (set) Token: 0x060001CE RID: 462 RVA: 0x0000624B File Offset: 0x0000444B
 		public double BytesPerSecond { get; private set; }
 	}
 }

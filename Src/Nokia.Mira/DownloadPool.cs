@@ -39,7 +39,7 @@ namespace Nokia.Mira
 		// Token: 0x0600008E RID: 142 RVA: 0x00003050 File Offset: 0x00001250
 		public void QueueDownloadTask(DownloadTask task)
 		{
-			Task.Factory.StartNew(delegate()
+			Task.Factory.StartNew(delegate
 			{
 				lock (this.syncRoot)
 				{
@@ -116,9 +116,9 @@ namespace Nokia.Mira
 				{
 					this.OnTaskCanceled(downloadTask);
 				}
-				catch (Exception error)
+				catch (Exception ex2)
 				{
-					this.OnTaskFaulted(downloadTask, error);
+					this.OnTaskFaulted(downloadTask, ex2);
 				}
 			}
 			return false;

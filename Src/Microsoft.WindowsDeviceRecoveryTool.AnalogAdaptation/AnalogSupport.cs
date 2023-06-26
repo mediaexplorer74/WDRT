@@ -36,32 +36,43 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AnalogAdaptation
 			return AnalogSupport.NormalModeDetectionInfos.Union(AnalogSupport.FlashModeDetectionInfos).ToArray<DeviceDetectionInformation>();
 		}
 
-		// Token: 0x06000004 RID: 4 RVA: 0x000023B8 File Offset: 0x000005B8
+		// Token: 0x06000004 RID: 4 RVA: 0x000020A4 File Offset: 0x000002A4
 		public async Task UpdateDeviceDetectionDataAsync(DeviceDetectionData detectionData, CancellationToken cancellationToken)
 		{
-			if (detectionData.IsDeviceSupported)
+			bool isDeviceSupported = detectionData.IsDeviceSupported;
+			if (isDeviceSupported)
 			{
 				throw new InvalidOperationException("Device is already supported.");
 			}
 			VidPidPair vidPidPair = detectionData.VidPidPair;
 			string devicePath = detectionData.UsbDeviceInterfaceDevicePath;
-			if (AnalogSupport.NormalModeDetectionInfos.Any((DeviceDetectionInformation di) => di.VidPidPair == vidPidPair))
+			bool flag = AnalogSupport.NormalModeDetectionInfos.Any((DeviceDetectionInformation di) => di.VidPidPair == vidPidPair);
+			if (flag)
 			{
 				AnalogSupport.MarkDeviceDetectionDataAsSupported(detectionData);
 			}
-			else if (AnalogSupport.FlashModeDetectionInfos.Any((DeviceDetectionInformation di) => di.VidPidPair == vidPidPair))
+			else
 			{
-				await Task.Delay(2000);
-				FfuDeviceInformation information = await this.ffuDeviceInformationProvider.ReadInformationAsync(devicePath, cancellationToken);
-				string friendlyName = information.DeviceFriendlyName;
-				if (AnalogSupport.PlatformIdMatches.Any((string match) => friendlyName.IndexOf(match, StringComparison.OrdinalIgnoreCase) >= 0))
+				bool flag2 = AnalogSupport.FlashModeDetectionInfos.Any((DeviceDetectionInformation di) => di.VidPidPair == vidPidPair);
+				if (flag2)
 				{
-					AnalogSupport.MarkDeviceDetectionDataAsSupported(detectionData);
+					AnalogSupport.<>c__DisplayClass9_1 CS$<>8__locals2 = new AnalogSupport.<>c__DisplayClass9_1();
+					await Task.Delay(2000);
+					FfuDeviceInformation ffuDeviceInformation = await this.ffuDeviceInformationProvider.ReadInformationAsync(devicePath, cancellationToken);
+					FfuDeviceInformation information = ffuDeviceInformation;
+					ffuDeviceInformation = null;
+					CS$<>8__locals2.friendlyName = information.DeviceFriendlyName;
+					if (AnalogSupport.PlatformIdMatches.Any((string match) => CS$<>8__locals2.friendlyName.IndexOf(match, StringComparison.OrdinalIgnoreCase) >= 0))
+					{
+						AnalogSupport.MarkDeviceDetectionDataAsSupported(detectionData);
+					}
+					CS$<>8__locals2 = null;
+					information = null;
 				}
 			}
 		}
 
-		// Token: 0x06000005 RID: 5 RVA: 0x00002412 File Offset: 0x00000612
+		// Token: 0x06000005 RID: 5 RVA: 0x000020F6 File Offset: 0x000002F6
 		private static void MarkDeviceDetectionDataAsSupported(DeviceDetectionData detectionData)
 		{
 			detectionData.IsDeviceSupported = true;
@@ -87,11 +98,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AnalogAdaptation
 		};
 
 		// Token: 0x04000004 RID: 4
-		private static readonly string[] PlatformIdMatches = new string[]
-		{
-			"sakura",
-			"hololens"
-		};
+		private static readonly string[] PlatformIdMatches = new string[] { "sakura", "hololens" };
 
 		// Token: 0x04000005 RID: 5
 		private static readonly Guid SupportGuid = new Guid("60DAA760-9C63-46E1-B284-0B282D2A307A");

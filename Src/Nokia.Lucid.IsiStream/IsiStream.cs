@@ -7,7 +7,8 @@ namespace Nokia.Lucid.IsiStream
 	public class IsiStream : IDisposable
 	{
 		// Token: 0x06000031 RID: 49 RVA: 0x000024C1 File Offset: 0x000006C1
-		public IsiStream() : this(10000)
+		public IsiStream()
+			: this(10000)
 		{
 		}
 
@@ -92,8 +93,8 @@ namespace Nokia.Lucid.IsiStream
 			}
 			if (this.OnReceived != null && this.OnReceived != null)
 			{
-				IsiReceiveEventArgs e = new IsiReceiveEventArgs(isiMessage);
-				this.HandleOnReceived(e);
+				IsiReceiveEventArgs isiReceiveEventArgs = new IsiReceiveEventArgs(isiMessage);
+				this.HandleOnReceived(isiReceiveEventArgs);
 				return;
 			}
 			if (!this.messageQueue.TryAdd(isiMessage, 500))

@@ -3,12 +3,12 @@ using System.Windows;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 {
-	// Token: 0x020000B1 RID: 177
+	// Token: 0x0200002B RID: 43
 	public sealed class SettingsPageListItem : DependencyObject
 	{
-		// Token: 0x1700011B RID: 283
-		// (get) Token: 0x06000532 RID: 1330 RVA: 0x0001AD0C File Offset: 0x00018F0C
-		// (set) Token: 0x06000533 RID: 1331 RVA: 0x0001AD2E File Offset: 0x00018F2E
+		// Token: 0x1700008A RID: 138
+		// (get) Token: 0x060001EB RID: 491 RVA: 0x0000BEC4 File Offset: 0x0000A0C4
+		// (set) Token: 0x060001EC RID: 492 RVA: 0x0000BEE6 File Offset: 0x0000A0E6
 		public string Title
 		{
 			get
@@ -21,9 +21,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 			}
 		}
 
-		// Token: 0x1700011C RID: 284
-		// (get) Token: 0x06000534 RID: 1332 RVA: 0x0001AD40 File Offset: 0x00018F40
-		// (set) Token: 0x06000535 RID: 1333 RVA: 0x0001AD62 File Offset: 0x00018F62
+		// Token: 0x1700008B RID: 139
+		// (get) Token: 0x060001ED RID: 493 RVA: 0x0000BEF8 File Offset: 0x0000A0F8
+		// (set) Token: 0x060001EE RID: 494 RVA: 0x0000BF1A File Offset: 0x0000A11A
 		public SettingsPage Page
 		{
 			get
@@ -36,16 +36,16 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 			}
 		}
 
-		// Token: 0x06000536 RID: 1334 RVA: 0x0001AD78 File Offset: 0x00018F78
+		// Token: 0x060001EF RID: 495 RVA: 0x0000BF30 File Offset: 0x0000A130
 		public override string ToString()
 		{
 			return this.Title;
 		}
 
-		// Token: 0x04000239 RID: 569
+		// Token: 0x040000EC RID: 236
 		public static readonly DependencyProperty TitleProperty = DependencyProperty.Register("Title", typeof(string), typeof(SettingsPageListItem));
 
-		// Token: 0x0400023A RID: 570
+		// Token: 0x040000ED RID: 237
 		public static readonly DependencyProperty PageProperty = DependencyProperty.Register("Page", typeof(SettingsPage), typeof(SettingsPageListItem));
 	}
 }

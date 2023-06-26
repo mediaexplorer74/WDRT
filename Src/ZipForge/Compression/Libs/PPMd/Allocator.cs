@@ -8,7 +8,6 @@ namespace ComponentAce.Compression.Libs.PPMd
 		// Token: 0x06000307 RID: 775 RVA: 0x000194FC File Offset: 0x000184FC
 		static Allocator()
 		{
-			Allocator.indexToUnits = new byte[38];
 			uint num = 0U;
 			uint num2 = 1U;
 			while (num < 4U)
@@ -61,10 +60,10 @@ namespace ComponentAce.Compression.Libs.PPMd
 				num++;
 			}
 			Allocator.Text = Allocator.Heap;
-			uint offset = 12U * (Allocator.AllocatorSize / 8U / 12U * 7U);
+			uint num2 = 12U * (Allocator.AllocatorSize / 8U / 12U * 7U);
 			Allocator.HighUnit = Allocator.Heap + Allocator.AllocatorSize;
-			Allocator.LowUnit = Allocator.HighUnit - offset;
-			Allocator.BaseUnit = Allocator.HighUnit - offset;
+			Allocator.LowUnit = Allocator.HighUnit - num2;
+			Allocator.BaseUnit = Allocator.HighUnit - num2;
 			Allocator.GlueCount = 0U;
 		}
 
@@ -75,11 +74,11 @@ namespace ComponentAce.Compression.Libs.PPMd
 			if (Allocator.AllocatorSize != num)
 			{
 				Allocator.Stop();
-				byte[] memory = new byte[472U + num];
-				Pointer.Memory = memory;
-				MemoryNode.Memory = memory;
-				Model.PpmContext.Memory = memory;
-				PpmState.Memory = memory;
+				byte[] array = new byte[472U + num];
+				Pointer.Memory = array;
+				MemoryNode.Memory = array;
+				Model.PpmContext.Memory = array;
+				PpmState.Memory = array;
 				Allocator.Heap = new Pointer(472U);
 				Allocator.AllocatorSize = num;
 			}
@@ -228,7 +227,7 @@ namespace ComponentAce.Compression.Libs.PPMd
 			for (;;)
 			{
 				MemoryNode memoryNode2;
-				MemoryNode memoryNode = memoryNode2 = Allocator.BaseUnit;
+				MemoryNode memoryNode = (memoryNode2 = Allocator.BaseUnit);
 				if (memoryNode2.Stamp != 4294967295U)
 				{
 					break;
@@ -326,7 +325,7 @@ namespace ComponentAce.Compression.Libs.PPMd
 						for (;;)
 						{
 							MemoryNode memoryNode5;
-							MemoryNode memoryNode4 = memoryNode5 = memoryNode3 + memoryNode3.UnitCount;
+							MemoryNode memoryNode4 = (memoryNode5 = memoryNode3 + memoryNode3.UnitCount);
 							if (memoryNode5.Stamp != 4294967295U)
 							{
 								break;
@@ -414,7 +413,7 @@ namespace ComponentAce.Compression.Libs.PPMd
 		private const uint IndexCount = 38U;
 
 		// Token: 0x0400021D RID: 541
-		private static readonly byte[] indexToUnits;
+		private static readonly byte[] indexToUnits = new byte[38];
 
 		// Token: 0x0400021E RID: 542
 		private static readonly byte[] unitsToIndex;

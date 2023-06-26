@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Threading;
@@ -13,23 +14,20 @@ using Microsoft.WindowsDeviceRecoveryTool.YEZZAdaptation.Properties;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.YEZZAdaptation
 {
-	// Token: 0x02000006 RID: 6
+	// Token: 0x02000004 RID: 4
 	[Export(typeof(IDeviceSupport))]
 	internal class YEZZSupport : IDeviceSupport
 	{
-		// Token: 0x06000027 RID: 39 RVA: 0x00002864 File Offset: 0x00000A64
+		// Token: 0x06000004 RID: 4 RVA: 0x00002104 File Offset: 0x00000304
 		[ImportingConstructor]
 		public YEZZSupport(IMtpDeviceInfoProvider mtpDeviceInfoProvider)
 		{
 			this.mtpDeviceInfoProvider = mtpDeviceInfoProvider;
-			this.catalog = new ManufacturerModelsCatalog(YEZZSupport.YEZZManufacturerInfo, new ModelInfo[]
-			{
-				YEZZModels.Billy_4_7
-			});
+			this.catalog = new ManufacturerModelsCatalog(YEZZSupport.YEZZManufacturerInfo, new ModelInfo[] { YEZZModels.Billy_4_7 });
 		}
 
-		// Token: 0x1700000D RID: 13
-		// (get) Token: 0x06000028 RID: 40 RVA: 0x0000289E File Offset: 0x00000A9E
+		// Token: 0x17000001 RID: 1
+		// (get) Token: 0x06000005 RID: 5 RVA: 0x00002131 File Offset: 0x00000331
 		public Guid Id
 		{
 			get
@@ -38,13 +36,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.YEZZAdaptation
 			}
 		}
 
-		// Token: 0x06000029 RID: 41 RVA: 0x000028A5 File Offset: 0x00000AA5
+		// Token: 0x06000006 RID: 6 RVA: 0x00002138 File Offset: 0x00000338
 		public DeviceDetectionInformation[] GetDeviceDetectionInformation()
 		{
 			return this.catalog.GetDeviceDetectionInformations();
 		}
 
-		// Token: 0x0600002A RID: 42 RVA: 0x00002BB8 File Offset: 0x00000DB8
+		// Token: 0x06000007 RID: 7 RVA: 0x00002148 File Offset: 0x00000348
 		public async Task UpdateDeviceDetectionDataAsync(DeviceDetectionData detectionData, CancellationToken cancellationToken)
 		{
 			if (detectionData.IsDeviceSupported)
@@ -53,54 +51,63 @@ namespace Microsoft.WindowsDeviceRecoveryTool.YEZZAdaptation
 			}
 			cancellationToken.ThrowIfCancellationRequested();
 			VidPidPair vidPidPair = detectionData.VidPidPair;
-			string devicePath = detectionData.UsbDeviceInterfaceDevicePath;
-			if (this.catalog.Models.FirstOrDefault((ModelInfo m) => m.DetectionInfo.DeviceDetectionInformations.Any((DeviceDetectionInformation di) => di.VidPidPair == vidPidPair)) == null)
+			string usbDeviceInterfaceDevicePath = detectionData.UsbDeviceInterfaceDevicePath;
+			Func<DeviceDetectionInformation, bool> <>9__2;
+			if (this.catalog.Models.FirstOrDefault(delegate(ModelInfo m)
 			{
-				Tracer<YEZZSupport>.WriteInformation("No YEZZ device detected. Path: {0}", new object[]
+				IEnumerable<DeviceDetectionInformation> deviceDetectionInformations = m.DetectionInfo.DeviceDetectionInformations;
+				Func<DeviceDetectionInformation, bool> func;
+				if ((func = <>9__2) == null)
 				{
-					detectionData.UsbDeviceInterfaceDevicePath
-				});
+					func = (<>9__2 = (DeviceDetectionInformation di) => di.VidPidPair == vidPidPair);
+				}
+				return deviceDetectionInformations.Any(func);
+			}) == null)
+			{
+				Tracer<YEZZSupport>.WriteInformation("No YEZZ device detected. Path: {0}", new object[] { detectionData.UsbDeviceInterfaceDevicePath });
 			}
 			else
 			{
-				MtpInterfaceInfo deviceInfo = await this.mtpDeviceInfoProvider.ReadInformationAsync(devicePath, cancellationToken);
-				string mtpDeviceDescription = deviceInfo.Description;
+				MtpInterfaceInfo mtpInterfaceInfo = await this.mtpDeviceInfoProvider.ReadInformationAsync(usbDeviceInterfaceDevicePath, cancellationToken);
+				string mtpDeviceDescription = mtpInterfaceInfo.Description;
 				ModelInfo modelInfo;
 				if (this.catalog.TryGetModelInfo(mtpDeviceDescription, out modelInfo))
 				{
 					string name = modelInfo.Name;
-					byte[] deviceBitmapBytes = modelInfo.Bitmap.ToBytes();
-					detectionData.DeviceBitmapBytes = deviceBitmapBytes;
+					detectionData.DeviceBitmapBytes = modelInfo.Bitmap.ToBytes();
 					detectionData.DeviceSalesName = name;
 					detectionData.IsDeviceSupported = true;
 				}
 				else
 				{
+					Action<string> <>9__3;
 					this.catalog.Models.FirstOrDefault<ModelInfo>().Variants.ToList<VariantInfo>().ForEach(delegate(VariantInfo v)
 					{
-						v.IdentificationInfo.DeviceReturnedValues.ToList<string>().ForEach(delegate(string dv)
+						List<string> list = v.IdentificationInfo.DeviceReturnedValues.ToList<string>();
+						Action<string> action;
+						if ((action = <>9__3) == null)
 						{
-							Tracer<YEZZSupport>.WriteInformation("No YEZZ device detected. mtpDeviceDescription: {0}, YEZZ IdentificationInfo: {1}", new object[]
+							action = (<>9__3 = delegate(string dv)
 							{
-								mtpDeviceDescription,
-								dv
+								Tracer<YEZZSupport>.WriteInformation("No YEZZ device detected. mtpDeviceDescription: {0}, YEZZ IdentificationInfo: {1}", new object[] { mtpDeviceDescription, dv });
 							});
-						});
+						}
+						list.ForEach(action);
 					});
 				}
 			}
 		}
 
-		// Token: 0x0400000C RID: 12
+		// Token: 0x04000003 RID: 3
 		private static readonly Guid SupportGuid = new Guid("BA2D8739-0A4E-4AE7-8287-9D0E31E1F391");
 
-		// Token: 0x0400000D RID: 13
+		// Token: 0x04000004 RID: 4
 		private static readonly ManufacturerInfo YEZZManufacturerInfo = new ManufacturerInfo(Resources.FriendlyName_Manufacturer, Resources.yezz_logo);
 
-		// Token: 0x0400000E RID: 14
+		// Token: 0x04000005 RID: 5
 		private readonly IMtpDeviceInfoProvider mtpDeviceInfoProvider;
 
-		// Token: 0x0400000F RID: 15
+		// Token: 0x04000006 RID: 6
 		private readonly ManufacturerModelsCatalog catalog;
 	}
 }

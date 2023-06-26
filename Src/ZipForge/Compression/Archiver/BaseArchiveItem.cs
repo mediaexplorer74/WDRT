@@ -90,12 +90,12 @@ namespace ComponentAce.Compression.Archiver
 		{
 			get
 			{
-				string str = this.storedPath;
+				string text = this.storedPath;
 				if (this.storedPath != "")
 				{
-					str += "/";
+					text += "/";
 				}
-				return str + this.FileName;
+				return text + this.FileName;
 			}
 		}
 

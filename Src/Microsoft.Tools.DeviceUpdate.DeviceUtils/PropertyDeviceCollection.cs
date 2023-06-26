@@ -21,10 +21,10 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 						string name = devicePropertyAttribute.Name;
 						try
 						{
-							string value = propertyInfo.GetValue(host, null).ToString();
+							string text = propertyInfo.GetValue(host, null).ToString();
 							if (!properties.ContainsKey(name) || string.IsNullOrEmpty(properties[name]))
 							{
-								properties.Add(name, value);
+								properties.Add(name, text);
 							}
 						}
 						catch

@@ -3,6 +3,6 @@ using System.Runtime.CompilerServices;
 
 // Token: 0x02000088 RID: 136
 [NativeCppClass]
-public struct gcroot136//<System::String\u0020^>
+internal struct gcroot<System::String\u0020^>
 {
 }

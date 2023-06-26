@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -23,13 +24,13 @@ using SoftwareRepository.Streaming;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 {
-	// Token: 0x0200003E RID: 62
-	[PartCreationPolicy(CreationPolicy.Shared)]
-	[Export(typeof(MsrService))]
+	// Token: 0x02000010 RID: 16
 	[Export(typeof(IUseProxy))]
+	[Export(typeof(MsrService))]
+	[PartCreationPolicy(CreationPolicy.Shared)]
 	public class MsrService : BaseRemoteRepository, IUseProxy
 	{
-		// Token: 0x06000341 RID: 833 RVA: 0x0000E4B9 File Offset: 0x0000C6B9
+		// Token: 0x060000C2 RID: 194 RVA: 0x000044B1 File Offset: 0x000026B1
 		[ImportingConstructor]
 		public MsrService(FileChecker fileChecker)
 		{
@@ -37,15 +38,18 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 			this.fileChecker.SetProgressHandler(new Action<double>(this.IntegrityCheckProgressChanged));
 		}
 
-		// Token: 0x14000011 RID: 17
-		// (add) Token: 0x06000342 RID: 834 RVA: 0x0000E4F0 File Offset: 0x0000C6F0
-		// (remove) Token: 0x06000343 RID: 835 RVA: 0x0000E52C File Offset: 0x0000C72C
+		// Token: 0x1400000C RID: 12
+		// (add) Token: 0x060000C3 RID: 195 RVA: 0x000044E8 File Offset: 0x000026E8
+		// (remove) Token: 0x060000C4 RID: 196 RVA: 0x00004520 File Offset: 0x00002720
+		[field: DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event Action<int> IntegrityCheckProgressEvent;
 
-		// Token: 0x06000344 RID: 836 RVA: 0x0000E6DC File Offset: 0x0000C8DC
+		// Token: 0x060000C5 RID: 197 RVA: 0x00004558 File Offset: 0x00002758
 		public override async Task<PackageFileInfo> CheckLatestPackage(QueryParameters queryParameters, CancellationToken cancellationToken)
 		{
-			SoftwarePackage package = await this.CheckLatestPackageInternal(queryParameters, cancellationToken);
+			SoftwarePackage softwarePackage = await this.CheckLatestPackageInternal(queryParameters, cancellationToken);
+			SoftwarePackage package = softwarePackage;
+			softwarePackage = null;
 			return new MsrPackageInfo(string.Empty, package.PackageTitle, package.PackageRevision)
 			{
 				ManufacturerModelName = package.ManufacturerModelName.FirstOrDefault<string>(),
@@ -53,78 +57,85 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 			};
 		}
 
-		// Token: 0x06000345 RID: 837 RVA: 0x0000E7C8 File Offset: 0x0000C9C8
+		// Token: 0x060000C6 RID: 198 RVA: 0x000045AC File Offset: 0x000027AC
 		private IEnumerable<MsrPackageInfo.MsrFileInfo> ExtractMsrPackageFiles(SoftwarePackage package)
 		{
-			return from f in package.Files
-			select new MsrPackageInfo.MsrFileInfo
+			return package.Files.Select((SoftwareFile f) => new MsrPackageInfo.MsrFileInfo
 			{
 				FileName = f.FileName,
 				FileType = (this.ReadFileTypeFromPackage(f, package) ?? f.FileType),
 				FileNameWithRevision = this.GenerateSoftwareVersionFile(f.FileName, package.PackageRevision, true),
 				FileVersion = this.ReadFileVersionFromPackage(f, package)
-			};
+			});
 		}
 
-		// Token: 0x06000346 RID: 838 RVA: 0x0000E840 File Offset: 0x0000CA40
+		// Token: 0x060000C7 RID: 199 RVA: 0x000045F0 File Offset: 0x000027F0
 		private string ReadFileVersionFromPackage(SoftwareFile softwareFile, SoftwarePackage originPackage)
 		{
-			string result = null;
-			if (originPackage.ExtendedAttributes != null)
+			string text = null;
+			bool flag = originPackage.ExtendedAttributes != null;
+			if (flag)
 			{
 				Dictionary<string, string> dictionary = originPackage.ExtendedAttributes.Dictionary;
-				if (dictionary != null)
+				bool flag2 = dictionary != null;
+				if (flag2)
 				{
 					KeyValuePair<string, string> keyValuePair = dictionary.FirstOrDefault((KeyValuePair<string, string> kv) => string.Equals(softwareFile.FileName, kv.Value, StringComparison.InvariantCultureIgnoreCase));
-					string pattern = "Component(?<component_number>\\d+)_FileName";
-					if (!string.IsNullOrWhiteSpace(keyValuePair.Key) && Regex.IsMatch(keyValuePair.Key, pattern))
+					string text2 = "Component(?<component_number>\\d+)_FileName";
+					bool flag3 = !string.IsNullOrWhiteSpace(keyValuePair.Key) && Regex.IsMatch(keyValuePair.Key, text2);
+					if (flag3)
 					{
-						Match match = Regex.Match(keyValuePair.Key, pattern);
+						Match match = Regex.Match(keyValuePair.Key, text2);
 						string value = match.Groups["component_number"].Value;
-						string key = string.Format("Component{0}_Version", value);
-						if (dictionary.ContainsKey(key))
+						string text3 = string.Format("Component{0}_Version", value);
+						bool flag4 = dictionary.ContainsKey(text3);
+						if (flag4)
 						{
-							result = dictionary[key];
+							text = dictionary[text3];
 						}
 					}
 				}
 			}
-			return result;
+			return text;
 		}
 
-		// Token: 0x06000347 RID: 839 RVA: 0x0000E96C File Offset: 0x0000CB6C
+		// Token: 0x060000C8 RID: 200 RVA: 0x000046D4 File Offset: 0x000028D4
 		private string ReadFileTypeFromPackage(SoftwareFile softwareFile, SoftwarePackage originPackage)
 		{
-			string result = null;
-			if (originPackage.ExtendedAttributes != null)
+			string text = null;
+			bool flag = originPackage.ExtendedAttributes != null;
+			if (flag)
 			{
 				Dictionary<string, string> dictionary = originPackage.ExtendedAttributes.Dictionary;
-				if (dictionary != null)
+				bool flag2 = dictionary != null;
+				if (flag2)
 				{
 					KeyValuePair<string, string> keyValuePair = dictionary.FirstOrDefault((KeyValuePair<string, string> kv) => string.Equals(softwareFile.FileName, kv.Value, StringComparison.InvariantCultureIgnoreCase));
-					string pattern = "Component(?<component_number>\\d+)_FileName";
-					if (!string.IsNullOrWhiteSpace(keyValuePair.Key) && Regex.IsMatch(keyValuePair.Key, pattern))
+					string text2 = "Component(?<component_number>\\d+)_FileName";
+					bool flag3 = !string.IsNullOrWhiteSpace(keyValuePair.Key) && Regex.IsMatch(keyValuePair.Key, text2);
+					if (flag3)
 					{
-						Match match = Regex.Match(keyValuePair.Key, pattern);
+						Match match = Regex.Match(keyValuePair.Key, text2);
 						string value = match.Groups["component_number"].Value;
-						string key = string.Format("Component{0}_Type", value);
-						if (dictionary.ContainsKey(key))
+						string text3 = string.Format("Component{0}_Type", value);
+						bool flag4 = dictionary.ContainsKey(text3);
+						if (flag4)
 						{
-							result = dictionary[key];
+							text = dictionary[text3];
 						}
 					}
 				}
 			}
-			return result;
+			return text;
 		}
 
-		// Token: 0x06000348 RID: 840 RVA: 0x0000EA64 File Offset: 0x0000CC64
+		// Token: 0x060000C9 RID: 201 RVA: 0x000047B8 File Offset: 0x000029B8
 		public Tuple<long, long, bool> GetDownloadPackageInformation()
 		{
 			return new Tuple<long, long, bool>(base.SpeedCalculator.CurrentDownloadedSize, base.TotalFilesSize, base.SpeedCalculator.IsResumed);
 		}
 
-		// Token: 0x06000349 RID: 841 RVA: 0x0000EE80 File Offset: 0x0000D080
+		// Token: 0x060000CA RID: 202 RVA: 0x000047EC File Offset: 0x000029EC
 		private async Task<SoftwarePackage> CheckLatestPackageInternal(QueryParameters queryParameters, CancellationToken cancellationToken)
 		{
 			DiscoveryQueryParameters discoveryQueryParameters = new DiscoveryQueryParameters
@@ -137,17 +148,15 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 				ManufacturerHardwareModel = queryParameters.ManufacturerHardwareModel,
 				ManufacturerHardwareVariant = queryParameters.ManufacturerHardwareVariant
 			};
-			if (queryParameters.ExtendedAttributes != null && queryParameters.ExtendedAttributes.Count > 0)
+			bool flag = queryParameters.ExtendedAttributes != null && queryParameters.ExtendedAttributes.Count > 0;
+			if (flag)
 			{
 				discoveryQueryParameters.ExtendedAttributes = new ExtendedAttributes
 				{
 					Dictionary = queryParameters.ExtendedAttributes
 				};
 			}
-			Tracer<MsrService>.WriteInformation("MSR Query: {0}", new object[]
-			{
-				queryParameters
-			});
+			Tracer<MsrService>.WriteInformation("MSR Query: {0}", new object[] { queryParameters });
 			DiscoveryParameters discovererParams = new DiscoveryParameters
 			{
 				Query = discoveryQueryParameters
@@ -158,45 +167,44 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 				SoftwareRepositoryAuthenticationToken = null,
 				SoftwareRepositoryProxy = base.Proxy()
 			};
-			DiscoveryJsonResult result = await discoverer.DiscoverJsonAsync(discovererParams, cancellationToken);
+			DiscoveryJsonResult discoveryJsonResult = await discoverer.DiscoverJsonAsync(discovererParams, cancellationToken);
+			DiscoveryJsonResult result = discoveryJsonResult;
+			discoveryJsonResult = null;
 			cancellationToken.ThrowIfCancellationRequested();
 			if (result.StatusCode != HttpStatusCode.OK)
 			{
 				throw new PackageNotFoundException();
 			}
 			DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(SoftwarePackages));
-			using (MemoryStream memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(result.Result)))
+			using (MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(result.Result)))
 			{
-				SoftwarePackages softwarePackages = (SoftwarePackages)serializer.ReadObject(memoryStream);
-				if (softwarePackages != null)
+				SoftwarePackages packages = (SoftwarePackages)serializer.ReadObject(stream);
+				if (packages != null)
 				{
-					Tracer<MsrService>.WriteInformation("Packages found: {0}", new object[]
+					Tracer<MsrService>.WriteInformation("Packages found: {0}", new object[] { packages.SoftwarePackageList.Count });
+					SoftwarePackage correctPackage = packages.SoftwarePackageList.FirstOrDefault<SoftwarePackage>();
+					if (correctPackage != null)
 					{
-						softwarePackages.SoftwarePackageList.Count
-					});
-					SoftwarePackage softwarePackage = softwarePackages.SoftwarePackageList.FirstOrDefault<SoftwarePackage>();
-					if (softwarePackage != null)
-					{
-						Tracer<MsrService>.WriteInformation("Version: {0}", new object[]
-						{
-							softwarePackage.PackageRevision
-						});
-						return softwarePackage;
+						Tracer<MsrService>.WriteInformation("Version: {0}", new object[] { correctPackage.PackageRevision });
+						return correctPackage;
 					}
+					correctPackage = null;
 				}
+				packages = null;
 			}
+			MemoryStream stream = null;
 			throw new PackageNotFoundException();
 		}
 
-		// Token: 0x0600034A RID: 842 RVA: 0x0000EEDC File Offset: 0x0000D0DC
+		// Token: 0x060000CB RID: 203 RVA: 0x00004840 File Offset: 0x00002A40
 		public override List<string> DownloadLatestPackage(DownloadParameters downloadParameters, CancellationToken cancellationToken)
 		{
-			List<string> result;
+			List<string> list;
 			try
 			{
 				this.progressUpdateResetTimer = new IntervalResetAccessTimer(MsrDownloadConfig.Instance.ReportingProgressIntervalMillis, true);
 				this.progressUpdateResetTimer.StartTimer();
-				result = this.DownloadPackage(downloadParameters, cancellationToken);
+				list = this.DownloadPackage(downloadParameters, cancellationToken);
 			}
 			catch (DownloadPackageException)
 			{
@@ -208,11 +216,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 			}
 			catch (AggregateException ex)
 			{
-				if (ex.GetBaseException() is PackageNotFoundException)
+				bool flag = ex.GetBaseException() is PackageNotFoundException;
+				if (flag)
 				{
 					throw ex.GetBaseException();
 				}
-				if (ex.GetBaseException() is DownloadPackageException)
+				bool flag2 = ex.GetBaseException() is DownloadPackageException;
+				if (flag2)
 				{
 					throw ex.GetBaseException();
 				}
@@ -220,11 +230,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 				while (ex2.InnerException != null)
 				{
 					ex2 = ex2.InnerException;
-					if (ex2 is IOException && ((long)ex2.HResult == 39L || (long)ex2.HResult == 112L))
+					bool flag3 = ex2 is IOException && ((long)ex2.HResult == 39L || (long)ex2.HResult == 112L);
+					if (flag3)
 					{
 						throw ex2;
 					}
-					if (ex2.InnerException is IOException)
+					bool flag4 = ex2.InnerException is IOException;
+					if (flag4)
 					{
 						throw new NotEnoughSpaceException(ex2.InnerException.Message, ex2.InnerException);
 					}
@@ -233,7 +245,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 			}
 			catch (Exception ex3)
 			{
-				if (ex3 is OperationCanceledException || ex3 is CannotAccessDirectoryException || ex3.InnerException is TaskCanceledException || ex3.InnerException is OperationCanceledException)
+				bool flag5 = ex3 is OperationCanceledException || ex3 is CannotAccessDirectoryException || ex3.InnerException is TaskCanceledException || ex3.InnerException is OperationCanceledException;
+				if (flag5)
 				{
 					throw;
 				}
@@ -244,10 +257,10 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 				base.SpeedCalculator.Stop();
 				this.progressUpdateResetTimer.StopTimer();
 			}
-			return result;
+			return list;
 		}
 
-		// Token: 0x0600034B RID: 843 RVA: 0x0000F188 File Offset: 0x0000D388
+		// Token: 0x060000CC RID: 204 RVA: 0x00004A28 File Offset: 0x00002C28
 		private List<string> DownloadPackage(DownloadParameters downloadParameters, CancellationToken cancellationToken)
 		{
 			base.RaiseProgressChangedEvent(0, "CheckingAlreadyDownloadedFiles");
@@ -257,15 +270,15 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 			SoftwarePackage package = task.Result;
 			List<SoftwareFile> list = package.Files;
 			this.lastDownloadedSize = 0L;
-			if (!string.IsNullOrEmpty(downloadParameters.FileExtension))
+			bool flag = !string.IsNullOrEmpty(downloadParameters.FileExtension);
+			if (flag)
 			{
-				list = (from file in package.Files
-				where file.FileName.ToLower().EndsWith(downloadParameters.FileExtension.ToLower())
-				select file).ToList<SoftwareFile>();
+				list = package.Files.Where((SoftwareFile file) => file.FileName.ToLower().EndsWith(downloadParameters.FileExtension.ToLower())).ToList<SoftwareFile>();
 			}
 			base.TotalFilesSize = list.Sum((SoftwareFile f) => f.FileSize);
 			List<SoftwareFile> notDownloadedFiles = this.GetNotDownloadedFiles(downloadParameters.DestinationFolder, list, package.PackageRevision, downloadParameters.FilesVersioned, cancellationToken);
-			if (notDownloadedFiles.Count > 0)
+			bool flag2 = notDownloadedFiles.Count > 0;
+			if (flag2)
 			{
 				long num = notDownloadedFiles.Sum((SoftwareFile file) => file.FileSize);
 				FileChecker.ValidateSpaceAvailability(downloadParameters.DestinationFolder, num);
@@ -275,9 +288,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 				List<Task> list2 = new List<Task>();
 				foreach (SoftwareFile softwareFile in notDownloadedFiles)
 				{
-					string path = this.GenerateSoftwareVersionFile(softwareFile.FileName, package.PackageRevision, downloadParameters.FilesVersioned);
-					string downloadPath = Path.Combine(downloadParameters.DestinationFolder, path);
-					Task task2 = this.DownloadAsync(package.Id, softwareFile.FileName, downloadPath, downloadParameters.DestinationFolder, dictionary, cancellationToken);
+					string text = this.GenerateSoftwareVersionFile(softwareFile.FileName, package.PackageRevision, downloadParameters.FilesVersioned);
+					string text2 = Path.Combine(downloadParameters.DestinationFolder, text);
+					Task task2 = this.DownloadAsync(package.Id, softwareFile.FileName, text2, downloadParameters.DestinationFolder, dictionary, cancellationToken);
 					dictionary.Add(softwareFile.FileName, 0L);
 					task2.ContinueWith(new Action<Task>(this.DownloadTaskFinished), cancellationToken);
 					list2.Add(task2);
@@ -288,11 +301,10 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 			base.RaiseProgressChangedEvent(95, "VerifyingDownloadedFiles");
 			this.CheckFilesCorrectness(downloadParameters.DestinationFolder, notDownloadedFiles, package.PackageRevision, downloadParameters.FilesVersioned, cancellationToken);
 			base.RaiseProgressChangedEvent(100, null);
-			return (from file in list
-			select Path.Combine(downloadParameters.DestinationFolder, this.GenerateSoftwareVersionFile(file.FileName, package.PackageRevision, downloadParameters.FilesVersioned))).ToList<string>();
+			return list.Select((SoftwareFile file) => Path.Combine(downloadParameters.DestinationFolder, this.GenerateSoftwareVersionFile(file.FileName, package.PackageRevision, downloadParameters.FilesVersioned))).ToList<string>();
 		}
 
-		// Token: 0x0600034C RID: 844 RVA: 0x0000F750 File Offset: 0x0000D950
+		// Token: 0x060000CD RID: 205 RVA: 0x00004D00 File Offset: 0x00002F00
 		private async Task DownloadAsync(string packageId, string fileName, string downloadPath, string destinationFolder, Dictionary<string, long> filesBeingDownloaded, CancellationToken cancellationToken)
 		{
 			Downloader download = new Downloader
@@ -311,35 +323,43 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 						this.OnProgress(dpi, filesBeingDownloaded);
 					}));
 				}
-				catch (Exception innerException)
+				catch (Exception ex)
 				{
-					throw new DownloadPackageException(string.Format("Downloading file {0} failed.", fileName), innerException);
+					throw new DownloadPackageException(string.Format("Downloading file {0} failed.", fileName), ex);
+				}
+			}
+			FileStreamer streamer = null;
+		}
+
+		// Token: 0x060000CE RID: 206 RVA: 0x00004D74 File Offset: 0x00002F74
+		private void DownloadTaskFinished(Task task)
+		{
+			TaskStatus status = task.Status;
+			bool flag = status.Equals(TaskStatus.Faulted);
+			if (flag)
+			{
+				Tracer<MsrService>.WriteInformation("Downloading file failed.");
+			}
+			else
+			{
+				bool flag2 = status.Equals(TaskStatus.Canceled);
+				if (flag2)
+				{
+					Tracer<MsrService>.WriteInformation("Download cancelled on the file.");
+				}
+				else
+				{
+					Tracer<MsrService>.WriteInformation("File succesfully downloaded.");
 				}
 			}
 		}
 
-		// Token: 0x0600034D RID: 845 RVA: 0x0000F7D0 File Offset: 0x0000D9D0
-		private void DownloadTaskFinished(Task task)
-		{
-			TaskStatus status = task.Status;
-			if (status.Equals(TaskStatus.Faulted))
-			{
-				Tracer<MsrService>.WriteInformation("Downloading file failed.");
-			}
-			else if (status.Equals(TaskStatus.Canceled))
-			{
-				Tracer<MsrService>.WriteInformation("Download cancelled on the file.");
-			}
-			else
-			{
-				Tracer<MsrService>.WriteInformation("File succesfully downloaded.");
-			}
-		}
-
-		// Token: 0x0600034E RID: 846 RVA: 0x0000FB84 File Offset: 0x0000DD84
+		// Token: 0x060000CF RID: 207 RVA: 0x00004DE0 File Offset: 0x00002FE0
 		private async void OnProgress(DownloadProgressInfo progressInfo, Dictionary<string, long> filesBeingDownloaded)
 		{
-			if (await this.progressUpdateResetTimer.TryAccessSectionAndSetAsync(CancellationToken.None))
+			bool flag = await this.progressUpdateResetTimer.TryAccessSectionAndSetAsync(CancellationToken.None);
+			bool flag2 = !flag;
+			if (!flag2)
 			{
 				try
 				{
@@ -368,11 +388,10 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 			}
 		}
 
-		// Token: 0x0600034F RID: 847 RVA: 0x0000FC1C File Offset: 0x0000DE1C
+		// Token: 0x060000D0 RID: 208 RVA: 0x00004E28 File Offset: 0x00003028
 		private List<SoftwareFile> GetNotDownloadedFiles(string targetFolder, IEnumerable<SoftwareFile> files, string softwareVersion, bool filesVersioned, CancellationToken cancellationToken)
 		{
-			List<SoftwareFile> list = (from file in files
-			select new SoftwareFile
+			List<SoftwareFile> list = files.Select((SoftwareFile file) => new SoftwareFile
 			{
 				Checksum = file.Checksum,
 				FileName = file.FileName,
@@ -383,13 +402,15 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 			foreach (SoftwareFile softwareFile in list)
 			{
 				cancellationToken.ThrowIfCancellationRequested();
-				string path = this.GenerateSoftwareVersionFile(softwareFile.FileName, softwareVersion, filesVersioned);
-				string text = Path.Combine(targetFolder, path);
-				if (File.Exists(text))
+				string text = this.GenerateSoftwareVersionFile(softwareFile.FileName, softwareVersion, filesVersioned);
+				string text2 = Path.Combine(targetFolder, text);
+				bool flag = File.Exists(text2);
+				if (flag)
 				{
 					SoftwareFileChecksum softwareFileChecksum = softwareFile.Checksum.First<SoftwareFileChecksum>();
-					byte[] array = this.fileChecker.CheckFile(softwareFileChecksum.ChecksumType, text, cancellationToken);
-					if (array != null && Convert.ToBase64String(array) == softwareFileChecksum.Value)
+					byte[] array = this.fileChecker.CheckFile(softwareFileChecksum.ChecksumType, text2, cancellationToken);
+					bool flag2 = array != null && Convert.ToBase64String(array) == softwareFileChecksum.Value;
+					if (flag2)
 					{
 						list2.Remove(softwareFile);
 					}
@@ -398,29 +419,30 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 			return list2;
 		}
 
-		// Token: 0x06000350 RID: 848 RVA: 0x0000FD34 File Offset: 0x0000DF34
+		// Token: 0x060000D1 RID: 209 RVA: 0x00004F34 File Offset: 0x00003134
 		private string GenerateSoftwareVersionFile(string fileName, string softwareVersion, bool appendVersion)
 		{
-			string result;
+			string text4;
 			if (appendVersion)
 			{
-				string str = fileName.Substring(0, fileName.LastIndexOf('.'));
-				string str2 = fileName.Substring(fileName.LastIndexOf('.'));
-				string text = str + "_" + softwareVersion + str2;
-				result = text;
+				string text = fileName.Substring(0, fileName.LastIndexOf('.'));
+				string text2 = fileName.Substring(fileName.LastIndexOf('.'));
+				string text3 = text + "_" + softwareVersion + text2;
+				text4 = text3;
 			}
 			else
 			{
-				result = fileName;
+				text4 = fileName;
 			}
-			return result;
+			return text4;
 		}
 
-		// Token: 0x06000351 RID: 849 RVA: 0x0000FDA0 File Offset: 0x0000DFA0
+		// Token: 0x060000D2 RID: 210 RVA: 0x00004F84 File Offset: 0x00003184
 		private void IntegrityCheckProgressChanged(double progress)
 		{
 			Action<int> handle = this.IntegrityCheckProgressEvent;
-			if (handle != null)
+			bool flag = handle != null;
+			if (flag)
 			{
 				AppDispatcher.Execute(delegate
 				{
@@ -429,38 +451,39 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 			}
 		}
 
-		// Token: 0x06000352 RID: 850 RVA: 0x0000FDF4 File Offset: 0x0000DFF4
+		// Token: 0x060000D3 RID: 211 RVA: 0x00004FD0 File Offset: 0x000031D0
 		public void CheckFilesCorrectness(string targetFolder, IEnumerable<SoftwareFile> files, string softwareVersion, bool filesVersioned, CancellationToken cancellationToken)
 		{
 			foreach (SoftwareFile softwareFile in files)
 			{
 				cancellationToken.ThrowIfCancellationRequested();
-				string path = this.GenerateSoftwareVersionFile(softwareFile.FileName, softwareVersion, filesVersioned);
+				string text = this.GenerateSoftwareVersionFile(softwareFile.FileName, softwareVersion, filesVersioned);
 				SoftwareFileChecksum softwareFileChecksum = softwareFile.Checksum.First<SoftwareFileChecksum>();
-				byte[] array = this.fileChecker.CheckFile(softwareFileChecksum.ChecksumType, Path.Combine(targetFolder, path), cancellationToken);
-				if (array != null && Convert.ToBase64String(array) != softwareFileChecksum.Value)
+				byte[] array = this.fileChecker.CheckFile(softwareFileChecksum.ChecksumType, Path.Combine(targetFolder, text), cancellationToken);
+				bool flag = array != null && Convert.ToBase64String(array) != softwareFileChecksum.Value;
+				if (flag)
 				{
 					throw new Crc32Exception(targetFolder + softwareFile.FileName);
 				}
 			}
 		}
 
-		// Token: 0x04000189 RID: 393
+		// Token: 0x0400003E RID: 62
 		private const string RepositoryBaseUri = "https://api.swrepository.com";
 
-		// Token: 0x0400018A RID: 394
+		// Token: 0x0400003F RID: 63
 		private const string TestRepositoryBaseUri = "https://pvprepo.azurewebsites.net";
 
-		// Token: 0x0400018B RID: 395
+		// Token: 0x04000040 RID: 64
 		private readonly SemaphoreSlim downloadProgressRaiseSemaphoreSlim = new SemaphoreSlim(1, 1);
 
-		// Token: 0x0400018C RID: 396
+		// Token: 0x04000041 RID: 65
 		private long lastDownloadedSize;
 
-		// Token: 0x0400018D RID: 397
+		// Token: 0x04000042 RID: 66
 		private readonly FileChecker fileChecker;
 
-		// Token: 0x0400018E RID: 398
+		// Token: 0x04000043 RID: 67
 		private IntervalResetAccessTimer progressUpdateResetTimer;
 	}
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-// Token: 0x0200025D RID: 605
+// Token: 0x020002E5 RID: 741
 [NativeCppClass]
 internal struct BlockLocation
 {

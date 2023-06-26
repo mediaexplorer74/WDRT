@@ -22,12 +22,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Common
 			AppDispatcher.executor(action, isSync);
 		}
 
-		// Token: 0x06000003 RID: 3 RVA: 0x000020DC File Offset: 0x000002DC
+		// Token: 0x06000003 RID: 3 RVA: 0x00002078 File Offset: 0x00000278
 		public static void Initialize(Dispatcher dispatcher)
 		{
 			AppDispatcher.executor = delegate(Action action, bool isSync)
 			{
-				if (dispatcher.CheckAccess())
+				bool flag = dispatcher.CheckAccess();
+				if (flag)
 				{
 					action();
 				}

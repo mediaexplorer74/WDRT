@@ -8,10 +8,10 @@ using System.Windows.Markup;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Error.Templates
 {
-	// Token: 0x02000073 RID: 115
+	// Token: 0x02000072 RID: 114
 	public sealed partial class AutoUpdateError : Grid
 	{
-		// Token: 0x06000365 RID: 869 RVA: 0x000109AB File Offset: 0x0000EBAB
+		// Token: 0x060003F2 RID: 1010 RVA: 0x000157AC File Offset: 0x000139AC
 		public AutoUpdateError()
 		{
 			this.InitializeComponent();

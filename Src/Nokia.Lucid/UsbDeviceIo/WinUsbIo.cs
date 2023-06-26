@@ -20,8 +20,6 @@ namespace Nokia.Lucid.UsbDeviceIo
 		}
 
 		// Token: 0x060001BF RID: 447 RVA: 0x0000C654 File Offset: 0x0000A854
-		//RnD
-		/*
 		protected override void Finalize()
 		{
 			try
@@ -36,7 +34,6 @@ namespace Nokia.Lucid.UsbDeviceIo
 				base.Finalize();
 			}
 		}
-		*/
 
 		// Token: 0x1700003A RID: 58
 		// (get) Token: 0x060001C0 RID: 448 RVA: 0x0000C6AC File Offset: 0x0000A8AC
@@ -47,7 +44,7 @@ namespace Nokia.Lucid.UsbDeviceIo
 		[CLSCompliant(false)]
 		public uint Write(byte[] data, uint length)
 		{
-			uint result;
+			uint num2;
 			using (EntryExitLogger.Log("WinUsbIo.Write(byte[] data, uint length)", UsbDeviceIoTraceSource.Instance))
 			{
 				lock (this.senderLock)
@@ -77,7 +74,7 @@ namespace Nokia.Lucid.UsbDeviceIo
 							}
 							WinUsbIo.CheckError(NativeMethods.WinUsb_GetOverlappedResult(this.winUsbHandle, ref overlapped, ref num, false), "Get write overlapped result");
 						}
-						result = num;
+						num2 = num;
 					}
 					finally
 					{
@@ -86,14 +83,14 @@ namespace Nokia.Lucid.UsbDeviceIo
 					}
 				}
 			}
-			return result;
+			return num2;
 		}
 
 		// Token: 0x060001C3 RID: 451 RVA: 0x0000C848 File Offset: 0x0000AA48
 		[CLSCompliant(false)]
 		public uint Read(byte[] data, uint length)
 		{
-			uint result;
+			uint num2;
 			using (EntryExitLogger.Log("WinUsbIo.Read(ref byte[] data, uint length)", UsbDeviceIoTraceSource.Instance))
 			{
 				this.CheckIfDisposed();
@@ -113,7 +110,7 @@ namespace Nokia.Lucid.UsbDeviceIo
 						}
 						WinUsbIo.CheckError(NativeMethods.WinUsb_GetOverlappedResult(this.winUsbHandle, ref overlapped, ref num, true), "Get read overlapped result");
 					}
-					result = num;
+					num2 = num;
 				}
 				finally
 				{
@@ -121,7 +118,7 @@ namespace Nokia.Lucid.UsbDeviceIo
 					gchandle2.Free();
 				}
 			}
-			return result;
+			return num2;
 		}
 
 		// Token: 0x060001C4 RID: 452 RVA: 0x0000C938 File Offset: 0x0000AB38
@@ -226,8 +223,8 @@ namespace Nokia.Lucid.UsbDeviceIo
 			{
 				this.CheckIfDisposed();
 				uint num = 0U;
-				uint bufferLength = (uint)Marshal.SizeOf(typeof(NativeMethods.USB_DEVICE_DESCRIPTOR));
-				WinUsbIo.CheckError(NativeMethods.WinUsb_GetDescriptor(this.winUsbHandle, 1, 0, 0, out deviceDescriptor, bufferLength, out num), "Reading Device descriptor.");
+				uint num2 = (uint)Marshal.SizeOf(typeof(NativeMethods.USB_DEVICE_DESCRIPTOR));
+				WinUsbIo.CheckError(NativeMethods.WinUsb_GetDescriptor(this.winUsbHandle, 1, 0, 0, out deviceDescriptor, num2, out num), "Reading Device descriptor.");
 			}
 		}
 

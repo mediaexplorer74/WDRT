@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-// Token: 0x02000106 RID: 262
-//[NativeCppClass]
+// Token: 0x02000171 RID: 369
+[NativeCppClass]
 internal enum FfuReaderStatus
 {
 

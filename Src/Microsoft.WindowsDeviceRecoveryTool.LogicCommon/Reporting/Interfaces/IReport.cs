@@ -3,66 +3,66 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.Enums;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Reporting.Interfaces
 {
-	// Token: 0x02000024 RID: 36
+	// Token: 0x0200001F RID: 31
 	public interface IReport
 	{
-		// Token: 0x1700003F RID: 63
-		// (get) Token: 0x06000128 RID: 296
+		// Token: 0x170000BC RID: 188
+		// (get) Token: 0x06000273 RID: 627
 		string SessionId { get; }
 
-		// Token: 0x17000040 RID: 64
-		// (get) Token: 0x06000129 RID: 297
-		// (set) Token: 0x0600012A RID: 298
+		// Token: 0x170000BD RID: 189
+		// (get) Token: 0x06000274 RID: 628
+		// (set) Token: 0x06000275 RID: 629
 		string LocalPath { get; set; }
 
-		// Token: 0x17000041 RID: 65
-		// (get) Token: 0x0600012B RID: 299
-		// (set) Token: 0x0600012C RID: 300
+		// Token: 0x170000BE RID: 190
+		// (get) Token: 0x06000276 RID: 630
+		// (set) Token: 0x06000277 RID: 631
 		string ManufacturerName { get; set; }
 
-		// Token: 0x17000042 RID: 66
-		// (get) Token: 0x0600012D RID: 301
-		// (set) Token: 0x0600012E RID: 302
+		// Token: 0x170000BF RID: 191
+		// (get) Token: 0x06000278 RID: 632
+		// (set) Token: 0x06000279 RID: 633
 		string ManufacturerProductLine { get; set; }
 
-		// Token: 0x17000043 RID: 67
-		// (get) Token: 0x0600012F RID: 303
-		// (set) Token: 0x06000130 RID: 304
+		// Token: 0x170000C0 RID: 192
+		// (get) Token: 0x0600027A RID: 634
+		// (set) Token: 0x0600027B RID: 635
 		string ManufacturerHardwareModel { get; set; }
 
-		// Token: 0x17000044 RID: 68
-		// (get) Token: 0x06000131 RID: 305
-		// (set) Token: 0x06000132 RID: 306
+		// Token: 0x170000C1 RID: 193
+		// (get) Token: 0x0600027C RID: 636
+		// (set) Token: 0x0600027D RID: 637
 		string ManufacturerHardwareVariant { get; set; }
 
-		// Token: 0x17000045 RID: 69
-		// (get) Token: 0x06000133 RID: 307
-		// (set) Token: 0x06000134 RID: 308
+		// Token: 0x170000C2 RID: 194
+		// (get) Token: 0x0600027E RID: 638
+		// (set) Token: 0x0600027F RID: 639
 		string Imei { get; set; }
 
-		// Token: 0x17000046 RID: 70
-		// (get) Token: 0x06000135 RID: 309
-		// (set) Token: 0x06000136 RID: 310
+		// Token: 0x170000C3 RID: 195
+		// (get) Token: 0x06000280 RID: 640
+		// (set) Token: 0x06000281 RID: 641
 		string ActionDescription { get; set; }
 
-		// Token: 0x17000047 RID: 71
-		// (get) Token: 0x06000137 RID: 311
+		// Token: 0x170000C4 RID: 196
+		// (get) Token: 0x06000282 RID: 642
 		PhoneTypes PhoneType { get; }
 
-		// Token: 0x17000048 RID: 72
-		// (get) Token: 0x06000138 RID: 312
+		// Token: 0x170000C5 RID: 197
+		// (get) Token: 0x06000283 RID: 643
 		bool Sent { get; }
 
-		// Token: 0x06000139 RID: 313
+		// Token: 0x06000284 RID: 644
 		void MarkAsSent();
 
-		// Token: 0x0600013A RID: 314
+		// Token: 0x06000285 RID: 645
 		string GetReportAsXml();
 
-		// Token: 0x0600013B RID: 315
+		// Token: 0x06000286 RID: 646
 		string GetReportAsCsv();
 
-		// Token: 0x0600013C RID: 316
+		// Token: 0x06000287 RID: 647
 		ReportUpdateStatus4Parameters CreateReportStatusParameters();
 	}
 }

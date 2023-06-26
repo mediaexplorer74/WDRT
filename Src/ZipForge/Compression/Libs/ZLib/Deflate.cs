@@ -370,13 +370,13 @@ namespace ComponentAce.Compression.Libs.ZLib
 		{
 			if (this.bi_valid > 16 - length)
 			{
-				this.bi_buf = (short)((ushort)this.bi_buf | (ushort)(value_Renamed << this.bi_valid & 65535));
+				this.bi_buf = (short)((ushort)this.bi_buf | (ushort)((value_Renamed << this.bi_valid) & 65535));
 				this.put_short((int)this.bi_buf);
 				this.bi_buf = (short)ZLibUtil.URShift(value_Renamed, 16 - this.bi_valid);
 				this.bi_valid += length - 16;
 				return;
 			}
-			this.bi_buf = (short)((ushort)this.bi_buf | (ushort)(value_Renamed << this.bi_valid & 65535));
+			this.bi_buf = (short)((ushort)this.bi_buf | (ushort)((value_Renamed << this.bi_valid) & 65535));
 			this.bi_valid += length;
 		}
 
@@ -444,7 +444,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 			{
 				do
 				{
-					int num2 = ((int)this.Pending_buf[this.d_buf + num * 2] << 8 & 65280) | (int)(this.Pending_buf[this.d_buf + num * 2 + 1] & byte.MaxValue);
+					int num2 = (((int)this.Pending_buf[this.d_buf + num * 2] << 8) & 65280) | (int)(this.Pending_buf[this.d_buf + num * 2 + 1] & byte.MaxValue);
 					int num3 = (int)(this.Pending_buf[this.l_buf + num] & byte.MaxValue);
 					num++;
 					if (num2 == 0)
@@ -551,7 +551,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 		// Token: 0x060007BF RID: 1983 RVA: 0x0002E177 File Offset: 0x0002D177
 		private void flush_block_only(bool eof)
 		{
-			this._tr_flush_block((this.block_start >= 0) ? this.block_start : -1, this.strstart - this.block_start, eof);
+			this._tr_flush_block((this.block_start >= 0) ? this.block_start : (-1), this.strstart - this.block_start, eof);
 			this.block_start = this.strstart;
 			this.strm.flush_pending();
 		}
@@ -724,7 +724,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 				if (this.lookahead >= 3)
 				{
 					this.ins_h = (int)(this.window[this.strstart] & byte.MaxValue);
-					this.ins_h = ((this.ins_h << this.hash_shift ^ (int)(this.window[this.strstart + 1] & byte.MaxValue)) & this.hash_mask);
+					this.ins_h = ((this.ins_h << this.hash_shift) ^ (int)(this.window[this.strstart + 1] & byte.MaxValue)) & this.hash_mask;
 				}
 				if (this.lookahead >= 262 || this.strm.avail_in == 0)
 				{
@@ -753,12 +753,12 @@ namespace ComponentAce.Compression.Libs.ZLib
 				}
 				if (this.lookahead >= 3)
 				{
-					this.ins_h = ((this.ins_h << this.hash_shift ^ (int)(this.window[this.strstart + 2] & byte.MaxValue)) & this.hash_mask);
-					num = ((int)this.head[this.ins_h] & 65535);
+					this.ins_h = ((this.ins_h << this.hash_shift) ^ (int)(this.window[this.strstart + 2] & byte.MaxValue)) & this.hash_mask;
+					num = (int)this.head[this.ins_h] & 65535;
 					this.prev[this.strstart & this.w_mask] = this.head[this.ins_h];
 					this.head[this.ins_h] = (short)this.strstart;
 				}
-				if ((long)num != 0L && (this.strstart - num & 65535) <= this.w_size - 262 && this.strategy != CompressionStrategy.Z_HUFFMAN_ONLY)
+				if ((long)num != 0L && ((this.strstart - num) & 65535) <= this.w_size - 262 && this.strategy != CompressionStrategy.Z_HUFFMAN_ONLY)
 				{
 					this.match_length = this.longest_match(num);
 				}
@@ -773,8 +773,8 @@ namespace ComponentAce.Compression.Libs.ZLib
 						do
 						{
 							this.strstart++;
-							this.ins_h = ((this.ins_h << this.hash_shift ^ (int)(this.window[this.strstart + 2] & byte.MaxValue)) & this.hash_mask);
-							num = ((int)this.head[this.ins_h] & 65535);
+							this.ins_h = ((this.ins_h << this.hash_shift) ^ (int)(this.window[this.strstart + 2] & byte.MaxValue)) & this.hash_mask;
+							num = (int)this.head[this.ins_h] & 65535;
 							this.prev[this.strstart & this.w_mask] = this.head[this.ins_h];
 							this.head[this.ins_h] = (short)this.strstart;
 						}
@@ -786,7 +786,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 						this.strstart += this.match_length;
 						this.match_length = 0;
 						this.ins_h = (int)(this.window[this.strstart] & byte.MaxValue);
-						this.ins_h = ((this.ins_h << this.hash_shift ^ (int)(this.window[this.strstart + 1] & byte.MaxValue)) & this.hash_mask);
+						this.ins_h = ((this.ins_h << this.hash_shift) ^ (int)(this.window[this.strstart + 1] & byte.MaxValue)) & this.hash_mask;
 					}
 				}
 				else
@@ -845,15 +845,15 @@ namespace ComponentAce.Compression.Libs.ZLib
 				}
 				if (this.lookahead >= 3)
 				{
-					this.ins_h = ((this.ins_h << this.hash_shift ^ (int)(this.window[this.strstart + 2] & byte.MaxValue)) & this.hash_mask);
-					num = ((int)this.head[this.ins_h] & 65535);
+					this.ins_h = ((this.ins_h << this.hash_shift) ^ (int)(this.window[this.strstart + 2] & byte.MaxValue)) & this.hash_mask;
+					num = (int)this.head[this.ins_h] & 65535;
 					this.prev[this.strstart & this.w_mask] = this.head[this.ins_h];
 					this.head[this.ins_h] = (short)this.strstart;
 				}
 				this.prev_length = this.match_length;
 				this.prev_match = this.match_start;
 				this.match_length = 2;
-				if (num != 0 && this.prev_length < this.max_lazy_match && (this.strstart - num & 65535) <= this.w_size - 262)
+				if (num != 0 && this.prev_length < this.max_lazy_match && ((this.strstart - num) & 65535) <= this.w_size - 262)
 				{
 					if (this.strategy != CompressionStrategy.Z_HUFFMAN_ONLY)
 					{
@@ -874,8 +874,8 @@ namespace ComponentAce.Compression.Libs.ZLib
 					{
 						if (++this.strstart <= num2)
 						{
-							this.ins_h = ((this.ins_h << this.hash_shift ^ (int)(this.window[this.strstart + 2] & byte.MaxValue)) & this.hash_mask);
-							num = ((int)this.head[this.ins_h] & 65535);
+							this.ins_h = ((this.ins_h << this.hash_shift) ^ (int)(this.window[this.strstart + 2] & byte.MaxValue)) & this.hash_mask;
+							num = (int)this.head[this.ins_h] & 65535;
 							this.prev[this.strstart & this.w_mask] = this.head[this.ins_h];
 							this.head[this.ins_h] = (short)this.strstart;
 						}
@@ -946,7 +946,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 			int num = this.max_chain_length;
 			int num2 = this.strstart;
 			int num3 = this.prev_length;
-			int num4 = (this.strstart > this.w_size - 262) ? (this.strstart - (this.w_size - 262)) : 0;
+			int num4 = ((this.strstart > this.w_size - 262) ? (this.strstart - (this.w_size - 262)) : 0);
 			int num5 = this.nice_match;
 			int num6 = this.w_mask;
 			int num7 = this.strstart + 258;
@@ -985,7 +985,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 					}
 				}
 			}
-			while ((cur_match = ((int)this.prev[cur_match & num6] & 65535)) > num4 && --num != 0);
+			while ((cur_match = (int)this.prev[cur_match & num6] & 65535) > num4 && --num != 0);
 			if (num3 <= this.lookahead)
 			{
 				return num3;
@@ -1008,7 +1008,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 		// Token: 0x060007C9 RID: 1993 RVA: 0x0002EEE4 File Offset: 0x0002DEE4
 		internal int deflateInit2(ZStream strm, int level, int method, int windowBits, int memLevel, CompressionStrategy strategy)
 		{
-			int noHeader = 0;
+			int num = 0;
 			strm.msg = null;
 			if (level == -1)
 			{
@@ -1016,7 +1016,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 			}
 			if (windowBits < 0)
 			{
-				noHeader = 1;
+				num = 1;
 				windowBits = -windowBits;
 			}
 			if (memLevel < 1 || memLevel > 9 || method != 8 || windowBits < 9 || windowBits > 15 || level < 0 || level > 9 || strategy < CompressionStrategy.Z_DEFAULT_STRATEGY || strategy > CompressionStrategy.Z_HUFFMAN_ONLY)
@@ -1024,7 +1024,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 				return -2;
 			}
 			strm.dstate = this;
-			this.NoHeader = noHeader;
+			this.NoHeader = num;
 			this.w_bits = windowBits;
 			this.w_size = 1 << this.w_bits;
 			this.w_mask = this.w_size - 1;
@@ -1087,7 +1087,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 		// Token: 0x060007CC RID: 1996 RVA: 0x0002F12C File Offset: 0x0002E12C
 		internal int deflateParams(ZStream strm, int level, CompressionStrategy strategy)
 		{
-			int result = 0;
+			int num = 0;
 			if (level == -1)
 			{
 				level = 6;
@@ -1098,7 +1098,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 			}
 			if (Deflate.config_table[this._level].func != Deflate.config_table[level].func && strm.total_in != 0L)
 			{
-				result = strm.deflate(FlushStrategy.Z_PARTIAL_FLUSH);
+				num = strm.deflate(FlushStrategy.Z_PARTIAL_FLUSH);
 			}
 			if (this._level != level)
 			{
@@ -1109,14 +1109,14 @@ namespace ComponentAce.Compression.Libs.ZLib
 				this.max_chain_length = Deflate.config_table[this._level].max_chain;
 			}
 			this.strategy = strategy;
-			return result;
+			return num;
 		}
 
 		// Token: 0x060007CD RID: 1997 RVA: 0x0002F1FC File Offset: 0x0002E1FC
 		internal int deflateSetDictionary(ZStream strm, byte[] dictionary, int dictLength)
 		{
 			int num = dictLength;
-			int sourceIndex = 0;
+			int num2 = 0;
 			if (dictionary == null || this.status != DeflateState.INIT_STATE)
 			{
 				return -2;
@@ -1129,16 +1129,16 @@ namespace ComponentAce.Compression.Libs.ZLib
 			if (num > this.w_size - 262)
 			{
 				num = this.w_size - 262;
-				sourceIndex = dictLength - num;
+				num2 = dictLength - num;
 			}
-			Array.Copy(dictionary, sourceIndex, this.window, 0, num);
+			Array.Copy(dictionary, num2, this.window, 0, num);
 			this.strstart = num;
 			this.block_start = num;
 			this.ins_h = (int)(this.window[0] & byte.MaxValue);
-			this.ins_h = ((this.ins_h << this.hash_shift ^ (int)(this.window[1] & byte.MaxValue)) & this.hash_mask);
+			this.ins_h = ((this.ins_h << this.hash_shift) ^ (int)(this.window[1] & byte.MaxValue)) & this.hash_mask;
 			for (int i = 0; i <= num - 3; i++)
 			{
-				this.ins_h = ((this.ins_h << this.hash_shift ^ (int)(this.window[i + 2] & byte.MaxValue)) & this.hash_mask);
+				this.ins_h = ((this.ins_h << this.hash_shift) ^ (int)(this.window[i + 2] & byte.MaxValue)) & this.hash_mask;
 				this.prev[i & this.w_mask] = this.head[this.ins_h];
 				this.head[this.ins_h] = (short)i;
 			}
@@ -1168,7 +1168,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 			if (this.status == DeflateState.INIT_STATE)
 			{
 				int num2 = 8 + (this.w_bits - 8 << 4) << 8;
-				int num3 = (this.level - 1 & 255) >> 1;
+				int num3 = ((this.level - 1) & 255) >> 1;
 				if (num3 > 3)
 				{
 					num3 = 3;

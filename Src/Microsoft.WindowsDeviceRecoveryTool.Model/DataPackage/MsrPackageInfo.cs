@@ -3,16 +3,18 @@ using System.Collections.Generic;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model.DataPackage
 {
-	// Token: 0x02000009 RID: 9
+	// Token: 0x0200004B RID: 75
 	public class MsrPackageInfo : PackageFileInfo
 	{
-		// Token: 0x0600005D RID: 93 RVA: 0x00002D48 File Offset: 0x00000F48
-		public MsrPackageInfo(string path) : base(path)
+		// Token: 0x0600024C RID: 588 RVA: 0x00006734 File Offset: 0x00004934
+		public MsrPackageInfo(string path)
+			: base(path)
 		{
 		}
 
-		// Token: 0x0600005E RID: 94 RVA: 0x00002D54 File Offset: 0x00000F54
-		public MsrPackageInfo(string packageId, string name, string softwareVersion) : base(string.Empty)
+		// Token: 0x0600024D RID: 589 RVA: 0x0000673F File Offset: 0x0000493F
+		public MsrPackageInfo(string packageId, string name, string softwareVersion)
+			: base(string.Empty)
 		{
 			this.packageId = packageId;
 			this.name = name;
@@ -20,8 +22,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model.DataPackage
 			this.akVersion = null;
 		}
 
-		// Token: 0x0600005F RID: 95 RVA: 0x00002D80 File Offset: 0x00000F80
-		public MsrPackageInfo(string packageId, string name, string softwareVersion, string akVersion) : base(string.Empty)
+		// Token: 0x0600024E RID: 590 RVA: 0x0000676A File Offset: 0x0000496A
+		public MsrPackageInfo(string packageId, string name, string softwareVersion, string akVersion)
+			: base(string.Empty)
 		{
 			this.packageId = packageId;
 			this.name = name;
@@ -29,13 +32,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model.DataPackage
 			this.akVersion = akVersion;
 		}
 
-		// Token: 0x1700002B RID: 43
-		// (get) Token: 0x06000060 RID: 96 RVA: 0x00002DB0 File Offset: 0x00000FB0
-		// (set) Token: 0x06000061 RID: 97 RVA: 0x00002DC7 File Offset: 0x00000FC7
+		// Token: 0x170000DA RID: 218
+		// (get) Token: 0x0600024F RID: 591 RVA: 0x00006796 File Offset: 0x00004996
+		// (set) Token: 0x06000250 RID: 592 RVA: 0x0000679E File Offset: 0x0000499E
 		public string Id { get; set; }
 
-		// Token: 0x1700002C RID: 44
-		// (get) Token: 0x06000062 RID: 98 RVA: 0x00002DD0 File Offset: 0x00000FD0
+		// Token: 0x170000DB RID: 219
+		// (get) Token: 0x06000251 RID: 593 RVA: 0x000067A8 File Offset: 0x000049A8
 		public override string PackageId
 		{
 			get
@@ -44,8 +47,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model.DataPackage
 			}
 		}
 
-		// Token: 0x1700002D RID: 45
-		// (get) Token: 0x06000063 RID: 99 RVA: 0x00002DE8 File Offset: 0x00000FE8
+		// Token: 0x170000DC RID: 220
+		// (get) Token: 0x06000252 RID: 594 RVA: 0x000067C0 File Offset: 0x000049C0
 		public override string Name
 		{
 			get
@@ -54,8 +57,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model.DataPackage
 			}
 		}
 
-		// Token: 0x1700002E RID: 46
-		// (get) Token: 0x06000064 RID: 100 RVA: 0x00002E00 File Offset: 0x00001000
+		// Token: 0x170000DD RID: 221
+		// (get) Token: 0x06000253 RID: 595 RVA: 0x000067D8 File Offset: 0x000049D8
 		public override string SoftwareVersion
 		{
 			get
@@ -64,8 +67,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model.DataPackage
 			}
 		}
 
-		// Token: 0x1700002F RID: 47
-		// (get) Token: 0x06000065 RID: 101 RVA: 0x00002E18 File Offset: 0x00001018
+		// Token: 0x170000DE RID: 222
+		// (get) Token: 0x06000254 RID: 596 RVA: 0x000067F0 File Offset: 0x000049F0
 		public override string AkVersion
 		{
 			get
@@ -74,44 +77,44 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model.DataPackage
 			}
 		}
 
-		// Token: 0x17000030 RID: 48
-		// (get) Token: 0x06000066 RID: 102 RVA: 0x00002E30 File Offset: 0x00001030
-		// (set) Token: 0x06000067 RID: 103 RVA: 0x00002E47 File Offset: 0x00001047
+		// Token: 0x170000DF RID: 223
+		// (get) Token: 0x06000255 RID: 597 RVA: 0x00006808 File Offset: 0x00004A08
+		// (set) Token: 0x06000256 RID: 598 RVA: 0x00006810 File Offset: 0x00004A10
 		public IEnumerable<MsrPackageInfo.MsrFileInfo> PackageFileData { get; set; }
 
-		// Token: 0x04000029 RID: 41
+		// Token: 0x04000212 RID: 530
 		private readonly string packageId;
 
-		// Token: 0x0400002A RID: 42
+		// Token: 0x04000213 RID: 531
 		private readonly string name;
 
-		// Token: 0x0400002B RID: 43
+		// Token: 0x04000214 RID: 532
 		private readonly string softwareVersion;
 
-		// Token: 0x0400002C RID: 44
+		// Token: 0x04000215 RID: 533
 		private readonly string akVersion;
 
-		// Token: 0x0200000A RID: 10
+		// Token: 0x02000058 RID: 88
 		public class MsrFileInfo
 		{
-			// Token: 0x17000031 RID: 49
-			// (get) Token: 0x06000068 RID: 104 RVA: 0x00002E50 File Offset: 0x00001050
-			// (set) Token: 0x06000069 RID: 105 RVA: 0x00002E67 File Offset: 0x00001067
+			// Token: 0x17000108 RID: 264
+			// (get) Token: 0x060002B7 RID: 695 RVA: 0x0000729A File Offset: 0x0000549A
+			// (set) Token: 0x060002B8 RID: 696 RVA: 0x000072A2 File Offset: 0x000054A2
 			public string FileName { get; set; }
 
-			// Token: 0x17000032 RID: 50
-			// (get) Token: 0x0600006A RID: 106 RVA: 0x00002E70 File Offset: 0x00001070
-			// (set) Token: 0x0600006B RID: 107 RVA: 0x00002E87 File Offset: 0x00001087
+			// Token: 0x17000109 RID: 265
+			// (get) Token: 0x060002B9 RID: 697 RVA: 0x000072AB File Offset: 0x000054AB
+			// (set) Token: 0x060002BA RID: 698 RVA: 0x000072B3 File Offset: 0x000054B3
 			public string FileType { get; set; }
 
-			// Token: 0x17000033 RID: 51
-			// (get) Token: 0x0600006C RID: 108 RVA: 0x00002E90 File Offset: 0x00001090
-			// (set) Token: 0x0600006D RID: 109 RVA: 0x00002EA7 File Offset: 0x000010A7
+			// Token: 0x1700010A RID: 266
+			// (get) Token: 0x060002BB RID: 699 RVA: 0x000072BC File Offset: 0x000054BC
+			// (set) Token: 0x060002BC RID: 700 RVA: 0x000072C4 File Offset: 0x000054C4
 			public string FileNameWithRevision { get; set; }
 
-			// Token: 0x17000034 RID: 52
-			// (get) Token: 0x0600006E RID: 110 RVA: 0x00002EB0 File Offset: 0x000010B0
-			// (set) Token: 0x0600006F RID: 111 RVA: 0x00002EC7 File Offset: 0x000010C7
+			// Token: 0x1700010B RID: 267
+			// (get) Token: 0x060002BD RID: 701 RVA: 0x000072CD File Offset: 0x000054CD
+			// (set) Token: 0x060002BE RID: 702 RVA: 0x000072D5 File Offset: 0x000054D5
 			public string FileVersion { get; set; }
 		}
 	}

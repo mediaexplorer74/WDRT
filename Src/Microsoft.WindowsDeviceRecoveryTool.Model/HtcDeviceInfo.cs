@@ -2,10 +2,10 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model
 {
-	// Token: 0x0200001D RID: 29
+	// Token: 0x0200000B RID: 11
 	public class HtcDeviceInfo
 	{
-		// Token: 0x060000DA RID: 218 RVA: 0x00003790 File Offset: 0x00001990
+		// Token: 0x0600005F RID: 95 RVA: 0x00002BB2 File Offset: 0x00000DB2
 		public HtcDeviceInfo(string mid, string cid, string path)
 		{
 			this.Mid = mid;
@@ -13,25 +13,25 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			this.Path = path;
 		}
 
-		// Token: 0x060000DB RID: 219 RVA: 0x000037B3 File Offset: 0x000019B3
+		// Token: 0x06000060 RID: 96 RVA: 0x00002BD4 File Offset: 0x00000DD4
 		public HtcDeviceInfo(string path)
 		{
 			this.Path = path;
 		}
 
-		// Token: 0x17000055 RID: 85
-		// (get) Token: 0x060000DC RID: 220 RVA: 0x000037C8 File Offset: 0x000019C8
-		// (set) Token: 0x060000DD RID: 221 RVA: 0x000037DF File Offset: 0x000019DF
+		// Token: 0x17000029 RID: 41
+		// (get) Token: 0x06000061 RID: 97 RVA: 0x00002BE6 File Offset: 0x00000DE6
+		// (set) Token: 0x06000062 RID: 98 RVA: 0x00002BEE File Offset: 0x00000DEE
 		public string Mid { get; set; }
 
-		// Token: 0x17000056 RID: 86
-		// (get) Token: 0x060000DE RID: 222 RVA: 0x000037E8 File Offset: 0x000019E8
-		// (set) Token: 0x060000DF RID: 223 RVA: 0x000037FF File Offset: 0x000019FF
+		// Token: 0x1700002A RID: 42
+		// (get) Token: 0x06000063 RID: 99 RVA: 0x00002BF7 File Offset: 0x00000DF7
+		// (set) Token: 0x06000064 RID: 100 RVA: 0x00002BFF File Offset: 0x00000DFF
 		public string Cid { get; set; }
 
-		// Token: 0x17000057 RID: 87
-		// (get) Token: 0x060000E0 RID: 224 RVA: 0x00003808 File Offset: 0x00001A08
-		// (set) Token: 0x060000E1 RID: 225 RVA: 0x0000381F File Offset: 0x00001A1F
+		// Token: 0x1700002B RID: 43
+		// (get) Token: 0x06000065 RID: 101 RVA: 0x00002C08 File Offset: 0x00000E08
+		// (set) Token: 0x06000066 RID: 102 RVA: 0x00002C10 File Offset: 0x00000E10
 		public string Path { get; set; }
 	}
 }

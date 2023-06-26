@@ -6,11 +6,11 @@ using Microsoft.WindowsDeviceRecoveryTool.Messages;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Help
 {
-	// Token: 0x0200007F RID: 127
+	// Token: 0x02000064 RID: 100
 	[Export]
 	public class HtcNormalHelpViewModel : BaseViewModel
 	{
-		// Token: 0x0600039D RID: 925 RVA: 0x000115AF File Offset: 0x0000F7AF
+		// Token: 0x060003AD RID: 941 RVA: 0x00014550 File Offset: 0x00012750
 		public override void OnStarted()
 		{
 			base.EventAggregator.Publish<HeaderMessage>(new HeaderMessage(LocalizationManager.GetTranslation("Help"), LocalizationManager.GetTranslation("NormalMode")));

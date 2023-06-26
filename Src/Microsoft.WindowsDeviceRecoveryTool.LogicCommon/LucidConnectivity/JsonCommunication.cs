@@ -5,25 +5,25 @@ using Nokia.Lucid.UsbDeviceIo;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.LucidConnectivity
 {
-	// Token: 0x02000015 RID: 21
+	// Token: 0x0200002C RID: 44
 	public class JsonCommunication : IDisposable
 	{
-		// Token: 0x060000A0 RID: 160 RVA: 0x00003A50 File Offset: 0x00001C50
+		// Token: 0x060002CF RID: 719 RVA: 0x0000A348 File Offset: 0x00008548
 		public JsonCommunication(UsbDeviceIo deviceIo)
 		{
 			this.LucidDeviceIo = deviceIo;
 			this.messageIdCounter = 0;
 		}
 
-		// Token: 0x060000A1 RID: 161 RVA: 0x00003A78 File Offset: 0x00001C78
+		// Token: 0x060002D0 RID: 720 RVA: 0x0000A36C File Offset: 0x0000856C
 		~JsonCommunication()
 		{
 			this.Dispose();
 		}
 
-		// Token: 0x17000033 RID: 51
-		// (get) Token: 0x060000A2 RID: 162 RVA: 0x00003AAC File Offset: 0x00001CAC
-		// (set) Token: 0x060000A3 RID: 163 RVA: 0x00003AC4 File Offset: 0x00001CC4
+		// Token: 0x170000D0 RID: 208
+		// (get) Token: 0x060002D1 RID: 721 RVA: 0x0000A39C File Offset: 0x0000859C
+		// (set) Token: 0x060002D2 RID: 722 RVA: 0x0000A3B4 File Offset: 0x000085B4
 		public UsbDeviceIo LucidDeviceIo
 		{
 			get
@@ -32,13 +32,15 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.LucidConnectivity
 			}
 			set
 			{
-				if (this.lucidIo != null)
+				bool flag = this.lucidIo != null;
+				if (flag)
 				{
 					this.lucidIo.OnReceived -= this.HandlReceivedData;
 					this.lucidIo.Dispose();
 				}
 				this.lucidIo = value;
-				if (this.lucidIo != null)
+				bool flag2 = this.lucidIo != null;
+				if (flag2)
 				{
 					this.lucidIo.OnReceived += this.HandlReceivedData;
 					this.receiveBuffer = null;
@@ -46,11 +48,12 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.LucidConnectivity
 			}
 		}
 
-		// Token: 0x060000A4 RID: 164 RVA: 0x00003B3C File Offset: 0x00001D3C
+		// Token: 0x060002D3 RID: 723 RVA: 0x0000A42C File Offset: 0x0000862C
 		public void Dispose()
 		{
 			this.messageIdCounter = 0;
-			if (this.lucidIo != null)
+			bool flag = this.lucidIo != null;
+			if (flag)
 			{
 				this.lucidIo.OnReceived -= this.HandlReceivedData;
 				this.lucidIo.Dispose();
@@ -58,70 +61,73 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.LucidConnectivity
 			}
 		}
 
-		// Token: 0x060000A5 RID: 165 RVA: 0x00003B8B File Offset: 0x00001D8B
+		// Token: 0x060002D4 RID: 724 RVA: 0x0000A47B File Offset: 0x0000867B
 		public void Send(byte[] request)
 		{
 			this.LucidDeviceIo.Send(request, (uint)request.Length);
 		}
 
-		// Token: 0x060000A6 RID: 166 RVA: 0x00003BA0 File Offset: 0x00001DA0
+		// Token: 0x060002D5 RID: 725 RVA: 0x0000A490 File Offset: 0x00008690
 		public byte[] Receive(TimeSpan timeSpan)
 		{
 			Thread.Sleep(timeSpan);
-			if (this.receiveBuffer == null)
+			bool flag = this.receiveBuffer == null;
+			if (flag)
 			{
 				throw new TimeoutException("JsonComms: No message received");
 			}
 			return this.receiveBuffer;
 		}
 
-		// Token: 0x060000A7 RID: 167 RVA: 0x00003BDB File Offset: 0x00001DDB
+		// Token: 0x060002D6 RID: 726 RVA: 0x0000213E File Offset: 0x0000033E
 		public void SetFilteringState(bool doFilter)
 		{
 		}
 
-		// Token: 0x060000A8 RID: 168 RVA: 0x00003BE0 File Offset: 0x00001DE0
+		// Token: 0x060002D7 RID: 727 RVA: 0x0000A4C8 File Offset: 0x000086C8
 		public void Send(string message)
 		{
-			lock (this.syncObject)
+			object obj = this.syncObject;
+			lock (obj)
 			{
 				this.messageIdCounter++;
-				message = message.Replace("\"method\"", "\"id\":" + this.messageIdCounter + ",\"method\"");
+				message = message.Replace("\"method\"", "\"id\":" + this.messageIdCounter.ToString() + ",\"method\"");
 				ASCIIEncoding asciiencoding = new ASCIIEncoding();
 				byte[] bytes = asciiencoding.GetBytes(message);
 				this.Send(bytes);
 			}
 		}
 
-		// Token: 0x060000A9 RID: 169 RVA: 0x00003C74 File Offset: 0x00001E74
+		// Token: 0x060002D8 RID: 728 RVA: 0x0000A554 File Offset: 0x00008754
 		public string ReceiveJson(TimeSpan timeSpan)
 		{
-			byte[] bytes = this.Receive(timeSpan);
+			byte[] array = this.Receive(timeSpan);
 			ASCIIEncoding asciiencoding = new ASCIIEncoding();
-			return asciiencoding.GetString(bytes);
+			return asciiencoding.GetString(array);
 		}
 
-		// Token: 0x060000AA RID: 170 RVA: 0x00003CA0 File Offset: 0x00001EA0
+		// Token: 0x060002D9 RID: 729 RVA: 0x0000A580 File Offset: 0x00008780
 		private void HandlReceivedData(object sender, OnReceivedEventArgs eventArgs)
 		{
 			byte[] data = eventArgs.Data;
-			lock (this.syncObject)
+			object obj = this.syncObject;
+			lock (obj)
 			{
 				this.receiveBuffer = new byte[data.Length];
 				Buffer.BlockCopy(data, 0, this.receiveBuffer, 0, data.Length);
 			}
 		}
 
-		// Token: 0x04000063 RID: 99
+		// Token: 0x0400012E RID: 302
 		private readonly object syncObject = new object();
 
-		// Token: 0x04000064 RID: 100
+		// Token: 0x0400012F RID: 303
 		private UsbDeviceIo lucidIo;
 
-		// Token: 0x04000065 RID: 101
+		// Token: 0x04000130 RID: 304
 		private byte[] receiveBuffer;
 
-		// Token: 0x04000066 RID: 102
+		// Token: 0x04000131 RID: 305
 		private int messageIdCounter;
 	}
 }

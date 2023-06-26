@@ -1,19 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{874021E6-8DFC-429F-963B-328B4B0ABFE3}</ProjectGuid>
+    <ProjectGuid>{8C726962-D7A3-4054-B90F-0583259F9667}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Microsoft.WindowsDeviceRecoveryTool.HoneywellAdaptation</RootNamespace>
     <AssemblyName>Microsoft.WindowsDeviceRecoveryTool.HoneywellAdaptation</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFramework>net48</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+  <PropertyGroup>
+    <NoStdLib>True</NoStdLib>
+    <EnableDefaultItems>False</EnableDefaultItems>
+  </PropertyGroup>
+  <PropertyGroup />
+
+   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -21,35 +24,36 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-  </ItemGroup>
-  <ItemGroup>
-    <AppDesigner Include="Properties\" />
-  </ItemGroup>
+ 
   <ItemGroup>
     <Compile Include="HoneywellModels.cs" />
     <Compile Include="HoneywellMsrQuery.cs" />
     <Compile Include="HoneywellSupport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Services\HoneywellAdaptation.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resources" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\CT50_360Tour.jpg" />
     <EmbeddedResource Include="Resources\D75e_360Tour.jpg" />
     <EmbeddedResource Include="Resources\dolphin75_WE8H_large.png" />
@@ -58,37 +62,52 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FFUComponents\FFUComponents.csproj">
-      <Project>{928157d7-3130-4324-9f56-b04dba29818a}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F964F}</Project>
       <Name>FFUComponents</Name>
     </ProjectReference>
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Common\Microsoft.WindowsDeviceRecoveryTool.Common.csproj">
-      <Project>{64a43b64-7647-425c-b0e6-2e27da6dbdda}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9660}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Core\Microsoft.WindowsDeviceRecoveryTool.Core.csproj">
-      <Project>{55a80c0e-e3d4-43eb-8c91-d6ef18bfa9dc}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9661}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Localization\Microsoft.WindowsDeviceRecoveryTool.Localization.csproj">
-      <Project>{081f084d-70ab-42aa-a1e7-460f52620ca7}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F966F}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.Localization</Name>
     </ProjectReference>
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.LogicCommon\Microsoft.WindowsDeviceRecoveryTool.LogicCommon.csproj">
-      <Project>{2adf7f14-aa94-4a70-b28f-668964626e8f}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9670}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.LogicCommon</Name>
     </ProjectReference>
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Lucid\Microsoft.WindowsDeviceRecoveryTool.Lucid.csproj">
-      <Project>{adee4bcd-be8f-4ec5-8d00-aa6442b86415}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9671}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.Lucid</Name>
     </ProjectReference>
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Model\Microsoft.WindowsDeviceRecoveryTool.Model.csproj">
-      <Project>{0fcb723b-55fa-4794-8262-8ec9d399f6e3}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9675}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.OemAdaptation\Microsoft.WindowsDeviceRecoveryTool.OemAdaptation.csproj">
-      <Project>{64089e80-33ff-4d5d-be3b-74072c27ab00}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9676}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.OemAdaptation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\mscorlib\mscorlib.csproj">
+      <Project>{8C726962-D7A3-4054-B90F-0583259F968E}</Project>
+      <Name>mscorlib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\System.Drawing\System.Drawing.csproj">
+      <Project>{8C726962-D7A3-4054-B90F-0583259F968F}</Project>
+      <Name>System.Drawing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\System\System.csproj">
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9692}</Project>
+      <Name>System</Name>
+    </ProjectReference>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
 </Project>

@@ -2,14 +2,14 @@
 
 namespace SoftwareRepository.Discovery
 {
-	// Token: 0x0200001D RID: 29
+	// Token: 0x0200001E RID: 30
 	public enum DiscoveryCondition
 	{
-		// Token: 0x0400007F RID: 127
+		// Token: 0x04000083 RID: 131
 		Default,
-		// Token: 0x04000080 RID: 128
+		// Token: 0x04000084 RID: 132
 		All,
-		// Token: 0x04000081 RID: 129
+		// Token: 0x04000085 RID: 133
 		Latest
 	}
 }

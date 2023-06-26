@@ -13,13 +13,7 @@ namespace Nokia.Lucid
 		// Token: 0x060001CE RID: 462 RVA: 0x0000CE5C File Offset: 0x0000B05C
 		public DeviceTypeMap(Guid interfaceClass, DeviceType deviceType)
 		{
-			this.mappings = new Dictionary<Guid, DeviceType>
-			{
-				{
-					interfaceClass,
-					deviceType
-				}
-			};
+			this.mappings = new Dictionary<Guid, DeviceType> { { interfaceClass, deviceType } };
 		}
 
 		// Token: 0x060001CF RID: 463 RVA: 0x0000CE80 File Offset: 0x0000B080
@@ -166,9 +160,7 @@ namespace Nokia.Lucid
 		// Token: 0x060001DA RID: 474 RVA: 0x0000D21C File Offset: 0x0000B41C
 		public DeviceTypeMap ClearMapping(Guid interfaceClass)
 		{
-			return new DeviceTypeMap(from m in this.mappings
-			where m.Key != interfaceClass
-			select m);
+			return new DeviceTypeMap(this.mappings.Where((KeyValuePair<Guid, DeviceType> m) => m.Key != interfaceClass));
 		}
 
 		// Token: 0x060001DB RID: 475 RVA: 0x0000D252 File Offset: 0x0000B452
@@ -196,16 +188,13 @@ namespace Nokia.Lucid
 		// Token: 0x060001DE RID: 478 RVA: 0x0000D314 File Offset: 0x0000B514
 		public DeviceType GetMapping(Guid interfaceClass)
 		{
-			DeviceType result;
-			if (!this.mappings.TryGetValue(interfaceClass, out result))
+			DeviceType deviceType;
+			if (!this.mappings.TryGetValue(interfaceClass, out deviceType))
 			{
-				string message = string.Format(CultureInfo.CurrentCulture, Resources.KeyNotFoundException_MessageFormat_DeviceTypeMappingNotFound, new object[]
-				{
-					interfaceClass
-				});
-				throw new KeyNotFoundException(message);
+				string text = string.Format(CultureInfo.CurrentCulture, Resources.KeyNotFoundException_MessageFormat_DeviceTypeMappingNotFound, new object[] { interfaceClass });
+				throw new KeyNotFoundException(text);
 			}
-			return result;
+			return deviceType;
 		}
 
 		// Token: 0x060001DF RID: 479 RVA: 0x0000D35A File Offset: 0x0000B55A
@@ -229,11 +218,7 @@ namespace Nokia.Lucid
 			{
 				return false;
 			}
-			return (from m in this.mappings
-			orderby m.Key
-			select m).SequenceEqual(from m in other.mappings
-			orderby m.Key
-			select m);
+			return this.mappings.OrderBy((KeyValuePair<Guid, DeviceType> m) => m.Key).SequenceEqual(other.mappings.OrderBy((KeyValuePair<Guid, DeviceType> m) => m.Key));
 		}
 
 		// Token: 0x060001E1 RID: 481 RVA: 0x0000D426 File Offset: 0x0000B626
@@ -243,9 +228,7 @@ namespace Nokia.Lucid
 			{
 				return 0;
 			}
-			return (from m in this.mappings
-			orderby m.Key
-			select m).GetHashCode();
+			return this.mappings.OrderBy((KeyValuePair<Guid, DeviceType> m) => m.Key).GetHashCode();
 		}
 
 		// Token: 0x04000133 RID: 307

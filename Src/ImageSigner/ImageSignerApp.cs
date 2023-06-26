@@ -19,18 +19,18 @@ namespace Microsoft.WindowsPhone.Imaging.ImageSignerApp
 				string text = args[0];
 				string fullPath = Path.GetFullPath(args[1]);
 				string fullPath2 = Path.GetFullPath(args[2]);
-				string a;
-				if ((a = text.ToLower()) != null)
+				string text2;
+				if ((text2 = text.ToLower()) != null)
 				{
-					if (a == "sign")
+					if (text2 == "sign")
 					{
 						return ImageSignerApp.SignImage(fullPath, fullPath2);
 					}
-					if (a == "getcatalog")
+					if (text2 == "getcatalog")
 					{
 						return ImageSignerApp.ExtractCatalog(fullPath, fullPath2);
 					}
-					if (a == "truncate")
+					if (text2 == "truncate")
 					{
 						return ImageSignerApp.TruncateImage(fullPath, fullPath2);
 					}
@@ -94,15 +94,15 @@ namespace Microsoft.WindowsPhone.Imaging.ImageSignerApp
 			}
 			if ((ulong)num > (ulong)((long)array.Length + (long)((ulong)num5)))
 			{
-				uint bytesNeeded = num - (uint)array.Length - num5;
-				uint dataOffset = num2 + (uint)array.Length + (uint)array2.Length + num5;
-				ImageSignerApp.ExtendImage(fileStream, dataOffset, bytesNeeded, num3, ref num5);
+				uint num6 = num - (uint)array.Length - num5;
+				uint num7 = num2 + (uint)array.Length + (uint)array2.Length + num5;
+				ImageSignerApp.ExtendImage(fileStream, num7, num6, num3, ref num5);
 			}
 			if ((ulong)num < (ulong)((long)array.Length) && array.Length - (int)num + (int)num5 > (int)num3)
 			{
-				uint excessPadding = (uint)(array.Length - (int)num + (int)num5);
-				uint dataOffset2 = num2 + (uint)array.Length + (uint)array2.Length + num5;
-				ImageSignerApp.ShrinkImage(fileStream, dataOffset2, excessPadding, num3, ref num5);
+				uint num8 = (uint)(array.Length - (int)num + (int)num5);
+				uint num9 = num2 + (uint)array.Length + (uint)array2.Length + num5;
+				ImageSignerApp.ShrinkImage(fileStream, num9, num8, num3, ref num5);
 			}
 			fileStream.Position = (long)((ulong)(num2 - 8U));
 			byte[] bytes = BitConverter.GetBytes(num);
@@ -163,14 +163,14 @@ namespace Microsoft.WindowsPhone.Imaging.ImageSignerApp
 		// Token: 0x06000009 RID: 9 RVA: 0x0000259C File Offset: 0x0000079C
 		private static int ExtractCatalog(string ffuPath, string catalogPath)
 		{
-			FileStream ffuFile = File.OpenRead(ffuPath);
-			byte[] bytes;
-			int num = ImageSignerApp.ReadCatalogDataFromStream(ffuFile, out bytes);
+			FileStream fileStream = File.OpenRead(ffuPath);
+			byte[] array;
+			int num = ImageSignerApp.ReadCatalogDataFromStream(fileStream, out array);
 			if (num != 0)
 			{
 				return num;
 			}
-			File.WriteAllBytes(catalogPath, bytes);
+			File.WriteAllBytes(catalogPath, array);
 			Console.WriteLine("Successfully extracted catalog.");
 			return 0;
 		}
@@ -191,13 +191,13 @@ namespace Microsoft.WindowsPhone.Imaging.ImageSignerApp
 				Console.WriteLine("The catalog does not match the image, or the image has been corrupted.");
 				return -1;
 			}
-			long firstChunkOffset = (long)((ulong)num + (ulong)catalogData.LongLength + (ulong)array.LongLength + (ulong)num4);
+			long num5 = (long)((ulong)num + (ulong)catalogData.LongLength + (ulong)array.LongLength + (ulong)num4);
 			try
 			{
-				HashedChunkReader hashedChunkReader = new HashedChunkReader(array, ffuFile, num2, firstChunkOffset);
+				HashedChunkReader hashedChunkReader = new HashedChunkReader(array, ffuFile, num2, num5);
 				byte[] nextChunk = hashedChunkReader.GetNextChunk();
-				uint num5 = BitConverter.ToUInt32(nextChunk, 0);
-				if (num5 != 24U)
+				uint num6 = BitConverter.ToUInt32(nextChunk, 0);
+				if (num6 != 24U)
 				{
 					Console.WriteLine("Unable to read manifest length from image.");
 					return -1;
@@ -209,35 +209,35 @@ namespace Microsoft.WindowsPhone.Imaging.ImageSignerApp
 					Console.WriteLine("Invalid manifest signature encountered.");
 					return -1;
 				}
-				uint num6 = BitConverter.ToUInt32(nextChunk, text2.Length + 4);
-				for (uint num7 = num6 + num5; num7 > num2; num7 -= num2)
+				uint num7 = BitConverter.ToUInt32(nextChunk, text2.Length + 4);
+				for (uint num8 = num7 + num6; num8 > num2; num8 -= num2)
 				{
 					hashedChunkReader.GetNextChunk();
 				}
 				byte[] nextChunk2 = hashedChunkReader.GetNextChunk();
 				BitConverter.ToUInt32(nextChunk2, 0);
-				ushort num8 = BitConverter.ToUInt16(nextChunk2, 4);
+				ushort num9 = BitConverter.ToUInt16(nextChunk2, 4);
 				BitConverter.ToUInt16(nextChunk2, 6);
-				if (num8 < 1 || num8 > 2)
+				if (num9 < 1 || num9 > 2)
 				{
 					Console.WriteLine("Image appears to be corrupt, or newer tools are required.");
 					return -1;
 				}
-				int count = 192;
-				string string2 = Encoding.ASCII.GetString(nextChunk2, 12, count);
+				int num10 = 192;
+				string string2 = Encoding.ASCII.GetString(nextChunk2, 12, num10);
 				string text3 = string2;
-				char[] trimChars = new char[1];
-				string text4 = text3.TrimEnd(trimChars);
-				char[] separator = new char[1];
-				string[] array2 = text4.Split(separator);
-				if (array2.Length == 0)
+				char[] array2 = new char[1];
+				string text4 = text3.TrimEnd(array2);
+				char[] array3 = new char[1];
+				string[] array4 = text4.Split(array3);
+				if (array4.Length == 0)
 				{
 					Console.WriteLine("Unable to read platform IDs from image.");
 					return -1;
 				}
-				foreach (string arg in array2)
+				foreach (string text5 in array4)
 				{
-					Console.WriteLine("Platform ID: {0}", arg);
+					Console.WriteLine("Platform ID: {0}", text5);
 				}
 			}
 			catch (HashedChunkReaderException ex)
@@ -287,18 +287,8 @@ namespace Microsoft.WindowsPhone.Imaging.ImageSignerApp
 			BinaryReader binaryReader = new BinaryReader(new MemoryStream(array2));
 			byte[] array3 = new byte[]
 			{
-				83,
-				105,
-				103,
-				110,
-				101,
-				100,
-				73,
-				109,
-				97,
-				103,
-				101,
-				32
+				83, 105, 103, 110, 101, 100, 73, 109, 97, 103,
+				101, 32
 			};
 			for (int i = 0; i < array3.Length; i++)
 			{

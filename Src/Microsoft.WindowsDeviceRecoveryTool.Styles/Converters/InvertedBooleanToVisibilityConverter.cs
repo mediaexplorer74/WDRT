@@ -5,33 +5,35 @@ using System.Windows.Data;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Styles.Converters
 {
-	// Token: 0x02000018 RID: 24
+	// Token: 0x0200000C RID: 12
 	public class InvertedBooleanToVisibilityConverter : IValueConverter
 	{
-		// Token: 0x06000086 RID: 134 RVA: 0x00003A68 File Offset: 0x00001C68
+		// Token: 0x0600002E RID: 46 RVA: 0x00002724 File Offset: 0x00000924
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
 			bool flag = false;
-			if (value is bool)
+			bool flag2 = value is bool;
+			if (flag2)
 			{
 				flag = (bool)value;
 			}
 			return flag ? Visibility.Collapsed : Visibility.Visible;
 		}
 
-		// Token: 0x06000087 RID: 135 RVA: 0x00003AA4 File Offset: 0x00001CA4
+		// Token: 0x0600002F RID: 47 RVA: 0x0000275C File Offset: 0x0000095C
 		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
 		{
-			object result;
-			if (value is Visibility)
+			bool flag = value is Visibility;
+			object obj;
+			if (flag)
 			{
-				result = ((Visibility)value != Visibility.Visible);
+				obj = (Visibility)value > Visibility.Visible;
 			}
 			else
 			{
-				result = false;
+				obj = false;
 			}
-			return result;
+			return obj;
 		}
 	}
 }

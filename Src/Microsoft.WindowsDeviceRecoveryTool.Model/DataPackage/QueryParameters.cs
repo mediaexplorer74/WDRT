@@ -4,10 +4,10 @@ using System.Text;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model.DataPackage
 {
-	// Token: 0x0200000B RID: 11
+	// Token: 0x0200004C RID: 76
 	public class QueryParameters
 	{
-		// Token: 0x06000071 RID: 113 RVA: 0x00002ED8 File Offset: 0x000010D8
+		// Token: 0x06000257 RID: 599 RVA: 0x00006819 File Offset: 0x00004A19
 		public QueryParameters()
 		{
 			this.ManufacturerProductLine = "WindowsPhone";
@@ -15,47 +15,47 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model.DataPackage
 			this.PackageClass = "Public";
 		}
 
-		// Token: 0x17000035 RID: 53
-		// (get) Token: 0x06000072 RID: 114 RVA: 0x00002F08 File Offset: 0x00001108
-		// (set) Token: 0x06000073 RID: 115 RVA: 0x00002F1F File Offset: 0x0000111F
+		// Token: 0x170000E0 RID: 224
+		// (get) Token: 0x06000258 RID: 600 RVA: 0x00006847 File Offset: 0x00004A47
+		// (set) Token: 0x06000259 RID: 601 RVA: 0x0000684F File Offset: 0x00004A4F
 		public string ManufacturerName { get; set; }
 
-		// Token: 0x17000036 RID: 54
-		// (get) Token: 0x06000074 RID: 116 RVA: 0x00002F28 File Offset: 0x00001128
-		// (set) Token: 0x06000075 RID: 117 RVA: 0x00002F3F File Offset: 0x0000113F
+		// Token: 0x170000E1 RID: 225
+		// (get) Token: 0x0600025A RID: 602 RVA: 0x00006858 File Offset: 0x00004A58
+		// (set) Token: 0x0600025B RID: 603 RVA: 0x00006860 File Offset: 0x00004A60
 		public string ManufacturerModelName { get; set; }
 
-		// Token: 0x17000037 RID: 55
-		// (get) Token: 0x06000076 RID: 118 RVA: 0x00002F48 File Offset: 0x00001148
-		// (set) Token: 0x06000077 RID: 119 RVA: 0x00002F5F File Offset: 0x0000115F
+		// Token: 0x170000E2 RID: 226
+		// (get) Token: 0x0600025C RID: 604 RVA: 0x00006869 File Offset: 0x00004A69
+		// (set) Token: 0x0600025D RID: 605 RVA: 0x00006871 File Offset: 0x00004A71
 		public string ManufacturerProductLine { get; set; }
 
-		// Token: 0x17000038 RID: 56
-		// (get) Token: 0x06000078 RID: 120 RVA: 0x00002F68 File Offset: 0x00001168
-		// (set) Token: 0x06000079 RID: 121 RVA: 0x00002F7F File Offset: 0x0000117F
+		// Token: 0x170000E3 RID: 227
+		// (get) Token: 0x0600025E RID: 606 RVA: 0x0000687A File Offset: 0x00004A7A
+		// (set) Token: 0x0600025F RID: 607 RVA: 0x00006882 File Offset: 0x00004A82
 		public string PackageType { get; set; }
 
-		// Token: 0x17000039 RID: 57
-		// (get) Token: 0x0600007A RID: 122 RVA: 0x00002F88 File Offset: 0x00001188
-		// (set) Token: 0x0600007B RID: 123 RVA: 0x00002F9F File Offset: 0x0000119F
+		// Token: 0x170000E4 RID: 228
+		// (get) Token: 0x06000260 RID: 608 RVA: 0x0000688B File Offset: 0x00004A8B
+		// (set) Token: 0x06000261 RID: 609 RVA: 0x00006893 File Offset: 0x00004A93
 		public string PackageClass { get; set; }
 
-		// Token: 0x1700003A RID: 58
-		// (get) Token: 0x0600007C RID: 124 RVA: 0x00002FA8 File Offset: 0x000011A8
-		// (set) Token: 0x0600007D RID: 125 RVA: 0x00002FBF File Offset: 0x000011BF
+		// Token: 0x170000E5 RID: 229
+		// (get) Token: 0x06000262 RID: 610 RVA: 0x0000689C File Offset: 0x00004A9C
+		// (set) Token: 0x06000263 RID: 611 RVA: 0x000068A4 File Offset: 0x00004AA4
 		public string ManufacturerHardwareModel { get; set; }
 
-		// Token: 0x1700003B RID: 59
-		// (get) Token: 0x0600007E RID: 126 RVA: 0x00002FC8 File Offset: 0x000011C8
-		// (set) Token: 0x0600007F RID: 127 RVA: 0x00002FDF File Offset: 0x000011DF
+		// Token: 0x170000E6 RID: 230
+		// (get) Token: 0x06000264 RID: 612 RVA: 0x000068AD File Offset: 0x00004AAD
+		// (set) Token: 0x06000265 RID: 613 RVA: 0x000068B5 File Offset: 0x00004AB5
 		public string ManufacturerHardwareVariant { get; set; }
 
-		// Token: 0x1700003C RID: 60
-		// (get) Token: 0x06000080 RID: 128 RVA: 0x00002FE8 File Offset: 0x000011E8
-		// (set) Token: 0x06000081 RID: 129 RVA: 0x00002FFF File Offset: 0x000011FF
+		// Token: 0x170000E7 RID: 231
+		// (get) Token: 0x06000266 RID: 614 RVA: 0x000068BE File Offset: 0x00004ABE
+		// (set) Token: 0x06000267 RID: 615 RVA: 0x000068C6 File Offset: 0x00004AC6
 		public Dictionary<string, string> ExtendedAttributes { get; set; }
 
-		// Token: 0x06000082 RID: 130 RVA: 0x00003008 File Offset: 0x00001208
+		// Token: 0x06000268 RID: 616 RVA: 0x000068D0 File Offset: 0x00004AD0
 		public override string ToString()
 		{
 			StringBuilder stringBuilder = new StringBuilder();

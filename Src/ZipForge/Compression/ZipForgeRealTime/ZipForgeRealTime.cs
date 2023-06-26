@@ -6,7 +6,7 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using ComponentAce.Compression.Archiver;
-using ComponentAce.Compression.Exception1;
+using ComponentAce.Compression.Exception;
 using ComponentAce.Compression.ZipForge;
 using ComponentAce.Compression.ZipForge.Encryption;
 
@@ -209,7 +209,8 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 		public event ZipForgeRealTime.OnPasswordDelegate OnPassword;
 
 		// Token: 0x060004E9 RID: 1257 RVA: 0x00021D88 File Offset: 0x00020D88
-		public ZipForgeRealTime() : this(null)
+		public ZipForgeRealTime()
+			: this(null)
 		{
 		}
 
@@ -238,7 +239,7 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 		{
 			if (this._compressedStream == null)
 			{
-				//ExceptionBuilder.Exception(ErrorCode.CompressedStreamNotSpecified);
+				ExceptionBuilder.Exception(ErrorCode.CompressedStreamNotSpecified);
 			}
 			this._dmHandle = new RealTimeDirManager(this);
 			this._dmHandle.ArchiveComment = this._commentsToArchive;
@@ -301,10 +302,7 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 			}
 			if (this._compressedStream == null)
 			{
-				//throw ExceptionBuilder.Exception(ErrorCode.UnexpectedNullPointer, new object[]
-				//{
-				//	"compressedStream"
-				//});
+				throw ExceptionBuilder.Exception(ErrorCode.UnexpectedNullPointer, new object[] { "compressedStream" });
 			}
 			int num = this.AddItemToCentralDirectory(fileName, fileStream, fileComment);
 			this._progressCancel = false;
@@ -349,8 +347,8 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 		{
 			if (this.OnFileProgress != null)
 			{
-				string fileName2 = fileName.Replace('/', '\\');
-				this.OnFileProgress(this, fileName2, bytesProcessed, timeElapsed, progressPhase, ref cancel);
+				string text = fileName.Replace('/', '\\');
+				this.OnFileProgress(this, text, bytesProcessed, timeElapsed, progressPhase, ref cancel);
 				return;
 			}
 			cancel = false;
@@ -361,27 +359,26 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 		{
 			if (this.OnFileRename != null)
 			{
-				string fileName2 = fileName.Replace('/', '\\');
-				this.OnFileRename(this, fileName2, ref newFileName, ref cancel);
+				string text = fileName.Replace('/', '\\');
+				this.OnFileRename(this, text, ref newFileName, ref cancel);
 				return;
 			}
 			cancel = true;
 		}
 
 		// Token: 0x060004F5 RID: 1269 RVA: 0x000220C3 File Offset: 0x000210C3
-		protected internal void DoOnProcessFileFailure(string fileName, 
-			string errorMessage, System.Exception innerException)
+		protected internal void DoOnProcessFileFailure(string fileName, string errorMessage, Exception innerException)
 		{
 			if (this.OnProcessFileFailure != null)
 			{
-				this.OnProcessFileFailure(this, fileName, errorMessage, null/*innerException*/);
+				this.OnProcessFileFailure(this, fileName, errorMessage, innerException);
 				return;
 			}
 			throw innerException;
 		}
 
 		// Token: 0x060004F6 RID: 1270 RVA: 0x000220DE File Offset: 0x000210DE
-		protected internal void DoOnWriteToStreamFailed(System.Exception innerException, ref bool cancel)
+		protected internal void DoOnWriteToStreamFailed(Exception innerException, ref bool cancel)
 		{
 			cancel = false;
 			if (this.OnWriteToStreamFailure != null)
@@ -396,23 +393,23 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 		private int AddItemToCentralDirectory(string fileName, Stream fileStream, string fileComment)
 		{
 			int num = 0;
-			string fileName2 = fileName;
+			string text = fileName;
 			bool flag = false;
 			int num2;
-			if (this._dmHandle.CentralDirectory.FileExists(fileName2, ref num))
+			if (this._dmHandle.CentralDirectory.FileExists(text, ref num))
 			{
 				do
 				{
-					this.DoOnFileRename(fileName, ref fileName2, ref flag);
+					this.DoOnFileRename(fileName, ref text, ref flag);
 				}
-				while (!flag && this._dmHandle.CentralDirectory.FileExists(fileName2, ref num));
+				while (!flag && this._dmHandle.CentralDirectory.FileExists(text, ref num));
 				if (flag)
 				{
 					num2 = -1;
 				}
 				else
 				{
-					num2 = this.AddItemToCentralDirectory(fileName2, fileStream, fileComment);
+					num2 = this.AddItemToCentralDirectory(text, fileStream, fileComment);
 				}
 			}
 			else
@@ -552,10 +549,7 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 				directoryItem.CRC32 = ~fcrc32;
 				return processedBytesCount == num2;
 			}
-			throw ExceptionBuilder.Exception(ErrorCode.UnexpectedNullPointer, new object[]
-			{
-				"compressor"
-			});
+			throw ExceptionBuilder.Exception(ErrorCode.UnexpectedNullPointer, new object[] { "compressor" });
 		}
 
 		// Token: 0x060004F9 RID: 1273 RVA: 0x0002249C File Offset: 0x0002149C
@@ -567,7 +561,7 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 			dirItem.CompressionMode = this._compressionMode;
 			dirItem.ActualCompressionMethod = this._compressionMethod;
 			dirItem.Signature = 33639248U;
-			dirItem.ExtractVersion = (ushort)((this._dmHandle.CentralDirectoryEnd.Signature == this.CentralDirEndSignature) ? 16660 : 20);
+			dirItem.ExtractVersion = ((this._dmHandle.CentralDirectoryEnd.Signature == this.CentralDirEndSignature) ? 16660 : 20);
 			dirItem.VersionMadeBy = 20;
 			if (!CompressionUtils.IsNullOrEmpty(this._password))
 			{
@@ -599,9 +593,9 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 			long num = 0L;
 			long num2 = 0L;
 			uint maxValue = uint.MaxValue;
-			int blockSize = (int)ZipUtil.InternalGetBlockSize(dirItem.CompressionMode);
-			bool isEncrypted = !CompressionUtils.IsNullOrEmpty(dirItem.Password);
-			if (!this.DoCompress(isEncrypted, dirItem, blockSize, fileStream, compressedStream, firstByte, ref num, ref num2, ref maxValue) && !this._progressCancel)
+			int num3 = (int)ZipUtil.InternalGetBlockSize(dirItem.CompressionMode);
+			bool flag = !CompressionUtils.IsNullOrEmpty(dirItem.Password);
+			if (!this.DoCompress(flag, dirItem, num3, fileStream, compressedStream, firstByte, ref num, ref num2, ref maxValue) && !this._progressCancel)
 			{
 				throw ExceptionBuilder.Exception(ErrorCode.CompressionFailed);
 			}
@@ -610,15 +604,12 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 		// Token: 0x060004FB RID: 1275 RVA: 0x000225E4 File Offset: 0x000215E4
 		private bool SaveDirectoryItemToStream(int dirItemIndex)
 		{
-			bool result = false;
+			bool flag = false;
 			DirItem dirItem = this._dmHandle.CentralDirectory[dirItemIndex] as DirItem;
 			Stream stream = dirItem.Stream;
 			if (stream == null)
 			{
-				throw ExceptionBuilder.Exception(ErrorCode.UnexpectedNullPointer, new object[]
-				{
-					"fileStream"
-				});
+				throw ExceptionBuilder.Exception(ErrorCode.UnexpectedNullPointer, new object[] { "fileStream" });
 			}
 			this._currentItemOperationStartTime = DateTime.Now;
 			this.DoOnFileProgress(dirItem.Name, 0L, new TimeSpan(0L), ProgressPhase.Start, ref this._progressCancel);
@@ -653,7 +644,7 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 				}
 				dirItem.RelativeLocalHeaderOffset = this._sentBytes;
 				dirItem.SetGeneralPurposeFlagBit(3);
-				dirItem.ExtractVersion = (ushort)(dirItem.IsHugeFile ? ((this._dmHandle.CentralDirectoryEnd.Signature == this.CentralDirEndSignature) ? 16685 : 45) : 20);
+				dirItem.ExtractVersion = (dirItem.IsHugeFile ? ((this._dmHandle.CentralDirectoryEnd.Signature == this.CentralDirEndSignature) ? 16685 : 45) : 20);
 				uint crc = dirItem.CRC32;
 				dirItem.CRC32 = 0U;
 				int num = stream.ReadByte();
@@ -669,7 +660,7 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 					return false;
 				}
 				this._sentBytes += memoryStream.Length;
-				byte[] array = dirItem.IsGeneralPurposeFlagBitSet(11) ? Encoding.UTF8.GetBytes(name) : Encoding.GetEncoding(this._oemCodePage).GetBytes(name);
+				byte[] array = (dirItem.IsGeneralPurposeFlagBitSet(11) ? Encoding.UTF8.GetBytes(name) : Encoding.GetEncoding(this._oemCodePage).GetBytes(name));
 				this.WriteToStream(array, 0, array.Length, this._compressedStream);
 				if (this._progressCancel)
 				{
@@ -687,17 +678,12 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 				dirItem.CRC32 = crc;
 				this.InternalCompressFile(stream, this._compressedStream, dirItem, num);
 				this._sentBytes += dirItem.CompressedSize;
-
-				//RnD (ulong)-1
-				if (dirItem.CompressedSize > -1)
+				if (dirItem.CompressedSize > (long)((ulong)(-1)))
 				{
 					dirItem.IsHugeFile = true;
 					if (this._zip64Mode == Zip64Mode.Disabled)
 					{
-						throw ExceptionBuilder.Exception(ErrorCode.HugeFileModeIsNotEnabled, new object[]
-						{
-							dirItem.Name
-						});
+						throw ExceptionBuilder.Exception(ErrorCode.HugeFileModeIsNotEnabled, new object[] { dirItem.Name });
 					}
 				}
 				MemoryStream memoryStream3 = new MemoryStream();
@@ -709,13 +695,13 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 					return false;
 				}
 				this.DoOnFileProgress(dirItem.Name, dirItem.UncompressedSize, DateTime.Now - this._currentItemOperationStartTime, ProgressPhase.End, ref this._progressCancel);
-				result = true;
+				flag = true;
 			}
-			catch (System.Exception ex)
+			catch (Exception ex)
 			{
 				this.DoOnProcessFileFailure(dirItem.Name, ex.Message, ex);
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x060004FC RID: 1276 RVA: 0x000229C4 File Offset: 0x000219C4
@@ -754,9 +740,9 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 					stream.Write(buffer, offset, count);
 					flag2 = false;
 				}
-				catch (System.Exception innerException)
+				catch (Exception ex)
 				{
-					this.DoOnWriteToStreamFailed(innerException, ref flag);
+					this.DoOnWriteToStreamFailed(ex, ref flag);
 					flag2 = true;
 				}
 			}
@@ -797,23 +783,20 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 			uint num = binaryReader.ReadUInt32();
 			if (num != 67324752U && num != 33639248U)
 			{
-				throw ExceptionBuilder.Exception(ErrorCode.IncorrectSignatureFound, new object[]
-				{
-					num
-				});
+				throw ExceptionBuilder.Exception(ErrorCode.IncorrectSignatureFound, new object[] { num });
 			}
 			if (67324752U == num)
 			{
 				DirItem dirItem = new DirItem();
-				byte[] source = memoryStream.ToArray();
-				dirItem.LoadLocalHeaderFromByteArray(source, 0U);
+				byte[] array = memoryStream.ToArray();
+				dirItem.LoadLocalHeaderFromByteArray(array, 0U);
 				ushort num2 = dirItem.NameLengthToRead;
 				if (num2 > 0)
 				{
-					byte[] array = new byte[(int)num2];
+					byte[] array2 = new byte[(int)num2];
 					MemoryStream memoryStream2 = this.ReadCompressedStreamBlockToMemoryStream((int)num2, true);
-					memoryStream2.Read(array, 0, (int)num2);
-					dirItem.Name = (dirItem.IsGeneralPurposeFlagBitSet(11) ? Encoding.UTF8.GetString(array) : Encoding.GetEncoding(this._oemCodePage).GetString(array));
+					memoryStream2.Read(array2, 0, (int)num2);
+					dirItem.Name = (dirItem.IsGeneralPurposeFlagBitSet(11) ? Encoding.UTF8.GetString(array2) : Encoding.GetEncoding(this._oemCodePage).GetString(array2));
 				}
 				else
 				{
@@ -821,7 +804,7 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 				}
 				dirItem.Name.Replace('\\', '/');
 				num2 = dirItem.ExtraFieldsLenRead;
-				ArchiveItem result;
+				ArchiveItem archiveItem;
 				if (dirItem.IsDirectory())
 				{
 					this.ReadCompressedStreamBlockToMemoryStream((int)num2, true);
@@ -829,18 +812,18 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 					{
 						this.ReadDataDescrtiptor(dirItem);
 					}
-					result = this.GetFileHeader();
+					archiveItem = this.GetFileHeader();
 				}
 				else
 				{
-					MemoryStream source2 = this.ReadCompressedStreamBlockToMemoryStream((int)num2, true);
-					dirItem.LoadExtraFieldsFromStream(source2, num2);
+					MemoryStream memoryStream3 = this.ReadCompressedStreamBlockToMemoryStream((int)num2, true);
+					dirItem.LoadExtraFieldsFromStream(memoryStream3, num2);
 					dirItem.EncryptionAlgorithm = ZipForgeCryptoTransformFactory.GetEncryptionAlgorithm(dirItem);
 					this._lastExtractedDirItem = dirItem;
-					result = new ArchiveItem(dirItem, this._dirItemIndex);
+					archiveItem = new ArchiveItem(dirItem, this._dirItemIndex);
 					this._dirItemIndex++;
 				}
-				return result;
+				return archiveItem;
 			}
 			return null;
 		}
@@ -868,7 +851,7 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 					this._crc32 = uint.MaxValue;
 					actualDecompressedSize = 0L;
 					bool flag = false;
-					int length = 1048576;
+					int num2 = 1048576;
 					byte[] array = null;
 					byte[] array2 = null;
 					while (!flag)
@@ -877,32 +860,32 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 						{
 							if (!encrypted)
 							{
-								length = (int)Math.Min(1048576L, dirItem.CompressedSize - num);
+								num2 = (int)Math.Min(1048576L, dirItem.CompressedSize - num);
 							}
 							else
 							{
-								length = (int)Math.Min(1048576L, dirItem.CompressedSize - num - (long)decrypter.GetFileStorageEndBlockSize());
+								num2 = (int)Math.Min(1048576L, dirItem.CompressedSize - num - (long)decrypter.GetFileStorageEndBlockSize());
 							}
 						}
-						int num2;
+						int num3;
 						if (array == null)
 						{
-							MemoryStream memoryStream = this.ReadCompressedStreamBlockToMemoryStream(length, false);
+							MemoryStream memoryStream = this.ReadCompressedStreamBlockToMemoryStream(num2, false);
 							array2 = new byte[memoryStream.Length];
 							array = new byte[memoryStream.Length];
 							memoryStream.Read(array, 0, array.Length);
 							memoryStream.Seek(0L, SeekOrigin.Begin);
-							num2 = (int)memoryStream.Position;
+							num3 = (int)memoryStream.Position;
 							memoryStream.Read(array2, 0, array2.Length);
 						}
 						else
 						{
-							MemoryStream memoryStream2 = this.ReadCompressedStreamBlockToMemoryStream(length, false);
+							MemoryStream memoryStream2 = this.ReadCompressedStreamBlockToMemoryStream(num2, false);
 							byte[] array3 = new byte[memoryStream2.Length];
 							array = new byte[memoryStream2.Length];
 							memoryStream2.Read(array, 0, array.Length);
 							memoryStream2.Seek((long)array2.Length, SeekOrigin.Begin);
-							num2 = (int)memoryStream2.Position;
+							num3 = (int)memoryStream2.Position;
 							Buffer.BlockCopy(array2, 0, array3, 0, array2.Length);
 							memoryStream2.Read(array3, array2.Length, array3.Length - array2.Length);
 							array2 = new byte[memoryStream2.Length];
@@ -910,13 +893,13 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 						}
 						if (encrypted)
 						{
-							baseZipForgeCryptoTransform.DecryptBuffer(array2, num2, array2.Length - num2, array2, num2);
+							baseZipForgeCryptoTransform.DecryptBuffer(array2, num3, array2.Length - num3, array2, num3);
 						}
 						num += (long)array2.Length;
-						long num3;
+						long num4;
 						try
 						{
-							if (!compressor.DecompressBlock(array2.Length, ref array2, out num3, out flag))
+							if (!compressor.DecompressBlock(array2.Length, ref array2, out num4, out flag))
 							{
 								return false;
 							}
@@ -926,7 +909,7 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 							return false;
 						}
 						num -= (long)array2.Length;
-						actualDecompressedSize += num3;
+						actualDecompressedSize += num4;
 						if (array2.Length != 0)
 						{
 							this._buffer = new byte[array2.Length];
@@ -955,7 +938,7 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 			actualDecompressedSize = 0L;
 			this._crc32 = uint.MaxValue;
 			IL_2BE:
-			bool result;
+			bool flag2;
 			if (encrypted)
 			{
 				MemoryStream memoryStream3 = this.ReadCompressedStreamBlockToMemoryStream(decrypter.GetFileStorageEndBlockSize(), true);
@@ -966,7 +949,7 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 				{
 					this.ReadDataDescrtiptor(dirItem);
 				}
-				result = !dirItem.IsCorrupted(~this._crc32, decrypter);
+				flag2 = !dirItem.IsCorrupted(~this._crc32, decrypter);
 			}
 			else
 			{
@@ -974,9 +957,9 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 				{
 					this.ReadDataDescrtiptor(dirItem);
 				}
-				result = (dirItem.CRC32 == ~this._crc32);
+				flag2 = dirItem.CRC32 == ~this._crc32;
 			}
-			return result;
+			return flag2;
 		}
 
 		// Token: 0x06000500 RID: 1280 RVA: 0x00023020 File Offset: 0x00022020
@@ -1045,9 +1028,9 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 		// Token: 0x06000503 RID: 1283 RVA: 0x00023198 File Offset: 0x00022198
 		private void OnDecompressedBufferReady(byte[] buffer, int outBytes, out bool stopDecompression)
 		{
-			TimeSpan timeElapsed = new TimeSpan(DateTime.Now.Ticks - this._currentItemOperationStartTime.Ticks);
+			TimeSpan timeSpan = new TimeSpan(DateTime.Now.Ticks - this._currentItemOperationStartTime.Ticks);
 			stopDecompression = false;
-			this.DoOnFileProgress(this._currentProcessedItem.Name, this._currentItemBytesProcessed, timeElapsed, ProgressPhase.Process, ref stopDecompression);
+			this.DoOnFileProgress(this._currentProcessedItem.Name, this._currentItemBytesProcessed, timeSpan, ProgressPhase.Process, ref stopDecompression);
 			if (!stopDecompression)
 			{
 				stopDecompression = !this.WriteToStream(buffer, 0, outBytes, this._decompressedStream);
@@ -1065,17 +1048,11 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 			}
 			if (this._compressedStream == null)
 			{
-				throw ExceptionBuilder.Exception(ErrorCode.UnexpectedNullPointer, new object[]
-				{
-					"compressedStream"
-				});
+				throw ExceptionBuilder.Exception(ErrorCode.UnexpectedNullPointer, new object[] { "compressedStream" });
 			}
 			if (!this._compressedStream.CanRead)
 			{
-				throw ExceptionBuilder.Exception(ErrorCode.StreamDoesNotSupportReading, new object[]
-				{
-					"compressedStream"
-				});
+				throw ExceptionBuilder.Exception(ErrorCode.StreamDoesNotSupportReading, new object[] { "compressedStream" });
 			}
 			MemoryStream memoryStream = new MemoryStream();
 			if (this._buffer != null)
@@ -1083,9 +1060,9 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 				if (this._buffer.Length < length)
 				{
 					memoryStream.Write(this._buffer, 0, this._buffer.Length);
-					int length2 = length - this._buffer.Length;
+					int num = length - this._buffer.Length;
 					this._buffer = null;
-					MemoryStream memoryStream2 = this.ReadCompressedStreamBlockToMemoryStream(length2, needToReadExactlyLengthBytes);
+					MemoryStream memoryStream2 = this.ReadCompressedStreamBlockToMemoryStream(num, needToReadExactlyLengthBytes);
 					memoryStream2.Seek(0L, SeekOrigin.Begin);
 					byte[] array = new byte[memoryStream2.Length];
 					memoryStream2.Read(array, 0, array.Length);
@@ -1108,31 +1085,27 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 			}
 			else
 			{
-				byte[] buffer = new byte[length];
-				int num = this._compressedStream.Read(buffer, 0, length);
-				if (num > 0)
+				byte[] array3 = new byte[length];
+				int num2 = this._compressedStream.Read(array3, 0, length);
+				if (num2 > 0)
 				{
-					memoryStream.Write(buffer, 0, num);
-					while (length - num > 0)
+					memoryStream.Write(array3, 0, num2);
+					while (length - num2 > 0)
 					{
-						int num2 = this._compressedStream.Read(buffer, 0, length - num);
-						if (num2 == 0)
+						int num3 = this._compressedStream.Read(array3, 0, length - num2);
+						if (num3 == 0)
 						{
 							break;
 						}
-						memoryStream.Write(buffer, 0, num2);
-						num += num2;
+						memoryStream.Write(array3, 0, num3);
+						num2 += num3;
 					}
 				}
 			}
 			memoryStream.Seek(0L, SeekOrigin.Begin);
 			if (needToReadExactlyLengthBytes && memoryStream.Length != (long)length)
 			{
-				throw ExceptionBuilder.Exception(ErrorCode.InvalidReadedBytesCount, new object[]
-				{
-					length,
-					memoryStream.Length
-				});
+				throw ExceptionBuilder.Exception(ErrorCode.InvalidReadedBytesCount, new object[] { length, memoryStream.Length });
 			}
 			return memoryStream;
 		}
@@ -1146,10 +1119,7 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 			}
 			if (dirItem.DataDescriptor == null)
 			{
-				throw ExceptionBuilder.Exception(ErrorCode.UnexpectedNullPointer, new object[]
-				{
-					"DataDescriptor"
-				});
+				throw ExceptionBuilder.Exception(ErrorCode.UnexpectedNullPointer, new object[] { "DataDescriptor" });
 			}
 			MemoryStream memoryStream = this.ReadCompressedStreamBlockToMemoryStream(dirItem.DataDescriptor.GetSize(), true);
 			dirItem.LoadDataDescriptor(memoryStream, 0L);
@@ -1258,11 +1228,11 @@ namespace ComponentAce.Compression.ZipForgeRealTime
 
 		// Token: 0x02000077 RID: 119
 		// (Invoke) Token: 0x06000510 RID: 1296
-		public delegate void OnProcessFileFailureDelegate(object sender, string fileName, string errorMessage, System.Exception exception);
+		public delegate void OnProcessFileFailureDelegate(object sender, string fileName, string errorMessage, Exception exception);
 
 		// Token: 0x02000078 RID: 120
 		// (Invoke) Token: 0x06000514 RID: 1300
-		public delegate void OnWriteToStreamFailureDelegate(object sender, System.Exception innerException, ref bool cancel);
+		public delegate void OnWriteToStreamFailureDelegate(object sender, Exception innerException, ref bool cancel);
 
 		// Token: 0x02000079 RID: 121
 		// (Invoke) Token: 0x06000518 RID: 1304

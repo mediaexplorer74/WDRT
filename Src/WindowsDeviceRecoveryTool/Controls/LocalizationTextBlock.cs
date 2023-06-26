@@ -4,12 +4,12 @@ using System.Windows.Controls;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 {
-	// Token: 0x02000024 RID: 36
+	// Token: 0x020000CA RID: 202
 	public class LocalizationTextBlock : TextBlock
 	{
-		// Token: 0x17000034 RID: 52
-		// (get) Token: 0x06000106 RID: 262 RVA: 0x000084C4 File Offset: 0x000066C4
-		// (set) Token: 0x06000107 RID: 263 RVA: 0x000084E6 File Offset: 0x000066E6
+		// Token: 0x17000167 RID: 359
+		// (get) Token: 0x06000639 RID: 1593 RVA: 0x0001DC64 File Offset: 0x0001BE64
+		// (set) Token: 0x0600063A RID: 1594 RVA: 0x0001DC86 File Offset: 0x0001BE86
 		public string LocalizationText
 		{
 			get
@@ -22,9 +22,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x17000035 RID: 53
-		// (get) Token: 0x06000108 RID: 264 RVA: 0x000084F8 File Offset: 0x000066F8
-		// (set) Token: 0x06000109 RID: 265 RVA: 0x0000851A File Offset: 0x0000671A
+		// Token: 0x17000168 RID: 360
+		// (get) Token: 0x0600063B RID: 1595 RVA: 0x0001DC98 File Offset: 0x0001BE98
+		// (set) Token: 0x0600063C RID: 1596 RVA: 0x0001DCBA File Offset: 0x0001BEBA
 		public string NullValue
 		{
 			get
@@ -37,10 +37,10 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x04000088 RID: 136
+		// Token: 0x040002D4 RID: 724
 		public static readonly DependencyProperty LocalizationTextProperty = DependencyProperty.Register("LocalizationText", typeof(string), typeof(LocalizationTextBlock), new PropertyMetadata(null));
 
-		// Token: 0x04000089 RID: 137
+		// Token: 0x040002D5 RID: 725
 		public static readonly DependencyProperty NullValueProperty = DependencyProperty.Register("NullValue", typeof(string), typeof(LocalizationTextBlock), new PropertyMetadata(null));
 	}
 }

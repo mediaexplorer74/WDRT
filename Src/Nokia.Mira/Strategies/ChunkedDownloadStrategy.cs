@@ -61,10 +61,10 @@ namespace Nokia.Mira.Strategies
 				this.semaphore.Release();
 				return ChunkStatus.RanToCompletion;
 			}
-			ChunkStatus result = ChunkStatus.WaitingToRun;
+			ChunkStatus chunkStatus = ChunkStatus.WaitingToRun;
 			if (currentResponse.ContentLength < currentChunk.End - currentChunk.Current)
 			{
-				result = ChunkStatus.WaitingToCompletion;
+				chunkStatus = ChunkStatus.WaitingToCompletion;
 				currentChunk = new ChunkInformation(currentChunk.Begin, currentChunk.Current, currentChunk.Current + currentResponse.ContentLength);
 			}
 			chunk = new Lazy<Task>(() => this.StartDownloadAsync(currentResponse, currentChunk).ContinueWith<Task>(delegate(Task t)
@@ -73,7 +73,7 @@ namespace Nokia.Mira.Strategies
 				this.semaphore.Release();
 				return t;
 			}).Unwrap());
-			return result;
+			return chunkStatus;
 		}
 
 		// Token: 0x060000AC RID: 172 RVA: 0x00003690 File Offset: 0x00001890
@@ -81,9 +81,9 @@ namespace Nokia.Mira.Strategies
 		{
 			if (this.initialWebResponse != null)
 			{
-				IWebResponse result = this.initialWebResponse;
+				IWebResponse webResponse = this.initialWebResponse;
 				this.initialWebResponse = null;
-				return result;
+				return webResponse;
 			}
 			return this.CreateWebResponse(this.chunkInformationProvider.Current);
 		}
@@ -91,16 +91,16 @@ namespace Nokia.Mira.Strategies
 		// Token: 0x060000AD RID: 173 RVA: 0x000036C8 File Offset: 0x000018C8
 		private ChunkInformation GetChunkInformation()
 		{
-			ChunkInformation result;
+			ChunkInformation chunkInformation;
 			if (this.initialChunkInformation != null)
 			{
-				result = this.initialChunkInformation;
+				chunkInformation = this.initialChunkInformation;
 				this.initialChunkInformation = null;
-				return result;
+				return chunkInformation;
 			}
-			result = this.chunkInformationProvider.Current;
+			chunkInformation = this.chunkInformationProvider.Current;
 			this.chunkInformationProvider.MoveNext();
-			return result;
+			return chunkInformation;
 		}
 
 		// Token: 0x060000AE RID: 174 RVA: 0x00003705 File Offset: 0x00001905
@@ -113,7 +113,7 @@ namespace Nokia.Mira.Strategies
 		private Task StartDownloadAsync(IWebResponse webResponse, ChunkInformation chunkInformation)
 		{
 			long totalBytesWritten = 0L;
-			return Task.Factory.StartNew(delegate()
+			return Task.Factory.StartNew(delegate
 			{
 				webResponse.DownloadResponseStream(chunkInformation.Current, this.token, this.fileStreamFactory, delegate(long v)
 				{

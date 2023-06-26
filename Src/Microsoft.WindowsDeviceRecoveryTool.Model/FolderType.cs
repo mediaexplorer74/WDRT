@@ -2,14 +2,14 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model
 {
-	// Token: 0x02000019 RID: 25
+	// Token: 0x02000008 RID: 8
 	public enum FolderType
 	{
-		// Token: 0x04000081 RID: 129
+		// Token: 0x04000026 RID: 38
 		Folder,
-		// Token: 0x04000082 RID: 130
+		// Token: 0x04000027 RID: 39
 		Desktop,
-		// Token: 0x04000083 RID: 131
+		// Token: 0x04000028 RID: 40
 		User
 	}
 }

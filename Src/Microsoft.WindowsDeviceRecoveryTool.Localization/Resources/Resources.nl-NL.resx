@@ -1,0 +1,892 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccentColor" xml:space="preserve">
+    <value>Accentkleur</value>
+  </data>
+  <data name="AccentColorBlack" xml:space="preserve">
+    <value>Zwart</value>
+  </data>
+  <data name="AccentColorBlue" xml:space="preserve">
+    <value>Blauw</value>
+  </data>
+  <data name="AccentColorCobalt" xml:space="preserve">
+    <value>Kobalt</value>
+  </data>
+  <data name="AccentColorCrimson" xml:space="preserve">
+    <value>Karmozijnrood</value>
+  </data>
+  <data name="AccentColorEmerald" xml:space="preserve">
+    <value>Smaragd</value>
+  </data>
+  <data name="AccentColorIndigo" xml:space="preserve">
+    <value>Indigo</value>
+  </data>
+  <data name="AccentColorMauve" xml:space="preserve">
+    <value>Mauve</value>
+  </data>
+  <data name="AccentColorSienna" xml:space="preserve">
+    <value>Sienna</value>
+  </data>
+  <data name="AddressForm" xml:space="preserve">
+    <value>Adres</value>
+  </data>
+  <data name="AllFilesSize" xml:space="preserve">
+    <value>Grootte van alle bestanden: {0}</value>
+  </data>
+  <data name="AnotherInstanceAlreadyRunning" xml:space="preserve">
+    <value>Er wordt al een exemplaar van {0} uitgevoerd.</value>
+  </data>
+  <data name="ApplicationData" xml:space="preserve">
+    <value>Applicatiegegevens</value>
+  </data>
+  <data name="ApplicationUpdate" xml:space="preserve">
+    <value>Applicatie-update</value>
+  </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>Weet u het zeker?</value>
+  </data>
+  <data name="AutomaticPackageFileSelection" xml:space="preserve">
+    <value>Het juiste pakket voor verbonden telefoon zoeken.</value>
+  </data>
+  <data name="AutomaticPackageSelection" xml:space="preserve">
+    <value>Automatisch selecteren van pakketten</value>
+  </data>
+  <data name="AvailablePackageIsOlder" xml:space="preserve">
+    <value>Beschikbare software is ouder dan de software op uw telefoon.</value>
+  </data>
+  <data name="AwaitRecoveryAfterEmergencyFlashingInstruction" xml:space="preserve">
+    <value>Wacht op telefoon na geslaagde herstelbewerking.
+Als de batterij weinig vermogen heeft, kan dit tot wel 30 minuten duren.</value>
+  </data>
+  <data name="BatteryCheckHeader" xml:space="preserve">
+    <value>Batterij controleren</value>
+  </data>
+  <data name="BatteryCheckingCancelled" xml:space="preserve">
+    <value>Batterijcontrole is geannuleerd.</value>
+  </data>
+  <data name="BatteryWarning" xml:space="preserve">
+    <value>Zorg ervoor dat het batterijniveau ten minste 25% is. Anders kan de telefoon worden beschadigd.</value>
+  </data>
+  <data name="ButtonBrowse" xml:space="preserve">
+    <value>Bladeren</value>
+  </data>
+  <data name="ButtonCancel" xml:space="preserve">
+    <value>Annuleren</value>
+  </data>
+  <data name="ButtonChangePackagePath" xml:space="preserve">
+    <value>Pakketpad aanpassen</value>
+  </data>
+  <data name="ButtonClean" xml:space="preserve">
+    <value>Alle app-gegevens opschonen</value>
+  </data>
+  <data name="ButtonCleanOneCategory" xml:space="preserve">
+    <value>Opschonen</value>
+  </data>
+  <data name="ButtonCollectLogs" xml:space="preserve">
+    <value>Exporteren</value>
+  </data>
+  <data name="ButtonContinue" xml:space="preserve">
+    <value>Doorgaan</value>
+  </data>
+  <data name="ButtonDelete" xml:space="preserve">
+    <value>Verwijderen</value>
+  </data>
+  <data name="ButtonExit" xml:space="preserve">
+    <value>Afsluiten</value>
+  </data>
+  <data name="ButtonFinish" xml:space="preserve">
+    <value>Voltooien</value>
+  </data>
+  <data name="ButtonInstall" xml:space="preserve">
+    <value>Installeren</value>
+  </data>
+  <data name="ButtonInstallSoftware" xml:space="preserve">
+    <value>Software installeren</value>
+  </data>
+  <data name="ButtonMyPhoneIsNotOnTheList" xml:space="preserve">
+    <value>Mijn telefoon staat niet in de lijst</value>
+  </data>
+  <data name="ButtonMyPhoneWasNotDetected" xml:space="preserve">
+    <value>Mijn telefoon wordt niet gedetecteerd</value>
+  </data>
+  <data name="ButtonNewFolder" xml:space="preserve">
+    <value>Nieuwe map</value>
+  </data>
+  <data name="ButtonNext" xml:space="preserve">
+    <value>Volgende</value>
+  </data>
+  <data name="ButtonNo" xml:space="preserve">
+    <value>Nee</value>
+  </data>
+  <data name="ButtonOff" xml:space="preserve">
+    <value>Uit</value>
+  </data>
+  <data name="ButtonOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ButtonOn" xml:space="preserve">
+    <value>Aan</value>
+  </data>
+  <data name="ButtonReset" xml:space="preserve">
+    <value>Standaardinstellingen herstellen</value>
+  </data>
+  <data name="ButtonTryAgain" xml:space="preserve">
+    <value>Opnieuw proberen</value>
+  </data>
+  <data name="ButtonYes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="CapsLockIsOn" xml:space="preserve">
+    <value>Caps Lock is ingeschakeld</value>
+  </data>
+  <data name="CheckLatestPackageHeader" xml:space="preserve">
+    <value>Telefoongegevens</value>
+  </data>
+  <data name="CheckingAlreadyDownloadedFiles" xml:space="preserve">
+    <value>Compatibiliteit van gedownloade bestanden controleren</value>
+  </data>
+  <data name="CheckingAppUpdate" xml:space="preserve">
+    <value>Controleren op beschikbare applicatie-updates</value>
+  </data>
+  <data name="CheckingFirmwareAvailability" xml:space="preserve">
+    <value>Beschikbaarheid van software controleren</value>
+  </data>
+  <data name="CheckingPackageIntegrity" xml:space="preserve">
+    <value>Pakketintegriteit controleren</value>
+  </data>
+  <data name="CleanUserDataQuestion" xml:space="preserve">
+    <value>Weet u zeker dat u alle applicatiegegevens (rapporten, telefoonsoftwarepakketten, logbestanden) wilt verwijderen?</value>
+  </data>
+  <data name="CollectingLogFilesInfo" xml:space="preserve">
+    <value>Logboekbestanden verzamelen. Een ogenblik geduld.</value>
+  </data>
+  <data name="ComputerBatteryWarning" xml:space="preserve">
+    <value>De batterij van uw computer is bijna leeg. Sluit de computer aan op een oplader en probeer het opnieuw.</value>
+  </data>
+  <data name="ConnectPhone" xml:space="preserve">
+    <value>Uw telefoon verbinden</value>
+  </data>
+  <data name="ConnectPhoneWithUsbCable" xml:space="preserve">
+    <value>Sluit USB-kabel aan op de telefoon.</value>
+  </data>
+  <data name="ConnectedDeviceCannotBeRecovered" xml:space="preserve">
+    <value>De verbonden telefoon kan niet worden hersteld.</value>
+  </data>
+  <data name="CouldNotDetectPhone" xml:space="preserve">
+    <value>Kan uw telefoon niet detecteren</value>
+  </data>
+  <data name="CreatingNewFolderMessage" xml:space="preserve">
+    <value>Nieuwe map maken</value>
+  </data>
+  <data name="CurrentFirmwareVersion" xml:space="preserve">
+    <value>Geïnstalleerde softwareversie:</value>
+  </data>
+  <data name="CustomPackagesPath" xml:space="preserve">
+    <value>Gebruik aangepast pakkettenpad</value>
+  </data>
+  <data name="DeleteLogsQuestion" xml:space="preserve">
+    <value>Weet u zeker dat u logboekbestanden wilt verwijderen?</value>
+  </data>
+  <data name="DeletePackagesQuestion" xml:space="preserve">
+    <value>Weet u zeker dat u softwareherstelbestanden wilt verwijderen?</value>
+  </data>
+  <data name="DeleteReportsQuestion" xml:space="preserve">
+    <value>Weet u zeker dat u rapportbestanden wilt verwijderen?</value>
+  </data>
+  <data name="DeletingLogFilesInfo" xml:space="preserve">
+    <value>Logboekbestanden wissen</value>
+  </data>
+  <data name="DeletingPackagesInfo" xml:space="preserve">
+    <value>Softwareherstelbestanden verwijderen</value>
+  </data>
+  <data name="DeletingReportsInfo" xml:space="preserve">
+    <value>Rapportbestanden verwijderen</value>
+  </data>
+  <data name="DetailsHeader" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="Device" xml:space="preserve">
+    <value>Telefoon</value>
+  </data>
+  <data name="DeviceFlashing" xml:space="preserve">
+    <value>Installatie softwarepakket</value>
+  </data>
+  <data name="DeviceInUefiMode" xml:space="preserve">
+    <value>Lumia-telefoon</value>
+  </data>
+  <data name="DeviceSelectionHeader" xml:space="preserve">
+    <value>Telefoonselectie</value>
+  </data>
+  <data name="DirectoryNotSet" xml:space="preserve">
+    <value>Map is niet geselecteerd of bestaat niet.</value>
+  </data>
+  <data name="DisclaimerBackupInfo" xml:space="preserve">
+    <value>Tijdens de installatie wordt persoonlijke inhoud op de telefoon gewist. Het is verstandig om een back-up te maken op uw telefoon, bij:</value>
+  </data>
+  <data name="DisclaimerHeader" xml:space="preserve">
+    <value>Disclaimer</value>
+  </data>
+  <data name="DisclaimerInfoInstallationDuration" xml:space="preserve">
+    <value>Het installeren van de software duurt ongeveer 15 minuten. De downloadtijd voor het softwarepakket is afhankelijk van de snelheid van het netwerk.</value>
+  </data>
+  <data name="DisconnectPhone" xml:space="preserve">
+    <value>Ontkoppel USB-kabel van de telefoon.</value>
+  </data>
+  <data name="DowngradeSoftwareQuestion" xml:space="preserve">
+    <value>U probeert software te installeren die ouder is dan de geïnstalleerde software. Wilt u doorgaan?</value>
+  </data>
+  <data name="DownloadCancelled" xml:space="preserve">
+    <value>Downloaden geannuleerd</value>
+  </data>
+  <data name="DownloadProgressExactMinute" xml:space="preserve">
+    <value>Nog ongeveer {0} minuten</value>
+  </data>
+  <data name="DownloadProgressMinute" xml:space="preserve">
+    <value>Nog ongeveer een minuut</value>
+  </data>
+  <data name="DownloadProgressMinuteLess" xml:space="preserve">
+    <value>Nog minder dan een minuut</value>
+  </data>
+  <data name="DownloadingCancelMessage" xml:space="preserve">
+    <value>Dit annuleert de download. Reeds gedownloade bestanden worden niet verwijderd. U kunt het downloaden later hervatten.</value>
+  </data>
+  <data name="DownloadingEmergencyPackage" xml:space="preserve">
+    <value>Emergency-pakket laden</value>
+  </data>
+  <data name="DownloadingFiles" xml:space="preserve">
+    <value>Bestanden downloaden: {0}/{1} ({2})</value>
+  </data>
+  <data name="DownloadingInstallPacket" xml:space="preserve">
+    <value>Nieuwe versie downloaden</value>
+  </data>
+  <data name="DownloadingPackage" xml:space="preserve">
+    <value>Pakket downloaden</value>
+  </data>
+  <data name="EmergencyFlashingMessage" xml:space="preserve">
+    <value>Emergency flashing</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Fout</value>
+  </data>
+  <data name="ErrorDescription_AutoUpdateException" xml:space="preserve">
+    <value>Er is een probleem opgetreden bij het verbinden met de server. Controleer uw internetverbinding. Controleer of de proxy-, firewall- en virusbeveiligingsinstellingen correct zijn. Controleer ook de instellingen voor datum en tijd.</value>
+  </data>
+  <data name="ErrorDescription_CannotAccessDirectoryException" xml:space="preserve">
+    <value>U beschikt niet over de benodigde rechten voor de map. Wijzig het pad van de map of de machtigingen voor de map.</value>
+  </data>
+  <data name="ErrorDescription_DeviceNotFoundException" xml:space="preserve">
+    <value>Telefoon niet gevonden.</value>
+  </data>
+  <data name="ErrorDescription_DownloadPackageException" xml:space="preserve">
+    <value>Controleer of proxy-instellingen correct zijn en klik op "{0}". Klik op "{1}" als u het downloaden wilt annuleren.</value>
+  </data>
+  <data name="ErrorDescription_EmergencyPackageNotFoundOnServerException" xml:space="preserve">
+    <value>Emergency flashing wordt momenteel niet ondersteund op uw telefoon</value>
+  </data>
+  <data name="ErrorDescription_FirmwareFileNotFoundException" xml:space="preserve">
+    <value>Softwarepakket is onvolledig. Een of meer bestanden ontbreken. Download het pakket opnieuw of selecteer andere software.</value>
+  </data>
+  <data name="ErrorDescription_HtcDeviceCommunicationException" xml:space="preserve">
+    <value>Start het apparaat opnieuw op in de modus {0}.</value>
+  </data>
+  <data name="ErrorDescription_HtcPackageFileCheckException" xml:space="preserve">
+    <value>Download opnieuw het ROM-pakketbestand.</value>
+  </data>
+  <data name="ErrorDescription_HtcServiceControlException" xml:space="preserve">
+    <value>Controleer of de service {0} niet wordt uitgevoerd.</value>
+  </data>
+  <data name="ErrorDescription_HtcUsbCommunicationException" xml:space="preserve">
+    <value>Start het apparaat opnieuw op in {0}.
+Controleer de USB-verbinding van het apparaat.</value>
+  </data>
+  <data name="ErrorDescription_HtcUsbPortOpenException" xml:space="preserve">
+    <value>Controleer of een andere applicatie de poort bezet houdt.
+Controleer de USB-verbinding van het apparaat.</value>
+  </data>
+  <data name="ErrorDescription_InvalidOperationException" xml:space="preserve">
+    <value>Start de applicatie opnieuw.</value>
+  </data>
+  <data name="ErrorDescription_NoInternetConnectionException" xml:space="preserve">
+    <value>Kan de laatste bewerking niet voltooien omdat de internetverbinding niet actief is.</value>
+  </data>
+  <data name="ErrorDescription_NotEnoughSpaceException" xml:space="preserve">
+    <value>{0} ontbreekt op schijf {1}. Maak ruimte vrij en probeer het opnieuw.</value>
+  </data>
+  <data name="ErrorDescription_OperationCanceledException" xml:space="preserve">
+    <value>De bewerking is geannuleerd.</value>
+  </data>
+  <data name="ErrorDescription_PackageNotFoundException" xml:space="preserve">
+    <value>Softwarepakket niet beschikbaar voor deze telefoon.</value>
+  </data>
+  <data name="ErrorDescription_PlannedServiceBreakException" xml:space="preserve">
+    <value>De service is niet beschikbaar tussen {0} en {1}. Probeer het later opnieuw.</value>
+  </data>
+  <data name="ErrorDescription_ReadPhoneInformationException" xml:space="preserve">
+    <value>Kan geen gegevens lezen van uw telefoon.</value>
+  </data>
+  <data name="ErrorDescription_RestartApplicationException" xml:space="preserve">
+    <value>Koppel alle telefoons los en start de applicatie opnieuw. Verwijder {0} en download de nieuwste versie van de applicatie als het probleem zich blijft voordoen.</value>
+  </data>
+  <data name="ErrorDescription_UnknownError" xml:space="preserve">
+    <value>De bewerking kon niet worden voltooid.</value>
+  </data>
+  <data name="ErrorDescription_WebException" xml:space="preserve">
+    <value>Er is een probleem opgetreden bij het verbinden met de server. Controleer uw internetverbinding. Controleer of de proxy-, firewall- en virusbeveiligingsinstellingen correct zijn.</value>
+  </data>
+  <data name="ErrorDetails_NotEnoughSpaceOnTheDiskException" xml:space="preserve">
+    <value>Minimale hoeveelheid vrije schijfruimte {0} voor de update is {1}. Maak ruimte vrij en probeer het opnieuw.</value>
+  </data>
+  <data name="ErrorHeader" xml:space="preserve">
+    <value>Sorry, er is een probleem opgetreden</value>
+  </data>
+  <data name="Error_AutoUpdateException" xml:space="preserve">
+    <value>Controleren applicatie-update mislukt</value>
+  </data>
+  <data name="Error_CannotAccessDirectoryException" xml:space="preserve">
+    <value>Kan map niet openen.</value>
+  </data>
+  <data name="Error_DeviceNotFoundException" xml:space="preserve">
+    <value>Kan de telefoon niet vinden</value>
+  </data>
+  <data name="Error_DownloadPackageException" xml:space="preserve">
+    <value>Er is een probleem opgetreden bij het downloaden van het softwarepakket</value>
+  </data>
+  <data name="Error_EmergencyPackageNotFoundOnServerException" xml:space="preserve">
+    <value>Emergency-pakket is niet gevonden</value>
+  </data>
+  <data name="Error_FileNotFoundException" xml:space="preserve">
+    <value>Bestand of pad: "{0}" is niet gevonden</value>
+  </data>
+  <data name="Error_FirmwareFileNotFoundException" xml:space="preserve">
+    <value>Kan softwarebestand niet vinden</value>
+  </data>
+  <data name="Error_HtcDeviceCommunicationException" xml:space="preserve">
+    <value>Fout met apparaatcommunicatie</value>
+  </data>
+  <data name="Error_HtcDeviceHandshakingException" xml:space="preserve">
+    <value>Fout met apparaat-handshaking</value>
+  </data>
+  <data name="Error_HtcPackageFileCheckException" xml:space="preserve">
+    <value>Fout met controleren pakketbestand</value>
+  </data>
+  <data name="Error_HtcServiceControlException" xml:space="preserve">
+    <value>Fout met servicecontrole</value>
+  </data>
+  <data name="Error_HtcUsbCommunicationException" xml:space="preserve">
+    <value>Fout met USB-communicatie</value>
+  </data>
+  <data name="Error_HtcUsbPortOpenException" xml:space="preserve">
+    <value>Fout met openen USB-poort</value>
+  </data>
+  <data name="Error_InvalidOperationException" xml:space="preserve">
+    <value>Bewerking mislukt</value>
+  </data>
+  <data name="Error_NoInternetConnectionException" xml:space="preserve">
+    <value>Geen internetverbinding</value>
+  </data>
+  <data name="Error_NotEnoughSpaceException" xml:space="preserve">
+    <value>Onvoldoende ruimte op de schijf</value>
+  </data>
+  <data name="Error_NotEnoughSpaceOnTheDiskException" xml:space="preserve">
+    <value>Onvoldoende ruimte op de schijf</value>
+  </data>
+  <data name="Error_OperationCanceledException" xml:space="preserve">
+    <value>Bewerking geannuleerd</value>
+  </data>
+  <data name="Error_PackageNotFoundException" xml:space="preserve">
+    <value>Variantpakket niet gevonden</value>
+  </data>
+  <data name="Error_PlannedServiceBreakException" xml:space="preserve">
+    <value>Kan niet verbinden met server</value>
+  </data>
+  <data name="Error_ReadPhoneInformationException" xml:space="preserve">
+    <value>Lezen telefoongegevens mislukt</value>
+  </data>
+  <data name="Error_RestartApplicationException" xml:space="preserve">
+    <value>Applicatie opnieuw starten</value>
+  </data>
+  <data name="Error_SoftwareInstallationFailed" xml:space="preserve">
+    <value>Software-installatie is mislukt. Start uw telefoon opnieuw op en installeer de software opnieuw. Als uw telefoon niet wordt gedetecteerd gebruikt u de toets "{0}" op het welkomstscherm.</value>
+  </data>
+  <data name="Error_SoftwareIsNotCorrectlySignedException" xml:space="preserve">
+    <value>De software is niet correct ondertekend of niet ondertekend voor deze telefoon.</value>
+  </data>
+  <data name="Error_UnauthorizedAccessException" xml:space="preserve">
+    <value>Toegang geweigerd</value>
+  </data>
+  <data name="Error_UnknownError" xml:space="preserve">
+    <value>Onbekende fout opgetreden</value>
+  </data>
+  <data name="Error_WebException" xml:space="preserve">
+    <value>Kan niet verbinden met de server</value>
+  </data>
+  <data name="FFUCheckingDirectory" xml:space="preserve">
+    <value>Map controleren</value>
+  </data>
+  <data name="FFUCheckingFile" xml:space="preserve">
+    <value>Geselecteerde bestand controleren</value>
+  </data>
+  <data name="FFUFamily" xml:space="preserve">
+    <value>Familie:</value>
+  </data>
+  <data name="FFUManufacturer" xml:space="preserve">
+    <value>Fabrikant:</value>
+  </data>
+  <data name="FFUProductName" xml:space="preserve">
+    <value>Productnaam:</value>
+  </data>
+  <data name="FFUVersion" xml:space="preserve">
+    <value>Versie:</value>
+  </data>
+  <data name="FirmwareIntegrityError" xml:space="preserve">
+    <value>Softwarepakket {0} is beschadigd. Download het pakket opnieuw of selecteer andere software.</value>
+  </data>
+  <data name="FirmwareVersion" xml:space="preserve">
+    <value>Firmwareversie: </value>
+  </data>
+  <data name="FirmwareVersionUnknown" xml:space="preserve">
+    <value>Firmware versie: onbekend</value>
+  </data>
+  <data name="FlashCancelMessage" xml:space="preserve">
+    <value>Softwarepakket-installatie is bezig. Annuleren kan schade aan uw telefoon veroorzaken. Weet u zeker dat u de actie wilt annuleren?</value>
+  </data>
+  <data name="FlashWarningMessage1" xml:space="preserve">
+    <value>Gebruik uw telefoon niet. Maak de kabel niet los. Schakel de telefoon niet uit. Anders werkt de telefoon mogelijk niet meer.</value>
+  </data>
+  <data name="FlashWarningMessage2" xml:space="preserve">
+    <value>Tijdens de installatie wordt de telefoon opnieuw opgestart en geeft het scherm geen beeld weer.
+U kunt alle Windows-meldingen over USB-kabelverbinding negeren.</value>
+  </data>
+  <data name="Flashing" xml:space="preserve">
+    <value>Software installeren op uw telefoon</value>
+  </data>
+  <data name="FlashingMessageChangeToFlashMode" xml:space="preserve">
+    <value>Telefoon overschakelen naar flash-modus</value>
+  </data>
+  <data name="FlashingMessageCheckingAntiTheftStatus" xml:space="preserve">
+    <value>Status anti-diefstalbeveiliging controleren</value>
+  </data>
+  <data name="FlashingMessageConnectingWithPhone" xml:space="preserve">
+    <value>Verbinden met de telefoon</value>
+  </data>
+  <data name="FlashingMessageInstallingSoftware" xml:space="preserve">
+    <value>Software installeren</value>
+  </data>
+  <data name="FlashingMessageOperationStarted" xml:space="preserve">
+    <value>Software-installatie is gestart</value>
+  </data>
+  <data name="FlashingResult" xml:space="preserve">
+    <value>Installatieresultaat softwarepakket</value>
+  </data>
+  <data name="HtcBootloaderMode" xml:space="preserve">
+    <value>Modus HTC {0}</value>
+  </data>
+  <data name="HtcPackageNotFound" xml:space="preserve">
+    <value>Kan het softwarepakket niet vinden op de server</value>
+  </data>
+  <data name="KeepButtonTillImage" xml:space="preserve">
+    <value>Houd de knop ingedrukt totdat u een beeld op het scherm ziet.</value>
+  </data>
+  <data name="KeepButtonsTillImage" xml:space="preserve">
+    <value>Houd de knoppen ingedrukt totdat u een beeld op het scherm ziet.</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Taal</value>
+  </data>
+  <data name="LogFiles" xml:space="preserve">
+    <value>Logboekbestanden</value>
+  </data>
+  <data name="LumiaBatteryChecking" xml:space="preserve">
+    <value>De batterij van de telefoon is bijna leeg. Als u doorgaat, beschadigt u mogelijk de telefoon.</value>
+  </data>
+  <data name="ManualDeviceSelection" xml:space="preserve">
+    <value>Telefoonselectie</value>
+  </data>
+  <data name="ManualRestartHtcInfo" xml:space="preserve">
+    <value>Telefoongegevens konden niet worden gelezen. Volg onderstaande stappen om door te gaan of klik op "{0}" om het proces te annuleren.</value>
+  </data>
+  <data name="ManufacturerDetectionFailed" xml:space="preserve">
+    <value>Sorry, we kunnen de fabrikant van uw telefoon niet vaststellen.</value>
+  </data>
+  <data name="ManufacturerHeader" xml:space="preserve">
+    <value>Telefoonfabrikant</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>Modus {0}</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model: </value>
+  </data>
+  <data name="ModelUnknown" xml:space="preserve">
+    <value>Model: onbekend</value>
+  </data>
+  <data name="MoreThanOnePackageFound" xml:space="preserve">
+    <value>Meer dan één pakket gevonden - selecteer een pakket en klik op "{0}" om door te gaan.</value>
+  </data>
+  <data name="Network" xml:space="preserve">
+    <value>Netwerk</value>
+  </data>
+  <data name="NoPackagesFoundSelectAnotherDirectory" xml:space="preserve">
+    <value>Kan juiste pakket niet vinden. Selecteer een andere map of selecteer handmatig een pakket.</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>Niet gevonden</value>
+  </data>
+  <data name="OnePackageFound" xml:space="preserve">
+    <value>Eén pakket gevonden voor: {0}. Klik op "{1}" om door te gaan of kies een andere map of bestand.</value>
+  </data>
+  <data name="OperatingSystemUnknown" xml:space="preserve">
+    <value>Versie van besturingssysteem: onbekend</value>
+  </data>
+  <data name="OperatingSystemVersion" xml:space="preserve">
+    <value>Versie van besturingssysteem: </value>
+  </data>
+  <data name="OperationFailed" xml:space="preserve">
+    <value>Bewerking mislukt</value>
+  </data>
+  <data name="OperationPassed" xml:space="preserve">
+    <value>Bewerking met succes uitgevoerd</value>
+  </data>
+  <data name="PackageDirectory" xml:space="preserve">
+    <value>Pakketmap: {0}</value>
+  </data>
+  <data name="PackageFileHeader" xml:space="preserve">
+    <value>Pakketbestand</value>
+  </data>
+  <data name="PackageFilePath" xml:space="preserve">
+    <value>Pakketpad: {0}</value>
+  </data>
+  <data name="PackageIntegrityCheck" xml:space="preserve">
+    <value>Pakketintegriteit controleren</value>
+  </data>
+  <data name="PackageNotFound" xml:space="preserve">
+    <value>Pakket niet beschikbaar voor deze telefoon.</value>
+  </data>
+  <data name="PackagePathNotSet" xml:space="preserve">
+    <value>Pakketpad niet ingesteld</value>
+  </data>
+  <data name="PackageSelection" xml:space="preserve">
+    <value>Pakketselectie</value>
+  </data>
+  <data name="Packages" xml:space="preserve">
+    <value>Pakketten</value>
+  </data>
+  <data name="PackagesPath" xml:space="preserve">
+    <value>Pakkettenpad</value>
+  </data>
+  <data name="PasswordForm" xml:space="preserve">
+    <value>Wachtwoord</value>
+  </data>
+  <data name="PhoneAddedHeader" xml:space="preserve">
+    <value>Telefoon is verbonden</value>
+  </data>
+  <data name="PhoneAddedMessage" xml:space="preserve">
+    <value>Nieuwe telefoon {0} is verbonden.</value>
+  </data>
+  <data name="PhoneIsUpToDate" xml:space="preserve">
+    <value>U beschikt al over de nieuwste software-versie.</value>
+  </data>
+  <data name="PhoneRemovedHeader" xml:space="preserve">
+    <value>Verbinding met telefoon verbroken</value>
+  </data>
+  <data name="PhoneRemovedMessage" xml:space="preserve">
+    <value>Verbinding met telefoon {0} is verbroken.</value>
+  </data>
+  <data name="PhoneRestart" xml:space="preserve">
+    <value>Telefoon opnieuw opstarten</value>
+  </data>
+  <data name="PhoneSettingsBackupPathWin10" xml:space="preserve">
+    <value>Instellingen &gt; Update en herstel &gt; Back-up</value>
+  </data>
+  <data name="PhoneSettingsBackupPathWin8" xml:space="preserve">
+    <value>Instellingen &gt; back-up</value>
+  </data>
+  <data name="PleaseConnectDevice" xml:space="preserve">
+    <value>Sluit uw telefoon aan</value>
+  </data>
+  <data name="PleaseConnectOneDevice" xml:space="preserve">
+    <value>Sluit slechts één telefoon aan</value>
+  </data>
+  <data name="PleaseSelectAFolder" xml:space="preserve">
+    <value>Selecteer een map</value>
+  </data>
+  <data name="PleaseSelectDeviceToContinue" xml:space="preserve">
+    <value>Selecteer telefoon om door te gaan</value>
+  </data>
+  <data name="PleaseSelectManufacturer" xml:space="preserve">
+    <value>Selecteer hieronder de juiste:</value>
+  </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>Een ogenblik geduld</value>
+  </data>
+  <data name="PortForm" xml:space="preserve">
+    <value>Poort</value>
+  </data>
+  <data name="Preferences" xml:space="preserve">
+    <value>Voorkeuren</value>
+  </data>
+  <data name="PressPowerAndVolumeDown" xml:space="preserve">
+    <value>Druk tegelijkertijd op de aan/uit-knop en de knop "volume omlaag".</value>
+  </data>
+  <data name="PressThePowerButton" xml:space="preserve">
+    <value>Druk op de aan/uit-knop. </value>
+  </data>
+  <data name="PressThePowerButtonUntilSwitchOff" xml:space="preserve">
+    <value>Houd de aan/uit-knop ingedrukt tot de telefoon trilt.</value>
+  </data>
+  <data name="PressVolumeUpVolumeDown" xml:space="preserve">
+    <value>Zodra de telefoon trilt drukt u gelijktijdig op de knoppen "volume omhoog" en "volume omlaag".</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Privacybeleid</value>
+  </data>
+  <data name="ReadingDeviceInfo" xml:space="preserve">
+    <value>Telefoongegevens lezen</value>
+  </data>
+  <data name="RebootHtc" xml:space="preserve">
+    <value>U kunt nu uw telefoon opnieuw starten in de normale modus. Houd de aan/uit-knop even ingedrukt om de telefoon opnieuw op te starten.</value>
+  </data>
+  <data name="RebootPhoneInstructions" xml:space="preserve">
+    <value>Kan telefoon niet vinden.
+Start uw telefoon opnieuw op door tegelijkertijd op de aan/uit-knop en de knop "volume omlaag" te drukken.
+Houd de knoppen ingedrukt totdat de telefoon trilt.</value>
+  </data>
+  <data name="ReinstallSoftware" xml:space="preserve">
+    <value>Software opnieuw installeren</value>
+  </data>
+  <data name="ReleasePowerPressVolumeUp" xml:space="preserve">
+    <value>Zodra de telefoon trilt laat u de aan/uit-knop los en drukt u op de knop "volume omhoog".</value>
+  </data>
+  <data name="RemovingPackages" xml:space="preserve">
+    <value>Pakketten verwijderen</value>
+  </data>
+  <data name="RemovingReports" xml:space="preserve">
+    <value>Rapporten verwijderen</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>Rapporten</value>
+  </data>
+  <data name="ResetSettingsQuestion" xml:space="preserve">
+    <value>Weet u zeker dat u alle instellingen wilt terugzetten op de standaardwaarden?</value>
+  </data>
+  <data name="RestartDeviceHeader" xml:space="preserve">
+    <value>Telefoon opnieuw opstarten</value>
+  </data>
+  <data name="SelectDeviceToRecover" xml:space="preserve">
+    <value>Kies de telefoon die u wilt herstellen</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Instellingen</value>
+  </data>
+  <data name="SoftwareInstallation" xml:space="preserve">
+    <value>Software-installatie</value>
+  </data>
+  <data name="SoftwareOnServer" xml:space="preserve">
+    <value>Software beschikbaar op de server</value>
+  </data>
+  <data name="SoftwarePackage" xml:space="preserve">
+    <value>Softwarepakket</value>
+  </data>
+  <data name="SthWentWrongMessage" xml:space="preserve">
+    <value>Er is een fout opgetreden</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>Overzicht</value>
+  </data>
+  <data name="Survey1" xml:space="preserve">
+    <value>Overzicht</value>
+  </data>
+  <data name="Survey_Button_ContinueNoSubmit1" xml:space="preserve">
+    <value>Doorgaan zonder verzenden</value>
+  </data>
+  <data name="Survey_Button_SubmitAndContinue1" xml:space="preserve">
+    <value>Verzenden en doorgaan met herstel</value>
+  </data>
+  <data name="Survey_Choice_AppsNotWorking1" xml:space="preserve">
+    <value>Mijn apps werken niet zoals verwacht</value>
+  </data>
+  <data name="Survey_Choice_DeviceNotWorking1" xml:space="preserve">
+    <value>Mijn apparaat werkt niet zoals verwacht</value>
+  </data>
+  <data name="Survey_Choice_PerformanceIssues1" xml:space="preserve">
+    <value>Ik heb prestatieproblemen</value>
+  </data>
+  <data name="Survey_Choice_PrevVersionFaster1" xml:space="preserve">
+    <value>De vorige versie leek sneller</value>
+  </data>
+  <data name="Survey_Choice_PrevVersionMoreReliable1" xml:space="preserve">
+    <value>De vorige versie leek betrouwbaarder</value>
+  </data>
+  <data name="Survey_Header1" xml:space="preserve">
+    <value>Waarom herstelt u uw apparaat?</value>
+  </data>
+  <data name="Survey_TellUsMore1" xml:space="preserve">
+    <value>Vertel ons meer</value>
+  </data>
+  <data name="Theme" xml:space="preserve">
+    <value>Thema</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>Donker</value>
+  </data>
+  <data name="ThemeHighContrast" xml:space="preserve">
+    <value>Hoog contrast</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>Licht</value>
+  </data>
+  <data name="ThereIsMandatoryApplicationUpdate" xml:space="preserve">
+    <value>Er is een verplichte applicatie-update {0}.</value>
+  </data>
+  <data name="ThisUpdateMustBeInstalled" xml:space="preserve">
+    <value>Deze {0} update moet worden geïnstalleerd en kan niet worden overgeslagen. U moet de applicatie bijwerken voordat u deze kunt gebruiken.
+Koppel alle apparaten los voordat u deze update installeert.</value>
+  </data>
+  <data name="TraceEnabled" xml:space="preserve">
+    <value>Een logbestand maken</value>
+  </data>
+  <data name="Troubleshooting" xml:space="preserve">
+    <value>Problemen oplossen</value>
+  </data>
+  <data name="TurnOffPhone" xml:space="preserve">
+    <value>Schakel uw telefoon uit.</value>
+  </data>
+  <data name="UpdateAvailable" xml:space="preserve">
+    <value>Er is een update voor uw telefoon</value>
+  </data>
+  <data name="UseProxyServer" xml:space="preserve">
+    <value>Proxyserver gebruiken</value>
+  </data>
+  <data name="UserNameForm" xml:space="preserve">
+    <value>Gebruikersnaam</value>
+  </data>
+  <data name="VerifyingDownloadedFiles" xml:space="preserve">
+    <value>Gedownloade bestanden verifiëren</value>
+  </data>
+  <data name="WaitUntilPhoneTurnsOn" xml:space="preserve">
+    <value>Wacht tot het toestel is ingeschakeld.</value>
+  </data>
+  <data name="WaitingForConnection" xml:space="preserve">
+    <value>Op verbinding wachten</value>
+  </data>
+  <data name="WelcomeHeader" xml:space="preserve">
+    <value>Welkom</value>
+  </data>
+</root>

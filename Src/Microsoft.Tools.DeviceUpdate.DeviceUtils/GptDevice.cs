@@ -37,33 +37,33 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 			{
 				return false;
 			}
-			int length = BitConverter.ToInt32(array, num);
+			int num4 = BitConverter.ToInt32(array, num);
 			num += 4;
-			int crc = BitConverter.ToInt32(array, num);
+			int num5 = BitConverter.ToInt32(array, num);
 			BitConverter.GetBytes(0).CopyTo(array, num);
 			num += 4;
-			if (!GptDevice.CheckCrc32(array, 0, length, crc))
+			if (!GptDevice.CheckCrc32(array, 0, num4, num5))
 			{
 				return false;
 			}
 			num += 36;
 			num += 16;
-			ulong num4 = BitConverter.ToUInt64(array, num);
+			ulong num6 = BitConverter.ToUInt64(array, num);
 			num += 8;
-			uint num5 = BitConverter.ToUInt32(array, num);
+			uint num7 = BitConverter.ToUInt32(array, num);
 			num += 4;
-			uint num6 = BitConverter.ToUInt32(array, num);
+			uint num8 = BitConverter.ToUInt32(array, num);
 			num += 4;
-			int crc2 = BitConverter.ToInt32(array, num);
+			int num9 = BitConverter.ToInt32(array, num);
 			num += 4;
-			byte[] array2 = new byte[num5 * num6];
-			device.ReadDisk(num4 * (ulong)blockSize, array2, 0, array2.Length);
-			if (!GptDevice.CheckCrc32(array2, crc2))
+			byte[] array2 = new byte[num7 * num8];
+			device.ReadDisk(num6 * (ulong)blockSize, array2, 0, array2.Length);
+			if (!GptDevice.CheckCrc32(array2, num9))
 			{
 				return false;
 			}
 			GptPartition[] array3;
-			if (!GptPartition.ReadFrom(array2, num5, num6, out array3))
+			if (!GptPartition.ReadFrom(array2, num7, num8, out array3))
 			{
 				return false;
 			}
@@ -96,17 +96,17 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 				if (gptPartition.Name == name)
 				{
 					ulong num = (gptPartition.LastLBA - gptPartition.FirstLBA + 1UL) * this.blockSize;
-					bool result;
+					bool flag;
 					if (data.LongLength != (long)num)
 					{
-						result = false;
+						flag = false;
 					}
 					else
 					{
 						this.device.WriteDisk(gptPartition.FirstLBA * this.blockSize, data, 0, data.Length);
-						result = true;
+						flag = true;
 					}
-					return result;
+					return flag;
 				}
 			}
 			return false;
@@ -130,21 +130,15 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 		{
 			IntPtr intPtr = Marshal.AllocHGlobal(length);
 			Marshal.Copy(data, offset, intPtr, length);
-			int result = NativeMethods.RtlComputeCrc32(PartialCrc, intPtr, length);
+			int num = NativeMethods.RtlComputeCrc32(PartialCrc, intPtr, length);
 			Marshal.FreeHGlobal(intPtr);
-			return result;
+			return num;
 		}
 
 		// Token: 0x06000012 RID: 18 RVA: 0x00002354 File Offset: 0x00000554
 		private static bool DoBackup(IFFUDevice device, string outputPath)
 		{
-			string[] array = new string[]
-			{
-				"DPP",
-				"MODEM_FS1",
-				"MODEM_FS2",
-				"MODEM_FSG"
-			};
+			string[] array = new string[] { "DPP", "MODEM_FS1", "MODEM_FS2", "MODEM_FSG" };
 			outputPath = Path.Combine(outputPath, device.DeviceUniqueID.ToString("B"));
 			if (!Directory.Exists(outputPath))
 			{
@@ -167,14 +161,14 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 			foreach (string text in array)
 			{
 				Console.WriteLine(" Backing up partition {0}", text);
-				byte[] bytes;
-				if (!gptDevice.ReadPartition(text, out bytes))
+				byte[] array3;
+				if (!gptDevice.ReadPartition(text, out array3))
 				{
 					Console.WriteLine(" Error reading partition {0}.", text);
 					return false;
 				}
-				string path = Path.Combine(outputPath, text);
-				File.WriteAllBytes(path, bytes);
+				string text2 = Path.Combine(outputPath, text);
+				File.WriteAllBytes(text2, array3);
 			}
 			Console.WriteLine("Finished partition backup.");
 			return true;
@@ -202,14 +196,14 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 				return false;
 			}
 			IEnumerable<string> enumerable = from path in Directory.GetFiles(inputPath)
-			select Path.GetFileName(path);
+				select Path.GetFileName(path);
 			Console.WriteLine("Restoring partitions from {0}", inputPath);
 			foreach (string text in enumerable)
 			{
 				Console.WriteLine(" Restoring partition {0}", text);
-				string path2 = Path.Combine(inputPath, text);
-				byte[] data = File.ReadAllBytes(path2);
-				if (!gptDevice.WritePartition(text, data))
+				string text2 = Path.Combine(inputPath, text);
+				byte[] array = File.ReadAllBytes(text2);
+				if (!gptDevice.WritePartition(text, array))
 				{
 					Console.WriteLine(" Error writing partition {0}.", text);
 					return false;
@@ -241,13 +235,13 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 				return false;
 			}
 			IEnumerable<string> enumerable = from path in Directory.GetFiles(inputPath)
-			select Path.GetFileName(path);
+				select Path.GetFileName(path);
 			Console.WriteLine("Verifying partitions from {0}", inputPath);
 			foreach (string text in enumerable)
 			{
 				Console.WriteLine(" Verifying partition {0}", text);
-				string path2 = Path.Combine(inputPath, text);
-				byte[] array = File.ReadAllBytes(path2);
+				string text2 = Path.Combine(inputPath, text);
+				byte[] array = File.ReadAllBytes(text2);
 				byte[] array2;
 				if (!gptDevice.ReadPartition(text, out array2))
 				{

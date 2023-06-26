@@ -6,7 +6,6 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading;
@@ -19,31 +18,31 @@ namespace SoftwareRepository.Reporting
 	public class Reporter
 	{
 		// Token: 0x1700002D RID: 45
-		// (get) Token: 0x060000B2 RID: 178 RVA: 0x000038E8 File Offset: 0x00001AE8
-		// (set) Token: 0x060000B3 RID: 179 RVA: 0x000038F0 File Offset: 0x00001AF0
+		// (get) Token: 0x060000B6 RID: 182 RVA: 0x00003F1A File Offset: 0x0000211A
+		// (set) Token: 0x060000B7 RID: 183 RVA: 0x00003F22 File Offset: 0x00002122
 		[SuppressMessage("Microsoft.Design", "CA1056:UriPropertiesShouldNotBeStrings")]
 		public string SoftwareRepositoryAlternativeBaseUrl { get; set; }
 
 		// Token: 0x1700002E RID: 46
-		// (get) Token: 0x060000B4 RID: 180 RVA: 0x000038F9 File Offset: 0x00001AF9
-		// (set) Token: 0x060000B5 RID: 181 RVA: 0x00003901 File Offset: 0x00001B01
+		// (get) Token: 0x060000B8 RID: 184 RVA: 0x00003F2B File Offset: 0x0000212B
+		// (set) Token: 0x060000B9 RID: 185 RVA: 0x00003F33 File Offset: 0x00002133
 		public string SoftwareRepositoryAuthenticationToken { get; set; }
 
 		// Token: 0x1700002F RID: 47
-		// (get) Token: 0x060000B6 RID: 182 RVA: 0x0000390A File Offset: 0x00001B0A
-		// (set) Token: 0x060000B7 RID: 183 RVA: 0x00003912 File Offset: 0x00001B12
+		// (get) Token: 0x060000BA RID: 186 RVA: 0x00003F3C File Offset: 0x0000213C
+		// (set) Token: 0x060000BB RID: 187 RVA: 0x00003F44 File Offset: 0x00002144
 		public IWebProxy SoftwareRepositoryProxy { get; set; }
 
 		// Token: 0x17000030 RID: 48
-		// (get) Token: 0x060000B8 RID: 184 RVA: 0x0000391B File Offset: 0x00001B1B
-		// (set) Token: 0x060000B9 RID: 185 RVA: 0x00003923 File Offset: 0x00001B23
+		// (get) Token: 0x060000BC RID: 188 RVA: 0x00003F4D File Offset: 0x0000214D
+		// (set) Token: 0x060000BD RID: 189 RVA: 0x00003F55 File Offset: 0x00002155
 		public string SoftwareRepositoryUserAgent { get; set; }
 
-		// Token: 0x060000BA RID: 186 RVA: 0x0000392C File Offset: 0x00001B2C
+		// Token: 0x060000BE RID: 190 RVA: 0x00003F60 File Offset: 0x00002160
 		public async Task<string> GetReportUploadLocationAsync(string manufacturerName, string manufacturerProductLine, string reportClassification, string fileName, CancellationToken cancellationToken)
 		{
 			string ret = string.Empty;
-			ReportUploadLocationParameters graph = new ReportUploadLocationParameters
+			ReportUploadLocationParameters reportUploadLocationParameters = new ReportUploadLocationParameters
 			{
 				ManufacturerName = manufacturerName,
 				ManufacturerProductLine = manufacturerProductLine,
@@ -52,66 +51,82 @@ namespace SoftwareRepository.Reporting
 			};
 			try
 			{
-				XmlObjectSerializer xmlObjectSerializer = new DataContractJsonSerializer(typeof(ReportUploadLocationParameters));
+				DataContractJsonSerializer contractJsonSerializer = new DataContractJsonSerializer(typeof(ReportUploadLocationParameters));
 				MemoryStream memoryStream = new MemoryStream();
-				xmlObjectSerializer.WriteObject(memoryStream, graph);
+				contractJsonSerializer.WriteObject(memoryStream, reportUploadLocationParameters);
 				memoryStream.Seek(0L, SeekOrigin.Begin);
-				string content = new StreamReader(memoryStream).ReadToEnd();
-				string str = "https://api.swrepository.com";
-				if (this.SoftwareRepositoryAlternativeBaseUrl != null)
+				StreamReader reader = new StreamReader(memoryStream);
+				string postBody = reader.ReadToEnd();
+				string baseUrl = "https://api.swrepository.com";
+				bool flag = this.SoftwareRepositoryAlternativeBaseUrl != null;
+				if (flag)
 				{
-					str = this.SoftwareRepositoryAlternativeBaseUrl;
+					baseUrl = this.SoftwareRepositoryAlternativeBaseUrl;
 				}
-				Uri requestUri = new Uri(str + "/rest-api/report/1/uploadlocation");
-				string input = "SoftwareRepository";
-				if (this.SoftwareRepositoryUserAgent != null)
+				Uri uri = new Uri(baseUrl + "/rest-api/report/1/uploadlocation");
+				string userAgent = "SoftwareRepository";
+				bool flag2 = this.SoftwareRepositoryUserAgent != null;
+				if (flag2)
 				{
-					input = this.SoftwareRepositoryUserAgent;
+					userAgent = this.SoftwareRepositoryUserAgent;
 				}
+				ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 				HttpClient httpClient = null;
-				if (this.SoftwareRepositoryProxy != null)
+				bool flag3 = this.SoftwareRepositoryProxy != null;
+				if (flag3)
 				{
-					httpClient = new HttpClient(new HttpClientHandler
-					{
-						Proxy = this.SoftwareRepositoryProxy,
-						UseProxy = true
-					});
+					HttpClientHandler handler = new HttpClientHandler();
+					handler.Proxy = this.SoftwareRepositoryProxy;
+					handler.UseProxy = true;
+					httpClient = new HttpClient(handler);
+					handler = null;
 				}
 				else
 				{
 					httpClient = new HttpClient();
 				}
-				httpClient.DefaultRequestHeaders.UserAgent.TryParseAdd(input);
+				httpClient.DefaultRequestHeaders.UserAgent.TryParseAdd(userAgent);
 				httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-				if (this.SoftwareRepositoryAuthenticationToken != null)
+				bool flag4 = this.SoftwareRepositoryAuthenticationToken != null;
+				if (flag4)
 				{
 					httpClient.DefaultRequestHeaders.Add("X-Authentication", this.SoftwareRepositoryAuthenticationToken);
 					httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", this.SoftwareRepositoryAuthenticationToken);
 				}
-				HttpResponseMessage httpResponseMessage = await httpClient.PostAsync(requestUri, new StringContent(content, Encoding.UTF8, "application/json"), cancellationToken);
-				httpResponseMessage.EnsureSuccessStatusCode();
+				HttpResponseMessage httpResponseMessage = await httpClient.PostAsync(uri, new StringContent(postBody, Encoding.UTF8, "application/json"), cancellationToken);
+				HttpResponseMessage responseMsg = httpResponseMessage;
+				httpResponseMessage = null;
+				responseMsg.EnsureSuccessStatusCode();
 				try
 				{
-					ret = httpResponseMessage.Headers.First((KeyValuePair<string, IEnumerable<string>> h) => h.Key.Equals("X-Upload-Location")).Value.First<string>();
+					ret = responseMsg.Headers.First((KeyValuePair<string, IEnumerable<string>> h) => h.Key.Equals("X-Upload-Location")).Value.First<string>();
 				}
 				catch (InvalidOperationException)
 				{
-					if (httpResponseMessage.Headers.Location != null)
+					if (responseMsg.Headers.Location != null)
 					{
-						ret = httpResponseMessage.Headers.Location.AbsoluteUri;
+						ret = responseMsg.Headers.Location.AbsoluteUri;
 					}
 				}
 				httpClient.Dispose();
+				contractJsonSerializer = null;
+				memoryStream = null;
+				reader = null;
+				postBody = null;
+				baseUrl = null;
+				uri = null;
+				userAgent = null;
 				httpClient = null;
+				responseMsg = null;
 			}
-			catch (Exception innerException)
+			catch (Exception ex)
 			{
-				throw new ReportException("Report exception", innerException);
+				throw new ReportException("Report exception", ex);
 			}
 			return ret;
 		}
 
-		// Token: 0x060000BB RID: 187 RVA: 0x0000399C File Offset: 0x00001B9C
+		// Token: 0x060000BF RID: 191 RVA: 0x00003FCC File Offset: 0x000021CC
 		[SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")]
 		public async Task<bool> UploadReportAsync(string manufacturerName, string manufacturerProductLine, string reportClassification, List<string> filePaths, CancellationToken cancellationToken)
 		{
@@ -120,27 +135,30 @@ namespace SoftwareRepository.Reporting
 				foreach (string filePath in filePaths)
 				{
 					string fileName = Path.GetFileName(filePath);
-					await new CloudBlockBlob(
-						new Uri(await this.GetReportUploadLocationAsync
-						(manufacturerName, manufacturerProductLine,
-						reportClassification,
-						fileName, cancellationToken))).UploadFromFileAsync(filePath);//,FileMode.Open);
-					//filePath = null;
+					string text = await this.GetReportUploadLocationAsync(manufacturerName, manufacturerProductLine, reportClassification, fileName, cancellationToken);
+					string uploadLocation = text;
+					text = null;
+					CloudBlockBlob blockBlob = new CloudBlockBlob(new Uri(uploadLocation));
+					await blockBlob.UploadFromFileAsync(filePath, FileMode.Open);
+					fileName = null;
+					uploadLocation = null;
+					blockBlob = null;
+					filePath = null;
 				}
 				List<string>.Enumerator enumerator = default(List<string>.Enumerator);
 			}
-			catch (Exception innerException)
+			catch (Exception ex)
 			{
-				throw new ReportException("Cannot upload report.", innerException);
+				throw new ReportException("Cannot upload report.", ex);
 			}
 			return true;
 		}
 
-		// Token: 0x060000BC RID: 188 RVA: 0x00003A0C File Offset: 0x00001C0C
+		// Token: 0x060000C0 RID: 192 RVA: 0x00004038 File Offset: 0x00002238
 		[SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", MessageId = "cancellationToken")]
 		internal async Task SendDownloadReport(string id, string filename, List<string> url, int status, long time, long size, int connections, CancellationToken cancellationToken)
 		{
-			DownloadReport graph = new DownloadReport
+			DownloadReport report = new DownloadReport
 			{
 				ApiVersion = "1",
 				Id = id,
@@ -151,60 +169,72 @@ namespace SoftwareRepository.Reporting
 				Size = size,
 				Connections = connections
 			};
-			XmlObjectSerializer xmlObjectSerializer = new DataContractJsonSerializer(typeof(DownloadReport));
-			MemoryStream memoryStream = new MemoryStream();
-			xmlObjectSerializer.WriteObject(memoryStream, graph);
-			memoryStream.Seek(0L, SeekOrigin.Begin);
-			string content = new StreamReader(memoryStream).ReadToEnd();
-			string str = "https://api.swrepository.com";
-			if (this.SoftwareRepositoryAlternativeBaseUrl != null)
+			DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(DownloadReport));
+			MemoryStream ms = new MemoryStream();
+			serializer.WriteObject(ms, report);
+			ms.Seek(0L, SeekOrigin.Begin);
+			StreamReader reader = new StreamReader(ms);
+			string postBody = reader.ReadToEnd();
+			string baseUrl = "https://api.swrepository.com";
+			bool flag = this.SoftwareRepositoryAlternativeBaseUrl != null;
+			if (flag)
 			{
-				str = this.SoftwareRepositoryAlternativeBaseUrl;
+				baseUrl = this.SoftwareRepositoryAlternativeBaseUrl;
 			}
-			string input = "SoftwareRepository";
-			if (this.SoftwareRepositoryUserAgent != null)
+			string userAgent = "SoftwareRepository";
+			bool flag2 = this.SoftwareRepositoryUserAgent != null;
+			if (flag2)
 			{
-				input = this.SoftwareRepositoryUserAgent;
+				userAgent = this.SoftwareRepositoryUserAgent;
 			}
-			Uri requestUri = new Uri(str + "/rest-api/discovery/1/report");
+			Uri uri = new Uri(baseUrl + "/rest-api/discovery/1/report");
+			ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 			HttpClient httpClient = null;
-			if (this.SoftwareRepositoryProxy != null)
+			bool flag3 = this.SoftwareRepositoryProxy != null;
+			if (flag3)
 			{
-				httpClient = new HttpClient(new HttpClientHandler
-				{
-					Proxy = this.SoftwareRepositoryProxy,
-					UseProxy = true
-				});
+				HttpClientHandler handler = new HttpClientHandler();
+				handler.Proxy = this.SoftwareRepositoryProxy;
+				handler.UseProxy = true;
+				httpClient = new HttpClient(handler);
+				handler = null;
 			}
 			else
 			{
 				httpClient = new HttpClient();
 			}
-			httpClient.DefaultRequestHeaders.UserAgent.TryParseAdd(input);
-			HttpResponseMessage httpResponseMessage = await httpClient.PostAsync(requestUri, new StringContent(content, Encoding.UTF8, "application/json"));
-			if (httpResponseMessage.StatusCode != HttpStatusCode.OK && httpResponseMessage.StatusCode != HttpStatusCode.BadRequest)
+			httpClient.DefaultRequestHeaders.UserAgent.TryParseAdd(userAgent);
+			HttpResponseMessage httpResponseMessage = await httpClient.PostAsync(uri, new StringContent(postBody, Encoding.UTF8, "application/json"));
+			HttpResponseMessage responseMsg = httpResponseMessage;
+			httpResponseMessage = null;
+			if (responseMsg.StatusCode != HttpStatusCode.OK)
 			{
-				HttpStatusCode statusCode = httpResponseMessage.StatusCode;
+				if (responseMsg.StatusCode != HttpStatusCode.BadRequest)
+				{
+					if (responseMsg.StatusCode == HttpStatusCode.Forbidden)
+					{
+					}
+				}
 			}
 			httpClient.Dispose();
 		}
 
-		// Token: 0x0400006C RID: 108
+		// Token: 0x0400006D RID: 109
 		private const string DefaultSoftwareRepositoryBaseUrl = "https://api.swrepository.com";
 
-		// Token: 0x0400006D RID: 109
+		// Token: 0x0400006E RID: 110
 		private const string DefaultSoftwareRepositoryDownloadReportUrl = "/rest-api/discovery/1/report";
 
-		// Token: 0x0400006E RID: 110
+		// Token: 0x0400006F RID: 111
 		private const string DefaultSoftwareRepositoryUploadReport = "/rest-api/report";
 
-		// Token: 0x0400006F RID: 111
+		// Token: 0x04000070 RID: 112
 		private const string DefaultSoftwareRepositoryReportUploadApiVersion = "/1";
 
-		// Token: 0x04000070 RID: 112
+		// Token: 0x04000071 RID: 113
 		private const string DefaultSoftwareRepositoryReportUploadApi = "/uploadlocation";
 
-		// Token: 0x04000071 RID: 113
+		// Token: 0x04000072 RID: 114
 		private const string DefaultSoftwareRepositoryUserAgent = "SoftwareRepository";
 	}
 }

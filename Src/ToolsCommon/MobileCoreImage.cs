@@ -6,16 +6,16 @@ using System.Text;
 
 namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 {
-	// Token: 0x0200001B RID: 27
+	// Token: 0x02000016 RID: 22
 	public abstract class MobileCoreImage
 	{
-		// Token: 0x060000FD RID: 253 RVA: 0x00006D7E File Offset: 0x00004F7E
+		// Token: 0x06000095 RID: 149 RVA: 0x00005970 File Offset: 0x00003B70
 		protected MobileCoreImage(string path)
 		{
 			this.m_mobileCoreImagePath = path;
 		}
 
-		// Token: 0x060000FE RID: 254 RVA: 0x00006D98 File Offset: 0x00004F98
+		// Token: 0x06000096 RID: 150 RVA: 0x0000598C File Offset: 0x00003B8C
 		public static MobileCoreImage Create(string path)
 		{
 			if (string.IsNullOrEmpty(path))
@@ -27,10 +27,10 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 				throw new FileNotFoundException(string.Format("The specified file ({0}) is not a valid VHD image.", path));
 			}
 			FileInfo fileInfo = new FileInfo(path);
-			MobileCoreImage result;
+			MobileCoreImage mobileCoreImage;
 			if (fileInfo.Extension.Equals(".VHD", StringComparison.OrdinalIgnoreCase))
 			{
-				result = new MobileCoreVHD(path);
+				mobileCoreImage = new MobileCoreVHD(path);
 			}
 			else
 			{
@@ -38,13 +38,13 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 				{
 					throw new ArgumentException(string.Format("The specified file ({0}) is not a valid VHD image.", path));
 				}
-				result = new MobileCoreWIM(path);
+				mobileCoreImage = new MobileCoreWIM(path);
 			}
-			return result;
+			return mobileCoreImage;
 		}
 
-		// Token: 0x17000012 RID: 18
-		// (get) Token: 0x060000FF RID: 255 RVA: 0x00006E20 File Offset: 0x00005020
+		// Token: 0x1700000B RID: 11
+		// (get) Token: 0x06000097 RID: 151 RVA: 0x00005A14 File Offset: 0x00003C14
 		public string ImagePath
 		{
 			get
@@ -53,36 +53,36 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x17000013 RID: 19
-		// (get) Token: 0x06000100 RID: 256 RVA: 0x00006E28 File Offset: 0x00005028
-		// (set) Token: 0x06000101 RID: 257 RVA: 0x00006E30 File Offset: 0x00005030
+		// Token: 0x1700000C RID: 12
+		// (get) Token: 0x06000098 RID: 152 RVA: 0x00005A1C File Offset: 0x00003C1C
+		// (set) Token: 0x06000099 RID: 153 RVA: 0x00005A24 File Offset: 0x00003C24
 		public bool IsMounted { get; protected set; }
 
-		// Token: 0x17000014 RID: 20
-		// (get) Token: 0x06000102 RID: 258 RVA: 0x00006E3C File Offset: 0x0000503C
+		// Token: 0x1700000D RID: 13
+		// (get) Token: 0x0600009A RID: 154 RVA: 0x00005A30 File Offset: 0x00003C30
 		public ReadOnlyCollection<ImagePartition> Partitions
 		{
 			get
 			{
-				ReadOnlyCollection<ImagePartition> result = null;
+				ReadOnlyCollection<ImagePartition> readOnlyCollection = null;
 				if (this.IsMounted)
 				{
-					result = new ReadOnlyCollection<ImagePartition>(this.m_partitions);
+					readOnlyCollection = new ReadOnlyCollection<ImagePartition>(this.m_partitions);
 				}
-				return result;
+				return readOnlyCollection;
 			}
 		}
 
-		// Token: 0x06000103 RID: 259
+		// Token: 0x0600009B RID: 155
 		public abstract void Mount();
 
-		// Token: 0x06000104 RID: 260
+		// Token: 0x0600009C RID: 156
 		public abstract void MountReadOnly();
 
-		// Token: 0x06000105 RID: 261
+		// Token: 0x0600009D RID: 157
 		public abstract void Unmount();
 
-		// Token: 0x06000106 RID: 262 RVA: 0x00006E60 File Offset: 0x00005060
+		// Token: 0x0600009E RID: 158 RVA: 0x00005A54 File Offset: 0x00003C54
 		public ImagePartition GetPartition(MobileCorePartitionType type)
 		{
 			ImagePartition imagePartition = null;
@@ -92,22 +92,23 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 			foreach (ImagePartition imagePartition2 in this.Partitions)
 			{
-				if (imagePartition2.Root != null && type == MobileCorePartitionType.System && LongPathDirectory.Exists(Path.Combine(imagePartition2.Root, "Windows\\System32")))
+				if (imagePartition2.Root != null && type == MobileCorePartitionType.System)
 				{
-					imagePartition = imagePartition2;
+					string text = Path.Combine(imagePartition2.Root, "Windows\\System32");
+					if (LongPathDirectory.Exists(text))
+					{
+						imagePartition = imagePartition2;
+					}
 				}
 			}
 			if (imagePartition == null)
 			{
-				throw new IUException("Request partition {0} cannot be found in the image", new object[]
-				{
-					Enum.GetName(typeof(MobileCorePartitionType), type)
-				});
+				throw new IUException("Request partition {0} cannot be found in the image", new object[] { Enum.GetName(typeof(MobileCorePartitionType), type) });
 			}
 			return imagePartition;
 		}
 
-		// Token: 0x06000107 RID: 263 RVA: 0x00006F04 File Offset: 0x00005104
+		// Token: 0x0600009F RID: 159 RVA: 0x00005B04 File Offset: 0x00003D04
 		public override string ToString()
 		{
 			StringBuilder stringBuilder = new StringBuilder();
@@ -128,7 +129,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return stringBuilder.ToString();
 		}
 
-		// Token: 0x06000108 RID: 264 RVA: 0x00006F84 File Offset: 0x00005184
+		// Token: 0x060000A0 RID: 160 RVA: 0x00005B84 File Offset: 0x00003D84
 		public AclCollection GetFileSystemACLs()
 		{
 			ImagePartition partition = this.GetPartition(MobileCorePartitionType.System);
@@ -138,10 +139,10 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 				this.Mount();
 				flag = true;
 			}
-			AclCollection result = null;
+			AclCollection aclCollection = null;
 			try
 			{
-				result = SecurityUtils.GetFileSystemACLs(partition.Root);
+				aclCollection = SecurityUtils.GetFileSystemACLs(partition.Root);
 			}
 			finally
 			{
@@ -150,10 +151,10 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 					this.Unmount();
 				}
 			}
-			return result;
+			return aclCollection;
 		}
 
-		// Token: 0x06000109 RID: 265 RVA: 0x00006FD8 File Offset: 0x000051D8
+		// Token: 0x060000A1 RID: 161 RVA: 0x00005BD8 File Offset: 0x00003DD8
 		public AclCollection GetRegistryACLs()
 		{
 			ImagePartition partition = this.GetPartition(MobileCorePartitionType.System);
@@ -167,8 +168,8 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			try
 			{
 				aclCollection = new AclCollection();
-				string hiveRoot = Path.Combine(partition.Root, "Windows\\System32\\Config");
-				aclCollection.UnionWith(SecurityUtils.GetRegistryACLs(hiveRoot));
+				string text = Path.Combine(partition.Root, "Windows\\System32\\Config");
+				aclCollection.UnionWith(SecurityUtils.GetRegistryACLs(text));
 			}
 			finally
 			{
@@ -180,31 +181,31 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return aclCollection;
 		}
 
-		// Token: 0x0400004E RID: 78
-		protected string m_mobileCoreImagePath;
-
-		// Token: 0x0400004F RID: 79
-		protected ImagePartitionCollection m_partitions = new ImagePartitionCollection();
-
-		// Token: 0x04000050 RID: 80
+		// Token: 0x0400002E RID: 46
 		private const string EXTENSION_VHD = ".VHD";
 
-		// Token: 0x04000051 RID: 81
+		// Token: 0x0400002F RID: 47
 		private const string EXTENSION_WIM = ".WIM";
 
-		// Token: 0x04000052 RID: 82
+		// Token: 0x04000030 RID: 48
 		private const string ERROR_IMAGENOTFOUND = "The specified file ({0}) either does not exist or cannot be read.";
 
-		// Token: 0x04000053 RID: 83
+		// Token: 0x04000031 RID: 49
 		private const string ERROR_INVALIDIMAGE = "The specified file ({0}) is not a valid VHD image.";
 
-		// Token: 0x04000054 RID: 84
+		// Token: 0x04000032 RID: 50
 		private const string STR_HIVE_PATH = "Windows\\System32\\Config";
 
-		// Token: 0x04000055 RID: 85
+		// Token: 0x04000033 RID: 51
 		private const string ERROR_NO_SUCH_PARTITION = "Request partition {0} cannot be found in the image";
 
-		// Token: 0x04000056 RID: 86
+		// Token: 0x04000034 RID: 52
 		private const string STR_SYSTEM32_DIR = "Windows\\System32";
+
+		// Token: 0x04000035 RID: 53
+		protected string m_mobileCoreImagePath;
+
+		// Token: 0x04000036 RID: 54
+		protected ImagePartitionCollection m_partitions = new ImagePartitionCollection();
 	}
 }

@@ -1,5 +1,5 @@
 ﻿using System;
-using ComponentAce.Compression.Exception1;
+using ComponentAce.Compression.Exception;
 using ComponentAce.Compression.Libs.ZLib;
 
 namespace ComponentAce.Compression.Archiver
@@ -67,11 +67,11 @@ namespace ComponentAce.Compression.Archiver
 			{
 				throw ExceptionBuilder.Exception(ErrorCode.CompressionEngineIsNotInitialized);
 			}
-			int avail_out = (int)currentBlockSize + (int)(currentBlockSize / 10L) + 12 + 255 & -256;
+			int num = ((int)currentBlockSize + (int)(currentBlockSize / 10L) + 12 + 255) & -256;
 			this.strm.next_in = sourceBuffer;
 			this.strm.avail_in = (int)currentBlockSize;
 			this.strm.next_out = resultBuffer;
-			this.strm.avail_out = avail_out;
+			this.strm.avail_out = num;
 			this.strm.next_in_index = 0;
 			this.strm.next_out_index = 0;
 			long total_out = this.strm.total_out;
@@ -117,14 +117,14 @@ namespace ComponentAce.Compression.Archiver
 			this.strm.next_in = sourceBuffer;
 			this.strm.avail_in = currentBlockSize;
 			int num = 1048576;
-			byte[] next_out = new byte[num];
-			this.strm.next_out = next_out;
+			byte[] array = new byte[num];
+			this.strm.next_out = array;
 			this.strm.avail_out = num;
 			if (this.strm.total_in == 0L)
 			{
 				Array.Copy(sourceBuffer, 0, sourceBuffer, 2, currentBlockSize);
-				ushort value = (ushort)this.GetZlibStreamHeader(1);
-				byte[] bytes = BitConverter.GetBytes(value);
+				ushort num2 = (ushort)this.GetZlibStreamHeader(1);
+				byte[] bytes = BitConverter.GetBytes(num2);
 				Array.Copy(bytes, 0, sourceBuffer, 0, 2);
 				this.strm.avail_in = currentBlockSize + 2;
 			}
@@ -134,12 +134,12 @@ namespace ComponentAce.Compression.Archiver
 				this.strm.next_out_index = 0;
 				for (;;)
 				{
-					int num2 = this.strm.inflate(FlushStrategy.Z_NO_FLUSH);
-					if (num2 < 0 && num2 != -5)
+					int num3 = this.strm.inflate(FlushStrategy.Z_NO_FLUSH);
+					if (num3 < 0 && num3 != -5)
 					{
 						break;
 					}
-					if (num2 == -5)
+					if (num3 == -5)
 					{
 						goto Block_7;
 					}
@@ -188,8 +188,8 @@ namespace ComponentAce.Compression.Archiver
 			this.strm.next_in = sourceBuffer;
 			this.strm.avail_in = currentBlockSize;
 			int num = 1048576;
-			byte[] next_out = new byte[num];
-			this.strm.next_out = next_out;
+			byte[] array = new byte[num];
+			this.strm.next_out = array;
 			this.strm.avail_out = num;
 			try
 			{
@@ -235,9 +235,9 @@ namespace ComponentAce.Compression.Archiver
 				goto IL_191;
 				Block_11:
 				int num3 = currentBlockSize - this.strm.next_in_index;
-				byte[] array = new byte[num3];
-				Buffer.BlockCopy(sourceBuffer, this.strm.next_in_index, array, 0, num3);
-				sourceBuffer = array;
+				byte[] array2 = new byte[num3];
+				Buffer.BlockCopy(sourceBuffer, this.strm.next_in_index, array2, 0, num3);
+				sourceBuffer = array2;
 				endOfFileDiscovered = true;
 				IL_191:;
 			}
@@ -263,7 +263,7 @@ namespace ComponentAce.Compression.Archiver
 		private int EstimateBytesOut(long compressedSize, long uncompressedSize, long size)
 		{
 			double num = 1.0 / Math.Log(2.0);
-			long num2 = (long)Math.Pow(2.0, Math.Round(Math.Log((double)((1L + uncompressedSize / compressedSize) * (size + size / 2L + 12L + 255L) & -256L)) * num));
+			long num2 = (long)Math.Pow(2.0, Math.Round(Math.Log((double)(((1L + uncompressedSize / compressedSize) * (size + size / 2L + 12L + 255L)) & -256L)) * num));
 			return (int)num2;
 		}
 

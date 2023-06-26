@@ -5,10 +5,10 @@ using System.IO;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Common.Tracing
 {
-	// Token: 0x02000010 RID: 16
+	// Token: 0x0200000F RID: 15
 	public class TraceManager
 	{
-		// Token: 0x06000061 RID: 97 RVA: 0x0000375C File Offset: 0x0000195C
+		// Token: 0x06000058 RID: 88 RVA: 0x00003080 File Offset: 0x00001280
 		internal TraceManager()
 		{
 			this.defaultLogFolder = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\Microsoft\\Care Suite\\Windows Device Recovery Tool\\Traces\\";
@@ -18,16 +18,19 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Common.Tracing
 		}
 
 		// Token: 0x1700000B RID: 11
-		// (get) Token: 0x06000062 RID: 98 RVA: 0x000037C0 File Offset: 0x000019C0
+		// (get) Token: 0x06000059 RID: 89 RVA: 0x000030E4 File Offset: 0x000012E4
 		public static TraceManager Instance
 		{
 			get
 			{
-				if (TraceManager.instance == null)
+				bool flag = TraceManager.instance == null;
+				if (flag)
 				{
-					lock (TraceManager.StaticSyncRoot)
+					object staticSyncRoot = TraceManager.StaticSyncRoot;
+					lock (staticSyncRoot)
 					{
-						if (TraceManager.instance == null)
+						bool flag3 = TraceManager.instance == null;
+						if (flag3)
 						{
 							TraceManager.instance = new TraceManager();
 						}
@@ -38,24 +41,26 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Common.Tracing
 		}
 
 		// Token: 0x1700000C RID: 12
-		// (get) Token: 0x06000063 RID: 99 RVA: 0x0000383C File Offset: 0x00001A3C
-		// (set) Token: 0x06000064 RID: 100 RVA: 0x00003853 File Offset: 0x00001A53
+		// (get) Token: 0x0600005A RID: 90 RVA: 0x00003154 File Offset: 0x00001354
+		// (set) Token: 0x0600005B RID: 91 RVA: 0x0000315C File Offset: 0x0000135C
 		internal ITraceWriter MainTraceWriter { get; private set; }
 
 		// Token: 0x1700000D RID: 13
-		// (get) Token: 0x06000065 RID: 101 RVA: 0x0000385C File Offset: 0x00001A5C
-		// (set) Token: 0x06000066 RID: 102 RVA: 0x00003873 File Offset: 0x00001A73
+		// (get) Token: 0x0600005C RID: 92 RVA: 0x00003165 File Offset: 0x00001365
+		// (set) Token: 0x0600005D RID: 93 RVA: 0x0000316D File Offset: 0x0000136D
 		internal List<IThreadSafeTracer> Tracers { get; private set; }
 
-		// Token: 0x06000067 RID: 103 RVA: 0x0000387C File Offset: 0x00001A7C
+		// Token: 0x0600005E RID: 94 RVA: 0x00003178 File Offset: 0x00001378
 		private void RegisterDiagnosticTraceWriter(string logPath, string logNamePrefix)
 		{
 			ITraceWriter traceWriter = new DiagnosticLogTextWriter(logPath, logNamePrefix);
-			lock (this.syncRoot)
+			object obj = this.syncRoot;
+			lock (obj)
 			{
 				try
 				{
-					if (this.MainTraceWriter != null)
+					bool flag2 = this.MainTraceWriter != null;
+					if (flag2)
 					{
 						this.MainTraceWriter.Close();
 					}
@@ -75,22 +80,26 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Common.Tracing
 			}
 		}
 
-		// Token: 0x06000068 RID: 104 RVA: 0x00003984 File Offset: 0x00001B84
+		// Token: 0x0600005F RID: 95 RVA: 0x00003274 File Offset: 0x00001474
 		public void EnableDiagnosticLogs(string logPath, string logNamePrefix)
 		{
-			if (this.MainTraceWriter == null)
+			bool flag = this.MainTraceWriter == null;
+			if (flag)
 			{
 				this.RegisterDiagnosticTraceWriter(logPath, logNamePrefix);
 			}
-			lock (this.syncRoot)
+			object obj = this.syncRoot;
+			lock (obj)
 			{
-				if (this.MainTraceWriter == null)
+				bool flag3 = this.MainTraceWriter == null;
+				if (flag3)
 				{
 					throw new InvalidOperationException("RegisterDiagnosticTraceWriter must be called before using this method.");
 				}
 				try
 				{
-					if (string.IsNullOrEmpty(this.MainTraceWriter.LogFilePath))
+					bool flag4 = string.IsNullOrEmpty(this.MainTraceWriter.LogFilePath);
+					if (flag4)
 					{
 						this.MainTraceWriter.ChangeLogFolder(this.defaultLogFolder);
 					}
@@ -109,18 +118,21 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Common.Tracing
 			}
 		}
 
-		// Token: 0x06000069 RID: 105 RVA: 0x00003ABC File Offset: 0x00001CBC
+		// Token: 0x06000060 RID: 96 RVA: 0x000033A0 File Offset: 0x000015A0
 		public void DisableDiagnosticLogs(bool removeCurrentLogFile)
 		{
-			lock (this.syncRoot)
+			object obj = this.syncRoot;
+			lock (obj)
 			{
-				if (this.MainTraceWriter == null)
+				bool flag2 = this.MainTraceWriter == null;
+				if (flag2)
 				{
 					throw new InvalidOperationException("RegisterDiagnosticTraceWriter must be called before using this method.");
 				}
 				try
 				{
-					if (removeCurrentLogFile && !string.IsNullOrEmpty(this.MainTraceWriter.LogFilePath))
+					bool flag3 = removeCurrentLogFile && !string.IsNullOrEmpty(this.MainTraceWriter.LogFilePath);
+					if (flag3)
 					{
 						string logFilePath = this.MainTraceWriter.LogFilePath;
 						this.MainTraceWriter.Close();
@@ -142,12 +154,14 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Common.Tracing
 			}
 		}
 
-		// Token: 0x0600006A RID: 106 RVA: 0x00003BF8 File Offset: 0x00001DF8
+		// Token: 0x06000061 RID: 97 RVA: 0x000034D0 File Offset: 0x000016D0
 		public void ChangeDiagnosticLogFolder(string newPath)
 		{
-			lock (this.syncRoot)
+			object obj = this.syncRoot;
+			lock (obj)
 			{
-				if (this.MainTraceWriter == null)
+				bool flag2 = this.MainTraceWriter == null;
+				if (flag2)
 				{
 					throw new InvalidOperationException("RegisterDiagnosticTraceWriter must be called before using this method.");
 				}
@@ -164,11 +178,12 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Common.Tracing
 			}
 		}
 
-		// Token: 0x0600006B RID: 107 RVA: 0x00003CA4 File Offset: 0x00001EA4
+		// Token: 0x06000062 RID: 98 RVA: 0x00003574 File Offset: 0x00001774
 		public void RemoveDiagnosticLogs(string directoryPath, string appNamePrefix, bool traceEnabled)
 		{
 			Tracer<TraceManager>.WriteInformation("Remove diagnostic logs.");
-			lock (this.syncRoot)
+			object obj = this.syncRoot;
+			lock (obj)
 			{
 				string[] files = Directory.GetFiles(directoryPath);
 				foreach (string text in files)
@@ -176,37 +191,35 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Common.Tracing
 					try
 					{
 						File.Delete(text);
-						Tracer<TraceManager>.WriteInformation("Succesfully removed file: {0}.", new object[]
-						{
-							text
-						});
+						Tracer<TraceManager>.WriteInformation("Succesfully removed file: {0}.", new object[] { text });
 					}
-					catch (Exception error)
+					catch (Exception ex)
 					{
-						Tracer<TraceManager>.WriteError(error, "Following file could not be deleted: {0}.", new object[]
-						{
-							text
-						});
+						Tracer<TraceManager>.WriteError(ex, "Following file could not be deleted: {0}.", new object[] { text });
 					}
 				}
 			}
-			if (!traceEnabled && this.MainTraceWriter != null)
+			bool flag2 = !traceEnabled && this.MainTraceWriter != null;
+			if (flag2)
 			{
 				this.DisableDiagnosticLogs(true);
 			}
 			Tracer<TraceManager>.WriteInformation("Finished removing diagnostic logs.");
 		}
 
-		// Token: 0x0600006C RID: 108 RVA: 0x00003DA4 File Offset: 0x00001FA4
+		// Token: 0x06000063 RID: 99 RVA: 0x00003658 File Offset: 0x00001858
 		public void MoveDiagnosticLogFile(string newPath)
 		{
-			lock (this.syncRoot)
+			object obj = this.syncRoot;
+			lock (obj)
 			{
-				if (this.MainTraceWriter == null)
+				bool flag2 = this.MainTraceWriter == null;
+				if (flag2)
 				{
 					throw new InvalidOperationException("RegisterDiagnosticTraceWriter must be called before using this method.");
 				}
-				if (string.IsNullOrEmpty(this.MainTraceWriter.LogFilePath))
+				bool flag3 = string.IsNullOrEmpty(this.MainTraceWriter.LogFilePath);
+				if (flag3)
 				{
 					throw new InvalidOperationException("Current diagnostic log file does not exist. There is nothing to be moved.");
 				}
@@ -227,26 +240,29 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Common.Tracing
 			}
 		}
 
-		// Token: 0x0600006D RID: 109 RVA: 0x00003EAC File Offset: 0x000020AC
+		// Token: 0x06000064 RID: 100 RVA: 0x00003754 File Offset: 0x00001954
 		internal IThreadSafeTracer CreateTraceSource(string sourceName)
 		{
-			IThreadSafeTracer result;
+			IThreadSafeTracer threadSafeTracer2;
 			try
 			{
-				lock (this.syncRoot)
+				object obj = this.syncRoot;
+				lock (obj)
 				{
 					ThreadSafeTracer threadSafeTracer = new ThreadSafeTracer(sourceName, this.currentTracingLevel);
-					if (this.MainTraceWriter != null)
+					bool flag2 = this.MainTraceWriter != null;
+					if (flag2)
 					{
 						TraceListener traceListener = this.MainTraceWriter as TraceListener;
-						if (traceListener == null)
+						bool flag3 = traceListener == null;
+						if (flag3)
 						{
 							traceListener = new TraceListenerAdapter(this.MainTraceWriter);
 						}
 						threadSafeTracer.AddTraceListener(traceListener);
 					}
 					this.Tracers.Add(threadSafeTracer);
-					result = threadSafeTracer;
+					threadSafeTracer2 = threadSafeTracer;
 				}
 			}
 			catch (Exception ex)
@@ -254,17 +270,19 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Common.Tracing
 				Trace.WriteLine("Could not create new tracer. Error: " + ex.Message);
 				throw new InvalidOperationException("Could not create new tracer.", ex);
 			}
-			return result;
+			return threadSafeTracer2;
 		}
 
-		// Token: 0x0600006E RID: 110 RVA: 0x00003F84 File Offset: 0x00002184
+		// Token: 0x06000065 RID: 101 RVA: 0x00003824 File Offset: 0x00001A24
 		private void OnCurrentDomainProcessExit(object sender, EventArgs e)
 		{
 			try
 			{
-				lock (this.syncRoot)
+				object obj = this.syncRoot;
+				lock (obj)
 				{
-					if (this.MainTraceWriter != null)
+					bool flag2 = this.MainTraceWriter != null;
+					if (flag2)
 					{
 						this.MainTraceWriter.Close();
 					}
@@ -283,19 +301,19 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Common.Tracing
 			}
 		}
 
-		// Token: 0x04000014 RID: 20
+		// Token: 0x0400000F RID: 15
 		private static readonly object StaticSyncRoot = new object();
 
-		// Token: 0x04000015 RID: 21
+		// Token: 0x04000010 RID: 16
 		private static TraceManager instance;
 
-		// Token: 0x04000016 RID: 22
+		// Token: 0x04000011 RID: 17
 		private readonly object syncRoot = new object();
 
-		// Token: 0x04000017 RID: 23
+		// Token: 0x04000012 RID: 18
 		private readonly string defaultLogFolder;
 
-		// Token: 0x04000018 RID: 24
+		// Token: 0x04000013 RID: 19
 		private SourceLevels currentTracingLevel;
 	}
 }

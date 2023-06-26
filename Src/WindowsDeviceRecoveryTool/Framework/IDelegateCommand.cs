@@ -3,14 +3,14 @@ using System.Windows.Input;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Framework
 {
-	// Token: 0x02000042 RID: 66
+	// Token: 0x0200008E RID: 142
 	public interface IDelegateCommand : ICommand
 	{
-		// Token: 0x17000067 RID: 103
-		// (get) Token: 0x06000256 RID: 598
+		// Token: 0x1700011E RID: 286
+		// (get) Token: 0x060004B6 RID: 1206
 		KeyGesture KeyGesture { get; }
 
-		// Token: 0x06000257 RID: 599
+		// Token: 0x060004B7 RID: 1207
 		void RaiseCanExecuteChanged();
 	}
 }

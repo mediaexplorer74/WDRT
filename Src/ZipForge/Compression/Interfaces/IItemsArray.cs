@@ -6,11 +6,7 @@ namespace ComponentAce.Compression.Interfaces
 	public interface IItemsArray : ICloneable
 	{
 		// Token: 0x17000028 RID: 40
-		IItem this[int index]
-		{
-			get;
-			set;
-		}
+		IItem this[int index] { get; set; }
 
 		// Token: 0x17000029 RID: 41
 		// (get) Token: 0x06000151 RID: 337

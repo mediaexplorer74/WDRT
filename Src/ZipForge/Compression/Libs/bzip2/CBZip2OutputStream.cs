@@ -114,7 +114,7 @@ namespace ComponentAce.Compression.Libs.bzip2
 					array[num9] = num10;
 					num++;
 					array3[num4] = (array3[num8] = num);
-					array2[num] = ((array2[num4] & -256) + (array2[num8] & -256) | 1 + (((array2[num4] & 255) > (array2[num8] & 255)) ? (array2[num4] & 255) : (array2[num8] & 255)));
+					array2[num] = ((array2[num4] & -256) + (array2[num8] & -256)) | (1 + (((array2[num4] & 255) > (array2[num8] & 255)) ? (array2[num4] & 255) : (array2[num8] & 255)));
 					array3[num] = -1;
 					j++;
 					array[j] = num;
@@ -161,7 +161,8 @@ namespace ComponentAce.Compression.Libs.bzip2
 		}
 
 		// Token: 0x060001A0 RID: 416 RVA: 0x00012AF5 File Offset: 0x00011AF5
-		public CBZip2OutputStream(Stream inStream) : this(inStream, 9)
+		public CBZip2OutputStream(Stream inStream)
+			: this(inStream, 9)
 		{
 		}
 
@@ -331,7 +332,7 @@ namespace ComponentAce.Compression.Libs.bzip2
 		private void endBlock()
 		{
 			this.blockCRC = this.mCrc.FinalCRC;
-			this.combinedCRC = (this.combinedCRC << 1 | SupportClass.URShift(this.combinedCRC, 31));
+			this.combinedCRC = (this.combinedCRC << 1) | SupportClass.URShift(this.combinedCRC, 31);
 			this.combinedCRC ^= this.blockCRC;
 			this.doReversibleTransformation();
 			this.bsPutUChar(49);
@@ -444,9 +445,9 @@ namespace ComponentAce.Compression.Libs.bzip2
 		// Token: 0x060001B1 RID: 433 RVA: 0x00013270 File Offset: 0x00012270
 		private void bsPutint(int u)
 		{
-			this.bsW(8, u >> 24 & 255);
-			this.bsW(8, u >> 16 & 255);
-			this.bsW(8, u >> 8 & 255);
+			this.bsW(8, (u >> 24) & 255);
+			this.bsW(8, (u >> 16) & 255);
+			this.bsW(8, (u >> 8) & 255);
 			this.bsW(8, u & 255);
 		}
 
@@ -572,7 +573,7 @@ namespace ComponentAce.Compression.Libs.bzip2
 						short num13;
 						short num12;
 						short num11;
-						short num10 = num11 = (num12 = (num13 = (num14 = (num15 = 0))));
+						short num10 = (num11 = (num12 = (num13 = (num14 = (num15 = 0)))));
 						for (int num16 = m; num16 <= num6; num16++)
 						{
 							short num17 = this.szptr[num16];
@@ -929,9 +930,9 @@ namespace ComponentAce.Compression.Libs.bzip2
 				{
 					int num = (int)this.med3(this.block[this.zptr[ll] + dd + 1], this.block[this.zptr[hh] + dd + 1], this.block[this.zptr[ll + hh >> 1] + dd + 1]);
 					int k;
-					int num2 = k = ll;
+					int num2 = (k = ll);
 					int num4;
-					int num3 = num4 = hh;
+					int num3 = (num4 = hh);
 					for (;;)
 					{
 						if (k <= num4)
@@ -991,9 +992,9 @@ namespace ComponentAce.Compression.Libs.bzip2
 					}
 					else
 					{
-						int num5 = (num2 - ll < k - num2) ? (num2 - ll) : (k - num2);
+						int num5 = ((num2 - ll < k - num2) ? (num2 - ll) : (k - num2));
 						this.vswap(ll, k - num5, num5);
-						int num9 = (hh - num3 < num3 - num4) ? (hh - num3) : (num3 - num4);
+						int num9 = ((hh - num3 < num3 - num4) ? (hh - num3) : (num3 - num4));
 						this.vswap(k, hh - num9 + 1, num9);
 						num5 = ll + k - num2 - 1;
 						num9 = hh - (num3 - num4) + 1;
@@ -1152,9 +1153,9 @@ namespace ComponentAce.Compression.Libs.bzip2
 				}
 				for (j = 0; j <= 255; j++)
 				{
-					array2[j] = (this.ftab[(j << 8) + num6] & CBZip2OutputStream.CLEARMASK);
+					array2[j] = this.ftab[(j << 8) + num6] & CBZip2OutputStream.CLEARMASK;
 				}
-				for (j = (this.ftab[num6 << 8] & CBZip2OutputStream.CLEARMASK); j < (this.ftab[num6 + 1 << 8] & CBZip2OutputStream.CLEARMASK); j++)
+				for (j = this.ftab[num6 << 8] & CBZip2OutputStream.CLEARMASK; j < (this.ftab[num6 + 1 << 8] & CBZip2OutputStream.CLEARMASK); j++)
 				{
 					num2 = (int)this.block[this.zptr[j]];
 					if (!array3[num2])
@@ -1694,20 +1695,8 @@ namespace ComponentAce.Compression.Libs.bzip2
 		// Token: 0x0400012B RID: 299
 		private int[] incs = new int[]
 		{
-			1,
-			4,
-			13,
-			40,
-			121,
-			364,
-			1093,
-			3280,
-			9841,
-			29524,
-			88573,
-			265720,
-			797161,
-			2391484
+			1, 4, 13, 40, 121, 364, 1093, 3280, 9841, 29524,
+			88573, 265720, 797161, 2391484
 		};
 
 		// Token: 0x02000027 RID: 39

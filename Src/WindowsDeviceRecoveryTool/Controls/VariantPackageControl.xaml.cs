@@ -8,18 +8,18 @@ using System.Windows.Markup;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 {
-	// Token: 0x0200002F RID: 47
+	// Token: 0x020000D1 RID: 209
 	public partial class VariantPackageControl : UserControl
 	{
-		// Token: 0x0600018C RID: 396 RVA: 0x0000AD5F File Offset: 0x00008F5F
+		// Token: 0x0600067F RID: 1663 RVA: 0x0001E912 File Offset: 0x0001CB12
 		public VariantPackageControl()
 		{
 			this.InitializeComponent();
 		}
 
-		// Token: 0x17000050 RID: 80
-		// (get) Token: 0x0600018D RID: 397 RVA: 0x0000AD74 File Offset: 0x00008F74
-		// (set) Token: 0x0600018E RID: 398 RVA: 0x0000AD96 File Offset: 0x00008F96
+		// Token: 0x17000179 RID: 377
+		// (get) Token: 0x06000680 RID: 1664 RVA: 0x0001E924 File Offset: 0x0001CB24
+		// (set) Token: 0x06000681 RID: 1665 RVA: 0x0001E946 File Offset: 0x0001CB46
 		public bool IsControlVisible
 		{
 			get
@@ -32,9 +32,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x17000051 RID: 81
-		// (get) Token: 0x0600018F RID: 399 RVA: 0x0000ADAC File Offset: 0x00008FAC
-		// (set) Token: 0x06000190 RID: 400 RVA: 0x0000ADCE File Offset: 0x00008FCE
+		// Token: 0x1700017A RID: 378
+		// (get) Token: 0x06000682 RID: 1666 RVA: 0x0001E95C File Offset: 0x0001CB5C
+		// (set) Token: 0x06000683 RID: 1667 RVA: 0x0001E97E File Offset: 0x0001CB7E
 		public Visibility AkVersionVisibility
 		{
 			get
@@ -47,9 +47,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x17000052 RID: 82
-		// (get) Token: 0x06000191 RID: 401 RVA: 0x0000ADE4 File Offset: 0x00008FE4
-		// (set) Token: 0x06000192 RID: 402 RVA: 0x0000AE06 File Offset: 0x00009006
+		// Token: 0x1700017B RID: 379
+		// (get) Token: 0x06000684 RID: 1668 RVA: 0x0001E994 File Offset: 0x0001CB94
+		// (set) Token: 0x06000685 RID: 1669 RVA: 0x0001E9B6 File Offset: 0x0001CBB6
 		public Visibility PlatformIdVisibility
 		{
 			get
@@ -62,9 +62,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x17000053 RID: 83
-		// (get) Token: 0x06000193 RID: 403 RVA: 0x0000AE1C File Offset: 0x0000901C
-		// (set) Token: 0x06000194 RID: 404 RVA: 0x0000AE3E File Offset: 0x0000903E
+		// Token: 0x1700017C RID: 380
+		// (get) Token: 0x06000686 RID: 1670 RVA: 0x0001E9CC File Offset: 0x0001CBCC
+		// (set) Token: 0x06000687 RID: 1671 RVA: 0x0001E9EE File Offset: 0x0001CBEE
 		public Visibility FirmwareVersionVisibility
 		{
 			get
@@ -77,9 +77,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x17000054 RID: 84
-		// (get) Token: 0x06000195 RID: 405 RVA: 0x0000AE54 File Offset: 0x00009054
-		// (set) Token: 0x06000196 RID: 406 RVA: 0x0000AE76 File Offset: 0x00009076
+		// Token: 0x1700017D RID: 381
+		// (get) Token: 0x06000688 RID: 1672 RVA: 0x0001EA04 File Offset: 0x0001CC04
+		// (set) Token: 0x06000689 RID: 1673 RVA: 0x0001EA26 File Offset: 0x0001CC26
 		public Visibility BuildVersionVisibility
 		{
 			get
@@ -92,29 +92,30 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x06000197 RID: 407 RVA: 0x0000AE8C File Offset: 0x0000908C
+		// Token: 0x0600068A RID: 1674 RVA: 0x0001EA3C File Offset: 0x0001CC3C
 		private static void OnIsControlVisibleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{
 			VariantPackageControl variantPackageControl = d as VariantPackageControl;
-			if (variantPackageControl != null)
+			bool flag = variantPackageControl != null;
+			if (flag)
 			{
 				variantPackageControl.MainStackPanel.Visibility = (Visibility)new BooleanToVisibilityConverter().Convert(e.NewValue, null, null, null);
 			}
 		}
 
-		// Token: 0x040000BD RID: 189
+		// Token: 0x040002F2 RID: 754
 		public static readonly DependencyProperty AkVersionVisibilityProperty = DependencyProperty.Register("AkVersionVisibility", typeof(Visibility), typeof(VariantPackageControl), null);
 
-		// Token: 0x040000BE RID: 190
+		// Token: 0x040002F3 RID: 755
 		public static readonly DependencyProperty PlatformIdVisibilityProperty = DependencyProperty.Register("PlatformIdVisibility", typeof(Visibility), typeof(VariantPackageControl), null);
 
-		// Token: 0x040000BF RID: 191
+		// Token: 0x040002F4 RID: 756
 		public static readonly DependencyProperty IsControlVisibleProperty = DependencyProperty.Register("IsControlVisible", typeof(bool), typeof(VariantPackageControl), new PropertyMetadata(false, new PropertyChangedCallback(VariantPackageControl.OnIsControlVisibleChanged)));
 
-		// Token: 0x040000C0 RID: 192
+		// Token: 0x040002F5 RID: 757
 		public static readonly DependencyProperty FirmwareVersionVisibilityProperty = DependencyProperty.Register("FirmwareVersionVisibility", typeof(Visibility), typeof(VariantPackageControl), null);
 
-		// Token: 0x040000C1 RID: 193
+		// Token: 0x040002F6 RID: 758
 		public static readonly DependencyProperty BuildVersionVisibilityProperty = DependencyProperty.Register("BuildVersionVisibility", typeof(Visibility), typeof(VariantPackageControl), null);
 	}
 }

@@ -2,7 +2,7 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Contracts
 {
-	// Token: 0x02000002 RID: 2
+	// Token: 0x0200003D RID: 61
 	public interface IAdaptation
 	{
 	}

@@ -6,12 +6,12 @@ using Microsoft.WindowsDeviceRecoveryTool.Messages;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Help
 {
-	// Token: 0x02000074 RID: 116
+	// Token: 0x0200005B RID: 91
 	[Export]
 	public class LumiaOldFlashingHelpViewModel : BaseViewModel
 	{
-		// Token: 0x170000B9 RID: 185
-		// (get) Token: 0x06000368 RID: 872 RVA: 0x00010A04 File Offset: 0x0000EC04
+		// Token: 0x170000E3 RID: 227
+		// (get) Token: 0x06000389 RID: 905 RVA: 0x00013C14 File Offset: 0x00011E14
 		public string GoToMyPhoneHasNotBeenDetectedIfNotDetectedText
 		{
 			get
@@ -20,7 +20,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Help
 			}
 		}
 
-		// Token: 0x06000369 RID: 873 RVA: 0x00010A2F File Offset: 0x0000EC2F
+		// Token: 0x0600038A RID: 906 RVA: 0x00013C3F File Offset: 0x00011E3F
 		public override void OnStarted()
 		{
 			base.EventAggregator.Publish<HeaderMessage>(new HeaderMessage(LocalizationManager.GetTranslation("Help"), LocalizationManager.GetTranslation("FlashMode")));

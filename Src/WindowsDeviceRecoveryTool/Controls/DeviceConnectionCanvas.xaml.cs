@@ -9,10 +9,10 @@ using System.Windows.Media.Animation;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 {
-	// Token: 0x0200003A RID: 58
+	// Token: 0x020000DA RID: 218
 	public partial class DeviceConnectionCanvas : Grid
 	{
-		// Token: 0x06000210 RID: 528 RVA: 0x0000DEBF File Offset: 0x0000C0BF
+		// Token: 0x060006E0 RID: 1760 RVA: 0x0001F654 File Offset: 0x0001D854
 		public DeviceConnectionCanvas()
 		{
 			this.InitializeComponent();
@@ -20,9 +20,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			base.Unloaded += this.OnDeviceConnectionCanvasUnLoaded;
 		}
 
-		// Token: 0x17000063 RID: 99
-		// (get) Token: 0x06000211 RID: 529 RVA: 0x0000DEF8 File Offset: 0x0000C0F8
-		// (set) Token: 0x06000212 RID: 530 RVA: 0x0000DF1A File Offset: 0x0000C11A
+		// Token: 0x17000194 RID: 404
+		// (get) Token: 0x060006E1 RID: 1761 RVA: 0x0001F68C File Offset: 0x0001D88C
+		// (set) Token: 0x060006E2 RID: 1762 RVA: 0x0001F6AE File Offset: 0x0001D8AE
 		public bool PlayAnimation
 		{
 			get
@@ -35,33 +35,37 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x06000213 RID: 531 RVA: 0x0000DF30 File Offset: 0x0000C130
+		// Token: 0x060006E3 RID: 1763 RVA: 0x0001F6C4 File Offset: 0x0001D8C4
 		private void OnDeviceConnectionCanvasLoaded(object sender, RoutedEventArgs e)
 		{
 			Storyboard storyboard = base.FindResource("FadeInOutAnimation") as Storyboard;
-			if (storyboard != null)
+			bool flag = storyboard != null;
+			if (flag)
 			{
-				if (this.PlayAnimation)
+				bool playAnimation = this.PlayAnimation;
+				if (playAnimation)
 				{
 					storyboard.Begin();
 				}
 			}
 		}
 
-		// Token: 0x06000214 RID: 532 RVA: 0x0000DF70 File Offset: 0x0000C170
+		// Token: 0x060006E4 RID: 1764 RVA: 0x0001F700 File Offset: 0x0001D900
 		private void OnDeviceConnectionCanvasUnLoaded(object sender, RoutedEventArgs e)
 		{
 			Storyboard storyboard = base.FindResource("FadeInOutAnimation") as Storyboard;
-			if (storyboard != null)
+			bool flag = storyboard != null;
+			if (flag)
 			{
-				if (this.PlayAnimation)
+				bool playAnimation = this.PlayAnimation;
+				if (playAnimation)
 				{
 					storyboard.Stop();
 				}
 			}
 		}
 
-		// Token: 0x040000DD RID: 221
+		// Token: 0x04000316 RID: 790
 		public static readonly DependencyProperty PlayAnimationProperty = DependencyProperty.Register("PlayAnimation", typeof(bool), typeof(DeviceConnectionCanvas), new PropertyMetadata(false));
 	}
 }

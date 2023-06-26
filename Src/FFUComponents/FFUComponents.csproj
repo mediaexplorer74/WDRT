@@ -1,18 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{928157D7-3130-4324-9F56-B04DBA29818A}</ProjectGuid>
+    <ProjectGuid>{8C726962-D7A3-4054-B90F-0583259F964F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>FFUComponents</RootNamespace>
     <AssemblyName>FFUComponents</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFramework>net48</TargetFramework>
+    <UseWindowsForms>True</UseWindowsForms>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+  <PropertyGroup>
+    <NoStdLib>True</NoStdLib>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <EnableDefaultItems>False</EnableDefaultItems>
+  </PropertyGroup>
+  <PropertyGroup />
+
+ <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
@@ -21,7 +27,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
@@ -32,19 +37,10 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Management" />
-    <Reference Include="System.Windows.Forms" />
-  </ItemGroup>
-  <ItemGroup>
-    <AppDesigner Include="Properties\" />
-  </ItemGroup>
+ 
+
   <ItemGroup>
     <Compile Include="AccessRights.cs" />
     <Compile Include="AsyncResult.cs" />
@@ -109,9 +105,13 @@
     <Compile Include="PacketConstructor.cs" />
     <Compile Include="ProgressEventArgs.cs" />
     <Compile Include="ProgressHandler.cs" />
+    <Compile Include="Properties.Resources.Designer.cs">
+      <DependentUpon>Properties.Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyChangeParams.cs" />
-    <Compile Include="Resources.cs" />
     <Compile Include="SetupApiErr.cs" />
     <Compile Include="SimpleIODevice.cs" />
     <Compile Include="SimpleIoEventSink.cs" />
@@ -143,21 +143,46 @@
     <Compile Include="WinUsbSetupPacket.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resources" />
+    <EmbeddedResource Include="Properties.Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Properties.Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.Diagnostics.Tracing.EventSource\Microsoft.Diagnostics.Tracing.EventSource.csproj">
-      <Project>{20956fc5-f2b4-4de2-83a8-40b00da75479}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9657}</Project>
       <Name>Microsoft.Diagnostics.Tracing.EventSource</Name>
     </ProjectReference>
+    <ProjectReference Include="..\mscorlib\mscorlib.csproj">
+      <Project>{8C726962-D7A3-4054-B90F-0583259F968E}</Project>
+      <Name>mscorlib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\System.Drawing\System.Drawing.csproj">
+      <Project>{8C726962-D7A3-4054-B90F-0583259F968F}</Project>
+      <Name>System.Drawing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\System.Management\System.Management.csproj">
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9690}</Project>
+      <Name>System.Management</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\System.Windows.Forms\System.Windows.Forms.csproj">
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9691}</Project>
+      <Name>System.Windows.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\System\System.csproj">
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9692}</Project>
+      <Name>System</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ToolsCommon\ToolsCommon.csproj">
-      <Project>{37ba0760-0c2c-4d4f-993f-94be80cecf68}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F968A}</Project>
       <Name>ToolsCommon</Name>
     </ProjectReference>
     <ProjectReference Include="..\ufphostm\ufphostm.csproj">
-      <Project>{8fb84f5d-49be-460b-b0d8-89f7f19132df}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F968B}</Project>
       <Name>ufphostm</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="System.Core" />
+  </ItemGroup>
 </Project>

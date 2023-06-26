@@ -3,7 +3,7 @@
 namespace Nokia.Mira.IO
 {
 	// Token: 0x02000010 RID: 16
-	public interface IFileStream : IDisposable
+	internal interface IFileStream : IDisposable
 	{
 		// Token: 0x06000032 RID: 50
 		void Flush();

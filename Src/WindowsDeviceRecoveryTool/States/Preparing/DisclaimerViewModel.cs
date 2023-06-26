@@ -13,11 +13,11 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.Exceptions;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 {
-	// Token: 0x020000A4 RID: 164
+	// Token: 0x0200004F RID: 79
 	[Export]
 	public class DisclaimerViewModel : BaseViewModel, ICanHandle<DeviceConnectionStatusReadMessage>, ICanHandle
 	{
-		// Token: 0x0600048D RID: 1165 RVA: 0x00015FE8 File Offset: 0x000141E8
+		// Token: 0x0600030F RID: 783 RVA: 0x0001122C File Offset: 0x0000F42C
 		[ImportingConstructor]
 		public DisclaimerViewModel(Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext)
 		{
@@ -26,19 +26,19 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			this.SurveyCommand = new DelegateCommand<object>(new Action<object>(this.OpenSurvey));
 		}
 
-		// Token: 0x170000F0 RID: 240
-		// (get) Token: 0x0600048E RID: 1166 RVA: 0x00016038 File Offset: 0x00014238
-		// (set) Token: 0x0600048F RID: 1167 RVA: 0x0001604F File Offset: 0x0001424F
+		// Token: 0x170000C8 RID: 200
+		// (get) Token: 0x06000310 RID: 784 RVA: 0x00011278 File Offset: 0x0000F478
+		// (set) Token: 0x06000311 RID: 785 RVA: 0x00011280 File Offset: 0x0000F480
 		public ICommand SurveyCommand { get; private set; }
 
-		// Token: 0x170000F1 RID: 241
-		// (get) Token: 0x06000490 RID: 1168 RVA: 0x00016058 File Offset: 0x00014258
-		// (set) Token: 0x06000491 RID: 1169 RVA: 0x0001606F File Offset: 0x0001426F
+		// Token: 0x170000C9 RID: 201
+		// (get) Token: 0x06000312 RID: 786 RVA: 0x00011289 File Offset: 0x0000F489
+		// (set) Token: 0x06000313 RID: 787 RVA: 0x00011291 File Offset: 0x0000F491
 		public ICommand NextButtonCommand { get; private set; }
 
-		// Token: 0x170000F2 RID: 242
-		// (get) Token: 0x06000492 RID: 1170 RVA: 0x00016078 File Offset: 0x00014278
-		// (set) Token: 0x06000493 RID: 1171 RVA: 0x00016090 File Offset: 0x00014290
+		// Token: 0x170000CA RID: 202
+		// (get) Token: 0x06000314 RID: 788 RVA: 0x0001129C File Offset: 0x0000F49C
+		// (set) Token: 0x06000315 RID: 789 RVA: 0x000112B4 File Offset: 0x0000F4B4
 		public string PhoneSettingsBackupPath
 		{
 			get
@@ -51,8 +51,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x170000F3 RID: 243
-		// (get) Token: 0x06000494 RID: 1172 RVA: 0x000160E0 File Offset: 0x000142E0
+		// Token: 0x170000CB RID: 203
+		// (get) Token: 0x06000316 RID: 790 RVA: 0x000112F4 File Offset: 0x0000F4F4
 		public override string PreviousStateName
 		{
 			get
@@ -61,55 +61,62 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x06000495 RID: 1173 RVA: 0x000160F8 File Offset: 0x000142F8
+		// Token: 0x06000317 RID: 791 RVA: 0x0001130C File Offset: 0x0000F50C
 		public override void OnStarted()
 		{
 			base.OnStarted();
 			base.EventAggregator.Publish<HeaderMessage>(new HeaderMessage(LocalizationManager.GetTranslation("DisclaimerHeader"), ""));
 			base.EventAggregator.Publish<IsBackButtonMessage>(new IsBackButtonMessage(true));
 			this.PhoneSettingsBackupPath = LocalizationManager.GetTranslation(this.appContext.CurrentPhone.IsWp10Device() ? "PhoneSettingsBackupPathWin10" : "PhoneSettingsBackupPathWin8");
-			if (this.appContext.CurrentPhone != null && this.appContext.CurrentPhone.Type == PhoneTypes.Analog)
+			bool flag = this.appContext.CurrentPhone != null && this.appContext.CurrentPhone.Type == PhoneTypes.Analog;
+			if (flag)
 			{
-				//base.Commands.Run((FlowController c) => c.CheckIfDeviceStillConnected(this.appContext.CurrentPhone, CancellationToken.None));
+				base.Commands.Run((FlowController c) => c.CheckIfDeviceStillConnected(this.appContext.CurrentPhone, CancellationToken.None));
 			}
 		}
 
-		// Token: 0x06000496 RID: 1174 RVA: 0x0001623C File Offset: 0x0001443C
+		// Token: 0x06000318 RID: 792 RVA: 0x00011444 File Offset: 0x0000F644
 		private void NextButtonSelected(object obj)
 		{
-			if (this.appContext.CurrentPhone.IsPhoneDeviceType())
+			bool flag = this.appContext.CurrentPhone.IsPhoneDeviceType();
+			if (flag)
 			{
-				//base.Commands.Run((AppController c) => c.SwitchToState("SurveyState"));
-			}
-			else if (this.appContext.CurrentPhone.PackageFileInfo.OfflinePackage)
-			{
-				//base.Commands.Run((AppController c) => c.SwitchToState("PackageIntegrityCheckState"));
+				base.Commands.Run((AppController c) => c.SwitchToState("SurveyState"));
 			}
 			else
 			{
-				//base.Commands.Run((AppController c) => c.SwitchToState("DownloadPackageState"));
+				bool offlinePackage = this.appContext.CurrentPhone.PackageFileInfo.OfflinePackage;
+				if (offlinePackage)
+				{
+					base.Commands.Run((AppController c) => c.SwitchToState("PackageIntegrityCheckState"));
+				}
+				else
+				{
+					base.Commands.Run((AppController c) => c.SwitchToState("DownloadPackageState"));
+				}
 			}
 		}
 
-		// Token: 0x06000497 RID: 1175 RVA: 0x000163BC File Offset: 0x000145BC
+		// Token: 0x06000319 RID: 793 RVA: 0x000115B4 File Offset: 0x0000F7B4
 		public void Handle(DeviceConnectionStatusReadMessage message)
 		{
-			if (base.IsStarted && !message.Status)
+			bool flag = base.IsStarted && !message.Status;
+			if (flag)
 			{
 				throw new DeviceNotFoundException();
 			}
 		}
 
-		// Token: 0x06000498 RID: 1176 RVA: 0x000163E8 File Offset: 0x000145E8
+		// Token: 0x0600031A RID: 794 RVA: 0x000115E4 File Offset: 0x0000F7E4
 		private void OpenSurvey(object obj)
 		{
-			//base.Commands.Run((AppController c) => c.SwitchToState("SurveyState"));
+			base.Commands.Run((AppController c) => c.SwitchToState("SurveyState"));
 		}
 
-		// Token: 0x040001FB RID: 507
+		// Token: 0x0400015D RID: 349
 		private readonly Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext;
 
-		// Token: 0x040001FC RID: 508
+		// Token: 0x0400015E RID: 350
 		private string phoneSettingsBackupPath;
 	}
 }

@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 using ComponentAce.Compression.Archiver;
-using ComponentAce.Compression.Exception1;
+using ComponentAce.Compression.Exception;
 using ComponentAce.Compression.Tar;
 
 namespace ComponentAce.Compression.GZip
@@ -22,15 +22,7 @@ namespace ComponentAce.Compression.GZip
 		{
 			byte[] array = new byte[GzipHeader.SizeOf()];
 			int num;
-			if (
-				!ReadWriteHelper.ReadFromStream
-				(array, 
-				0, 
-				array.Length, out num, 
-				this._compressedStream, 
-				/*new DoOnStreamOperationFailureDelegate(this.DoOnReadFromStreamFailure)*/
-				null)
-			   )
+			if (!ReadWriteHelper.ReadFromStream(array, 0, array.Length, out num, this._compressedStream, new DoOnStreamOperationFailureDelegate(this.DoOnReadFromStreamFailure)))
 			{
 				throw ExceptionBuilder.Exception(ErrorCode.ReadFromStreamFailed);
 			}
@@ -68,23 +60,16 @@ namespace ComponentAce.Compression.GZip
 		{
 			byte[] array = new byte[2];
 			int num;
-			if (!ReadWriteHelper.ReadFromStream(array, 0, array.Length, out num, 
-				this._compressedStream, 
-				/*new DoOnStreamOperationFailureDelegate(this.DoOnReadFromStreamFailure)*/
-				null
-				))
+			if (!ReadWriteHelper.ReadFromStream(array, 0, array.Length, out num, this._compressedStream, new DoOnStreamOperationFailureDelegate(this.DoOnReadFromStreamFailure)))
 			{
 				throw ExceptionBuilder.Exception(ErrorCode.ReadFromStreamFailed);
 			}
-			MemoryStream input = new MemoryStream(array);
-			BinaryReader binaryReader = new BinaryReader(input);
+			MemoryStream memoryStream = new MemoryStream(array);
+			BinaryReader binaryReader = new BinaryReader(memoryStream);
 			item.ExtraFieldLenToRead = binaryReader.ReadUInt16();
 			byte[] array2 = new byte[(int)item.ExtraFieldLenToRead];
 			item.ExtraFieldData = (byte[])array2.Clone();
-			if (!ReadWriteHelper.ReadFromStream(array2, 0, array2.Length, out num, 
-				this._compressedStream, 
-				/*new DoOnStreamOperationFailureDelegate(this.DoOnReadFromStreamFailure)*/
-				null))
+			if (!ReadWriteHelper.ReadFromStream(array2, 0, array2.Length, out num, this._compressedStream, new DoOnStreamOperationFailureDelegate(this.DoOnReadFromStreamFailure)))
 			{
 				throw ExceptionBuilder.Exception(ErrorCode.ReadFromStreamFailed);
 			}
@@ -95,10 +80,7 @@ namespace ComponentAce.Compression.GZip
 		{
 			byte[] array = new byte[1];
 			int num;
-			while (ReadWriteHelper.ReadFromStream(array, 0, array.Length, out num, 
-				this._compressedStream, 
-				/*new DoOnStreamOperationFailureDelegate(this.DoOnReadFromStreamFailure)*/
-				null))
+			while (ReadWriteHelper.ReadFromStream(array, 0, array.Length, out num, this._compressedStream, new DoOnStreamOperationFailureDelegate(this.DoOnReadFromStreamFailure)))
 			{
 				if (array[0] != 0)
 				{
@@ -119,10 +101,7 @@ namespace ComponentAce.Compression.GZip
 			byte[] array = new byte[1];
 			item.Comment = string.Empty;
 			int num;
-			while (ReadWriteHelper.ReadFromStream(array, 0, array.Length, out num,
-				this._compressedStream, 
-				/*new DoOnStreamOperationFailureDelegate(this.DoOnReadFromStreamFailure)*/
-				null))
+			while (ReadWriteHelper.ReadFromStream(array, 0, array.Length, out num, this._compressedStream, new DoOnStreamOperationFailureDelegate(this.DoOnReadFromStreamFailure)))
 			{
 				if (array[0] != 0)
 				{
@@ -142,20 +121,17 @@ namespace ComponentAce.Compression.GZip
 		{
 			byte[] array = new byte[2];
 			int num;
-			if (!ReadWriteHelper.ReadFromStream(array, 0, array.Length, out num, 
-				this._compressedStream, 
-				/*new DoOnStreamOperationFailureDelegate(this.DoOnReadFromStreamFailure)*/
-				null))
+			if (!ReadWriteHelper.ReadFromStream(array, 0, array.Length, out num, this._compressedStream, new DoOnStreamOperationFailureDelegate(this.DoOnReadFromStreamFailure)))
 			{
 				throw ExceptionBuilder.Exception(ErrorCode.ReadFromStreamFailed);
 			}
-			MemoryStream input = new MemoryStream(array);
-			BinaryReader binaryReader = new BinaryReader(input);
+			MemoryStream memoryStream = new MemoryStream(array);
+			BinaryReader binaryReader = new BinaryReader(memoryStream);
 			item.HeaderCrc = binaryReader.ReadUInt16();
 		}
 
 		// Token: 0x060002F2 RID: 754 RVA: 0x00018FCB File Offset: 0x00017FCB
-		protected void DoOnReadFromStreamFailure(System.Exception innerException, ref bool cancel)
+		protected void DoOnReadFromStreamFailure(Exception innerException, ref bool cancel)
 		{
 			throw innerException;
 		}

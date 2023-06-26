@@ -72,20 +72,20 @@ namespace ComponentAce.Compression
 		// Token: 0x060001E4 RID: 484 RVA: 0x00015180 File Offset: 0x00014180
 		public static string GetFileOwnerAccount(string filePath)
 		{
-			string result;
+			string text;
 			try
 			{
 				ManagementObject managementObject = new ManagementObject("Win32_LogicalFileSecuritySetting.path='" + filePath + "'");
 				ManagementBaseObject managementBaseObject = managementObject.InvokeMethod("GetSecurityDescriptor", null, null);
 				ManagementBaseObject managementBaseObject2 = managementBaseObject.Properties["Descriptor"].Value as ManagementBaseObject;
 				ManagementBaseObject managementBaseObject3 = managementBaseObject2.Properties["Owner"].Value as ManagementBaseObject;
-				result = managementBaseObject3.Properties["Domain"].Value.ToString() + "\\" + managementBaseObject3.Properties["Name"].Value.ToString();
+				text = managementBaseObject3.Properties["Domain"].Value.ToString() + "\\" + managementBaseObject3.Properties["Name"].Value.ToString();
 			}
 			catch (Exception)
 			{
-				result = string.Empty;
+				text = string.Empty;
 			}
-			return result;
+			return text;
 		}
 
 		// Token: 0x060001E5 RID: 485 RVA: 0x00015248 File Offset: 0x00014248

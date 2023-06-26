@@ -8,7 +8,8 @@ namespace Nokia.Lucid.Interop.SafeHandles
 	public sealed class SafeDeviceInfoSetHandle : SafeHandleZeroOrMinusOneIsInvalid
 	{
 		// Token: 0x0600015D RID: 349 RVA: 0x0000B414 File Offset: 0x00009614
-		private SafeDeviceInfoSetHandle() : base(true)
+		private SafeDeviceInfoSetHandle()
+			: base(true)
 		{
 		}
 

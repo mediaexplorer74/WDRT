@@ -22,10 +22,7 @@ namespace FFUComponents
 			if (!NativeMethods.SetupDiGetDeviceProperty(this.deviceSetHandle, this.deviceInfoData, NativeMethods.DEVPKEY_Device_Address, out num2, out num, (uint)Marshal.SizeOf<uint>(num), IntPtr.Zero, 0U))
 			{
 				int lastWin32Error = Marshal.GetLastWin32Error();
-				throw new FFUException(string.Format(CultureInfo.CurrentCulture, Resources.ERROR_SETUP_DI_GET_DEVICE_PROPERTY, new object[]
-				{
-					lastWin32Error
-				}));
+				throw new FFUException(string.Format(CultureInfo.CurrentCulture, Resources.ERROR_SETUP_DI_GET_DEVICE_PROPERTY, new object[] { lastWin32Error }));
 			}
 			return num;
 		}
@@ -33,38 +30,29 @@ namespace FFUComponents
 		// Token: 0x06000031 RID: 49 RVA: 0x000029EC File Offset: 0x00000BEC
 		public string GetParentId()
 		{
-			uint devinst;
-			uint num = NativeMethods.CM_Get_Parent(out devinst, this.deviceInfoData.DevInst, 0U);
+			uint num2;
+			uint num = NativeMethods.CM_Get_Parent(out num2, this.deviceInfoData.DevInst, 0U);
 			if (num != 0U)
 			{
-				throw new FFUException(string.Format(CultureInfo.CurrentCulture, Resources.ERROR_CM_GET_PARENT, new object[]
-				{
-					num
-				}));
+				throw new FFUException(string.Format(CultureInfo.CurrentCulture, Resources.ERROR_CM_GET_PARENT, new object[] { num }));
 			}
-			return DeviceSet.DeviceIdFromCmDevinst(devinst);
+			return DeviceSet.DeviceIdFromCmDevinst(num2);
 		}
 
 		// Token: 0x06000032 RID: 50 RVA: 0x00002A3C File Offset: 0x00000C3C
 		public string GetHubDevicePath()
 		{
-			SP_DEVICE_INTERFACE_DATA deviceInterfaceData = new SP_DEVICE_INTERFACE_DATA();
-			if (!NativeMethods.SetupDiEnumDeviceInterfaces(this.deviceSetHandle, IntPtr.Zero, ref NativeMethods.GUID_DEVINTERFACE_USB_HUB, 0U, deviceInterfaceData))
+			SP_DEVICE_INTERFACE_DATA sp_DEVICE_INTERFACE_DATA = new SP_DEVICE_INTERFACE_DATA();
+			if (!NativeMethods.SetupDiEnumDeviceInterfaces(this.deviceSetHandle, IntPtr.Zero, ref NativeMethods.GUID_DEVINTERFACE_USB_HUB, 0U, sp_DEVICE_INTERFACE_DATA))
 			{
-				int lastWin32Error = Marshal.GetLastWin32Error();
-				throw new FFUException(string.Format(CultureInfo.CurrentCulture, Resources.ERROR_SETUP_DI_ENUM_DEVICE_INTERFACES, new object[]
-				{
-					lastWin32Error
-				}));
+				int num = Marshal.GetLastWin32Error();
+				throw new FFUException(string.Format(CultureInfo.CurrentCulture, Resources.ERROR_SETUP_DI_ENUM_DEVICE_INTERFACES, new object[] { num }));
 			}
 			SP_DEVICE_INTERFACE_DETAIL_DATA sp_DEVICE_INTERFACE_DETAIL_DATA = new SP_DEVICE_INTERFACE_DETAIL_DATA();
-			if (!NativeMethods.SetupDiGetDeviceInterfaceDetailW(this.deviceSetHandle, deviceInterfaceData, sp_DEVICE_INTERFACE_DETAIL_DATA, (uint)Marshal.SizeOf<SP_DEVICE_INTERFACE_DETAIL_DATA>(sp_DEVICE_INTERFACE_DETAIL_DATA), IntPtr.Zero, IntPtr.Zero))
+			if (!NativeMethods.SetupDiGetDeviceInterfaceDetailW(this.deviceSetHandle, sp_DEVICE_INTERFACE_DATA, sp_DEVICE_INTERFACE_DETAIL_DATA, (uint)Marshal.SizeOf<SP_DEVICE_INTERFACE_DETAIL_DATA>(sp_DEVICE_INTERFACE_DETAIL_DATA), IntPtr.Zero, IntPtr.Zero))
 			{
-				int lastWin32Error = Marshal.GetLastWin32Error();
-				throw new FFUException(string.Format(CultureInfo.CurrentCulture, Resources.ERROR_SETUP_DI_GET_DEVICE_INTERFACE_DETAIL_W, new object[]
-				{
-					lastWin32Error
-				}));
+				int num = Marshal.GetLastWin32Error();
+				throw new FFUException(string.Format(CultureInfo.CurrentCulture, Resources.ERROR_SETUP_DI_GET_DEVICE_INTERFACE_DETAIL_W, new object[] { num }));
 			}
 			return sp_DEVICE_INTERFACE_DETAIL_DATA.DevicePath.ToString();
 		}
@@ -76,20 +64,14 @@ namespace FFUComponents
 			uint num = NativeMethods.CM_Get_Device_ID_Size(out num2, devinst, 0U);
 			if (num != 0U)
 			{
-				throw new FFUException(string.Format(CultureInfo.CurrentCulture, Resources.ERROR_CM_GET_DEVICE_ID_SIZE, new object[]
-				{
-					num
-				}));
+				throw new FFUException(string.Format(CultureInfo.CurrentCulture, Resources.ERROR_CM_GET_DEVICE_ID_SIZE, new object[] { num }));
 			}
 			StringBuilder stringBuilder = new StringBuilder();
 			stringBuilder.Capacity = (int)(num2 + 1U);
 			num = NativeMethods.CM_Get_Device_ID(devinst, stringBuilder, (uint)stringBuilder.Capacity, 0U);
 			if (num != 0U)
 			{
-				throw new FFUException(string.Format(CultureInfo.CurrentCulture, Resources.ERROR_CM_GET_DEVICE_ID, new object[]
-				{
-					num
-				}));
+				throw new FFUException(string.Format(CultureInfo.CurrentCulture, Resources.ERROR_CM_GET_DEVICE_ID, new object[] { num }));
 			}
 			return stringBuilder.ToString();
 		}
@@ -105,10 +87,7 @@ namespace FFUComponents
 				return;
 			}
 			int lastWin32Error = Marshal.GetLastWin32Error();
-			throw new FFUException(string.Format(CultureInfo.CurrentCulture, Resources.ERROR_SETUP_DI_ENUM_DEVICE_INFO, new object[]
-			{
-				lastWin32Error
-			}));
+			throw new FFUException(string.Format(CultureInfo.CurrentCulture, Resources.ERROR_SETUP_DI_ENUM_DEVICE_INFO, new object[] { lastWin32Error }));
 		}
 
 		// Token: 0x06000035 RID: 53 RVA: 0x00002BE4 File Offset: 0x00000DE4
@@ -123,11 +102,7 @@ namespace FFUComponents
 			if (this.deviceSetHandle == NativeMethods.INVALID_HANDLE_VALUE)
 			{
 				int lastWin32Error = Marshal.GetLastWin32Error();
-				throw new FFUException(string.Format(CultureInfo.CurrentCulture, Resources.ERROR_INVALID_HANDLE, new object[]
-				{
-					DevinstId,
-					lastWin32Error
-				}));
+				throw new FFUException(string.Format(CultureInfo.CurrentCulture, Resources.ERROR_INVALID_HANDLE, new object[] { DevinstId, lastWin32Error }));
 			}
 			this.GetDeviceInfoData();
 		}

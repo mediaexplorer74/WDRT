@@ -2,12 +2,12 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 {
-	// Token: 0x02000039 RID: 57
+	// Token: 0x020000D9 RID: 217
 	public class MetroQuestionDialog : MetroDialog
 	{
-		// Token: 0x17000060 RID: 96
-		// (get) Token: 0x06000209 RID: 521 RVA: 0x0000DE4C File Offset: 0x0000C04C
-		// (set) Token: 0x0600020A RID: 522 RVA: 0x0000DE64 File Offset: 0x0000C064
+		// Token: 0x17000191 RID: 401
+		// (get) Token: 0x060006D9 RID: 1753 RVA: 0x0001F5F8 File Offset: 0x0001D7F8
+		// (set) Token: 0x060006DA RID: 1754 RVA: 0x0001DF94 File Offset: 0x0001C194
 		public new string NoButtonText
 		{
 			get
@@ -20,9 +20,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x17000061 RID: 97
-		// (get) Token: 0x0600020B RID: 523 RVA: 0x0000DE70 File Offset: 0x0000C070
-		// (set) Token: 0x0600020C RID: 524 RVA: 0x0000DE88 File Offset: 0x0000C088
+		// Token: 0x17000192 RID: 402
+		// (get) Token: 0x060006DB RID: 1755 RVA: 0x0001F610 File Offset: 0x0001D810
+		// (set) Token: 0x060006DC RID: 1756 RVA: 0x0001DFB8 File Offset: 0x0001C1B8
 		public new string YesButtonText
 		{
 			get
@@ -35,9 +35,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x17000062 RID: 98
-		// (get) Token: 0x0600020D RID: 525 RVA: 0x0000DE94 File Offset: 0x0000C094
-		// (set) Token: 0x0600020E RID: 526 RVA: 0x0000DEAC File Offset: 0x0000C0AC
+		// Token: 0x17000193 RID: 403
+		// (get) Token: 0x060006DD RID: 1757 RVA: 0x0001F628 File Offset: 0x0001D828
+		// (set) Token: 0x060006DE RID: 1758 RVA: 0x0001F640 File Offset: 0x0001D840
 		public new bool YesButtonFocused
 		{
 			get

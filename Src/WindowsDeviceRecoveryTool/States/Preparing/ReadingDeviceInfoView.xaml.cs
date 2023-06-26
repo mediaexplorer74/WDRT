@@ -10,15 +10,12 @@ using Microsoft.WindowsDeviceRecoveryTool.Framework;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 {
-	// Token: 0x020000A7 RID: 167
-	[Region(new string[]
-	{
-		"MainArea"
-	})]
+	// Token: 0x02000052 RID: 82
 	[Export]
+	[Region(new string[] { "MainArea" })]
 	public partial class ReadingDeviceInfoView : Grid
 	{
-		// Token: 0x060004AD RID: 1197 RVA: 0x00016FC4 File Offset: 0x000151C4
+		// Token: 0x0600032F RID: 815 RVA: 0x000120FE File Offset: 0x000102FE
 		public ReadingDeviceInfoView()
 		{
 			this.InitializeComponent();

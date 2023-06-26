@@ -3,31 +3,34 @@ using System.Runtime.Serialization;
 
 namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 {
-	// Token: 0x02000056 RID: 86
+	// Token: 0x02000066 RID: 102
 	[Serializable]
 	public class XsdValidatorException : Exception
 	{
-		// Token: 0x06000273 RID: 627 RVA: 0x00004FC8 File Offset: 0x000031C8
+		// Token: 0x06000284 RID: 644 RVA: 0x0000BDD3 File Offset: 0x00009FD3
 		public XsdValidatorException()
 		{
 		}
 
-		// Token: 0x06000274 RID: 628 RVA: 0x00004FD0 File Offset: 0x000031D0
-		public XsdValidatorException(string message) : base(message)
+		// Token: 0x06000285 RID: 645 RVA: 0x0000BDDB File Offset: 0x00009FDB
+		public XsdValidatorException(string message)
+			: base(message)
 		{
 		}
 
-		// Token: 0x06000275 RID: 629 RVA: 0x00004FD9 File Offset: 0x000031D9
-		public XsdValidatorException(string message, Exception innerException) : base(message, innerException)
+		// Token: 0x06000286 RID: 646 RVA: 0x0000BDE4 File Offset: 0x00009FE4
+		public XsdValidatorException(string message, Exception innerException)
+			: base(message, innerException)
 		{
 		}
 
-		// Token: 0x06000276 RID: 630 RVA: 0x00004FF2 File Offset: 0x000031F2
-		protected XsdValidatorException(SerializationInfo info, StreamingContext context) : base(info, context)
+		// Token: 0x06000287 RID: 647 RVA: 0x0000BDEE File Offset: 0x00009FEE
+		protected XsdValidatorException(SerializationInfo info, StreamingContext context)
+			: base(info, context)
 		{
 		}
 
-		// Token: 0x06000277 RID: 631 RVA: 0x0000B9C0 File Offset: 0x00009BC0
+		// Token: 0x06000288 RID: 648 RVA: 0x0000BDF8 File Offset: 0x00009FF8
 		public override string ToString()
 		{
 			string text = this.Message;

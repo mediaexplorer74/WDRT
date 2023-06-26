@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Threading;
@@ -17,7 +18,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AlcatelAdaptation
 	internal class AlcatelSupport : IDeviceSupport
 	{
 		// Token: 0x17000001 RID: 1
-		// (get) Token: 0x06000007 RID: 7 RVA: 0x000023E4 File Offset: 0x000005E4
+		// (get) Token: 0x06000007 RID: 7 RVA: 0x000023A0 File Offset: 0x000005A0
 		public Guid Id
 		{
 			get
@@ -26,7 +27,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AlcatelAdaptation
 			}
 		}
 
-		// Token: 0x06000008 RID: 8 RVA: 0x000023FC File Offset: 0x000005FC
+		// Token: 0x06000008 RID: 8 RVA: 0x000023B7 File Offset: 0x000005B7
 		[ImportingConstructor]
 		public AlcatelSupport(IMtpDeviceInfoProvider mtpDeviceInfoProvider)
 		{
@@ -39,42 +40,55 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AlcatelAdaptation
 			});
 		}
 
-		// Token: 0x06000009 RID: 9 RVA: 0x0000244C File Offset: 0x0000064C
+		// Token: 0x06000009 RID: 9 RVA: 0x000023F8 File Offset: 0x000005F8
 		public DeviceDetectionInformation[] GetDeviceDetectionInformation()
 		{
 			return this.catalog.GetDeviceDetectionInformations();
 		}
 
-		// Token: 0x0600000A RID: 10 RVA: 0x00002724 File Offset: 0x00000924
+		// Token: 0x0600000A RID: 10 RVA: 0x00002418 File Offset: 0x00000618
 		public async Task UpdateDeviceDetectionDataAsync(DeviceDetectionData detectionData, CancellationToken cancellationToken)
 		{
-			if (detectionData.IsDeviceSupported)
+			bool isDeviceSupported = detectionData.IsDeviceSupported;
+			if (isDeviceSupported)
 			{
 				throw new InvalidOperationException("Device is already supported.");
 			}
 			cancellationToken.ThrowIfCancellationRequested();
 			VidPidPair vidPidPair = detectionData.VidPidPair;
 			string devicePath = detectionData.UsbDeviceInterfaceDevicePath;
-			ModelInfo model = this.catalog.Models.FirstOrDefault((ModelInfo m) => m.DetectionInfo.DeviceDetectionInformations.Any((DeviceDetectionInformation di) => di.VidPidPair == vidPidPair));
-			if (model == null)
+			Func<DeviceDetectionInformation, bool> <>9__1;
+			ModelInfo model = this.catalog.Models.FirstOrDefault(delegate(ModelInfo m)
 			{
-				Tracer<AlcatelSupport>.WriteInformation("No Alatel device detected. Path: {0}", new object[]
+				IEnumerable<DeviceDetectionInformation> deviceDetectionInformations = m.DetectionInfo.DeviceDetectionInformations;
+				Func<DeviceDetectionInformation, bool> func;
+				if ((func = <>9__1) == null)
 				{
-					detectionData.UsbDeviceInterfaceDevicePath
-				});
+					func = (<>9__1 = (DeviceDetectionInformation di) => di.VidPidPair == vidPidPair);
+				}
+				return deviceDetectionInformations.Any(func);
+			});
+			bool flag = model == null;
+			if (flag)
+			{
+				Tracer<AlcatelSupport>.WriteInformation("No Alatel device detected. Path: {0}", new object[] { detectionData.UsbDeviceInterfaceDevicePath });
 			}
 			else
 			{
-				MtpInterfaceInfo deviceInfo = await this.mtpDeviceInfoProvider.ReadInformationAsync(devicePath, cancellationToken);
+				MtpInterfaceInfo mtpInterfaceInfo = await this.mtpDeviceInfoProvider.ReadInformationAsync(devicePath, cancellationToken);
+				MtpInterfaceInfo deviceInfo = mtpInterfaceInfo;
+				mtpInterfaceInfo = null;
 				string mtpDeviceDescription = deviceInfo.Description;
 				ModelInfo modelInfo;
 				if (this.catalog.TryGetModelInfo(mtpDeviceDescription, out modelInfo))
 				{
-					string name = modelInfo.Name;
-					byte[] deviceBitmapBytes = modelInfo.Bitmap.ToBytes();
-					detectionData.DeviceBitmapBytes = deviceBitmapBytes;
-					detectionData.DeviceSalesName = name;
+					string deviceFriendlyName = modelInfo.Name;
+					byte[] bitmapBytes = modelInfo.Bitmap.ToBytes();
+					detectionData.DeviceBitmapBytes = bitmapBytes;
+					detectionData.DeviceSalesName = deviceFriendlyName;
 					detectionData.IsDeviceSupported = true;
+					deviceFriendlyName = null;
+					bitmapBytes = null;
 				}
 			}
 		}

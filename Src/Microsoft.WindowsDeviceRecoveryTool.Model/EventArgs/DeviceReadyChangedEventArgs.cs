@@ -1,13 +1,12 @@
 ﻿using System;
 using Microsoft.WindowsDeviceRecoveryTool.Model.Enums;
-using Microsoft.WindowsDeviceRecoveryTool.Common; //?
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model.EventArgs
 {
-	// Token: 0x0200002F RID: 47
-	public class DeviceReadyChangedEventArgs : System.EventArgs
+	// Token: 0x0200001E RID: 30
+	public class DeviceReadyChangedEventArgs : EventArgs
 	{
-		// Token: 0x06000144 RID: 324 RVA: 0x00004820 File Offset: 0x00002A20
+		// Token: 0x060001BB RID: 443 RVA: 0x0000615C File Offset: 0x0000435C
 		public DeviceReadyChangedEventArgs(ConnectedDevice device, bool deviceReady, ConnectedDeviceMode mode)
 		{
 			this.ConnectedDevice = device;
@@ -15,19 +14,19 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model.EventArgs
 			this.Mode = mode;
 		}
 
-		// Token: 0x1700007F RID: 127
-		// (get) Token: 0x06000145 RID: 325 RVA: 0x00004844 File Offset: 0x00002A44
-		// (set) Token: 0x06000146 RID: 326 RVA: 0x0000485B File Offset: 0x00002A5B
+		// Token: 0x170000BC RID: 188
+		// (get) Token: 0x060001BC RID: 444 RVA: 0x0000617E File Offset: 0x0000437E
+		// (set) Token: 0x060001BD RID: 445 RVA: 0x00006186 File Offset: 0x00004386
 		public ConnectedDevice ConnectedDevice { get; private set; }
 
-		// Token: 0x17000080 RID: 128
-		// (get) Token: 0x06000147 RID: 327 RVA: 0x00004864 File Offset: 0x00002A64
-		// (set) Token: 0x06000148 RID: 328 RVA: 0x0000487B File Offset: 0x00002A7B
+		// Token: 0x170000BD RID: 189
+		// (get) Token: 0x060001BE RID: 446 RVA: 0x0000618F File Offset: 0x0000438F
+		// (set) Token: 0x060001BF RID: 447 RVA: 0x00006197 File Offset: 0x00004397
 		public bool DeviceReady { get; private set; }
 
-		// Token: 0x17000081 RID: 129
-		// (get) Token: 0x06000149 RID: 329 RVA: 0x00004884 File Offset: 0x00002A84
-		// (set) Token: 0x0600014A RID: 330 RVA: 0x0000489B File Offset: 0x00002A9B
+		// Token: 0x170000BE RID: 190
+		// (get) Token: 0x060001C0 RID: 448 RVA: 0x000061A0 File Offset: 0x000043A0
+		// (set) Token: 0x060001C1 RID: 449 RVA: 0x000061A8 File Offset: 0x000043A8
 		public ConnectedDeviceMode Mode { get; private set; }
 	}
 }

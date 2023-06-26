@@ -7,48 +7,57 @@ using Microsoft.WindowsDeviceRecoveryTool.Styles.Assets;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Properties
 {
-	// Token: 0x02000071 RID: 113
+	// Token: 0x0200007B RID: 123
 	[CompilerGenerated]
-	[GeneratedCode("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "11.0.0.0")]
+	[GeneratedCode("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.4.0.0")]
 	public sealed partial class Settings : ApplicationSettingsBase
 	{
-		// Token: 0x0600035E RID: 862 RVA: 0x0001089E File Offset: 0x0000EA9E
+		// Token: 0x0600043F RID: 1087 RVA: 0x0001619A File Offset: 0x0001439A
 		public Settings()
 		{
 			base.SettingChanging += this.SettingChangingEventHandler;
 		}
 
-		// Token: 0x0600035F RID: 863 RVA: 0x000108BC File Offset: 0x0000EABC
+		// Token: 0x06000440 RID: 1088 RVA: 0x000161B8 File Offset: 0x000143B8
 		private void SettingChangingEventHandler(object sender, SettingChangingEventArgs e)
 		{
-			if (e.SettingName.Equals("Style"))
+			bool flag = e.SettingName.Equals("Style");
+			if (flag)
 			{
 				StyleLogic.CurrentStyle = StyleLogic.GetStyle((string)e.NewValue);
 			}
 		}
 
-		// Token: 0x06000360 RID: 864 RVA: 0x000108FC File Offset: 0x0000EAFC
+		// Token: 0x06000441 RID: 1089 RVA: 0x000161F4 File Offset: 0x000143F4
 		public static string GetThemeFileName(string name)
 		{
-			if (name != null)
+			string text;
+			if (!(name == "ThemeDark"))
 			{
-				if (name == "ThemeDark")
+				if (!(name == "ThemeLight"))
 				{
-					return "DarkTheme.xaml";
+					if (!(name == "ThemeHighContrast"))
+					{
+						text = "LightTheme.xaml";
+					}
+					else
+					{
+						text = "HighContrastTheme.xaml";
+					}
 				}
-				if (name == "ThemeLight")
+				else
 				{
-					return "LightTheme.xaml";
-				}
-				if (name == "ThemeHighContrast")
-				{
-					return "HighContrastTheme.xaml";
+					text = "LightTheme.xaml";
 				}
 			}
-			return "LightTheme.xaml";
+			else
+			{
+				text = "DarkTheme.xaml";
+			}
+			return text;
 		}
 
-		// Token: 0x06000361 RID: 865 RVA: 0x0001095C File Offset: 0x0000EB5C
+		// Token: 0x06000442 RID: 1090 RVA: 0x00016250 File Offset: 0x00014450
 		public static string GetSelectedThemeFileName()
 		{
 			return Settings.GetThemeFileName(Settings.Default.Theme);

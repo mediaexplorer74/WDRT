@@ -7,23 +7,23 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Core.Cache
 	// Token: 0x02000009 RID: 9
 	public static class DeviceInformationProviderExtensions
 	{
-		// Token: 0x06000017 RID: 23 RVA: 0x0000240C File Offset: 0x0000060C
+		// Token: 0x0600002A RID: 42 RVA: 0x0000238C File Offset: 0x0000058C
 		public static async Task<T> ReadInformationAsync<T>(this IDeviceInformationProvider<T> deviceInformationReader, string parentDevicePath, IDeviceInformationCacheManager cacheManager, CancellationToken cancellationToken)
 		{
-			IDevicePathBasedCacheObject cacheObject = cacheManager.GetCacheObjectForDevicePath(parentDevicePath);
-			Task<T> salesNameTask;
-			T result;
-			if (cacheObject.TryGetReadInformationTaskForReader<T>(deviceInformationReader.GetType(), out salesNameTask))
+			IDevicePathBasedCacheObject cacheObjectForDevicePath = cacheManager.GetCacheObjectForDevicePath(parentDevicePath);
+			Task<T> task;
+			T t;
+			if (cacheObjectForDevicePath.TryGetReadInformationTaskForReader<T>(deviceInformationReader.GetType(), out task))
 			{
-				result = await salesNameTask;
+				t = await task;
 			}
 			else
 			{
-				salesNameTask = deviceInformationReader.ReadInformationAsync(parentDevicePath, cancellationToken);
-				cacheObject.AddReadInformationTaskForReader<T>(deviceInformationReader.GetType(), salesNameTask);
-				result = await salesNameTask;
+				task = deviceInformationReader.ReadInformationAsync(parentDevicePath, cancellationToken);
+				cacheObjectForDevicePath.AddReadInformationTaskForReader<T>(deviceInformationReader.GetType(), task);
+				t = await task;
 			}
-			return result;
+			return t;
 		}
 	}
 }

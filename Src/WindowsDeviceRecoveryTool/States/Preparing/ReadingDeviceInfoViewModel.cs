@@ -15,20 +15,20 @@ using Microsoft.WindowsDeviceRecoveryTool.States.BaseStates;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 {
-	// Token: 0x020000A6 RID: 166
+	// Token: 0x02000051 RID: 81
 	[Export]
-	public class ReadingDeviceInfoViewModel : BaseViewModel, ICanHandle<DeviceInfoReadMessage>, ICanHandle<DetectionTypeMessage>, ICanHandle<SelectedDeviceMessage>, ICanHandle<DeviceConnectionStatusReadMessage>, ICanHandle<DeviceDisconnectedMessage>, ICanHandle
+	public class ReadingDeviceInfoViewModel : BaseViewModel, ICanHandle<DeviceInfoReadMessage>, ICanHandle, ICanHandle<DetectionTypeMessage>, ICanHandle<SelectedDeviceMessage>, ICanHandle<DeviceConnectionStatusReadMessage>, ICanHandle<DeviceDisconnectedMessage>
 	{
-		// Token: 0x0600049C RID: 1180 RVA: 0x000164B3 File Offset: 0x000146B3
+		// Token: 0x0600031E RID: 798 RVA: 0x000116A8 File Offset: 0x0000F8A8
 		[ImportingConstructor]
 		public ReadingDeviceInfoViewModel(Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext)
 		{
 			this.AppContext = appContext;
 		}
 
-		// Token: 0x170000F4 RID: 244
-		// (get) Token: 0x0600049D RID: 1181 RVA: 0x000164C8 File Offset: 0x000146C8
-		// (set) Token: 0x0600049E RID: 1182 RVA: 0x000164E0 File Offset: 0x000146E0
+		// Token: 0x170000CC RID: 204
+		// (get) Token: 0x0600031F RID: 799 RVA: 0x000116BC File Offset: 0x0000F8BC
+		// (set) Token: 0x06000320 RID: 800 RVA: 0x000116D4 File Offset: 0x0000F8D4
 		public Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext AppContext
 		{
 			get
@@ -41,29 +41,30 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x170000F5 RID: 245
-		// (get) Token: 0x0600049F RID: 1183 RVA: 0x00016530 File Offset: 0x00014730
+		// Token: 0x170000CD RID: 205
+		// (get) Token: 0x06000321 RID: 801 RVA: 0x00011714 File Offset: 0x0000F914
 		public override string PreviousStateName
 		{
 			get
 			{
-				string result;
-				if (this.conditions.IsHtcConnected())
+				bool flag = this.conditions.IsHtcConnected();
+				string text;
+				if (flag)
 				{
 					base.EventAggregator.Publish<FlashResultMessage>(new FlashResultMessage(false));
-					result = "RebootHtcState";
+					text = "RebootHtcState";
 				}
 				else
 				{
-					result = "AutomaticManufacturerSelectionState";
+					text = "AutomaticManufacturerSelectionState";
 				}
-				return result;
+				return text;
 			}
 		}
 
-		// Token: 0x170000F6 RID: 246
-		// (get) Token: 0x060004A0 RID: 1184 RVA: 0x00016574 File Offset: 0x00014774
-		// (set) Token: 0x060004A1 RID: 1185 RVA: 0x0001658C File Offset: 0x0001478C
+		// Token: 0x170000CE RID: 206
+		// (get) Token: 0x06000322 RID: 802 RVA: 0x00011758 File Offset: 0x0000F958
+		// (set) Token: 0x06000323 RID: 803 RVA: 0x00011770 File Offset: 0x0000F970
 		public Phone SelectedPhone
 		{
 			get
@@ -76,184 +77,172 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x170000F7 RID: 247
-		// (get) Token: 0x060004A2 RID: 1186 RVA: 0x000165DC File Offset: 0x000147DC
-		// (set) Token: 0x060004A3 RID: 1187 RVA: 0x000165F3 File Offset: 0x000147F3
+		// Token: 0x170000CF RID: 207
+		// (get) Token: 0x06000324 RID: 804 RVA: 0x000117B0 File Offset: 0x0000F9B0
+		// (set) Token: 0x06000325 RID: 805 RVA: 0x000117B8 File Offset: 0x0000F9B8
 		private DetectionType DetectionType { get; set; }
 
-		// Token: 0x060004A4 RID: 1188 RVA: 0x00016604 File Offset: 0x00014804
+		// Token: 0x06000326 RID: 806 RVA: 0x000117C4 File Offset: 0x0000F9C4
 		public override void OnStarted()
 		{
 			base.EventAggregator.Publish<HeaderMessage>(new HeaderMessage(LocalizationManager.GetTranslation("ReadingDeviceInfo"), ""));
 			base.EventAggregator.Publish<IsBackButtonMessage>(new IsBackButtonMessage(true));
 			base.EventAggregator.Publish<BlockWindowMessage>(new BlockWindowMessage(false, null, null));
-			if ((this.DetectionType != DetectionType.RecoveryMode || (this.AppContext.SelectedManufacturer != PhoneTypes.Htc && this.AppContext.SelectedManufacturer != PhoneTypes.Lg && this.AppContext.SelectedManufacturer != PhoneTypes.Mcj && this.AppContext.SelectedManufacturer != PhoneTypes.Alcatel && this.AppContext.SelectedManufacturer != PhoneTypes.Generic && this.AppContext.SelectedManufacturer != PhoneTypes.Analog && this.AppContext.SelectedManufacturer != PhoneTypes.HoloLensAccessory)) && this.SelectedPhone == null)
+			bool flag = (this.DetectionType != DetectionType.RecoveryMode || (this.AppContext.SelectedManufacturer != PhoneTypes.Htc && this.AppContext.SelectedManufacturer != PhoneTypes.Lg && this.AppContext.SelectedManufacturer != PhoneTypes.Mcj && this.AppContext.SelectedManufacturer != PhoneTypes.Alcatel && this.AppContext.SelectedManufacturer != PhoneTypes.Generic && this.AppContext.SelectedManufacturer != PhoneTypes.Analog && this.AppContext.SelectedManufacturer != PhoneTypes.HoloLensAccessory)) && this.SelectedPhone == null;
+			if (flag)
 			{
 				throw new Exception("No phone from DeviceSelection state.");
 			}
 			PhoneTypes selectedManufacturer = this.AppContext.SelectedManufacturer;
-			switch (selectedManufacturer)
+			PhoneTypes phoneTypes = selectedManufacturer;
+			if (phoneTypes != PhoneTypes.Lumia)
 			{
-			case PhoneTypes.Lumia:
-					//RnD
-				//base.Commands.Run((LumiaController c) => c.SetSelectedPhone(this.SelectedPhone, CancellationToken.None));
-				//base.Commands.Run((LumiaController c) => c.StartCurrentLumiaDetection(this.DetectionType, CancellationToken.None));
-				goto IL_346;
-			case PhoneTypes.Htc:
-			case PhoneTypes.Analog:
-			case PhoneTypes.Lg:
-			case PhoneTypes.Mcj:
-			case PhoneTypes.Blu:
-			case PhoneTypes.Alcatel:
-			case PhoneTypes.HoloLensAccessory:
-				break;
-			default:
-				if (selectedManufacturer != PhoneTypes.Generic)
+				if (phoneTypes - PhoneTypes.Htc > 6 && phoneTypes != PhoneTypes.Generic)
 				{
 					throw new NotImplementedException();
 				}
-				break;
+				this.readingDeviceInfoTimer = new System.Timers.Timer(60000.0);
+				this.readingDeviceInfoTimer.Elapsed += this.ReadingDeviceInfoTimerElapsed;
+				this.readingDeviceInfoTimer.Start();
+				base.Commands.Run((FlowController c) => c.ReadDeviceInfo(this.AppContext.CurrentPhone, CancellationToken.None));
 			}
-			this.readingDeviceInfoTimer = new System.Timers.Timer(60000.0);
-			this.readingDeviceInfoTimer.Elapsed += this.ReadingDeviceInfoTimerElapsed;
-			this.readingDeviceInfoTimer.Start();
-			//RnD
-			//base.Commands.Run((FlowController c) => c.ReadDeviceInfo(this.AppContext.CurrentPhone, CancellationToken.None));
-			IL_346:
+			else
+			{
+				base.Commands.Run((LumiaController c) => c.SetSelectedPhone(this.SelectedPhone, CancellationToken.None));
+				base.Commands.Run((LumiaController c) => c.StartCurrentLumiaDetection(this.DetectionType, CancellationToken.None));
+			}
 			DetectionParameters detectionParams = new DetectionParameters(PhoneTypes.All, PhoneModes.Normal);
-			//RnD
-			//base.Commands.Run((FlowController c) => c.StartDeviceDetection(detectionParams));
+			base.Commands.Run((FlowController c) => c.StartDeviceDetection(detectionParams));
 		}
 
-		// Token: 0x060004A5 RID: 1189 RVA: 0x000169D4 File Offset: 0x00014BD4
+		// Token: 0x06000327 RID: 807 RVA: 0x00011B58 File Offset: 0x0000FD58
 		public override void OnStopped()
 		{
 			PhoneTypes selectedManufacturer = this.AppContext.SelectedManufacturer;
-			switch (selectedManufacturer)
+			PhoneTypes phoneTypes = selectedManufacturer;
+			if (phoneTypes != PhoneTypes.Lumia)
 			{
-			case PhoneTypes.Lumia:
-				//RnD
-				//base.Commands.Run((LumiaController c) => c.StopCurrentLumiaDetection());
-				goto IL_E7;
-			case PhoneTypes.Htc:
-			case PhoneTypes.Analog:
-			case PhoneTypes.Lg:
-			case PhoneTypes.Mcj:
-			case PhoneTypes.Blu:
-			case PhoneTypes.Alcatel:
-			case PhoneTypes.HoloLensAccessory:
-				break;
-			default:
-				if (selectedManufacturer != PhoneTypes.Generic)
+				if (phoneTypes - PhoneTypes.Htc <= 6 || phoneTypes == PhoneTypes.Generic)
 				{
-					goto IL_E7;
+					this.readingDeviceInfoTimer.Stop();
+					base.Commands.Run((FlowController c) => c.CancelReadDeviceInfo());
 				}
-				break;
 			}
-			this.readingDeviceInfoTimer.Stop();
-			
-			//base.Commands.Run((FlowController c) => c.CancelReadDeviceInfo());
-			IL_E7:
-			//base.Commands.Run((FlowController c) => c.StopDeviceDetection());
-			return;
+			else
+			{
+				base.Commands.Run((LumiaController c) => c.StopCurrentLumiaDetection());
+			}
+			base.Commands.Run((FlowController c) => c.StopDeviceDetection());
 		}
 
-		// Token: 0x060004A6 RID: 1190 RVA: 0x00016B18 File Offset: 0x00014D18
+		// Token: 0x06000328 RID: 808 RVA: 0x00011C7C File Offset: 0x0000FE7C
 		public void Handle(DeviceInfoReadMessage message)
 		{
-			if (base.IsStarted)
+			bool isStarted = base.IsStarted;
+			if (isStarted)
 			{
-				if (this.AppContext.SelectedManufacturer == PhoneTypes.Generic && !this.AppContext.CurrentPhone.PlatformId.ToString().StartsWith("MCJ.QC8916.M54TJP", StringComparison.InvariantCultureIgnoreCase) && !this.AppContext.CurrentPhone.PlatformId.ToString().StartsWith("BLU.QC8612.MTP", StringComparison.InvariantCultureIgnoreCase) && !this.AppContext.CurrentPhone.PlatformId.ToString().StartsWith("BLU.QC8916.QL850", StringComparison.InvariantCultureIgnoreCase))
+				bool flag = this.AppContext.SelectedManufacturer == PhoneTypes.Generic && !this.AppContext.CurrentPhone.PlatformId.ToString().StartsWith("MCJ.QC8916.M54TJP", StringComparison.InvariantCultureIgnoreCase) && !this.AppContext.CurrentPhone.PlatformId.ToString().StartsWith("BLU.QC8612.MTP", StringComparison.InvariantCultureIgnoreCase) && !this.AppContext.CurrentPhone.PlatformId.ToString().StartsWith("BLU.QC8916.QL850", StringComparison.InvariantCultureIgnoreCase);
+				if (flag)
 				{
-					Tracer<ReadingDeviceInfoViewModel>.WriteError("Uknown PlatformID: {0}", new object[]
-					{
-						this.AppContext.CurrentPhone.PlatformId
-					});
-					//base.Commands.Run((AppController c) => c.SwitchToState("UnsupportedDeviceState"));
+					Tracer<ReadingDeviceInfoViewModel>.WriteError("Uknown PlatformID: {0}", new object[] { this.AppContext.CurrentPhone.PlatformId });
+					base.Commands.Run((AppController c) => c.SwitchToState("UnsupportedDeviceState"));
 				}
-				else if ((this.AppContext.SelectedManufacturer == PhoneTypes.Analog || this.AppContext.SelectedManufacturer == PhoneTypes.Htc || this.AppContext.SelectedManufacturer == PhoneTypes.Lg || this.AppContext.SelectedManufacturer == PhoneTypes.Mcj || this.AppContext.SelectedManufacturer == PhoneTypes.Blu || this.AppContext.SelectedManufacturer == PhoneTypes.Alcatel || this.AppContext.SelectedManufacturer == PhoneTypes.HoloLensAccessory) && message.Result)
+				else
 				{
-					//base.Commands.Run((AppController c) => c.SwitchToState("CheckLatestPackageState"));
+					bool flag2 = (this.AppContext.SelectedManufacturer == PhoneTypes.Analog || this.AppContext.SelectedManufacturer == PhoneTypes.Htc || this.AppContext.SelectedManufacturer == PhoneTypes.Lg || this.AppContext.SelectedManufacturer == PhoneTypes.Mcj || this.AppContext.SelectedManufacturer == PhoneTypes.Blu || this.AppContext.SelectedManufacturer == PhoneTypes.Alcatel || this.AppContext.SelectedManufacturer == PhoneTypes.HoloLensAccessory) && message.Result;
+					if (flag2)
+					{
+						base.Commands.Run((AppController c) => c.SwitchToState("CheckLatestPackageState"));
+					}
 				}
 			}
 		}
 
-		// Token: 0x060004A7 RID: 1191 RVA: 0x00016D2C File Offset: 0x00014F2C
+		// Token: 0x06000329 RID: 809 RVA: 0x00011E7C File Offset: 0x0001007C
 		private void ReadingDeviceInfoTimerElapsed(object sender, ElapsedEventArgs e)
 		{
-			if (this.AppContext.CurrentPhone.Type == PhoneTypes.Htc)
+			bool flag = this.AppContext.CurrentPhone.Type == PhoneTypes.Htc;
+			if (flag)
 			{
-				//base.Commands.Run((AppController c) => c.SwitchToState("ManualHtcRestartState"));
+				base.Commands.Run((AppController c) => c.SwitchToState("ManualHtcRestartState"));
 			}
-			else if (this.AppContext.CurrentPhone.Type == PhoneTypes.Analog)
+			else
 			{
-				//base.EventAggregator.Publish<ErrorMessage>(new ErrorMessage(new ReadPhoneInformationException("Please check if device was connected in NORMAL mode")));
-				//base.Commands.Run((AppController c) => c.SwitchToState("ErrorState"));
+				bool flag2 = this.AppContext.CurrentPhone.Type == PhoneTypes.Analog;
+				if (flag2)
+				{
+					base.EventAggregator.Publish<ErrorMessage>(new ErrorMessage(new ReadPhoneInformationException("Please check if device was connected in NORMAL mode")));
+					base.Commands.Run((AppController c) => c.SwitchToState("ErrorState"));
+				}
 			}
 		}
 
-		// Token: 0x060004A8 RID: 1192 RVA: 0x00016E61 File Offset: 0x00015061
+		// Token: 0x0600032A RID: 810 RVA: 0x00011FA0 File Offset: 0x000101A0
 		public void Handle(DetectionTypeMessage message)
 		{
 			this.DetectionType = message.DetectionType;
 		}
 
-		// Token: 0x060004A9 RID: 1193 RVA: 0x00016E71 File Offset: 0x00015071
+		// Token: 0x0600032B RID: 811 RVA: 0x00011FB0 File Offset: 0x000101B0
 		public void Handle(SelectedDeviceMessage message)
 		{
 			this.SelectedPhone = message.SelectedPhone;
 		}
 
-		// Token: 0x060004AA RID: 1194 RVA: 0x00016E84 File Offset: 0x00015084
+		// Token: 0x0600032C RID: 812 RVA: 0x00011FC0 File Offset: 0x000101C0
 		private bool NeedToCheckIfDeviceWasDisconnected()
 		{
 			return this.appContext != null && this.appContext.CurrentPhone != null && this.appContext.CurrentPhone.Type == PhoneTypes.HoloLensAccessory;
 		}
 
-		// Token: 0x060004AB RID: 1195 RVA: 0x00016EC4 File Offset: 0x000150C4
+		// Token: 0x0600032D RID: 813 RVA: 0x00012000 File Offset: 0x00010200
 		public void Handle(DeviceDisconnectedMessage message)
 		{
-			if (base.IsStarted)
+			bool flag = !base.IsStarted;
+			if (!flag)
 			{
-				if (this.NeedToCheckIfDeviceWasDisconnected())
+				bool flag2 = this.NeedToCheckIfDeviceWasDisconnected();
+				if (flag2)
 				{
-					//base.Commands.Run((FlowController fc) => fc.CheckIfDeviceStillConnected(this.appContext.CurrentPhone, CancellationToken.None));
+					base.Commands.Run((FlowController fc) => fc.CheckIfDeviceStillConnected(this.appContext.CurrentPhone, CancellationToken.None));
 				}
 			}
 		}
 
-		// Token: 0x060004AC RID: 1196 RVA: 0x00016F98 File Offset: 0x00015198
+		// Token: 0x0600032E RID: 814 RVA: 0x000120CC File Offset: 0x000102CC
 		public void Handle(DeviceConnectionStatusReadMessage message)
 		{
-			if (base.IsStarted)
+			bool flag = !base.IsStarted;
+			if (!flag)
 			{
-				if (!message.Status)
+				bool flag2 = !message.Status;
+				if (flag2)
 				{
 					throw new DeviceDisconnectedException();
 				}
 			}
 		}
 
-		// Token: 0x04000200 RID: 512
+		// Token: 0x04000162 RID: 354
 		private const string McjPlatformId = "MCJ.QC8916.M54TJP";
 
-		// Token: 0x04000201 RID: 513
+		// Token: 0x04000163 RID: 355
 		private const string BluW510UPlatformId = "BLU.QC8612.MTP";
 
-		// Token: 0x04000202 RID: 514
+		// Token: 0x04000164 RID: 356
 		private const string BluLtePlatformId = "BLU.QC8916.QL850";
 
-		// Token: 0x04000203 RID: 515
+		// Token: 0x04000165 RID: 357
 		private System.Timers.Timer readingDeviceInfoTimer;
 
-		// Token: 0x04000204 RID: 516
+		// Token: 0x04000166 RID: 358
 		[Import]
 		private Conditions conditions;
 
-		// Token: 0x04000205 RID: 517
+		// Token: 0x04000167 RID: 359
 		private Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext;
 
-		// Token: 0x04000206 RID: 518
+		// Token: 0x04000168 RID: 360
 		private Phone selectedPhone;
 	}
 }

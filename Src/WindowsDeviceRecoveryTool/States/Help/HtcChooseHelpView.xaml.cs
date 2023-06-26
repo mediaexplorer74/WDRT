@@ -10,15 +10,12 @@ using Microsoft.WindowsDeviceRecoveryTool.Framework;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Help
 {
-	// Token: 0x0200007C RID: 124
-	[Region(new string[]
-	{
-		"HelpMainArea"
-	})]
+	// Token: 0x02000061 RID: 97
 	[Export]
+	[Region(new string[] { "HelpMainArea" })]
 	public partial class HtcChooseHelpView : UserControl
 	{
-		// Token: 0x06000393 RID: 915 RVA: 0x00011403 File Offset: 0x0000F603
+		// Token: 0x060003A3 RID: 931 RVA: 0x000143C3 File Offset: 0x000125C3
 		public HtcChooseHelpView()
 		{
 			this.InitializeComponent();

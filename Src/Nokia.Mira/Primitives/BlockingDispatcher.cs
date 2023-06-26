@@ -42,16 +42,16 @@ namespace Nokia.Mira.Primitives
 		{
 			for (;;)
 			{
-				T obj;
+				T t;
 				try
 				{
-					obj = this.blockingCollection.Take();
+					t = this.blockingCollection.Take();
 				}
 				catch (InvalidOperationException)
 				{
 					break;
 				}
-				this.onDispatch(obj);
+				this.onDispatch(t);
 			}
 		}
 

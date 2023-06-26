@@ -2,30 +2,30 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model.Enums
 {
-	// Token: 0x0200001F RID: 31
+	// Token: 0x02000041 RID: 65
 	public enum ConnectedDeviceMode
 	{
-		// Token: 0x0400009F RID: 159
+		// Token: 0x040000F8 RID: 248
 		Normal,
-		// Token: 0x040000A0 RID: 160
+		// Token: 0x040000F9 RID: 249
 		Label,
-		// Token: 0x040000A1 RID: 161
+		// Token: 0x040000FA RID: 250
 		Uefi,
-		// Token: 0x040000A2 RID: 162
+		// Token: 0x040000FB RID: 251
 		QcomSerialComposite,
-		// Token: 0x040000A3 RID: 163
+		// Token: 0x040000FC RID: 252
 		QcomRmnetComposite,
-		// Token: 0x040000A4 RID: 164
+		// Token: 0x040000FD RID: 253
 		MassStorage,
-		// Token: 0x040000A5 RID: 165
+		// Token: 0x040000FE RID: 254
 		QcomDload,
-		// Token: 0x040000A6 RID: 166
+		// Token: 0x040000FF RID: 255
 		KernelModeDebugging,
-		// Token: 0x040000A7 RID: 167
+		// Token: 0x04000100 RID: 256
 		MsFlashing,
-		// Token: 0x040000A8 RID: 168
+		// Token: 0x04000101 RID: 257
 		Test,
-		// Token: 0x040000A9 RID: 169
+		// Token: 0x04000102 RID: 258
 		Unknown
 	}
 }

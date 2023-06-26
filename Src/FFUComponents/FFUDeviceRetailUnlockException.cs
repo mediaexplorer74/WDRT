@@ -18,28 +18,33 @@ namespace FFUComponents
 		}
 
 		// Token: 0x06000065 RID: 101 RVA: 0x00003165 File Offset: 0x00001365
-		public FFUDeviceRetailUnlockException(string message) : base(message)
+		public FFUDeviceRetailUnlockException(string message)
+			: base(message)
 		{
 		}
 
 		// Token: 0x06000066 RID: 102 RVA: 0x0000316E File Offset: 0x0000136E
-		public FFUDeviceRetailUnlockException(string message, Exception innerException) : base(message, innerException)
+		public FFUDeviceRetailUnlockException(string message, Exception innerException)
+			: base(message, innerException)
 		{
 		}
 
 		// Token: 0x06000067 RID: 103 RVA: 0x00003178 File Offset: 0x00001378
-		public FFUDeviceRetailUnlockException(IFFUDevice device, string message, Exception e) : base(device, message, e)
+		public FFUDeviceRetailUnlockException(IFFUDevice device, string message, Exception e)
+			: base(device, message, e)
 		{
 		}
 
 		// Token: 0x06000068 RID: 104 RVA: 0x00003183 File Offset: 0x00001383
-		public FFUDeviceRetailUnlockException(IFFUDevice device, int efiStatus) : base(device)
+		public FFUDeviceRetailUnlockException(IFFUDevice device, int efiStatus)
+			: base(device)
 		{
 			this.EfiStatus = efiStatus;
 		}
 
 		// Token: 0x06000069 RID: 105 RVA: 0x00003193 File Offset: 0x00001393
-		protected FFUDeviceRetailUnlockException(SerializationInfo info, StreamingContext context) : base(info, context)
+		protected FFUDeviceRetailUnlockException(SerializationInfo info, StreamingContext context)
+			: base(info, context)
 		{
 		}
 	}

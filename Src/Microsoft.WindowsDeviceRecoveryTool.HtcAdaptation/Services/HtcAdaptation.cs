@@ -27,12 +27,12 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.Exceptions.HTC;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 {
-	// Token: 0x02000008 RID: 8
-	[PartCreationPolicy(CreationPolicy.Shared)]
+	// Token: 0x02000006 RID: 6
 	[ExportAdaptation(Type = PhoneTypes.Htc)]
+	[PartCreationPolicy(CreationPolicy.Shared)]
 	public class HtcAdaptation : BaseAdaptation
 	{
-		// Token: 0x0600001F RID: 31 RVA: 0x0000278C File Offset: 0x0000098C
+		// Token: 0x06000013 RID: 19 RVA: 0x00002378 File Offset: 0x00000578
 		[ImportingConstructor]
 		internal HtcAdaptation(MsrService msrService, ReportingService reportingService, HtcModelsCatalog htcModelsCatalog)
 		{
@@ -43,8 +43,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 			this.msrService.ProgressChanged += this.MsrDownloadProgressEvent;
 		}
 
-		// Token: 0x1700000D RID: 13
-		// (get) Token: 0x06000020 RID: 32 RVA: 0x000027DC File Offset: 0x000009DC
+		// Token: 0x17000006 RID: 6
+		// (get) Token: 0x06000014 RID: 20 RVA: 0x000023C8 File Offset: 0x000005C8
 		public override PhoneTypes PhoneType
 		{
 			get
@@ -53,8 +53,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 			}
 		}
 
-		// Token: 0x1700000E RID: 14
-		// (get) Token: 0x06000021 RID: 33 RVA: 0x000027F0 File Offset: 0x000009F0
+		// Token: 0x17000007 RID: 7
+		// (get) Token: 0x06000015 RID: 21 RVA: 0x000023DC File Offset: 0x000005DC
 		public override string PackageExtension
 		{
 			get
@@ -63,8 +63,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 			}
 		}
 
-		// Token: 0x1700000F RID: 15
-		// (get) Token: 0x06000022 RID: 34 RVA: 0x00002808 File Offset: 0x00000A08
+		// Token: 0x17000008 RID: 8
+		// (get) Token: 0x06000016 RID: 22 RVA: 0x000023F4 File Offset: 0x000005F4
 		public override bool RecoverySupport
 		{
 			get
@@ -73,8 +73,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 			}
 		}
 
-		// Token: 0x17000010 RID: 16
-		// (get) Token: 0x06000023 RID: 35 RVA: 0x0000281C File Offset: 0x00000A1C
+		// Token: 0x17000009 RID: 9
+		// (get) Token: 0x06000017 RID: 23 RVA: 0x00002408 File Offset: 0x00000608
 		public override string ManufacturerName
 		{
 			get
@@ -83,8 +83,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 			}
 		}
 
-		// Token: 0x17000011 RID: 17
-		// (get) Token: 0x06000024 RID: 36 RVA: 0x00002834 File Offset: 0x00000A34
+		// Token: 0x1700000A RID: 10
+		// (get) Token: 0x06000018 RID: 24 RVA: 0x00002420 File Offset: 0x00000620
 		public override string ReportManufacturerName
 		{
 			get
@@ -93,13 +93,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 			}
 		}
 
-		// Token: 0x06000025 RID: 37 RVA: 0x0000284C File Offset: 0x00000A4C
+		// Token: 0x06000019 RID: 25 RVA: 0x00002438 File Offset: 0x00000638
 		public override ISalesNameProvider SalesNameProvider()
 		{
 			return this.salesNameProvider;
 		}
 
-		// Token: 0x06000026 RID: 38 RVA: 0x0000287C File Offset: 0x00000A7C
+		// Token: 0x0600001A RID: 26 RVA: 0x00002450 File Offset: 0x00000650
 		protected override void FillSupportedDeviceIdentifiers()
 		{
 			foreach (VidPidPair vidPidPair in this.htcModelsCatalog.Models.SelectMany((ModelInfo m) => m.VidPidPairs))
@@ -109,13 +109,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 			this.SupportedFlashModeIds.Add(new DeviceIdentifier("0BB4", "00CE"));
 		}
 
-		// Token: 0x06000027 RID: 39 RVA: 0x00002930 File Offset: 0x00000B30
+		// Token: 0x0600001B RID: 27 RVA: 0x000024FC File Offset: 0x000006FC
 		public override void DownloadEmergencyPackage(Phone currentPhone, CancellationToken cancellationToken)
 		{
 			throw new NotImplementedException();
 		}
 
-		// Token: 0x06000028 RID: 40 RVA: 0x00002938 File Offset: 0x00000B38
+		// Token: 0x0600001C RID: 28 RVA: 0x00002504 File Offset: 0x00000704
 		public override SwVersionComparisonResult CompareFirmwareVersions(Phone phone)
 		{
 			Tracer<HtcAdaptation>.LogEntry("CompareFirmwareVersions");
@@ -123,7 +123,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 			return SwVersionComparisonResult.UnableToCompare;
 		}
 
-		// Token: 0x06000029 RID: 41 RVA: 0x00002964 File Offset: 0x00000B64
+		// Token: 0x0600001D RID: 29 RVA: 0x00002530 File Offset: 0x00000730
 		public override bool IsDeviceInFlashModeConnected(Phone phone, CancellationToken cancellationToken)
 		{
 			int num = 15;
@@ -131,7 +131,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 			do
 			{
 				htcDeviceInfo = this.ReadDeviceInfo(phone.InstanceId);
-				if (htcDeviceInfo == null || string.IsNullOrEmpty(htcDeviceInfo.Mid) || string.IsNullOrEmpty(htcDeviceInfo.Cid))
+				bool flag = htcDeviceInfo == null || string.IsNullOrEmpty(htcDeviceInfo.Mid) || string.IsNullOrEmpty(htcDeviceInfo.Cid);
+				if (flag)
 				{
 					Tracer<HtcAdaptation>.WriteInformation("Unable to read MID and CID from HTCDeviceInfo.exe");
 					Thread.Sleep(1000);
@@ -141,7 +142,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 			return htcDeviceInfo != null;
 		}
 
-		// Token: 0x0600002A RID: 42 RVA: 0x000029F8 File Offset: 0x00000BF8
+		// Token: 0x0600001E RID: 30 RVA: 0x000025BC File Offset: 0x000007BC
 		public override void DownloadPackage(Phone phone, CancellationToken cancellationToken)
 		{
 			Tracer<HtcAdaptation>.LogEntry("DownloadPackage");
@@ -157,10 +158,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 					DestinationFolder = htcProductsPath,
 					FilesVersioned = true
 				};
-				Tracer<HtcAdaptation>.WriteInformation("Download Params: {0}", new object[]
-				{
-					downloadParameters
-				});
+				Tracer<HtcAdaptation>.WriteInformation("Download Params: {0}", new object[] { downloadParameters });
 				phone.PackageFiles = this.msrService.DownloadLatestPackage(downloadParameters, cancellationToken);
 				Tuple<long, long, bool> downloadPackageInformation = this.msrService.GetDownloadPackageInformation();
 				this.reportingService.SetDownloadByteInformation(phone, ReportOperationType.DownloadPackage, downloadPackageInformation.Item1, downloadPackageInformation.Item2, downloadPackageInformation.Item3);
@@ -169,21 +167,23 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 			catch (Exception ex)
 			{
 				bool flag = true;
-				UriData resultUriData;
-				if (ex is OperationCanceledException || ex.GetBaseException() is TaskCanceledException)
+				bool flag2 = ex is OperationCanceledException || ex.GetBaseException() is TaskCanceledException;
+				UriData uriData;
+				if (flag2)
 				{
-					resultUriData = UriData.DownloadVariantPackageAbortedByUser;
+					uriData = UriData.DownloadVariantPackageAbortedByUser;
 					flag = false;
 				}
 				else
 				{
-					resultUriData = UriData.FailedToDownloadVariantPackage;
+					uriData = UriData.FailedToDownloadVariantPackage;
 				}
-				Tuple<long, long, bool> downloadPackageInformation = this.msrService.GetDownloadPackageInformation();
-				this.reportingService.SetDownloadByteInformation(phone, ReportOperationType.DownloadPackage, downloadPackageInformation.Item1, downloadPackageInformation.Item2, downloadPackageInformation.Item3);
-				this.reportingService.OperationFailed(phone, ReportOperationType.DownloadPackage, resultUriData, ex);
+				Tuple<long, long, bool> downloadPackageInformation2 = this.msrService.GetDownloadPackageInformation();
+				this.reportingService.SetDownloadByteInformation(phone, ReportOperationType.DownloadPackage, downloadPackageInformation2.Item1, downloadPackageInformation2.Item2, downloadPackageInformation2.Item3);
+				this.reportingService.OperationFailed(phone, ReportOperationType.DownloadPackage, uriData, ex);
 				Tracer<HtcAdaptation>.WriteError(ex);
-				if (flag)
+				bool flag3 = flag;
+				if (flag3)
 				{
 					throw;
 				}
@@ -194,20 +194,21 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 			}
 		}
 
-		// Token: 0x0600002B RID: 43 RVA: 0x00002BC4 File Offset: 0x00000DC4
+		// Token: 0x0600001F RID: 31 RVA: 0x00002778 File Offset: 0x00000978
 		private void MsrDownloadProgressEvent(ProgressChangedEventArgs progressArgs)
 		{
 			base.RaiseProgressPercentageChanged(progressArgs.Percentage, progressArgs.Message, progressArgs.DownloadedSize, progressArgs.TotalSize, progressArgs.BytesPerSecond, progressArgs.SecondsLeft);
 		}
 
-		// Token: 0x0600002C RID: 44 RVA: 0x00002BF4 File Offset: 0x00000DF4
+		// Token: 0x06000020 RID: 32 RVA: 0x000027A8 File Offset: 0x000009A8
 		public override void FlashDevice(Phone phone, CancellationToken cancellationToken)
 		{
 			Tracer<HtcAdaptation>.LogEntry("FlashDevice");
 			base.RaiseProgressPercentageChanged(-1, null);
 			this.lastProgressPercentage = 0;
 			Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.CheckAndCreatePath(Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.HtcProductsPath);
-			if (string.IsNullOrEmpty(phone.Mid) && (string.IsNullOrEmpty(phone.Cid) || !ApplicationInfo.IsInternal()))
+			bool flag = string.IsNullOrEmpty(phone.Mid) && (string.IsNullOrEmpty(phone.Cid) || !ApplicationInfo.IsInternal());
+			if (flag)
 			{
 				throw new FlashException("Device data is missing (Mid and/or Cid)");
 			}
@@ -216,13 +217,18 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 			foreach (string text3 in phone.PackageFiles)
 			{
 				string fileName = Path.GetFileName(text3);
-				if (fileName != null && fileName.ToLower().StartsWith("uefi"))
+				bool flag2 = fileName != null && fileName.ToLower().StartsWith("uefi");
+				if (flag2)
 				{
 					text = text3;
 				}
-				else if (fileName != null && fileName.ToLower().StartsWith("ruu"))
+				else
 				{
-					text2 = text3;
+					bool flag3 = fileName != null && fileName.ToLower().StartsWith("ruu");
+					if (flag3)
+					{
+						text2 = text3;
+					}
 				}
 			}
 			this.CheckForMissingFiles(new string[]
@@ -241,24 +247,26 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 			}
 		}
 
-		// Token: 0x0600002D RID: 45 RVA: 0x00002D6C File Offset: 0x00000F6C
+		// Token: 0x06000021 RID: 33 RVA: 0x00002910 File Offset: 0x00000B10
 		private void CheckForMissingFiles(params string[] files)
 		{
 			StringBuilder stringBuilder = new StringBuilder();
 			foreach (string text in files)
 			{
-				if (!Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.CheckIfFileIsValid(text))
+				bool flag = !Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.CheckIfFileIsValid(text);
+				if (flag)
 				{
 					stringBuilder.Append(text + "\n");
 				}
 			}
-			if (stringBuilder.Length > 0)
+			bool flag2 = stringBuilder.Length > 0;
+			if (flag2)
 			{
 				throw new FileNotFoundException(stringBuilder.ToString());
 			}
 		}
 
-		// Token: 0x0600002E RID: 46 RVA: 0x00002DDC File Offset: 0x00000FDC
+		// Token: 0x06000022 RID: 34 RVA: 0x0000297C File Offset: 0x00000B7C
 		private void FlashDevice(string appName, string uefiFile, string ruuFile, string phonePath)
 		{
 			this.flashingResult = null;
@@ -271,12 +279,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 				CreateNoWindow = true,
 				WorkingDirectory = this.GetWorkingDirectoryPath()
 			};
-			Tracer<HtcAdaptation>.WriteInformation("filename: {0} | working directory: {1} | arguments: {2}", new object[]
-			{
-				appName,
-				processStartInfo.WorkingDirectory,
-				processStartInfo.Arguments
-			});
+			Tracer<HtcAdaptation>.WriteInformation("filename: {0} | working directory: {1} | arguments: {2}", new object[] { appName, processStartInfo.WorkingDirectory, processStartInfo.Arguments });
 			ProcessHelper processHelper = new ProcessHelper
 			{
 				EnableRaisingEvents = true,
@@ -291,41 +294,48 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 			this.CheckForPossibleFlashErrors();
 		}
 
-		// Token: 0x0600002F RID: 47 RVA: 0x00002EC8 File Offset: 0x000010C8
+		// Token: 0x06000023 RID: 35 RVA: 0x00002A5C File Offset: 0x00000C5C
 		private void CheckForPossibleFlashErrors()
 		{
-			if (string.IsNullOrWhiteSpace(this.flashingResult) || this.flashingResult == "0")
+			bool flag = string.IsNullOrWhiteSpace(this.flashingResult) || this.flashingResult == "0";
+			if (flag)
 			{
 				return;
 			}
-			if (this.flashingResult.StartsWith("8007"))
+			bool flag2 = this.flashingResult.StartsWith("8007");
+			if (flag2)
 			{
 				throw new HtcUsbPortOpenException();
 			}
-			if (this.flashingResult.StartsWith("A001"))
+			bool flag3 = this.flashingResult.StartsWith("A001");
+			if (flag3)
 			{
 				throw new HtcDeviceCommunicationException();
 			}
-			if (this.flashingResult.StartsWith("A002"))
+			bool flag4 = this.flashingResult.StartsWith("A002");
+			if (flag4)
 			{
 				throw new HtcServiceControlException();
 			}
-			if (this.flashingResult.StartsWith("A003"))
+			bool flag5 = this.flashingResult.StartsWith("A003");
+			if (flag5)
 			{
 				throw new HtcUsbCommunicationException();
 			}
-			if (this.flashingResult.StartsWith("A011"))
+			bool flag6 = this.flashingResult.StartsWith("A011");
+			if (flag6)
 			{
 				throw new HtcDeviceHandshakingException();
 			}
-			if (this.flashingResult.StartsWith("A012"))
+			bool flag7 = this.flashingResult.StartsWith("A012");
+			if (flag7)
 			{
 				throw new HtcPackageFileCheckException();
 			}
 			throw new FlashException(this.lastProgressMessage);
 		}
 
-		// Token: 0x06000030 RID: 48 RVA: 0x00002FC4 File Offset: 0x000011C4
+		// Token: 0x06000024 RID: 36 RVA: 0x00002B48 File Offset: 0x00000D48
 		public override void CheckPackageIntegrity(Phone phone, CancellationToken cancellationToken)
 		{
 			Tracer<HtcAdaptation>.LogEntry("CheckPackageIntegrity");
@@ -333,11 +343,12 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 			Tracer<HtcAdaptation>.LogExit("CheckPackageIntegrity");
 		}
 
-		// Token: 0x06000031 RID: 49 RVA: 0x00002FF0 File Offset: 0x000011F0
+		// Token: 0x06000025 RID: 37 RVA: 0x00002B74 File Offset: 0x00000D74
 		private string GetWorkingDirectoryPath()
 		{
 			string directoryName = Path.GetDirectoryName(Uri.UnescapeDataString(new UriBuilder(Assembly.GetExecutingAssembly().CodeBase).Path));
-			if (string.IsNullOrWhiteSpace(directoryName))
+			bool flag = string.IsNullOrWhiteSpace(directoryName);
+			if (flag)
 			{
 				Tracer<HtcAdaptation>.WriteError("Could not find working directory path", new object[0]);
 				throw new Exception("Could not find working directory path");
@@ -345,13 +356,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 			return directoryName;
 		}
 
-		// Token: 0x06000032 RID: 50 RVA: 0x0000304C File Offset: 0x0000124C
+		// Token: 0x06000026 RID: 38 RVA: 0x000024FC File Offset: 0x000006FC
 		public override List<PackageFileInfo> FindAllPackages(string directory, CancellationToken cancellationToken)
 		{
 			throw new NotImplementedException();
 		}
 
-		// Token: 0x06000033 RID: 51 RVA: 0x00003054 File Offset: 0x00001254
+		// Token: 0x06000027 RID: 39 RVA: 0x00002BD0 File Offset: 0x00000DD0
 		public override PackageFileInfo CheckLatestPackage(Phone phone, CancellationToken cancellationToken)
 		{
 			PackageFileInfo result;
@@ -364,15 +375,18 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 			}
 			catch (Exception ex)
 			{
-				if (ex.InnerException is PackageNotFoundException)
+				bool flag = ex.InnerException is PackageNotFoundException;
+				if (flag)
 				{
 					throw ex.InnerException;
 				}
-				if (ex.InnerException != null && ex.InnerException.GetBaseException() is WebException)
+				bool flag2 = ex.InnerException != null && ex.InnerException.GetBaseException() is WebException;
+				if (flag2)
 				{
 					throw new WebException();
 				}
-				if (ex is OperationCanceledException || ex.InnerException is TaskCanceledException)
+				bool flag3 = ex is OperationCanceledException || ex.InnerException is TaskCanceledException;
+				if (flag3)
 				{
 					throw;
 				}
@@ -385,7 +399,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 			return result;
 		}
 
-		// Token: 0x06000034 RID: 52 RVA: 0x00003134 File Offset: 0x00001334
+		// Token: 0x06000028 RID: 40 RVA: 0x00002CA8 File Offset: 0x00000EA8
 		public override List<PackageFileInfo> FindPackage(string directory, Phone currentPhone, CancellationToken cancellationToken)
 		{
 			Tracer<HtcAdaptation>.LogEntry("FindPackage");
@@ -393,14 +407,15 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 			return new List<PackageFileInfo>();
 		}
 
-		// Token: 0x06000035 RID: 53 RVA: 0x00003164 File Offset: 0x00001364
+		// Token: 0x06000029 RID: 41 RVA: 0x00002CD8 File Offset: 0x00000ED8
 		public override void ReadDeviceInfo(Phone phone, CancellationToken token)
 		{
 			HtcDeviceInfo htcDeviceInfo;
 			do
 			{
 				htcDeviceInfo = this.ReadDeviceInfo(phone.InstanceId);
-				if (htcDeviceInfo == null || string.IsNullOrEmpty(htcDeviceInfo.Mid) || string.IsNullOrEmpty(htcDeviceInfo.Cid))
+				bool flag = htcDeviceInfo == null || string.IsNullOrEmpty(htcDeviceInfo.Mid) || string.IsNullOrEmpty(htcDeviceInfo.Cid);
+				if (flag)
 				{
 					Tracer<HtcAdaptation>.WriteInformation("Unable to read MID and CID from HTCDeviceInfo.exe");
 					Thread.Sleep(1000);
@@ -413,12 +428,12 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 			while (!token.IsCancellationRequested && (htcDeviceInfo == null || string.IsNullOrEmpty(htcDeviceInfo.Mid)));
 		}
 
-		// Token: 0x06000036 RID: 54 RVA: 0x00003278 File Offset: 0x00001478
+		// Token: 0x0600002A RID: 42 RVA: 0x00002DB8 File Offset: 0x00000FB8
 		private HtcDeviceInfo ReadDeviceInfo(string instanceId)
 		{
 			Tracer<HtcAdaptation>.LogEntry("ReadDeviceInfo");
 			this.deviceInfos = new Dictionary<string, HtcDeviceInfo>();
-			ProcessStartInfo startInfo = new ProcessStartInfo
+			ProcessStartInfo processStartInfo = new ProcessStartInfo
 			{
 				FileName = "HTCDeviceInfo.exe",
 				Arguments = "all",
@@ -431,7 +446,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 			ProcessHelper processHelper = new ProcessHelper
 			{
 				EnableRaisingEvents = true,
-				StartInfo = startInfo
+				StartInfo = processStartInfo
 			};
 			processHelper.OutputDataReceived += this.ReadDeviceInfoOnOutputDataReceived;
 			processHelper.Start();
@@ -442,15 +457,17 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 			return this.deviceInfos.Values.FirstOrDefault((HtcDeviceInfo di) => di.Path.ToLower().Contains(deviceId));
 		}
 
-		// Token: 0x06000037 RID: 55 RVA: 0x000033CC File Offset: 0x000015CC
+		// Token: 0x0600002B RID: 43 RVA: 0x00002EB4 File Offset: 0x000010B4
 		private void ReadDeviceInfoOnOutputDataReceived(object sender, DataReceivedEventArgs dataReceivedEventArgs)
 		{
 			try
 			{
 				string data = dataReceivedEventArgs.Data;
-				if (!string.IsNullOrEmpty(data))
+				bool flag = string.IsNullOrEmpty(data);
+				if (!flag)
 				{
-					if (data.ToLower().Contains("error"))
+					bool flag2 = data.ToLower().Contains("error");
+					if (flag2)
 					{
 						Tracer<HtcAdaptation>.WriteError("Unable to read device info.", new object[0]);
 					}
@@ -459,55 +476,46 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 						string text;
 						string text2;
 						this.TryReadNumberValue(data, out text, out text2);
-						if (text2.ToLower().Contains("usb#"))
+						bool flag3 = text2.ToLower().Contains("usb#");
+						if (flag3)
 						{
 							this.deviceInfos.Add(text, new HtcDeviceInfo(text2));
-							Tracer<HtcAdaptation>.WriteInformation("{0} usb Path found: {1}.", new object[]
-							{
-								text,
-								text2
-							});
+							Tracer<HtcAdaptation>.WriteInformation("{0} usb Path found: {1}.", new object[] { text, text2 });
 						}
-						else if (text2.ToLower().Contains("mid"))
+						else
 						{
-							int num = text2.Trim().IndexOf(" ", StringComparison.Ordinal);
-							string text3 = text2.Trim().Substring(num + 1, 8);
-							string text4 = Path.GetInvalidFileNameChars().Aggregate(text3, (string current, char c) => current.Replace(c.ToString(CultureInfo.InvariantCulture), "0"));
-							this.deviceInfos[text].Mid = text4;
-							Tracer<HtcAdaptation>.WriteInformation("{0} mid found: {1}, replaced with {2}.", new object[]
+							bool flag4 = text2.ToLower().Contains("mid");
+							if (flag4)
 							{
-								text,
-								text3,
-								text4
-							});
-						}
-						else if (text2.ToLower().Contains("cid"))
-						{
-							int num = text2.Trim().IndexOf(" ", StringComparison.Ordinal);
-							string text5 = text2.Trim().Substring(num + 1);
-							string text6 = Path.GetInvalidFileNameChars().Aggregate(text5, (string current, char c) => current.Replace(c.ToString(CultureInfo.InvariantCulture), "0"));
-							this.deviceInfos[text].Cid = text6;
-							Tracer<HtcAdaptation>.WriteInformation("{0} cid found: {1}, replaced with {2}.", new object[]
+								int num = text2.Trim().IndexOf(" ", StringComparison.Ordinal);
+								string text3 = text2.Trim().Substring(num + 1, 8);
+								string text4 = Path.GetInvalidFileNameChars().Aggregate(text3, (string current, char c) => current.Replace(c.ToString(CultureInfo.InvariantCulture), "0"));
+								this.deviceInfos[text].Mid = text4;
+								Tracer<HtcAdaptation>.WriteInformation("{0} mid found: {1}, replaced with {2}.", new object[] { text, text3, text4 });
+							}
+							else
 							{
-								text,
-								text5,
-								text6
-							});
+								bool flag5 = text2.ToLower().Contains("cid");
+								if (flag5)
+								{
+									int num2 = text2.Trim().IndexOf(" ", StringComparison.Ordinal);
+									string text5 = text2.Trim().Substring(num2 + 1);
+									string text6 = Path.GetInvalidFileNameChars().Aggregate(text5, (string current, char c) => current.Replace(c.ToString(CultureInfo.InvariantCulture), "0"));
+									this.deviceInfos[text].Cid = text6;
+									Tracer<HtcAdaptation>.WriteInformation("{0} cid found: {1}, replaced with {2}.", new object[] { text, text5, text6 });
+								}
+							}
 						}
 					}
 				}
 			}
 			catch (Exception ex)
 			{
-				Tracer<HtcAdaptation>.WriteWarning("Error parsing HTCDeviceInfo output. Unable to parse string: {0}, exception {1}", new object[]
-				{
-					dataReceivedEventArgs.Data,
-					ex
-				});
+				Tracer<HtcAdaptation>.WriteWarning("Error parsing HTCDeviceInfo output. Unable to parse string: {0}, exception {1}", new object[] { dataReceivedEventArgs.Data, ex });
 			}
 		}
 
-		// Token: 0x06000038 RID: 56 RVA: 0x00003628 File Offset: 0x00001828
+		// Token: 0x0600002C RID: 44 RVA: 0x000030E4 File Offset: 0x000012E4
 		private void TryReadNumberValue(string input, out string number, out string value)
 		{
 			number = null;
@@ -519,31 +527,30 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 			}
 			catch (Exception ex)
 			{
-				Tracer<HtcAdaptation>.WriteWarning("Error parsing HTCDeviceInfo output. Unable to parse string: {0}, exception {1}", new object[]
-				{
-					input,
-					ex
-				});
+				Tracer<HtcAdaptation>.WriteWarning("Error parsing HTCDeviceInfo output. Unable to parse string: {0}, exception {1}", new object[] { input, ex });
 			}
 		}
 
-		// Token: 0x06000039 RID: 57 RVA: 0x00003684 File Offset: 0x00001884
+		// Token: 0x0600002D RID: 45 RVA: 0x00003140 File Offset: 0x00001340
 		private void FlashOnOutputDataReceived(object sender, DataReceivedEventArgs dataReceivedEventArgs)
 		{
 			try
 			{
 				string data = dataReceivedEventArgs.Data;
 				Tracer<HtcAdaptation>.WriteInformation(data);
-				if (data.Contains("[MESSAGE]"))
+				bool flag = data.Contains("[MESSAGE]");
+				if (flag)
 				{
 					this.lastProgressMessage = data.Substring(9, data.IndexOf("[/MESSAGE]", StringComparison.Ordinal) - 9);
 				}
-				if (data.Contains("[PERCENTAGE]"))
+				bool flag2 = data.Contains("[PERCENTAGE]");
+				if (flag2)
 				{
-					string s = data.Substring(12, data.IndexOf("[/PERCENTAGE]", StringComparison.Ordinal) - 12);
-					this.lastProgressPercentage = int.Parse(s);
+					string text = data.Substring(12, data.IndexOf("[/PERCENTAGE]", StringComparison.Ordinal) - 12);
+					this.lastProgressPercentage = int.Parse(text);
 				}
-				if (data.Contains("[RESULT]"))
+				bool flag3 = data.Contains("[RESULT]");
+				if (flag3)
 				{
 					this.flashingResult = data.Substring(8, data.IndexOf("[/RESULT]", StringComparison.Ordinal) - 8);
 				}
@@ -551,41 +558,43 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 			}
 			catch (Exception ex)
 			{
-				Tracer<HtcAdaptation>.WriteWarning("Error parsing HTCRomUpdater output. Unable to parse string: {0}, exception {1}", new object[]
-				{
-					dataReceivedEventArgs.Data,
-					ex
-				});
+				Tracer<HtcAdaptation>.WriteWarning("Error parsing HTCRomUpdater output. Unable to parse string: {0}, exception {1}", new object[] { dataReceivedEventArgs.Data, ex });
 			}
 		}
 
-		// Token: 0x0600003A RID: 58 RVA: 0x000037C4 File Offset: 0x000019C4
+		// Token: 0x0600002E RID: 46 RVA: 0x0000323C File Offset: 0x0000143C
 		protected override Stream GetImageDataStream(Phone phone)
 		{
 			Assembly executingAssembly = Assembly.GetExecutingAssembly();
 			string[] manifestResourceNames = executingAssembly.GetManifestResourceNames();
 			string text = string.Empty;
-			if (phone.Vid.ToUpper() == "0BB4" && (phone.Pid.ToUpper() == "0BAC" || phone.Pid.ToUpper() == "0BAD" || phone.Pid.ToUpper() == "0BAE"))
+			bool flag = phone.Vid.ToUpper() == "0BB4" && (phone.Pid.ToUpper() == "0BAC" || phone.Pid.ToUpper() == "0BAD" || phone.Pid.ToUpper() == "0BAE");
+			if (flag)
 			{
 				text = manifestResourceNames.FirstOrDefault((string resourceName) => resourceName.Contains("HTCOne.png"));
 			}
-			else if (phone.Vid.ToUpper() == "0BB4")
+			else
 			{
-				text = manifestResourceNames.FirstOrDefault((string resourceName) => resourceName.Contains("HTC8X.png"));
+				bool flag2 = phone.Vid.ToUpper() == "0BB4";
+				if (flag2)
+				{
+					text = manifestResourceNames.FirstOrDefault((string resourceName) => resourceName.Contains("HTC8X.png"));
+				}
 			}
-			Stream result;
-			if (!string.IsNullOrEmpty(text))
+			bool flag3 = !string.IsNullOrEmpty(text);
+			Stream stream;
+			if (flag3)
 			{
-				result = executingAssembly.GetManifestResourceStream(text);
+				stream = executingAssembly.GetManifestResourceStream(text);
 			}
 			else
 			{
-				result = base.GetImageDataStream(phone);
+				stream = base.GetImageDataStream(phone);
 			}
-			return result;
+			return stream;
 		}
 
-		// Token: 0x0600003B RID: 59 RVA: 0x000038E4 File Offset: 0x00001AE4
+		// Token: 0x0600002F RID: 47 RVA: 0x00003358 File Offset: 0x00001558
 		private QueryParameters DeviceQueryParameters(Phone phone)
 		{
 			return new QueryParameters
@@ -596,52 +605,53 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 			};
 		}
 
-		// Token: 0x0600003C RID: 60 RVA: 0x00003940 File Offset: 0x00001B40
+		// Token: 0x06000030 RID: 48 RVA: 0x00003398 File Offset: 0x00001598
 		protected override Stream GetManufacturerImageDataStream()
 		{
 			Assembly executingAssembly = Assembly.GetExecutingAssembly();
 			string[] manifestResourceNames = executingAssembly.GetManifestResourceNames();
 			string text = manifestResourceNames.FirstOrDefault((string resourceName) => resourceName.Contains("HtcLogo.png"));
-			Stream result;
-			if (!string.IsNullOrEmpty(text))
+			bool flag = !string.IsNullOrEmpty(text);
+			Stream stream;
+			if (flag)
 			{
-				result = executingAssembly.GetManifestResourceStream(text);
+				stream = executingAssembly.GetManifestResourceStream(text);
 			}
 			else
 			{
-				result = null;
+				stream = null;
 			}
-			return result;
+			return stream;
 		}
 
-		// Token: 0x04000012 RID: 18
+		// Token: 0x0400000E RID: 14
 		private const string RuuExeFile = "HTCRomUpdater.exe";
 
-		// Token: 0x04000013 RID: 19
+		// Token: 0x0400000F RID: 15
 		private const int NumberOfTrials = 15;
 
-		// Token: 0x04000014 RID: 20
+		// Token: 0x04000010 RID: 16
 		private readonly MsrService msrService;
 
-		// Token: 0x04000015 RID: 21
+		// Token: 0x04000011 RID: 17
 		private readonly ReportingService reportingService;
 
-		// Token: 0x04000016 RID: 22
+		// Token: 0x04000012 RID: 18
 		private readonly HtcModelsCatalog htcModelsCatalog;
 
-		// Token: 0x04000017 RID: 23
+		// Token: 0x04000013 RID: 19
 		private readonly SalesNameProvider salesNameProvider;
 
-		// Token: 0x04000018 RID: 24
+		// Token: 0x04000014 RID: 20
 		private Dictionary<string, HtcDeviceInfo> deviceInfos;
 
-		// Token: 0x04000019 RID: 25
+		// Token: 0x04000015 RID: 21
 		private string lastProgressMessage;
 
-		// Token: 0x0400001A RID: 26
+		// Token: 0x04000016 RID: 22
 		private int lastProgressPercentage;
 
-		// Token: 0x0400001B RID: 27
+		// Token: 0x04000017 RID: 23
 		private string flashingResult;
 	}
 }

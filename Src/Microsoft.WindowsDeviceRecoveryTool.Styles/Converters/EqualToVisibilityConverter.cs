@@ -5,16 +5,16 @@ using System.Windows.Data;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Styles.Converters
 {
-	// Token: 0x02000011 RID: 17
+	// Token: 0x02000005 RID: 5
 	public class EqualToVisibilityConverter : IValueConverter
 	{
-		// Token: 0x0600006D RID: 109 RVA: 0x00003798 File Offset: 0x00001998
+		// Token: 0x06000015 RID: 21 RVA: 0x000024DC File Offset: 0x000006DC
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
 			return (parameter != null && parameter.Equals(value)) ? Visibility.Visible : Visibility.Collapsed;
 		}
 
-		// Token: 0x0600006E RID: 110 RVA: 0x000037C0 File Offset: 0x000019C0
+		// Token: 0x06000016 RID: 22 RVA: 0x000024A2 File Offset: 0x000006A2
 		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
 		{
 			throw new NotImplementedException();

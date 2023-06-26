@@ -6,11 +6,11 @@ using Microsoft.WindowsDeviceRecoveryTool.Messages;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Help
 {
-	// Token: 0x02000087 RID: 135
+	// Token: 0x0200006C RID: 108
 	[Export]
 	public class LumiaNormalHelpViewModel : BaseViewModel
 	{
-		// Token: 0x060003B3 RID: 947 RVA: 0x000118FB File Offset: 0x0000FAFB
+		// Token: 0x060003C3 RID: 963 RVA: 0x00014834 File Offset: 0x00012A34
 		public override void OnStarted()
 		{
 			base.EventAggregator.Publish<HeaderMessage>(new HeaderMessage(LocalizationManager.GetTranslation("Help"), LocalizationManager.GetTranslation("NormalMode")));

@@ -9,23 +9,23 @@ namespace SoftwareRepository.Streaming
 	[DataContract]
 	public class UrlSelectionResult
 	{
-		// Token: 0x0600005F RID: 95 RVA: 0x00003158 File Offset: 0x00001358
+		// Token: 0x06000064 RID: 100 RVA: 0x000035F0 File Offset: 0x000017F0
 		public UrlSelectionResult()
 		{
 			this.UrlResults = new List<UrlResult>();
 		}
 
 		// Token: 0x17000014 RID: 20
-		// (get) Token: 0x06000060 RID: 96 RVA: 0x0000316B File Offset: 0x0000136B
-		// (set) Token: 0x06000061 RID: 97 RVA: 0x00003173 File Offset: 0x00001373
+		// (get) Token: 0x06000065 RID: 101 RVA: 0x00003606 File Offset: 0x00001806
+		// (set) Token: 0x06000066 RID: 102 RVA: 0x0000360E File Offset: 0x0000180E
 		[SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")]
 		[SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 		[DataMember(Name = "urlResults")]
 		public List<UrlResult> UrlResults { get; set; }
 
 		// Token: 0x17000015 RID: 21
-		// (get) Token: 0x06000062 RID: 98 RVA: 0x0000317C File Offset: 0x0000137C
-		// (set) Token: 0x06000063 RID: 99 RVA: 0x00003184 File Offset: 0x00001384
+		// (get) Token: 0x06000067 RID: 103 RVA: 0x00003617 File Offset: 0x00001817
+		// (set) Token: 0x06000068 RID: 104 RVA: 0x0000361F File Offset: 0x0000181F
 		[DataMember(Name = "testBytes")]
 		public long TestBytes { get; set; }
 	}

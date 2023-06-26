@@ -10,15 +10,12 @@ using Microsoft.WindowsDeviceRecoveryTool.Framework;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Help
 {
-	// Token: 0x02000086 RID: 134
-	[Region(new string[]
-	{
-		"HelpMainArea"
-	})]
+	// Token: 0x0200006B RID: 107
 	[Export]
+	[Region(new string[] { "HelpMainArea" })]
 	public partial class LumiaNormalHelpView : UserControl
 	{
-		// Token: 0x060003B0 RID: 944 RVA: 0x000118A5 File Offset: 0x0000FAA5
+		// Token: 0x060003C0 RID: 960 RVA: 0x000147E3 File Offset: 0x000129E3
 		public LumiaNormalHelpView()
 		{
 			this.InitializeComponent();

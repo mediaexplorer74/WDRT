@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Threading;
@@ -17,7 +18,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HoneywellAdaptation
 	[Export(typeof(IDeviceSupport))]
 	internal class HoneywellSupport : IDeviceSupport
 	{
-		// Token: 0x06000007 RID: 7 RVA: 0x0000242C File Offset: 0x0000062C
+		// Token: 0x06000007 RID: 7 RVA: 0x000023CF File Offset: 0x000005CF
 		[ImportingConstructor]
 		public HoneywellSupport(IMtpDeviceInfoProvider mtpDeviceInfoProvider)
 		{
@@ -30,7 +31,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HoneywellAdaptation
 		}
 
 		// Token: 0x17000001 RID: 1
-		// (get) Token: 0x06000008 RID: 8 RVA: 0x0000246E File Offset: 0x0000066E
+		// (get) Token: 0x06000008 RID: 8 RVA: 0x00002404 File Offset: 0x00000604
 		public Guid Id
 		{
 			get
@@ -39,13 +40,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HoneywellAdaptation
 			}
 		}
 
-		// Token: 0x06000009 RID: 9 RVA: 0x00002475 File Offset: 0x00000675
+		// Token: 0x06000009 RID: 9 RVA: 0x0000240B File Offset: 0x0000060B
 		public DeviceDetectionInformation[] GetDeviceDetectionInformation()
 		{
 			return this.catalog.GetDeviceDetectionInformations();
 		}
 
-		// Token: 0x0600000A RID: 10 RVA: 0x000026DC File Offset: 0x000008DC
+		// Token: 0x0600000A RID: 10 RVA: 0x00002418 File Offset: 0x00000618
 		public async Task UpdateDeviceDetectionDataAsync(DeviceDetectionData detectionData, CancellationToken cancellationToken)
 		{
 			if (detectionData.IsDeviceSupported)
@@ -54,24 +55,29 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HoneywellAdaptation
 			}
 			cancellationToken.ThrowIfCancellationRequested();
 			VidPidPair vidPidPair = detectionData.VidPidPair;
-			string devicePath = detectionData.UsbDeviceInterfaceDevicePath;
-			if (this.catalog.Models.FirstOrDefault((ModelInfo m) => m.DetectionInfo.DeviceDetectionInformations.Any((DeviceDetectionInformation di) => di.VidPidPair == vidPidPair)) == null)
+			string usbDeviceInterfaceDevicePath = detectionData.UsbDeviceInterfaceDevicePath;
+			Func<DeviceDetectionInformation, bool> <>9__1;
+			if (this.catalog.Models.FirstOrDefault(delegate(ModelInfo m)
 			{
-				Tracer<HoneywellSupport>.WriteInformation("No Honeywell device detected. Path: {0}", new object[]
+				IEnumerable<DeviceDetectionInformation> deviceDetectionInformations = m.DetectionInfo.DeviceDetectionInformations;
+				Func<DeviceDetectionInformation, bool> func;
+				if ((func = <>9__1) == null)
 				{
-					detectionData.UsbDeviceInterfaceDevicePath
-				});
+					func = (<>9__1 = (DeviceDetectionInformation di) => di.VidPidPair == vidPidPair);
+				}
+				return deviceDetectionInformations.Any(func);
+			}) == null)
+			{
+				Tracer<HoneywellSupport>.WriteInformation("No Honeywell device detected. Path: {0}", new object[] { detectionData.UsbDeviceInterfaceDevicePath });
 			}
 			else
 			{
-				MtpInterfaceInfo deviceInfo = await this.mtpDeviceInfoProvider.ReadInformationAsync(devicePath, cancellationToken);
-				string mtpDeviceDescription = deviceInfo.Description;
+				string description = (await this.mtpDeviceInfoProvider.ReadInformationAsync(usbDeviceInterfaceDevicePath, cancellationToken)).Description;
 				ModelInfo modelInfo;
-				if (this.catalog.TryGetModelInfo(mtpDeviceDescription, out modelInfo))
+				if (this.catalog.TryGetModelInfo(description, out modelInfo))
 				{
 					string name = modelInfo.Name;
-					byte[] deviceBitmapBytes = modelInfo.Bitmap.ToBytes();
-					detectionData.DeviceBitmapBytes = deviceBitmapBytes;
+					detectionData.DeviceBitmapBytes = modelInfo.Bitmap.ToBytes();
 					detectionData.DeviceSalesName = name;
 					detectionData.IsDeviceSupported = true;
 				}

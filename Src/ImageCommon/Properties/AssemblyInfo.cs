@@ -5,10 +5,11 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 
-[assembly: AssemblyVersion("10.0.0.0")]
+[assembly: AssemblyVersion("8.0.0.0")]
+[assembly: AssemblyInformationalVersion("8.0.11111.0 rs1_release_sa BUILDSERVER winpbld")]
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
 [assembly: AssemblyProduct("Microsoft (R) Windows (R) Operating System")]
 [assembly: AssemblyCopyright("Copyright (c) Microsoft Corporation. All rights reserved.")]
 [assembly: AssemblyCompany("Microsoft Corporation")]
-[assembly: AssemblyFileVersion("10.0.10011.16384")]
+[assembly: AssemblyFileVersion("8.0.11111.0")]

@@ -1,57 +1,57 @@
 <Grid
 	x:Class="Microsoft.WindowsDeviceRecoveryTool.States.Workflow.ManualPackageSelectionView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:localization="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Localization;assembly=Microsoft.WindowsDeviceRecoveryTool.Localization" xmlns:resources="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Resources" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	Style="{DynamicResource ContentRoot}"
-	VerticalAlignment="Center" xmlns:workflow="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.States.Workflow">
+	FrameworkElement.Style="{DynamicResource ContentRoot}"
+	FrameworkElement.VerticalAlignment="Center" xmlns:workflow="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.States.Workflow">
 	<Grid.RowDefinitions>
 		<RowDefinition
-			Height="Auto" />
+			RowDefinition.Height="Auto" />
 		<RowDefinition
-			Height="Auto" />
+			RowDefinition.Height="Auto" />
 	</Grid.RowDefinitions>
 	<Grid
 		Row="0"
-		VerticalAlignment="Center"
-		HorizontalAlignment="Center">
+		FrameworkElement.VerticalAlignment="Center"
+		FrameworkElement.HorizontalAlignment="Center">
 		<Grid.RowDefinitions>
 			<RowDefinition
-				Height="Auto" />
+				RowDefinition.Height="Auto" />
 			<RowDefinition
-				Height="Auto" />
+				RowDefinition.Height="Auto" />
 			<RowDefinition
-				Height="Auto" />
+				RowDefinition.Height="Auto" />
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition />
 			<ColumnDefinition />
 		</Grid.ColumnDefinitions>
 		<TextBlock
-			Style="{DynamicResource MediumTextStyle}"
-			Margin="3, 20, 3, 0"
+			FrameworkElement.Style="{DynamicResource MediumTextStyle}"
+			FrameworkElement.Margin="3, 20, 3, 0"
 			Grid.ColumnSpan="2"
-			Text="{Binding FilePathDescription, Mode=OneWay}" />
+			TextBlock.Text="{Binding FilePathDescription, Mode=OneWay}" />
 		<StackPanel
 			Orientation="Horizontal"
 			Grid.Column="0"
 			Grid.ColumnSpan="2"
 			Grid.Row="1"
-			Margin="0, 20, 0, 0"
-			HorizontalAlignment="Center">
+			FrameworkElement.Margin="0, 20, 0, 0"
+			FrameworkElement.HorizontalAlignment="Center">
 			<TextBlock
-				Style="{DynamicResource SubheaderTextStyle}"
-				Margin="3"
-				Text="{Binding StatusInfo}" />
+				FrameworkElement.Style="{DynamicResource SubheaderTextStyle}"
+				FrameworkElement.Margin="3"
+				TextBlock.Text="{Binding StatusInfo}" />
 			<ProgressBar
-				Style="{DynamicResource ProgressRingStyle}"
-				Margin="3"
+				FrameworkElement.Style="{DynamicResource ProgressRingStyle}"
+				FrameworkElement.Margin="3"
 				AutomationProperties.Name="Manual Package Selection Progress Ring"
-				Visibility="{Binding CheckingPlatformId, Converter={StaticResource BoolToVisibilityConverter}}" />
+				UIElement.Visibility="{Binding CheckingPlatformId, Converter='{StaticResource BoolToVisibilityConverter}'}" />
 		</StackPanel>
 		<Grid
 			Row="2"
 			Column="0"
-			Margin="0, 20, 0, 0"
-			MinWidth="250"
-			HorizontalAlignment="Center">
+			FrameworkElement.Margin="0, 20, 0, 0"
+			FrameworkElement.MinWidth="250"
+			FrameworkElement.HorizontalAlignment="Center">
 			<Grid.RowDefinitions>
 				<RowDefinition />
 				<RowDefinition />
@@ -61,69 +61,69 @@
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition
-					Width="Auto" />
+					ColumnDefinition.Width="Auto" />
 				<ColumnDefinition
-					Width="Auto" />
+					ColumnDefinition.Width="Auto" />
 			</Grid.ColumnDefinitions>
 			<TextBlock
 				Grid.Row="0"
-				Style="{DynamicResource SubheaderTextStyle}"
-				Text="{localization:Localization PackageFileHeader}" />
+				FrameworkElement.Style="{DynamicResource SubheaderTextStyle}"
+				TextBlock.Text="{localization:Localization PackageFileHeader}" />
 			<TextBlock
-				Style="{DynamicResource BasicTextStyle}"
-				Margin="3"
+				FrameworkElement.Style="{DynamicResource BasicTextStyle}"
+				FrameworkElement.Margin="3"
 				Grid.Row="1"
 				Grid.Column="0"
-				Text="{localization:Localization FFUManufacturer}" />
+				TextBlock.Text="{localization:Localization FFUManufacturer}" />
 			<TextBlock
-				Style="{DynamicResource BasicTextStyle}"
-				Margin="3"
+				FrameworkElement.Style="{DynamicResource BasicTextStyle}"
+				FrameworkElement.Margin="3"
 				Grid.Row="2"
 				Grid.Column="0"
-				Text="{localization:Localization FFUFamily}" />
+				TextBlock.Text="{localization:Localization FFUFamily}" />
 			<TextBlock
-				Style="{DynamicResource BasicTextStyle}"
-				Margin="3"
+				FrameworkElement.Style="{DynamicResource BasicTextStyle}"
+				FrameworkElement.Margin="3"
 				Grid.Row="3"
 				Grid.Column="0"
-				Text="{localization:Localization FFUProductName}" />
+				TextBlock.Text="{localization:Localization FFUProductName}" />
 			<TextBlock
-				Style="{DynamicResource BasicTextStyle}"
-				Margin="3"
+				FrameworkElement.Style="{DynamicResource BasicTextStyle}"
+				FrameworkElement.Margin="3"
 				Grid.Row="4"
 				Grid.Column="0"
-				Text="{localization:Localization FFUVersion}" />
+				TextBlock.Text="{localization:Localization FFUVersion}" />
 			<TextBlock
-				Style="{DynamicResource BasicTextStyle}"
-				Margin="3"
+				FrameworkElement.Style="{DynamicResource BasicTextStyle}"
+				FrameworkElement.Margin="3"
 				Grid.Row="1"
 				Grid.Column="1"
-				Text="{Binding PlatformId.Manufacturer}" />
+				TextBlock.Text="{Binding PlatformId.Manufacturer}" />
 			<TextBlock
-				Style="{DynamicResource BasicTextStyle}"
-				Margin="3"
+				FrameworkElement.Style="{DynamicResource BasicTextStyle}"
+				FrameworkElement.Margin="3"
 				Grid.Row="2"
 				Grid.Column="1"
-				Text="{Binding PlatformId.Family}" />
+				TextBlock.Text="{Binding PlatformId.Family}" />
 			<TextBlock
-				Style="{DynamicResource BasicTextStyle}"
-				Margin="3"
+				FrameworkElement.Style="{DynamicResource BasicTextStyle}"
+				FrameworkElement.Margin="3"
 				Grid.Row="3"
 				Grid.Column="1"
-				Text="{Binding PlatformId.ProductName}" />
+				TextBlock.Text="{Binding PlatformId.ProductName}" />
 			<TextBlock
-				Style="{DynamicResource BasicTextStyle}"
-				Margin="3"
+				FrameworkElement.Style="{DynamicResource BasicTextStyle}"
+				FrameworkElement.Margin="3"
 				Grid.Row="4"
 				Grid.Column="1"
-				Text="{Binding PlatformId.Version}" />
+				TextBlock.Text="{Binding PlatformId.Version}" />
 		</Grid>
 		<Grid
 			Row="2"
 			Column="1"
-			Margin="0, 20, 0, 0"
-			MinWidth="250"
-			HorizontalAlignment="Center">
+			FrameworkElement.Margin="0, 20, 0, 0"
+			FrameworkElement.MinWidth="250"
+			FrameworkElement.HorizontalAlignment="Center">
 			<Grid.RowDefinitions>
 				<RowDefinition />
 				<RowDefinition />
@@ -133,84 +133,84 @@
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition
-					Width="Auto" />
+					ColumnDefinition.Width="Auto" />
 				<ColumnDefinition
-					Width="Auto" />
+					ColumnDefinition.Width="Auto" />
 			</Grid.ColumnDefinitions>
 			<TextBlock
 				Grid.Row="0"
-				Style="{DynamicResource SubheaderTextStyle}"
-				Text="{localization:Localization Device}" />
+				FrameworkElement.Style="{DynamicResource SubheaderTextStyle}"
+				TextBlock.Text="{localization:Localization Device}" />
 			<TextBlock
-				Style="{DynamicResource BasicTextStyle}"
-				Margin="3"
+				FrameworkElement.Style="{DynamicResource BasicTextStyle}"
+				FrameworkElement.Margin="3"
 				Grid.Row="1"
 				Grid.Column="0"
-				Text="{localization:Localization FFUManufacturer}" />
+				TextBlock.Text="{localization:Localization FFUManufacturer}" />
 			<TextBlock
-				Style="{DynamicResource BasicTextStyle}"
-				Margin="3"
+				FrameworkElement.Style="{DynamicResource BasicTextStyle}"
+				FrameworkElement.Margin="3"
 				Grid.Row="2"
 				Grid.Column="0"
-				Text="{localization:Localization FFUFamily}" />
+				TextBlock.Text="{localization:Localization FFUFamily}" />
 			<TextBlock
-				Style="{DynamicResource BasicTextStyle}"
-				Margin="3"
+				FrameworkElement.Style="{DynamicResource BasicTextStyle}"
+				FrameworkElement.Margin="3"
 				Grid.Row="3"
 				Grid.Column="0"
-				Text="{localization:Localization FFUProductName}" />
+				TextBlock.Text="{localization:Localization FFUProductName}" />
 			<TextBlock
-				Style="{DynamicResource BasicTextStyle}"
-				Margin="3"
+				FrameworkElement.Style="{DynamicResource BasicTextStyle}"
+				FrameworkElement.Margin="3"
 				Grid.Row="4"
 				Grid.Column="0"
-				Text="{localization:Localization FFUVersion}" />
+				TextBlock.Text="{localization:Localization FFUVersion}" />
 			<TextBlock
-				Style="{DynamicResource BasicTextStyle}"
-				Margin="3"
+				FrameworkElement.Style="{DynamicResource BasicTextStyle}"
+				FrameworkElement.Margin="3"
 				Grid.Row="1"
 				Grid.Column="1"
-				Text="{Binding AppContext.CurrentPhone.PlatformId.Manufacturer}" />
+				TextBlock.Text="{Binding AppContext.CurrentPhone.PlatformId.Manufacturer}" />
 			<TextBlock
-				Style="{DynamicResource BasicTextStyle}"
-				Margin="3"
+				FrameworkElement.Style="{DynamicResource BasicTextStyle}"
+				FrameworkElement.Margin="3"
 				Grid.Row="2"
 				Grid.Column="1"
-				Text="{Binding AppContext.CurrentPhone.PlatformId.Family}" />
+				TextBlock.Text="{Binding AppContext.CurrentPhone.PlatformId.Family}" />
 			<TextBlock
-				Style="{DynamicResource BasicTextStyle}"
-				Margin="3"
+				FrameworkElement.Style="{DynamicResource BasicTextStyle}"
+				FrameworkElement.Margin="3"
 				Grid.Row="3"
 				Grid.Column="1"
-				Text="{Binding AppContext.CurrentPhone.PlatformId.ProductName}" />
+				TextBlock.Text="{Binding AppContext.CurrentPhone.PlatformId.ProductName}" />
 			<TextBlock
-				Style="{DynamicResource BasicTextStyle}"
-				Margin="3"
+				FrameworkElement.Style="{DynamicResource BasicTextStyle}"
+				FrameworkElement.Margin="3"
 				Grid.Row="4"
 				Grid.Column="1"
-				Text="{Binding AppContext.CurrentPhone.PlatformId.Version}" />
+				TextBlock.Text="{Binding AppContext.CurrentPhone.PlatformId.Version}" />
 		</Grid>
 	</Grid>
 	<StackPanel
 		Orientation="Horizontal"
-		HorizontalAlignment="Center"
+		FrameworkElement.HorizontalAlignment="Center"
 		Grid.Row="1"
 		Grid.ColumnSpan="2"
-		VerticalAlignment="Top">
+		FrameworkElement.VerticalAlignment="Top">
 		<Button
-			Margin="5,10"
-			Command="{Binding Commands[ChangePackagePathCommand]}"
-			Content="{localization:Localization ButtonBrowse}" />
+			FrameworkElement.Margin="5,10"
+			ButtonBase.Command="{Binding Commands[ChangePackagePathCommand]}"
+			ContentControl.Content="{localization:Localization ButtonBrowse}" />
 		<Button
-			CommandParameter="{x:Static resources:Consts.PackageIntegrityCheckState}"
-			Margin="5,10"
-			Command="{Binding Commands[SwitchToState]}"
-			Content="{localization:Localization ButtonNext}"
-			IsEnabled="{Binding IsNextCommandEnabled}" />
+			ButtonBase.CommandParameter="{x:Static resources:Consts.PackageIntegrityCheckState}"
+			FrameworkElement.Margin="5,10"
+			ButtonBase.Command="{Binding Commands[SwitchToState]}"
+			ContentControl.Content="{localization:Localization ButtonNext}"
+			UIElement.IsEnabled="{Binding IsNextCommandEnabled}" />
 		<Button
-			CommandParameter="{x:Static resources:Consts.AutomaticManufacturerSelectionState}"
-			Margin="5,10"
-			Content="{localization:Localization ButtonCancel}"
-			Command="{Binding Commands[SwitchToState]}" />
+			ButtonBase.CommandParameter="{x:Static resources:Consts.AutomaticManufacturerSelectionState}"
+			FrameworkElement.Margin="5,10"
+			ContentControl.Content="{localization:Localization ButtonCancel}"
+			ButtonBase.Command="{Binding Commands[SwitchToState]}" />
 	</StackPanel>
 </Grid>

@@ -3,10 +3,10 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.DataPackage;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation
 {
-	// Token: 0x02000003 RID: 3
+	// Token: 0x02000004 RID: 4
 	internal static class AcerMsrQuery
 	{
-		// Token: 0x04000004 RID: 4
+		// Token: 0x04000006 RID: 6
 		public static readonly QueryParameters M220WwGen1H = new QueryParameters
 		{
 			ManufacturerName = "AcerInc",
@@ -18,7 +18,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation
 			PackageClass = "Public"
 		};
 
-		// Token: 0x04000005 RID: 5
+		// Token: 0x04000007 RID: 7
 		public static readonly QueryParameters M220PaCus1H = new QueryParameters
 		{
 			ManufacturerName = "AcerInc",
@@ -30,7 +30,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation
 			PackageClass = "Public"
 		};
 
-		// Token: 0x04000006 RID: 6
+		// Token: 0x04000008 RID: 8
 		public static readonly QueryParameters M220WwGen1 = new QueryParameters
 		{
 			ManufacturerName = "AcerInc",
@@ -42,7 +42,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation
 			PackageClass = "Public"
 		};
 
-		// Token: 0x04000007 RID: 7
+		// Token: 0x04000009 RID: 9
 		public static readonly QueryParameters M220AapGlobe = new QueryParameters
 		{
 			ManufacturerName = "AcerInc",
@@ -54,7 +54,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation
 			PackageClass = "Public"
 		};
 
-		// Token: 0x04000008 RID: 8
+		// Token: 0x0400000A RID: 10
 		public static readonly QueryParameters JadePrimo = new QueryParameters
 		{
 			ManufacturerName = "AcerInc",
@@ -66,7 +66,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation
 			PackageClass = "Public"
 		};
 
-		// Token: 0x04000009 RID: 9
+		// Token: 0x0400000B RID: 11
 		public static readonly QueryParameters M330EmeaBgcs = new QueryParameters
 		{
 			ManufacturerName = "AcerInc",
@@ -78,7 +78,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation
 			PackageClass = "Public"
 		};
 
-		// Token: 0x0400000A RID: 10
+		// Token: 0x0400000C RID: 12
 		public static readonly QueryParameters M330WwGen1S = new QueryParameters
 		{
 			ManufacturerName = "AcerInc",
@@ -90,7 +90,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation
 			PackageClass = "Public"
 		};
 
-		// Token: 0x0400000B RID: 11
+		// Token: 0x0400000D RID: 13
 		public static readonly QueryParameters M330WwGen1 = new QueryParameters
 		{
 			ManufacturerName = "AcerInc",
@@ -102,7 +102,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation
 			PackageClass = "Public"
 		};
 
-		// Token: 0x0400000C RID: 12
+		// Token: 0x0400000E RID: 14
 		public static readonly QueryParameters M330PaGen1 = new QueryParameters
 		{
 			ManufacturerName = "AcerInc",

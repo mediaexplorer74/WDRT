@@ -127,28 +127,24 @@ namespace Nokia.Lucid.DeviceInformation
 				DevInst = this.instanceHandle,
 				Reserved = this.reserved
 			};
-			int propertyType;
+			int num;
 			byte[] deviceProperty;
 			try
 			{
-				deviceProperty = this.deviceInfoSet.GetDeviceProperty(ref sp_DEVINFO_DATA, ref key, out propertyType);
+				deviceProperty = this.deviceInfoSet.GetDeviceProperty(ref sp_DEVINFO_DATA, ref key, out num);
 			}
 			catch (Win32Exception ex)
 			{
 				if (ex.NativeErrorCode == 1168)
 				{
-					string str;
-					string text = DeviceInfo.TryGetPropertyKeyIdentifier(key, out str) ? (" (" + str + ")") : string.Empty;
-					string message = string.Format(CultureInfo.CurrentCulture, Resources.KeyNotFoundException_MessageFormat_PropertyNotFound, new object[]
-					{
-						key,
-						text
-					});
-					throw new KeyNotFoundException(message, ex);
+					string text2;
+					string text = (DeviceInfo.TryGetPropertyKeyIdentifier(key, out text2) ? (" (" + text2 + ")") : string.Empty);
+					string text3 = string.Format(CultureInfo.CurrentCulture, Resources.KeyNotFoundException_MessageFormat_PropertyNotFound, new object[] { key, text });
+					throw new KeyNotFoundException(text3, ex);
 				}
 				throw;
 			}
-			return formatter.ReadFrom(deviceProperty, 0, deviceProperty.Length, (PropertyType)propertyType);
+			return formatter.ReadFrom(deviceProperty, 0, deviceProperty.Length, (PropertyType)num);
 		}
 
 		// Token: 0x060000D8 RID: 216 RVA: 0x00007B18 File Offset: 0x00005D18
@@ -165,14 +161,14 @@ namespace Nokia.Lucid.DeviceInformation
 				DevInst = this.instanceHandle,
 				Reserved = this.reserved
 			};
-			int propertyType;
+			int num;
 			byte[] array;
-			if (!this.deviceInfoSet.TryGetDeviceProperty(ref sp_DEVINFO_DATA, ref key, out propertyType, out array))
+			if (!this.deviceInfoSet.TryGetDeviceProperty(ref sp_DEVINFO_DATA, ref key, out num, out array))
 			{
 				value = null;
 				return false;
 			}
-			return formatter.TryReadFrom(array, 0, array.Length, (PropertyType)propertyType, out value);
+			return formatter.TryReadFrom(array, 0, array.Length, (PropertyType)num, out value);
 		}
 
 		// Token: 0x060000D9 RID: 217 RVA: 0x00007BA4 File Offset: 0x00005DA4

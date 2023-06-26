@@ -2,18 +2,18 @@
 
 namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 {
-	// Token: 0x0200001E RID: 30
+	// Token: 0x02000023 RID: 35
 	public class ConstValue<T>
 	{
-		// Token: 0x06000113 RID: 275 RVA: 0x000073CE File Offset: 0x000055CE
+		// Token: 0x06000126 RID: 294 RVA: 0x00007C06 File Offset: 0x00005E06
 		public ConstValue(T value)
 		{
 			this.Value = value;
 		}
 
-		// Token: 0x17000015 RID: 21
-		// (get) Token: 0x06000115 RID: 277 RVA: 0x000073E6 File Offset: 0x000055E6
-		// (set) Token: 0x06000114 RID: 276 RVA: 0x000073DD File Offset: 0x000055DD
+		// Token: 0x1700001A RID: 26
+		// (get) Token: 0x06000128 RID: 296 RVA: 0x00007C1E File Offset: 0x00005E1E
+		// (set) Token: 0x06000127 RID: 295 RVA: 0x00007C15 File Offset: 0x00005E15
 		public T Value { get; private set; }
 	}
 }

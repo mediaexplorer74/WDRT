@@ -12,11 +12,11 @@ using Nokia.Lucid.DeviceInformation;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation
 {
-	// Token: 0x02000004 RID: 4
+	// Token: 0x02000003 RID: 3
 	[Export(typeof(IDeviceSupport))]
 	internal class LumiaSupport : IDeviceSupport
 	{
-		// Token: 0x06000014 RID: 20 RVA: 0x00002C72 File Offset: 0x00000E72
+		// Token: 0x06000002 RID: 2 RVA: 0x000020A4 File Offset: 0x000002A4
 		[ImportingConstructor]
 		public LumiaSupport(ILucidService lucidService)
 		{
@@ -24,7 +24,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation
 		}
 
 		// Token: 0x17000001 RID: 1
-		// (get) Token: 0x06000015 RID: 21 RVA: 0x00002C84 File Offset: 0x00000E84
+		// (get) Token: 0x06000003 RID: 3 RVA: 0x000020B8 File Offset: 0x000002B8
 		public Guid Id
 		{
 			get
@@ -33,120 +33,118 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation
 			}
 		}
 
-		// Token: 0x06000016 RID: 22 RVA: 0x00002CB4 File Offset: 0x00000EB4
+		// Token: 0x06000004 RID: 4 RVA: 0x000020D0 File Offset: 0x000002D0
 		public DeviceDetectionInformation[] GetDeviceDetectionInformation()
 		{
-			return (from vp in new VidPidPair[]
+			return new VidPidPair[]
 			{
 				LumiaSupport.LegacyOrApolloVidPid,
 				LumiaSupport.BluVidPid,
 				LumiaSupport.MsftVidPid
-			}
-			select new DeviceDetectionInformation(vp, false)).ToArray<DeviceDetectionInformation>();
+			}.Select((VidPidPair vp) => new DeviceDetectionInformation(vp, false)).ToArray<DeviceDetectionInformation>();
 		}
 
-		// Token: 0x06000017 RID: 23 RVA: 0x00002E9C File Offset: 0x0000109C
+		// Token: 0x06000005 RID: 5 RVA: 0x0000212C File Offset: 0x0000032C
 		public async Task UpdateDeviceDetectionDataAsync(DeviceDetectionData detectionData, CancellationToken cancellationToken)
 		{
-			if (detectionData.IsDeviceSupported)
+			bool isDeviceSupported = detectionData.IsDeviceSupported;
+			if (isDeviceSupported)
 			{
 				throw new InvalidOperationException("Device is already supported.");
 			}
-			VidPidPair vidPidPair = detectionData.VidPidPair;
-			string usbDeviceInterfaceDevicePath = detectionData.UsbDeviceInterfaceDevicePath;
+			VidPidPair vidPid = detectionData.VidPidPair;
+			string devicePath = detectionData.UsbDeviceInterfaceDevicePath;
+			bool flag = vidPid == LumiaSupport.MsftVidPid;
 			Bitmap bitmap;
-			if (vidPidPair == LumiaSupport.MsftVidPid)
+			if (flag)
 			{
 				bitmap = Resources.MicrosoftLumia;
 			}
 			else
 			{
-				if (!(vidPidPair == LumiaSupport.BluVidPid) && !(vidPidPair == LumiaSupport.LegacyOrApolloVidPid))
+				bool flag2 = vidPid == LumiaSupport.BluVidPid || vidPid == LumiaSupport.LegacyOrApolloVidPid;
+				if (!flag2)
 				{
 					return;
 				}
 				bitmap = Resources.NokiaLumia;
 			}
-			DeviceInfo deviceInfoForInterfaceGuid = this.lucidService.GetDeviceInfoForInterfaceGuid(usbDeviceInterfaceDevicePath, WellKnownGuids.UsbDeviceInterfaceGuid);
-			string busReportedDeviceDescription = deviceInfoForInterfaceGuid.ReadBusReportedDeviceDescription();
-			string key;
-			string deviceSalesName;
-			LumiaSupport.ParseTypeDesignatorAndSalesName(busReportedDeviceDescription, out key, out deviceSalesName);
-			string text;
-			if (LumiaSupport.SalesNamesDictionary.TryGetValue(key, out text))
+			DeviceInfo deviceInfo = this.lucidService.GetDeviceInfoForInterfaceGuid(devicePath, WellKnownGuids.UsbDeviceInterfaceGuid);
+			string busReportedDeviceDescription = deviceInfo.ReadBusReportedDeviceDescription();
+			string productType;
+			string salesName;
+			LumiaSupport.ParseTypeDesignatorAndSalesName(busReportedDeviceDescription, out productType, out salesName);
+			string hardcodedSalesName;
+			bool flag3 = LumiaSupport.SalesNamesDictionary.TryGetValue(productType, out hardcodedSalesName);
+			if (flag3)
 			{
-				deviceSalesName = text;
+				salesName = hardcodedSalesName;
 			}
-			byte[] deviceBitmapBytes = bitmap.ToBytes();
-			detectionData.DeviceSalesName = deviceSalesName;
-			detectionData.DeviceBitmapBytes = deviceBitmapBytes;
+			byte[] imageBytes = bitmap.ToBytes();
+			detectionData.DeviceSalesName = salesName;
+			detectionData.DeviceBitmapBytes = imageBytes;
 			detectionData.IsDeviceSupported = true;
 		}
 
-		// Token: 0x06000018 RID: 24 RVA: 0x00002EF8 File Offset: 0x000010F8
+		// Token: 0x06000006 RID: 6 RVA: 0x00002180 File Offset: 0x00000380
 		private static void ParseTypeDesignatorAndSalesName(string busReportedDeviceDescription, out string productType, out string salesName)
 		{
 			productType = string.Empty;
 			salesName = string.Empty;
-			if (busReportedDeviceDescription.Contains("|"))
+			bool flag = busReportedDeviceDescription.Contains("|");
+			if (flag)
 			{
-				string[] array = busReportedDeviceDescription.Split(new char[]
-				{
-					'|'
-				});
-				productType = ((array.Length > 0) ? array[0] : string.Empty);
+				string[] array = busReportedDeviceDescription.Split(new char[] { '|' });
+				productType = ((array.Length != 0) ? array[0] : string.Empty);
 				salesName = ((array.Length > 1) ? array[1] : string.Empty);
-			}
-			else if (busReportedDeviceDescription.Contains("(") && busReportedDeviceDescription.Contains(")"))
-			{
-				int num = busReportedDeviceDescription.LastIndexOf('(');
-				int num2 = busReportedDeviceDescription.IndexOf(')', Math.Max(num, 0));
-				int num3 = busReportedDeviceDescription.IndexOf(" (", StringComparison.InvariantCulture);
-				if (num > -1 && num2 > num)
-				{
-					productType = busReportedDeviceDescription.Substring(num + 1, num2 - num - 1);
-				}
-				if (num3 > -1)
-				{
-					salesName = busReportedDeviceDescription.Substring(0, num3);
-				}
 			}
 			else
 			{
-				salesName = busReportedDeviceDescription;
+				bool flag2 = busReportedDeviceDescription.Contains("(") && busReportedDeviceDescription.Contains(")");
+				if (flag2)
+				{
+					int num = busReportedDeviceDescription.LastIndexOf('(');
+					int num2 = busReportedDeviceDescription.IndexOf(')', Math.Max(num, 0));
+					int num3 = busReportedDeviceDescription.IndexOf(" (", StringComparison.InvariantCulture);
+					bool flag3 = num > -1 && num2 > num;
+					if (flag3)
+					{
+						productType = busReportedDeviceDescription.Substring(num + 1, num2 - num - 1);
+					}
+					bool flag4 = num3 > -1;
+					if (flag4)
+					{
+						salesName = busReportedDeviceDescription.Substring(0, num3);
+					}
+				}
+				else
+				{
+					salesName = busReportedDeviceDescription;
+				}
 			}
 		}
 
-		// Token: 0x04000006 RID: 6
+		// Token: 0x04000001 RID: 1
 		private readonly ILucidService lucidService;
 
-		// Token: 0x04000007 RID: 7
+		// Token: 0x04000002 RID: 2
 		private static readonly Dictionary<string, string> SalesNamesDictionary = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
 		{
-			{
-				"RM-875",
-				"Nokia Lumia 1020"
-			},
-			{
-				"RM-876",
-				"Nokia Lumia 1020"
-			},
-			{
-				"RM-877",
-				"Nokia Lumia 1020"
-			}
+			{ "RM-875", "Nokia Lumia 1020" },
+			{ "RM-876", "Nokia Lumia 1020" },
+			{ "RM-877", "Nokia Lumia 1020" }
 		};
 
-		// Token: 0x04000008 RID: 8
+		// Token: 0x04000003 RID: 3
 		private static readonly Guid SupportGuid = new Guid("AC04B553-A566-4D49-A097-4CC73ED820F3");
 
-		// Token: 0x04000009 RID: 9
+		// Token: 0x04000004 RID: 4
 		private static readonly VidPidPair LegacyOrApolloVidPid = new VidPidPair("0421", "0661");
 
-		// Token: 0x0400000A RID: 10
+		// Token: 0x04000005 RID: 5
 		private static readonly VidPidPair BluVidPid = new VidPidPair("0421", "06FC");
 
-		// Token: 0x0400000B RID: 11
+		// Token: 0x04000006 RID: 6
 		private static readonly VidPidPair MsftVidPid = new VidPidPair("045E", "0A00");
 	}
 }

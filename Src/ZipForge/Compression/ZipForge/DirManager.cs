@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 using ComponentAce.Compression.Archiver;
-using ComponentAce.Compression.Exception1;
+using ComponentAce.Compression.Exception;
 using ComponentAce.Compression.Interfaces;
 using ComponentAce.Compression.ZipForge.Encryption;
 
@@ -14,7 +14,7 @@ namespace ComponentAce.Compression.ZipForge
 		// Token: 0x0600064B RID: 1611 RVA: 0x000283C0 File Offset: 0x000273C0
 		internal bool CheckCDirEnd(ZipCentralDirEnd dirEnd, long pos)
 		{
-			bool result = false;
+			bool flag = false;
 			long position = this.FCompressedStream.Position;
 			this.FCompressedStream.Position = pos;
 			if (this.FCompressedStream.Length - this.FCompressedStream.Position >= (long)ZipCentralDirEnd.SizeOf())
@@ -22,10 +22,10 @@ namespace ComponentAce.Compression.ZipForge
 				byte[] array = new byte[ZipCentralDirEnd.SizeOf()];
 				this.FCompressedStream.Read(array, 0, ZipCentralDirEnd.SizeOf());
 				dirEnd.LoadFromByteArray(array, 0U);
-				result = ((ulong)dirEnd.CommentLength <= (ulong)(this.FCompressedStream.Length - this.FCompressedStream.Position));
+				flag = (ulong)dirEnd.CommentLength <= (ulong)(this.FCompressedStream.Length - this.FCompressedStream.Position);
 			}
 			this.FCompressedStream.Position = position;
-			return result;
+			return flag;
 		}
 
 		// Token: 0x0600064C RID: 1612 RVA: 0x00028464 File Offset: 0x00027464
@@ -95,22 +95,22 @@ namespace ComponentAce.Compression.ZipForge
 		// Token: 0x0600064D RID: 1613 RVA: 0x00028638 File Offset: 0x00027638
 		private bool CheckFile(DirItem dir, ref string name, long headerPos)
 		{
-			ZipFileHeader header = default(ZipFileHeader);
-			bool result = false;
+			ZipFileHeader zipFileHeader = default(ZipFileHeader);
+			bool flag = false;
 			long position = this.FCompressedStream.Position;
 			this.FCompressedStream.Position = headerPos;
 			if (this.FCompressedStream.Length - this.FCompressedStream.Position >= (long)DirItem.LocalHeaderSize())
 			{
 				byte[] array = new byte[DirItem.LocalHeaderSize()];
 				this.FCompressedStream.Read(array, 0, DirItem.LocalHeaderSize());
-				header.LoadFromByteArray(array, 0U);
-				byte[] array2 = new byte[(int)header.nameLength];
-				this.FCompressedStream.Read(array2, 0, (int)header.nameLength);
+				zipFileHeader.LoadFromByteArray(array, 0U);
+				byte[] array2 = new byte[(int)zipFileHeader.nameLength];
+				this.FCompressedStream.Read(array2, 0, (int)zipFileHeader.nameLength);
 				name = CompressionUtils.ByteArrayToString(array2, this.OemCodePage);
-				result = dir.CheckLocalHeaderItem(header, name);
+				flag = dir.CheckLocalHeaderItem(zipFileHeader, name);
 			}
 			this.FCompressedStream.Position = position;
-			return result;
+			return flag;
 		}
 
 		// Token: 0x0600064E RID: 1614 RVA: 0x000286F8 File Offset: 0x000276F8
@@ -213,7 +213,7 @@ namespace ComponentAce.Compression.ZipForge
 			this.ItemsArray = new CompressionItemsArray();
 			this.ItemsArrayBackup = new CompressionItemsArray();
 			this.FCompressedStream = stream;
-			this.FIsCustomStream = (this.FCompressedStream != this.FArc._compressedStream);
+			this.FIsCustomStream = this.FCompressedStream != this.FArc._compressedStream;
 			this.FZip64 = false;
 			this.StubSize = 0;
 			this.ArchiveComment = "";
@@ -392,7 +392,7 @@ namespace ComponentAce.Compression.ZipForge
 		// Token: 0x0600065A RID: 1626 RVA: 0x00028DD0 File Offset: 0x00027DD0
 		private bool GetZip64CentralDirEndLocator(ref long curPos)
 		{
-			bool result = false;
+			bool flag = false;
 			if (curPos > (long)ZipUtil.Zip64CentralDirEndLocatorSize)
 			{
 				this.FCompressedStream.Position = curPos - (long)ZipUtil.Zip64CentralDirEndLocatorSize;
@@ -401,17 +401,17 @@ namespace ComponentAce.Compression.ZipForge
 				this.Zip64CentralDirEndLocator.LoadFromByteArray(array, 0U);
 				if (this.Zip64CentralDirEndLocator.Signature == ZipUtil.Zip64CentralDirEndLocatorSignature)
 				{
-					result = true;
+					flag = true;
 					curPos -= (long)ZipUtil.Zip64CentralDirEndLocatorSize;
 				}
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x0600065B RID: 1627 RVA: 0x00028E48 File Offset: 0x00027E48
 		private bool GetZip64CentralDirEnd(ref long curPos)
 		{
-			bool result = false;
+			bool flag = false;
 			if (curPos > (long)ZipUtil.Zip64CentralDirEndSize)
 			{
 				this.FCompressedStream.Position = this.Zip64CentralDirEndLocator.OffsetStartDirEnd;
@@ -421,22 +421,22 @@ namespace ComponentAce.Compression.ZipForge
 				long num = (long)((ulong)ZipUtil.Zip64CentralDirEndSignature);
 				if (num == (long)((ulong)this.Zip64CentralDirEnd.Signature))
 				{
-					result = true;
+					flag = true;
 					curPos -= (long)ZipUtil.Zip64CentralDirEndSize;
 				}
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x0600065C RID: 1628 RVA: 0x00028EC8 File Offset: 0x00027EC8
 		public void LoadItemsArray()
 		{
-			ZipCentralDirEnd centralDirEnd = default(ZipCentralDirEnd);
+			ZipCentralDirEnd zipCentralDirEnd = default(ZipCentralDirEnd);
 			long num = 0L;
 			byte[] array = new byte[257];
 			this.InitCentralDirEnd();
 			this.StubSize = 0;
-			if (!this.GetCentralDirEnd(ref centralDirEnd, ref num))
+			if (!this.GetCentralDirEnd(ref zipCentralDirEnd, ref num))
 			{
 				if (this.FArc.SpanningMode == SpanningMode.None)
 				{
@@ -447,7 +447,7 @@ namespace ComponentAce.Compression.ZipForge
 			}
 			else
 			{
-				this.CentralDirEnd = centralDirEnd;
+				this.CentralDirEnd = zipCentralDirEnd;
 				this.FZip64 = this.GetZip64CentralDirEndLocator(ref num);
 				if (this.FZip64 && !this.GetZip64CentralDirEnd(ref num))
 				{
@@ -486,14 +486,14 @@ namespace ComponentAce.Compression.ZipForge
 				{
 					if (this.FArc.SpanningMode == SpanningMode.None)
 					{
-						this.FCompressedStream.Position = num - (long)centralDirEnd.CentralDirSize;
+						this.FCompressedStream.Position = num - (long)zipCentralDirEnd.CentralDirSize;
 					}
 					else
 					{
-						this.FCompressedStream.Position = (long)((ulong)centralDirEnd.OffsetStartDir);
+						this.FCompressedStream.Position = (long)((ulong)zipCentralDirEnd.OffsetStartDir);
 					}
 					this.ItemsArray.Clear();
-					num4 = (int)centralDirEnd.EntriesCentralDir;
+					num4 = (int)zipCentralDirEnd.EntriesCentralDir;
 				}
 				new DirItem();
 				for (int i = 0; i < num4; i++)
@@ -513,7 +513,7 @@ namespace ComponentAce.Compression.ZipForge
 					{
 						array2 = new byte[num5];
 						this.FCompressedStream.Read(array2, 0, (int)num5);
-						if (this.FArc.IsFlexCompress() && (centralDirEnd.Signature == this.FArc.GetCentralDirEndSignature() || dirItem.ExtractVersion == 16660) && dirItem.IsGeneralPurposeFlagBitSet(0))
+						if (this.FArc.IsFlexCompress() && (zipCentralDirEnd.Signature == this.FArc.GetCentralDirEndSignature() || dirItem.ExtractVersion == 16660) && dirItem.IsGeneralPurposeFlagBitSet(0))
 						{
 							this.FArc.FXCDecryptFilename(ref array2, array2.Length, this.FArc.GetCentralDirEndSignature().ToString());
 						}
@@ -630,15 +630,15 @@ namespace ComponentAce.Compression.ZipForge
 		internal ushort GetCDirZip64ExtraFieldLength(int DirItemNo)
 		{
 			ushort num = 0;
-			if (this.ItemsArray[DirItemNo].UncompressedSize == (long)((int)-1))
+			if (this.ItemsArray[DirItemNo].UncompressedSize == (long)((ulong)(-1)))
 			{
 				num += 8;
 			}
-			if ((this._itemsArray[DirItemNo] as DirItem).CompressedSize == (long)((int)-1))
+			if ((this._itemsArray[DirItemNo] as DirItem).CompressedSize == (long)((ulong)(-1)))
 			{
 				num += 8;
 			}
-			if ((this._itemsArray[DirItemNo] as DirItem).RelativeLocalHeaderOffset == (long)((int)-1))
+			if ((this._itemsArray[DirItemNo] as DirItem).RelativeLocalHeaderOffset == (long)((ulong)(-1)))
 			{
 				num += 8;
 			}
@@ -670,7 +670,7 @@ namespace ComponentAce.Compression.ZipForge
 		{
 			long num = 0L;
 			ZipCentralDirEnd zipCentralDirEnd = default(ZipCentralDirEnd);
-			byte[] buffer = new byte[257];
+			byte[] array = new byte[257];
 			if (stream != null)
 			{
 				this.FCompressedStream = stream;
@@ -710,31 +710,31 @@ namespace ComponentAce.Compression.ZipForge
 				this.FArc._volumeNumber = volumeNumber;
 				if (dirItem.IsGeneralPurposeFlagBitSet(11))
 				{
-					buffer = Encoding.UTF8.GetBytes(dirItem.Name);
+					array = Encoding.UTF8.GetBytes(dirItem.Name);
 				}
 				else
 				{
-					buffer = Encoding.GetEncoding(this.OemCodePage).GetBytes(dirItem.Name);
+					array = Encoding.GetEncoding(this.OemCodePage).GetBytes(dirItem.Name);
 				}
 				if (this.FArc.IsFlexCompress() && (this.CentralDirEnd.Signature == this.FArc.GetCentralDirEndSignature() || dirItem.ExtractVersion == 16660) && dirItem.IsGeneralPurposeFlagBitSet(0))
 				{
-					this.FArc.FXCEncryptFilename(ref buffer, dirItem.Name.Length, this.FArc.GetCentralDirEndSignature().ToString());
+					this.FArc.FXCEncryptFilename(ref array, dirItem.Name.Length, this.FArc.GetCentralDirEndSignature().ToString());
 				}
-				this.FArc.WriteBufferToStream(buffer, (long)((ulong)dirItem.NameLength), ref this.FCompressedStream, ref volumeNumber);
+				this.FArc.WriteBufferToStream(array, (long)((ulong)dirItem.NameLength), ref this.FCompressedStream, ref volumeNumber);
 				this.FArc._volumeNumber = volumeNumber;
 				this.SaveCDirExtraFields(i);
 				if (dirItem.Comment != "")
 				{
-					byte[] bytes;
+					byte[] array2;
 					if (dirItem.IsGeneralPurposeFlagBitSet(11))
 					{
-						bytes = Encoding.UTF8.GetBytes(dirItem.Comment);
+						array2 = Encoding.UTF8.GetBytes(dirItem.Comment);
 					}
 					else
 					{
-						bytes = Encoding.GetEncoding(this.OemCodePage).GetBytes((this._itemsArray[i] as DirItem).Comment);
+						array2 = Encoding.GetEncoding(this.OemCodePage).GetBytes((this._itemsArray[i] as DirItem).Comment);
 					}
-					this.FArc.WriteBufferToStream(bytes, (long)bytes.Length, ref this.FCompressedStream, ref volumeNumber);
+					this.FArc.WriteBufferToStream(array2, (long)array2.Length, ref this.FCompressedStream, ref volumeNumber);
 					this.FArc._volumeNumber = volumeNumber;
 				}
 			}
@@ -758,7 +758,7 @@ namespace ComponentAce.Compression.ZipForge
 				this.CentralDirEnd.EntriesCentralDir = ushort.MaxValue;
 				flag2 = true;
 			}
-			if (num2 < (long)((int)-1))
+			if (num2 < (long)((ulong)(-1)))
 			{
 				this.CentralDirEnd.CentralDirSize = (uint)num2;
 			}
@@ -767,7 +767,7 @@ namespace ComponentAce.Compression.ZipForge
 				this.CentralDirEnd.CentralDirSize = uint.MaxValue;
 				flag2 = true;
 			}
-			if (num < (long)((int)-1))
+			if (num < (long)((ulong)(-1)))
 			{
 				this.CentralDirEnd.OffsetStartDir = (uint)num;
 			}
@@ -794,7 +794,7 @@ namespace ComponentAce.Compression.ZipForge
 				this.Zip64CentralDirEnd.DiskNumber = (uint)this.FArc._volumeNumber;
 				flag2 = true;
 			}
-			if (this.FCompressedStream.Position >= (long)((int)-1) || flag2)
+			if (this.FCompressedStream.Position >= (long)((ulong)(-1)) || flag2)
 			{
 				this.SaveZip64CentralDirEnd(num);
 				this.SaveZip64CentralDirEndLocator();
@@ -803,11 +803,11 @@ namespace ComponentAce.Compression.ZipForge
 			this.FCompressedStream.Write(this.CentralDirEnd.GetBytes(), 0, ZipUtil.ZipCentralDirEndSize);
 			if (!CompressionUtils.IsNullOrEmpty(this.ArchiveComment))
 			{
-				byte[] array = new byte[(int)this.CentralDirEnd.CommentLength];
+				byte[] array3 = new byte[(int)this.CentralDirEnd.CommentLength];
 				try
 				{
-					Array.Copy(CompressionUtils.StringToByteArray(this.ArchiveComment, this.OemCodePage), 0, array, 0, this.ArchiveComment.Length);
-					this.FCompressedStream.Write(array, 0, (int)this.CentralDirEnd.CommentLength);
+					Array.Copy(CompressionUtils.StringToByteArray(this.ArchiveComment, this.OemCodePage), 0, array3, 0, this.ArchiveComment.Length);
+					this.FCompressedStream.Write(array3, 0, (int)this.CentralDirEnd.CommentLength);
 				}
 				finally
 				{

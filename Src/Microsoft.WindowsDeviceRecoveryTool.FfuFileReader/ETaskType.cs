@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-// Token: 0x02000281 RID: 641
-//[NativeCppClass]
+// Token: 0x0200030E RID: 782
+[NativeCppClass]
 internal enum ETaskType
 {
 

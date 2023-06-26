@@ -45,13 +45,13 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 		{
 			get
 			{
-				IUefiDevice[] result;
+				IUefiDevice[] array;
 				lock (this.mutex)
 				{
 					this.Refresh();
-					result = this.ffuDevices.Values.ToArray<UefiDevice>();
+					array = this.ffuDevices.Values.ToArray<UefiDevice>();
 				}
-				return result;
+				return array;
 			}
 		}
 
@@ -104,14 +104,14 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 		// Token: 0x060000FA RID: 250 RVA: 0x0000FC6C File Offset: 0x0000DE6C
 		public uint GetDeviceError()
 		{
-			uint result;
+			uint num;
 			lock (this.mutex)
 			{
 				Guid winUSBClassGuid = FFUManager.WinUSBClassGuid;
 				IntPtr intPtr = NativeMethods.SetupDiGetClassDevs(ref winUSBClassGuid, null, IntPtr.Zero, 2);
 				if (IntPtr.Zero == intPtr)
 				{
-					result = 0U;
+					num = 0U;
 				}
 				else
 				{
@@ -124,18 +124,18 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 					};
 					try
 					{
-						uint num = 0U;
-						while (NativeMethods.SetupDiEnumDeviceInfo(intPtr, num++, ref deviceInformationData))
+						uint num2 = 0U;
+						while (NativeMethods.SetupDiEnumDeviceInfo(intPtr, num2++, ref deviceInformationData))
 						{
-							num += 1U;
-							uint num2 = 0U;
-							uint result2 = 0U;
-							if (NativeMethods.CM_Get_DevNode_Status(ref num2, ref result2, deviceInformationData.DevInst, 0U) == 0U)
+							num2 += 1U;
+							uint num3 = 0U;
+							uint num4 = 0U;
+							if (NativeMethods.CM_Get_DevNode_Status(ref num3, ref num4, deviceInformationData.DevInst, 0U) == 0U)
 							{
-								return result2;
+								return num4;
 							}
 						}
-						result = 0U;
+						num = 0U;
 					}
 					finally
 					{
@@ -143,39 +143,39 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 					}
 				}
 			}
-			return result;
+			return num;
 		}
 
 		// Token: 0x060000FB RID: 251 RVA: 0x0000FD64 File Offset: 0x0000DF64
 		public bool UpdateDevice(IFFUDevice device)
 		{
-			bool result;
+			bool flag2;
 			lock (this.mutex)
 			{
 				if (device == null)
 				{
-					result = false;
+					flag2 = false;
 				}
 				else if (!this.ffuDevices.ContainsKey(device.DeviceUniqueID))
 				{
-					result = false;
+					flag2 = false;
 				}
 				else
 				{
 					UefiDevice uefiDevice = this.ffuDevices[device.DeviceUniqueID];
 					if (object.ReferenceEquals(device, uefiDevice.FFUDevice))
 					{
-						result = false;
+						flag2 = false;
 					}
 					else
 					{
 						uefiDevice.FFUDevice.Dispose();
 						uefiDevice.FFUDevice = device;
-						result = true;
+						flag2 = true;
 					}
 				}
 			}
-			return result;
+			return flag2;
 		}
 
 		// Token: 0x0400031A RID: 794

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-// Token: 0x020002A9 RID: 681
+// Token: 0x02000335 RID: 821
 [NativeCppClass]
 internal struct ICorRuntimeHost
 {

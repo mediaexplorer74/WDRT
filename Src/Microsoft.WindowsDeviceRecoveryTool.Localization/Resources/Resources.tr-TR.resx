@@ -1,0 +1,892 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccentColor" xml:space="preserve">
+    <value>Vurgu rengi</value>
+  </data>
+  <data name="AccentColorBlack" xml:space="preserve">
+    <value>Siyah</value>
+  </data>
+  <data name="AccentColorBlue" xml:space="preserve">
+    <value>Mavi</value>
+  </data>
+  <data name="AccentColorCobalt" xml:space="preserve">
+    <value>Kobalt mavisi</value>
+  </data>
+  <data name="AccentColorCrimson" xml:space="preserve">
+    <value>Koyu kırmızı</value>
+  </data>
+  <data name="AccentColorEmerald" xml:space="preserve">
+    <value>Zümrüt yeşili</value>
+  </data>
+  <data name="AccentColorIndigo" xml:space="preserve">
+    <value>Çivit mavisi</value>
+  </data>
+  <data name="AccentColorMauve" xml:space="preserve">
+    <value>Leylak rengi</value>
+  </data>
+  <data name="AccentColorSienna" xml:space="preserve">
+    <value>Koyu kahverengi</value>
+  </data>
+  <data name="AddressForm" xml:space="preserve">
+    <value>Adres</value>
+  </data>
+  <data name="AllFilesSize" xml:space="preserve">
+    <value>Tüm dosyaların boyutu: {0}</value>
+  </data>
+  <data name="AnotherInstanceAlreadyRunning" xml:space="preserve">
+    <value>{0} yazılımının başka bir sürümü şu anda çalışıyor.</value>
+  </data>
+  <data name="ApplicationData" xml:space="preserve">
+    <value>Uygulama verileri</value>
+  </data>
+  <data name="ApplicationUpdate" xml:space="preserve">
+    <value>Uygulama güncellemesi</value>
+  </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>Emin misiniz?</value>
+  </data>
+  <data name="AutomaticPackageFileSelection" xml:space="preserve">
+    <value>Bağlanan telefon için doğru paket aranıyor.</value>
+  </data>
+  <data name="AutomaticPackageSelection" xml:space="preserve">
+    <value>Otomatik paket seçimi</value>
+  </data>
+  <data name="AvailablePackageIsOlder" xml:space="preserve">
+    <value>Mevcut yazılım, telefonunuzdaki yazılımdan eski.</value>
+  </data>
+  <data name="AwaitRecoveryAfterEmergencyFlashingInstruction" xml:space="preserve">
+    <value>Başarılı kurtarma işleminden sonra telefon için bekleniyor.
+Batarya düşükse 30 dakikaya kadar sürebilir.</value>
+  </data>
+  <data name="BatteryCheckHeader" xml:space="preserve">
+    <value>Bataryayı kontrol edin</value>
+  </data>
+  <data name="BatteryCheckingCancelled" xml:space="preserve">
+    <value>Batarya denetimi iptal edildi.</value>
+  </data>
+  <data name="BatteryWarning" xml:space="preserve">
+    <value>Batarya seviyenizin en az %25 olduğundan emin olun. Aksi takdirde telefonunuz zarar görebilir.</value>
+  </data>
+  <data name="ButtonBrowse" xml:space="preserve">
+    <value>Gözat</value>
+  </data>
+  <data name="ButtonCancel" xml:space="preserve">
+    <value>İptal</value>
+  </data>
+  <data name="ButtonChangePackagePath" xml:space="preserve">
+    <value>Paket yolunu değiştirin</value>
+  </data>
+  <data name="ButtonClean" xml:space="preserve">
+    <value>Tüm uygulama verilerini temizle</value>
+  </data>
+  <data name="ButtonCleanOneCategory" xml:space="preserve">
+    <value>Temizle</value>
+  </data>
+  <data name="ButtonCollectLogs" xml:space="preserve">
+    <value>Dışa aktar</value>
+  </data>
+  <data name="ButtonContinue" xml:space="preserve">
+    <value>Devam</value>
+  </data>
+  <data name="ButtonDelete" xml:space="preserve">
+    <value>Sil</value>
+  </data>
+  <data name="ButtonExit" xml:space="preserve">
+    <value>Çık</value>
+  </data>
+  <data name="ButtonFinish" xml:space="preserve">
+    <value>Bitir</value>
+  </data>
+  <data name="ButtonInstall" xml:space="preserve">
+    <value>Yükle</value>
+  </data>
+  <data name="ButtonInstallSoftware" xml:space="preserve">
+    <value>Yazılımı yükle</value>
+  </data>
+  <data name="ButtonMyPhoneIsNotOnTheList" xml:space="preserve">
+    <value>Telefonum listede bulunmuyor</value>
+  </data>
+  <data name="ButtonMyPhoneWasNotDetected" xml:space="preserve">
+    <value>Telefonum algılanmadı</value>
+  </data>
+  <data name="ButtonNewFolder" xml:space="preserve">
+    <value>Yeni Klasör</value>
+  </data>
+  <data name="ButtonNext" xml:space="preserve">
+    <value>İleri</value>
+  </data>
+  <data name="ButtonNo" xml:space="preserve">
+    <value>Hayır</value>
+  </data>
+  <data name="ButtonOff" xml:space="preserve">
+    <value>Kapalı</value>
+  </data>
+  <data name="ButtonOk" xml:space="preserve">
+    <value>Tamam</value>
+  </data>
+  <data name="ButtonOn" xml:space="preserve">
+    <value>Açık</value>
+  </data>
+  <data name="ButtonReset" xml:space="preserve">
+    <value>Varsayılana sıfırla</value>
+  </data>
+  <data name="ButtonTryAgain" xml:space="preserve">
+    <value>Tekrar deneyin</value>
+  </data>
+  <data name="ButtonYes" xml:space="preserve">
+    <value>Evet</value>
+  </data>
+  <data name="CapsLockIsOn" xml:space="preserve">
+    <value>Büyük Harf Kilidi açık</value>
+  </data>
+  <data name="CheckLatestPackageHeader" xml:space="preserve">
+    <value>Telefon bilgisi</value>
+  </data>
+  <data name="CheckingAlreadyDownloadedFiles" xml:space="preserve">
+    <value>İndirilen dosyaların uyumluluğu denetleniyor</value>
+  </data>
+  <data name="CheckingAppUpdate" xml:space="preserve">
+    <value>Mevcut uygulama güncellemeleri denetleniyor</value>
+  </data>
+  <data name="CheckingFirmwareAvailability" xml:space="preserve">
+    <value>Yazılımın mevcut olup olmadığı denetleniyor</value>
+  </data>
+  <data name="CheckingPackageIntegrity" xml:space="preserve">
+    <value>Paket bütünlüğü denetleniyor</value>
+  </data>
+  <data name="CleanUserDataQuestion" xml:space="preserve">
+    <value>Tüm uygulama verilerini (raporlar, telefon yazılımı paketleri, günlük dosyalarını) silmek istediğinizden emin misiniz?</value>
+  </data>
+  <data name="CollectingLogFilesInfo" xml:space="preserve">
+    <value>Günlük dosyaları toplanıyor. Lütfen bekleyin.</value>
+  </data>
+  <data name="ComputerBatteryWarning" xml:space="preserve">
+    <value>Bilgisayarınızın bataryası bitiyor. Bilgisayarınızı şarj cihazına bağlayıp tekrar deneyin.</value>
+  </data>
+  <data name="ConnectPhone" xml:space="preserve">
+    <value>Telefonunuzu bağlayın</value>
+  </data>
+  <data name="ConnectPhoneWithUsbCable" xml:space="preserve">
+    <value>USB kablosunu telefona bağlayın.</value>
+  </data>
+  <data name="ConnectedDeviceCannotBeRecovered" xml:space="preserve">
+    <value>Bağlanan telefon kurtarılamıyor.</value>
+  </data>
+  <data name="CouldNotDetectPhone" xml:space="preserve">
+    <value>Telefonunuz algılanamadı</value>
+  </data>
+  <data name="CreatingNewFolderMessage" xml:space="preserve">
+    <value>Yeni klasör oluştur</value>
+  </data>
+  <data name="CurrentFirmwareVersion" xml:space="preserve">
+    <value>Yüklenen yazılım sürümü:</value>
+  </data>
+  <data name="CustomPackagesPath" xml:space="preserve">
+    <value>Özel Paket yolunu kullanın</value>
+  </data>
+  <data name="DeleteLogsQuestion" xml:space="preserve">
+    <value>Günlük dosyalarını silmek istediğinizden emin misiniz?</value>
+  </data>
+  <data name="DeletePackagesQuestion" xml:space="preserve">
+    <value>Yazılım kurtarma dosyalarını silmek istediğinizden emin misiniz?</value>
+  </data>
+  <data name="DeleteReportsQuestion" xml:space="preserve">
+    <value>Rapor dosyalarını silmek istediğinizden emin misiniz?</value>
+  </data>
+  <data name="DeletingLogFilesInfo" xml:space="preserve">
+    <value>Günlük dosyalarını silme</value>
+  </data>
+  <data name="DeletingPackagesInfo" xml:space="preserve">
+    <value>Yazılım kurtarma dosyalarını silme</value>
+  </data>
+  <data name="DeletingReportsInfo" xml:space="preserve">
+    <value>Rapor dosyalarını silme</value>
+  </data>
+  <data name="DetailsHeader" xml:space="preserve">
+    <value>Ayrıntılar</value>
+  </data>
+  <data name="Device" xml:space="preserve">
+    <value>Telefon</value>
+  </data>
+  <data name="DeviceFlashing" xml:space="preserve">
+    <value>Yazılım paketi yüklemesi</value>
+  </data>
+  <data name="DeviceInUefiMode" xml:space="preserve">
+    <value>Lumia telefon</value>
+  </data>
+  <data name="DeviceSelectionHeader" xml:space="preserve">
+    <value>Telefon seçimi</value>
+  </data>
+  <data name="DirectoryNotSet" xml:space="preserve">
+    <value>Dizin seçilmedi ya da yok.</value>
+  </data>
+  <data name="DisclaimerBackupInfo" xml:space="preserve">
+    <value>Yükleme sırasında telefondaki kişisel içerik silinecektir. Telefonunuzda şu bölüm altında bir yedek oluşturmanızı tavsiye ederiz:</value>
+  </data>
+  <data name="DisclaimerHeader" xml:space="preserve">
+    <value>Yasal Uyarı</value>
+  </data>
+  <data name="DisclaimerInfoInstallationDuration" xml:space="preserve">
+    <value>Yazılımın yüklenmesi yaklaşık 15 dakika sürecektir. Yazılım paketinin ne kadar sürede indirileceği ağ hızına bağlıdır.</value>
+  </data>
+  <data name="DisconnectPhone" xml:space="preserve">
+    <value>USB kablosunun telefonla bağlantısını kesin.</value>
+  </data>
+  <data name="DowngradeSoftwareQuestion" xml:space="preserve">
+    <value>Telefonunuzda yüklü yazılımdan daha eski bir yazılım yüklemeye çalışıyorsunuz. Devam etmek istiyor musunuz?</value>
+  </data>
+  <data name="DownloadCancelled" xml:space="preserve">
+    <value>İndirme iptal edildi</value>
+  </data>
+  <data name="DownloadProgressExactMinute" xml:space="preserve">
+    <value>Yaklaşık {0} dakika kaldı</value>
+  </data>
+  <data name="DownloadProgressMinute" xml:space="preserve">
+    <value>Yaklaşık bir dakika kaldı</value>
+  </data>
+  <data name="DownloadProgressMinuteLess" xml:space="preserve">
+    <value>Bir dakikadan az kaldı</value>
+  </data>
+  <data name="DownloadingCancelMessage" xml:space="preserve">
+    <value>Bu işlem, indirmeyi iptal edecektir. Daha önce indirilen dosyalar silinmeyecektir. İndirmeye daha sonra devam edebilirsiniz.</value>
+  </data>
+  <data name="DownloadingEmergencyPackage" xml:space="preserve">
+    <value>Acil durum paketi indirme</value>
+  </data>
+  <data name="DownloadingFiles" xml:space="preserve">
+    <value>Dosyalar indiriliyor: {0}/{1} ({2})</value>
+  </data>
+  <data name="DownloadingInstallPacket" xml:space="preserve">
+    <value>Yeni sürüm indiriliyor</value>
+  </data>
+  <data name="DownloadingPackage" xml:space="preserve">
+    <value>Paket indiriliyor</value>
+  </data>
+  <data name="EmergencyFlashingMessage" xml:space="preserve">
+    <value>Acil durum flaşı</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Hata</value>
+  </data>
+  <data name="ErrorDescription_AutoUpdateException" xml:space="preserve">
+    <value>Sunucu bağlantısında bir sorun var gibi görünüyor. İnternet bağlantınızı kontrol edin. Vekil sunucu, güvenlik duvarı ve virüsten korunma ayarlarınızın doğru olduğundan emin olun. Lütfen saat ve tarih ayarlarınızı da kontrol edin.</value>
+  </data>
+  <data name="ErrorDescription_CannotAccessDirectoryException" xml:space="preserve">
+    <value>Dizin için gerekli izniniz bulunmamaktadır. Lütfen dizin yolunu ya da dizin izinlerini değiştirin.</value>
+  </data>
+  <data name="ErrorDescription_DeviceNotFoundException" xml:space="preserve">
+    <value>Telefon bulunamadı.</value>
+  </data>
+  <data name="ErrorDescription_DownloadPackageException" xml:space="preserve">
+    <value>Lütfen vekil sunucu ayarlarının doğru olup olmadığını kontrol edin ve "{0}" düğmesine tıklayın. İndirme işlemini iptal etmek istiyorsanız "{1}" düğmesine tıklayın.</value>
+  </data>
+  <data name="ErrorDescription_EmergencyPackageNotFoundOnServerException" xml:space="preserve">
+    <value>Telefonunuz için acil durum flaşı şu anda desteklenmiyor</value>
+  </data>
+  <data name="ErrorDescription_FirmwareFileNotFoundException" xml:space="preserve">
+    <value>Yazılım paketi tam değil. Bir ya da daha fazla dosya eksik. Paketi yeniden indirin veya başka bir yazılım seçin.</value>
+  </data>
+  <data name="ErrorDescription_HtcDeviceCommunicationException" xml:space="preserve">
+    <value>Aygıtı {0} modunda yeniden başlatın.</value>
+  </data>
+  <data name="ErrorDescription_HtcPackageFileCheckException" xml:space="preserve">
+    <value>ROM paket dosyasını yeniden indirin.</value>
+  </data>
+  <data name="ErrorDescription_HtcServiceControlException" xml:space="preserve">
+    <value>{0} servisinin durdurulup durdurulmadığını kontrol edin.</value>
+  </data>
+  <data name="ErrorDescription_HtcUsbCommunicationException" xml:space="preserve">
+    <value>{0} işlemini gerçekleştirmek için aygıtı yeniden başlatın.
+Aygıtın USB bağlantısını kontrol edin.</value>
+  </data>
+  <data name="ErrorDescription_HtcUsbPortOpenException" xml:space="preserve">
+    <value>Başka uygulamaların, bağlantı noktasını meşgul edip etmediğini kontrol edin.
+Aygıtın USB bağlantısını kontrol edin.</value>
+  </data>
+  <data name="ErrorDescription_InvalidOperationException" xml:space="preserve">
+    <value>Lütfen uygulamayı yeniden başlatın.</value>
+  </data>
+  <data name="ErrorDescription_NoInternetConnectionException" xml:space="preserve">
+    <value>İnternet bağlantısı etkin olmadığı için son işlem tamamlanamadı.</value>
+  </data>
+  <data name="ErrorDescription_NotEnoughSpaceException" xml:space="preserve">
+    <value>{1} diskinde {0} eksik. Biraz yer açın ve tekrar deneyin.</value>
+  </data>
+  <data name="ErrorDescription_OperationCanceledException" xml:space="preserve">
+    <value>İşlem iptal edildi.</value>
+  </data>
+  <data name="ErrorDescription_PackageNotFoundException" xml:space="preserve">
+    <value>Yazılım paketi bu telefon için mevcut değil.</value>
+  </data>
+  <data name="ErrorDescription_PlannedServiceBreakException" xml:space="preserve">
+    <value>Servis {0} ile {1} arasında kullanılamıyor. Lütfen daha sonra tekrar deneyin.</value>
+  </data>
+  <data name="ErrorDescription_ReadPhoneInformationException" xml:space="preserve">
+    <value>Telefonunuzdan bilgileri okuyamadık.</value>
+  </data>
+  <data name="ErrorDescription_RestartApplicationException" xml:space="preserve">
+    <value>Lütfen tüm telefonların bağlantısını kesin ve uygulamayı yeniden başlatın. Sorun devam ederse {0} uygulamasını kaldırın ve uygulamanın en son sürümünü indirin.</value>
+  </data>
+  <data name="ErrorDescription_UnknownError" xml:space="preserve">
+    <value>İşlem tamamlanamadı.</value>
+  </data>
+  <data name="ErrorDescription_WebException" xml:space="preserve">
+    <value>Sunucu bağlantısında bir sorun var gibi görünüyor. İnternet bağlantınızı kontrol edin. Vekil sunucu, güvenlik duvarı ve virüsten korunma ayarlarınızın doğru olduğundan emin olun.</value>
+  </data>
+  <data name="ErrorDetails_NotEnoughSpaceOnTheDiskException" xml:space="preserve">
+    <value>{0} diskinde güncelleme için gerekli minimum boş alan {1} kadardır. Biraz yer açın ve tekrar deneyin.</value>
+  </data>
+  <data name="ErrorHeader" xml:space="preserve">
+    <value>Üzgünüz, bir sorunla karşılaştık</value>
+  </data>
+  <data name="Error_AutoUpdateException" xml:space="preserve">
+    <value>Uygulama güncellemesinin denetimi yapılamadı</value>
+  </data>
+  <data name="Error_CannotAccessDirectoryException" xml:space="preserve">
+    <value>Dizine erişilemiyor</value>
+  </data>
+  <data name="Error_DeviceNotFoundException" xml:space="preserve">
+    <value>Telefon bulunamadı</value>
+  </data>
+  <data name="Error_DownloadPackageException" xml:space="preserve">
+    <value>Yazılım paketi indirilirken bir sorun oluştu</value>
+  </data>
+  <data name="Error_EmergencyPackageNotFoundOnServerException" xml:space="preserve">
+    <value>Acil durum paketi bulunamadı</value>
+  </data>
+  <data name="Error_FileNotFoundException" xml:space="preserve">
+    <value>"{0}" dosyası ya da yolu bulunamadı</value>
+  </data>
+  <data name="Error_FirmwareFileNotFoundException" xml:space="preserve">
+    <value>Yazılım dosyası bulunamadı</value>
+  </data>
+  <data name="Error_HtcDeviceCommunicationException" xml:space="preserve">
+    <value>Aygıt iletişim hatası</value>
+  </data>
+  <data name="Error_HtcDeviceHandshakingException" xml:space="preserve">
+    <value>Aygıt uyuşma hatası</value>
+  </data>
+  <data name="Error_HtcPackageFileCheckException" xml:space="preserve">
+    <value>Paket dosyası denetim hatası</value>
+  </data>
+  <data name="Error_HtcServiceControlException" xml:space="preserve">
+    <value>Servis kontrolü hatası</value>
+  </data>
+  <data name="Error_HtcUsbCommunicationException" xml:space="preserve">
+    <value>USB iletişim hatası</value>
+  </data>
+  <data name="Error_HtcUsbPortOpenException" xml:space="preserve">
+    <value>USB bağlantı noktası açık hatası</value>
+  </data>
+  <data name="Error_InvalidOperationException" xml:space="preserve">
+    <value>İşlem başarısız</value>
+  </data>
+  <data name="Error_NoInternetConnectionException" xml:space="preserve">
+    <value>İnternet bağlantısı yok</value>
+  </data>
+  <data name="Error_NotEnoughSpaceException" xml:space="preserve">
+    <value>Diskte yeterli alan yok</value>
+  </data>
+  <data name="Error_NotEnoughSpaceOnTheDiskException" xml:space="preserve">
+    <value>Diskte yeterli alan yok</value>
+  </data>
+  <data name="Error_OperationCanceledException" xml:space="preserve">
+    <value>İşlem iptal edildi</value>
+  </data>
+  <data name="Error_PackageNotFoundException" xml:space="preserve">
+    <value>Değişken paket bulunamadı</value>
+  </data>
+  <data name="Error_PlannedServiceBreakException" xml:space="preserve">
+    <value>Sunucuya bağlanılamadı</value>
+  </data>
+  <data name="Error_ReadPhoneInformationException" xml:space="preserve">
+    <value>Telefon bilgisi okunamadı</value>
+  </data>
+  <data name="Error_RestartApplicationException" xml:space="preserve">
+    <value>Uygulamayı yeniden başlatın</value>
+  </data>
+  <data name="Error_SoftwareInstallationFailed" xml:space="preserve">
+    <value>Yazılım yüklemesi başarısız. Lütfen telefonunuzu yeniden başlatıp yazılım yüklemesini yeniden deneyin. Telefonunuz algılanmıyorsa lütfen Hoş geldiniz ekranındaki "{0}" düğmesine basın.</value>
+  </data>
+  <data name="Error_SoftwareIsNotCorrectlySignedException" xml:space="preserve">
+    <value>Bu telefon için yazılıma hat atanmadı ya da atama düzgün şekilde yapılmadı.</value>
+  </data>
+  <data name="Error_UnauthorizedAccessException" xml:space="preserve">
+    <value>Erişim engellendi</value>
+  </data>
+  <data name="Error_UnknownError" xml:space="preserve">
+    <value>Bilinmeyen bir hata oluştu</value>
+  </data>
+  <data name="Error_WebException" xml:space="preserve">
+    <value>Sunucuya bağlanılamadı</value>
+  </data>
+  <data name="FFUCheckingDirectory" xml:space="preserve">
+    <value>Dizin denetleniyor</value>
+  </data>
+  <data name="FFUCheckingFile" xml:space="preserve">
+    <value>Seçili dosya denetleniyor</value>
+  </data>
+  <data name="FFUFamily" xml:space="preserve">
+    <value>Ürün ailesi:</value>
+  </data>
+  <data name="FFUManufacturer" xml:space="preserve">
+    <value>Üretici:</value>
+  </data>
+  <data name="FFUProductName" xml:space="preserve">
+    <value>Ürün adı:</value>
+  </data>
+  <data name="FFUVersion" xml:space="preserve">
+    <value>Sürüm:</value>
+  </data>
+  <data name="FirmwareIntegrityError" xml:space="preserve">
+    <value>{0} yazılım paketi bozuk. Paketi yeniden indirin veya başka bir yazılım seçin.</value>
+  </data>
+  <data name="FirmwareVersion" xml:space="preserve">
+    <value>Aygıt yazılımı sürümü: </value>
+  </data>
+  <data name="FirmwareVersionUnknown" xml:space="preserve">
+    <value>Aygıt yazılımı sürümü: Bilinmiyor</value>
+  </data>
+  <data name="FlashCancelMessage" xml:space="preserve">
+    <value>Yazılım paketi yüklemesi devam ediyor. İşlemin iptal edilmesi telefonunuza zarar verebilir. İşlemi iptal etmek istediğinizden emin misiniz?</value>
+  </data>
+  <data name="FlashWarningMessage1" xml:space="preserve">
+    <value>Telefonunuzu kullanmayın. Kablo bağlantısını kesmeyin. Telefonu kapatmayın. Aksi takdirde telefonunuz çalışmayabilir.</value>
+  </data>
+  <data name="FlashWarningMessage2" xml:space="preserve">
+    <value>Yükleme sırasında telefonunuz yeniden başlatılır ve boş ekran görünür.
+USB kablo bağlantısıyla ilgili tüm Windows bildirimlerini göz ardı edebilirsiniz.</value>
+  </data>
+  <data name="Flashing" xml:space="preserve">
+    <value>Yazılım telefonunuza yükleniyor</value>
+  </data>
+  <data name="FlashingMessageChangeToFlashMode" xml:space="preserve">
+    <value>Telefon flaş moduna geçiyor</value>
+  </data>
+  <data name="FlashingMessageCheckingAntiTheftStatus" xml:space="preserve">
+    <value>Hırsızlık Karşıtı Koruma durumunu kontrol etme</value>
+  </data>
+  <data name="FlashingMessageConnectingWithPhone" xml:space="preserve">
+    <value>Telefonla bağlantı kurma</value>
+  </data>
+  <data name="FlashingMessageInstallingSoftware" xml:space="preserve">
+    <value>Yazılım yükleme</value>
+  </data>
+  <data name="FlashingMessageOperationStarted" xml:space="preserve">
+    <value>Yazılım yüklemesi başlatıldı</value>
+  </data>
+  <data name="FlashingResult" xml:space="preserve">
+    <value>Yazılım paketi yükleme sonucu</value>
+  </data>
+  <data name="HtcBootloaderMode" xml:space="preserve">
+    <value>HTC {0} modu</value>
+  </data>
+  <data name="HtcPackageNotFound" xml:space="preserve">
+    <value>Sunucuda yazılım paketi bulunamadı</value>
+  </data>
+  <data name="KeepButtonTillImage" xml:space="preserve">
+    <value>Ekrandakine benzeyen bir görüntü görene kadar düğmeyi basılı tutun.</value>
+  </data>
+  <data name="KeepButtonsTillImage" xml:space="preserve">
+    <value>Ekrandakine benzeyen bir görüntü görene kadar düğmeleri basılı tutun.</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Dil</value>
+  </data>
+  <data name="LogFiles" xml:space="preserve">
+    <value>Günlük dosyaları</value>
+  </data>
+  <data name="LumiaBatteryChecking" xml:space="preserve">
+    <value>Telefonunuzun bataryası bitiyor. Devam edebilirsiniz, ancak bu telefonunuza zarar verebilir.</value>
+  </data>
+  <data name="ManualDeviceSelection" xml:space="preserve">
+    <value>Telefon seçimi</value>
+  </data>
+  <data name="ManualRestartHtcInfo" xml:space="preserve">
+    <value>Telefon bilgisi okunamadı. Devam etmek için lütfen aşağıdaki adımları takip edin ya da işlemi iptal etmek için "{0}" düğmesine tıklayın.</value>
+  </data>
+  <data name="ManufacturerDetectionFailed" xml:space="preserve">
+    <value>Üzgünüz, telefonunuzun üreticisini saptayamadık.</value>
+  </data>
+  <data name="ManufacturerHeader" xml:space="preserve">
+    <value>Telefon üreticisi</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>{0} modu</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model: </value>
+  </data>
+  <data name="ModelUnknown" xml:space="preserve">
+    <value>Model: Bilinmiyor</value>
+  </data>
+  <data name="MoreThanOnePackageFound" xml:space="preserve">
+    <value>Birden fazla paket bulundu. Lütfen bir paket seçin ve devam etmek için "{0}" düğmesine tıklayın.</value>
+  </data>
+  <data name="Network" xml:space="preserve">
+    <value>Ağ</value>
+  </data>
+  <data name="NoPackagesFoundSelectAnotherDirectory" xml:space="preserve">
+    <value>Doğru paket bulunamadı. Lütfen başka bir dizin seçin ya da paketi manuel olarak seçin.</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>Bulunamadı</value>
+  </data>
+  <data name="OnePackageFound" xml:space="preserve">
+    <value>{0} için bir paket bulundu. Devam etmek için lütfen "{1}" düğmesine tıklayın ya da farklı bir klasör veya dosya seçin.</value>
+  </data>
+  <data name="OperatingSystemUnknown" xml:space="preserve">
+    <value>İşletim sistemi sürümü: Bilinmiyor</value>
+  </data>
+  <data name="OperatingSystemVersion" xml:space="preserve">
+    <value>İşletim sistemi sürümü: </value>
+  </data>
+  <data name="OperationFailed" xml:space="preserve">
+    <value>İşlem hatayla sonlandı</value>
+  </data>
+  <data name="OperationPassed" xml:space="preserve">
+    <value>İşlem başarıyla tamamlandı</value>
+  </data>
+  <data name="PackageDirectory" xml:space="preserve">
+    <value>Paket dizini: {0}</value>
+  </data>
+  <data name="PackageFileHeader" xml:space="preserve">
+    <value>Paket dosyası</value>
+  </data>
+  <data name="PackageFilePath" xml:space="preserve">
+    <value>Paket yolu: {0}</value>
+  </data>
+  <data name="PackageIntegrityCheck" xml:space="preserve">
+    <value>Paket bütünlük denetimi</value>
+  </data>
+  <data name="PackageNotFound" xml:space="preserve">
+    <value>Paket bu telefon için mevcut değil.</value>
+  </data>
+  <data name="PackagePathNotSet" xml:space="preserve">
+    <value>Paket yolu ayarlanmamış</value>
+  </data>
+  <data name="PackageSelection" xml:space="preserve">
+    <value>Paket seçimi</value>
+  </data>
+  <data name="Packages" xml:space="preserve">
+    <value>Paketler</value>
+  </data>
+  <data name="PackagesPath" xml:space="preserve">
+    <value>Paketlerin yolu</value>
+  </data>
+  <data name="PasswordForm" xml:space="preserve">
+    <value>Şifre</value>
+  </data>
+  <data name="PhoneAddedHeader" xml:space="preserve">
+    <value>Telefon bağlandı</value>
+  </data>
+  <data name="PhoneAddedMessage" xml:space="preserve">
+    <value>Yeni telefon {0} bağlandı.</value>
+  </data>
+  <data name="PhoneIsUpToDate" xml:space="preserve">
+    <value>Mevcut en yeni yazılım sürümüne sahipsiniz.</value>
+  </data>
+  <data name="PhoneRemovedHeader" xml:space="preserve">
+    <value>Telefon bağlantısı kesildi</value>
+  </data>
+  <data name="PhoneRemovedMessage" xml:space="preserve">
+    <value>Telefon {0} bağlantısı kesildi.</value>
+  </data>
+  <data name="PhoneRestart" xml:space="preserve">
+    <value>Telefonun yeniden başlatılması</value>
+  </data>
+  <data name="PhoneSettingsBackupPathWin10" xml:space="preserve">
+    <value>Ayarlar &gt; Güncelleme ve Kurtarma &gt; Yedekleme</value>
+  </data>
+  <data name="PhoneSettingsBackupPathWin8" xml:space="preserve">
+    <value>Ayarlar &gt; Yedekle</value>
+  </data>
+  <data name="PleaseConnectDevice" xml:space="preserve">
+    <value>Lütfen telefonunuzu bağlayın</value>
+  </data>
+  <data name="PleaseConnectOneDevice" xml:space="preserve">
+    <value>Lütfen sadece bir telefon bağlayın</value>
+  </data>
+  <data name="PleaseSelectAFolder" xml:space="preserve">
+    <value>Lütfen bir klasör seçin</value>
+  </data>
+  <data name="PleaseSelectDeviceToContinue" xml:space="preserve">
+    <value>Lütfen devam etmek için bir telefon seçin</value>
+  </data>
+  <data name="PleaseSelectManufacturer" xml:space="preserve">
+    <value>Lütfen aşağıdakilerden doğru olanı seçin:</value>
+  </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>Lütfen bekleyin</value>
+  </data>
+  <data name="PortForm" xml:space="preserve">
+    <value>Bağlantı noktası</value>
+  </data>
+  <data name="Preferences" xml:space="preserve">
+    <value>Tercihler</value>
+  </data>
+  <data name="PressPowerAndVolumeDown" xml:space="preserve">
+    <value>Lütfen Güç ve "Sesi alçalt" düğmelerine aynı anda basın.</value>
+  </data>
+  <data name="PressThePowerButton" xml:space="preserve">
+    <value>Lütfen Güç düğmesine basın. </value>
+  </data>
+  <data name="PressThePowerButtonUntilSwitchOff" xml:space="preserve">
+    <value>Telefon titreyene kadar "Güç" düğmesini basılı tutun.</value>
+  </data>
+  <data name="PressVolumeUpVolumeDown" xml:space="preserve">
+    <value>Telefonunuz titrediğinde "Sesi aç" ve "Sesi alçalt" düğmelerine aynı anda basın.</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Gizlilik Politikası</value>
+  </data>
+  <data name="ReadingDeviceInfo" xml:space="preserve">
+    <value>Telefon bilgisi okunuyor</value>
+  </data>
+  <data name="RebootHtc" xml:space="preserve">
+    <value>Telefonunuzu şimdi tekrar normal modda başlatabilirsiniz. Telefonu yeniden başlatmak için güç düğmesini bir süre basılı tutun.</value>
+  </data>
+  <data name="RebootPhoneInstructions" xml:space="preserve">
+    <value>Telefon bulunamadı.
+Lütfen Güç ve "Sesi alçalt" düğmelerine aynı anda basarak telefonunuzu yeniden başlatmayı deneyin.
+Telefon titreyene kadar düğmeleri basılı tutun.</value>
+  </data>
+  <data name="ReinstallSoftware" xml:space="preserve">
+    <value>Yazılımı yeniden yükle</value>
+  </data>
+  <data name="ReleasePowerPressVolumeUp" xml:space="preserve">
+    <value>Telefonunuz titrediğinde Güç düğmesini bırakın ve "Sesi aç" düğmesine basın.</value>
+  </data>
+  <data name="RemovingPackages" xml:space="preserve">
+    <value>Paketler kaldırılıyor</value>
+  </data>
+  <data name="RemovingReports" xml:space="preserve">
+    <value>Raporlar kaldırılıyor</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>Raporlar</value>
+  </data>
+  <data name="ResetSettingsQuestion" xml:space="preserve">
+    <value>Tüm ayarları varsayılan değerlere sıfırlamak istediğinizden emin misiniz?</value>
+  </data>
+  <data name="RestartDeviceHeader" xml:space="preserve">
+    <value>Telefonu yeniden başlatın</value>
+  </data>
+  <data name="SelectDeviceToRecover" xml:space="preserve">
+    <value>Kurtarmak istediğiniz telefonu seçin</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Ayarlar</value>
+  </data>
+  <data name="SoftwareInstallation" xml:space="preserve">
+    <value>Yazılım yüklemesi</value>
+  </data>
+  <data name="SoftwareOnServer" xml:space="preserve">
+    <value>Sunucuda yazılım mevcut</value>
+  </data>
+  <data name="SoftwarePackage" xml:space="preserve">
+    <value>Yazılım paketi</value>
+  </data>
+  <data name="SthWentWrongMessage" xml:space="preserve">
+    <value>Bir hata oluştu</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>Özet</value>
+  </data>
+  <data name="Survey1" xml:space="preserve">
+    <value>Anket</value>
+  </data>
+  <data name="Survey_Button_ContinueNoSubmit1" xml:space="preserve">
+    <value>Göndermeden devam et</value>
+  </data>
+  <data name="Survey_Button_SubmitAndContinue1" xml:space="preserve">
+    <value>Gönder ve kurtarma işlemine devam et</value>
+  </data>
+  <data name="Survey_Choice_AppsNotWorking1" xml:space="preserve">
+    <value>Uygulamalarım beklendiği gibi çalışmıyor</value>
+  </data>
+  <data name="Survey_Choice_DeviceNotWorking1" xml:space="preserve">
+    <value>Cihazım beklendiği gibi çalışmıyor</value>
+  </data>
+  <data name="Survey_Choice_PerformanceIssues1" xml:space="preserve">
+    <value>Performans sorunlarıyla karşılaşıyorum</value>
+  </data>
+  <data name="Survey_Choice_PrevVersionFaster1" xml:space="preserve">
+    <value>Önceki sürüm daha hızlı gibi görünüyordu</value>
+  </data>
+  <data name="Survey_Choice_PrevVersionMoreReliable1" xml:space="preserve">
+    <value>Önceki sürüm daha güvenilir gibi görünüyordu</value>
+  </data>
+  <data name="Survey_Header1" xml:space="preserve">
+    <value>Neden cihazınızı kurtarıyorsunuz?</value>
+  </data>
+  <data name="Survey_TellUsMore1" xml:space="preserve">
+    <value>Bize daha fazla bilgi verin</value>
+  </data>
+  <data name="Theme" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>Koyu</value>
+  </data>
+  <data name="ThemeHighContrast" xml:space="preserve">
+    <value>Yüksek Kontrast</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>Açık</value>
+  </data>
+  <data name="ThereIsMandatoryApplicationUpdate" xml:space="preserve">
+    <value>Zorunlu bir {0} uygulama güncellemesi var.</value>
+  </data>
+  <data name="ThisUpdateMustBeInstalled" xml:space="preserve">
+    <value>Bu {0} güncellemesi yüklenmelidir ve atlanamaz. Bu uygulama güncellenene kadar kullanılamaz.
+Bu güncellemeyi yüklemeden önce lütfen tüm aygıtların bağlantısını kesin.</value>
+  </data>
+  <data name="TraceEnabled" xml:space="preserve">
+    <value>Günlük dosyası oluşturun</value>
+  </data>
+  <data name="Troubleshooting" xml:space="preserve">
+    <value>Sorun giderme</value>
+  </data>
+  <data name="TurnOffPhone" xml:space="preserve">
+    <value>Lütfen telefonunuzu kapatın.</value>
+  </data>
+  <data name="UpdateAvailable" xml:space="preserve">
+    <value>Telefonunuz için güncelleme mevcut</value>
+  </data>
+  <data name="UseProxyServer" xml:space="preserve">
+    <value>Vekil sunucu kullanın</value>
+  </data>
+  <data name="UserNameForm" xml:space="preserve">
+    <value>Kullanıcı adı</value>
+  </data>
+  <data name="VerifyingDownloadedFiles" xml:space="preserve">
+    <value>İndirilen dosyalar doğrulanıyor</value>
+  </data>
+  <data name="WaitUntilPhoneTurnsOn" xml:space="preserve">
+    <value>Telefon açılana kadar bekleyin.</value>
+  </data>
+  <data name="WaitingForConnection" xml:space="preserve">
+    <value>Bağlantı bekleniyor</value>
+  </data>
+  <data name="WelcomeHeader" xml:space="preserve">
+    <value>Hoş Geldiniz</value>
+  </data>
+</root>

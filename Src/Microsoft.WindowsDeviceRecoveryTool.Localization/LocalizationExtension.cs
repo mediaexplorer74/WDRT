@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
@@ -20,7 +21,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Localization
 			this.parameterNames[1] = arg2;
 		}
 
-		// Token: 0x06000002 RID: 2 RVA: 0x00002080 File Offset: 0x00000280
+		// Token: 0x06000002 RID: 2 RVA: 0x0000207F File Offset: 0x0000027F
 		public LocalizationExtension(string key, string arg1)
 		{
 			this.key = key;
@@ -28,50 +29,56 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Localization
 			this.parameterNames[0] = arg1;
 		}
 
-		// Token: 0x06000003 RID: 3 RVA: 0x000020A7 File Offset: 0x000002A7
+		// Token: 0x06000003 RID: 3 RVA: 0x000020A5 File Offset: 0x000002A5
 		public LocalizationExtension(string key)
 		{
 			this.key = key;
 		}
 
 		// Token: 0x14000001 RID: 1
-		// (add) Token: 0x06000004 RID: 4 RVA: 0x000020BC File Offset: 0x000002BC
-		// (remove) Token: 0x06000005 RID: 5 RVA: 0x000020F8 File Offset: 0x000002F8
+		// (add) Token: 0x06000004 RID: 4 RVA: 0x000020B8 File Offset: 0x000002B8
+		// (remove) Token: 0x06000005 RID: 5 RVA: 0x000020F0 File Offset: 0x000002F0
+		[field: DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		// Token: 0x17000001 RID: 1
-		// (get) Token: 0x06000006 RID: 6 RVA: 0x00002134 File Offset: 0x00000334
+		// (get) Token: 0x06000006 RID: 6 RVA: 0x00002128 File Offset: 0x00000328
 		public object Value
 		{
 			get
 			{
-				object result;
-				if (this.parameterValues == null)
+				bool flag = this.parameterValues == null;
+				object obj;
+				if (flag)
 				{
-					result = this.translatedValue;
+					obj = this.translatedValue;
 				}
 				else
 				{
-					result = string.Format(this.translatedValue, this.parameterValues);
+					obj = string.Format(this.translatedValue, this.parameterValues);
 				}
-				return result;
+				return obj;
 			}
 		}
 
-		// Token: 0x06000007 RID: 7 RVA: 0x00002174 File Offset: 0x00000374
+		// Token: 0x06000007 RID: 7 RVA: 0x00002164 File Offset: 0x00000364
 		public override object ProvideValue(IServiceProvider serviceProvider)
 		{
 			this.frameworkElement = null;
 			this.parameters = null;
 			IProvideValueTarget provideValueTarget = serviceProvider as IProvideValueTarget;
-			if (provideValueTarget != null)
+			bool flag = provideValueTarget != null;
+			if (flag)
 			{
-				this.frameworkElement = (provideValueTarget.TargetObject as FrameworkElement);
-				if (this.frameworkElement != null)
+				this.frameworkElement = provideValueTarget.TargetObject as FrameworkElement;
+				bool flag2 = this.frameworkElement != null;
+				if (flag2)
 				{
-					if (this.parameterNames != null)
+					bool flag3 = this.parameterNames != null;
+					if (flag3)
 					{
-						if (this.frameworkElement.DataContext == null)
+						bool flag4 = this.frameworkElement.DataContext == null;
+						if (flag4)
 						{
 							this.frameworkElement.DataContextChanged += this.FrameworkElementOnDataContextChanged;
 						}
@@ -93,21 +100,22 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Localization
 			return binding.ProvideValue(serviceProvider);
 		}
 
-		// Token: 0x06000008 RID: 8 RVA: 0x00002250 File Offset: 0x00000450
+		// Token: 0x06000008 RID: 8 RVA: 0x00002238 File Offset: 0x00000438
 		private void AssignParameters()
 		{
 			this.parameters = new PropertyInfo[this.parameterNames.Length];
 			for (int i = 0; i < this.parameters.Length; i++)
 			{
 				PropertyInfo property = this.frameworkElement.DataContext.GetType().GetProperty(this.parameterNames[i]);
-				if (property != null)
+				bool flag = property != null;
+				if (flag)
 				{
 					this.parameters[i] = property;
 				}
 			}
 		}
 
-		// Token: 0x06000009 RID: 9 RVA: 0x000022C1 File Offset: 0x000004C1
+		// Token: 0x06000009 RID: 9 RVA: 0x000022A6 File Offset: 0x000004A6
 		private void FrameworkElementOnDataContextChanged(object sender, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
 		{
 			this.frameworkElement.DataContextChanged -= this.FrameworkElementOnDataContextChanged;
@@ -118,16 +126,19 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Localization
 			this.OnValueChanged();
 		}
 
-		// Token: 0x0600000A RID: 10 RVA: 0x00002318 File Offset: 0x00000518
+		// Token: 0x0600000A RID: 10 RVA: 0x000022E4 File Offset: 0x000004E4
 		private void ConnectEvents()
 		{
-			if (this.parameters != null)
+			bool flag = this.parameters != null;
+			if (flag)
 			{
-				bool flag = this.parameters.Any((PropertyInfo t) => t != null);
-				if (flag)
+				bool flag2 = this.parameters.Any((PropertyInfo t) => t != null);
+				bool flag3 = flag2;
+				if (flag3)
 				{
 					INotifyPropertyChanged notifyPropertyChanged = this.frameworkElement.DataContext as INotifyPropertyChanged;
-					if (notifyPropertyChanged != null)
+					bool flag4 = notifyPropertyChanged != null;
+					if (flag4)
 					{
 						notifyPropertyChanged.PropertyChanged += this.OnPropertyChanged;
 					}
@@ -136,15 +147,17 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Localization
 			LocalizationManager.Instance().LanguageChanged += this.OnLanguageChanged;
 		}
 
-		// Token: 0x0600000B RID: 11 RVA: 0x000023B0 File Offset: 0x000005B0
+		// Token: 0x0600000B RID: 11 RVA: 0x0000237C File Offset: 0x0000057C
 		private void UpdateParameters()
 		{
-			if (this.parameters != null)
+			bool flag = this.parameters != null;
+			if (flag)
 			{
 				this.parameterValues = new object[this.parameters.Length];
 				for (int i = 0; i < this.parameters.Length; i++)
 				{
-					if (this.parameters[i] != null)
+					bool flag2 = this.parameters[i] != null;
+					if (flag2)
 					{
 						this.parameterValues[i] = this.parameters[i].GetValue(this.frameworkElement.DataContext, null);
 					}
@@ -156,31 +169,32 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Localization
 			}
 		}
 
-		// Token: 0x0600000C RID: 12 RVA: 0x00002442 File Offset: 0x00000642
+		// Token: 0x0600000C RID: 12 RVA: 0x0000240B File Offset: 0x0000060B
 		private void UpdateTranslation()
 		{
 			this.translatedValue = LocalizationManager.GetTranslation(this.key);
 		}
 
-		// Token: 0x0600000D RID: 13 RVA: 0x00002456 File Offset: 0x00000656
+		// Token: 0x0600000D RID: 13 RVA: 0x0000241F File Offset: 0x0000061F
 		private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
 		{
 			this.UpdateParameters();
 			this.OnValueChanged();
 		}
 
-		// Token: 0x0600000E RID: 14 RVA: 0x00002467 File Offset: 0x00000667
+		// Token: 0x0600000E RID: 14 RVA: 0x00002430 File Offset: 0x00000630
 		private void OnLanguageChanged(object sender, EventArgs e)
 		{
 			this.UpdateTranslation();
 			this.OnValueChanged();
 		}
 
-		// Token: 0x0600000F RID: 15 RVA: 0x00002478 File Offset: 0x00000678
+		// Token: 0x0600000F RID: 15 RVA: 0x00002444 File Offset: 0x00000644
 		private void OnValueChanged()
 		{
 			PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-			if (propertyChanged != null)
+			bool flag = propertyChanged != null;
+			if (flag)
 			{
 				propertyChanged(this, new PropertyChangedEventArgs("Value"));
 			}

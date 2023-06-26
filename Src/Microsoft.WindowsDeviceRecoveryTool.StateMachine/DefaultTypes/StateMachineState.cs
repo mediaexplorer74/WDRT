@@ -4,10 +4,10 @@ using Microsoft.WindowsDeviceRecoveryTool.StateMachine.BaseTypes;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.DefaultTypes
 {
-	// Token: 0x02000011 RID: 17
+	// Token: 0x0200000D RID: 13
 	public abstract class StateMachineState : BaseState
 	{
-		// Token: 0x06000076 RID: 118 RVA: 0x00003700 File Offset: 0x00001900
+		// Token: 0x06000025 RID: 37 RVA: 0x00002389 File Offset: 0x00000589
 		protected StateMachineState()
 		{
 			this.Machine = new BaseStateMachine
@@ -17,13 +17,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.DefaultTypes
 			this.Machine.CurrentStateChanged += this.OnCurrentStateChanged;
 		}
 
-		// Token: 0x17000012 RID: 18
-		// (get) Token: 0x06000077 RID: 119 RVA: 0x0000374C File Offset: 0x0000194C
-		// (set) Token: 0x06000078 RID: 120 RVA: 0x00003763 File Offset: 0x00001963
+		// Token: 0x17000002 RID: 2
+		// (get) Token: 0x06000026 RID: 38 RVA: 0x000023C5 File Offset: 0x000005C5
+		// (set) Token: 0x06000027 RID: 39 RVA: 0x000023CD File Offset: 0x000005CD
 		public new bool Started { get; private set; }
 
-		// Token: 0x17000013 RID: 19
-		// (get) Token: 0x06000079 RID: 121 RVA: 0x0000376C File Offset: 0x0000196C
+		// Token: 0x17000003 RID: 3
+		// (get) Token: 0x06000028 RID: 40 RVA: 0x000023D8 File Offset: 0x000005D8
 		public BaseState CurrentState
 		{
 			get
@@ -32,21 +32,22 @@ namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.DefaultTypes
 			}
 		}
 
-		// Token: 0x17000014 RID: 20
-		// (get) Token: 0x0600007A RID: 122 RVA: 0x00003798 File Offset: 0x00001998
-		// (set) Token: 0x0600007B RID: 123 RVA: 0x000037AF File Offset: 0x000019AF
+		// Token: 0x17000004 RID: 4
+		// (get) Token: 0x06000029 RID: 41 RVA: 0x00002400 File Offset: 0x00000600
+		// (set) Token: 0x0600002A RID: 42 RVA: 0x00002408 File Offset: 0x00000608
 		protected BaseStateMachine Machine { get; set; }
 
-		// Token: 0x0600007C RID: 124 RVA: 0x000037B8 File Offset: 0x000019B8
+		// Token: 0x0600002B RID: 43 RVA: 0x00002414 File Offset: 0x00000614
 		public sealed override string ToString()
 		{
 			return base.ToString();
 		}
 
-		// Token: 0x0600007D RID: 125 RVA: 0x000037D0 File Offset: 0x000019D0
+		// Token: 0x0600002C RID: 44 RVA: 0x0000242C File Offset: 0x0000062C
 		public override void Start()
 		{
-			if (!this.Started)
+			bool flag = !this.Started;
+			if (flag)
 			{
 				Tracer<BaseState>.WriteInformation("Started state: {0} ({1})", new object[]
 				{
@@ -62,17 +63,15 @@ namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.DefaultTypes
 			}
 			else
 			{
-				Tracer<BaseState>.WriteWarning("Trying to start state {0} which is already started!", new object[]
-				{
-					this.ToString()
-				});
+				Tracer<BaseState>.WriteWarning("Trying to start state {0} which is already started!", new object[] { this.ToString() });
 			}
 		}
 
-		// Token: 0x0600007E RID: 126 RVA: 0x000038A8 File Offset: 0x00001AA8
+		// Token: 0x0600002D RID: 45 RVA: 0x00002504 File Offset: 0x00000704
 		public override void Stop()
 		{
-			if (this.Started)
+			bool started = this.Started;
+			if (started)
 			{
 				Tracer<BaseState>.WriteInformation("Stopped state: {0} ({1})", new object[]
 				{
@@ -88,25 +87,22 @@ namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.DefaultTypes
 			}
 			else
 			{
-				Tracer<BaseState>.WriteWarning("Trying to stop state {0} which is already stopped!", new object[]
-				{
-					this.ToString()
-				});
+				Tracer<BaseState>.WriteWarning("Trying to stop state {0} which is already stopped!", new object[] { this.ToString() });
 			}
 		}
 
-		// Token: 0x0600007F RID: 127 RVA: 0x00003983 File Offset: 0x00001B83
+		// Token: 0x0600002E RID: 46 RVA: 0x000025D8 File Offset: 0x000007D8
 		public void ClearStateMachine()
 		{
 			this.Machine = new BaseStateMachine();
 		}
 
-		// Token: 0x06000080 RID: 128 RVA: 0x00003992 File Offset: 0x00001B92
+		// Token: 0x0600002F RID: 47 RVA: 0x00002329 File Offset: 0x00000529
 		protected virtual void OnCurrentStateChanged(BaseState oldValue, BaseState newValue)
 		{
 		}
 
-		// Token: 0x06000081 RID: 129 RVA: 0x00003998 File Offset: 0x00001B98
+		// Token: 0x06000030 RID: 48 RVA: 0x000025E7 File Offset: 0x000007E7
 		protected virtual void MachineEnded(object sender, TransitionEventArgs args)
 		{
 			Tracer<StateMachineState>.WriteInformation("Machine Ended {0} ({1})", new object[]
@@ -117,7 +113,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.DefaultTypes
 			this.RaiseStateFinished(args);
 		}
 
-		// Token: 0x06000082 RID: 130 RVA: 0x000039D4 File Offset: 0x00001BD4
+		// Token: 0x06000031 RID: 49 RVA: 0x00002615 File Offset: 0x00000815
 		protected virtual void MachineErrored(object sender, BaseStateMachineErrorEventArgs eventArgs)
 		{
 			Tracer<StateMachineState>.WriteInformation("Machine Errored {0} ({1})", new object[]
@@ -128,7 +124,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.DefaultTypes
 			this.RaiseStateErrored(eventArgs.Error);
 		}
 
-		// Token: 0x06000083 RID: 131 RVA: 0x00003A14 File Offset: 0x00001C14
+		// Token: 0x06000032 RID: 50 RVA: 0x00002648 File Offset: 0x00000848
 		protected virtual void MachineStopped(object sender, EventArgs args)
 		{
 			Tracer<StateMachineState>.WriteInformation("Machine Stopped {0} ({1})", new object[]
@@ -138,7 +134,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.DefaultTypes
 			});
 		}
 
-		// Token: 0x06000084 RID: 132 RVA: 0x00003A48 File Offset: 0x00001C48
+		// Token: 0x06000033 RID: 51 RVA: 0x0000266E File Offset: 0x0000086E
 		protected virtual void MachineStarted(object sender, EventArgs args)
 		{
 			Tracer<StateMachineState>.WriteInformation("Machine Started {0} ({1})", new object[]

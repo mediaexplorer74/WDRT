@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.Composition;
+using System.Diagnostics;
 using System.Threading;
 using Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic;
 using Microsoft.WindowsDeviceRecoveryTool.Common;
@@ -12,25 +13,26 @@ using Microsoft.WindowsDeviceRecoveryTool.Model;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 {
-	// Token: 0x020000B3 RID: 179
+	// Token: 0x0200000C RID: 12
 	[Export]
 	public sealed class DownloadEmergencyPackageViewModel : BaseViewModel, ICanHandle<ProgressMessage>, ICanHandle, INotifyLiveRegionChanged
 	{
-		// Token: 0x06000539 RID: 1337 RVA: 0x0001ADEB File Offset: 0x00018FEB
+		// Token: 0x0600007C RID: 124 RVA: 0x00004B18 File Offset: 0x00002D18
 		[ImportingConstructor]
 		public DownloadEmergencyPackageViewModel(Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext)
 		{
 			this.AppContext = appContext;
 		}
 
-		// Token: 0x1400000B RID: 11
-		// (add) Token: 0x0600053A RID: 1338 RVA: 0x0001AE00 File Offset: 0x00019000
-		// (remove) Token: 0x0600053B RID: 1339 RVA: 0x0001AE3C File Offset: 0x0001903C
+		// Token: 0x14000001 RID: 1
+		// (add) Token: 0x0600007D RID: 125 RVA: 0x00004B2C File Offset: 0x00002D2C
+		// (remove) Token: 0x0600007E RID: 126 RVA: 0x00004B64 File Offset: 0x00002D64
+		[field: DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event EventHandler LiveRegionChanged;
 
-		// Token: 0x1700011D RID: 285
-		// (get) Token: 0x0600053C RID: 1340 RVA: 0x0001AE78 File Offset: 0x00019078
-		// (set) Token: 0x0600053D RID: 1341 RVA: 0x0001AE90 File Offset: 0x00019090
+		// Token: 0x17000013 RID: 19
+		// (get) Token: 0x0600007F RID: 127 RVA: 0x00004B9C File Offset: 0x00002D9C
+		// (set) Token: 0x06000080 RID: 128 RVA: 0x00004BB4 File Offset: 0x00002DB4
 		public Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext AppContext
 		{
 			get
@@ -43,9 +45,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x1700011E RID: 286
-		// (get) Token: 0x0600053E RID: 1342 RVA: 0x0001AEE0 File Offset: 0x000190E0
-		// (set) Token: 0x0600053F RID: 1343 RVA: 0x0001AEF8 File Offset: 0x000190F8
+		// Token: 0x17000014 RID: 20
+		// (get) Token: 0x06000081 RID: 129 RVA: 0x00004BF4 File Offset: 0x00002DF4
+		// (set) Token: 0x06000082 RID: 130 RVA: 0x00004C0C File Offset: 0x00002E0C
 		public int Progress
 		{
 			get
@@ -58,9 +60,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x1700011F RID: 287
-		// (get) Token: 0x06000540 RID: 1344 RVA: 0x0001AF48 File Offset: 0x00019148
-		// (set) Token: 0x06000541 RID: 1345 RVA: 0x0001AF60 File Offset: 0x00019160
+		// Token: 0x17000015 RID: 21
+		// (get) Token: 0x06000083 RID: 131 RVA: 0x00004C4C File Offset: 0x00002E4C
+		// (set) Token: 0x06000084 RID: 132 RVA: 0x00004C64 File Offset: 0x00002E64
 		public bool ProgressUpdated
 		{
 			get
@@ -73,9 +75,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x17000120 RID: 288
-		// (get) Token: 0x06000542 RID: 1346 RVA: 0x0001AFB0 File Offset: 0x000191B0
-		// (set) Token: 0x06000543 RID: 1347 RVA: 0x0001AFC8 File Offset: 0x000191C8
+		// Token: 0x17000016 RID: 22
+		// (get) Token: 0x06000085 RID: 133 RVA: 0x00004CA4 File Offset: 0x00002EA4
+		// (set) Token: 0x06000086 RID: 134 RVA: 0x00004CBC File Offset: 0x00002EBC
 		public string LiveText
 		{
 			get
@@ -85,16 +87,17 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			set
 			{
 				base.SetValue<string>(() => this.LiveText, ref this.liveText, value);
-				if (!string.IsNullOrWhiteSpace(this.liveText))
+				bool flag = !string.IsNullOrWhiteSpace(this.liveText);
+				if (flag)
 				{
 					this.OnLiveRegionChanged();
 				}
 			}
 		}
 
-		// Token: 0x17000121 RID: 289
-		// (get) Token: 0x06000544 RID: 1348 RVA: 0x0001B030 File Offset: 0x00019230
-		// (set) Token: 0x06000545 RID: 1349 RVA: 0x0001B048 File Offset: 0x00019248
+		// Token: 0x17000017 RID: 23
+		// (get) Token: 0x06000087 RID: 135 RVA: 0x00004D24 File Offset: 0x00002F24
+		// (set) Token: 0x06000088 RID: 136 RVA: 0x00004D3C File Offset: 0x00002F3C
 		public string Message
 		{
 			get
@@ -107,9 +110,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x17000122 RID: 290
-		// (get) Token: 0x06000546 RID: 1350 RVA: 0x0001B098 File Offset: 0x00019298
-		// (set) Token: 0x06000547 RID: 1351 RVA: 0x0001B0B0 File Offset: 0x000192B0
+		// Token: 0x17000018 RID: 24
+		// (get) Token: 0x06000089 RID: 137 RVA: 0x00004D7C File Offset: 0x00002F7C
+		// (set) Token: 0x0600008A RID: 138 RVA: 0x00004D94 File Offset: 0x00002F94
 		public string TimeLeftMessage
 		{
 			get
@@ -122,7 +125,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x06000548 RID: 1352 RVA: 0x0001B100 File Offset: 0x00019300
+		// Token: 0x0600008B RID: 139 RVA: 0x00004DD4 File Offset: 0x00002FD4
 		public override void OnStarted()
 		{
 			base.OnStarted();
@@ -133,58 +136,66 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			this.Message = string.Empty;
 			this.TimeLeftMessage = string.Empty;
 			this.LiveText = string.Empty;
-			if (string.IsNullOrWhiteSpace(this.AppContext.CurrentPhone.HardwareModel))
+			bool flag = string.IsNullOrWhiteSpace(this.AppContext.CurrentPhone.HardwareModel);
+			if (flag)
 			{
 				VariantInfo variantInfo = VariantInfo.GetVariantInfo(this.AppContext.CurrentPhone.PackageFilePath);
 				this.AppContext.CurrentPhone.HardwareModel = variantInfo.ProductType;
 			}
-			Tracer<DownloadEmergencyPackageViewModel>.WriteInformation("Selected device type: {0}", new object[]
-			{
-				this.AppContext.CurrentPhone.HardwareModel
-			});
-			//base.Commands.Run((FlowController c) => c.DownloadEmergencyPackage(null, CancellationToken.None));
+			Tracer<DownloadEmergencyPackageViewModel>.WriteInformation("Selected device type: {0}", new object[] { this.AppContext.CurrentPhone.HardwareModel });
+			base.Commands.Run((FlowController c) => c.DownloadEmergencyPackage(null, CancellationToken.None));
 			this.LiveText = LocalizationManager.GetTranslation("DownloadStarted");
 		}
 
-		// Token: 0x06000549 RID: 1353 RVA: 0x0001B298 File Offset: 0x00019498
+		// Token: 0x0600008C RID: 140 RVA: 0x00004F57 File Offset: 0x00003157
 		public override void OnStopped()
 		{
 			base.OnStopped();
 			this.LiveText = LocalizationManager.GetTranslation("DownloadCompleted");
 		}
 
-		// Token: 0x0600054A RID: 1354 RVA: 0x0001B2B4 File Offset: 0x000194B4
+		// Token: 0x0600008D RID: 141 RVA: 0x00004F74 File Offset: 0x00003174
 		public void Handle(ProgressMessage progressMessage)
 		{
-			if (base.IsStarted)
+			bool isStarted = base.IsStarted;
+			if (isStarted)
 			{
 				this.Progress = progressMessage.Progress;
-				if (!string.IsNullOrEmpty(progressMessage.Message))
+				bool flag = !string.IsNullOrEmpty(progressMessage.Message);
+				if (flag)
 				{
-					if (progressMessage.Message == "DownloadingFiles")
+					bool flag2 = progressMessage.Message == "DownloadingFiles";
+					if (flag2)
 					{
-						if (progressMessage.TotalSize > 0L)
+						bool flag3 = progressMessage.TotalSize > 0L;
+						if (flag3)
 						{
 							this.ProgressUpdated = true;
 						}
-						string arg = "...";
-						if (progressMessage.BytesPerSecond > 0.0)
+						string text = "...";
+						bool flag4 = progressMessage.BytesPerSecond > 0.0;
+						if (flag4)
 						{
-							arg = ComputerUnitsConverter.SpeedToString(progressMessage.BytesPerSecond);
-							if (progressMessage.SecondsLeft < 60L)
+							text = ComputerUnitsConverter.SpeedToString(progressMessage.BytesPerSecond);
+							bool flag5 = progressMessage.SecondsLeft < 60L;
+							if (flag5)
 							{
 								this.TimeLeftMessage = LocalizationManager.GetTranslation("DownloadProgressMinuteLess");
 							}
-							else if (progressMessage.SecondsLeft > 60L && progressMessage.SecondsLeft < 120L)
-							{
-								this.TimeLeftMessage = LocalizationManager.GetTranslation("DownloadProgressMinute");
-							}
 							else
 							{
-								this.TimeLeftMessage = string.Format(LocalizationManager.GetTranslation("DownloadProgressExactMinute"), TimeSpan.FromSeconds((double)progressMessage.SecondsLeft).TotalMinutes.ToString("F0"));
+								bool flag6 = progressMessage.SecondsLeft > 60L && progressMessage.SecondsLeft < 120L;
+								if (flag6)
+								{
+									this.TimeLeftMessage = LocalizationManager.GetTranslation("DownloadProgressMinute");
+								}
+								else
+								{
+									this.TimeLeftMessage = string.Format(LocalizationManager.GetTranslation("DownloadProgressExactMinute"), TimeSpan.FromSeconds((double)progressMessage.SecondsLeft).TotalMinutes.ToString("F0"));
+								}
 							}
 						}
-						this.Message = string.Format(LocalizationManager.GetTranslation("DownloadingFiles"), ComputerUnitsConverter.SizeToString(progressMessage.DownloadedSize), ComputerUnitsConverter.SizeToString(progressMessage.TotalSize), arg);
+						this.Message = string.Format(LocalizationManager.GetTranslation("DownloadingFiles"), ComputerUnitsConverter.SizeToString(progressMessage.DownloadedSize), ComputerUnitsConverter.SizeToString(progressMessage.TotalSize), text);
 					}
 					else
 					{
@@ -194,32 +205,33 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x0600054B RID: 1355 RVA: 0x0001B434 File Offset: 0x00019634
+		// Token: 0x0600008E RID: 142 RVA: 0x000050F0 File Offset: 0x000032F0
 		private void OnLiveRegionChanged()
 		{
 			EventHandler liveRegionChanged = this.LiveRegionChanged;
-			if (liveRegionChanged != null)
+			bool flag = liveRegionChanged != null;
+			if (flag)
 			{
 				liveRegionChanged(this, EventArgs.Empty);
 			}
 		}
 
-		// Token: 0x04000241 RID: 577
+		// Token: 0x04000066 RID: 102
 		private bool progressUpdated;
 
-		// Token: 0x04000242 RID: 578
+		// Token: 0x04000067 RID: 103
 		private int progress;
 
-		// Token: 0x04000243 RID: 579
+		// Token: 0x04000068 RID: 104
 		private string liveText;
 
-		// Token: 0x04000244 RID: 580
+		// Token: 0x04000069 RID: 105
 		private string message;
 
-		// Token: 0x04000245 RID: 581
+		// Token: 0x0400006A RID: 106
 		private string timeLeftMessage;
 
-		// Token: 0x04000246 RID: 582
+		// Token: 0x0400006B RID: 107
 		private Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext;
 	}
 }

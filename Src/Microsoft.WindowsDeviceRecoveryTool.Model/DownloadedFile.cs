@@ -2,39 +2,39 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model
 {
-	// Token: 0x0200001E RID: 30
+	// Token: 0x0200000C RID: 12
 	public class DownloadedFile
 	{
-		// Token: 0x060000E2 RID: 226 RVA: 0x00003828 File Offset: 0x00001A28
+		// Token: 0x06000067 RID: 103 RVA: 0x00002C19 File Offset: 0x00000E19
 		public DownloadedFile(string fileName, long fileSize)
 		{
 			this.FileName = fileName;
 			this.TotalSize = fileSize;
 		}
 
-		// Token: 0x17000058 RID: 88
-		// (get) Token: 0x060000E3 RID: 227 RVA: 0x00003844 File Offset: 0x00001A44
-		// (set) Token: 0x060000E4 RID: 228 RVA: 0x0000385B File Offset: 0x00001A5B
+		// Token: 0x1700002C RID: 44
+		// (get) Token: 0x06000068 RID: 104 RVA: 0x00002C33 File Offset: 0x00000E33
+		// (set) Token: 0x06000069 RID: 105 RVA: 0x00002C3B File Offset: 0x00000E3B
 		public string FileName { get; set; }
 
-		// Token: 0x17000059 RID: 89
-		// (get) Token: 0x060000E5 RID: 229 RVA: 0x00003864 File Offset: 0x00001A64
-		// (set) Token: 0x060000E6 RID: 230 RVA: 0x0000387B File Offset: 0x00001A7B
+		// Token: 0x1700002D RID: 45
+		// (get) Token: 0x0600006A RID: 106 RVA: 0x00002C44 File Offset: 0x00000E44
+		// (set) Token: 0x0600006B RID: 107 RVA: 0x00002C4C File Offset: 0x00000E4C
 		public long TotalSize { get; set; }
 
-		// Token: 0x1700005A RID: 90
-		// (get) Token: 0x060000E7 RID: 231 RVA: 0x00003884 File Offset: 0x00001A84
-		// (set) Token: 0x060000E8 RID: 232 RVA: 0x0000389B File Offset: 0x00001A9B
+		// Token: 0x1700002E RID: 46
+		// (get) Token: 0x0600006C RID: 108 RVA: 0x00002C55 File Offset: 0x00000E55
+		// (set) Token: 0x0600006D RID: 109 RVA: 0x00002C5D File Offset: 0x00000E5D
 		public long TotalDownloaded { get; set; }
 
-		// Token: 0x1700005B RID: 91
-		// (get) Token: 0x060000E9 RID: 233 RVA: 0x000038A4 File Offset: 0x00001AA4
-		// (set) Token: 0x060000EA RID: 234 RVA: 0x000038BB File Offset: 0x00001ABB
+		// Token: 0x1700002F RID: 47
+		// (get) Token: 0x0600006E RID: 110 RVA: 0x00002C66 File Offset: 0x00000E66
+		// (set) Token: 0x0600006F RID: 111 RVA: 0x00002C6E File Offset: 0x00000E6E
 		public long? PreviouslyDownloaded { get; set; }
 
-		// Token: 0x1700005C RID: 92
-		// (get) Token: 0x060000EB RID: 235 RVA: 0x000038C4 File Offset: 0x00001AC4
-		// (set) Token: 0x060000EC RID: 236 RVA: 0x000038DB File Offset: 0x00001ADB
+		// Token: 0x17000030 RID: 48
+		// (get) Token: 0x06000070 RID: 112 RVA: 0x00002C77 File Offset: 0x00000E77
+		// (set) Token: 0x06000071 RID: 113 RVA: 0x00002C7F File Offset: 0x00000E7F
 		public long CurrentlyDownloaded { get; set; }
 	}
 }

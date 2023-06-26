@@ -3,18 +3,18 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.Enums;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Messages
 {
-	// Token: 0x02000054 RID: 84
+	// Token: 0x0200009B RID: 155
 	public class DetectionTypeMessage
 	{
-		// Token: 0x060002BB RID: 699 RVA: 0x0000FBD4 File Offset: 0x0000DDD4
+		// Token: 0x06000539 RID: 1337 RVA: 0x0001B327 File Offset: 0x00019527
 		public DetectionTypeMessage(DetectionType detectionType)
 		{
 			this.DetectionType = detectionType;
 		}
 
-		// Token: 0x17000077 RID: 119
-		// (get) Token: 0x060002BC RID: 700 RVA: 0x0000FBE8 File Offset: 0x0000DDE8
-		// (set) Token: 0x060002BD RID: 701 RVA: 0x0000FBFF File Offset: 0x0000DDFF
+		// Token: 0x17000127 RID: 295
+		// (get) Token: 0x0600053A RID: 1338 RVA: 0x0001B339 File Offset: 0x00019539
+		// (set) Token: 0x0600053B RID: 1339 RVA: 0x0001B341 File Offset: 0x00019541
 		public DetectionType DetectionType { get; private set; }
 	}
 }

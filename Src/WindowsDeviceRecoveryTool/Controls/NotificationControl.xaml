@@ -1,15 +1,16 @@
 <Border
 	x:Class="Microsoft.WindowsDeviceRecoveryTool.Controls.NotificationControl" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-	Name="NotificationControlName"
+	FrameworkElement.Name="NotificationControlName"
 	CornerRadius="5,5,5,5"
-	Width="Auto"
-	Height="Auto"
-	MaxWidth="500"
-	MinWidth="200"
-	Background="{DynamicResource ProgressBarForegroundThemeBrush}"
-	HorizontalAlignment="Right"
-	VerticalAlignment="Top"
-	Opacity="0" xmlns:controls="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Controls">
+	FrameworkElement.Width="Auto"
+	FrameworkElement.Height="Auto"
+	FrameworkElement.MaxWidth="500"
+	FrameworkElement.MinWidth="200"
+	Border.Background="{DynamicResource ProgressBarForegroundThemeBrush}"
+	FrameworkElement.HorizontalAlignment="Right"
+	FrameworkElement.VerticalAlignment="Top"
+	Opacity="0" xmlns:controls="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Controls"
+	x:Name="NotificationControlName">
 	<FrameworkElement.Style>
 		<Style>
 			<Style.Triggers>
@@ -57,14 +58,14 @@
 		</Style>
 	</FrameworkElement.Style>
 	<StackPanel
-		Margin="2">
+		FrameworkElement.Margin="2">
 		<TextBlock
-			Foreground="{DynamicResource AppBarBorderThemeBrush}"
-			Text="{Binding ElementName=NotificationControlName, Path=NotificationHeader}"
-			Style="{Binding ElementName=NotificationControlName, Path=HeaderStyle}" />
+			TextBlock.Foreground="{DynamicResource AppBarBorderThemeBrush}"
+			TextBlock.Text="{Binding ElementName=NotificationControlName, Path=NotificationHeader}"
+			FrameworkElement.Style="{Binding ElementName=NotificationControlName, Path=HeaderStyle}" />
 		<TextBlock
-			Foreground="{DynamicResource AppBarBorderThemeBrush}"
-			Text="{Binding ElementName=NotificationControlName, Path=NotificationText}"
-			Style="{Binding ElementName=NotificationControlName, Path=MessageStyle}" />
+			TextBlock.Foreground="{DynamicResource AppBarBorderThemeBrush}"
+			TextBlock.Text="{Binding ElementName=NotificationControlName, Path=NotificationText}"
+			FrameworkElement.Style="{Binding ElementName=NotificationControlName, Path=MessageStyle}" />
 	</StackPanel>
 </Border>

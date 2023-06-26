@@ -6,16 +6,16 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.Enums;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model
 {
-	// Token: 0x02000047 RID: 71
+	// Token: 0x02000010 RID: 16
 	public static class FileSystemInfo
 	{
-		// Token: 0x1700009B RID: 155
-		// (get) Token: 0x060001B0 RID: 432 RVA: 0x00004F18 File Offset: 0x00003118
-		// (set) Token: 0x060001B1 RID: 433 RVA: 0x00004F2E File Offset: 0x0000312E
+		// Token: 0x1700003C RID: 60
+		// (get) Token: 0x06000090 RID: 144 RVA: 0x00002F7C File Offset: 0x0000117C
+		// (set) Token: 0x06000091 RID: 145 RVA: 0x00002F83 File Offset: 0x00001183
 		public static string CustomPackagesPath { private get; set; }
 
-		// Token: 0x1700009C RID: 156
-		// (get) Token: 0x060001B2 RID: 434 RVA: 0x00004F38 File Offset: 0x00003138
+		// Token: 0x1700003D RID: 61
+		// (get) Token: 0x06000092 RID: 146 RVA: 0x00002F8C File Offset: 0x0000118C
 		public static string AppNamePrefix
 		{
 			get
@@ -24,8 +24,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x1700009D RID: 157
-		// (get) Token: 0x060001B3 RID: 435 RVA: 0x00004F50 File Offset: 0x00003150
+		// Token: 0x1700003E RID: 62
+		// (get) Token: 0x06000093 RID: 147 RVA: 0x00002FA4 File Offset: 0x000011A4
 		public static string DefaultPackagesPath
 		{
 			get
@@ -34,8 +34,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x1700009E RID: 158
-		// (get) Token: 0x060001B4 RID: 436 RVA: 0x00004F78 File Offset: 0x00003178
+		// Token: 0x1700003F RID: 63
+		// (get) Token: 0x06000094 RID: 148 RVA: 0x00002FCC File Offset: 0x000011CC
 		public static string DefaultProductsPath
 		{
 			get
@@ -44,8 +44,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x1700009F RID: 159
-		// (get) Token: 0x060001B5 RID: 437 RVA: 0x00004FA0 File Offset: 0x000031A0
+		// Token: 0x17000040 RID: 64
+		// (get) Token: 0x06000095 RID: 149 RVA: 0x00002FF4 File Offset: 0x000011F4
 		public static string DefaultFfuPath
 		{
 			get
@@ -54,8 +54,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000A0 RID: 160
-		// (get) Token: 0x060001B6 RID: 438 RVA: 0x00004FC8 File Offset: 0x000031C8
+		// Token: 0x17000041 RID: 65
+		// (get) Token: 0x06000096 RID: 150 RVA: 0x0000301C File Offset: 0x0000121C
 		public static string NokiaProductsPath
 		{
 			get
@@ -64,8 +64,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000A1 RID: 161
-		// (get) Token: 0x060001B7 RID: 439 RVA: 0x00004FF0 File Offset: 0x000031F0
+		// Token: 0x17000042 RID: 66
+		// (get) Token: 0x06000097 RID: 151 RVA: 0x00003044 File Offset: 0x00001244
 		public static string NokiaPackagesPath
 		{
 			get
@@ -74,8 +74,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000A2 RID: 162
-		// (get) Token: 0x060001B8 RID: 440 RVA: 0x00005018 File Offset: 0x00003218
+		// Token: 0x17000043 RID: 67
+		// (get) Token: 0x06000098 RID: 152 RVA: 0x0000306C File Offset: 0x0000126C
 		public static string HtcPackagesPath
 		{
 			get
@@ -84,8 +84,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000A3 RID: 163
-		// (get) Token: 0x060001B9 RID: 441 RVA: 0x00005040 File Offset: 0x00003240
+		// Token: 0x17000044 RID: 68
+		// (get) Token: 0x06000099 RID: 153 RVA: 0x00003094 File Offset: 0x00001294
 		public static string HtcProductsPath
 		{
 			get
@@ -94,8 +94,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000A4 RID: 164
-		// (get) Token: 0x060001BA RID: 442 RVA: 0x00005068 File Offset: 0x00003268
+		// Token: 0x17000045 RID: 69
+		// (get) Token: 0x0600009A RID: 154 RVA: 0x000030BC File Offset: 0x000012BC
 		public static string LgePackagesPath
 		{
 			get
@@ -104,8 +104,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000A5 RID: 165
-		// (get) Token: 0x060001BB RID: 443 RVA: 0x00005090 File Offset: 0x00003290
+		// Token: 0x17000046 RID: 70
+		// (get) Token: 0x0600009B RID: 155 RVA: 0x000030E4 File Offset: 0x000012E4
 		public static string BluPackagesPath
 		{
 			get
@@ -114,8 +114,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000A6 RID: 166
-		// (get) Token: 0x060001BC RID: 444 RVA: 0x000050B8 File Offset: 0x000032B8
+		// Token: 0x17000047 RID: 71
+		// (get) Token: 0x0600009C RID: 156 RVA: 0x0000310C File Offset: 0x0000130C
 		public static string BluProductsPath
 		{
 			get
@@ -124,8 +124,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000A7 RID: 167
-		// (get) Token: 0x060001BD RID: 445 RVA: 0x000050E0 File Offset: 0x000032E0
+		// Token: 0x17000048 RID: 72
+		// (get) Token: 0x0600009D RID: 157 RVA: 0x00003134 File Offset: 0x00001334
 		public static string LgeProductsPath
 		{
 			get
@@ -134,8 +134,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000A8 RID: 168
-		// (get) Token: 0x060001BE RID: 446 RVA: 0x00005108 File Offset: 0x00003308
+		// Token: 0x17000049 RID: 73
+		// (get) Token: 0x0600009E RID: 158 RVA: 0x0000315C File Offset: 0x0000135C
 		public static string McjPackagesPath
 		{
 			get
@@ -144,8 +144,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000A9 RID: 169
-		// (get) Token: 0x060001BF RID: 447 RVA: 0x00005130 File Offset: 0x00003330
+		// Token: 0x1700004A RID: 74
+		// (get) Token: 0x0600009F RID: 159 RVA: 0x00003184 File Offset: 0x00001384
 		public static string McjProductsPath
 		{
 			get
@@ -154,8 +154,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000AA RID: 170
-		// (get) Token: 0x060001C0 RID: 448 RVA: 0x00005158 File Offset: 0x00003358
+		// Token: 0x1700004B RID: 75
+		// (get) Token: 0x060000A0 RID: 160 RVA: 0x000031AC File Offset: 0x000013AC
 		public static string AlcatelPackagesPath
 		{
 			get
@@ -164,8 +164,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000AB RID: 171
-		// (get) Token: 0x060001C1 RID: 449 RVA: 0x00005180 File Offset: 0x00003380
+		// Token: 0x1700004C RID: 76
+		// (get) Token: 0x060000A1 RID: 161 RVA: 0x000031D4 File Offset: 0x000013D4
 		public static string AlcatelProductsPath
 		{
 			get
@@ -174,8 +174,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000AC RID: 172
-		// (get) Token: 0x060001C2 RID: 450 RVA: 0x000051A8 File Offset: 0x000033A8
+		// Token: 0x1700004D RID: 77
+		// (get) Token: 0x060000A2 RID: 162 RVA: 0x000031FC File Offset: 0x000013FC
 		public static string AcerProductsPath
 		{
 			get
@@ -184,8 +184,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000AD RID: 173
-		// (get) Token: 0x060001C3 RID: 451 RVA: 0x000051D0 File Offset: 0x000033D0
+		// Token: 0x1700004E RID: 78
+		// (get) Token: 0x060000A3 RID: 163 RVA: 0x00003224 File Offset: 0x00001424
 		public static string TrinityProductsPath
 		{
 			get
@@ -194,8 +194,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000AE RID: 174
-		// (get) Token: 0x060001C4 RID: 452 RVA: 0x000051F8 File Offset: 0x000033F8
+		// Token: 0x1700004F RID: 79
+		// (get) Token: 0x060000A4 RID: 164 RVA: 0x0000324C File Offset: 0x0000144C
 		public static string UnistrongProductsPath
 		{
 			get
@@ -204,8 +204,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000AF RID: 175
-		// (get) Token: 0x060001C5 RID: 453 RVA: 0x00005220 File Offset: 0x00003420
+		// Token: 0x17000050 RID: 80
+		// (get) Token: 0x060000A5 RID: 165 RVA: 0x00003274 File Offset: 0x00001474
 		public static string YEZZProductsPath
 		{
 			get
@@ -214,8 +214,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000B0 RID: 176
-		// (get) Token: 0x060001C6 RID: 454 RVA: 0x00005248 File Offset: 0x00003448
+		// Token: 0x17000051 RID: 81
+		// (get) Token: 0x060000A6 RID: 166 RVA: 0x0000329C File Offset: 0x0000149C
 		public static string DiginnosProductsPath
 		{
 			get
@@ -224,8 +224,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000B1 RID: 177
-		// (get) Token: 0x060001C7 RID: 455 RVA: 0x00005270 File Offset: 0x00003470
+		// Token: 0x17000052 RID: 82
+		// (get) Token: 0x060000A7 RID: 167 RVA: 0x000032C4 File Offset: 0x000014C4
 		public static string VAIOProductsPath
 		{
 			get
@@ -234,8 +234,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000B2 RID: 178
-		// (get) Token: 0x060001C8 RID: 456 RVA: 0x00005298 File Offset: 0x00003498
+		// Token: 0x17000053 RID: 83
+		// (get) Token: 0x060000A8 RID: 168 RVA: 0x000032EC File Offset: 0x000014EC
 		public static string InversenetProductsPath
 		{
 			get
@@ -244,8 +244,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000B3 RID: 179
-		// (get) Token: 0x060001C9 RID: 457 RVA: 0x000052C0 File Offset: 0x000034C0
+		// Token: 0x17000054 RID: 84
+		// (get) Token: 0x060000A9 RID: 169 RVA: 0x00003314 File Offset: 0x00001514
 		public static string FreetelProductsPath
 		{
 			get
@@ -254,8 +254,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000B4 RID: 180
-		// (get) Token: 0x060001CA RID: 458 RVA: 0x000052E8 File Offset: 0x000034E8
+		// Token: 0x17000055 RID: 85
+		// (get) Token: 0x060000AA RID: 170 RVA: 0x0000333C File Offset: 0x0000153C
 		public static string FunkerProductsPath
 		{
 			get
@@ -264,8 +264,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000B5 RID: 181
-		// (get) Token: 0x060001CB RID: 459 RVA: 0x00005310 File Offset: 0x00003510
+		// Token: 0x17000056 RID: 86
+		// (get) Token: 0x060000AB RID: 171 RVA: 0x00003364 File Offset: 0x00001564
 		public static string MicromaxProductsPath
 		{
 			get
@@ -274,8 +274,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000B6 RID: 182
-		// (get) Token: 0x060001CC RID: 460 RVA: 0x00005338 File Offset: 0x00003538
+		// Token: 0x17000057 RID: 87
+		// (get) Token: 0x060000AC RID: 172 RVA: 0x0000338C File Offset: 0x0000158C
 		public static string XOLOProductsPath
 		{
 			get
@@ -284,8 +284,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000B7 RID: 183
-		// (get) Token: 0x060001CD RID: 461 RVA: 0x00005360 File Offset: 0x00003560
+		// Token: 0x17000058 RID: 88
+		// (get) Token: 0x060000AD RID: 173 RVA: 0x000033B4 File Offset: 0x000015B4
 		public static string KMProductsPath
 		{
 			get
@@ -294,8 +294,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000B8 RID: 184
-		// (get) Token: 0x060001CE RID: 462 RVA: 0x00005388 File Offset: 0x00003588
+		// Token: 0x17000059 RID: 89
+		// (get) Token: 0x060000AE RID: 174 RVA: 0x000033DC File Offset: 0x000015DC
 		public static string JenesisProductsPath
 		{
 			get
@@ -304,8 +304,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000B9 RID: 185
-		// (get) Token: 0x060001CF RID: 463 RVA: 0x000053B0 File Offset: 0x000035B0
+		// Token: 0x1700005A RID: 90
+		// (get) Token: 0x060000AF RID: 175 RVA: 0x00003404 File Offset: 0x00001604
 		public static string GomobileProductsPath
 		{
 			get
@@ -314,8 +314,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000BA RID: 186
-		// (get) Token: 0x060001D0 RID: 464 RVA: 0x000053D8 File Offset: 0x000035D8
+		// Token: 0x1700005B RID: 91
+		// (get) Token: 0x060000B0 RID: 176 RVA: 0x0000342C File Offset: 0x0000162C
 		public static string HPProductsPath
 		{
 			get
@@ -324,8 +324,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000BB RID: 187
-		// (get) Token: 0x060001D1 RID: 465 RVA: 0x00005400 File Offset: 0x00003600
+		// Token: 0x1700005C RID: 92
+		// (get) Token: 0x060000B1 RID: 177 RVA: 0x00003454 File Offset: 0x00001654
 		public static string LenovoProductsPath
 		{
 			get
@@ -334,8 +334,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000BC RID: 188
-		// (get) Token: 0x060001D2 RID: 466 RVA: 0x00005428 File Offset: 0x00003628
+		// Token: 0x1700005D RID: 93
+		// (get) Token: 0x060000B2 RID: 178 RVA: 0x0000347C File Offset: 0x0000167C
 		public static string ZebraProductsPath
 		{
 			get
@@ -344,8 +344,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000BD RID: 189
-		// (get) Token: 0x060001D3 RID: 467 RVA: 0x00005450 File Offset: 0x00003650
+		// Token: 0x1700005E RID: 94
+		// (get) Token: 0x060000B3 RID: 179 RVA: 0x000034A4 File Offset: 0x000016A4
 		public static string HoneywellProductPath
 		{
 			get
@@ -354,8 +354,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000BE RID: 190
-		// (get) Token: 0x060001D4 RID: 468 RVA: 0x00005478 File Offset: 0x00003678
+		// Token: 0x1700005F RID: 95
+		// (get) Token: 0x060000B4 RID: 180 RVA: 0x000034CC File Offset: 0x000016CC
 		public static string PanasonicProductPath
 		{
 			get
@@ -364,8 +364,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000BF RID: 191
-		// (get) Token: 0x060001D5 RID: 469 RVA: 0x000054A0 File Offset: 0x000036A0
+		// Token: 0x17000060 RID: 96
+		// (get) Token: 0x060000B5 RID: 181 RVA: 0x000034F4 File Offset: 0x000016F4
 		public static string TrekStorProductPath
 		{
 			get
@@ -374,8 +374,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000C0 RID: 192
-		// (get) Token: 0x060001D6 RID: 470 RVA: 0x000054C8 File Offset: 0x000036C8
+		// Token: 0x17000061 RID: 97
+		// (get) Token: 0x060000B6 RID: 182 RVA: 0x0000351C File Offset: 0x0000171C
 		public static string WileyfoxProductsPath
 		{
 			get
@@ -384,8 +384,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000C1 RID: 193
-		// (get) Token: 0x060001D7 RID: 471 RVA: 0x000054F0 File Offset: 0x000036F0
+		// Token: 0x17000062 RID: 98
+		// (get) Token: 0x060000B7 RID: 183 RVA: 0x00003544 File Offset: 0x00001744
 		public static string AppPath
 		{
 			get
@@ -394,7 +394,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x060001D8 RID: 472 RVA: 0x0000550C File Offset: 0x0000370C
+		// Token: 0x060000B8 RID: 184 RVA: 0x00003560 File Offset: 0x00001760
 		public static string AppDataPath(SpecialFolder specialFolder)
 		{
 			string text = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "Microsoft\\Care Suite\\Windows Device Recovery Tool");
@@ -417,608 +417,647 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 				break;
 			}
 			text += "\\";
-			if (!Directory.Exists(text))
+			bool flag = !Directory.Exists(text);
+			if (flag)
 			{
 				Directory.CreateDirectory(text);
 			}
 			return text;
 		}
 
-		// Token: 0x060001D9 RID: 473 RVA: 0x000055B8 File Offset: 0x000037B8
+		// Token: 0x060000B9 RID: 185 RVA: 0x00003614 File Offset: 0x00001814
 		public static long GetDirectorySize(string directory)
 		{
-			long result;
-			if (!Directory.Exists(directory))
+			bool flag = !Directory.Exists(directory);
+			long num;
+			if (flag)
 			{
-				result = 0L;
+				num = 0L;
 			}
 			else
 			{
 				string[] files = Directory.GetFiles(Environment.ExpandEnvironmentVariables(directory), "*.*", SearchOption.AllDirectories);
-				long num = 0L;
-				foreach (string fileName in files)
+				long num2 = 0L;
+				foreach (string text in files)
 				{
-					FileInfo fileInfo = new FileInfo(fileName);
+					FileInfo fileInfo = new FileInfo(text);
 					try
 					{
-						num += fileInfo.Length;
+						num2 += fileInfo.Length;
 					}
 					catch (FileNotFoundException)
 					{
 					}
 				}
-				result = num;
+				num = num2;
 			}
-			return result;
+			return num;
 		}
 
-		// Token: 0x060001DA RID: 474 RVA: 0x00005644 File Offset: 0x00003844
+		// Token: 0x060000BA RID: 186 RVA: 0x0000369C File Offset: 0x0000189C
 		public static bool CheckIfPathIsValid(string path)
 		{
-			return Directory.Exists(path) && !path.Contains("..");
+			bool flag = !Directory.Exists(path) || path.Contains("..");
+			return !flag;
 		}
 
-		// Token: 0x060001DB RID: 475 RVA: 0x0000567C File Offset: 0x0000387C
+		// Token: 0x060000BB RID: 187 RVA: 0x000036D0 File Offset: 0x000018D0
 		public static bool CheckIfFileIsValid(string filePath)
 		{
-			return File.Exists(filePath);
+			bool flag = !File.Exists(filePath);
+			return !flag;
 		}
 
-		// Token: 0x060001DC RID: 476 RVA: 0x000056A0 File Offset: 0x000038A0
+		// Token: 0x060000BC RID: 188 RVA: 0x000036F8 File Offset: 0x000018F8
 		public static void CheckAndCreateFile(string filePath)
 		{
-			if (!File.Exists(filePath))
+			bool flag = !File.Exists(filePath);
+			if (flag)
 			{
 				File.Create(filePath);
 			}
 		}
 
-		// Token: 0x060001DD RID: 477 RVA: 0x000056C4 File Offset: 0x000038C4
+		// Token: 0x060000BD RID: 189 RVA: 0x0000371C File Offset: 0x0000191C
 		public static void CheckAndCreatePath(string path)
 		{
-			if (!Directory.Exists(path))
+			bool flag = !Directory.Exists(path);
+			if (flag)
 			{
 				Directory.CreateDirectory(path);
 			}
 		}
 
-		// Token: 0x060001DE RID: 478 RVA: 0x000056E8 File Offset: 0x000038E8
+		// Token: 0x060000BE RID: 190 RVA: 0x00003740 File Offset: 0x00001940
 		public static bool CheckDirectoryWritePermission(string path)
 		{
-			bool result;
+			bool flag;
 			try
 			{
 				using (File.Create(Path.Combine(FileSystemInfo.CustomPackagesPath, Path.GetRandomFileName()), 1, FileOptions.DeleteOnClose))
 				{
 				}
-				result = true;
+				flag = true;
 			}
 			catch
 			{
-				result = false;
+				flag = false;
 			}
-			return result;
+			return flag;
 		}
 
-		// Token: 0x060001DF RID: 479 RVA: 0x00005750 File Offset: 0x00003950
+		// Token: 0x060000BF RID: 191 RVA: 0x000037A0 File Offset: 0x000019A0
 		public static bool CheckPermission(string path)
 		{
-			bool result = false;
+			bool flag = false;
 			PermissionSet permissionSet = new PermissionSet(PermissionState.None);
-			FileIOPermission perm = new FileIOPermission(FileIOPermissionAccess.Write, path);
-			permissionSet.AddPermission(perm);
-			if (permissionSet.IsSubsetOf(AppDomain.CurrentDomain.PermissionSet))
+			FileIOPermission fileIOPermission = new FileIOPermission(FileIOPermissionAccess.Write, path);
+			permissionSet.AddPermission(fileIOPermission);
+			bool flag2 = permissionSet.IsSubsetOf(AppDomain.CurrentDomain.PermissionSet);
+			if (flag2)
 			{
-				result = true;
+				flag = true;
 			}
-			return result;
+			return flag;
 		}
 
-		// Token: 0x060001E0 RID: 480 RVA: 0x0000579C File Offset: 0x0000399C
+		// Token: 0x060000C0 RID: 192 RVA: 0x000037E8 File Offset: 0x000019E8
 		public static string GetLumiaPackagesPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text;
+			if (flag)
 			{
-				result = Path.Combine(FileSystemInfo.CustomPackagesPath, productPath);
+				text = Path.Combine(FileSystemInfo.CustomPackagesPath, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.DefaultPackagesPath, productPath);
+				text = Path.Combine(FileSystemInfo.DefaultPackagesPath, productPath);
 			}
-			return result;
+			return text;
 		}
 
-		// Token: 0x060001E1 RID: 481 RVA: 0x000057D8 File Offset: 0x000039D8
+		// Token: 0x060000C1 RID: 193 RVA: 0x00003828 File Offset: 0x00001A28
 		public static string GetLumiaProductsPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text2;
+			if (flag)
 			{
-				string path = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
-				result = Path.Combine(path, productPath);
+				string text = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
+				text2 = Path.Combine(text, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.DefaultProductsPath, productPath);
+				text2 = Path.Combine(FileSystemInfo.DefaultProductsPath, productPath);
 			}
-			return result;
+			return text2;
 		}
 
-		// Token: 0x060001E2 RID: 482 RVA: 0x00005820 File Offset: 0x00003A20
+		// Token: 0x060000C2 RID: 194 RVA: 0x00003874 File Offset: 0x00001A74
 		public static string GetHtcPackagesPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text;
+			if (flag)
 			{
-				result = Path.Combine(FileSystemInfo.CustomPackagesPath, productPath);
+				text = Path.Combine(FileSystemInfo.CustomPackagesPath, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.HtcPackagesPath, productPath);
+				text = Path.Combine(FileSystemInfo.HtcPackagesPath, productPath);
 			}
-			return result;
+			return text;
 		}
 
-		// Token: 0x060001E3 RID: 483 RVA: 0x0000585C File Offset: 0x00003A5C
+		// Token: 0x060000C3 RID: 195 RVA: 0x000038B4 File Offset: 0x00001AB4
 		public static string GetHtcProductsPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text2;
+			if (flag)
 			{
-				string path = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
-				result = Path.Combine(path, productPath);
+				string text = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
+				text2 = Path.Combine(text, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.HtcProductsPath, productPath);
+				text2 = Path.Combine(FileSystemInfo.HtcProductsPath, productPath);
 			}
-			return result;
+			return text2;
 		}
 
-		// Token: 0x060001E4 RID: 484 RVA: 0x000058A4 File Offset: 0x00003AA4
+		// Token: 0x060000C4 RID: 196 RVA: 0x00003900 File Offset: 0x00001B00
 		public static string GetLgePackagesPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text;
+			if (flag)
 			{
-				result = Path.Combine(FileSystemInfo.CustomPackagesPath, productPath);
+				text = Path.Combine(FileSystemInfo.CustomPackagesPath, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.LgePackagesPath, productPath);
+				text = Path.Combine(FileSystemInfo.LgePackagesPath, productPath);
 			}
-			return result;
+			return text;
 		}
 
-		// Token: 0x060001E5 RID: 485 RVA: 0x000058E0 File Offset: 0x00003AE0
+		// Token: 0x060000C5 RID: 197 RVA: 0x00003940 File Offset: 0x00001B40
 		public static string GetLgeProductsPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text2;
+			if (flag)
 			{
-				string path = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
-				result = Path.Combine(path, productPath);
+				string text = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
+				text2 = Path.Combine(text, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.LgeProductsPath, productPath);
+				text2 = Path.Combine(FileSystemInfo.LgeProductsPath, productPath);
 			}
-			return result;
+			return text2;
 		}
 
-		// Token: 0x060001E6 RID: 486 RVA: 0x00005928 File Offset: 0x00003B28
+		// Token: 0x060000C6 RID: 198 RVA: 0x0000398C File Offset: 0x00001B8C
 		public static string GetMcjPackagesPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text;
+			if (flag)
 			{
-				result = Path.Combine(FileSystemInfo.CustomPackagesPath, productPath);
+				text = Path.Combine(FileSystemInfo.CustomPackagesPath, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.McjPackagesPath, productPath);
+				text = Path.Combine(FileSystemInfo.McjPackagesPath, productPath);
 			}
-			return result;
+			return text;
 		}
 
-		// Token: 0x060001E7 RID: 487 RVA: 0x00005964 File Offset: 0x00003B64
+		// Token: 0x060000C7 RID: 199 RVA: 0x000039CC File Offset: 0x00001BCC
 		public static string GetMcjProductsPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text2;
+			if (flag)
 			{
-				string path = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
-				result = Path.Combine(path, productPath);
+				string text = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
+				text2 = Path.Combine(text, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.McjProductsPath, productPath);
+				text2 = Path.Combine(FileSystemInfo.McjProductsPath, productPath);
 			}
-			return result;
+			return text2;
 		}
 
-		// Token: 0x060001E8 RID: 488 RVA: 0x000059AC File Offset: 0x00003BAC
+		// Token: 0x060000C8 RID: 200 RVA: 0x00003A18 File Offset: 0x00001C18
 		public static string GetBluProductsPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text2;
+			if (flag)
 			{
-				string path = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
-				result = Path.Combine(path, productPath);
+				string text = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
+				text2 = Path.Combine(text, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.BluProductsPath, productPath);
+				text2 = Path.Combine(FileSystemInfo.BluProductsPath, productPath);
 			}
-			return result;
+			return text2;
 		}
 
-		// Token: 0x060001E9 RID: 489 RVA: 0x000059F4 File Offset: 0x00003BF4
+		// Token: 0x060000C9 RID: 201 RVA: 0x00003A64 File Offset: 0x00001C64
 		public static string GetAlcatelProductsPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text2;
+			if (flag)
 			{
-				string path = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
-				result = Path.Combine(path, productPath);
+				string text = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
+				text2 = Path.Combine(text, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.AlcatelProductsPath, productPath);
+				text2 = Path.Combine(FileSystemInfo.AlcatelProductsPath, productPath);
 			}
-			return result;
+			return text2;
 		}
 
-		// Token: 0x060001EA RID: 490 RVA: 0x00005A3C File Offset: 0x00003C3C
+		// Token: 0x060000CA RID: 202 RVA: 0x00003AB0 File Offset: 0x00001CB0
 		public static string GetAcerProductsPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text2;
+			if (flag)
 			{
-				string path = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
-				result = Path.Combine(path, productPath);
+				string text = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
+				text2 = Path.Combine(text, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.AcerProductsPath, productPath);
+				text2 = Path.Combine(FileSystemInfo.AcerProductsPath, productPath);
 			}
-			return result;
+			return text2;
 		}
 
-		// Token: 0x060001EB RID: 491 RVA: 0x00005A84 File Offset: 0x00003C84
+		// Token: 0x060000CB RID: 203 RVA: 0x00003AFC File Offset: 0x00001CFC
 		public static string GetTrinityProductsPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text2;
+			if (flag)
 			{
-				string path = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
-				result = Path.Combine(path, productPath);
+				string text = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
+				text2 = Path.Combine(text, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.TrinityProductsPath, productPath);
+				text2 = Path.Combine(FileSystemInfo.TrinityProductsPath, productPath);
 			}
-			return result;
+			return text2;
 		}
 
-		// Token: 0x060001EC RID: 492 RVA: 0x00005ACC File Offset: 0x00003CCC
+		// Token: 0x060000CC RID: 204 RVA: 0x00003B48 File Offset: 0x00001D48
 		public static string GetUnistrongProductsPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text2;
+			if (flag)
 			{
-				string path = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
-				result = Path.Combine(path, productPath);
+				string text = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
+				text2 = Path.Combine(text, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.UnistrongProductsPath, productPath);
+				text2 = Path.Combine(FileSystemInfo.UnistrongProductsPath, productPath);
 			}
-			return result;
+			return text2;
 		}
 
-		// Token: 0x060001ED RID: 493 RVA: 0x00005B14 File Offset: 0x00003D14
+		// Token: 0x060000CD RID: 205 RVA: 0x00003B94 File Offset: 0x00001D94
 		public static string GetYEZZProductsPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text2;
+			if (flag)
 			{
-				string path = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
-				result = Path.Combine(path, productPath);
+				string text = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
+				text2 = Path.Combine(text, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.YEZZProductsPath, productPath);
+				text2 = Path.Combine(FileSystemInfo.YEZZProductsPath, productPath);
 			}
-			return result;
+			return text2;
 		}
 
-		// Token: 0x060001EE RID: 494 RVA: 0x00005B5C File Offset: 0x00003D5C
+		// Token: 0x060000CE RID: 206 RVA: 0x00003BE0 File Offset: 0x00001DE0
 		public static string GetDiginnosProductsPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text2;
+			if (flag)
 			{
-				string path = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
-				result = Path.Combine(path, productPath);
+				string text = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
+				text2 = Path.Combine(text, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.DiginnosProductsPath, productPath);
+				text2 = Path.Combine(FileSystemInfo.DiginnosProductsPath, productPath);
 			}
-			return result;
+			return text2;
 		}
 
-		// Token: 0x060001EF RID: 495 RVA: 0x00005BA4 File Offset: 0x00003DA4
+		// Token: 0x060000CF RID: 207 RVA: 0x00003C2C File Offset: 0x00001E2C
 		public static string GetVAIOProductsPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text2;
+			if (flag)
 			{
-				string path = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
-				result = Path.Combine(path, productPath);
+				string text = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
+				text2 = Path.Combine(text, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.VAIOProductsPath, productPath);
+				text2 = Path.Combine(FileSystemInfo.VAIOProductsPath, productPath);
 			}
-			return result;
+			return text2;
 		}
 
-		// Token: 0x060001F0 RID: 496 RVA: 0x00005BEC File Offset: 0x00003DEC
+		// Token: 0x060000D0 RID: 208 RVA: 0x00003C78 File Offset: 0x00001E78
 		public static string GetInversenetProductsPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text2;
+			if (flag)
 			{
-				string path = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
-				result = Path.Combine(path, productPath);
+				string text = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
+				text2 = Path.Combine(text, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.InversenetProductsPath, productPath);
+				text2 = Path.Combine(FileSystemInfo.InversenetProductsPath, productPath);
 			}
-			return result;
+			return text2;
 		}
 
-		// Token: 0x060001F1 RID: 497 RVA: 0x00005C34 File Offset: 0x00003E34
+		// Token: 0x060000D1 RID: 209 RVA: 0x00003CC4 File Offset: 0x00001EC4
 		public static string GetFreetelProductsPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text2;
+			if (flag)
 			{
-				string path = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
-				result = Path.Combine(path, productPath);
+				string text = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
+				text2 = Path.Combine(text, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.FreetelProductsPath, productPath);
+				text2 = Path.Combine(FileSystemInfo.FreetelProductsPath, productPath);
 			}
-			return result;
+			return text2;
 		}
 
-		// Token: 0x060001F2 RID: 498 RVA: 0x00005C7C File Offset: 0x00003E7C
+		// Token: 0x060000D2 RID: 210 RVA: 0x00003D10 File Offset: 0x00001F10
 		public static string GetFunkerProductsPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text2;
+			if (flag)
 			{
-				string path = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
-				result = Path.Combine(path, productPath);
+				string text = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
+				text2 = Path.Combine(text, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.FunkerProductsPath, productPath);
+				text2 = Path.Combine(FileSystemInfo.FunkerProductsPath, productPath);
 			}
-			return result;
+			return text2;
 		}
 
-		// Token: 0x060001F3 RID: 499 RVA: 0x00005CC4 File Offset: 0x00003EC4
+		// Token: 0x060000D3 RID: 211 RVA: 0x00003D5C File Offset: 0x00001F5C
 		public static string GetMicromaxProductsPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text2;
+			if (flag)
 			{
-				string path = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
-				result = Path.Combine(path, productPath);
+				string text = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
+				text2 = Path.Combine(text, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.MicromaxProductsPath, productPath);
+				text2 = Path.Combine(FileSystemInfo.MicromaxProductsPath, productPath);
 			}
-			return result;
+			return text2;
 		}
 
-		// Token: 0x060001F4 RID: 500 RVA: 0x00005D0C File Offset: 0x00003F0C
+		// Token: 0x060000D4 RID: 212 RVA: 0x00003DA8 File Offset: 0x00001FA8
 		public static string GetXOLOProductsPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text2;
+			if (flag)
 			{
-				string path = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
-				result = Path.Combine(path, productPath);
+				string text = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
+				text2 = Path.Combine(text, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.XOLOProductsPath, productPath);
+				text2 = Path.Combine(FileSystemInfo.XOLOProductsPath, productPath);
 			}
-			return result;
+			return text2;
 		}
 
-		// Token: 0x060001F5 RID: 501 RVA: 0x00005D54 File Offset: 0x00003F54
+		// Token: 0x060000D5 RID: 213 RVA: 0x00003DF4 File Offset: 0x00001FF4
 		public static string GetKMProductsPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text2;
+			if (flag)
 			{
-				string path = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
-				result = Path.Combine(path, productPath);
+				string text = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
+				text2 = Path.Combine(text, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.KMProductsPath, productPath);
+				text2 = Path.Combine(FileSystemInfo.KMProductsPath, productPath);
 			}
-			return result;
+			return text2;
 		}
 
-		// Token: 0x060001F6 RID: 502 RVA: 0x00005D9C File Offset: 0x00003F9C
+		// Token: 0x060000D6 RID: 214 RVA: 0x00003E40 File Offset: 0x00002040
 		public static string GetJenesisProdcutsPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text2;
+			if (flag)
 			{
-				string path = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
-				result = Path.Combine(path, productPath);
+				string text = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
+				text2 = Path.Combine(text, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.JenesisProductsPath, productPath);
+				text2 = Path.Combine(FileSystemInfo.JenesisProductsPath, productPath);
 			}
-			return result;
+			return text2;
 		}
 
-		// Token: 0x060001F7 RID: 503 RVA: 0x00005DE4 File Offset: 0x00003FE4
+		// Token: 0x060000D7 RID: 215 RVA: 0x00003E8C File Offset: 0x0000208C
 		public static string GetGomobileProductsPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text2;
+			if (flag)
 			{
-				string path = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
-				result = Path.Combine(path, productPath);
+				string text = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
+				text2 = Path.Combine(text, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.GomobileProductsPath, productPath);
+				text2 = Path.Combine(FileSystemInfo.GomobileProductsPath, productPath);
 			}
-			return result;
+			return text2;
 		}
 
-		// Token: 0x060001F8 RID: 504 RVA: 0x00005E2C File Offset: 0x0000402C
+		// Token: 0x060000D8 RID: 216 RVA: 0x00003ED8 File Offset: 0x000020D8
 		public static string GetHPProductsPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text2;
+			if (flag)
 			{
-				string path = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
-				result = Path.Combine(path, productPath);
+				string text = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
+				text2 = Path.Combine(text, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.HPProductsPath, productPath);
+				text2 = Path.Combine(FileSystemInfo.HPProductsPath, productPath);
 			}
-			return result;
+			return text2;
 		}
 
-		// Token: 0x060001F9 RID: 505 RVA: 0x00005E74 File Offset: 0x00004074
+		// Token: 0x060000D9 RID: 217 RVA: 0x00003F24 File Offset: 0x00002124
 		public static string GetLenovoProductsPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text2;
+			if (flag)
 			{
-				string path = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
-				result = Path.Combine(path, productPath);
+				string text = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
+				text2 = Path.Combine(text, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.LenovoProductsPath, productPath);
+				text2 = Path.Combine(FileSystemInfo.LenovoProductsPath, productPath);
 			}
-			return result;
+			return text2;
 		}
 
-		// Token: 0x060001FA RID: 506 RVA: 0x00005EBC File Offset: 0x000040BC
+		// Token: 0x060000DA RID: 218 RVA: 0x00003F70 File Offset: 0x00002170
 		public static string GetZebraProductsPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text2;
+			if (flag)
 			{
-				string path = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
-				result = Path.Combine(path, productPath);
+				string text = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
+				text2 = Path.Combine(text, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.ZebraProductsPath, productPath);
+				text2 = Path.Combine(FileSystemInfo.ZebraProductsPath, productPath);
 			}
-			return result;
+			return text2;
 		}
 
-		// Token: 0x060001FB RID: 507 RVA: 0x00005F04 File Offset: 0x00004104
+		// Token: 0x060000DB RID: 219 RVA: 0x00003FBC File Offset: 0x000021BC
 		public static string GetHoneywellProductsPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text2;
+			if (flag)
 			{
-				string path = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
-				result = Path.Combine(path, productPath);
+				string text = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
+				text2 = Path.Combine(text, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.HoneywellProductPath, productPath);
+				text2 = Path.Combine(FileSystemInfo.HoneywellProductPath, productPath);
 			}
-			return result;
+			return text2;
 		}
 
-		// Token: 0x060001FC RID: 508 RVA: 0x00005F4C File Offset: 0x0000414C
+		// Token: 0x060000DC RID: 220 RVA: 0x00004008 File Offset: 0x00002208
 		public static string GetPanasonicProductsPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text2;
+			if (flag)
 			{
-				string path = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
-				result = Path.Combine(path, productPath);
+				string text = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
+				text2 = Path.Combine(text, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.PanasonicProductPath, productPath);
+				text2 = Path.Combine(FileSystemInfo.PanasonicProductPath, productPath);
 			}
-			return result;
+			return text2;
 		}
 
-		// Token: 0x060001FD RID: 509 RVA: 0x00005F94 File Offset: 0x00004194
+		// Token: 0x060000DD RID: 221 RVA: 0x00004054 File Offset: 0x00002254
 		public static string GetTrekStorProductsPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text2;
+			if (flag)
 			{
-				string path = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
-				result = Path.Combine(path, productPath);
+				string text = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
+				text2 = Path.Combine(text, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.TrekStorProductPath, productPath);
+				text2 = Path.Combine(FileSystemInfo.TrekStorProductPath, productPath);
 			}
-			return result;
+			return text2;
 		}
 
-		// Token: 0x060001FE RID: 510 RVA: 0x00005FDC File Offset: 0x000041DC
+		// Token: 0x060000DE RID: 222 RVA: 0x000040A0 File Offset: 0x000022A0
 		public static string GetWileyfoxProductsPath(string productPath = "")
 		{
-			string result;
-			if (!string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrWhiteSpace(FileSystemInfo.CustomPackagesPath);
+			string text2;
+			if (flag)
 			{
-				string path = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
-				result = Path.Combine(path, productPath);
+				string text = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
+				text2 = Path.Combine(text, productPath);
 			}
 			else
 			{
-				result = Path.Combine(FileSystemInfo.WileyfoxProductsPath, productPath);
+				text2 = Path.Combine(FileSystemInfo.WileyfoxProductsPath, productPath);
 			}
-			return result;
+			return text2;
 		}
 
-		// Token: 0x060001FF RID: 511 RVA: 0x00006024 File Offset: 0x00004224
+		// Token: 0x060000DF RID: 223 RVA: 0x000040EC File Offset: 0x000022EC
 		public static string GetCustomProductsPath()
 		{
-			string result;
-			if (!string.IsNullOrEmpty(FileSystemInfo.CustomPackagesPath))
+			bool flag = !string.IsNullOrEmpty(FileSystemInfo.CustomPackagesPath);
+			string text;
+			if (flag)
 			{
-				result = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
+				text = Path.Combine(FileSystemInfo.CustomPackagesPath, "Products");
 			}
 			else
 			{
-				result = string.Empty;
+				text = string.Empty;
 			}
-			return result;
+			return text;
 		}
 	}
 }

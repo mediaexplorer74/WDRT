@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 using ComponentAce.Compression.Archiver;
-using ComponentAce.Compression.Exception1;
+using ComponentAce.Compression.Exception;
 
 namespace ComponentAce.Compression.Tar
 {
@@ -30,11 +30,11 @@ namespace ComponentAce.Compression.Tar
 		// Token: 0x06000474 RID: 1140 RVA: 0x000200DC File Offset: 0x0001F0DC
 		public void Read(Stream dataDestanation)
 		{
-			byte[] buffer;
-			int count;
-			while ((count = this.Read(out buffer)) != -1)
+			byte[] array;
+			int num;
+			while ((num = this.Read(out array)) != -1)
 			{
-				dataDestanation.Write(buffer, 0, count);
+				dataDestanation.Write(array, 0, num);
 			}
 		}
 
@@ -58,8 +58,7 @@ namespace ComponentAce.Compression.Tar
 				num = this._remainingBytesInFile;
 			}
 			int num2;
-
-			if (!ReadWriteHelper.ReadFromStream(this._dataBuffer, 0, (int)num, out num2, this._inStream, null/*new DoOnStreamOperationFailureDelegate(this.DoOnReadFromStreamFailure)*/))
+			if (!ReadWriteHelper.ReadFromStream(this._dataBuffer, 0, (int)num, out num2, this._inStream, new DoOnStreamOperationFailureDelegate(this.DoOnReadFromStreamFailure)))
 			{
 				throw ExceptionBuilder.Exception(ErrorCode.ReadFromStreamFailed);
 			}
@@ -74,7 +73,7 @@ namespace ComponentAce.Compression.Tar
 				{
 					byte[] array = new byte[1];
 					int num3;
-					if (!ReadWriteHelper.ReadFromStream(array, 0, array.Length, out num3, this._inStream, /*new DoOnStreamOperationFailureDelegate(this.DoOnReadFromStreamFailure)*/null))
+					if (!ReadWriteHelper.ReadFromStream(array, 0, array.Length, out num3, this._inStream, new DoOnStreamOperationFailureDelegate(this.DoOnReadFromStreamFailure)))
 					{
 						throw ExceptionBuilder.Exception(ErrorCode.ReadFromStreamFailed);
 					}
@@ -123,17 +122,13 @@ namespace ComponentAce.Compression.Tar
 			}
 			byte[] bytes = this._header.GetBytes();
 			int num2;
-			if (!ReadWriteHelper.ReadFromStream(bytes, 0, this._header.HeaderSize, out num2,
-				this._inStream, null/*new DoOnStreamOperationFailureDelegate(this.DoOnReadFromStreamFailure)*/))
+			if (!ReadWriteHelper.ReadFromStream(bytes, 0, this._header.HeaderSize, out num2, this._inStream, new DoOnStreamOperationFailureDelegate(this.DoOnReadFromStreamFailure)))
 			{
 				throw ExceptionBuilder.Exception(ErrorCode.ReadFromStreamFailed);
 			}
 			if (num2 < 512)
 			{
-				throw ExceptionBuilder.Exception(ErrorCode.NotAllHeaderBytesWasRead, new object[]
-				{
-					num2
-				});
+				throw ExceptionBuilder.Exception(ErrorCode.NotAllHeaderBytesWasRead, new object[] { num2 });
 			}
 			if (TarReader.IsEmpty(bytes))
 			{
@@ -157,7 +152,7 @@ namespace ComponentAce.Compression.Tar
 		}
 
 		// Token: 0x06000478 RID: 1144 RVA: 0x000203DB File Offset: 0x0001F3DB
-		protected void DoOnReadFromStreamFailure(System.Exception innerException, ref bool cancel)
+		protected void DoOnReadFromStreamFailure(Exception innerException, ref bool cancel)
 		{
 			throw innerException;
 		}

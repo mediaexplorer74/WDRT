@@ -10,153 +10,154 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 	// Token: 0x02000002 RID: 2
 	public class CommandLineParser
 	{
-		// Token: 0x06000001 RID: 1 RVA: 0x00002050 File Offset: 0x00000250
+		// Token: 0x06000001 RID: 1 RVA: 0x000020D0 File Offset: 0x000002D0
 		public CommandLineParser()
 		{
 			this.BuildRegularExpression();
 		}
 
-		// Token: 0x06000002 RID: 2 RVA: 0x000020DC File Offset: 0x000002DC
-		public CommandLineParser(char yourOwnSwitch, char yourOwnDelimiter) : this()
+		// Token: 0x06000002 RID: 2 RVA: 0x0000215C File Offset: 0x0000035C
+		public CommandLineParser(char yourOwnSwitch, char yourOwnDelimiter)
+			: this()
 		{
 			this.m_switchChar = yourOwnSwitch;
 			this.m_delimChar = yourOwnDelimiter;
 		}
 
-		// Token: 0x06000003 RID: 3 RVA: 0x000020F2 File Offset: 0x000002F2
+		// Token: 0x06000003 RID: 3 RVA: 0x00002172 File Offset: 0x00000372
 		public void SetOptionalSwitchNumeric(string id, string description, double defaultValue, double minRange, double maxRange)
 		{
 			this.DeclareNumericSwitch(id, description, true, defaultValue, minRange, maxRange);
 		}
 
-		// Token: 0x06000004 RID: 4 RVA: 0x00002102 File Offset: 0x00000302
+		// Token: 0x06000004 RID: 4 RVA: 0x00002182 File Offset: 0x00000382
 		public void SetOptionalSwitchNumeric(string id, string description, double defaultValue)
 		{
 			this.DeclareNumericSwitch(id, description, true, defaultValue, -2147483648.0, 2147483647.0);
 		}
 
-		// Token: 0x06000005 RID: 5 RVA: 0x00002120 File Offset: 0x00000320
+		// Token: 0x06000005 RID: 5 RVA: 0x000021A0 File Offset: 0x000003A0
 		public void SetRequiredSwitchNumeric(string id, string description, double minRange, double maxRange)
 		{
 			this.DeclareNumericSwitch(id, description, false, 0.0, minRange, maxRange);
 		}
 
-		// Token: 0x06000006 RID: 6 RVA: 0x00002137 File Offset: 0x00000337
+		// Token: 0x06000006 RID: 6 RVA: 0x000021B7 File Offset: 0x000003B7
 		public void SetRequiredSwitchNumeric(string id, string description)
 		{
 			this.DeclareNumericSwitch(id, description, false, 0.0, -2147483648.0, 2147483647.0);
 		}
 
-		// Token: 0x06000007 RID: 7 RVA: 0x0000215D File Offset: 0x0000035D
+		// Token: 0x06000007 RID: 7 RVA: 0x000021DD File Offset: 0x000003DD
 		public void SetOptionalSwitchString(string id, string description, string defaultValue, params string[] possibleValues)
 		{
 			this.DeclareStringSwitch(id, description, true, defaultValue, true, possibleValues);
 		}
 
-		// Token: 0x06000008 RID: 8 RVA: 0x0000216C File Offset: 0x0000036C
+		// Token: 0x06000008 RID: 8 RVA: 0x000021EC File Offset: 0x000003EC
 		public void SetOptionalSwitchString(string id, string description, string defaultValue, bool isPossibleValuesCaseSensitive, params string[] possibleValues)
 		{
 			this.DeclareStringSwitch(id, description, true, defaultValue, isPossibleValuesCaseSensitive, possibleValues);
 		}
 
-		// Token: 0x06000009 RID: 9 RVA: 0x0000217C File Offset: 0x0000037C
+		// Token: 0x06000009 RID: 9 RVA: 0x000021FC File Offset: 0x000003FC
 		public void SetOptionalSwitchString(string id, string description)
 		{
 			this.DeclareStringSwitch(id, description, true, "", true, new string[0]);
 		}
 
-		// Token: 0x0600000A RID: 10 RVA: 0x00002193 File Offset: 0x00000393
+		// Token: 0x0600000A RID: 10 RVA: 0x00002213 File Offset: 0x00000413
 		public void SetRequiredSwitchString(string id, string description, params string[] possibleValues)
 		{
 			this.DeclareStringSwitch(id, description, false, "", true, possibleValues);
 		}
 
-		// Token: 0x0600000B RID: 11 RVA: 0x000021A5 File Offset: 0x000003A5
+		// Token: 0x0600000B RID: 11 RVA: 0x00002225 File Offset: 0x00000425
 		public void SetRequiredSwitchString(string id, string description, bool isPossibleValuesCaseSensitive, params string[] possibleValues)
 		{
 			this.DeclareStringSwitch(id, description, false, "", isPossibleValuesCaseSensitive, possibleValues);
 		}
 
-		// Token: 0x0600000C RID: 12 RVA: 0x000021B8 File Offset: 0x000003B8
+		// Token: 0x0600000C RID: 12 RVA: 0x00002238 File Offset: 0x00000438
 		public void SetRequiredSwitchString(string id, string description)
 		{
 			this.DeclareStringSwitch(id, description, false, "", true, new string[0]);
 		}
 
-		// Token: 0x0600000D RID: 13 RVA: 0x000021CF File Offset: 0x000003CF
+		// Token: 0x0600000D RID: 13 RVA: 0x0000224F File Offset: 0x0000044F
 		public void SetOptionalSwitchBoolean(string id, string description, bool defaultValue)
 		{
 			this.DeclareBooleanSwitch(id, description, true, defaultValue);
 		}
 
-		// Token: 0x0600000E RID: 14 RVA: 0x000021DB File Offset: 0x000003DB
+		// Token: 0x0600000E RID: 14 RVA: 0x0000225B File Offset: 0x0000045B
 		public void SetOptionalParameterNumeric(string id, string description, double defaultValue, double minRange, double maxRange)
 		{
 			this.DeclareParam_Numeric(id, description, true, defaultValue, minRange, maxRange);
 		}
 
-		// Token: 0x0600000F RID: 15 RVA: 0x000021EB File Offset: 0x000003EB
+		// Token: 0x0600000F RID: 15 RVA: 0x0000226B File Offset: 0x0000046B
 		public void SetOptionalParameterNumeric(string id, string description, double defaultValue)
 		{
 			this.DeclareParam_Numeric(id, description, true, defaultValue, -2147483648.0, 2147483647.0);
 		}
 
-		// Token: 0x06000010 RID: 16 RVA: 0x00002209 File Offset: 0x00000409
+		// Token: 0x06000010 RID: 16 RVA: 0x00002289 File Offset: 0x00000489
 		public void SetRequiredParameterNumeric(string id, string description, double minRange, double maxRange)
 		{
 			this.DeclareParam_Numeric(id, description, false, 0.0, minRange, maxRange);
 		}
 
-		// Token: 0x06000011 RID: 17 RVA: 0x00002220 File Offset: 0x00000420
+		// Token: 0x06000011 RID: 17 RVA: 0x000022A0 File Offset: 0x000004A0
 		public void SetRequiredParameterNumeric(string id, string description)
 		{
 			this.DeclareParam_Numeric(id, description, false, 0.0, -2147483648.0, 2147483647.0);
 		}
 
-		// Token: 0x06000012 RID: 18 RVA: 0x00002246 File Offset: 0x00000446
+		// Token: 0x06000012 RID: 18 RVA: 0x000022C6 File Offset: 0x000004C6
 		public void SetOptionalParameterString(string id, string description, string defaultValue, params string[] possibleValues)
 		{
 			this.DeclareStringParam(id, description, true, defaultValue, true, possibleValues);
 		}
 
-		// Token: 0x06000013 RID: 19 RVA: 0x00002255 File Offset: 0x00000455
+		// Token: 0x06000013 RID: 19 RVA: 0x000022D5 File Offset: 0x000004D5
 		public void SetOptionalParameterString(string id, string description, string defaultValue, bool isPossibleValuesCaseSensitive, params string[] possibleValues)
 		{
 			this.DeclareStringParam(id, description, true, defaultValue, isPossibleValuesCaseSensitive, possibleValues);
 		}
 
-		// Token: 0x06000014 RID: 20 RVA: 0x00002265 File Offset: 0x00000465
+		// Token: 0x06000014 RID: 20 RVA: 0x000022E5 File Offset: 0x000004E5
 		public void SetOptionalParameterString(string id, string description)
 		{
 			this.DeclareStringParam(id, description, true, "", true, new string[0]);
 		}
 
-		// Token: 0x06000015 RID: 21 RVA: 0x0000227C File Offset: 0x0000047C
+		// Token: 0x06000015 RID: 21 RVA: 0x000022FC File Offset: 0x000004FC
 		public void SetRequiredParameterString(string id, string description, params string[] possibleValues)
 		{
 			this.DeclareStringParam(id, description, false, "", true, possibleValues);
 		}
 
-		// Token: 0x06000016 RID: 22 RVA: 0x0000228E File Offset: 0x0000048E
+		// Token: 0x06000016 RID: 22 RVA: 0x0000230E File Offset: 0x0000050E
 		public void SetRequiredParameterString(string id, string description, bool isPossibleValuesCaseSensitive, params string[] possibleValues)
 		{
 			this.DeclareStringParam(id, description, false, "", isPossibleValuesCaseSensitive, possibleValues);
 		}
 
-		// Token: 0x06000017 RID: 23 RVA: 0x000022A1 File Offset: 0x000004A1
+		// Token: 0x06000017 RID: 23 RVA: 0x00002321 File Offset: 0x00000521
 		public void SetRequiredParameterString(string id, string description)
 		{
 			this.DeclareStringParam(id, description, false, "", true, new string[0]);
 		}
 
-		// Token: 0x06000018 RID: 24 RVA: 0x000022B8 File Offset: 0x000004B8
+		// Token: 0x06000018 RID: 24 RVA: 0x00002338 File Offset: 0x00000538
 		public bool ParseCommandLine()
 		{
 			this.SetFirstArgumentAsAppName();
 			return this.ParseString(Environment.CommandLine);
 		}
 
-		// Token: 0x06000019 RID: 25 RVA: 0x000022CB File Offset: 0x000004CB
+		// Token: 0x06000019 RID: 25 RVA: 0x0000234B File Offset: 0x0000054B
 		public bool ParseString(string argumentsLine, bool isFirstArgTheAppName)
 		{
 			if (isFirstArgTheAppName)
@@ -166,7 +167,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return this.ParseString(argumentsLine);
 		}
 
-		// Token: 0x0600001A RID: 26 RVA: 0x000022E0 File Offset: 0x000004E0
+		// Token: 0x0600001A RID: 26 RVA: 0x00002360 File Offset: 0x00000560
 		public bool ParseString(string argumentsLine)
 		{
 			if (argumentsLine == null)
@@ -180,34 +181,35 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			this.SetOptionalSwitchBoolean("?", "Displays this usage string", false);
 			int num = 0;
 			argumentsLine = argumentsLine.TrimStart(new char[0]) + " ";
-			Match match = new Regex(this.m_Syntax).Match(argumentsLine);
+			Regex regex = new Regex(this.m_Syntax);
+			Match match = regex.Match(argumentsLine);
 			while (match.Success)
 			{
-				string token = match.Result("${switchToken}");
-				string text = match.Result("${idToken}");
-				string delim = match.Result("${delimToken}");
-				string text2 = match.Result("${valueToken}");
-				text2 = text2.TrimEnd(new char[0]);
-				if (text2.StartsWith("\"", StringComparison.CurrentCulture) && text2.EndsWith("\"", StringComparison.CurrentCulture))
+				string text = match.Result("${switchToken}");
+				string text2 = match.Result("${idToken}");
+				string text3 = match.Result("${delimToken}");
+				string text4 = match.Result("${valueToken}");
+				text4 = text4.TrimEnd(new char[0]);
+				if (text4.StartsWith("\"", StringComparison.CurrentCulture) && text4.EndsWith("\"", StringComparison.CurrentCulture))
 				{
-					text2 = text2.Substring(1, text2.Length - 2);
+					text4 = text4.Substring(1, text4.Length - 2);
 				}
-				if (text.Length == 0)
+				if (text2.Length == 0)
 				{
-					if (!this.InputParam(text2, num++))
+					if (!this.InputParam(text4, num++))
 					{
 						return false;
 					}
 				}
 				else
 				{
-					if (text == "?")
+					if (text2 == "?")
 					{
 						this.m_lastError = "Usage Info requested";
 						this.m_parseSuccess = false;
 						return false;
 					}
-					if (!this.InputSwitch(token, text, delim, text2))
+					if (!this.InputSwitch(text, text2, text3, text4))
 					{
 						return false;
 					}
@@ -234,7 +236,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return this.m_parseSuccess;
 		}
 
-		// Token: 0x0600001B RID: 27 RVA: 0x0000251C File Offset: 0x0000071C
+		// Token: 0x0600001B RID: 27 RVA: 0x000025A0 File Offset: 0x000007A0
 		public object GetSwitch(string id)
 		{
 			if (!this.m_parseSuccess)
@@ -253,25 +255,25 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return cargument.GetValue();
 		}
 
-		// Token: 0x0600001C RID: 28 RVA: 0x00002576 File Offset: 0x00000776
+		// Token: 0x0600001C RID: 28 RVA: 0x000025FC File Offset: 0x000007FC
 		public double GetSwitchAsNumeric(string id)
 		{
 			return (double)this.GetSwitch(id);
 		}
 
-		// Token: 0x0600001D RID: 29 RVA: 0x00002584 File Offset: 0x00000784
+		// Token: 0x0600001D RID: 29 RVA: 0x0000260A File Offset: 0x0000080A
 		public string GetSwitchAsString(string id)
 		{
 			return (string)this.GetSwitch(id);
 		}
 
-		// Token: 0x0600001E RID: 30 RVA: 0x00002592 File Offset: 0x00000792
+		// Token: 0x0600001E RID: 30 RVA: 0x00002618 File Offset: 0x00000818
 		public bool GetSwitchAsBoolean(string id)
 		{
 			return (bool)this.GetSwitch(id);
 		}
 
-		// Token: 0x0600001F RID: 31 RVA: 0x000025A0 File Offset: 0x000007A0
+		// Token: 0x0600001F RID: 31 RVA: 0x00002628 File Offset: 0x00000828
 		public bool IsAssignedSwitch(string id)
 		{
 			if (!this.m_parseSuccess)
@@ -290,7 +292,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return cargument.isAssigned;
 		}
 
-		// Token: 0x06000020 RID: 32 RVA: 0x000025FC File Offset: 0x000007FC
+		// Token: 0x06000020 RID: 32 RVA: 0x00002684 File Offset: 0x00000884
 		public object GetParameter(string id)
 		{
 			if (!this.m_parseSuccess)
@@ -309,19 +311,19 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return cargument.GetValue();
 		}
 
-		// Token: 0x06000021 RID: 33 RVA: 0x00002656 File Offset: 0x00000856
+		// Token: 0x06000021 RID: 33 RVA: 0x000026E0 File Offset: 0x000008E0
 		public double GetParameterAsNumeric(string id)
 		{
 			return (double)this.GetParameter(id);
 		}
 
-		// Token: 0x06000022 RID: 34 RVA: 0x00002664 File Offset: 0x00000864
+		// Token: 0x06000022 RID: 34 RVA: 0x000026EE File Offset: 0x000008EE
 		public string GetParameterAsString(string id)
 		{
 			return (string)this.GetParameter(id);
 		}
 
-		// Token: 0x06000023 RID: 35 RVA: 0x00002674 File Offset: 0x00000874
+		// Token: 0x06000023 RID: 35 RVA: 0x000026FC File Offset: 0x000008FC
 		public bool IsAssignedParameter(string id)
 		{
 			if (!this.m_parseSuccess)
@@ -340,10 +342,10 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return cargument.isAssigned;
 		}
 
-		// Token: 0x06000024 RID: 36 RVA: 0x000026D0 File Offset: 0x000008D0
+		// Token: 0x06000024 RID: 36 RVA: 0x00002758 File Offset: 0x00000958
 		public object[] GetParameterList()
 		{
-			int num = this.IsFirstArgumentAppName() ? 1 : 0;
+			int num = (this.IsFirstArgumentAppName() ? 1 : 0);
 			if (this.m_declaredParams.Count == num)
 			{
 				return null;
@@ -356,7 +358,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return array;
 		}
 
-		// Token: 0x06000025 RID: 37 RVA: 0x0000273C File Offset: 0x0000093C
+		// Token: 0x06000025 RID: 37 RVA: 0x000027C4 File Offset: 0x000009C4
 		public Array SwitchesList()
 		{
 			Array array = Array.CreateInstance(typeof(object), this.m_declaredSwitches.Count, 2);
@@ -368,7 +370,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return array;
 		}
 
-		// Token: 0x06000026 RID: 38 RVA: 0x000027AE File Offset: 0x000009AE
+		// Token: 0x06000026 RID: 38 RVA: 0x00002836 File Offset: 0x00000A36
 		public void SetAlias(string alias, string treatedAs)
 		{
 			if (alias != treatedAs)
@@ -377,7 +379,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x06000027 RID: 39 RVA: 0x000027C8 File Offset: 0x000009C8
+		// Token: 0x06000027 RID: 39 RVA: 0x00002850 File Offset: 0x00000A50
 		public void DefineSwitchGroup(uint minAppear, uint maxAppear, params string[] ids)
 		{
 			if (ids == null)
@@ -394,11 +396,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 			if ((ulong)minAppear > (ulong)((long)ids.Length))
 			{
-				throw new BadGroupException(string.Format(CultureInfo.InvariantCulture, "You cannot have {0} appearance(s) in a group of {1} switch(es)!", new object[]
-				{
-					minAppear,
-					ids.Length
-				}));
+				throw new BadGroupException(string.Format(CultureInfo.InvariantCulture, "You cannot have {0} appearance(s) in a group of {1} switch(es)!", new object[] { minAppear, ids.Length }));
 			}
 			foreach (string text in ids)
 			{
@@ -416,13 +414,13 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			this.m_usageGroups = this.m_usageGroups + " - " + cargGroups.RangeDescription() + Environment.NewLine;
 		}
 
-		// Token: 0x06000028 RID: 40 RVA: 0x000028C5 File Offset: 0x00000AC5
+		// Token: 0x06000028 RID: 40 RVA: 0x00002954 File Offset: 0x00000B54
 		public string UsageString()
 		{
 			return this.UsageString(new FileInfo(Environment.GetCommandLineArgs()[0]).Name);
 		}
 
-		// Token: 0x06000029 RID: 41 RVA: 0x000028E0 File Offset: 0x00000AE0
+		// Token: 0x06000029 RID: 41 RVA: 0x00002970 File Offset: 0x00000B70
 		public string UsageString(string appName)
 		{
 			string text = "";
@@ -430,9 +428,10 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			{
 				text = ">> " + this.m_lastError + Environment.NewLine + Environment.NewLine;
 			}
+			string text2 = text;
 			return string.Concat(new string[]
 			{
-				text,
+				text2,
 				"Usage: ",
 				appName,
 				this.m_usageCmdLine,
@@ -446,8 +445,8 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 		}
 
 		// Token: 0x17000001 RID: 1
-		// (get) Token: 0x0600002A RID: 42 RVA: 0x00002975 File Offset: 0x00000B75
-		// (set) Token: 0x0600002B RID: 43 RVA: 0x0000297D File Offset: 0x00000B7D
+		// (get) Token: 0x0600002A RID: 42 RVA: 0x00002A09 File Offset: 0x00000C09
+		// (set) Token: 0x0600002B RID: 43 RVA: 0x00002A11 File Offset: 0x00000C11
 		public bool CaseSensitive
 		{
 			get
@@ -462,7 +461,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 		}
 
 		// Token: 0x17000002 RID: 2
-		// (get) Token: 0x0600002C RID: 44 RVA: 0x0000298C File Offset: 0x00000B8C
+		// (get) Token: 0x0600002C RID: 44 RVA: 0x00002A20 File Offset: 0x00000C20
 		public string LastError
 		{
 			get
@@ -475,7 +474,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x0600002D RID: 45 RVA: 0x000029A8 File Offset: 0x00000BA8
+		// Token: 0x0600002D RID: 45 RVA: 0x00002A3C File Offset: 0x00000C3C
 		private void SetFirstArgumentAsAppName()
 		{
 			if (this.m_declaredParams.Count > 0 && this.m_declaredParams[0].Id == "RESERVED_ID_APPLICATION_NAME")
@@ -483,25 +482,18 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 				return;
 			}
 			this.CheckNotAmbiguous("RESERVED_ID_APPLICATION_NAME");
-			CommandLineParser.CArgument item = new CommandLineParser.CStringArgument("RESERVED_ID_APPLICATION_NAME", "the application's name", false, "", true, new string[0]);
-			this.m_declaredParams.Insert(0, item);
+			CommandLineParser.CArgument cargument = new CommandLineParser.CStringArgument("RESERVED_ID_APPLICATION_NAME", "the application's name", false, "", true, new string[0]);
+			this.m_declaredParams.Insert(0, cargument);
 			this.m_iRequiredParams += 1U;
 		}
 
-		// Token: 0x0600002E RID: 46 RVA: 0x00002A24 File Offset: 0x00000C24
+		// Token: 0x0600002E RID: 46 RVA: 0x00002AB8 File Offset: 0x00000CB8
 		private void BuildRegularExpression()
 		{
-			this.m_Syntax = string.Concat(new string[]
-			{
-				"\\G((?<switchToken>[\\+\\-",
-				this.m_switchChar.ToString(),
-				"]{1})(?<idToken>[\\w|?]+)(?<delimToken>[",
-				this.m_delimChar.ToString(),
-				"]?))?(?<valueToken>(\"[^\"]*\"|\\S*)\\s+){1}"
-			});
+			this.m_Syntax = string.Concat(new object[] { "\\G((?<switchToken>[\\+\\-", this.m_switchChar, "]{1})(?<idToken>[\\w|?]+)(?<delimToken>[", this.m_delimChar, "]?))?(?<valueToken>(\"[^\"]*\"|\\S*)\\s+){1}" });
 		}
 
-		// Token: 0x0600002F RID: 47 RVA: 0x00002A84 File Offset: 0x00000C84
+		// Token: 0x0600002F RID: 47 RVA: 0x00002B0C File Offset: 0x00000D0C
 		private void DeclareNumericSwitch(string id, string description, bool fIsOptional, double defaultValue, double minRange, double maxRange)
 		{
 			if (id.Length == 0)
@@ -514,7 +506,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			this.AddUsageInfo(cargument, true, defaultValue);
 		}
 
-		// Token: 0x06000030 RID: 48 RVA: 0x00002AD0 File Offset: 0x00000CD0
+		// Token: 0x06000030 RID: 48 RVA: 0x00002B58 File Offset: 0x00000D58
 		private void DeclareStringSwitch(string id, string description, bool fIsOptional, string defaultValue, bool isPossibleValuesCaseSensitive, params string[] possibleValues)
 		{
 			if (id.Length == 0)
@@ -527,7 +519,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			this.AddUsageInfo(cargument, true, defaultValue);
 		}
 
-		// Token: 0x06000031 RID: 49 RVA: 0x00002B18 File Offset: 0x00000D18
+		// Token: 0x06000031 RID: 49 RVA: 0x00002BA0 File Offset: 0x00000DA0
 		private void DeclareBooleanSwitch(string id, string description, bool fIsOptional, bool defaultValue)
 		{
 			if (id.Length == 0)
@@ -540,7 +532,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			this.AddUsageInfo(cargument, true, defaultValue);
 		}
 
-		// Token: 0x06000032 RID: 50 RVA: 0x00002B60 File Offset: 0x00000D60
+		// Token: 0x06000032 RID: 50 RVA: 0x00002BE8 File Offset: 0x00000DE8
 		private void DeclareParam_Numeric(string id, string description, bool fIsOptional, double defaultValue, double minRange, double maxRange)
 		{
 			if (id.Length == 0)
@@ -561,7 +553,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			this.AddUsageInfo(cargument, false, defaultValue);
 		}
 
-		// Token: 0x06000033 RID: 51 RVA: 0x00002BDC File Offset: 0x00000DDC
+		// Token: 0x06000033 RID: 51 RVA: 0x00002C64 File Offset: 0x00000E64
 		private void DeclareStringParam(string id, string description, bool fIsOptional, string defaultValue, bool isPossibleValuesCaseSensitive, params string[] possibleValues)
 		{
 			if (id.Length == 0)
@@ -582,7 +574,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			this.AddUsageInfo(cargument, false, defaultValue);
 		}
 
-		// Token: 0x06000034 RID: 52 RVA: 0x00002C54 File Offset: 0x00000E54
+		// Token: 0x06000034 RID: 52 RVA: 0x00002CDC File Offset: 0x00000EDC
 		private void AddUsageInfo(CommandLineParser.CArgument arg, bool isSwitch, object defVal)
 		{
 			this.m_usageCmdLine += (arg.isOptional ? " [" : " ");
@@ -590,9 +582,10 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			{
 				if (arg.GetType() != typeof(CommandLineParser.CBooleanArgument))
 				{
+					string usageCmdLine = this.m_usageCmdLine;
 					this.m_usageCmdLine = string.Concat(new string[]
 					{
-						this.m_usageCmdLine,
+						usageCmdLine,
 						this.m_switchChar.ToString(),
 						arg.Id,
 						this.m_delimChar.ToString(),
@@ -657,7 +650,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x06000035 RID: 53 RVA: 0x00002F0C File Offset: 0x0000110C
+		// Token: 0x06000035 RID: 53 RVA: 0x00002FA0 File Offset: 0x000011A0
 		private bool InputSwitch(string token, string ID, string delim, string val)
 		{
 			if (this.m_aliases.ContainsKey(ID))
@@ -674,7 +667,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 				cargument.SetValue(token);
 				if (delim.Length != 0 || val.Length != 0)
 				{
-					this.m_lastError = "A boolean switch cannot be followed by a delimiter. Use \"-booleanFlag\", not \"-booleanFlag" + this.m_delimChar.ToString() + "\"";
+					this.m_lastError = "A boolean switch cannot be followed by a delimiter. Use \"-booleanFlag\", not \"-booleanFlag" + this.m_delimChar + "\"";
 					return false;
 				}
 				return true;
@@ -683,35 +676,19 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			{
 				if (delim.Length == 0)
 				{
-					this.m_lastError = string.Concat(new string[]
-					{
-						"you must use the delimiter '",
-						this.m_delimChar.ToString(),
-						"', e.g. \"",
-						this.m_switchChar.ToString(),
-						"arg",
-						this.m_delimChar.ToString(),
-						"x\""
-					});
+					this.m_lastError = string.Concat(new object[] { "you must use the delimiter '", this.m_delimChar, "', e.g. \"", this.m_switchChar, "arg", this.m_delimChar, "x\"" });
 					return false;
 				}
 				if (cargument.SetValue(val))
 				{
 					return true;
 				}
-				this.m_lastError = string.Concat(new string[]
-				{
-					"Switch '",
-					ID,
-					"' cannot accept '",
-					val,
-					"' as a value"
-				});
+				this.m_lastError = string.Concat(new string[] { "Switch '", ID, "' cannot accept '", val, "' as a value" });
 				return false;
 			}
 		}
 
-		// Token: 0x06000036 RID: 54 RVA: 0x00003058 File Offset: 0x00001258
+		// Token: 0x06000036 RID: 54 RVA: 0x000030D8 File Offset: 0x000012D8
 		private bool InputParam(string val, int paramIndex)
 		{
 			if (2147483647 == paramIndex)
@@ -733,7 +710,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return false;
 		}
 
-		// Token: 0x06000037 RID: 55 RVA: 0x000030CC File Offset: 0x000012CC
+		// Token: 0x06000037 RID: 55 RVA: 0x0000314C File Offset: 0x0000134C
 		private CommandLineParser.CArgument FindExactArg(string argID, List<CommandLineParser.CArgument> list)
 		{
 			foreach (CommandLineParser.CArgument cargument in list)
@@ -746,29 +723,20 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return null;
 		}
 
-		// Token: 0x06000038 RID: 56 RVA: 0x00003134 File Offset: 0x00001334
+		// Token: 0x06000038 RID: 56 RVA: 0x000031B4 File Offset: 0x000013B4
 		private CommandLineParser.CArgument FindSimilarArg(string argSubstringID, List<CommandLineParser.CArgument> list)
 		{
 			argSubstringID = (this.CaseSensitive ? argSubstringID : argSubstringID.ToUpper(CultureInfo.InvariantCulture));
 			CommandLineParser.CArgument cargument = null;
 			foreach (CommandLineParser.CArgument cargument2 in list)
 			{
-				string text = this.CaseSensitive ? cargument2.Id : cargument2.Id.ToUpper(CultureInfo.InvariantCulture);
+				string text = (this.CaseSensitive ? cargument2.Id : cargument2.Id.ToUpper(CultureInfo.InvariantCulture));
 				if (text.StartsWith(argSubstringID, StringComparison.CurrentCulture))
 				{
 					if (cargument != null)
 					{
-						string text2 = this.CaseSensitive ? cargument.Id : cargument.Id.ToUpper(CultureInfo.InvariantCulture);
-						this.m_lastError = string.Concat(new string[]
-						{
-							"Ambiguous ID: '",
-							argSubstringID,
-							"' matches both '",
-							text2,
-							"' and '",
-							text,
-							"'"
-						});
+						string text2 = (this.CaseSensitive ? cargument.Id : cargument.Id.ToUpper(CultureInfo.InvariantCulture));
+						this.m_lastError = string.Concat(new string[] { "Ambiguous ID: '", argSubstringID, "' matches both '", text2, "' and '", text, "'" });
 						return null;
 					}
 					cargument = cargument2;
@@ -781,20 +749,20 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return cargument;
 		}
 
-		// Token: 0x06000039 RID: 57 RVA: 0x00003250 File Offset: 0x00001450
+		// Token: 0x06000039 RID: 57 RVA: 0x000032D8 File Offset: 0x000014D8
 		private void CheckNotAmbiguous()
 		{
 			this.CheckNotAmbiguous("");
 		}
 
-		// Token: 0x0600003A RID: 58 RVA: 0x0000325D File Offset: 0x0000145D
+		// Token: 0x0600003A RID: 58 RVA: 0x000032E5 File Offset: 0x000014E5
 		private void CheckNotAmbiguous(string newId)
 		{
 			this.CheckNotAmbiguous(newId, this.m_declaredSwitches);
 			this.CheckNotAmbiguous(newId, this.m_declaredParams);
 		}
 
-		// Token: 0x0600003B RID: 59 RVA: 0x0000327C File Offset: 0x0000147C
+		// Token: 0x0600003B RID: 59 RVA: 0x00003304 File Offset: 0x00001504
 		private void CheckNotAmbiguous(string newID, List<CommandLineParser.CArgument> argList)
 		{
 			foreach (CommandLineParser.CArgument cargument in argList)
@@ -824,15 +792,15 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x0600003C RID: 60 RVA: 0x00003410 File Offset: 0x00001610
+		// Token: 0x0600003C RID: 60 RVA: 0x00003498 File Offset: 0x00001698
 		private bool IsGroupRulesKept()
 		{
 			foreach (CommandLineParser.CArgGroups cargGroups in this.m_argGroups)
 			{
 				uint num = 0U;
-				foreach (string argID in cargGroups.Args)
+				foreach (string text in cargGroups.Args)
 				{
-					CommandLineParser.CArgument cargument = this.FindExactArg(argID, this.m_declaredSwitches);
+					CommandLineParser.CArgument cargument = this.FindExactArg(text, this.m_declaredSwitches);
 					if (cargument != null && cargument.isAssigned)
 					{
 						num += 1U;
@@ -847,7 +815,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return true;
 		}
 
-		// Token: 0x0600003D RID: 61 RVA: 0x000034BC File Offset: 0x000016BC
+		// Token: 0x0600003D RID: 61 RVA: 0x00003544 File Offset: 0x00001744
 		private bool IsFirstArgumentAppName()
 		{
 			return this.m_declaredParams.Count > 0 && this.m_declaredParams[0].Id == "RESERVED_ID_APPLICATION_NAME";
@@ -857,75 +825,75 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 		private const string c_applicationNameString = "RESERVED_ID_APPLICATION_NAME";
 
 		// Token: 0x04000002 RID: 2
-		private char m_switchChar = '/';
-
-		// Token: 0x04000003 RID: 3
-		private char m_delimChar = ':';
-
-		// Token: 0x04000004 RID: 4
-		private string m_Syntax = "";
-
-		// Token: 0x04000005 RID: 5
-		private List<CommandLineParser.CArgument> m_declaredSwitches = new List<CommandLineParser.CArgument>();
-
-		// Token: 0x04000006 RID: 6
-		private List<CommandLineParser.CArgument> m_declaredParams = new List<CommandLineParser.CArgument>();
-
-		// Token: 0x04000007 RID: 7
-		private uint m_iRequiredParams;
-
-		// Token: 0x04000008 RID: 8
-		private List<CommandLineParser.CArgGroups> m_argGroups = new List<CommandLineParser.CArgGroups>();
-
-		// Token: 0x04000009 RID: 9
-		private SortedList<string, string> m_aliases = new SortedList<string, string>();
-
-		// Token: 0x0400000A RID: 10
-		private bool m_caseSensitive;
-
-		// Token: 0x0400000B RID: 11
-		private string m_lastError = "";
-
-		// Token: 0x0400000C RID: 12
-		private string m_usageCmdLine = "";
-
-		// Token: 0x0400000D RID: 13
-		private string m_usageArgs = "";
-
-		// Token: 0x0400000E RID: 14
-		private string m_usageGroups = "";
-
-		// Token: 0x0400000F RID: 15
-		private bool m_parseSuccess;
-
-		// Token: 0x04000010 RID: 16
 		private const char DEFAULT_SWITCH = '/';
 
-		// Token: 0x04000011 RID: 17
+		// Token: 0x04000003 RID: 3
 		private const char DEFAULT_DELIM = ':';
 
-		// Token: 0x04000012 RID: 18
+		// Token: 0x04000004 RID: 4
 		private const string SWITCH_TOKEN = "switchToken";
 
-		// Token: 0x04000013 RID: 19
+		// Token: 0x04000005 RID: 5
 		private const string ID_TOKEN = "idToken";
 
-		// Token: 0x04000014 RID: 20
+		// Token: 0x04000006 RID: 6
 		private const string DELIM_TOKEN = "delimToken";
 
-		// Token: 0x04000015 RID: 21
+		// Token: 0x04000007 RID: 7
 		private const string VALUE_TOKEN = "valueToken";
 
-		// Token: 0x04000016 RID: 22
+		// Token: 0x04000008 RID: 8
 		private const int USAGE_COL1 = 25;
 
-		// Token: 0x04000017 RID: 23
+		// Token: 0x04000009 RID: 9
 		private const int USAGE_WIDTH = 79;
 
-		// Token: 0x02000058 RID: 88
-		public abstract class CArgument
+		// Token: 0x0400000A RID: 10
+		private char m_switchChar = '/';
+
+		// Token: 0x0400000B RID: 11
+		private char m_delimChar = ':';
+
+		// Token: 0x0400000C RID: 12
+		private string m_Syntax = "";
+
+		// Token: 0x0400000D RID: 13
+		private List<CommandLineParser.CArgument> m_declaredSwitches = new List<CommandLineParser.CArgument>();
+
+		// Token: 0x0400000E RID: 14
+		private List<CommandLineParser.CArgument> m_declaredParams = new List<CommandLineParser.CArgument>();
+
+		// Token: 0x0400000F RID: 15
+		private uint m_iRequiredParams;
+
+		// Token: 0x04000010 RID: 16
+		private List<CommandLineParser.CArgGroups> m_argGroups = new List<CommandLineParser.CArgGroups>();
+
+		// Token: 0x04000011 RID: 17
+		private SortedList<string, string> m_aliases = new SortedList<string, string>();
+
+		// Token: 0x04000012 RID: 18
+		private bool m_caseSensitive;
+
+		// Token: 0x04000013 RID: 19
+		private string m_lastError = "";
+
+		// Token: 0x04000014 RID: 20
+		private string m_usageCmdLine = "";
+
+		// Token: 0x04000015 RID: 21
+		private string m_usageArgs = "";
+
+		// Token: 0x04000016 RID: 22
+		private string m_usageGroups = "";
+
+		// Token: 0x04000017 RID: 23
+		private bool m_parseSuccess;
+
+		// Token: 0x02000003 RID: 3
+		internal abstract class CArgument
 		{
-			// Token: 0x06000299 RID: 665 RVA: 0x0000BC98 File Offset: 0x00009E98
+			// Token: 0x0600003E RID: 62 RVA: 0x00003574 File Offset: 0x00001774
 			protected CArgument(string id, string desc, bool fIsOptional)
 			{
 				this.m_id = id;
@@ -933,8 +901,8 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 				this.m_fIsOptional = fIsOptional;
 			}
 
-			// Token: 0x17000063 RID: 99
-			// (get) Token: 0x0600029A RID: 666 RVA: 0x0000BCE8 File Offset: 0x00009EE8
+			// Token: 0x17000003 RID: 3
+			// (get) Token: 0x0600003F RID: 63 RVA: 0x000035C4 File Offset: 0x000017C4
 			public string Id
 			{
 				get
@@ -943,20 +911,20 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 				}
 			}
 
-			// Token: 0x0600029B RID: 667 RVA: 0x0000BCF0 File Offset: 0x00009EF0
+			// Token: 0x06000040 RID: 64 RVA: 0x000035CC File Offset: 0x000017CC
 			public object GetValue()
 			{
 				return this.m_val;
 			}
 
-			// Token: 0x0600029C RID: 668
+			// Token: 0x06000041 RID: 65
 			public abstract bool SetValue(string val);
 
-			// Token: 0x0600029D RID: 669
+			// Token: 0x06000042 RID: 66
 			public abstract string possibleValues();
 
-			// Token: 0x17000064 RID: 100
-			// (get) Token: 0x0600029E RID: 670 RVA: 0x0000BCF8 File Offset: 0x00009EF8
+			// Token: 0x17000004 RID: 4
+			// (get) Token: 0x06000043 RID: 67 RVA: 0x000035D4 File Offset: 0x000017D4
 			public string description
 			{
 				get
@@ -969,8 +937,8 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 				}
 			}
 
-			// Token: 0x17000065 RID: 101
-			// (get) Token: 0x0600029F RID: 671 RVA: 0x0000BD14 File Offset: 0x00009F14
+			// Token: 0x17000005 RID: 5
+			// (get) Token: 0x06000044 RID: 68 RVA: 0x000035F0 File Offset: 0x000017F0
 			public bool isOptional
 			{
 				get
@@ -979,8 +947,8 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 				}
 			}
 
-			// Token: 0x17000066 RID: 102
-			// (get) Token: 0x060002A0 RID: 672 RVA: 0x0000BD1C File Offset: 0x00009F1C
+			// Token: 0x17000006 RID: 6
+			// (get) Token: 0x06000045 RID: 69 RVA: 0x000035F8 File Offset: 0x000017F8
 			public bool isAssigned
 			{
 				get
@@ -989,34 +957,35 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 				}
 			}
 
-			// Token: 0x04000130 RID: 304
+			// Token: 0x04000018 RID: 24
 			protected object m_val = "";
 
-			// Token: 0x04000131 RID: 305
+			// Token: 0x04000019 RID: 25
 			protected bool m_fIsAssigned;
 
-			// Token: 0x04000132 RID: 306
+			// Token: 0x0400001A RID: 26
 			private string m_id = "";
 
-			// Token: 0x04000133 RID: 307
+			// Token: 0x0400001B RID: 27
 			private string m_description = "";
 
-			// Token: 0x04000134 RID: 308
+			// Token: 0x0400001C RID: 28
 			private bool m_fIsOptional = true;
 		}
 
-		// Token: 0x02000059 RID: 89
+		// Token: 0x02000004 RID: 4
 		internal class CNumericArgument : CommandLineParser.CArgument
 		{
-			// Token: 0x060002A1 RID: 673 RVA: 0x0000BD24 File Offset: 0x00009F24
-			public CNumericArgument(string id, string desc, bool fIsOptional, double defVal, double minRange, double maxRange) : base(id, desc, fIsOptional)
+			// Token: 0x06000046 RID: 70 RVA: 0x00003600 File Offset: 0x00001800
+			public CNumericArgument(string id, string desc, bool fIsOptional, double defVal, double minRange, double maxRange)
+				: base(id, desc, fIsOptional)
 			{
 				this.m_val = defVal;
 				this.m_minRange = minRange;
 				this.m_maxRange = maxRange;
 			}
 
-			// Token: 0x060002A2 RID: 674 RVA: 0x0000BD78 File Offset: 0x00009F78
+			// Token: 0x06000047 RID: 71 RVA: 0x00003654 File Offset: 0x00001854
 			public override bool SetValue(string val)
 			{
 				bool isAssigned = base.isAssigned;
@@ -1047,37 +1016,32 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 				return (double)this.m_val >= this.m_minRange && (double)this.m_val <= this.m_maxRange;
 			}
 
-			// Token: 0x060002A3 RID: 675 RVA: 0x0000BE4C File Offset: 0x0000A04C
+			// Token: 0x06000048 RID: 72 RVA: 0x00003728 File Offset: 0x00001928
 			public override string possibleValues()
 			{
-				return string.Concat(new object[]
-				{
-					"between ",
-					this.m_minRange,
-					" and ",
-					this.m_maxRange
-				});
+				return string.Concat(new object[] { "between ", this.m_minRange, " and ", this.m_maxRange });
 			}
 
-			// Token: 0x04000135 RID: 309
+			// Token: 0x0400001D RID: 29
 			private double m_minRange = double.MinValue;
 
-			// Token: 0x04000136 RID: 310
+			// Token: 0x0400001E RID: 30
 			private double m_maxRange = double.MaxValue;
 		}
 
-		// Token: 0x0200005A RID: 90
+		// Token: 0x02000005 RID: 5
 		internal class CStringArgument : CommandLineParser.CArgument
 		{
-			// Token: 0x060002A4 RID: 676 RVA: 0x0000BE85 File Offset: 0x0000A085
-			public CStringArgument(string id, string desc, bool fIsOptional, string defVal, bool isPossibleValuesCaseSensitive, params string[] possibleValues) : base(id, desc, fIsOptional)
+			// Token: 0x06000049 RID: 73 RVA: 0x00003770 File Offset: 0x00001970
+			public CStringArgument(string id, string desc, bool fIsOptional, string defVal, bool isPossibleValuesCaseSensitive, params string[] possibleValues)
+				: base(id, desc, fIsOptional)
 			{
 				this.m_possibleVals = possibleValues;
 				this.m_val = defVal;
 				this.m_fIsPossibleValsCaseSensitive = isPossibleValuesCaseSensitive;
 			}
 
-			// Token: 0x060002A5 RID: 677 RVA: 0x0000BEC4 File Offset: 0x0000A0C4
+			// Token: 0x0600004A RID: 74 RVA: 0x000037BC File Offset: 0x000019BC
 			public override bool SetValue(string val)
 			{
 				bool isAssigned = base.isAssigned;
@@ -1097,7 +1061,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 				return false;
 			}
 
-			// Token: 0x060002A6 RID: 678 RVA: 0x0000BF3C File Offset: 0x0000A13C
+			// Token: 0x0600004B RID: 75 RVA: 0x0000383C File Offset: 0x00001A3C
 			public override string possibleValues()
 			{
 				if (this.m_possibleVals.Length == 0)
@@ -1116,45 +1080,43 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 				return stringBuilder.ToString();
 			}
 
-			// Token: 0x04000137 RID: 311
-			private string[] m_possibleVals = new string[]
-			{
-				""
-			};
+			// Token: 0x0400001F RID: 31
+			private string[] m_possibleVals = new string[] { "" };
 
-			// Token: 0x04000138 RID: 312
+			// Token: 0x04000020 RID: 32
 			private bool m_fIsPossibleValsCaseSensitive = true;
 		}
 
-		// Token: 0x0200005B RID: 91
+		// Token: 0x02000006 RID: 6
 		internal class CBooleanArgument : CommandLineParser.CArgument
 		{
-			// Token: 0x060002A7 RID: 679 RVA: 0x0000BFE7 File Offset: 0x0000A1E7
-			public CBooleanArgument(string id, string desc, bool fIsOptional, bool defVal) : base(id, desc, fIsOptional)
+			// Token: 0x0600004C RID: 76 RVA: 0x000038E8 File Offset: 0x00001AE8
+			public CBooleanArgument(string id, string desc, bool fIsOptional, bool defVal)
+				: base(id, desc, fIsOptional)
 			{
 				this.m_val = defVal;
 			}
 
-			// Token: 0x060002A8 RID: 680 RVA: 0x0000BFFF File Offset: 0x0000A1FF
+			// Token: 0x0600004D RID: 77 RVA: 0x00003900 File Offset: 0x00001B00
 			public override bool SetValue(string token)
 			{
 				bool isAssigned = base.isAssigned;
 				this.m_fIsAssigned = true;
-				this.m_val = (token != "-");
+				this.m_val = token != "-";
 				return true;
 			}
 
-			// Token: 0x060002A9 RID: 681 RVA: 0x0000C026 File Offset: 0x0000A226
+			// Token: 0x0600004E RID: 78 RVA: 0x00003927 File Offset: 0x00001B27
 			public override string possibleValues()
 			{
 				return "precede by [+] or [-]";
 			}
 		}
 
-		// Token: 0x0200005C RID: 92
+		// Token: 0x02000007 RID: 7
 		internal class CArgGroups
 		{
-			// Token: 0x060002AA RID: 682 RVA: 0x0000C02D File Offset: 0x0000A22D
+			// Token: 0x0600004F RID: 79 RVA: 0x0000392E File Offset: 0x00001B2E
 			public CArgGroups(uint min, uint max, params string[] args)
 			{
 				this.m_minAppear = min;
@@ -1162,14 +1124,14 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 				this.m_args = args;
 			}
 
-			// Token: 0x060002AB RID: 683 RVA: 0x0000C04A File Offset: 0x0000A24A
+			// Token: 0x06000050 RID: 80 RVA: 0x0000394B File Offset: 0x00001B4B
 			public bool InRange(uint num)
 			{
 				return num >= this.m_minAppear && num <= this.m_maxAppear;
 			}
 
-			// Token: 0x17000067 RID: 103
-			// (get) Token: 0x060002AC RID: 684 RVA: 0x0000C063 File Offset: 0x0000A263
+			// Token: 0x17000007 RID: 7
+			// (get) Token: 0x06000051 RID: 81 RVA: 0x00003964 File Offset: 0x00001B64
 			public string[] Args
 			{
 				get
@@ -1178,20 +1140,21 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 				}
 			}
 
-			// Token: 0x060002AD RID: 685 RVA: 0x0000C06C File Offset: 0x0000A26C
+			// Token: 0x06000052 RID: 82 RVA: 0x0000396C File Offset: 0x00001B6C
 			public string ArgList()
 			{
 				StringBuilder stringBuilder = new StringBuilder();
 				stringBuilder.Append("{");
-				foreach (string value in this.Args)
+				foreach (string text in this.Args)
 				{
 					stringBuilder.Append(",");
-					stringBuilder.Append(value);
+					stringBuilder.Append(text);
 				}
-				return stringBuilder.ToString().Replace("{,", "{") + "}";
+				string text2 = stringBuilder.ToString();
+				return text2.Replace("{,", "{") + "}";
 			}
 
-			// Token: 0x060002AE RID: 686 RVA: 0x0000C0D8 File Offset: 0x0000A2D8
+			// Token: 0x06000053 RID: 83 RVA: 0x000039E0 File Offset: 0x00001BE0
 			public string RangeDescription()
 			{
 				if (this.m_minAppear == 1U && this.m_maxAppear == 1U)
@@ -1240,13 +1203,13 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 				});
 			}
 
-			// Token: 0x04000139 RID: 313
+			// Token: 0x04000021 RID: 33
 			public uint m_minAppear;
 
-			// Token: 0x0400013A RID: 314
+			// Token: 0x04000022 RID: 34
 			public uint m_maxAppear;
 
-			// Token: 0x0400013B RID: 315
+			// Token: 0x04000023 RID: 35
 			private string[] m_args;
 		}
 	}

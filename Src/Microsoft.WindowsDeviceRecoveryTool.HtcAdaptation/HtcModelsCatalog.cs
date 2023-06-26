@@ -5,11 +5,11 @@ using Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Properties;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation
 {
-	// Token: 0x02000004 RID: 4
+	// Token: 0x02000003 RID: 3
 	[Export]
 	internal sealed class HtcModelsCatalog
 	{
-		// Token: 0x06000009 RID: 9 RVA: 0x0000219C File Offset: 0x0000039C
+		// Token: 0x06000008 RID: 8 RVA: 0x0000210A File Offset: 0x0000030A
 		[ImportingConstructor]
 		public HtcModelsCatalog()
 		{
@@ -17,11 +17,11 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation
 		}
 
 		// Token: 0x17000004 RID: 4
-		// (get) Token: 0x0600000A RID: 10 RVA: 0x000021B0 File Offset: 0x000003B0
-		// (set) Token: 0x0600000B RID: 11 RVA: 0x000021C7 File Offset: 0x000003C7
+		// (get) Token: 0x06000009 RID: 9 RVA: 0x0000211B File Offset: 0x0000031B
+		// (set) Token: 0x0600000A RID: 10 RVA: 0x00002123 File Offset: 0x00000323
 		internal ModelInfo[] Models { get; private set; }
 
-		// Token: 0x0600000C RID: 12 RVA: 0x000021D0 File Offset: 0x000003D0
+		// Token: 0x0600000B RID: 11 RVA: 0x0000212C File Offset: 0x0000032C
 		private void Initialize()
 		{
 			this.Models = new ModelInfo[]

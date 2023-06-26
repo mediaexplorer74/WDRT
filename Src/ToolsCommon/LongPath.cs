@@ -4,19 +4,19 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 {
-	// Token: 0x02000049 RID: 73
+	// Token: 0x02000058 RID: 88
 	public static class LongPath
 	{
-		// Token: 0x060001EC RID: 492 RVA: 0x00009B3C File Offset: 0x00007D3C
+		// Token: 0x06000205 RID: 517 RVA: 0x0000A388 File Offset: 0x00008588
 		public static string GetDirectoryName(string path)
 		{
 			if (path == null)
 			{
-				throw new ArgumentNullException("path", "Path cannot be null.");
+				throw new ArgumentNullException("path");
 			}
 			if (path.IndexOfAny(Path.GetInvalidPathChars()) != -1)
 			{
-				throw new ArgumentException("Path cannot contain invalid characters.", "path");
+				throw new ArgumentException("path");
 			}
 			int num = path.LastIndexOfAny(new char[]
 			{
@@ -30,28 +30,28 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return path.Substring(0, num);
 		}
 
-		// Token: 0x060001ED RID: 493 RVA: 0x00009BA8 File Offset: 0x00007DA8
+		// Token: 0x06000206 RID: 518 RVA: 0x0000A3EC File Offset: 0x000085EC
 		public static string GetFullPath(string path)
 		{
 			string text = LongPathCommon.NormalizeLongPath(path);
-			if (text.StartsWith("\\\\?\\UNC\\", StringComparison.OrdinalIgnoreCase))
+			if (text.StartsWith("\\\\?\\UNC\\"))
 			{
 				return "\\\\" + text.Substring("\\\\?\\UNC\\".Length);
 			}
-			if (text.StartsWith("\\\\?\\", StringComparison.OrdinalIgnoreCase))
+			if (text.StartsWith("\\\\?\\"))
 			{
 				return text.Substring("\\\\?\\".Length);
 			}
 			return text;
 		}
 
-		// Token: 0x060001EE RID: 494 RVA: 0x00009C05 File Offset: 0x00007E05
+		// Token: 0x06000207 RID: 519 RVA: 0x0000A447 File Offset: 0x00008647
 		public static string GetFullPathUNC(string path)
 		{
 			return LongPathCommon.NormalizeLongPath(path);
 		}
 
-		// Token: 0x060001EF RID: 495 RVA: 0x00009C10 File Offset: 0x00007E10
+		// Token: 0x06000208 RID: 520 RVA: 0x0000A450 File Offset: 0x00008650
 		public static string GetPathRoot(string path)
 		{
 			if (path == null)
@@ -60,13 +60,13 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 			if (path == string.Empty || path.IndexOfAny(Path.GetInvalidPathChars()) != -1)
 			{
-				throw new ArgumentException("Path cannot be empty or contain invalid characters.", "path");
+				throw new ArgumentException("path");
 			}
 			if (!Path.IsPathRooted(path))
 			{
 				return string.Empty;
 			}
-			if (path.StartsWith("\\\\", StringComparison.OrdinalIgnoreCase))
+			if (path.StartsWith("\\\\"))
 			{
 				int num = path.IndexOf(Path.DirectorySeparatorChar, "\\\\".Length);
 				if (num == -1)
@@ -82,7 +82,8 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 			else
 			{
-				if (path.IndexOf(Path.VolumeSeparatorChar) != 1)
+				int num3 = path.IndexOf(Path.VolumeSeparatorChar);
+				if (num3 != 1)
 				{
 					return string.Empty;
 				}
@@ -94,38 +95,26 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x060001F0 RID: 496 RVA: 0x00009CDF File Offset: 0x00007EDF
+		// Token: 0x06000209 RID: 521 RVA: 0x0000A51C File Offset: 0x0000871C
 		public static string Combine(string path, string file)
 		{
-			return string.Format("{0}\\{1}", path.TrimEnd(new char[]
-			{
-				'\\'
-			}), file.Trim(new char[]
-			{
-				'\\'
-			}));
+			return string.Format("{0}\\{1}", path.TrimEnd(new char[] { '\\' }), file.Trim(new char[] { '\\' }));
 		}
 
-		// Token: 0x060001F1 RID: 497 RVA: 0x00009D0D File Offset: 0x00007F0D
+		// Token: 0x0600020A RID: 522 RVA: 0x0000A55C File Offset: 0x0000875C
 		public static string GetFileName(string path)
 		{
-			return Regex.Match(path, "\\\\[^\\\\]+$").Value.TrimStart(new char[]
-			{
-				'\\'
-			});
+			return Regex.Match(path, "\\\\[^\\\\]+$").Value.TrimStart(new char[] { '\\' });
 		}
 
-		// Token: 0x060001F2 RID: 498 RVA: 0x00009D30 File Offset: 0x00007F30
+		// Token: 0x0600020B RID: 523 RVA: 0x0000A590 File Offset: 0x00008790
 		public static string GetExtension(string path)
 		{
 			if (path == null)
 			{
 				return null;
 			}
-			string text = Regex.Match(path.ToLowerInvariant(), "\\.[^\\.]+$").Value.TrimStart(new char[]
-			{
-				'.'
-			});
+			string text = Regex.Match(path.ToLowerInvariant(), "\\.[^\\.]+$").Value.TrimStart(new char[] { '.' });
 			if (string.IsNullOrEmpty(text))
 			{
 				return string.Empty;
@@ -133,13 +122,13 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return "." + text;
 		}
 
-		// Token: 0x040000FB RID: 251
+		// Token: 0x0400015B RID: 347
 		private const string UNC_PREFIX = "\\\\";
 
-		// Token: 0x040000FC RID: 252
+		// Token: 0x0400015C RID: 348
 		private const string LONGPATH_PREFIX = "\\\\?\\";
 
-		// Token: 0x040000FD RID: 253
+		// Token: 0x0400015D RID: 349
 		private const string LONGPATH_UNC_PREFIX = "\\\\?\\UNC\\";
 	}
 }

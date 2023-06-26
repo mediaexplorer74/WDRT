@@ -10,15 +10,12 @@ using Microsoft.WindowsDeviceRecoveryTool.Framework;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 {
-	// Token: 0x020000A3 RID: 163
+	// Token: 0x0200004E RID: 78
 	[Export]
-	[Region(new string[]
-	{
-		"MainArea"
-	})]
+	[Region(new string[] { "MainArea" })]
 	public partial class ManualHtcRestartView : Grid
 	{
-		// Token: 0x0600048A RID: 1162 RVA: 0x00015F92 File Offset: 0x00014192
+		// Token: 0x0600030C RID: 780 RVA: 0x000111D8 File Offset: 0x0000F3D8
 		public ManualHtcRestartView()
 		{
 			this.InitializeComponent();

@@ -3,56 +3,59 @@ using Microsoft.Tools.Connectivity;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.AnalogAdaptation.Services
 {
-	// Token: 0x0200000C RID: 12
+	// Token: 0x02000009 RID: 9
 	public class IpDeviceDeviceUpdateUtilCommand : IpDeviceCommand
 	{
-		// Token: 0x0600006A RID: 106 RVA: 0x000056D1 File Offset: 0x000038D1
-		public IpDeviceDeviceUpdateUtilCommand(string args, string secondaryArgs = null) : base("C:\\Windows\\System32\\DeviceUpdateUtil.exe", "DeviceUpdateUtil.exe", args)
+		// Token: 0x06000052 RID: 82 RVA: 0x000042C1 File Offset: 0x000024C1
+		public IpDeviceDeviceUpdateUtilCommand(string args, string secondaryArgs = null)
+			: base("C:\\Windows\\System32\\DeviceUpdateUtil.exe", "DeviceUpdateUtil.exe", args)
 		{
 			this.secondaryArgs = secondaryArgs;
 		}
 
-		// Token: 0x0600006B RID: 107 RVA: 0x000056F0 File Offset: 0x000038F0
+		// Token: 0x06000053 RID: 83 RVA: 0x000042E0 File Offset: 0x000024E0
 		private bool HasSecondaryArgs()
 		{
 			return this.secondaryArgs != null;
 		}
 
-		// Token: 0x0600006C RID: 108 RVA: 0x00005710 File Offset: 0x00003910
+		// Token: 0x06000054 RID: 84 RVA: 0x000042FC File Offset: 0x000024FC
 		private string SecondaryArgs(string additionalArgs = null)
 		{
-			string result;
-			if (string.IsNullOrEmpty(additionalArgs))
+			bool flag = string.IsNullOrEmpty(additionalArgs);
+			string text;
+			if (flag)
 			{
-				result = this.secondaryArgs;
+				text = this.secondaryArgs;
 			}
 			else
 			{
-				result = string.Format("{0} {1}", this.secondaryArgs, additionalArgs);
+				text = string.Format("{0} {1}", this.secondaryArgs, additionalArgs);
 			}
-			return result;
+			return text;
 		}
 
-		// Token: 0x0600006D RID: 109 RVA: 0x0000574C File Offset: 0x0000394C
+		// Token: 0x06000055 RID: 85 RVA: 0x00004334 File Offset: 0x00002534
 		public override string Execute(RemoteDevice device, string additionalArgs)
 		{
-			string result;
+			string text;
 			try
 			{
-				result = this.Execute(device, additionalArgs, false);
+				text = this.Execute(device, additionalArgs, false);
 			}
 			catch (DeviceException ex)
 			{
-				if (!(ex.InnerException is InvalidOperationException))
+				bool flag = ex.InnerException is InvalidOperationException;
+				if (!flag)
 				{
 					throw;
 				}
-				result = this.Execute(device, additionalArgs, true);
+				text = this.Execute(device, additionalArgs, true);
 			}
-			return result;
+			return text;
 		}
 
-		// Token: 0x0600006E RID: 110 RVA: 0x000057A0 File Offset: 0x000039A0
+		// Token: 0x06000056 RID: 86 RVA: 0x00004384 File Offset: 0x00002584
 		private string Execute(RemoteDevice device, string additionalArgs, bool useSecondaryArgs)
 		{
 			string fullCommandString = base.GetFullCommandString(additionalArgs);
@@ -68,11 +71,12 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AnalogAdaptation.Services
 					text = device.RunCommand(base.AlternateCommand, useSecondaryArgs ? this.SecondaryArgs(additionalArgs) : base.Args(additionalArgs));
 				}
 			}
-			catch (Exception innerException)
+			catch (Exception ex)
 			{
-				throw new DeviceException(string.Format("Unexpected failure for command \"{0}\"", fullCommandString), innerException);
+				throw new DeviceException(string.Format("Unexpected failure for command \"{0}\"", fullCommandString), ex);
 			}
-			if (!text.Contains(";"))
+			bool flag = !text.Contains(";");
+			if (flag)
 			{
 				throw new DeviceException(string.Format("Unexpected device response for command \"{0}\": {1}", fullCommandString, text));
 			}
@@ -81,43 +85,46 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AnalogAdaptation.Services
 			{
 				num = int.Parse(text.Substring(text.LastIndexOf(';') + 1));
 			}
-			catch (Exception innerException)
+			catch (Exception ex2)
 			{
-				throw new DeviceException(string.Format("Unexpected status for command \"{0}\"\n{1}", fullCommandString), innerException);
+				throw new DeviceException(string.Format("Unexpected status for command \"{0}\"\n{1}", fullCommandString), ex2);
 			}
-			if (num == 4317)
+			bool flag2 = num == 4317;
+			if (flag2)
 			{
-				Exception ex = new InvalidOperationException(string.Format("Command \"{0}\" failed with status {1}", fullCommandString, num));
-				throw new DeviceException(ex.Message, ex);
+				Exception ex3 = new InvalidOperationException(string.Format("Command \"{0}\" failed with status {1}", fullCommandString, num));
+				throw new DeviceException(ex3.Message, ex3);
 			}
-			if (num == 87)
+			bool flag3 = num == 87;
+			if (flag3)
 			{
-				Exception ex = new ArgumentException(string.Format("Command \"{0}\" failed with status {1}", fullCommandString, num));
-				throw new DeviceException(ex.Message, ex);
+				Exception ex4 = new ArgumentException(string.Format("Command \"{0}\" failed with status {1}", fullCommandString, num));
+				throw new DeviceException(ex4.Message, ex4);
 			}
-			if (num != 0)
+			bool flag4 = num != 0;
+			if (flag4)
 			{
 				throw new DeviceException(string.Format("Command \"{0}\" failed with status {1}", fullCommandString, num));
 			}
 			return text.Substring(0, text.LastIndexOf(';'));
 		}
 
-		// Token: 0x0400003E RID: 62
+		// Token: 0x0400002A RID: 42
 		private const string DeviceUpdateUtilPath = "C:\\Windows\\System32\\DeviceUpdateUtil.exe";
 
-		// Token: 0x0400003F RID: 63
+		// Token: 0x0400002B RID: 43
 		private const string DeviceUpdateUtilAlternatePath = "DeviceUpdateUtil.exe";
 
-		// Token: 0x04000040 RID: 64
+		// Token: 0x0400002C RID: 44
 		private const int DeviceUpdateStatusSuccess = 0;
 
-		// Token: 0x04000041 RID: 65
+		// Token: 0x0400002D RID: 45
 		private const int DeviceUpdateStatusInvalidParameter = 87;
 
-		// Token: 0x04000042 RID: 66
+		// Token: 0x0400002E RID: 46
 		private const int DeviceUpdateStatusInvalidOperation = 4317;
 
-		// Token: 0x04000043 RID: 67
+		// Token: 0x0400002F RID: 47
 		private readonly string secondaryArgs;
 	}
 }

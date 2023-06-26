@@ -4,25 +4,25 @@ using Microsoft.WindowsDeviceRecoveryTool.StateMachine.BaseTypes;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.BaseStates
 {
-	// Token: 0x020000C0 RID: 192
+	// Token: 0x02000079 RID: 121
 	public abstract class UiBaseState : BaseState
 	{
-		// Token: 0x060005C8 RID: 1480 RVA: 0x0001E1EA File Offset: 0x0001C3EA
+		// Token: 0x0600040F RID: 1039 RVA: 0x00015B45 File Offset: 0x00013D45
 		public void ShowRegions(params string[] regions)
 		{
 			this.VisibleRegions.AddRange(regions);
 		}
 
-		// Token: 0x060005C9 RID: 1481 RVA: 0x0001E1FA File Offset: 0x0001C3FA
+		// Token: 0x06000410 RID: 1040 RVA: 0x00015B55 File Offset: 0x00013D55
 		public void HideRegions(params string[] regions)
 		{
 			this.InvisibleRegions.AddRange(regions);
 		}
 
-		// Token: 0x04000274 RID: 628
+		// Token: 0x040001CD RID: 461
 		protected readonly List<string> VisibleRegions = new List<string>();
 
-		// Token: 0x04000275 RID: 629
+		// Token: 0x040001CE RID: 462
 		protected readonly List<string> InvisibleRegions = new List<string>();
 	}
 }

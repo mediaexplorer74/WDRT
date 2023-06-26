@@ -8,7 +8,8 @@ namespace FFUComponents
 	internal class DeviceEventProvider : EventProvider
 	{
 		// Token: 0x060000A1 RID: 161 RVA: 0x00004212 File Offset: 0x00002412
-		internal DeviceEventProvider(Guid id) : base(id)
+		internal DeviceEventProvider(Guid id)
+			: base(id)
 		{
 		}
 
@@ -16,23 +17,23 @@ namespace FFUComponents
 		internal unsafe bool TemplateDeviceEvent(ref EventDescriptor eventDescriptor, Guid DeviceUniqueId, string DeviceFriendlyName, string AdditionalInfoString)
 		{
 			int num = 3;
-			bool result = true;
+			bool flag = true;
 			if (base.IsEnabled(eventDescriptor.Level, eventDescriptor.Keywords))
 			{
-				byte* ptr = stackalloc byte[(int)(UIntPtr)(sizeof(DeviceEventProvider.EventData) * num)];
+				byte* ptr = stackalloc byte[(UIntPtr)(sizeof(DeviceEventProvider.EventData) * num)];
 				DeviceEventProvider.EventData* ptr2 = (DeviceEventProvider.EventData*)ptr;
-				ptr2->DataPointer = (ulong)&DeviceUniqueId;
+				ptr2->DataPointer = &DeviceUniqueId;
 				ptr2->Size = (uint)sizeof(Guid);
 				ptr2[1].Size = (uint)((DeviceFriendlyName.Length + 1) * 2);
 				ptr2[2].Size = (uint)((AdditionalInfoString.Length + 1) * 2);
 				fixed (char* ptr3 = DeviceFriendlyName, ptr4 = AdditionalInfoString)
 				{
-					ptr2[1].DataPointer = (ulong)ptr3;
-					ptr2[2].DataPointer = (ulong)ptr4;
-					result = base.WriteEvent(ref eventDescriptor, num, (IntPtr)((void*)ptr));
+					ptr2[1].DataPointer = ptr3;
+					ptr2[2].DataPointer = ptr4;
+					flag = base.WriteEvent(ref eventDescriptor, num, (IntPtr)((void*)ptr));
 				}
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x0200001E RID: 30

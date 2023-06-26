@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.IO;
 using ComponentAce.Compression.Archiver;
-using ComponentAce.Compression.Exception1;
+using ComponentAce.Compression.Exception;
 using ComponentAce.Compression.Interfaces;
 
 namespace ComponentAce.Compression.Tar
@@ -11,12 +11,14 @@ namespace ComponentAce.Compression.Tar
 	internal class TarItem : IItem, ICloneable
 	{
 		// Token: 0x06000436 RID: 1078 RVA: 0x0001F739 File Offset: 0x0001E739
-		public TarItem(DoOnStreamOperationFailureDelegate writeToStreamFailureDelegate, DoOnStreamOperationFailureDelegate readFromStreamFailureDelegate) : this(CultureInfo.CurrentCulture.TextInfo.OEMCodePage, writeToStreamFailureDelegate, readFromStreamFailureDelegate)
+		public TarItem(DoOnStreamOperationFailureDelegate writeToStreamFailureDelegate, DoOnStreamOperationFailureDelegate readFromStreamFailureDelegate)
+			: this(CultureInfo.CurrentCulture.TextInfo.OEMCodePage, writeToStreamFailureDelegate, readFromStreamFailureDelegate)
 		{
 		}
 
 		// Token: 0x06000437 RID: 1079 RVA: 0x0001F752 File Offset: 0x0001E752
-		public TarItem(string name, int codepage, DoOnStreamOperationFailureDelegate writeToStreamFailureDelegate, DoOnStreamOperationFailureDelegate readFromStreamFailureDelegate) : this(codepage, writeToStreamFailureDelegate, readFromStreamFailureDelegate)
+		public TarItem(string name, int codepage, DoOnStreamOperationFailureDelegate writeToStreamFailureDelegate, DoOnStreamOperationFailureDelegate readFromStreamFailureDelegate)
+			: this(codepage, writeToStreamFailureDelegate, readFromStreamFailureDelegate)
 		{
 			this._itemName = name;
 		}
@@ -430,7 +432,7 @@ namespace ComponentAce.Compression.Tar
 		public void GetArchiveItem(ref BaseArchiveItem baseArchiveItem)
 		{
 			TarArchiveItem tarArchiveItem = baseArchiveItem as TarArchiveItem;
-			string text = (this._longPathExtraHeader == null) ? this.Name : this._longPathExtraHeader.FileName;
+			string text = ((this._longPathExtraHeader == null) ? this.Name : this._longPathExtraHeader.FileName);
 			if (text[text.Length - 1] == '/')
 			{
 				text = text.Substring(0, text.Length - 1);
@@ -474,7 +476,7 @@ namespace ComponentAce.Compression.Tar
 		// Token: 0x06000467 RID: 1127 RVA: 0x0001FDCC File Offset: 0x0001EDCC
 		public bool IsDirectory()
 		{
-			string text = (this._longPathExtraHeader == null) ? this.Name : this._longPathExtraHeader.FileName;
+			string text = ((this._longPathExtraHeader == null) ? this.Name : this._longPathExtraHeader.FileName);
 			return this.TypeFlag == '5' || this.TypeFlag == 'D' || (this.UncompressedSize == 0L && text.EndsWith("/"));
 		}
 

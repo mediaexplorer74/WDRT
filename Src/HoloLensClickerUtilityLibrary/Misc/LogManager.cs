@@ -38,8 +38,8 @@ namespace ClickerUtilityLibrary.Misc
 			{
 				Directory.CreateDirectory(text);
 			}
-			string str = "Sys_" + DateTime.Now.ToString("yyyy_MM_dd", CultureInfo.InvariantCulture) + ".log";
-			this.mSysLogWriter = new StreamWriter(text + str, true);
+			string text2 = "Sys_" + DateTime.Now.ToString("yyyy_MM_dd", CultureInfo.InvariantCulture) + ".log";
+			this.mSysLogWriter = new StreamWriter(text + text2, true);
 		}
 
 		// Token: 0x06000058 RID: 88 RVA: 0x00004AD8 File Offset: 0x00002CD8

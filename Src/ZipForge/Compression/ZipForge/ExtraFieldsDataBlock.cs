@@ -165,13 +165,13 @@ namespace ComponentAce.Compression.ZipForge
 						{
 							goto IL_AA;
 						}
-						NTFSExtraFieldData extraField = NTFSExtraFieldData.LoadFromStream(source, item);
-						extraFieldsDataBlock.AddExtraField(extraField, item);
+						NTFSExtraFieldData ntfsextraFieldData = NTFSExtraFieldData.LoadFromStream(source, item);
+						extraFieldsDataBlock.AddExtraField(ntfsextraFieldData, item);
 					}
 					else
 					{
-						Zip64ExtraFieldData extraField2 = Zip64ExtraFieldData.LoadFromStream(source, item);
-						extraFieldsDataBlock.AddExtraField(extraField2, item);
+						Zip64ExtraFieldData zip64ExtraFieldData = Zip64ExtraFieldData.LoadFromStream(source, item);
+						extraFieldsDataBlock.AddExtraField(zip64ExtraFieldData, item);
 					}
 				}
 				else if (num3 != 21838)
@@ -180,13 +180,13 @@ namespace ComponentAce.Compression.ZipForge
 					{
 						goto IL_AA;
 					}
-					AESExtraFieldData extraField3 = AESExtraFieldData.LoadFromStream(source, item);
-					extraFieldsDataBlock.AddExtraField(extraField3, item);
+					AESExtraFieldData aesextraFieldData = AESExtraFieldData.LoadFromStream(source, item);
+					extraFieldsDataBlock.AddExtraField(aesextraFieldData, item);
 				}
 				else
 				{
-					UnicodeExtraFieldData extraField4 = UnicodeExtraFieldData.LoadFromStream(source, item);
-					extraFieldsDataBlock.AddExtraField(extraField4, item);
+					UnicodeExtraFieldData unicodeExtraFieldData = UnicodeExtraFieldData.LoadFromStream(source, item);
+					extraFieldsDataBlock.AddExtraField(unicodeExtraFieldData, item);
 				}
 				IL_BA:
 				num -= source.Position - position;
@@ -232,29 +232,27 @@ namespace ComponentAce.Compression.ZipForge
 							}
 							else
 							{
-								AESExtraFieldData extraField = AESExtraFieldData.LoadFromStream(source, item);
-								this.AddExtraField(extraField, item);
+								AESExtraFieldData aesextraFieldData = AESExtraFieldData.LoadFromStream(source, item);
+								this.AddExtraField(aesextraFieldData, item);
 							}
 						}
 						else
 						{
-							UnicodeExtraFieldData extraField2 = UnicodeExtraFieldData.LoadFromStream(source, item);
-							this.AddExtraField(extraField2, item);
+							UnicodeExtraFieldData unicodeExtraFieldData = UnicodeExtraFieldData.LoadFromStream(source, item);
+							this.AddExtraField(unicodeExtraFieldData, item);
 						}
 					}
 					else
 					{
-						Zip64ExtraFieldData extraField3 = Zip64ExtraFieldData.LoadFromStream(source, item);
-						this.AddExtraField(extraField3, item);
+						Zip64ExtraFieldData zip64ExtraFieldData = Zip64ExtraFieldData.LoadFromStream(source, item);
+						this.AddExtraField(zip64ExtraFieldData, item);
 					}
 				}
 				num -= source.Position - position;
 			}
 			if (num == 0L)
 			{
-				IEnumerator enumerator = this._extraFieldsArray.GetEnumerator();
-
-                using (enumerator as IDisposable)
+				using (IEnumerator enumerator = this._extraFieldsArray.GetEnumerator())
 				{
 					while (enumerator.MoveNext())
 					{

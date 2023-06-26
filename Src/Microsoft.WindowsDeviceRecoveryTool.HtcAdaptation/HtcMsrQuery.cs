@@ -4,11 +4,11 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.DataPackage;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation
 {
-	// Token: 0x02000005 RID: 5
+	// Token: 0x02000004 RID: 4
 	[Export]
 	internal static class HtcMsrQuery
 	{
-		// Token: 0x0600000E RID: 14 RVA: 0x000022D4 File Offset: 0x000004D4
+		// Token: 0x0600000D RID: 13 RVA: 0x00002220 File Offset: 0x00000420
 		public static QueryParameters CreateQueryParameters(string mid, string cid)
 		{
 			return new QueryParameters

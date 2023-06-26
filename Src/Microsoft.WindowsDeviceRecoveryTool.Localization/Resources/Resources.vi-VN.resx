@@ -1,0 +1,892 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccentColor" xml:space="preserve">
+    <value>Màu chủ đề</value>
+  </data>
+  <data name="AccentColorBlack" xml:space="preserve">
+    <value>Đen</value>
+  </data>
+  <data name="AccentColorBlue" xml:space="preserve">
+    <value>Xanh dương</value>
+  </data>
+  <data name="AccentColorCobalt" xml:space="preserve">
+    <value>Bạch kim</value>
+  </data>
+  <data name="AccentColorCrimson" xml:space="preserve">
+    <value>Đỏ thẫm</value>
+  </data>
+  <data name="AccentColorEmerald" xml:space="preserve">
+    <value>Ngọc bích</value>
+  </data>
+  <data name="AccentColorIndigo" xml:space="preserve">
+    <value>Chàm</value>
+  </data>
+  <data name="AccentColorMauve" xml:space="preserve">
+    <value>Hoa cà</value>
+  </data>
+  <data name="AccentColorSienna" xml:space="preserve">
+    <value>Hung đỏ</value>
+  </data>
+  <data name="AddressForm" xml:space="preserve">
+    <value>Địa chỉ</value>
+  </data>
+  <data name="AllFilesSize" xml:space="preserve">
+    <value>Kích cỡ tất cả tập tin: {0}</value>
+  </data>
+  <data name="AnotherInstanceAlreadyRunning" xml:space="preserve">
+    <value>Phiên bản khác của {0} đang chạy.</value>
+  </data>
+  <data name="ApplicationData" xml:space="preserve">
+    <value>Dữ liệu ứng dụng</value>
+  </data>
+  <data name="ApplicationUpdate" xml:space="preserve">
+    <value>Cập nhật ứng dụng</value>
+  </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>Bạn có chắc không?</value>
+  </data>
+  <data name="AutomaticPackageFileSelection" xml:space="preserve">
+    <value>Tìm kiếm gói đúng cho điện thoại được kết nối.</value>
+  </data>
+  <data name="AutomaticPackageSelection" xml:space="preserve">
+    <value>Chọn gói tự động</value>
+  </data>
+  <data name="AvailablePackageIsOlder" xml:space="preserve">
+    <value>Phiên bản phần mềm sẵn có cũ hơn so với phiên bản trên điện thoại của bạn.</value>
+  </data>
+  <data name="AwaitRecoveryAfterEmergencyFlashingInstruction" xml:space="preserve">
+    <value>Đang chờ điện thoại sau khi thực hiện thành công việc phục hồi.
+Nếu pin đang yếu, thì thời gian chờ có thể lên đến 30 phút.</value>
+  </data>
+  <data name="BatteryCheckHeader" xml:space="preserve">
+    <value>Kiểm tra pin</value>
+  </data>
+  <data name="BatteryCheckingCancelled" xml:space="preserve">
+    <value>Đã hủy kiểm tra pin.</value>
+  </data>
+  <data name="BatteryWarning" xml:space="preserve">
+    <value>Hãy đảm bảo rằng mức pin của bạn ít nhất là 25%. Bằng không nó có thể làm hỏng điện thoại của bạn.</value>
+  </data>
+  <data name="ButtonBrowse" xml:space="preserve">
+    <value>Duyệt</value>
+  </data>
+  <data name="ButtonCancel" xml:space="preserve">
+    <value>Hủy bỏ</value>
+  </data>
+  <data name="ButtonChangePackagePath" xml:space="preserve">
+    <value>Thay đổi đường dẫn gói</value>
+  </data>
+  <data name="ButtonClean" xml:space="preserve">
+    <value>Xóa toàn bộ dữ liệu ứng dụng</value>
+  </data>
+  <data name="ButtonCleanOneCategory" xml:space="preserve">
+    <value>Làm sạch</value>
+  </data>
+  <data name="ButtonCollectLogs" xml:space="preserve">
+    <value>Xuất</value>
+  </data>
+  <data name="ButtonContinue" xml:space="preserve">
+    <value>Tiếp tục</value>
+  </data>
+  <data name="ButtonDelete" xml:space="preserve">
+    <value>Xóa</value>
+  </data>
+  <data name="ButtonExit" xml:space="preserve">
+    <value>Thoát</value>
+  </data>
+  <data name="ButtonFinish" xml:space="preserve">
+    <value>Kết thúc</value>
+  </data>
+  <data name="ButtonInstall" xml:space="preserve">
+    <value>Cài đặt</value>
+  </data>
+  <data name="ButtonInstallSoftware" xml:space="preserve">
+    <value>Cài đặt phần mềm</value>
+  </data>
+  <data name="ButtonMyPhoneIsNotOnTheList" xml:space="preserve">
+    <value>Điện thoại của tôi không nằm trong danh sách</value>
+  </data>
+  <data name="ButtonMyPhoneWasNotDetected" xml:space="preserve">
+    <value>Đã không phát hiện ra điện thoại của tôi</value>
+  </data>
+  <data name="ButtonNewFolder" xml:space="preserve">
+    <value>Thư mục mới</value>
+  </data>
+  <data name="ButtonNext" xml:space="preserve">
+    <value>Kế tiếp</value>
+  </data>
+  <data name="ButtonNo" xml:space="preserve">
+    <value>Không</value>
+  </data>
+  <data name="ButtonOff" xml:space="preserve">
+    <value>Tắt</value>
+  </data>
+  <data name="ButtonOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ButtonOn" xml:space="preserve">
+    <value>Bật</value>
+  </data>
+  <data name="ButtonReset" xml:space="preserve">
+    <value>Đặt lại về mặc định</value>
+  </data>
+  <data name="ButtonTryAgain" xml:space="preserve">
+    <value>Hãy thử lại</value>
+  </data>
+  <data name="ButtonYes" xml:space="preserve">
+    <value>Có</value>
+  </data>
+  <data name="CapsLockIsOn" xml:space="preserve">
+    <value>Caps Lock đang bật</value>
+  </data>
+  <data name="CheckLatestPackageHeader" xml:space="preserve">
+    <value>Thông tin điện thoại</value>
+  </data>
+  <data name="CheckingAlreadyDownloadedFiles" xml:space="preserve">
+    <value>Kiểm tra tính tương thích của các tập tin đã tải về</value>
+  </data>
+  <data name="CheckingAppUpdate" xml:space="preserve">
+    <value>Kiểm tra các bản cập nhật ứng dụng sẵn có</value>
+  </data>
+  <data name="CheckingFirmwareAvailability" xml:space="preserve">
+    <value>Kiểm tra tính sẵn sàng của phần mềm</value>
+  </data>
+  <data name="CheckingPackageIntegrity" xml:space="preserve">
+    <value>Kiểm tra tính toàn vẹn của gói</value>
+  </data>
+  <data name="CleanUserDataQuestion" xml:space="preserve">
+    <value>Bạn có chắc muốn xóa tất cả dữ liệu ứng dụng (báo cáo, gói phần mềm điện thoại, tập tin nhật ký) không?</value>
+  </data>
+  <data name="CollectingLogFilesInfo" xml:space="preserve">
+    <value>Đang thu thập tập tin nhật ký. Vui lòng chờ.</value>
+  </data>
+  <data name="ComputerBatteryWarning" xml:space="preserve">
+    <value>Pin trên máy tính của bạn đang ở mức thấp. Vui lòng kết nối máy tính của bạn với bộ sạc và thử lại.</value>
+  </data>
+  <data name="ConnectPhone" xml:space="preserve">
+    <value>Kết nối điện thoại của bạn</value>
+  </data>
+  <data name="ConnectPhoneWithUsbCable" xml:space="preserve">
+    <value>Kết nối cáp USB với điện thoại.</value>
+  </data>
+  <data name="ConnectedDeviceCannotBeRecovered" xml:space="preserve">
+    <value>Không thể khôi phục điện thoại đã kết nối.</value>
+  </data>
+  <data name="CouldNotDetectPhone" xml:space="preserve">
+    <value>Không thể phát hiện điện thoại của bạn</value>
+  </data>
+  <data name="CreatingNewFolderMessage" xml:space="preserve">
+    <value>Tạo thư mục mới</value>
+  </data>
+  <data name="CurrentFirmwareVersion" xml:space="preserve">
+    <value>Phiên bản phần mềm được cài đặt:</value>
+  </data>
+  <data name="CustomPackagesPath" xml:space="preserve">
+    <value>Dùng đường dẫn Gói tùy chỉnh</value>
+  </data>
+  <data name="DeleteLogsQuestion" xml:space="preserve">
+    <value>Bạn có chắc muốn xóa tập tin nhật ký không?</value>
+  </data>
+  <data name="DeletePackagesQuestion" xml:space="preserve">
+    <value>Có chắc bạn muốn xóa các tập tin khôi phục phần mềm?</value>
+  </data>
+  <data name="DeleteReportsQuestion" xml:space="preserve">
+    <value>Có chắc bạn muốn xóa các tập tin báo cáo?</value>
+  </data>
+  <data name="DeletingLogFilesInfo" xml:space="preserve">
+    <value>Đang xóa tập tin nhật ký</value>
+  </data>
+  <data name="DeletingPackagesInfo" xml:space="preserve">
+    <value>Đang xóa tập tin khôi phục phần mềm</value>
+  </data>
+  <data name="DeletingReportsInfo" xml:space="preserve">
+    <value>Đang xóa tập tin báo cáo</value>
+  </data>
+  <data name="DetailsHeader" xml:space="preserve">
+    <value>Chi tiết</value>
+  </data>
+  <data name="Device" xml:space="preserve">
+    <value>Điện thoại</value>
+  </data>
+  <data name="DeviceFlashing" xml:space="preserve">
+    <value>Cài đặt gói phần mềm</value>
+  </data>
+  <data name="DeviceInUefiMode" xml:space="preserve">
+    <value>Điện thoại Lumia</value>
+  </data>
+  <data name="DeviceSelectionHeader" xml:space="preserve">
+    <value>Chọn điện thoại</value>
+  </data>
+  <data name="DirectoryNotSet" xml:space="preserve">
+    <value>Thư mục chưa được chọn hoặc không tồn tại.</value>
+  </data>
+  <data name="DisclaimerBackupInfo" xml:space="preserve">
+    <value>Nội dung cá nhân trên điện thoại sẽ được xóa trong thời gian cài đặt. Chúng tôi khuyên bạn nên tạo một bản sao lưu trên điện thoại của bạn, dưới:</value>
+  </data>
+  <data name="DisclaimerHeader" xml:space="preserve">
+    <value>Miễn trừ trách nhiệm</value>
+  </data>
+  <data name="DisclaimerInfoInstallationDuration" xml:space="preserve">
+    <value>Việc cài đặt phần mềm sẽ mất khoảng 15 phút. Thời gian tải về của gói phần mềm phụ thuộc vào tốc độ mạng.</value>
+  </data>
+  <data name="DisconnectPhone" xml:space="preserve">
+    <value>Ngắt kết nối cáp USB khỏi điện thoại.</value>
+  </data>
+  <data name="DowngradeSoftwareQuestion" xml:space="preserve">
+    <value>Bạn đang cố gắng cài đặt phần mềm cũ hơn phiên bản được cài đặt trên điện thoại của bạn. Bạn có muốn tiếp tục không?</value>
+  </data>
+  <data name="DownloadCancelled" xml:space="preserve">
+    <value>Đã hủy tải về</value>
+  </data>
+  <data name="DownloadProgressExactMinute" xml:space="preserve">
+    <value>Khoảng {0} phút còn lại</value>
+  </data>
+  <data name="DownloadProgressMinute" xml:space="preserve">
+    <value>Còn lại khoảng một phút</value>
+  </data>
+  <data name="DownloadProgressMinuteLess" xml:space="preserve">
+    <value>Còn lại chưa đến một phút</value>
+  </data>
+  <data name="DownloadingCancelMessage" xml:space="preserve">
+    <value>Điều này sẽ hủy bỏ việc tải về. Tập tin đã tải về sẽ không bị xóa. Bạn có thể tiếp tục tải về sau.</value>
+  </data>
+  <data name="DownloadingEmergencyPackage" xml:space="preserve">
+    <value>Đang tải xuống gói khẩn cấp</value>
+  </data>
+  <data name="DownloadingFiles" xml:space="preserve">
+    <value>Tải về tập tin: {0}/{1} ({2})</value>
+  </data>
+  <data name="DownloadingInstallPacket" xml:space="preserve">
+    <value>Tải về phiên bản mới</value>
+  </data>
+  <data name="DownloadingPackage" xml:space="preserve">
+    <value>Tải về gói</value>
+  </data>
+  <data name="EmergencyFlashingMessage" xml:space="preserve">
+    <value>Nhấp nháy khẩn cấp</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Lỗi</value>
+  </data>
+  <data name="ErrorDescription_AutoUpdateException" xml:space="preserve">
+    <value>Dường như có vấn đề kết nối với máy chủ. Kiểm tra kết nối Internet của bạn. Hãy đảm bảo rằng cài đặt proxy, tường lửa và bảo vệ chống virus của bạn là chính xác. Đồng thời, vui lòng kiểm tra cài đặt ngày và giờ của bạn.</value>
+  </data>
+  <data name="ErrorDescription_CannotAccessDirectoryException" xml:space="preserve">
+    <value>Có vẻ như bạn không có quyền cần thiết đối với thư mục. Vui lòng thay đổi đường dẫn thư mục hoặc thay đổi quyền thư mục.</value>
+  </data>
+  <data name="ErrorDescription_DeviceNotFoundException" xml:space="preserve">
+    <value>Không tìm thấy điện thoại.</value>
+  </data>
+  <data name="ErrorDescription_DownloadPackageException" xml:space="preserve">
+    <value>Vui lòng kiểm tra xem cài đặt proxy có đúng không và bấm "{0}". Nếu bạn muốn hủy bỏ quy trình tải về, vui lòng bấm "{1}".</value>
+  </data>
+  <data name="ErrorDescription_EmergencyPackageNotFoundOnServerException" xml:space="preserve">
+    <value>Tính năng nhấp nháy khẩn cấp dành cho điện thoại của bạn hiện không được hỗ trợ</value>
+  </data>
+  <data name="ErrorDescription_FirmwareFileNotFoundException" xml:space="preserve">
+    <value>Gói phần mềm không đầy đủ. Một hoặc nhiều tập tin bị thiếu. Tải xuống lại gói phần mềm hoặc chọn một phần mềm khác.</value>
+  </data>
+  <data name="ErrorDescription_HtcDeviceCommunicationException" xml:space="preserve">
+    <value>Khởi động lại thiết bị về chế độ {0}.</value>
+  </data>
+  <data name="ErrorDescription_HtcPackageFileCheckException" xml:space="preserve">
+    <value>Tải về lại tập tin gói ROM.</value>
+  </data>
+  <data name="ErrorDescription_HtcServiceControlException" xml:space="preserve">
+    <value>Kiểm tra xem dịch vụ {0} có bị dừng không.</value>
+  </data>
+  <data name="ErrorDescription_HtcUsbCommunicationException" xml:space="preserve">
+    <value>Khởi động lại thiết bị về {0}.
+Kiểm tra kết nối USB của thiết bị.</value>
+  </data>
+  <data name="ErrorDescription_HtcUsbPortOpenException" xml:space="preserve">
+    <value>Kiểm tra xem ứng dụng khác có chiếm cổng không.
+Kiểm tra kết nối USB của thiết bị.</value>
+  </data>
+  <data name="ErrorDescription_InvalidOperationException" xml:space="preserve">
+    <value>Vui lòng khởi động lại ứng dụng.</value>
+  </data>
+  <data name="ErrorDescription_NoInternetConnectionException" xml:space="preserve">
+    <value>Không thể hoàn thành hoạt động mới nhất bởi vì kết nối Internet không hoạt động.</value>
+  </data>
+  <data name="ErrorDescription_NotEnoughSpaceException" xml:space="preserve">
+    <value>{0} bị thiếu trên đĩa {1}. Hãy giải phóng một số dung lượng và thử lại.</value>
+  </data>
+  <data name="ErrorDescription_OperationCanceledException" xml:space="preserve">
+    <value>Hoạt động đã bị hủy.</value>
+  </data>
+  <data name="ErrorDescription_PackageNotFoundException" xml:space="preserve">
+    <value>Gói phần mềm không sẵn có cho điện thoại này.</value>
+  </data>
+  <data name="ErrorDescription_PlannedServiceBreakException" xml:space="preserve">
+    <value>Dịch vụ không sẵn có từ {0} đến {1}. Vui lòng thử lại sau.</value>
+  </data>
+  <data name="ErrorDescription_ReadPhoneInformationException" xml:space="preserve">
+    <value>Chúng tôi không thể đọc thông tin từ điện thoại của bạn.</value>
+  </data>
+  <data name="ErrorDescription_RestartApplicationException" xml:space="preserve">
+    <value>Vui lòng ngắt kết nối tất cả điện thoại và khởi động lại ứng dụng. Nếu vấn đề vẫn tồn tại, gỡ bỏ cài đặt {0} và tải về phiên bản mới nhất của ứng dụng.</value>
+  </data>
+  <data name="ErrorDescription_UnknownError" xml:space="preserve">
+    <value>Hoạt động không thể hoàn tất.</value>
+  </data>
+  <data name="ErrorDescription_WebException" xml:space="preserve">
+    <value>Dường như có vấn đề kết nối với máy chủ. Kiểm tra kết nối Internet của bạn. Hãy đảm bảo rằng cài đặt proxy, tường lửa và bảo vệ chống virus của bạn là chính xác.</value>
+  </data>
+  <data name="ErrorDetails_NotEnoughSpaceOnTheDiskException" xml:space="preserve">
+    <value>Dung lượng trống tối thiểu cần có trên ổ đĩa {0} để cập nhật là {1}. Hãy giải phóng một số dung lượng và thử lại.</value>
+  </data>
+  <data name="ErrorHeader" xml:space="preserve">
+    <value>Rất tiếc, đã xảy ra lỗi</value>
+  </data>
+  <data name="Error_AutoUpdateException" xml:space="preserve">
+    <value>Kiểm tra cập nhật ứng dụng không thành công</value>
+  </data>
+  <data name="Error_CannotAccessDirectoryException" xml:space="preserve">
+    <value>Không thể truy cập danh bạ</value>
+  </data>
+  <data name="Error_DeviceNotFoundException" xml:space="preserve">
+    <value>Không thể tìm thấy điện thoại</value>
+  </data>
+  <data name="Error_DownloadPackageException" xml:space="preserve">
+    <value>Xảy ra lỗi khi tải về gói phần mềm</value>
+  </data>
+  <data name="Error_EmergencyPackageNotFoundOnServerException" xml:space="preserve">
+    <value>Không tìm thấy gói khẩn cấp</value>
+  </data>
+  <data name="Error_FileNotFoundException" xml:space="preserve">
+    <value>Tập tin hoặc đường dẫn: Không tìm thấy "{0}"</value>
+  </data>
+  <data name="Error_FirmwareFileNotFoundException" xml:space="preserve">
+    <value>Không tìm thấy tập tin phần mềm</value>
+  </data>
+  <data name="Error_HtcDeviceCommunicationException" xml:space="preserve">
+    <value>Lỗi giao tiếp thiết bị</value>
+  </data>
+  <data name="Error_HtcDeviceHandshakingException" xml:space="preserve">
+    <value>Lỗi bắt tay thiết bị</value>
+  </data>
+  <data name="Error_HtcPackageFileCheckException" xml:space="preserve">
+    <value>Lỗi kiểm tra tập tin gói</value>
+  </data>
+  <data name="Error_HtcServiceControlException" xml:space="preserve">
+    <value>Lỗi kiểm soát dịch vụ</value>
+  </data>
+  <data name="Error_HtcUsbCommunicationException" xml:space="preserve">
+    <value>Lỗi giao tiếp USB</value>
+  </data>
+  <data name="Error_HtcUsbPortOpenException" xml:space="preserve">
+    <value>Lỗi mở cổng USB</value>
+  </data>
+  <data name="Error_InvalidOperationException" xml:space="preserve">
+    <value>Hoạt động không thành công</value>
+  </data>
+  <data name="Error_NoInternetConnectionException" xml:space="preserve">
+    <value>Không có kết nối internet</value>
+  </data>
+  <data name="Error_NotEnoughSpaceException" xml:space="preserve">
+    <value>Không đủ dung lượng trên ổ đĩa</value>
+  </data>
+  <data name="Error_NotEnoughSpaceOnTheDiskException" xml:space="preserve">
+    <value>Không đủ dung lượng trên ổ đĩa</value>
+  </data>
+  <data name="Error_OperationCanceledException" xml:space="preserve">
+    <value>Đã hủy hoạt động</value>
+  </data>
+  <data name="Error_PackageNotFoundException" xml:space="preserve">
+    <value>Không tìm thấy gói biến thể</value>
+  </data>
+  <data name="Error_PlannedServiceBreakException" xml:space="preserve">
+    <value>Không thể kết nối với máy chủ</value>
+  </data>
+  <data name="Error_ReadPhoneInformationException" xml:space="preserve">
+    <value>Đọc thông tin điện thoại không thành công</value>
+  </data>
+  <data name="Error_RestartApplicationException" xml:space="preserve">
+    <value>Khởi động lại ứng dụng</value>
+  </data>
+  <data name="Error_SoftwareInstallationFailed" xml:space="preserve">
+    <value>Cài đặt phần mềm thất bại. Vui lòng thử khởi động lại thiết bị của bạn và thử cài đặt lại phần mềm. Nếu không phát hiện ra điện thoại của bạn, hãy sử dụng nút "{0}" trên màn hình Chào mừng.</value>
+  </data>
+  <data name="Error_SoftwareIsNotCorrectlySignedException" xml:space="preserve">
+    <value>Phần mềm không được ký đúng hoặc chưa được ký cho điện thoại này.</value>
+  </data>
+  <data name="Error_UnauthorizedAccessException" xml:space="preserve">
+    <value>Truy cập bị từ chối</value>
+  </data>
+  <data name="Error_UnknownError" xml:space="preserve">
+    <value>Đã xảy ra lỗi không xác định</value>
+  </data>
+  <data name="Error_WebException" xml:space="preserve">
+    <value>Không thể kết nối với máy chủ</value>
+  </data>
+  <data name="FFUCheckingDirectory" xml:space="preserve">
+    <value>Kiểm tra thư mục</value>
+  </data>
+  <data name="FFUCheckingFile" xml:space="preserve">
+    <value>Kiểm tra tập tin đã chọn</value>
+  </data>
+  <data name="FFUFamily" xml:space="preserve">
+    <value>Dòng:</value>
+  </data>
+  <data name="FFUManufacturer" xml:space="preserve">
+    <value>Nhà sản xuất:</value>
+  </data>
+  <data name="FFUProductName" xml:space="preserve">
+    <value>Tên sản phẩm:</value>
+  </data>
+  <data name="FFUVersion" xml:space="preserve">
+    <value>Phiên bản:</value>
+  </data>
+  <data name="FirmwareIntegrityError" xml:space="preserve">
+    <value>Gói phần mềm {0} bị hỏng. Tải xuống lại gói phần mềm hoặc chọn một phần mềm khác.</value>
+  </data>
+  <data name="FirmwareVersion" xml:space="preserve">
+    <value>Phiên bản vi chương trình: </value>
+  </data>
+  <data name="FirmwareVersionUnknown" xml:space="preserve">
+    <value>Phiên bản vi chương trình: không xác định</value>
+  </data>
+  <data name="FlashCancelMessage" xml:space="preserve">
+    <value>Đang tiến hành cài đặt gói phần mềm. Việc hủy bỏ có thể làm hỏng điện thoại của bạn. Bạn có chắc muốn hủy bỏ hành động này không?</value>
+  </data>
+  <data name="FlashWarningMessage1" xml:space="preserve">
+    <value>Không sử dụng điện thoại của bạn. Không ngắt kết nối khỏi cáp. Không tắt điện thoại. Nếu không, điện thoại của bạn có thể ngừng làm việc.</value>
+  </data>
+  <data name="FlashWarningMessage2" xml:space="preserve">
+    <value>Trong khi cài đặt, điện thoại của bạn sẽ khởi động lại và màn hình hoàn toàn trống.
+Bạn có thể bỏ qua tất cả thông báo của Windows về kết nối cáp USB.</value>
+  </data>
+  <data name="Flashing" xml:space="preserve">
+    <value>Cài đặt phần mềm cho điện thoại của bạn</value>
+  </data>
+  <data name="FlashingMessageChangeToFlashMode" xml:space="preserve">
+    <value>Chuyển điện thoại sang chế độ nhấp nháy</value>
+  </data>
+  <data name="FlashingMessageCheckingAntiTheftStatus" xml:space="preserve">
+    <value>Kiểm tra trạng thái của Bảo vệ chống trộm</value>
+  </data>
+  <data name="FlashingMessageConnectingWithPhone" xml:space="preserve">
+    <value>Đang kết nối với điện thoại</value>
+  </data>
+  <data name="FlashingMessageInstallingSoftware" xml:space="preserve">
+    <value>Đang cài đặt phần mềm</value>
+  </data>
+  <data name="FlashingMessageOperationStarted" xml:space="preserve">
+    <value>Đã bắt đầu cài đặt phần mềm</value>
+  </data>
+  <data name="FlashingResult" xml:space="preserve">
+    <value>Kết quả cài đặt gói phần mềm</value>
+  </data>
+  <data name="HtcBootloaderMode" xml:space="preserve">
+    <value>Chế độ HTC {0}</value>
+  </data>
+  <data name="HtcPackageNotFound" xml:space="preserve">
+    <value>Không tìm thấy phần mềm trên máy chủ</value>
+  </data>
+  <data name="KeepButtonTillImage" xml:space="preserve">
+    <value>Nhấn giữ nút cho đến khi bạn nhìn thấy ảnh giống như trên màn hình.</value>
+  </data>
+  <data name="KeepButtonsTillImage" xml:space="preserve">
+    <value>Nhấn giữ các nút cho đến khi bạn nhìn thấy ảnh giống như trên màn hình.</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Ngôn ngữ</value>
+  </data>
+  <data name="LogFiles" xml:space="preserve">
+    <value>Tập tin nhật ký</value>
+  </data>
+  <data name="LumiaBatteryChecking" xml:space="preserve">
+    <value>Pin điện thoại của bạn sắp hết. Bạn có thể tiếp tục, nhưng nó có thể làm hỏng điện thoại của bạn.</value>
+  </data>
+  <data name="ManualDeviceSelection" xml:space="preserve">
+    <value>Chọn điện thoại</value>
+  </data>
+  <data name="ManualRestartHtcInfo" xml:space="preserve">
+    <value>Không thể đọc thông tin điện thoại. Vui lòng làm theo các bước dưới đây để tiếp tục hoặc bấm "{0}" để hủy bỏ quy trình.</value>
+  </data>
+  <data name="ManufacturerDetectionFailed" xml:space="preserve">
+    <value>Rất tiếc, chúng tôi không thể xác định nhà sản xuất điện thoại của bạn.</value>
+  </data>
+  <data name="ManufacturerHeader" xml:space="preserve">
+    <value>Nhà sản xuất điện thoại</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>Chế độ {0}</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Kiểu: </value>
+  </data>
+  <data name="ModelUnknown" xml:space="preserve">
+    <value>Kiểu: không xác định</value>
+  </data>
+  <data name="MoreThanOnePackageFound" xml:space="preserve">
+    <value>Tìm thấy nhiều hơn một gói - vui lòng chọn một và bấm "{0}" để tiếp tục.</value>
+  </data>
+  <data name="Network" xml:space="preserve">
+    <value>Mạng</value>
+  </data>
+  <data name="NoPackagesFoundSelectAnotherDirectory" xml:space="preserve">
+    <value>Không tìm được gói đúng. Vui lòng chọn thư mục khác hoặc chọn gói thủ công.</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>Không tìm thấy</value>
+  </data>
+  <data name="OnePackageFound" xml:space="preserve">
+    <value>Tìm thấy một gói cho: {0}. Vui lòng bấm "{1}" để tiếp tục hoặc chọn thư mục hoặc tập tin khác.</value>
+  </data>
+  <data name="OperatingSystemUnknown" xml:space="preserve">
+    <value>Phiên bản hệ điều hành: không xác định</value>
+  </data>
+  <data name="OperatingSystemVersion" xml:space="preserve">
+    <value>Phiên bản hệ điều hành: </value>
+  </data>
+  <data name="OperationFailed" xml:space="preserve">
+    <value>Hoạt động đã kết thúc không thành công</value>
+  </data>
+  <data name="OperationPassed" xml:space="preserve">
+    <value>Hoạt động đã hoàn tất thành công</value>
+  </data>
+  <data name="PackageDirectory" xml:space="preserve">
+    <value>Thư mục gói: {0}</value>
+  </data>
+  <data name="PackageFileHeader" xml:space="preserve">
+    <value>Tập tin gói</value>
+  </data>
+  <data name="PackageFilePath" xml:space="preserve">
+    <value>Đường dẫn gói: {0}</value>
+  </data>
+  <data name="PackageIntegrityCheck" xml:space="preserve">
+    <value>Kiểm tra tính toàn vẹn gói</value>
+  </data>
+  <data name="PackageNotFound" xml:space="preserve">
+    <value>Gói không sẵn có cho điện thoại này.</value>
+  </data>
+  <data name="PackagePathNotSet" xml:space="preserve">
+    <value>Chưa đặt đường dẫn gói</value>
+  </data>
+  <data name="PackageSelection" xml:space="preserve">
+    <value>Chọn gói</value>
+  </data>
+  <data name="Packages" xml:space="preserve">
+    <value>Gói sản phẩm</value>
+  </data>
+  <data name="PackagesPath" xml:space="preserve">
+    <value>Đường dẫn gói</value>
+  </data>
+  <data name="PasswordForm" xml:space="preserve">
+    <value>Mật khẩu</value>
+  </data>
+  <data name="PhoneAddedHeader" xml:space="preserve">
+    <value>Điện thoại đã kết nối</value>
+  </data>
+  <data name="PhoneAddedMessage" xml:space="preserve">
+    <value>Điện thoại {0} mới đã được kết nối.</value>
+  </data>
+  <data name="PhoneIsUpToDate" xml:space="preserve">
+    <value>Bạn đã có phiên bản phần mềm mới nhất.</value>
+  </data>
+  <data name="PhoneRemovedHeader" xml:space="preserve">
+    <value>Điện thoại đã ngắt kết nối</value>
+  </data>
+  <data name="PhoneRemovedMessage" xml:space="preserve">
+    <value>Điện thoại {0}đã bị ngắt kết nối.</value>
+  </data>
+  <data name="PhoneRestart" xml:space="preserve">
+    <value>Khởi động lại điện thoại</value>
+  </data>
+  <data name="PhoneSettingsBackupPathWin10" xml:space="preserve">
+    <value>Cài đặt &gt; Cập nhật và Khôi phục &gt; Sao lưu</value>
+  </data>
+  <data name="PhoneSettingsBackupPathWin8" xml:space="preserve">
+    <value>Cài đặt &gt; sao lưu</value>
+  </data>
+  <data name="PleaseConnectDevice" xml:space="preserve">
+    <value>Vui lòng kết nối điện thoại của bạn</value>
+  </data>
+  <data name="PleaseConnectOneDevice" xml:space="preserve">
+    <value>Vui lòng kết nối chỉ một điện thoại</value>
+  </data>
+  <data name="PleaseSelectAFolder" xml:space="preserve">
+    <value>Vui lòng chọn một thư mục</value>
+  </data>
+  <data name="PleaseSelectDeviceToContinue" xml:space="preserve">
+    <value>Vui lòng chọn điện thoại để tiếp tục</value>
+  </data>
+  <data name="PleaseSelectManufacturer" xml:space="preserve">
+    <value>Vui lòng chọn đúng mục dưới đây:</value>
+  </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>Vui lòng chờ</value>
+  </data>
+  <data name="PortForm" xml:space="preserve">
+    <value>Cổng</value>
+  </data>
+  <data name="Preferences" xml:space="preserve">
+    <value>Tuỳ chọn</value>
+  </data>
+  <data name="PressPowerAndVolumeDown" xml:space="preserve">
+    <value>Nhấn nút Nguồn và "Giảm âm lượng" cùng lúc.</value>
+  </data>
+  <data name="PressThePowerButton" xml:space="preserve">
+    <value>Nhấn nút Nguồn. </value>
+  </data>
+  <data name="PressThePowerButtonUntilSwitchOff" xml:space="preserve">
+    <value>Nhấn và giữ nút "Nguồn" cho đến khi điện thoại rung.</value>
+  </data>
+  <data name="PressVolumeUpVolumeDown" xml:space="preserve">
+    <value>Khi điện thoại rung, nhấn "Tăng âm lượng" và "Giảm âm lượng" cùng lúc.</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Chính sách bảo mật</value>
+  </data>
+  <data name="ReadingDeviceInfo" xml:space="preserve">
+    <value>Đọc thông tin điện thoại</value>
+  </data>
+  <data name="RebootHtc" xml:space="preserve">
+    <value>Bây giờ bạn có thể khởi động lại điện thoại về chế độ bình thường. Để khởi động lại điện thoại vui lòng nhấn nút nguồn và giữ trong giây lát.</value>
+  </data>
+  <data name="RebootPhoneInstructions" xml:space="preserve">
+    <value>Không thể tìm thấy điện thoại.
+Vui lòng khởi động lại điện thoại của bạn bằng cách nhấn cùng lúc nút Nguồn và "Giảm âm lượng".
+Nhấn giữ các nút này cho đến khi điện thoại rung lên.</value>
+  </data>
+  <data name="ReinstallSoftware" xml:space="preserve">
+    <value>Cài đặt lại phần mềm</value>
+  </data>
+  <data name="ReleasePowerPressVolumeUp" xml:space="preserve">
+    <value>Khi điện thoại rung, thả nút Nguồn và nhấn "Tăng âm lượng".</value>
+  </data>
+  <data name="RemovingPackages" xml:space="preserve">
+    <value>Loại bỏ gói</value>
+  </data>
+  <data name="RemovingReports" xml:space="preserve">
+    <value>Loại bỏ báo cáo</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>Báo cáo</value>
+  </data>
+  <data name="ResetSettingsQuestion" xml:space="preserve">
+    <value>Bạn có chắc chắn muốn đặt lại mọi thiết lập thành các giá trị mặc định không?</value>
+  </data>
+  <data name="RestartDeviceHeader" xml:space="preserve">
+    <value>Khởi động lại điện thoại</value>
+  </data>
+  <data name="SelectDeviceToRecover" xml:space="preserve">
+    <value>Chọn điện thoại bạn muốn khôi phục</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Cài đặt</value>
+  </data>
+  <data name="SoftwareInstallation" xml:space="preserve">
+    <value>Cài đặt phần mềm</value>
+  </data>
+  <data name="SoftwareOnServer" xml:space="preserve">
+    <value>Phần mềm sẵn có trên máy chủ</value>
+  </data>
+  <data name="SoftwarePackage" xml:space="preserve">
+    <value>Gói phần mềm</value>
+  </data>
+  <data name="SthWentWrongMessage" xml:space="preserve">
+    <value>Một cái gì đó đã đi sai</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>Tóm tắt</value>
+  </data>
+  <data name="Survey1" xml:space="preserve">
+    <value>Khảo sát</value>
+  </data>
+  <data name="Survey_Button_ContinueNoSubmit1" xml:space="preserve">
+    <value>Tiếp tục mà không gửi</value>
+  </data>
+  <data name="Survey_Button_SubmitAndContinue1" xml:space="preserve">
+    <value>Gửi và tiếp tục khôi phục</value>
+  </data>
+  <data name="Survey_Choice_AppsNotWorking1" xml:space="preserve">
+    <value>Ứng dụng của tôi đang hoạt động không như mong đợi</value>
+  </data>
+  <data name="Survey_Choice_DeviceNotWorking1" xml:space="preserve">
+    <value>Thiết bị của tôi đang hoạt động không như mong đợi</value>
+  </data>
+  <data name="Survey_Choice_PerformanceIssues1" xml:space="preserve">
+    <value>Tôi đang gặp phải sự cố về hiệu suất</value>
+  </data>
+  <data name="Survey_Choice_PrevVersionFaster1" xml:space="preserve">
+    <value>Phiên bản trước có vẻ nhanh hơn</value>
+  </data>
+  <data name="Survey_Choice_PrevVersionMoreReliable1" xml:space="preserve">
+    <value>Phiên bản trước có vẻ đáng tin cậy hơn</value>
+  </data>
+  <data name="Survey_Header1" xml:space="preserve">
+    <value>Tại sao bạn lại khôi phục thiết bị này?</value>
+  </data>
+  <data name="Survey_TellUsMore1" xml:space="preserve">
+    <value>Hãy cho chúng tôi biết thêm</value>
+  </data>
+  <data name="Theme" xml:space="preserve">
+    <value>Chủ đề</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>Tối</value>
+  </data>
+  <data name="ThemeHighContrast" xml:space="preserve">
+    <value>Tương phản cao</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>Sáng</value>
+  </data>
+  <data name="ThereIsMandatoryApplicationUpdate" xml:space="preserve">
+    <value>Có một bản cập nhật áp dụng bắt buộc {0}.</value>
+  </data>
+  <data name="ThisUpdateMustBeInstalled" xml:space="preserve">
+    <value>Bản cập nhật {0} này phải được cài đặt và không thể bỏ qua. Ứng dụng không thể sử dụng cho đến khi được cập nhật.
+Trước khi cài cập nhật này, vui lòng rút ra tất cả các thiết bị.</value>
+  </data>
+  <data name="TraceEnabled" xml:space="preserve">
+    <value>Tạo tập tin nhật ký</value>
+  </data>
+  <data name="Troubleshooting" xml:space="preserve">
+    <value>Xử lý sự cố</value>
+  </data>
+  <data name="TurnOffPhone" xml:space="preserve">
+    <value>Tắt điện thoại của bạn.</value>
+  </data>
+  <data name="UpdateAvailable" xml:space="preserve">
+    <value>Có một bản cập nhật cho điện thoại của bạn</value>
+  </data>
+  <data name="UseProxyServer" xml:space="preserve">
+    <value>Dùng máy chủ proxy</value>
+  </data>
+  <data name="UserNameForm" xml:space="preserve">
+    <value>Tên người dùng</value>
+  </data>
+  <data name="VerifyingDownloadedFiles" xml:space="preserve">
+    <value>Xác nhận tập tin đã tải về</value>
+  </data>
+  <data name="WaitUntilPhoneTurnsOn" xml:space="preserve">
+    <value>Chờ cho đến khi điện thoại bật.</value>
+  </data>
+  <data name="WaitingForConnection" xml:space="preserve">
+    <value>Đang chờ kết nối</value>
+  </data>
+  <data name="WelcomeHeader" xml:space="preserve">
+    <value>Chào mừng</value>
+  </data>
+</root>

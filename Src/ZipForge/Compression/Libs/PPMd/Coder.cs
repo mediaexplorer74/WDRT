@@ -18,13 +18,13 @@ namespace ComponentAce.Compression.Libs.PPMd
 		{
 			for (;;)
 			{
-				if ((Coder.low ^ Coder.low + Coder.range) >= 16777216U)
+				if ((Coder.low ^ (Coder.low + Coder.range)) >= 16777216U)
 				{
 					if (Coder.range >= 32768U)
 					{
 						break;
 					}
-					Coder.range = ((uint)(-(uint)((ulong)Coder.low)) & 32767U);
+					Coder.range = (uint)(-(uint)((ulong)Coder.low)) & 32767U;
 				}
 				stream.WriteByte((byte)(Coder.low >> 24));
 				Coder.range <<= 8;
@@ -64,7 +64,7 @@ namespace ComponentAce.Compression.Libs.PPMd
 			Coder.range = uint.MaxValue;
 			for (uint num = 0U; num < 4U; num += 1U)
 			{
-				Coder.code = (Coder.code << 8 | (uint)((byte)stream.ReadByte()));
+				Coder.code = (Coder.code << 8) | (uint)((byte)stream.ReadByte());
 			}
 		}
 
@@ -73,15 +73,15 @@ namespace ComponentAce.Compression.Libs.PPMd
 		{
 			for (;;)
 			{
-				if ((Coder.low ^ Coder.low + Coder.range) >= 16777216U)
+				if ((Coder.low ^ (Coder.low + Coder.range)) >= 16777216U)
 				{
 					if (Coder.range >= 32768U)
 					{
 						break;
 					}
-					Coder.range = ((uint)(-(uint)((ulong)Coder.low)) & 32767U);
+					Coder.range = (uint)(-(uint)((ulong)Coder.low)) & 32767U;
 				}
-				Coder.code = (Coder.code << 8 | (uint)((byte)stream.ReadByte()));
+				Coder.code = (Coder.code << 8) | (uint)((byte)stream.ReadByte());
 				Coder.range <<= 8;
 				Coder.low <<= 8;
 			}
@@ -98,20 +98,20 @@ namespace ComponentAce.Compression.Libs.PPMd
 			long position = stream.Position;
 			for (;;)
 			{
-				if ((num ^ num + num2) >= num3)
+				if ((num ^ (num + num2)) >= num3)
 				{
 					if (num2 >= num4)
 					{
 						goto IL_6B;
 					}
-					num2 = ((uint)(-(uint)((ulong)num)) & num4 - 1U);
+					num2 = (uint)(-(uint)((ulong)num)) & (num4 - 1U);
 				}
 				int num6 = stream.ReadByte();
 				if (num6 == -1)
 				{
 					break;
 				}
-				num5 = (num5 << 8 | (uint)((byte)num6));
+				num5 = (num5 << 8) | (uint)((byte)num6);
 				num2 <<= 8;
 				num <<= 8;
 			}

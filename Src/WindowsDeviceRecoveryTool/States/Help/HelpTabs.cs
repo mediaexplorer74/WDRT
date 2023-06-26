@@ -2,22 +2,22 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Help
 {
-	// Token: 0x02000079 RID: 121
+	// Token: 0x0200005E RID: 94
 	public enum HelpTabs
 	{
-		// Token: 0x04000199 RID: 409
-		LumiaChoose,
-		// Token: 0x0400019A RID: 410
-		LumiaEmergency,
-		// Token: 0x0400019B RID: 411
-		LumiaFlashing,
-		// Token: 0x0400019C RID: 412
-		LumiaNormal,
 		// Token: 0x0400019D RID: 413
-		HtcChoose,
+		LumiaChoose,
 		// Token: 0x0400019E RID: 414
-		HtcBootloader,
+		LumiaEmergency,
 		// Token: 0x0400019F RID: 415
+		LumiaFlashing,
+		// Token: 0x040001A0 RID: 416
+		LumiaNormal,
+		// Token: 0x040001A1 RID: 417
+		HtcChoose,
+		// Token: 0x040001A2 RID: 418
+		HtcBootloader,
+		// Token: 0x040001A3 RID: 419
 		HtcNormal
 	}
 }

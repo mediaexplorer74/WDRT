@@ -10,15 +10,12 @@ using Microsoft.WindowsDeviceRecoveryTool.Framework;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 {
-	// Token: 0x020000B0 RID: 176
-	[Region(new string[]
-	{
-		"SettingsMainArea"
-	})]
+	// Token: 0x0200002A RID: 42
 	[Export]
+	[Region(new string[] { "SettingsMainArea" })]
 	public partial class PackagesView : StackPanel
 	{
-		// Token: 0x0600052E RID: 1326 RVA: 0x0001AC9A File Offset: 0x00018E9A
+		// Token: 0x060001E7 RID: 487 RVA: 0x0000BE56 File Offset: 0x0000A056
 		public PackagesView()
 		{
 			this.InitializeComponent();

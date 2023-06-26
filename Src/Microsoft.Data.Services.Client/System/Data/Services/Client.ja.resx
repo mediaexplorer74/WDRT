@@ -1,0 +1,886 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ALinq_AnyAllNotSupportedInOrderBy" xml:space="preserve">
+    <value>メソッド '{0}' は、'orderby' クエリ オプションでサポートされていません。</value>
+  </data>
+  <data name="ALinq_BinaryNotSupported" xml:space="preserve">
+    <value>バイナリ演算子 '{0}' はサポートされていません。</value>
+  </data>
+  <data name="ALinq_CanOnlyApplyOneKeyPredicate" xml:space="preserve">
+    <value>同じエンティティ セットに対して複数のキー述語を指定することはできません。</value>
+  </data>
+  <data name="ALinq_CanOnlyProjectTheLeaf" xml:space="preserve">
+    <value>プロジェクションできるのは、変換するクエリに含まれる最後のエンティティ型だけです。</value>
+  </data>
+  <data name="ALinq_CannotAddCountOption" xml:space="preserve">
+    <value>count オプションをリソース セットに追加できません。</value>
+  </data>
+  <data name="ALinq_CannotAddCountOptionConflict" xml:space="preserve">
+    <value>既存の count オプションと競合するため、count オプションをリソース セットに追加できません。</value>
+  </data>
+  <data name="ALinq_CannotConstructKnownEntityTypes" xml:space="preserve">
+    <value>エンティティ型のインスタンスの構築では、既定のコンストラクターを含むオブジェクト初期化子を使用する必要があります。</value>
+  </data>
+  <data name="ALinq_CannotCreateConstantEntity" xml:space="preserve">
+    <value>結果のプロジェクションの際にローカルのエンティティ型のインスタンスを参照することはサポートされていません。</value>
+  </data>
+  <data name="ALinq_CannotProjectWithExplicitExpansion" xml:space="preserve">
+    <value>同じクエリで指定されている明示的な展開があるため、プロジェクションを作成できません。</value>
+  </data>
+  <data name="ALinq_CannotUseTypeFiltersMultipleTimes" xml:space="preserve">
+    <value>非冗長な型フィルター (OfType&lt;T&gt;、C# 'as'、および VB 'TryCast') は、リソース セット 1 つにつき 1 回しか使用できません。</value>
+  </data>
+  <data name="ALinq_CantAddAstoriaQueryOption" xml:space="preserve">
+    <value>変換された Linq 式からのクエリ オプションと競合するため、クエリ オプション '{0}' を追加できません。</value>
+  </data>
+  <data name="ALinq_CantAddDuplicateQueryOption" xml:space="preserve">
+    <value>重複するクエリ オプション '{0}' を追加できません。</value>
+  </data>
+  <data name="ALinq_CantAddQueryOption" xml:space="preserve">
+    <value>カスタム クエリ オプションは許可されていません。</value>
+  </data>
+  <data name="ALinq_CantAddQueryOptionStartingWithDollarSign" xml:space="preserve">
+    <value>クエリ オプション '{0}' は予約文字 '$' で始まるため、追加できません。</value>
+  </data>
+  <data name="ALinq_CantCastToUnsupportedPrimitive" xml:space="preserve">
+    <value>サポートされていない型 '{0}' にキャストすることはできません</value>
+  </data>
+  <data name="ALinq_CantExpand" xml:space="preserve">
+    <value>クエリ オプションは展開できません。</value>
+  </data>
+  <data name="ALinq_CantNavigateWithoutKeyPredicate" xml:space="preserve">
+    <value>各プロパティは、1 つのリソースから選択するか型の一部として選択することのみ可能です。キー述語を指定して、エンティティ セットを 1 つのインスタンスに制限するか、プロパティを名前付きの型または匿名の型にプロジェクションしてください。</value>
+  </data>
+  <data name="ALinq_CantReferToPublicField" xml:space="preserve">
+    <value>パブリック フィールド '{0}' を参照することは、クエリ オプション式でサポートされていません。代わりにパブリック プロパティを使用してください。</value>
+  </data>
+  <data name="ALinq_CantTranslateExpression" xml:space="preserve">
+    <value>式 {0} はサポートされていません。</value>
+  </data>
+  <data name="ALinq_CollectionMemberAccessNotSupportedInNavigation" xml:space="preserve">
+    <value>'select' クエリ式でのコレクション プロパティ '{0}' のメンバーへのナビゲーションはサポートされていません。</value>
+  </data>
+  <data name="ALinq_CollectionPropertyNotSupportedInOrderBy" xml:space="preserve">
+    <value>コレクション プロパティ '{0}' は、'orderby' クエリ式で使用できません。コレクション プロパティは、'orderby' クエリ オプションでサポートされていません。</value>
+  </data>
+  <data name="ALinq_CollectionPropertyNotSupportedInWhere" xml:space="preserve">
+    <value>コレクション プロパティ '{0}' は、'where' クエリ式で使用できません。コレクション プロパティは、'where' クエリ オプションで 'any' メソッドまたは 'all' メソッドのソースとしてのみサポートされます。</value>
+  </data>
+  <data name="ALinq_ConditionalNotSupported" xml:space="preserve">
+    <value>条件式はサポートされていません。</value>
+  </data>
+  <data name="ALinq_ConstantNotSupported" xml:space="preserve">
+    <value>'{0}' 用の定数はサポートされていません。</value>
+  </data>
+  <data name="ALinq_CouldNotConvert" xml:space="preserve">
+    <value>定数 {0} 式を文字列に変換できませんでした。</value>
+  </data>
+  <data name="ALinq_ExpressionCannotEndWithTypeAs" xml:space="preserve">
+    <value>'{1}' メソッドでは式 '{0}' がサポートされていません。式の最後に TypeAs を指定することはできません。</value>
+  </data>
+  <data name="ALinq_ExpressionNotSupportedInProjection" xml:space="preserve">
+    <value>型 {0} のインスタンスを式 {1} で構築または初期化することはサポートされていません。</value>
+  </data>
+  <data name="ALinq_ExpressionNotSupportedInProjectionToEntity" xml:space="preserve">
+    <value>エンティティ型 {0} のインスタンスを式 {1} で初期化することはサポートされていません。</value>
+  </data>
+  <data name="ALinq_FormatQueryOptionNotSupported" xml:space="preserve">
+    <value>'$format' クエリ オプションがサポートされていません。DataServiceContext.Format プロパティを設定して必要な形式を設定してください。</value>
+  </data>
+  <data name="ALinq_InvalidExpressionInNavigationPath" xml:space="preserve">
+    <value>式 '{0}' は、ナビゲーション パスに対して有効な式ではありません。ラムダ式内でのみサポートされている操作には、MemberAccess および TypeAs があります。式には少なくとも 1 つの MemberAccess を含める必要があり、また、式の最後に TypeAs を指定することはできません。</value>
+  </data>
+  <data name="ALinq_InvalidSourceForAnyAll" xml:space="preserve">
+    <value>'{0}' メソッドのソース パラメーターには、ナビゲーションまたはコレクション プロパティを指定する必要があります。</value>
+  </data>
+  <data name="ALinq_InvocationNotSupported" xml:space="preserve">
+    <value>Invocation 式はサポートされていません。</value>
+  </data>
+  <data name="ALinq_LambdaNotSupported" xml:space="preserve">
+    <value>Lambda 式はサポートされていません。</value>
+  </data>
+  <data name="ALinq_LinkPropertyNotSupportedInExpression" xml:space="preserve">
+    <value>型 'DataServiceStreamLink' のプロパティ '{0}' は、'where' クエリ式または 'orderby' クエリ式で使用できません。型 'DataServiceStreamLink' のプロパティは、これらのクエリ オプションでサポートされていません。</value>
+  </data>
+  <data name="ALinq_ListInitNotSupported" xml:space="preserve">
+    <value>List Init 式はサポートされていません。</value>
+  </data>
+  <data name="ALinq_MemberAccessNotSupported" xml:space="preserve">
+    <value>'{0}' のメンバー アクセスはサポートされていません。</value>
+  </data>
+  <data name="ALinq_MemberInitNotSupported" xml:space="preserve">
+    <value>Member Init 式はサポートされていません。</value>
+  </data>
+  <data name="ALinq_MethodNotSupported" xml:space="preserve">
+    <value>メソッド '{0}' はサポートされていません。</value>
+  </data>
+  <data name="ALinq_MethodNotSupportedForMaxDataServiceVersionLessThanX" xml:space="preserve">
+    <value>メソッド '{0}' は、MaxProtocolVersion が '{1}' より小さい場合はサポートされません。</value>
+  </data>
+  <data name="ALinq_NewArrayNotSupported" xml:space="preserve">
+    <value>New Array 式はサポートされていません。</value>
+  </data>
+  <data name="ALinq_NewNotSupported" xml:space="preserve">
+    <value>New 式はサポートされていません。</value>
+  </data>
+  <data name="ALinq_OfTypeArgumentNotAvailable" xml:space="preserve">
+    <value>OfType フィルターのターゲットの型を特定できませんでした。</value>
+  </data>
+  <data name="ALinq_ParameterNotSupported" xml:space="preserve">
+    <value>パラメーター式はサポートされていません。</value>
+  </data>
+  <data name="ALinq_ProjectionCanOnlyHaveOneProjection" xml:space="preserve">
+    <value>1 つの 'select' クエリ オプションで複数の Linq Select 操作を変換することはできません。</value>
+  </data>
+  <data name="ALinq_ProjectionMemberAssignmentMismatch" xml:space="preserve">
+    <value>エンティティ型 '{0}' のインスタンスを初期化できません。'{1}' と '{2}' が同じソース エンティティを参照していません。</value>
+  </data>
+  <data name="ALinq_ProjectionOnlyAllowedOnLeafNodes" xml:space="preserve">
+    <value>'select' クエリ オプションは最後のナビゲーションの後にのみ指定できます。</value>
+  </data>
+  <data name="ALinq_PropertyNamesMustMatchInProjections" xml:space="preserve">
+    <value>{0} プロパティの値を {1} プロパティに割り当てることはできません。エンティティ型に結果をプロジェクションするときは、プロジェクションするプロパティについてソース型とターゲット型のプロパティ名が一致している必要があります。</value>
+  </data>
+  <data name="ALinq_QueryOptionOutOfOrder" xml:space="preserve">
+    <value>{0} クエリ オプションを {1} クエリ オプションの後に指定することはできません。</value>
+  </data>
+  <data name="ALinq_QueryOptionsOnlyAllowedOnLeafNodes" xml:space="preserve">
+    <value>最後のナビゲーションの後にはクエリ オプション (orderby、where、take、skip) のみを指定できます。</value>
+  </data>
+  <data name="ALinq_QueryOptionsOnlyAllowedOnSingletons" xml:space="preserve">
+    <value>1 つのリソースに複数のクエリ オプション (orderby、where、take、skip、count) を指定できません。</value>
+  </data>
+  <data name="ALinq_TranslationError" xml:space="preserve">
+    <value>Linq 式の URI への変換中にエラーが発生しました: {0}</value>
+  </data>
+  <data name="ALinq_TypeAsArgumentNotEntityType" xml:space="preserve">
+    <value>型 '{0}' がエンティティ型ではありません。TypeAs 演算子のターゲットの型はエンティティ型にする必要があります。</value>
+  </data>
+  <data name="ALinq_TypeAsNotSupportedForMaxDataServiceVersionLessThan3" xml:space="preserve">
+    <value>MaxProtocolVersion が '3.0' より小さい場合は式 'TypeAs' がサポートされません。</value>
+  </data>
+  <data name="ALinq_TypeBinaryNotSupported" xml:space="preserve">
+    <value>式と型の間に操作を入れることはサポートされていません。</value>
+  </data>
+  <data name="ALinq_UnaryNotSupported" xml:space="preserve">
+    <value>単項演算子 '{0}' はサポートされていません。</value>
+  </data>
+  <data name="ALinq_UnsupportedExpression" xml:space="preserve">
+    <value>式の型 {0} はサポートされていません。</value>
+  </data>
+  <data name="AtomMaterializer_CannotAssignNull" xml:space="preserve">
+    <value>プロパティ '{0}' の NULL 値を型 '{1}' に割り当てることはできません。</value>
+  </data>
+  <data name="AtomMaterializer_CollectionExpectedCollection" xml:space="preserve">
+    <value>トップ レベルのコレクションの実体化では ICollection&lt;&gt; が予期されましたが、実際の型は {0} でした。</value>
+  </data>
+  <data name="AtomMaterializer_DataServiceCollectionNotSupportedForNonEntities" xml:space="preserve">
+    <value>DataServiceCollection に含めることができるのは、エンティティ型のみです。プリミティブ型および複合型は、この種類のコレクションに含めることはできません。</value>
+  </data>
+  <data name="AtomMaterializer_EntryIntoCollectionMismatch" xml:space="preserve">
+    <value>型 '{0}' のエントリを、型 '{1}' のインスタンスを含むコレクションに追加できません。これは、ID の値が同じ別の型の既存のエントリがある場合や、1 つのクエリで同じエンティティが 2 つの型にプロジェクションされている場合に発生することがあります。</value>
+  </data>
+  <data name="AtomMaterializer_EntryToAccessIsNull" xml:space="preserve">
+    <value>ナビゲーション プロパティ '{0}' によって返されたエントリは NULL であり、初期化できません。このプロパティにアクセスする前に、NULL 値がないことを確認する必要があります。</value>
+  </data>
+  <data name="AtomMaterializer_EntryToInitializeIsNull" xml:space="preserve">
+    <value>型 '{0}' のインスタンスの作成に必要なデータを含むエントリが NULL であり、初期化できません。このエントリにアクセスする前に、NULL 値がないことを確認する必要があります。</value>
+  </data>
+  <data name="AtomMaterializer_InvalidCollectionItem" xml:space="preserve">
+    <value>要素 '{0}' は有効なコレクション アイテムではありません。コレクション アイテム要素は 'element' という名前で、'http://schemas.microsoft.com/ado/2007/08/dataservices' 名前空間に属している必要があります。</value>
+  </data>
+  <data name="AtomMaterializer_InvalidContentTypeEncountered" xml:space="preserve">
+    <value>応答のコンテンツ タイプ '{0}' は現在サポートされていません。</value>
+  </data>
+  <data name="AtomMaterializer_InvalidEntityType" xml:space="preserve">
+    <value>クライアントとサービスの間で型の不一致が発生しました。型 '{0}' はエンティティ型ですが、応答ペイロード内の型はエンティティ型を表しません。クライアントで定義された型がサービスのデータ モデルと一致するようにするか、クライアントでサービス参照を更新してください。</value>
+  </data>
+  <data name="AtomMaterializer_InvalidNonEntityType" xml:space="preserve">
+    <value>クライアントとサービスの間で型の不一致が発生しました。型 '{0}' はエンティティ型ではありませんが、応答ペイロード内の型はエンティティ型を表します。クライアントで定義された型がサービスのデータ モデルと一致するようにするか、クライアントでサービスの参照を更新してください。</value>
+  </data>
+  <data name="AtomMaterializer_InvalidResponsePayload" xml:space="preserve">
+    <value>応答ペイロードは有効な応答ペイロードではありません。最上位レベルの要素が有効な Atom 要素または JSON 要素であるか、'{0}' 名前空間に属していることを確認してください。</value>
+  </data>
+  <data name="AtomMaterializer_MaterializationTypeError" xml:space="preserve">
+    <value>パラメーターなしのコンストラクターがないため、コレクション型 '{0}' に結果を具現化できません。</value>
+  </data>
+  <data name="AtomMaterializer_NoParameterlessCtorForCollectionProperty" xml:space="preserve">
+    <value>型 '{1}' には、パブリックなパラメーターなしのコンストラクターがないため、コレクション プロパティ '{0}' を作成できません。</value>
+  </data>
+  <data name="AtomMaterializer_ProjectEntityTypeMismatch" xml:space="preserve">
+    <value>型 '{0}' のエンティティをプロジェクションできません。'{2}' に対して型 '{1}' のインスタンスが既に存在します。</value>
+  </data>
+  <data name="AtomMaterializer_PropertyMissing" xml:space="preserve">
+    <value>エントリの処理中に、必要なプロパティ '{0}' が見つかりませんでした。このプロパティにアクセスする前に、NULL かどうかを確認してください。</value>
+  </data>
+  <data name="AtomMaterializer_PropertyNotExpectedEntry" xml:space="preserve">
+    <value>プロパティ '{0}' はエンティティではありません。</value>
+  </data>
+  <data name="AtomMaterializer_ResetAfterEnumeratorCreationError" xml:space="preserve">
+    <value>リセットは、列挙可能な内部のコレクション リーダーには呼び出さないでください。</value>
+  </data>
+  <data name="AtomMaterializer_TypeShouldBeCollectionError" xml:space="preserve">
+    <value>型 '{0}' のコレクションを含まないプリミティブ型または複合型のコレクションは具現化できません。</value>
+  </data>
+  <data name="AtomParser_SingleEntry_ExpectedFeedOrEntry" xml:space="preserve">
+    <value>サーバーからの応答に Atom フィードまたはエントリが必要ですが、予期しない要素が見つかりました。</value>
+  </data>
+  <data name="AtomParser_SingleEntry_MultipleFound" xml:space="preserve">
+    <value>サーバーからの応答に Atom エントリが 1 つだけ必要でしたが、複数のエントリが見つかりました。</value>
+  </data>
+  <data name="AtomParser_SingleEntry_NoneFound" xml:space="preserve">
+    <value>サーバーからの応答に Atom エントリが 1 つだけ必要でしたが、何も見つかりませんでした。</value>
+  </data>
+  <data name="Batch_ExpectedContentType" xml:space="preserve">
+    <value>バッチ要求に必要なコンテンツの種類は "{0}" ではなく、"multipart/mixed;boundary=batch" です。</value>
+  </data>
+  <data name="Batch_ExpectedResponse" xml:space="preserve">
+    <value>POST 要求は、コンテンツを含む応答を想定していました。ID={0}</value>
+  </data>
+  <data name="Batch_IncompleteResponseCount" xml:space="preserve">
+    <value>バッチ内の一部の要求に応答がありませんでした。</value>
+  </data>
+  <data name="Batch_UnexpectedContent" xml:space="preserve">
+    <value>Web 応答に不要なセクションが含まれていました。ID={0}</value>
+  </data>
+  <data name="ClientTypeCache_NonEntityTypeCannotContainEntityProperties" xml:space="preserve">
+    <value>プロパティ '{0}' はエンティティ型のため、エンティティ型でない型 '{1}' のプロパティにすることはできません。ナビゲーション プロパティを含めることができるのは、エンティティ型のみです。</value>
+  </data>
+  <data name="ClientType_Ambiguous" xml:space="preserve">
+    <value>'{1}' から継承される '{0}' からの型の解決があいまいです。</value>
+  </data>
+  <data name="ClientType_CollectionOfCollectionNotSupported" xml:space="preserve">
+    <value>コレクション型のコレクション プロパティはサポートされていません。</value>
+  </data>
+  <data name="ClientType_CollectionPropertyNotSupportedInV2AndBelow" xml:space="preserve">
+    <value>型 '{0}' のプロパティ '{1}' は、コレクション プロパティです。コレクション プロパティは、プロトコルの 'V3' バージョン以上でのみサポートされています。</value>
+  </data>
+  <data name="ClientType_KeysMustBeSimpleTypes" xml:space="preserve">
+    <value>{0} では、キー プロパティが単純型以外で宣言されています。</value>
+  </data>
+  <data name="ClientType_KeysOnDifferentDeclaredType" xml:space="preserve">
+    <value>{0} では、キー プロパティが型階層内の異なるレベルで宣言されています。</value>
+  </data>
+  <data name="ClientType_MissingMediaEntryProperty" xml:space="preserve">
+    <value>型 '{0}' には、'{1}' と呼ばれるプロパティを参照する MediaEntry 属性があります。ただし、この型にプロパティ '{1}' はありません。</value>
+  </data>
+  <data name="ClientType_MissingMimeTypeDataProperty" xml:space="preserve">
+    <value>型 '{0}' には、データ プロパティ '{1}' を参照する MimeTypeProperty 属性があります。ただし、この型にプロパティ '{1}' はありません。</value>
+  </data>
+  <data name="ClientType_MissingMimeTypeProperty" xml:space="preserve">
+    <value>型 '{0}' には、MIME の種類のプロパティ '{1}' を参照する MimeTypeProperty 属性があります。ただし、この型にプロパティ '{1}' はありません。</value>
+  </data>
+  <data name="ClientType_MissingOpenProperty" xml:space="preserve">
+    <value>開始オブジェクト プロパティ '{0}:{1}' が定義されていません。</value>
+  </data>
+  <data name="ClientType_MissingProperty" xml:space="preserve">
+    <value>終了型 {0} には、対応する設定可能な {1} プロパティがありません。</value>
+  </data>
+  <data name="ClientType_MultipleImplementationNotSupported" xml:space="preserve">
+    <value>ICollection&lt;T&gt; の複数実装はサポートされていません。</value>
+  </data>
+  <data name="ClientType_MultipleTypesWithSameName" xml:space="preserve">
+    <value>同じ名前 '{0}' で複数の型が見つかりました。型名は一意である必要があります。</value>
+  </data>
+  <data name="ClientType_NoSettableFields" xml:space="preserve">
+    <value>型 '{0}' には設定可能なプロパティがありません。</value>
+  </data>
+  <data name="ClientType_NullOpenProperties" xml:space="preserve">
+    <value>オープン型のプロパティ '{0}' によって NULL インスタンスが返されました。</value>
+  </data>
+  <data name="ClientType_UnsupportedType" xml:space="preserve">
+    <value>型 '{0}' はクライアント ライブラリではサポートされていません。</value>
+  </data>
+  <data name="Clienttype_MultipleOpenProperty" xml:space="preserve">
+    <value>{0} には OpenObjectAttribute の定義が複数あります。</value>
+  </data>
+  <data name="Collection_ComplexTypesInCollectionOfPrimitiveTypesNotAllowed" xml:space="preserve">
+    <value>プリミティブ型のコレクション プロパティには、複合型のアイテムを含めることはできません。</value>
+  </data>
+  <data name="Collection_NullCollectionItemsNotSupported" xml:space="preserve">
+    <value>コレクション プロパティのアイテムの値が NULL です。値が NULL のアイテムを含むコレクション プロパティはサポートされていません。</value>
+  </data>
+  <data name="Collection_NullCollectionNotSupported" xml:space="preserve">
+    <value>プロパティ '{0}' の値は NULL です。プリミティブ型または複合型のコレクション型であるプロパティを NULL にすることはできません。</value>
+  </data>
+  <data name="Collection_NullCollectionReference" xml:space="preserve">
+    <value>{0}.{1} は NULL 以外のオープン プロパティ コレクションを返す必要があります。</value>
+  </data>
+  <data name="Collection_NullNonPropertyCollectionNotSupported" xml:space="preserve">
+    <value>アイテムの型 '{0}' のコレクションの値は NULL です。コレクションには、NULL 値を指定できません。</value>
+  </data>
+  <data name="Collection_PrimitiveTypesInCollectionOfComplexTypesNotAllowed" xml:space="preserve">
+    <value>複合型のコレクション プロパティには、プリミティブ型のアイテムを含めることはできません。</value>
+  </data>
+  <data name="Content_EntityIsNotEntityType" xml:space="preserve">
+    <value>この操作では、エンティティ型のエンティティを指定する必要があります。キー プロパティを設定するか、クラスの属性を DataServiceEntityAttribute に設定してください</value>
+  </data>
+  <data name="Content_EntityWithoutKey" xml:space="preserve">
+    <value>この操作では、エンティティ型のエンティティを指定する必要があります。また、少なくとも 1 つのキー プロパティが必要です。</value>
+  </data>
+  <data name="Context_AddLinkCollectionOnly" xml:space="preserve">
+    <value>AddLink と DeleteLink メソッドは、sourceProperty がコレクションである場合にのみ機能します。</value>
+  </data>
+  <data name="Context_AddRelatedObjectCollectionOnly" xml:space="preserve">
+    <value>AddRelatedObject メソッドは、sourceProperty がコレクションである場合にのみ機能します。</value>
+  </data>
+  <data name="Context_AddRelatedObjectSourceDeleted" xml:space="preserve">
+    <value>AddRelatedObject メソッドは、ソース エンティティが削除された状態でない場合にのみ機能します。</value>
+  </data>
+  <data name="Context_AsyncAlreadyDone" xml:space="preserve">
+    <value>非同期の結果は既に完了しています。</value>
+  </data>
+  <data name="Context_BaseUri" xml:space="preserve">
+    <value>クエリやフラグメントを含まない、絶対指定の適切な形式の http URL が必要です。</value>
+  </data>
+  <data name="Context_BaseUriRequired" xml:space="preserve">
+    <value>この操作を実行する前に、BaseUri プロパティを設定する必要があります。</value>
+  </data>
+  <data name="Context_BatchExecuteError" xml:space="preserve">
+    <value>バッチ実行中にこのクエリに関するエラーが発生しました。詳細については、内部例外を参照してください。</value>
+  </data>
+  <data name="Context_BatchNotSupportedForMediaLink" xml:space="preserve">
+    <value>バッチ モードでは、[MediaEntry] 属性を含むエンティティを保存することは現在サポートされていません。代わりに、非バッチ モードを使用してください。</value>
+  </data>
+  <data name="Context_BatchNotSupportedForNamedStreams" xml:space="preserve">
+    <value>エンティティに 1 つ以上のストリームが関連付けられている場合、変更をバッチとして保存することはできません。SaveChangesOptions.Batch および SaveChangesOptions.BatchWithIndependentOperations オプションを有効にしないで SaveChanges 操作をやり直してください。</value>
+  </data>
+  <data name="Context_BodyOperationParametersNotAllowedWithGet" xml:space="preserve">
+    <value>HttpMethod が GET に設定されると、型 BodyOperationParameter の OperationParameter を指定できません。</value>
+  </data>
+  <data name="Context_BothLocationAndIdMustBeSpecified" xml:space="preserve">
+    <value>応答には 'Location' ヘッダーと 'DataServiceId' ヘッダーの両方が必要です。または、応答にはこれらのヘッダーのどちらも含めないでください。</value>
+  </data>
+  <data name="Context_BuildingRequestAndSendingRequestCannotBeUsedTogether" xml:space="preserve">
+    <value>SendingRequest は非推奨のイベントです。BuildingRequest を使用している場合は、SendingRequest を使用できません。代わりに SendingRequest2 を使用してください。</value>
+  </data>
+  <data name="Context_CannotChangeStateIfAdded" xml:space="preserve">
+    <value>'Added' 状態のエンティティを '{0}' に変更できません。'Detached' のみに変更できます。</value>
+  </data>
+  <data name="Context_CannotChangeStateToAdded" xml:space="preserve">
+    <value>ChangeState メソッドでは 'Added' 状態がサポートされていません。挿入のための追加情報が必要です。代わりに、AddObject または AddRelatedObject を使用してください。</value>
+  </data>
+  <data name="Context_CannotChangeStateToModifiedIfNotUnchanged" xml:space="preserve">
+    <value>エンティティの状態を 'Modified' に変更できるのは、現在 'Unchanged' になっている場合のみです。</value>
+  </data>
+  <data name="Context_CannotConvertKey" xml:space="preserve">
+    <value>URI で値 '{0}' をキー文字列に変換できません。</value>
+  </data>
+  <data name="Context_ChildResourceExists" xml:space="preserve">
+    <value>リンクのターゲット オブジェクトの ID がリンクのソース オブジェクトに依存しているため、2 つのオブジェクトの間のリンクを削除できませんでした。</value>
+  </data>
+  <data name="Context_ContentTypeRequiredForNamedStream" xml:space="preserve">
+    <value>名前付きストリームの ContentType 値を NULL または空の文字列にすることはできません。</value>
+  </data>
+  <data name="Context_DidNotOriginateAsync" xml:space="preserve">
+    <value>現在のオブジェクトは非同期の結果を発行しませんでした。</value>
+  </data>
+  <data name="Context_DifferentEntityAlreadyContained" xml:space="preserve">
+    <value>コンテキストは、既に同じリソース URI で別のエンティティを追跡しています。</value>
+  </data>
+  <data name="Context_DuplicateBodyOperationParameterName" xml:space="preserve">
+    <value>同じ名前の本体操作パラメーターが複数見つかりました。本体操作パラメーター名は一意である必要があります。</value>
+  </data>
+  <data name="Context_DuplicateUriOperationParameterName" xml:space="preserve">
+    <value>同じ名前の付いた URI 操作パラメーターが複数見つかりました。URI 操作パラメーター名は一意である必要があります。</value>
+  </data>
+  <data name="Context_EndExecuteExpectedVoidResponse" xml:space="preserve">
+    <value>void サービスの操作とアクションの EndExecute オーバーロードは、サーバーから非 void 応答を受け取りました。</value>
+  </data>
+  <data name="Context_EntityAlreadyContained" xml:space="preserve">
+    <value>コンテキストは既にエンティティを追跡しています。</value>
+  </data>
+  <data name="Context_EntityDoesNotContainNamedStream" xml:space="preserve">
+    <value>エンティティには、'{0}' という名前のストリームがありません。ストリームの名前が正しいことを確認してください。</value>
+  </data>
+  <data name="Context_EntityMetadataBuilderIsRequired" xml:space="preserve">
+    <value>ODataEntityMetadataBuilder の実装は必須ですが、GetEntityMetadataBuilder から NULL 値が返されました。</value>
+  </data>
+  <data name="Context_EntityNotContained" xml:space="preserve">
+    <value>コンテキストは現在エンティティを追跡していません。</value>
+  </data>
+  <data name="Context_EntityNotMediaLinkEntry" xml:space="preserve">
+    <value>この操作では、指定されたエンティティが Media Link Entry で、ReadStreamUri が使用可能である必要があります。ただし、指定されたエンティティが Media Link Entry でないか、有効な ReadStreamUri 値を指定されていません。エンティティが Media Link Entry の場合は、このエンティティについてデータ サービスを再度クエリし、有効な ReadStreamUri 値を取得してください。</value>
+  </data>
+  <data name="Context_EntitySetName" xml:space="preserve">
+    <value>クエリやフラグメントを含まない相対 URL パスが必要です。</value>
+  </data>
+  <data name="Context_ExecuteExpectedVoidResponse" xml:space="preserve">
+    <value>void サービスの操作とアクションに対する Execute オーバーライドは、サーバーから非 void 応答を受け取りました。</value>
+  </data>
+  <data name="Context_ExecuteExpectsGetOrPost" xml:space="preserve">
+    <value>HttpMethod には GET または POST を指定してください。</value>
+  </data>
+  <data name="Context_InternalError" xml:space="preserve">
+    <value>System.Data.Services.Client 内部エラー {0} です。</value>
+  </data>
+  <data name="Context_LinkResourceInsertFailure" xml:space="preserve">
+    <value>リンクのリソースのいずれかを挿入できませんでした。</value>
+  </data>
+  <data name="Context_LocationHeaderExpectsAbsoluteUri" xml:space="preserve">
+    <value>応答で指定された 'Location' ヘッダー値は絶対 URI でなければなりません。</value>
+  </data>
+  <data name="Context_MLEWithoutSaveStream" xml:space="preserve">
+    <value>エンティティ型 {0} に MediaEntry 属性が設定されていますが、エンティティに save ストリームが設定されていません。</value>
+  </data>
+  <data name="Context_MissingOperationParameterName" xml:space="preserve">
+    <value>OperationParameter の Name プロパティは NULL 以外の空でない文字列に設定する必要があります。</value>
+  </data>
+  <data name="Context_MissingSelfAndEditLinkForNamedStream" xml:space="preserve">
+    <value>'{0}' という名前のストリームの self-link または edit-media link がありません。ストリームに self-link または edit-media link が指定されていることを確認してください。</value>
+  </data>
+  <data name="Context_NoContentTypeForMediaLink" xml:space="preserve">
+    <value>型 '{0}' のメディア リンク オブジェクトはプロパティ '{1}' で指定された MIME の種類を使用するように構成されていますが、そのプロパティの値は NULL または空です。</value>
+  </data>
+  <data name="Context_NoLoadWithInsertEnd" xml:space="preserve">
+    <value>コンテキストは、追加済み状態のオブジェクトの関連コレクションまたは参照を読み込むことができません。</value>
+  </data>
+  <data name="Context_NoRelationWithDeleteEnd" xml:space="preserve">
+    <value>リレーションシップの一方または双方が削除済み状態です。</value>
+  </data>
+  <data name="Context_NoRelationWithInsertEnd" xml:space="preserve">
+    <value>リレーションシップの一方または双方が追加済み状態です。</value>
+  </data>
+  <data name="Context_NullElementInOperationParameterArray" xml:space="preserve">
+    <value>操作パラメーターの配列に、許可されていない NULL 要素が含まれています。</value>
+  </data>
+  <data name="Context_NullKeysAreNotSupported" xml:space="preserve">
+    <value>シリアル化されたリソースで、キー メンバー '{0}' に NULL 値があります。キー メンバーでは、NULL 値がサポートされていません。</value>
+  </data>
+  <data name="Context_OnMessageCreatingReturningNull" xml:space="preserve">
+    <value>DataServiceContext.Configurations.RequestPipeline.OnMessageCreating プロパティは null 値を返すことができません。このプロパティには null 以外の値を返してください。</value>
+  </data>
+  <data name="Context_OperationCanceled" xml:space="preserve">
+    <value>操作が取り消されました。</value>
+  </data>
+  <data name="Context_PropertyNotSupportedForMaxDataServiceVersionGreaterThanX" xml:space="preserve">
+    <value>MaxProtocolVersion が '{1}' より大きい場合、プロパティ '{0}' はサポートされません。</value>
+  </data>
+  <data name="Context_RelationAlreadyContained" xml:space="preserve">
+    <value>コンテキストは既にリレーションシップを追跡しています。</value>
+  </data>
+  <data name="Context_RelationNotRefOrCollection" xml:space="preserve">
+    <value>sourceProperty がターゲットのオブジェクトの種類の参照またはコレクションではありません。</value>
+  </data>
+  <data name="Context_RequestUriIsRelativeBaseUriRequired" xml:space="preserve">
+    <value>requestUri は相対 URI なので、DataServiceContext で BaseUri プロパティを設定する必要があります。</value>
+  </data>
+  <data name="Context_RequestVersionIsBiggerThanProtocolVersion" xml:space="preserve">
+    <value>要求では、プロトコルのバージョン {0} を使用する必要がありますが、データ サービス コンテキストの MaxProtocolVersion は {1} に設定されます。MaxProtocolVersion をより高いバージョンに設定してから、操作をやり直してください。</value>
+  </data>
+  <data name="Context_ResolveEntitySetOrBaseUriRequired" xml:space="preserve">
+    <value>ResolveEntitySet 関数は EntitySet '{0}' に対して NULL 以外の URI を返す必要があります。返されない場合は、BaseUri プロパティを設定する必要があります。</value>
+  </data>
+  <data name="Context_ResolveReturnedInvalidUri" xml:space="preserve">
+    <value>ResolveEntitySet 関数によって返される URI は、正しく構成された絶対 URL である必要があります。この URL には、"http" または "https" のスキーム名が使用されており、クエリ文字列またはフラグメント識別子は使用されません。</value>
+  </data>
+  <data name="Context_ResponseVersionIsBiggerThanProtocolVersion" xml:space="preserve">
+    <value>応答バージョンは {0} ですが、データ サービス コンテキストの MaxProtocolVersion は {1} に設定されます。応答に必要なバージョンに MaxProtocolVersion を設定してから、要求を再試行してください。必要なプロトコル バージョンがクライアントでサポートされていない場合は、クライアントをアップグレードしてください。</value>
+  </data>
+  <data name="Context_SendingRequestEventArgsNotHttp" xml:space="preserve">
+    <value>このプロパティには、現在 HttpWebRequest のインスタンスのみが許可されています。WebRequest の他のサブタイプはサポートされていません。</value>
+  </data>
+  <data name="Context_SendingRequest_InvalidWhenUsingOnMessageCreating" xml:space="preserve">
+    <value>SendingRequest は DataServiceContext.Configurations.RequestPipeline.OnMessageCreating プロパティと組み合わせて使用することはできません。代わりに、SendingRequest2 と DataServiceContext.Configurations.RequestPipeline.OnMessageCreating プロパティを使用してください。</value>
+  </data>
+  <data name="Context_SetLinkReferenceOnly" xml:space="preserve">
+    <value>SetLink メソッドは、sourceProperty がコレクションでない場合にのみ機能します。</value>
+  </data>
+  <data name="Context_SetSaveStreamOnInvalidEntityState" xml:space="preserve">
+    <value>状態 '{0}' のエンティティで SetSaveStream 呼び出すことができません。</value>
+  </data>
+  <data name="Context_SetSaveStreamOnMediaEntryProperty" xml:space="preserve">
+    <value>メディア エントリ プロパティが定義された型 {0} のエンティティに対して SetSaveStream を使用することはできません。</value>
+  </data>
+  <data name="Context_SetSaveStreamWithoutEditMediaLink" xml:space="preserve">
+    <value>エンティティのメディア ストリームには edit-media link がありません。このストリームに edit-media link が指定されていることを確認してください。</value>
+  </data>
+  <data name="Context_SetSaveStreamWithoutNamedStreamEditLink" xml:space="preserve">
+    <value>'{0}' という名前のストリーム '{0}' を変更できません。ストリームには edit-media link がありません。ストリーム名が正しいことと、このストリームの edit-media link が応答のエントリ要素に含まれていることを確認してください。</value>
+  </data>
+  <data name="Context_TrackingExpectsAbsoluteUri" xml:space="preserve">
+    <value>Atom id 要素または DataServiceId ヘッダーで指定された ID 値は絶対 URI である必要があります。</value>
+  </data>
+  <data name="Context_UnexpectedZeroRawRead" xml:space="preserve">
+    <value>このプロパティの生データを読み取り中に stream.Read() から予期しない結果 (&lt;= 0) が返されました。</value>
+  </data>
+  <data name="Context_VersionNotSupported" xml:space="preserve">
+    <value>応答バージョン '{0}' はサポートされていません。サポートされているバージョンは '{1}' だけです。</value>
+  </data>
+  <data name="DSKAttribute_MustSpecifyAtleastOnePropertyName" xml:space="preserve">
+    <value>DataServiceKey 属性では、少なくとも 1 つのプロパティ名を指定する必要があります。</value>
+  </data>
+  <data name="DataBinding_BindingOperation_ArrayItemNotEntity" xml:space="preserve">
+    <value>DataServiceCollection での '{0}' 操作中に指定された値は、キーを含むエンティティ型ではありません。</value>
+  </data>
+  <data name="DataBinding_BindingOperation_ArrayItemNull" xml:space="preserve">
+    <value>DataServiceCollection での '{0}' 操作中に NULL 値は許可されません。</value>
+  </data>
+  <data name="DataBinding_BindingOperation_DetachedSource" xml:space="preserve">
+    <value>既に親エンティティがデタッチされている場合は、子エンティティで Add/Update/Delete 操作を実行できません。</value>
+  </data>
+  <data name="DataBinding_CollectionAssociatedWithMultipleEntities" xml:space="preserve">
+    <value>型 '{0}' のコレクション オブジェクトを追跡できませんでした。このコレクション オブジェクトは既に追跡されています。</value>
+  </data>
+  <data name="DataBinding_CollectionChangedUnknownActionCollection" xml:space="preserve">
+    <value>型 '{1}' のコレクション オブジェクトによって発生した OnCollectionChanged イベントで予期しないアクション '{0}' があります。</value>
+  </data>
+  <data name="DataBinding_CollectionPropertySetterValueHasObserver" xml:space="preserve">
+    <value>DataServiceCollection のインスタンスが既に追跡されている場合、そのインスタンスをエンティティ プロパティに設定することはできません。エンティティ型 '{1}' のプロパティ '{0}' でエラーが発生しました。</value>
+  </data>
+  <data name="DataBinding_ComplexObjectAssociatedWithMultipleEntities" xml:space="preserve">
+    <value>型 '{0}' の複合オブジェクトを追跡できませんでした。この複合オブジェクトは既に追跡されています。</value>
+  </data>
+  <data name="DataBinding_DataServiceCollectionArgumentMustHaveEntityType" xml:space="preserve">
+    <value>追跡する DataServiceCollection は、少なくとも 1 つのキー プロパティを含むエンティティ型の要素を含んでいる必要があります。要素型 '{0}' にはキー プロパティがありません。</value>
+  </data>
+  <data name="DataBinding_DataServiceCollectionChangedUnknownActionCollection" xml:space="preserve">
+    <value>DataServiceCollection によって発生した OnCollectionChanged イベントで予期しないアクション '{0}' があります。</value>
+  </data>
+  <data name="DataBinding_EntityAlreadyInCollection" xml:space="preserve">
+    <value>型 '{0}' のエンティティを追加しようとしたコレクションに同じエンティティが既に存在しています。</value>
+  </data>
+  <data name="DataBinding_NotifyCollectionChangedNotImpl" xml:space="preserve">
+    <value>エンティティ型または複合型を追跡できませんでした。エンティティ型または複合型には、INotifyCollectionChanged インターフェイスを実装しない型 '{0}' のコレクション プロパティが含まれています。</value>
+  </data>
+  <data name="DataBinding_NotifyPropertyChangedNotImpl" xml:space="preserve">
+    <value>エンティティ型または複合型を追跡できませんでした。エンティティ型または複合型 '{0}' は、INotifyPropertyChanged インターフェイスを実装していません。</value>
+  </data>
+  <data name="DataBinding_Util_UnknownEntitySetName" xml:space="preserve">
+    <value>型 '{0}' のエンティティにエンティティ セット名が指定されていません。</value>
+  </data>
+  <data name="DataServiceClientFormat_AtomEventsOnlySupportedWithAtomFormat" xml:space="preserve">
+    <value>ReadingEntity イベントと WritingEntity イベントがサポートされるのは、Atom 形式を使用する場合だけです。Atom 形式を使用するか、これらのイベントの登録済みのハンドラーをすべて削除してから別の形式を有効にしてください。</value>
+  </data>
+  <data name="DataServiceClientFormat_JsonUnsupportedForLessThanV3" xml:space="preserve">
+    <value>MaxProtocolVersion が V3 未満に設定されている場合は UseJson がサポートされません。この JSON 形式をサポートするのは、OData v3 以降のバージョンのみです。</value>
+  </data>
+  <data name="DataServiceClientFormat_JsonVerboseUnsupported" xml:space="preserve">
+    <value>コンテンツ タイプ値 '{0}' はサポートされていません。</value>
+  </data>
+  <data name="DataServiceClientFormat_LoadServiceModelRequired" xml:space="preserve">
+    <value>パラメーターを指定せずに UseJson メソッドを呼び出す場合は、LoadServiceModel プロパティを使用して、有効な IEdmModel インスタンスを指定する必要があります。</value>
+  </data>
+  <data name="DataServiceClientFormat_ValidServiceModelRequiredForJson" xml:space="preserve">
+    <value>JSON 形式を使用するには、まず、DataServiceContext.Format.UseJson() を呼び出して有効なサービス モデルを指定する必要があります。</value>
+  </data>
+  <data name="DataServiceCollection_CannotDetermineContextFromItems" xml:space="preserve">
+    <value>DataServiceCollection インスタンスが属する DataServiceContext を特定できませんでした。DataServiceContext は DataServiceCollection コンストラクターで渡す必要があります。または、DataServiceContext を使用して、DataServiceCollection 内のアイテムのソースである DataServiceQuery または QueryOperationResponse オブジェクトを作成する必要があります。</value>
+  </data>
+  <data name="DataServiceCollection_CannotStopTrackingChildCollection" xml:space="preserve">
+    <value>子コレクションで DataServiceCollection の追跡を停止できません。</value>
+  </data>
+  <data name="DataServiceCollection_InsertIntoTrackedButNotLoadedCollection" xml:space="preserve">
+    <value>コレクションにアイテムを追加できませんでした。DataServiceCollection 内のアイテムが DataServiceContext によって追跡されているときは、アイテムがコレクションに読み込まれるまで、新しいアイテムを追加できません。</value>
+  </data>
+  <data name="DataServiceCollection_LoadAsyncNoParamsWithoutParentEntity" xml:space="preserve">
+    <value>DataServiceCollection が関連エンティティの子コレクションでない場合、LoadAsync メソッドを呼び出すことはできません。</value>
+  </data>
+  <data name="DataServiceCollection_LoadAsyncRequiresDataServiceQuery" xml:space="preserve">
+    <value>DataServiceCollection の LoadAsync メソッドを呼び出す場合、型指定された DataServiceQuery オブジェクトだけを指定できます。</value>
+  </data>
+  <data name="DataServiceCollection_LoadRequiresTargetCollectionObserved" xml:space="preserve">
+    <value>Load 操作のターゲット コレクションには、関連付けられている DataServiceContext が必要です。</value>
+  </data>
+  <data name="DataServiceCollection_MultipleLoadAsyncOperationsAtTheSameTime" xml:space="preserve">
+    <value>前の LoadAsync 操作がまだ完了していません。前の操作が完了するまでは、DataServiceCollection の LoadAsync メソッドを再度呼び出すことはできません。</value>
+  </data>
+  <data name="DataServiceCollection_OperationForTrackedOnly" xml:space="preserve">
+    <value>この操作は、追跡されているコレクションでのみサポートされています。</value>
+  </data>
+  <data name="DataServiceException_GeneralError" xml:space="preserve">
+    <value>この要求の処理中にエラーが発生しました。</value>
+  </data>
+  <data name="DataServiceQuery_EnumerationNotSupported" xml:space="preserve">
+    <value>このターゲット フレームワークでは、データ サービス クエリを直接列挙できません。これは、列挙では同期要求が自動的にデータ サービスに送られるためです。このフレームワークは非同期操作のみをサポートするため、列挙をサポートするクエリ結果を取得するには、BeginExecute および EndExecute メソッドを呼び出す必要があります。</value>
+  </data>
+  <data name="DataServiceRequest_FailGetCount" xml:space="preserve">
+    <value>サーバーからカウント値を取得できませんでした。</value>
+  </data>
+  <data name="Deserialize_Current" xml:space="preserve">
+    <value>現在値の '{1}' 型は、必要な '{0}' 型と互換性がありません。</value>
+  </data>
+  <data name="Deserialize_ExpectingSimpleValue" xml:space="preserve">
+    <value>応答のストリームを処理中にエラーが発生しました。XML 要素に混在コンテンツが含まれています。</value>
+  </data>
+  <data name="Deserialize_GetEnumerator" xml:space="preserve">
+    <value>この IEnumerable では、1 つの列挙だけがサポートされています。</value>
+  </data>
+  <data name="Deserialize_MismatchAtomLinkEntryPropertyIsCollection" xml:space="preserve">
+    <value>応答のストリームを処理中にエラーが発生しました。Atom のペイロードにエントリがあり、プロパティ '{0}' がコレクションです。</value>
+  </data>
+  <data name="Deserialize_MismatchAtomLinkFeedPropertyNotCollection" xml:space="preserve">
+    <value>応答のストリームを処理中にエラーが発生しました。Atom のペイロードにフィードがあり、プロパティ '{0}' がコレクションではありません。</value>
+  </data>
+  <data name="Deserialize_MismatchAtomLinkLocalSimple" xml:space="preserve">
+    <value>応答のストリームを処理中にエラーが発生しました。Atom のペイロードにリンクがあり、ローカル オブジェクトに単純値が含まれています。</value>
+  </data>
+  <data name="Deserialize_MissingIdElement" xml:space="preserve">
+    <value>応答のストリームを処理中にエラーが発生しました。応答に ID 要素がありません。</value>
+  </data>
+  <data name="Deserialize_MixedTextWithComment" xml:space="preserve">
+    <value>応答のストリームを処理中にエラーが発生しました。要素値にコメントが混在することはサポートされていません。</value>
+  </data>
+  <data name="Deserialize_NoLocationHeader" xml:space="preserve">
+    <value>この POST 要求に対する応答に 'location' ヘッダーが含まれていませんでした。この状態は、このクライアントではサポートされていません。</value>
+  </data>
+  <data name="Deserialize_ServerException" xml:space="preserve">
+    <value>応答のストリームを処理中にエラーが発生しました。サーバーでエラーが発生し、次のメッセージが返されました:
+{0}</value>
+  </data>
+  <data name="EdmValueUtils_CannotConvertTypeToClrValue" xml:space="preserve">
+    <value>プリミティブの種類が '{0}' の値は、プリミティブ オブジェクト値に変換できません。</value>
+  </data>
+  <data name="EdmValueUtils_IncorrectPrimitiveTypeKind" xml:space="preserve">
+    <value>互換性のないプリミティブ型の種類が見つかりました。検出された型 '{0}' は、予期していた種類 '{1}' ではなく、種類 '{2}' でした。</value>
+  </data>
+  <data name="EdmValueUtils_IncorrectPrimitiveTypeKindNoTypeName" xml:space="preserve">
+    <value>互換性のないプリミティブ型の種類が見つかりました。必要な種類 '{1}' ではなく型の種類 '{0}' が見つかりました。</value>
+  </data>
+  <data name="EdmValueUtils_UnsupportedPrimitiveType" xml:space="preserve">
+    <value>プリミティブ値に型 '{0}' が見つかりました。OData では、型 '{0}' はサポートされているプリミティブ型ではありません。</value>
+  </data>
+  <data name="EntityDescriptor_MissingSelfEditLink" xml:space="preserve">
+    <value>ID '{0}' のエンティティには、self-link または edit-link が関連付けられていません。エンティティに self-link または edit-link が関連付けられていることを確認してください。</value>
+  </data>
+  <data name="EpmSourceTree_CollectionPropertyCannotBeMapped" xml:space="preserve">
+    <value>型 '{1}' のプロパティ '{0}' はコレクションです。コレクションのプロパティは、エンティティのプロパティ マッピングを使用してマップできません。</value>
+  </data>
+  <data name="EpmSourceTree_DuplicateEpmAttrsWithSameSourceName" xml:space="preserve">
+    <value>リソース型 '{1}' の複数の EntityPropertyMappingAttribute で PropertyName プロパティ値 '{0}' が複数回指定されています。</value>
+  </data>
+  <data name="EpmSourceTree_EndsWithNonPrimitiveType" xml:space="preserve">
+    <value>リソース型の EntityPropertyMappingAttribute で PropertyName プロパティの末尾に指定されているプロパティ '{0}' はプリミティブ型ではありません。</value>
+  </data>
+  <data name="EpmSourceTree_InaccessiblePropertyOnType" xml:space="preserve">
+    <value>型 '{1}' のプロパティ '{0}' は存在しないか、アクセスできません。</value>
+  </data>
+  <data name="EpmSourceTree_InvalidSourcePath" xml:space="preserve">
+    <value>型 '{0}' の EntityPropertyMappingAttribute の PropertyName プロパティ値 '{1}' は無効です。</value>
+  </data>
+  <data name="EpmSourceTree_NamedStreamCannotBeMapped" xml:space="preserve">
+    <value>型 '{1}' のプロパティ '{0}' が 'DataServiceStreamLink' 型です。エンティティ プロパティ マッピングを使用してストリームのプロパティをマップすることはできません。</value>
+  </data>
+  <data name="EpmSourceTree_SpatialTypeCannotBeMapped" xml:space="preserve">
+    <value>型 '{1}' のプロパティ '{0}' が空間型です。エンティティ プロパティ マッピングを使用して空間型のプロパティをマップすることはできません。</value>
+  </data>
+  <data name="EpmTargetTree_AttributeInMiddle" xml:space="preserve">
+    <value>属性の識別子 '{0}' は、EntityPropertyMappingAttribute の TargetName プロパティの途中で指定されています。</value>
+  </data>
+  <data name="EpmTargetTree_DuplicateEpmAttrsWithSameTargetName" xml:space="preserve">
+    <value>リソース型 '{1}' の複数の EntityPropertyMappingAttribute で TargetName プロパティ '{0}' が同じ値になっています。競合しているプロパティは '{2}' と '{3}' です。</value>
+  </data>
+  <data name="EpmTargetTree_InvalidTargetPath" xml:space="preserve">
+    <value>EntityPropertyMappingAttribute で設定された TargetName プロパティ パス '{0}' は無効です。</value>
+  </data>
+  <data name="General_InternalError" xml:space="preserve">
+    <value>内部エラー '{0}' が発生しました。</value>
+  </data>
+  <data name="HttpProcessUtility_ClosingQuoteNotFound" xml:space="preserve">
+    <value>MIME の種類のパラメーター '{0}' に指定された値が正しくありません。パラメーター値は引用符で開始されていますが、終了の引用符が見つかりませんでした。</value>
+  </data>
+  <data name="HttpProcessUtility_ContentTypeMissing" xml:space="preserve">
+    <value>Content-Type ヘッダーの値がありません。</value>
+  </data>
+  <data name="HttpProcessUtility_EncodingNotSupported" xml:space="preserve">
+    <value>文字セット '{0}' はサポートされていません。</value>
+  </data>
+  <data name="HttpProcessUtility_EscapeCharAtEnd" xml:space="preserve">
+    <value>MIME の種類のパラメーター '{0}' に指定された値が正しくありません。値がエスケープ文字で終了していますが、パラメーター値では常にエスケープ文字の後に文字を続ける必要があります。</value>
+  </data>
+  <data name="HttpProcessUtility_EscapeCharWithoutQuotes" xml:space="preserve">
+    <value>MIME の種類のパラメーター '{0}' に指定された値が正しくありません。値は引用符で囲まれていませんが、エスケープ文字が含まれています。</value>
+  </data>
+  <data name="HttpProcessUtility_MediaTypeMissingValue" xml:space="preserve">
+    <value>メディアの種類にパラメーター値がありません。</value>
+  </data>
+  <data name="HttpProcessUtility_MediaTypeRequiresSemicolonBeforeParameter" xml:space="preserve">
+    <value>メディアの種類でパラメーター定義の前に ';' 文字が必要です。</value>
+  </data>
+  <data name="HttpProcessUtility_MediaTypeRequiresSlash" xml:space="preserve">
+    <value>メディアの種類に '/' 文字が必要です。</value>
+  </data>
+  <data name="HttpProcessUtility_MediaTypeRequiresSubType" xml:space="preserve">
+    <value>メディアの種類にサブタイプ定義が必要です。</value>
+  </data>
+  <data name="HttpProcessUtility_MediaTypeUnspecified" xml:space="preserve">
+    <value>メディアの種類が指定されていません。</value>
+  </data>
+  <data name="MaterializeFromAtom_CollectionKeyNotPresentInLinkTable" xml:space="preserve">
+    <value>コレクションが現在のエントリの一部ではありません</value>
+  </data>
+  <data name="MaterializeFromAtom_CountNotPresent" xml:space="preserve">
+    <value>Count 値は応答のストリームの一部ではありません。</value>
+  </data>
+  <data name="MaterializeFromAtom_GetNestLinkForFlatCollection" xml:space="preserve">
+    <value>この応答には入れ子にされたコレクションは含まれていません。Key として代わりに NULL を使用してください。</value>
+  </data>
+  <data name="MaterializeFromAtom_TopLevelLinkNotAvailable" xml:space="preserve">
+    <value>トップレベルのリンクは、応答が列挙された後でのみ使用できます。</value>
+  </data>
+  <data name="ODataMetadataBuilder_MissingEntityInstanceUri" xml:space="preserve">
+    <value>エンティティ セット '{0}' には、'OData.EntityInstanceUri' 注釈も 'OData.EntitySetUriSuffix' 注釈も見つかりませんでした。これらの注釈のいずれかが必要です。</value>
+  </data>
+  <data name="ODataMetadataBuilder_MissingEntitySetUri" xml:space="preserve">
+    <value>エンティティ セット '{0}' には、'OData.EntitySetUri' 注釈が含まれていません。この注釈が必要です。</value>
+  </data>
+  <data name="ODataMetadataBuilder_MissingSegmentForEntitySetUriSuffix" xml:space="preserve">
+    <value>エンティティ セット '{0}' の URI '{1}' にはパス セグメントが含まれていません。エンティティ セットの URI サフィックスをパス セグメントのない URI に追加することはできません。</value>
+  </data>
+  <data name="ODataRequestMessage_GetStreamMethodNotSupported" xml:space="preserve">
+    <value>GetStream メソッドはサポートされていません。</value>
+  </data>
+  <data name="Serializer_InvalidCollectionParamterItemType" xml:space="preserve">
+    <value>'{0}' という名前の操作パラメーターには、Edm 型の種類が '{1}' のコレクション アイテムがあります。コレクション アイテムには、プリミティブ型または複合 Edm 型の種類を指定する必要があります。</value>
+  </data>
+  <data name="Serializer_InvalidParameterType" xml:space="preserve">
+    <value>'{0}' という名前の操作パラメーターの Edm 型の種類は '{1}' です。操作パラメーターには、プリミティブ型、複合型、またはプリミティブ型か複合型のコレクションを指定する必要があります。</value>
+  </data>
+  <data name="Serializer_LoopsNotAllowedInComplexTypes" xml:space="preserve">
+    <value>プロパティ '{0}' のシリアル化中に循環ループが検出されました。コレクション型や複合型を返すプロパティにループが存在しないことを確認してください。</value>
+  </data>
+  <data name="Serializer_LoopsNotAllowedInNonPropertyComplexTypes" xml:space="preserve">
+    <value>複合型 '{0}' のシリアル化中に循環ループが検出されました。コレクションや複合型にループが存在しないことを確認してください。</value>
+  </data>
+  <data name="Serializer_NullCollectionParamterItemValue" xml:space="preserve">
+    <value>'{0}' という名前の操作パラメーターには、NULL のコレクション アイテムがあります。コレクションのアイテムは NULL にしないでください。</value>
+  </data>
+  <data name="Serializer_UriDoesNotContainParameterAlias" xml:space="preserve">
+    <value>パラメーター エイリアス '{0}' が要求 URI に存在しませんでした。エイリアスとして渡されるパラメーターはすべて、要求 URI に存在する必要があります。</value>
+  </data>
+  <data name="Util_EmptyArray" xml:space="preserve">
+    <value>空の配列です。</value>
+  </data>
+  <data name="Util_EmptyString" xml:space="preserve">
+    <value>空の文字列です。</value>
+  </data>
+  <data name="Util_NullArrayElement" xml:space="preserve">
+    <value>配列に NULL 要素が含まれています。</value>
+  </data>
+  <data name="WebUtil_CollectionTypeNotSupportedInV2OrBelow" xml:space="preserve">
+    <value>型 '{0}' はコレクション型です。コレクション型は、プロトコルの 'V3' バージョン以上でのみサポートされています。</value>
+  </data>
+  <data name="WebUtil_TypeMismatchInCollection" xml:space="preserve">
+    <value>コレクション プロパティ '{0}' のアイテムの型が正しくありません。コレクション プロパティのすべてのアイテムはコレクション アイテム型にする必要があります。</value>
+  </data>
+  <data name="WebUtil_TypeMismatchInNonPropertyCollection" xml:space="preserve">
+    <value>アイテム型が '{0}' のコレクションには、型が正しくないアイテムがあります。コレクション内のすべてのアイテムは、コレクション型にする必要があります。</value>
+  </data>
+</root>

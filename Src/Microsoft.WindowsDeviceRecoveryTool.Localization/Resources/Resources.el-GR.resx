@@ -1,0 +1,889 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccentColor" xml:space="preserve">
+    <value>Χρώμα τονισμού</value>
+  </data>
+  <data name="AccentColorBlack" xml:space="preserve">
+    <value>Μαύρο</value>
+  </data>
+  <data name="AccentColorBlue" xml:space="preserve">
+    <value>Μπλε</value>
+  </data>
+  <data name="AccentColorCobalt" xml:space="preserve">
+    <value>Βαθύ μπλε</value>
+  </data>
+  <data name="AccentColorCrimson" xml:space="preserve">
+    <value>Βαθύ κόκκινο</value>
+  </data>
+  <data name="AccentColorEmerald" xml:space="preserve">
+    <value>Σμαραγδί</value>
+  </data>
+  <data name="AccentColorIndigo" xml:space="preserve">
+    <value>Λουλακί</value>
+  </data>
+  <data name="AccentColorMauve" xml:space="preserve">
+    <value>Μοβ</value>
+  </data>
+  <data name="AccentColorSienna" xml:space="preserve">
+    <value>Σιένα</value>
+  </data>
+  <data name="AddressForm" xml:space="preserve">
+    <value>Διεύθυνση</value>
+  </data>
+  <data name="AllFilesSize" xml:space="preserve">
+    <value>Μέγεθος όλων των αρχείων: {0}</value>
+  </data>
+  <data name="AnotherInstanceAlreadyRunning" xml:space="preserve">
+    <value>Κάποια άλλη παρουσία του {0} εκτελείται ήδη</value>
+  </data>
+  <data name="ApplicationData" xml:space="preserve">
+    <value>Δεδομένα εφαρμογής</value>
+  </data>
+  <data name="ApplicationUpdate" xml:space="preserve">
+    <value>Ενημέρωση εφαρμογής</value>
+  </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>Είστε βέβαιοι;</value>
+  </data>
+  <data name="AutomaticPackageFileSelection" xml:space="preserve">
+    <value>Αναζήτηση σωστού πακέτου για συνδεδεμένο τηλέφωνο.</value>
+  </data>
+  <data name="AutomaticPackageSelection" xml:space="preserve">
+    <value>Αυτόματη επιλογή πακέτου</value>
+  </data>
+  <data name="AvailablePackageIsOlder" xml:space="preserve">
+    <value>Το διαθέσιμο λογισμικό είναι παλαιότερο από αυτό που υπάρχει στο τηλέφωνό σας.</value>
+  </data>
+  <data name="AwaitRecoveryAfterEmergencyFlashingInstruction" xml:space="preserve">
+    <value>Αναμονή τηλεφώνου μετά από την επιτυχημένη λειτουργία αποκατάστασης.
+Αν το επίπεδο φόρτισης της μπαταρίας είναι χαμηλό ενδέχεται να χρειαστούν έως και 30 λεπτά.</value>
+  </data>
+  <data name="BatteryCheckHeader" xml:space="preserve">
+    <value>Έλεγχος μπαταρίας</value>
+  </data>
+  <data name="BatteryCheckingCancelled" xml:space="preserve">
+    <value>Ο έλεγχος μπαταρίας ακυρώθηκε.</value>
+  </data>
+  <data name="BatteryWarning" xml:space="preserve">
+    <value>Βεβαιωθείτε ότι η στάθμη της μπαταρίας σας είναι τουλάχιστον 25%. Διαφορετικά, ενδέχεται να υποστεί βλάβη το τηλέφωνό σας.</value>
+  </data>
+  <data name="ButtonBrowse" xml:space="preserve">
+    <value>Περιήγηση</value>
+  </data>
+  <data name="ButtonCancel" xml:space="preserve">
+    <value>Ακύρωση</value>
+  </data>
+  <data name="ButtonChangePackagePath" xml:space="preserve">
+    <value>Αλλαγή διαδρομής πακέτου</value>
+  </data>
+  <data name="ButtonClean" xml:space="preserve">
+    <value>Εκκαθάριση των δεδομένων όλων των εφαρμογών</value>
+  </data>
+  <data name="ButtonCleanOneCategory" xml:space="preserve">
+    <value>Διαγραφή</value>
+  </data>
+  <data name="ButtonCollectLogs" xml:space="preserve">
+    <value>Εξαγωγή</value>
+  </data>
+  <data name="ButtonContinue" xml:space="preserve">
+    <value>Συνέχεια</value>
+  </data>
+  <data name="ButtonDelete" xml:space="preserve">
+    <value>Διαγραφή</value>
+  </data>
+  <data name="ButtonExit" xml:space="preserve">
+    <value>Έξοδος</value>
+  </data>
+  <data name="ButtonFinish" xml:space="preserve">
+    <value>Τέλος</value>
+  </data>
+  <data name="ButtonInstall" xml:space="preserve">
+    <value>Εγκατάσταση</value>
+  </data>
+  <data name="ButtonInstallSoftware" xml:space="preserve">
+    <value>Εγκατάσταση λογισμικού</value>
+  </data>
+  <data name="ButtonMyPhoneIsNotOnTheList" xml:space="preserve">
+    <value>Το τηλέφωνό μου δεν είναι στη λίστα</value>
+  </data>
+  <data name="ButtonMyPhoneWasNotDetected" xml:space="preserve">
+    <value>Το τηλέφωνό μου δεν ανιχνεύτηκε</value>
+  </data>
+  <data name="ButtonNewFolder" xml:space="preserve">
+    <value>Νέος φάκελος</value>
+  </data>
+  <data name="ButtonNext" xml:space="preserve">
+    <value>Επόμενο</value>
+  </data>
+  <data name="ButtonNo" xml:space="preserve">
+    <value>Όχι</value>
+  </data>
+  <data name="ButtonOff" xml:space="preserve">
+    <value>Απενεργοποίηση</value>
+  </data>
+  <data name="ButtonOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ButtonOn" xml:space="preserve">
+    <value>Ενεργοποίηση</value>
+  </data>
+  <data name="ButtonReset" xml:space="preserve">
+    <value>Επαναφορά στις προεπιλεγμένες ρυθμίσεις</value>
+  </data>
+  <data name="ButtonTryAgain" xml:space="preserve">
+    <value>Προσπαθήστε ξανά</value>
+  </data>
+  <data name="ButtonYes" xml:space="preserve">
+    <value>Ναι</value>
+  </data>
+  <data name="CapsLockIsOn" xml:space="preserve">
+    <value>Το Caps Lock είναι ενεργοποιημένο</value>
+  </data>
+  <data name="CheckLatestPackageHeader" xml:space="preserve">
+    <value>Πληροφορίες τηλεφώνου</value>
+  </data>
+  <data name="CheckingAlreadyDownloadedFiles" xml:space="preserve">
+    <value>Έλεγχος συμβατότητας αρχείων που έχουν ληφθεί</value>
+  </data>
+  <data name="CheckingAppUpdate" xml:space="preserve">
+    <value>Έλεγχος για διαθέσιμες ενημερώσεις εφαρμογών</value>
+  </data>
+  <data name="CheckingFirmwareAvailability" xml:space="preserve">
+    <value>Έλεγχος διαθεσιμότητας λογισμικού</value>
+  </data>
+  <data name="CheckingPackageIntegrity" xml:space="preserve">
+    <value>Έλεγχος ακεραιότητας πακέτου</value>
+  </data>
+  <data name="CleanUserDataQuestion" xml:space="preserve">
+    <value>Είστε βέβαιοι ότι θέλετε να διαγράψετε όλα τα δεδομένα της εφαρμογής (αναφορές, πακέτα λογισμικού τηλεφώνου, αρχεία καταγραφής);</value>
+  </data>
+  <data name="CollectingLogFilesInfo" xml:space="preserve">
+    <value>Συγκέντρωση αρχείων καταγραφής. Περιμένετε.</value>
+  </data>
+  <data name="ComputerBatteryWarning" xml:space="preserve">
+    <value>Η στάθμη μπαταρίας του υπολογιστή σας είναι χαμηλή. Συνδέστε τον υπολογιστή σας σε ένα φορτιστή και προσπαθήστε ξανά.</value>
+  </data>
+  <data name="ConnectPhone" xml:space="preserve">
+    <value>Συνδέστε το τηλέφωνό σας</value>
+  </data>
+  <data name="ConnectPhoneWithUsbCable" xml:space="preserve">
+    <value>Συνδέστε το καλώδιο USB στο τηλέφωνο.</value>
+  </data>
+  <data name="ConnectedDeviceCannotBeRecovered" xml:space="preserve">
+    <value>Δεν είναι δυνατή η αποκατάσταση του συνδεδεμένου τηλεφώνου.</value>
+  </data>
+  <data name="CouldNotDetectPhone" xml:space="preserve">
+    <value>Δεν ήταν δυνατός ο εντοπισμός του τηλεφώνου σας</value>
+  </data>
+  <data name="CreatingNewFolderMessage" xml:space="preserve">
+    <value>Δημιουργία νέου φακέλου</value>
+  </data>
+  <data name="CurrentFirmwareVersion" xml:space="preserve">
+    <value>Εγκατεστημένη έκδοση λογισμικού:</value>
+  </data>
+  <data name="CustomPackagesPath" xml:space="preserve">
+    <value>Χρήση προσαρμοσμένης διαδρομής πακέτων</value>
+  </data>
+  <data name="DeleteLogsQuestion" xml:space="preserve">
+    <value>Είστε βέβαιοι ότι θέλετε να διαγράψετε τα αρχεία καταγραφής;</value>
+  </data>
+  <data name="DeletePackagesQuestion" xml:space="preserve">
+    <value>Είστε βέβαιοι ότι θέλετε να διαγράψετε όλα τα αρχεία αποκατάστασης λογισμικού;</value>
+  </data>
+  <data name="DeleteReportsQuestion" xml:space="preserve">
+    <value>Είστε βέβαιοι ότι θέλετε να διαγράψετε τα αρχεία αναφοράς;</value>
+  </data>
+  <data name="DeletingLogFilesInfo" xml:space="preserve">
+    <value>Διαγραφή αρχείων καταγραφής</value>
+  </data>
+  <data name="DeletingPackagesInfo" xml:space="preserve">
+    <value>Διαγραφή αρχείων αποκατάστασης λογισμικού</value>
+  </data>
+  <data name="DeletingReportsInfo" xml:space="preserve">
+    <value>Διαγραφή αρχείων αναφοράς</value>
+  </data>
+  <data name="DetailsHeader" xml:space="preserve">
+    <value>Λεπτομέρειες</value>
+  </data>
+  <data name="Device" xml:space="preserve">
+    <value>Τηλέφωνο</value>
+  </data>
+  <data name="DeviceFlashing" xml:space="preserve">
+    <value>Εγκατάσταση πακέτου λογισμικού</value>
+  </data>
+  <data name="DeviceInUefiMode" xml:space="preserve">
+    <value>Τηλέφωνο Lumia</value>
+  </data>
+  <data name="DeviceSelectionHeader" xml:space="preserve">
+    <value>Επιλογή τηλεφώνου</value>
+  </data>
+  <data name="DirectoryNotSet" xml:space="preserve">
+    <value>Δεν επιλέχτηκε δεν υπάρχει κατάλογος.</value>
+  </data>
+  <data name="DisclaimerBackupInfo" xml:space="preserve">
+    <value>Κατά τη διάρκεια της εγκατάστασης, το προσωπικό περιεχόμενο του τηλεφώνου θα διαγραφεί. Συνιστούμε να δημιουργήσετε ένα αντίγραφο ασφαλείας των αρχείων του τηλεφώνου σας, στο μενού:</value>
+  </data>
+  <data name="DisclaimerHeader" xml:space="preserve">
+    <value>Αποποίηση ευθυνών</value>
+  </data>
+  <data name="DisclaimerInfoInstallationDuration" xml:space="preserve">
+    <value>Η εγκατάσταση του λογισμικού θα διαρκέσει περίπου 15 λεπτά. Ο χρόνος λήψης του πακέτου λογισμικού εξαρτάται από την ταχύτητα του δικτύου.</value>
+  </data>
+  <data name="DisconnectPhone" xml:space="preserve">
+    <value>Αποσυνδέστε το καλώδιο USB από το τηλέφωνο.</value>
+  </data>
+  <data name="DowngradeSoftwareQuestion" xml:space="preserve">
+    <value>Επιχειρείτε να εγκαταστήσετε λογισμικό που είναι παλαιότερο από αυτό που είναι εγκατεστημένο στο τηλέφωνό σας. Θέλετε να συνεχίσετε;</value>
+  </data>
+  <data name="DownloadCancelled" xml:space="preserve">
+    <value>Η λήψη ακυρώθηκε</value>
+  </data>
+  <data name="DownloadProgressExactMinute" xml:space="preserve">
+    <value>Απομένουν περίπου {0} λεπτά</value>
+  </data>
+  <data name="DownloadProgressMinute" xml:space="preserve">
+    <value>Απομένει περίπου ένα λεπτό</value>
+  </data>
+  <data name="DownloadProgressMinuteLess" xml:space="preserve">
+    <value>Απομένει λιγότερο από ένα λεπτό</value>
+  </data>
+  <data name="DownloadingCancelMessage" xml:space="preserve">
+    <value>Αυτή η ενέργεια θα ακυρώσει τη λήψη. Τα ήδη ληφθέντα αρχεία δεν θα διαγραφούν. Μπορείτε να συνεχίσετε αργότερα τη λήψη.</value>
+  </data>
+  <data name="DownloadingEmergencyPackage" xml:space="preserve">
+    <value>Λήψη πακέτου έκτακτης ανάγκης</value>
+  </data>
+  <data name="DownloadingFiles" xml:space="preserve">
+    <value>Λήψη αρχείων: {0}/{1} ({2})</value>
+  </data>
+  <data name="DownloadingInstallPacket" xml:space="preserve">
+    <value>Λήψη νέας έκδοσης</value>
+  </data>
+  <data name="DownloadingPackage" xml:space="preserve">
+    <value>Λήψη πακέτου</value>
+  </data>
+  <data name="EmergencyFlashingMessage" xml:space="preserve">
+    <value>Παλλόμενο φως έκτακτης ανάγκης</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Σφάλμα</value>
+  </data>
+  <data name="ErrorDescription_AutoUpdateException" xml:space="preserve">
+    <value>Φαίνεται να υπάρχει κάποιο πρόβλημα με τη σύνδεση στο διακομιστή. Ελέγξτε τη σύνδεσή σας στο Διαδίκτυο. Βεβαιωθείτε ότι οι ρυθμίσεις διακομιστή μεσολάβησης, τείχους προστασίας και προστασίας από ιούς είναι σωστές. Ελέγξτε επίσης τις ρυθμίσεις ώρας και ημερομηνίας.</value>
+  </data>
+  <data name="ErrorDescription_CannotAccessDirectoryException" xml:space="preserve">
+    <value>Φαίνεται ότι δεν έχετε τα απαραίτητα δικαιώματα για τον κατάλογο. Αλλάξτε τη διαδρομή ή τα δικαιώματα καταλόγου.</value>
+  </data>
+  <data name="ErrorDescription_DeviceNotFoundException" xml:space="preserve">
+    <value>Δεν βρέθηκε τηλέφωνο.</value>
+  </data>
+  <data name="ErrorDescription_DownloadPackageException" xml:space="preserve">
+    <value>Ελέγξτε αν οι ρυθμίσεις διακομιστή είναι σωστές και πατήστε "{0}". Αν θέλετε να ακυρώσετε τη διαδικασία λήψης, πατήστε "{1}".</value>
+  </data>
+  <data name="ErrorDescription_EmergencyPackageNotFoundOnServerException" xml:space="preserve">
+    <value>Το παλλόμενο φως έκτακτης ανάγκης προς το παρόν δεν υποστηρίζεται για το τηλέφωνό σας</value>
+  </data>
+  <data name="ErrorDescription_FirmwareFileNotFoundException" xml:space="preserve">
+    <value>Το πακέτο λογισμικού είναι ατελές. Ένα ή περισσότερα αρχεία λείπουν. Εκτελέστε λήψη του πακέτου και πάλι ή επιλέξτε άλλο λογισμικό.</value>
+  </data>
+  <data name="ErrorDescription_HtcDeviceCommunicationException" xml:space="preserve">
+    <value>Επανεκκινήστε τη συσκευή σε λειτουργία {0}.</value>
+  </data>
+  <data name="ErrorDescription_HtcPackageFileCheckException" xml:space="preserve">
+    <value>Επαναλάβετε τη λήψη του αρχείου πακέτου ROM.</value>
+  </data>
+  <data name="ErrorDescription_HtcServiceControlException" xml:space="preserve">
+    <value>Ελέγξτε αν η υπηρεσία {0} διακόπηκε.</value>
+  </data>
+  <data name="ErrorDescription_HtcUsbCommunicationException" xml:space="preserve">
+    <value>Επανεκκινήστε τη συσκευή σε {0}.
+Ελέγξτε τη σύνδεση USB της συσκευής.</value>
+  </data>
+  <data name="ErrorDescription_HtcUsbPortOpenException" xml:space="preserve">
+    <value>Ελέγξτε αν κάποια άλλη εφαρμογή απασχολεί τη θύρα.
+Ελέγξτε τη σύνδεση USB της συσκευής.</value>
+  </data>
+  <data name="ErrorDescription_InvalidOperationException" xml:space="preserve">
+    <value>Επανεκκινήστε την εφαρμογή.</value>
+  </data>
+  <data name="ErrorDescription_NoInternetConnectionException" xml:space="preserve">
+    <value>Δεν ήταν δυνατή η ολοκλήρωση της τελευταίας λειτουργίας, επειδή η σύνδεση στο Διαδίκτυο δεν είναι ενεργή.</value>
+  </data>
+  <data name="ErrorDescription_NotEnoughSpaceException" xml:space="preserve">
+    <value>Λείπει χώρος {0} στο δίσκο {1}. Ελευθερώστε λίγο χώρο και προσπαθήστε ξανά.</value>
+  </data>
+  <data name="ErrorDescription_OperationCanceledException" xml:space="preserve">
+    <value>Η λειτουργία ακυρώθηκε.</value>
+  </data>
+  <data name="ErrorDescription_PackageNotFoundException" xml:space="preserve">
+    <value>Μη διαθέσιμο πακέτο λογισμικού για το τηλέφωνο αυτό.</value>
+  </data>
+  <data name="ErrorDescription_PlannedServiceBreakException" xml:space="preserve">
+    <value>Η υπηρεσία δεν είναι διαθέσιμη μεταξύ {0} και {1}. Προσπαθήστε ξανά, αργότερα.</value>
+  </data>
+  <data name="ErrorDescription_ReadPhoneInformationException" xml:space="preserve">
+    <value>Δεν ήταν δυνατή η ανάγνωση των πληροφοριών από το τηλέφωνό σας.</value>
+  </data>
+  <data name="ErrorDescription_RestartApplicationException" xml:space="preserve">
+    <value>Αποσυνδέστε όλα τα τηλέφωνα και κάντε επανεκκίνηση της εφαρμογής. Αν το πρόβλημα παραμένει, καταργήστε την εγκατάσταση του {0} και πραγματοποιήστε λήψη της τελευταίας έκδοσης της εφαρμογής.</value>
+  </data>
+  <data name="ErrorDescription_UnknownError" xml:space="preserve">
+    <value>Δεν ήταν δυνατή η ολοκλήρωση της λειτουργίας.</value>
+  </data>
+  <data name="ErrorDescription_WebException" xml:space="preserve">
+    <value>Φαίνεται να υπάρχει κάποιο πρόβλημα με τη σύνδεση στο διακομιστή. Ελέγξτε τη σύνδεσή σας στο Διαδίκτυο. Βεβαιωθείτε ότι οι ρυθμίσεις διακομιστή μεσολάβησης, τείχους προστασίας και προστασίας από ιούς είναι σωστές.</value>
+  </data>
+  <data name="ErrorDetails_NotEnoughSpaceOnTheDiskException" xml:space="preserve">
+    <value>Ο ελάχιστος απαιτούμενος ελεύθερος χώρος σε δίσκο {0} που απαιτείται για ενημέρωση είναι {1}. Ελευθερώστε λίγο χώρο και προσπαθήστε ξανά.</value>
+  </data>
+  <data name="ErrorHeader" xml:space="preserve">
+    <value>Δυστυχώς, παρουσιάστηκε πρόβλημα</value>
+  </data>
+  <data name="Error_AutoUpdateException" xml:space="preserve">
+    <value>Ο έλεγχος ενημέρωσης εφαρμογής απέτυχε</value>
+  </data>
+  <data name="Error_CannotAccessDirectoryException" xml:space="preserve">
+    <value>Δεν είναι δυνατή η πρόσβαση στον κατάλογο</value>
+  </data>
+  <data name="Error_DeviceNotFoundException" xml:space="preserve">
+    <value>Δεν ήταν δυνατός ο εντοπισμός του τηλεφώνου</value>
+  </data>
+  <data name="Error_DownloadPackageException" xml:space="preserve">
+    <value>Προέκυψε πρόβλημα κατά τη λήψη του πακέτου λογισμικού</value>
+  </data>
+  <data name="Error_EmergencyPackageNotFoundOnServerException" xml:space="preserve">
+    <value>Δεν βρέθηκε το πακέτο άμεσης ανάγκης</value>
+  </data>
+  <data name="Error_FileNotFoundException" xml:space="preserve">
+    <value>Αρχείο ή διαδρομή: Το "{0}" δεν βρέθηκε</value>
+  </data>
+  <data name="Error_FirmwareFileNotFoundException" xml:space="preserve">
+    <value>Το αρχείο λογισμικού δεν βρέθηκε</value>
+  </data>
+  <data name="Error_HtcDeviceCommunicationException" xml:space="preserve">
+    <value>Σφάλμα επικοινωνίας συσκευής</value>
+  </data>
+  <data name="Error_HtcDeviceHandshakingException" xml:space="preserve">
+    <value>Σφάλμα συγχρονισμού συσκευής</value>
+  </data>
+  <data name="Error_HtcPackageFileCheckException" xml:space="preserve">
+    <value>Σφάλμα ελέγχου αρχείου πακέτου</value>
+  </data>
+  <data name="Error_HtcServiceControlException" xml:space="preserve">
+    <value>Σφάλμα ελέγχου υπηρεσίας</value>
+  </data>
+  <data name="Error_HtcUsbCommunicationException" xml:space="preserve">
+    <value>Σφάλμα επικοινωνίας USB</value>
+  </data>
+  <data name="Error_HtcUsbPortOpenException" xml:space="preserve">
+    <value>Σφάλμα ανοίγματος θύρας USB</value>
+  </data>
+  <data name="Error_InvalidOperationException" xml:space="preserve">
+    <value>Η λειτουργία απέτυχε</value>
+  </data>
+  <data name="Error_NoInternetConnectionException" xml:space="preserve">
+    <value>Δεν υπάρχει σύνδεση στο Διαδίκτυο</value>
+  </data>
+  <data name="Error_NotEnoughSpaceException" xml:space="preserve">
+    <value>Δεν υπάρχει αρκετός χώρος στο δίσκο</value>
+  </data>
+  <data name="Error_NotEnoughSpaceOnTheDiskException" xml:space="preserve">
+    <value>Δεν υπάρχει αρκετός χώρος στο δίσκο</value>
+  </data>
+  <data name="Error_OperationCanceledException" xml:space="preserve">
+    <value>Η λειτουργία ακυρώθηκε</value>
+  </data>
+  <data name="Error_PackageNotFoundException" xml:space="preserve">
+    <value>Η παραλλαγή του πακέτου δεν βρέθηκε</value>
+  </data>
+  <data name="Error_PlannedServiceBreakException" xml:space="preserve">
+    <value>Δεν ήταν δυνατή η σύνδεση στο διακομιστή</value>
+  </data>
+  <data name="Error_ReadPhoneInformationException" xml:space="preserve">
+    <value>Η ανάγνωση πληροφοριών τηλεφώνου απέτυχε</value>
+  </data>
+  <data name="Error_RestartApplicationException" xml:space="preserve">
+    <value>Επανεκκίνηση εφαρμογής</value>
+  </data>
+  <data name="Error_SoftwareInstallationFailed" xml:space="preserve">
+    <value>Η εγκατάσταση του λογισμικού απέτυχε. Προσπαθήστε να επανεκκινήστε το τηλέφωνό σας και δοκιμάστε ξανά την εγκατάσταση λογισμικού. Αν το τηλέφωνό σας δεν ανιχνεύεται, χρησιμοποιήστε το κουμπί "{0}" στην οθόνη καλωσορίσματος.</value>
+  </data>
+  <data name="Error_SoftwareIsNotCorrectlySignedException" xml:space="preserve">
+    <value>Το λογισμικό δεν είναι υπογεγραμμένο ή δεν είναι υπογεγραμμένο γι' αυτό το τηλέφωνο.</value>
+  </data>
+  <data name="Error_UnauthorizedAccessException" xml:space="preserve">
+    <value>Η πρόσβαση δεν επιτρέπεται</value>
+  </data>
+  <data name="Error_UnknownError" xml:space="preserve">
+    <value>Προέκυψε μη αναμενόμενο σφάλμα</value>
+  </data>
+  <data name="Error_WebException" xml:space="preserve">
+    <value>Δεν ήταν δυνατή η σύνδεση στο διακομιστή</value>
+  </data>
+  <data name="FFUCheckingDirectory" xml:space="preserve">
+    <value>Έλεγχος καταλόγου</value>
+  </data>
+  <data name="FFUCheckingFile" xml:space="preserve">
+    <value>Έλεγχος επιλεγμένου αρχείου</value>
+  </data>
+  <data name="FFUFamily" xml:space="preserve">
+    <value>Σειρά:</value>
+  </data>
+  <data name="FFUManufacturer" xml:space="preserve">
+    <value>Κατασκευαστής:</value>
+  </data>
+  <data name="FFUProductName" xml:space="preserve">
+    <value>Όνομα προϊόντος:</value>
+  </data>
+  <data name="FFUVersion" xml:space="preserve">
+    <value>Έκδοση:</value>
+  </data>
+  <data name="FirmwareIntegrityError" xml:space="preserve">
+    <value>Το πακέτο λογισμικού {0} είναι κατεστραμμένο. Εκτελέστε λήψη του πακέτου και πάλι ή επιλέξτε άλλο λογισμικό.</value>
+  </data>
+  <data name="FirmwareVersion" xml:space="preserve">
+    <value>Έκδοση υλικολογισμικού: </value>
+  </data>
+  <data name="FirmwareVersionUnknown" xml:space="preserve">
+    <value>Έκδοση υλικολογισμικού: άγνωστη</value>
+  </data>
+  <data name="FlashCancelMessage" xml:space="preserve">
+    <value>Η εγκατάσταση του πακέτου λογισμικού είναι σε εξέλιξη. Η ακύρωση ενδέχεται να προκαλέσει βλάβη στο τηλέφωνό σας. Είστε βέβαιοι ότι θέλετε να ακυρώσετε την ενέργεια;</value>
+  </data>
+  <data name="FlashWarningMessage1" xml:space="preserve">
+    <value>Μην χρησιμοποιήσετε το τηλέφωνό σας. Μην αποσυνδέσετε το καλώδιο. Μην απενεργοποιήσετε το τηλέφωνο. Διαφορετικά, το τηλέφωνό σας ενδέχεται να σταματήσει να λειτουργεί.</value>
+  </data>
+  <data name="FlashWarningMessage2" xml:space="preserve">
+    <value>Κατά την εγκατάσταση, το τηλέφωνό σας επανεκκινείται και η οθόνη μένει κενή.
+Μπορείτε να αγνοήσετε όλες τις ειδοποιήσεις των Windows σχετικά με τη σύνδεση του καλωδίου USB.</value>
+  </data>
+  <data name="Flashing" xml:space="preserve">
+    <value>Εγκατάσταση λογισμικού στο τηλέφωνό σας</value>
+  </data>
+  <data name="FlashingMessageChangeToFlashMode" xml:space="preserve">
+    <value>Μετάβαση του τηλεφώνου στη λειτουργία παλλόμενου φωτός έκτακτης ανάγκης</value>
+  </data>
+  <data name="FlashingMessageCheckingAntiTheftStatus" xml:space="preserve">
+    <value>Έλεγχος κατάστασης προστασίας από κλοπή</value>
+  </data>
+  <data name="FlashingMessageConnectingWithPhone" xml:space="preserve">
+    <value>Σύνδεση με το τηλέφωνο</value>
+  </data>
+  <data name="FlashingMessageInstallingSoftware" xml:space="preserve">
+    <value>Εγκατάσταση λογισμικού</value>
+  </data>
+  <data name="FlashingMessageOperationStarted" xml:space="preserve">
+    <value>Η εγκατάσταση λογισμικού ξεκίνησε</value>
+  </data>
+  <data name="FlashingResult" xml:space="preserve">
+    <value>Αποτέλεσμα εγκατάστασης πακέτου λογισμικού</value>
+  </data>
+  <data name="HtcBootloaderMode" xml:space="preserve">
+    <value>Λειτουργία {0} HTC</value>
+  </data>
+  <data name="HtcPackageNotFound" xml:space="preserve">
+    <value>Δεν βρέθηκε πακέτο λογισμικού στο διακομιστή</value>
+  </data>
+  <data name="KeepButtonTillImage" xml:space="preserve">
+    <value>Κρατήστε το πλήκτρο πατημένο έως ότου δείτε να εμφανίζεται μια εικόνα παρόμοια με αυτή της οθόνης.</value>
+  </data>
+  <data name="KeepButtonsTillImage" xml:space="preserve">
+    <value>Κρατήστε τα πλήκτρα πατημένα έως ότου δείτε μια εικόνα παρόμοια με αυτή της οθόνης.</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Γλώσσα</value>
+  </data>
+  <data name="LogFiles" xml:space="preserve">
+    <value>Αρχεία καταγραφής</value>
+  </data>
+  <data name="LumiaBatteryChecking" xml:space="preserve">
+    <value>Η στάθμη μπαταρίας του τηλεφώνου σας είναι χαμηλή. Μπορείτε να συνεχίσετε, αλλά ενδέχεται να υποστεί βλάβη το τηλέφωνό σας.</value>
+  </data>
+  <data name="ManualDeviceSelection" xml:space="preserve">
+    <value>Επιλογή τηλεφώνου</value>
+  </data>
+  <data name="ManualRestartHtcInfo" xml:space="preserve">
+    <value>Δεν ήταν δυνατή η ανάγνωση των πληροφοριών τηλεφώνου. Ακολουθήστε τα παρακάτω βήματα για να συνεχίσετε ή πατήστε "{0}" για να ακυρώσετε τη διαδικασία.</value>
+  </data>
+  <data name="ManufacturerDetectionFailed" xml:space="preserve">
+    <value>Δυστυχώς, δεν ήταν δυνατό να οριστεί ο κατασκευαστής του τηλεφώνου.</value>
+  </data>
+  <data name="ManufacturerHeader" xml:space="preserve">
+    <value>Κατασκευαστής τηλεφώνου</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>Λειτουργία {0}</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Μοντέλο: </value>
+  </data>
+  <data name="ModelUnknown" xml:space="preserve">
+    <value>Μοντέλο: άγνωστο</value>
+  </data>
+  <data name="MoreThanOnePackageFound" xml:space="preserve">
+    <value>Βρέθηκαν περισσότερα από ένα πακέτα. Επιλέξτε ένα και πατήστε "{0}" για να συνεχίσετε.</value>
+  </data>
+  <data name="Network" xml:space="preserve">
+    <value>Δίκτυο</value>
+  </data>
+  <data name="NoPackagesFoundSelectAnotherDirectory" xml:space="preserve">
+    <value>Δεν ήταν δυνατός ο εντοπισμός του σωστού πακέτου. Επιλέξτε άλλο κατάλογο ή επιλέξτε πακέτο μη αυτόματα.</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>Δεν βρέθηκε</value>
+  </data>
+  <data name="OnePackageFound" xml:space="preserve">
+    <value>Βρέθηκε ένα πακέτο για: {0}. Πατήστε "{1}" για να συνεχίσετε ή επιλέξτε άλλο φάκελο ή αρχείο.</value>
+  </data>
+  <data name="OperatingSystemUnknown" xml:space="preserve">
+    <value>Έκδοση λειτουργικού συστήματος: άγνωστη</value>
+  </data>
+  <data name="OperatingSystemVersion" xml:space="preserve">
+    <value>Έκδοση λειτουργικού συστήματος: </value>
+  </data>
+  <data name="OperationFailed" xml:space="preserve">
+    <value>Η λειτουργία απέτυχε</value>
+  </data>
+  <data name="OperationPassed" xml:space="preserve">
+    <value>Η λειτουργία ολοκληρώθηκε με επιτυχία</value>
+  </data>
+  <data name="PackageDirectory" xml:space="preserve">
+    <value>Κατάλογος πακέτου: {0}</value>
+  </data>
+  <data name="PackageFileHeader" xml:space="preserve">
+    <value>Αρχείο πακέτου</value>
+  </data>
+  <data name="PackageFilePath" xml:space="preserve">
+    <value>Διαδρομή πακέτου: {0}</value>
+  </data>
+  <data name="PackageIntegrityCheck" xml:space="preserve">
+    <value>Έλεγχος ακεραιότητας πακέτου</value>
+  </data>
+  <data name="PackageNotFound" xml:space="preserve">
+    <value>Μη διαθέσιμο πακέτο για το τηλέφωνο αυτό.</value>
+  </data>
+  <data name="PackagePathNotSet" xml:space="preserve">
+    <value>Δεν έχει οριστεί διαδρομή πακέτου</value>
+  </data>
+  <data name="PackageSelection" xml:space="preserve">
+    <value>Επιλογή πακέτου</value>
+  </data>
+  <data name="Packages" xml:space="preserve">
+    <value>Πακέτα</value>
+  </data>
+  <data name="PackagesPath" xml:space="preserve">
+    <value>Διαδρομή πακέτων</value>
+  </data>
+  <data name="PasswordForm" xml:space="preserve">
+    <value>Κωδικός πρόσβασης</value>
+  </data>
+  <data name="PhoneAddedHeader" xml:space="preserve">
+    <value>Το τηλέφωνο συνδέθηκε</value>
+  </data>
+  <data name="PhoneAddedMessage" xml:space="preserve">
+    <value>Συνδέθηκε νέο {0} τηλέφωνο.</value>
+  </data>
+  <data name="PhoneIsUpToDate" xml:space="preserve">
+    <value>Διαθέτετε την πιο πρόσφατη έκδοση λογισμικού.</value>
+  </data>
+  <data name="PhoneRemovedHeader" xml:space="preserve">
+    <value>Το τηλέφωνο αποσυνδέθηκε</value>
+  </data>
+  <data name="PhoneRemovedMessage" xml:space="preserve">
+    <value>Το τηλέφωνο {0} έχει αποσυνδεθεί.</value>
+  </data>
+  <data name="PhoneRestart" xml:space="preserve">
+    <value>Επανεκκίνηση τηλεφώνου</value>
+  </data>
+  <data name="PhoneSettingsBackupPathWin10" xml:space="preserve">
+    <value>Ρυθμίσεις &gt; Ενημέρωση και αποκατάσταση &gt; Δημιουργία αντιγράφου ασφαλείας</value>
+  </data>
+  <data name="PhoneSettingsBackupPathWin8" xml:space="preserve">
+    <value>Ρυθμίσεις &gt; Δημιουργία αντιγράφου ασφαλείας</value>
+  </data>
+  <data name="PleaseConnectDevice" xml:space="preserve">
+    <value>Συνδέστε το τηλέφωνό σας</value>
+  </data>
+  <data name="PleaseConnectOneDevice" xml:space="preserve">
+    <value>Συνδέστε μόνο ένα τηλέφωνο.</value>
+  </data>
+  <data name="PleaseSelectAFolder" xml:space="preserve">
+    <value>Επιλέξτε ένα φάκελο</value>
+  </data>
+  <data name="PleaseSelectDeviceToContinue" xml:space="preserve">
+    <value>Επιλέξτε τηλέφωνο για να συνεχίσετε</value>
+  </data>
+  <data name="PleaseSelectManufacturer" xml:space="preserve">
+    <value>Επιλέξτε το σωστό παρακάτω:</value>
+  </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>Περιμένετε</value>
+  </data>
+  <data name="PortForm" xml:space="preserve">
+    <value>Θύρα</value>
+  </data>
+  <data name="Preferences" xml:space="preserve">
+    <value>Προτιμήσεις</value>
+  </data>
+  <data name="PressPowerAndVolumeDown" xml:space="preserve">
+    <value>Πατήστε το κουμπί λειτουργίας και το κουμπί μείωσης έντασης ήχου ταυτόχρονα.</value>
+  </data>
+  <data name="PressThePowerButton" xml:space="preserve">
+    <value>Πατήστε το κουμπί λειτουργίας. </value>
+  </data>
+  <data name="PressThePowerButtonUntilSwitchOff" xml:space="preserve">
+    <value>Κρατήστε πατημένο το κουμπί λειτουργίας έως ότου το τηλέφωνο αρχίσει να δονείται.</value>
+  </data>
+  <data name="PressVolumeUpVolumeDown" xml:space="preserve">
+    <value>Όταν το τηλέφωνο δονηθεί, πατήστε το πλήκτρο αύξησης έντασης ήχου και το πλήκτρο μείωσης έντασης ήχου ταυτόχρονα.</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Πολιτική απορρήτου</value>
+  </data>
+  <data name="ReadingDeviceInfo" xml:space="preserve">
+    <value>Ανάγνωση πληροφοριών τηλεφώνου</value>
+  </data>
+  <data name="RebootHtc" xml:space="preserve">
+    <value>Μπορείτε τώρα να επανεκκινήσετε το τηλέφωνό σας για να επιστρέψετε στη κανονική λειτουργία. Για να επανεκκινήσετε το τηλέφωνο, πατήστε το κουμπί λειτουργίας και κρατήστε το για λίγο πατημένο.</value>
+  </data>
+  <data name="RebootPhoneInstructions" xml:space="preserve">
+    <value>Το τηλέφωνο δεν βρέθηκε.
+Προσπαθήστε να κάνετε επανεκκίνηση του τηλεφώνου πατώντας ταυτόχρονα το πλήκτρο ενεργοποίησης και το πλήκτρο μείωσης έντασης ήχου.
+Κρατήστε τα κουμπιά πατημένα μέχρι να δονηθεί το τηλέφωνο.</value>
+  </data>
+  <data name="ReinstallSoftware" xml:space="preserve">
+    <value>Επανεγκατάσταση λογισμικού</value>
+  </data>
+  <data name="ReleasePowerPressVolumeUp" xml:space="preserve">
+    <value>Όταν το τηλέφωνο δονηθεί, αφήστε το πλήκτρο λειτουργίας και πατήστε το πλήκτρο αύξησης έντασης ήχου.</value>
+  </data>
+  <data name="RemovingPackages" xml:space="preserve">
+    <value>Κατάργηση πακέτων</value>
+  </data>
+  <data name="RemovingReports" xml:space="preserve">
+    <value>Κατάργηση αναφορών</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>Αναφορές</value>
+  </data>
+  <data name="ResetSettingsQuestion" xml:space="preserve">
+    <value>Είστε βέβαιοι ότι θέλετε να εκτελέσετε επαναφορά όλων των ρυθμίσεων στις προεπιλεγμένες τιμές;</value>
+  </data>
+  <data name="RestartDeviceHeader" xml:space="preserve">
+    <value>Επανεκκίνηση τηλεφώνου</value>
+  </data>
+  <data name="SelectDeviceToRecover" xml:space="preserve">
+    <value>Επιλέξτε το τηλέφωνο που θέλετε να αποκαταστήσετε</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Ρυθμίσεις</value>
+  </data>
+  <data name="SoftwareInstallation" xml:space="preserve">
+    <value>Εγκατάσταση λογισμικού</value>
+  </data>
+  <data name="SoftwareOnServer" xml:space="preserve">
+    <value>Διαθέσιμο λογισμικό στο διακομιστή</value>
+  </data>
+  <data name="SoftwarePackage" xml:space="preserve">
+    <value>Πακέτο λογισμικού</value>
+  </data>
+  <data name="SthWentWrongMessage" xml:space="preserve">
+    <value>Κάτι δεν πήγε καλά</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>Σύνοψη</value>
+  </data>
+  <data name="Survey_Button_ContinueNoSubmit1" xml:space="preserve">
+    <value>Συνέχεια χωρίς υποβολή</value>
+  </data>
+  <data name="Survey_Button_SubmitAndContinue1" xml:space="preserve">
+    <value>Ανάκτηση υποβολής και συνέχειας</value>
+  </data>
+  <data name="Survey_Choice_AppsNotWorking1" xml:space="preserve">
+    <value>Οι εφαρμογές μου δεν λειτουργούν με τον αναμενόμενο τρόπο</value>
+  </data>
+  <data name="Survey_Choice_DeviceNotWorking1" xml:space="preserve">
+    <value>Η συσκευή μου δεν λειτουργεί με τον αναμενόμενο τρόπο</value>
+  </data>
+  <data name="Survey_Choice_PerformanceIssues1" xml:space="preserve">
+    <value>Αντιμετωπίζω προβλήματα επιδόσεων</value>
+  </data>
+  <data name="Survey_Choice_PrevVersionFaster1" xml:space="preserve">
+    <value>Μου φαίνεται ότι η προηγούμενη έκδοση ήταν ταχύτερη</value>
+  </data>
+  <data name="Survey_Choice_PrevVersionMoreReliable1" xml:space="preserve">
+    <value>Μου φαίνεται ότι η προηγούμενη έκδοση ήταν πιο αξιόπιστη</value>
+  </data>
+  <data name="Survey_Header1" xml:space="preserve">
+    <value>Γιατί κάνετε ανάκτηση στη συσκευή σας;</value>
+  </data>
+  <data name="Survey_TellUsMore1" xml:space="preserve">
+    <value>Πείτε μας περισσότερα</value>
+  </data>
+  <data name="Theme" xml:space="preserve">
+    <value>Θέμα</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>Σκούρο</value>
+  </data>
+  <data name="ThemeHighContrast" xml:space="preserve">
+    <value>Υψηλή αντίθεση</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>Ανοιχτό</value>
+  </data>
+  <data name="ThereIsMandatoryApplicationUpdate" xml:space="preserve">
+    <value>Υπάρχει μια υποχρεωτική ενημέρωση εφαρμογής {0}.</value>
+  </data>
+  <data name="ThisUpdateMustBeInstalled" xml:space="preserve">
+    <value>Η ενημέρωση {0} πρέπει να εγκατασταθεί και δεν μπορεί να παραλειφθεί. Η εφαρμογή δεν μπορεί να χρησιμοποιηθεί μέχρι να ενημερωθεί.
+Προτού εγκαταστήσετε αυτή την ενημέρωση, αποσυνδέστε από την τροφοδοσία όλες τις συσκευές.</value>
+  </data>
+  <data name="TraceEnabled" xml:space="preserve">
+    <value>Δημιουργία αρχείου καταγραφής</value>
+  </data>
+  <data name="Troubleshooting" xml:space="preserve">
+    <value>Αντιμετώπιση προβλημάτων</value>
+  </data>
+  <data name="TurnOffPhone" xml:space="preserve">
+    <value>Απενεργοποιήστε το τηλέφωνό σας.</value>
+  </data>
+  <data name="UpdateAvailable" xml:space="preserve">
+    <value>Υπάρχει ενημέρωση λογισμικού για το τηλέφωνό σας</value>
+  </data>
+  <data name="UseProxyServer" xml:space="preserve">
+    <value>Χρήση διακομιστή μεσολάβησης</value>
+  </data>
+  <data name="UserNameForm" xml:space="preserve">
+    <value>Όνομα χρήστη</value>
+  </data>
+  <data name="VerifyingDownloadedFiles" xml:space="preserve">
+    <value>Επαλήθευση αρχείων που έχουν ληφθεί</value>
+  </data>
+  <data name="WaitUntilPhoneTurnsOn" xml:space="preserve">
+    <value>Περιμένετε έως ότου το τηλέφωνο ενεργοποιηθεί.</value>
+  </data>
+  <data name="WaitingForConnection" xml:space="preserve">
+    <value>Αναμονή για σύνδεση</value>
+  </data>
+  <data name="WelcomeHeader" xml:space="preserve">
+    <value>Καλώς ορίσατε</value>
+  </data>
+</root>

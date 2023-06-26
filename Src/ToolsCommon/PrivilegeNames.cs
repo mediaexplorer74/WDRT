@@ -2,11 +2,11 @@
 
 namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 {
-	// Token: 0x02000020 RID: 32
+	// Token: 0x02000025 RID: 37
 	public class PrivilegeNames
 	{
-		// Token: 0x17000016 RID: 22
-		// (get) Token: 0x06000117 RID: 279 RVA: 0x000073F7 File Offset: 0x000055F7
+		// Token: 0x1700001B RID: 27
+		// (get) Token: 0x0600012A RID: 298 RVA: 0x00007C2F File Offset: 0x00005E2F
 		public static TokenPrivilege BackupPrivilege
 		{
 			get
@@ -15,8 +15,8 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x17000017 RID: 23
-		// (get) Token: 0x06000118 RID: 280 RVA: 0x00007403 File Offset: 0x00005603
+		// Token: 0x1700001C RID: 28
+		// (get) Token: 0x0600012B RID: 299 RVA: 0x00007C3B File Offset: 0x00005E3B
 		public static TokenPrivilege SecurityPrivilege
 		{
 			get
@@ -25,8 +25,8 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x17000018 RID: 24
-		// (get) Token: 0x06000119 RID: 281 RVA: 0x0000740F File Offset: 0x0000560F
+		// Token: 0x1700001D RID: 29
+		// (get) Token: 0x0600012C RID: 300 RVA: 0x00007C47 File Offset: 0x00005E47
 		public static TokenPrivilege RestorePrivilege
 		{
 			get

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 
 namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 {
-	// Token: 0x0200003F RID: 63
+	// Token: 0x0200004D RID: 77
 	public class AclCollection : HashSet<ResourceAcl>
 	{
-		// Token: 0x0600018C RID: 396 RVA: 0x00008B25 File Offset: 0x00006D25
-		public AclCollection() : base(ResourceAcl.Comparer)
+		// Token: 0x060001A5 RID: 421 RVA: 0x000093FF File Offset: 0x000075FF
+		public AclCollection()
+			: base(ResourceAcl.Comparer)
 		{
 		}
 	}

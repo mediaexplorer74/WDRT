@@ -147,10 +147,10 @@ namespace ComponentAce.Compression.Libs.ZLib
 				{
 					this.needCopyArrays = true;
 					ZLibUtil.CopyLargeArrayToSmall.Initialize(this.buf, 0, 1048576 - this.z.avail_out, buffer, offset + num, count);
-					int result = ZLibUtil.CopyLargeArrayToSmall.CopyData();
+					int num3 = ZLibUtil.CopyLargeArrayToSmall.CopyData();
 					if (ZLibUtil.CopyLargeArrayToSmall.GetRemainingDataSize() > 0)
 					{
-						return result;
+						return num3;
 					}
 					num += 1048576 - this.z.avail_out;
 				}

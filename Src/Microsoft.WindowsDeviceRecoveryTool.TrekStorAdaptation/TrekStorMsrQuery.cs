@@ -3,10 +3,10 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.DataPackage;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.TrekStorAdaptation
 {
-	// Token: 0x02000005 RID: 5
+	// Token: 0x02000003 RID: 3
 	internal static class TrekStorMsrQuery
 	{
-		// Token: 0x0400000C RID: 12
+		// Token: 0x04000002 RID: 2
 		public static readonly QueryParameters TrekStor_Winphone5_0_LTE = new QueryParameters
 		{
 			ManufacturerName = "TREKSTOR",

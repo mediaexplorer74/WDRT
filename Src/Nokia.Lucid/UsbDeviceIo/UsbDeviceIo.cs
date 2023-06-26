@@ -11,7 +11,8 @@ namespace Nokia.Lucid.UsbDeviceIo
 	public class UsbDeviceIo : IDisposable
 	{
 		// Token: 0x06000198 RID: 408 RVA: 0x0000BE1B File Offset: 0x0000A01B
-		public UsbDeviceIo(string devicePath) : this(devicePath, 1000)
+		public UsbDeviceIo(string devicePath)
+			: this(devicePath, 1000)
 		{
 		}
 
@@ -29,14 +30,14 @@ namespace Nokia.Lucid.UsbDeviceIo
 					this.receiveQueue = new BlockingCollection<byte[]>(this.MaxItemCount);
 					this.cancelReceiver = new CancellationTokenSource();
 					CancellationToken token = this.cancelReceiver.Token;
-					this.receiverTask = Task.Factory.StartNew(delegate()
+					this.receiverTask = Task.Factory.StartNew(delegate
 					{
 						this.Receiver(token);
 					}, CancellationToken.None, TaskCreationOptions.LongRunning, TaskScheduler.Default);
 				}
-				catch (Exception arg)
+				catch (Exception ex)
 				{
-					RobustTrace.Trace<Exception>(new Action<Exception>(UsbDeviceIoTraceSource.Instance.DeviceIoError), arg);
+					RobustTrace.Trace<Exception>(new Action<Exception>(UsbDeviceIoTraceSource.Instance.DeviceIoError), ex);
 					throw;
 				}
 			}
@@ -75,14 +76,14 @@ namespace Nokia.Lucid.UsbDeviceIo
 			{
 				try
 				{
-					OnSendingEventArgs e = new OnSendingEventArgs(dataToSend);
-					this.HandleOnSending(e);
+					OnSendingEventArgs onSendingEventArgs = new OnSendingEventArgs(dataToSend);
+					this.HandleOnSending(onSendingEventArgs);
 					this.winUsbIo.Write(dataToSend, length);
 					RobustTrace.Trace<byte[]>(new Action<byte[]>(UsbDeviceIoTraceSource.Instance.DeviceIoMessageOut), dataToSend);
 				}
-				catch (Exception arg)
+				catch (Exception ex)
 				{
-					RobustTrace.Trace<Exception>(new Action<Exception>(UsbDeviceIoTraceSource.Instance.DeviceIoError), arg);
+					RobustTrace.Trace<Exception>(new Action<Exception>(UsbDeviceIoTraceSource.Instance.DeviceIoError), ex);
 					throw;
 				}
 			}
@@ -92,7 +93,7 @@ namespace Nokia.Lucid.UsbDeviceIo
 		[CLSCompliant(false)]
 		public uint Receive(out byte[] receivedData, TimeSpan receiveTimeout)
 		{
-			uint result;
+			uint num;
 			using (EntryExitLogger.Log("UsbDeviceIo.Receive(ref byte[] receivedData, TimeSpan receiveTimeout)", UsbDeviceIoTraceSource.Instance))
 			{
 				try
@@ -101,15 +102,15 @@ namespace Nokia.Lucid.UsbDeviceIo
 					{
 						throw new TimeoutException("receive operation timed out");
 					}
-					result = (uint)receivedData.Length;
+					num = (uint)receivedData.Length;
 				}
-				catch (Exception arg)
+				catch (Exception ex)
 				{
-					RobustTrace.Trace<Exception>(new Action<Exception>(UsbDeviceIoTraceSource.Instance.DeviceIoError), arg);
+					RobustTrace.Trace<Exception>(new Action<Exception>(UsbDeviceIoTraceSource.Instance.DeviceIoError), ex);
 					throw;
 				}
 			}
-			return result;
+			return num;
 		}
 
 		// Token: 0x060001A3 RID: 419 RVA: 0x0000C184 File Offset: 0x0000A384
@@ -122,9 +123,9 @@ namespace Nokia.Lucid.UsbDeviceIo
 				{
 					this.winUsbIo.GetDeviceDescriptor(out deviceDescriptor);
 				}
-				catch (Exception arg)
+				catch (Exception ex)
 				{
-					RobustTrace.Trace<Exception>(new Action<Exception>(UsbDeviceIoTraceSource.Instance.DeviceIoError), arg);
+					RobustTrace.Trace<Exception>(new Action<Exception>(UsbDeviceIoTraceSource.Instance.DeviceIoError), ex);
 					throw;
 				}
 			}
@@ -153,8 +154,8 @@ namespace Nokia.Lucid.UsbDeviceIo
 							Buffer.BlockCopy(array, 0, newBuffer, 0, (int)num);
 							if (this.OnReceived != null)
 							{
-								OnReceivedEventArgs e = new OnReceivedEventArgs(newBuffer);
-								this.HandleOnReceived(e);
+								OnReceivedEventArgs onReceivedEventArgs = new OnReceivedEventArgs(newBuffer);
+								this.HandleOnReceived(onReceivedEventArgs);
 							}
 							else if (!this.receiveQueue.TryAdd(newBuffer, 500))
 							{
@@ -180,9 +181,9 @@ namespace Nokia.Lucid.UsbDeviceIo
 							RobustTrace.Trace<Win32Exception>(new Action<Win32Exception>(UsbDeviceIoTraceSource.Instance.DeviceIoErrorWin32), ex);
 						}
 					}
-					catch (Exception arg)
+					catch (Exception ex2)
 					{
-						RobustTrace.Trace<Exception>(new Action<Exception>(UsbDeviceIoTraceSource.Instance.DeviceIoError), arg);
+						RobustTrace.Trace<Exception>(new Action<Exception>(UsbDeviceIoTraceSource.Instance.DeviceIoError), ex2);
 					}
 				}
 			}
@@ -204,9 +205,9 @@ namespace Nokia.Lucid.UsbDeviceIo
 							{
 								this.winUsbIo.CancelIo();
 							}
-							catch (Win32Exception arg)
+							catch (Win32Exception ex)
 							{
-								RobustTrace.Trace<Win32Exception>(new Action<Win32Exception>(UsbDeviceIoTraceSource.Instance.DeviceIoErrorWin32), arg);
+								RobustTrace.Trace<Win32Exception>(new Action<Win32Exception>(UsbDeviceIoTraceSource.Instance.DeviceIoErrorWin32), ex);
 							}
 							this.receiverTask.Wait(1000);
 						}
@@ -218,16 +219,16 @@ namespace Nokia.Lucid.UsbDeviceIo
 						this.receiveQueue.Dispose();
 					}
 				}
-				catch (AggregateException ex)
+				catch (AggregateException ex2)
 				{
-					foreach (Exception ex2 in ex.InnerExceptions)
+					foreach (Exception ex3 in ex2.InnerExceptions)
 					{
-						Console.WriteLine("msg: " + ex2.Message);
+						Console.WriteLine("msg: " + ex3.Message);
 					}
 				}
-				catch (Exception arg2)
+				catch (Exception ex4)
 				{
-					RobustTrace.Trace<Exception>(new Action<Exception>(UsbDeviceIoTraceSource.Instance.DeviceIoError), arg2);
+					RobustTrace.Trace<Exception>(new Action<Exception>(UsbDeviceIoTraceSource.Instance.DeviceIoError), ex4);
 				}
 				this.winUsbIo.Dispose();
 			}

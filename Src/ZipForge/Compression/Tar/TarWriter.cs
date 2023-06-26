@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using ComponentAce.Compression.Archiver;
-using ComponentAce.Compression.Exception1;
+using ComponentAce.Compression.Exception;
 
 namespace ComponentAce.Compression.Tar
 {
@@ -9,7 +9,8 @@ namespace ComponentAce.Compression.Tar
 	internal class TarWriter : LegacyTarWriter
 	{
 		// Token: 0x06000479 RID: 1145 RVA: 0x000203DE File Offset: 0x0001F3DE
-		public TarWriter(Stream writeStream, int codepage, DoOnStreamOperationFailureDelegate writeToStreamFailureDelegate, DoOnStreamOperationFailureDelegate readFromStreamFailureDelegate) : base(writeStream, codepage, writeToStreamFailureDelegate, readFromStreamFailureDelegate)
+		public TarWriter(Stream writeStream, int codepage, DoOnStreamOperationFailureDelegate writeToStreamFailureDelegate, DoOnStreamOperationFailureDelegate readFromStreamFailureDelegate)
+			: base(writeStream, codepage, writeToStreamFailureDelegate, readFromStreamFailureDelegate)
 		{
 		}
 

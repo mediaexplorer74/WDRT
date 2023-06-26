@@ -11,37 +11,23 @@ namespace Microsoft.WindowsDeviceRecoveryTool.FreetelAdaptation
 		// Token: 0x06000001 RID: 1 RVA: 0x00002050 File Offset: 0x00000250
 		private static ModelInfo CreateKatana01Model()
 		{
-			DeviceDetectionInformation[] deviceDetectionInformations = new DeviceDetectionInformation[]
+			DetectionInfo detectionInfo = new DetectionInfo(new DeviceDetectionInformation[]
 			{
 				new DeviceDetectionInformation(new VidPidPair("045E", "F0CA"), false)
-			};
-			DetectionInfo detectionInfo = new DetectionInfo(deviceDetectionInformations);
-			VariantInfo variantInfo = new VariantInfo("FTJ152E", new IdentificationInfo(new string[]
-			{
-				"FTJ152"
-			}), FreetelMsrQuery.FTJ152E);
-			return new ModelInfo(Resources.FriendlyName_Katana01, Resources.Katana01, detectionInfo, new VariantInfo[]
-			{
-				variantInfo
 			});
+			VariantInfo variantInfo = new VariantInfo("FTJ152E", new IdentificationInfo(new string[] { "FTJ152" }), FreetelMsrQuery.FTJ152E);
+			return new ModelInfo(Resources.FriendlyName_Katana01, Resources.Katana01, detectionInfo, new VariantInfo[] { variantInfo });
 		}
 
-		// Token: 0x06000002 RID: 2 RVA: 0x000020CC File Offset: 0x000002CC
+		// Token: 0x06000002 RID: 2 RVA: 0x000020C0 File Offset: 0x000002C0
 		private static ModelInfo CreateKatana02Model()
 		{
-			DeviceDetectionInformation[] deviceDetectionInformations = new DeviceDetectionInformation[]
+			DetectionInfo detectionInfo = new DetectionInfo(new DeviceDetectionInformation[]
 			{
 				new DeviceDetectionInformation(new VidPidPair("045E", "F0CA"), false)
-			};
-			DetectionInfo detectionInfo = new DetectionInfo(deviceDetectionInformations);
-			VariantInfo variantInfo = new VariantInfo("FTJ152F", new IdentificationInfo(new string[]
-			{
-				"FTJ152"
-			}), FreetelMsrQuery.FTJ152F);
-			return new ModelInfo(Resources.FriendlyName_Katana02, Resources.Katana01, detectionInfo, new VariantInfo[]
-			{
-				variantInfo
 			});
+			VariantInfo variantInfo = new VariantInfo("FTJ152F", new IdentificationInfo(new string[] { "FTJ152" }), FreetelMsrQuery.FTJ152F);
+			return new ModelInfo(Resources.FriendlyName_Katana02, Resources.Katana01, detectionInfo, new VariantInfo[] { variantInfo });
 		}
 
 		// Token: 0x04000001 RID: 1

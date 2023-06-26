@@ -11,32 +11,32 @@ using Microsoft.WindowsDeviceRecoveryTool.Framework;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 {
-	// Token: 0x020000CA RID: 202
+	// Token: 0x02000058 RID: 88
 	[Export]
-	[Region(new string[]
-	{
-		"MainArea"
-	})]
+	[Region(new string[] { "MainArea" })]
 	public partial class ManualManufacturerSelectionView : Grid
 	{
-		// Token: 0x06000624 RID: 1572 RVA: 0x0001FD97 File Offset: 0x0001DF97
+		// Token: 0x0600036E RID: 878 RVA: 0x00013272 File Offset: 0x00011472
 		public ManualManufacturerSelectionView()
 		{
 			this.InitializeComponent();
 			this.selectedItem = null;
 		}
 
-		// Token: 0x06000625 RID: 1573 RVA: 0x0001FDB0 File Offset: 0x0001DFB0
+		// Token: 0x0600036F RID: 879 RVA: 0x0001328C File Offset: 0x0001148C
 		private void ManufacturersListBoxOnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
 			ListBox listBox = sender as ListBox;
-			if (listBox != null)
+			bool flag = listBox != null;
+			if (flag)
 			{
 				FrameworkElement frameworkElement = listBox.ItemContainerGenerator.ContainerFromItem(listBox.SelectedItem) as FrameworkElement;
-				if (frameworkElement != null && this.selectedItem != null && object.Equals(frameworkElement, this.selectedItem))
+				bool flag2 = frameworkElement != null && this.selectedItem != null && object.Equals(frameworkElement, this.selectedItem);
+				if (flag2)
 				{
 					ManualManufacturerSelectionViewModel manualManufacturerSelectionViewModel = (ManualManufacturerSelectionViewModel)base.DataContext;
-					if (manualManufacturerSelectionViewModel.SelectTileCommand.CanExecute(null))
+					bool flag3 = manualManufacturerSelectionViewModel.SelectTileCommand.CanExecute(null);
+					if (flag3)
 					{
 						manualManufacturerSelectionViewModel.SelectTileCommand.Execute(this.selectedItem.DataContext);
 					}
@@ -44,17 +44,20 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x06000626 RID: 1574 RVA: 0x0001FE44 File Offset: 0x0001E044
+		// Token: 0x06000370 RID: 880 RVA: 0x0001331C File Offset: 0x0001151C
 		private void ManufacturersListBoxOnPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs args)
 		{
 			ListBox listBox = sender as ListBox;
-			if (args != null && listBox != null)
+			bool flag = args != null && listBox != null;
+			if (flag)
 			{
 				DependencyObject dependencyObject = args.OriginalSource as DependencyObject;
-				if (dependencyObject != null)
+				bool flag2 = dependencyObject != null;
+				if (flag2)
 				{
 					ListBoxItem listBoxItem = ItemsControl.ContainerFromElement(listBox, dependencyObject) as ListBoxItem;
-					if (listBoxItem != null)
+					bool flag3 = listBoxItem != null;
+					if (flag3)
 					{
 						this.selectedItem = listBoxItem;
 					}
@@ -62,16 +65,19 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x06000627 RID: 1575 RVA: 0x0001FEA0 File Offset: 0x0001E0A0
+		// Token: 0x06000371 RID: 881 RVA: 0x0001337C File Offset: 0x0001157C
 		private void ManufacturersListBoxOnFocusedItemKeyPressed(object sender, KeyEventArgs e)
 		{
-			if (e.Key == Key.Space || e.Key == Key.Return)
+			bool flag = e.Key != Key.Space && e.Key != Key.Return;
+			if (!flag)
 			{
 				ListBoxItem listBoxItem = e.OriginalSource as ListBoxItem;
-				if (listBoxItem != null)
+				bool flag2 = listBoxItem == null;
+				if (!flag2)
 				{
 					ManualManufacturerSelectionViewModel manualManufacturerSelectionViewModel = (ManualManufacturerSelectionViewModel)base.DataContext;
-					if (manualManufacturerSelectionViewModel.SelectTileCommand.CanExecute(null))
+					bool flag3 = manualManufacturerSelectionViewModel.SelectTileCommand.CanExecute(null);
+					if (flag3)
 					{
 						manualManufacturerSelectionViewModel.SelectTileCommand.Execute(listBoxItem.DataContext);
 					}
@@ -79,7 +85,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x04000298 RID: 664
+		// Token: 0x04000181 RID: 385
 		private FrameworkElement selectedItem;
 	}
 }

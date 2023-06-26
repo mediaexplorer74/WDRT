@@ -2,54 +2,54 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model.Enums
 {
-	// Token: 0x02000010 RID: 16
+	// Token: 0x02000040 RID: 64
 	public enum Thor2EmergencyV1ExitCodes : uint
 	{
-		// Token: 0x04000066 RID: 102
+		// Token: 0x040000E0 RID: 224
 		Emergencyflashv1ErrorUnknownSaharaState = 80996U,
-		// Token: 0x04000067 RID: 103
+		// Token: 0x040000E1 RID: 225
 		Emergencyflashv1ErrorInvalidMessagingInterface,
-		// Token: 0x04000068 RID: 104
+		// Token: 0x040000E2 RID: 226
 		Emergencyflashv1ErrorGeneralError,
-		// Token: 0x04000069 RID: 105
+		// Token: 0x040000E3 RID: 227
 		Emergencyflashv1ErrorNotImplemented,
-		// Token: 0x0400006A RID: 106
+		// Token: 0x040000E4 RID: 228
 		Emergencyflashv1ErrorXmlParsingFailed = 85000U,
-		// Token: 0x0400006B RID: 107
+		// Token: 0x040000E5 RID: 229
 		Emergencyflashv1ErrorImageFileOpenFailed,
-		// Token: 0x0400006C RID: 108
+		// Token: 0x040000E6 RID: 230
 		Emergencyflashv1ErrorImageFileReadFailed,
-		// Token: 0x0400006D RID: 109
+		// Token: 0x040000E7 RID: 231
 		Emergencyflashv1ErrorImageFilesMissing,
-		// Token: 0x0400006E RID: 110
+		// Token: 0x040000E8 RID: 232
 		Emergencyflashv1ErrorMsgUnexpectedResponse = 85020U,
-		// Token: 0x0400006F RID: 111
+		// Token: 0x040000E9 RID: 233
 		Emergencyflashv1ErrorMsgSendReceiveFailed,
-		// Token: 0x04000070 RID: 112
+		// Token: 0x040000EA RID: 234
 		Emergencyflashv1ErrorProgrammerSendFailed = 85030U,
-		// Token: 0x04000071 RID: 113
+		// Token: 0x040000EB RID: 235
 		Emergencyflashv1ErrorNoBootImages,
-		// Token: 0x04000072 RID: 114
+		// Token: 0x040000EC RID: 236
 		Emergencyflashv1ErrorSafeHexViolation,
-		// Token: 0x04000073 RID: 115
+		// Token: 0x040000ED RID: 237
 		Emergencyflashv1ErrorHexFlasherDoesNotRespond,
-		// Token: 0x04000074 RID: 116
+		// Token: 0x040000EE RID: 238
 		Emergencyflashv1ErrorSafeHexAddressViolation,
-		// Token: 0x04000075 RID: 117
+		// Token: 0x040000EF RID: 239
 		Emergencyflashv1ErrorFfuParsingFailed = 85040U,
-		// Token: 0x04000076 RID: 118
+		// Token: 0x040000F0 RID: 240
 		Emergencyflashv1ErrorFfuOpenFailed,
-		// Token: 0x04000077 RID: 119
+		// Token: 0x040000F1 RID: 241
 		Emergencyflashv1ErrorFfuPartitionSizeMismatch,
-		// Token: 0x04000078 RID: 120
+		// Token: 0x040000F2 RID: 242
 		Emergencyflashv1ErrorFfuGptFailure,
-		// Token: 0x04000079 RID: 121
+		// Token: 0x040000F3 RID: 243
 		Emergencyflashv1ErrorBinFileOpen,
-		// Token: 0x0400007A RID: 122
+		// Token: 0x040000F4 RID: 244
 		Emergencyflashv1ErrorGptNotFoundFromMbnFile,
-		// Token: 0x0400007B RID: 123
+		// Token: 0x040000F5 RID: 245
 		Emergencyflashv1ErrorInvalidData,
-		// Token: 0x0400007C RID: 124
+		// Token: 0x040000F6 RID: 246
 		Emergencyflashv1ErrorBinaryGptFailure
 	}
 }

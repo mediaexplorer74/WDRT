@@ -58,16 +58,16 @@ namespace FFUComponents
 		// Token: 0x0600001D RID: 29 RVA: 0x000023A4 File Offset: 0x000005A4
 		public bool FlashFFU(string filePath)
 		{
-			bool result = true;
+			bool flag = true;
 			try
 			{
 				this.theDev.FlashFFUFile(filePath);
 			}
 			catch (Exception)
 			{
-				result = false;
+				flag = false;
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x0400000B RID: 11

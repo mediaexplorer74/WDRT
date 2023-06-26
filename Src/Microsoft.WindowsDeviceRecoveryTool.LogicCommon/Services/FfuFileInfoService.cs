@@ -10,43 +10,43 @@ using Microsoft.WindowsPhone.Imaging;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 {
-	// Token: 0x02000036 RID: 54
+	// Token: 0x02000009 RID: 9
 	[Export]
 	public class FfuFileInfoService
 	{
-		// Token: 0x060002D7 RID: 727 RVA: 0x0000BE7F File Offset: 0x0000A07F
+		// Token: 0x06000063 RID: 99 RVA: 0x00003173 File Offset: 0x00001373
 		[ImportingConstructor]
 		public FfuFileInfoService()
 		{
 			this.ffuReaderManaged = new FfuReaderManaged();
 		}
 
-		// Token: 0x170000E9 RID: 233
-		// (get) Token: 0x060002D8 RID: 728 RVA: 0x0000BE98 File Offset: 0x0000A098
-		// (set) Token: 0x060002D9 RID: 729 RVA: 0x0000BEAF File Offset: 0x0000A0AF
+		// Token: 0x17000010 RID: 16
+		// (get) Token: 0x06000064 RID: 100 RVA: 0x00003188 File Offset: 0x00001388
+		// (set) Token: 0x06000065 RID: 101 RVA: 0x00003190 File Offset: 0x00001390
 		public string RootKeyHash { get; private set; }
 
-		// Token: 0x170000EA RID: 234
-		// (get) Token: 0x060002DA RID: 730 RVA: 0x0000BEB8 File Offset: 0x0000A0B8
-		// (set) Token: 0x060002DB RID: 731 RVA: 0x0000BECF File Offset: 0x0000A0CF
+		// Token: 0x17000011 RID: 17
+		// (get) Token: 0x06000066 RID: 102 RVA: 0x00003199 File Offset: 0x00001399
+		// (set) Token: 0x06000067 RID: 103 RVA: 0x000031A1 File Offset: 0x000013A1
 		public string PlatformId { get; private set; }
 
-		// Token: 0x170000EB RID: 235
-		// (get) Token: 0x060002DC RID: 732 RVA: 0x0000BED8 File Offset: 0x0000A0D8
-		// (set) Token: 0x060002DD RID: 733 RVA: 0x0000BEEF File Offset: 0x0000A0EF
+		// Token: 0x17000012 RID: 18
+		// (get) Token: 0x06000068 RID: 104 RVA: 0x000031AA File Offset: 0x000013AA
+		// (set) Token: 0x06000069 RID: 105 RVA: 0x000031B2 File Offset: 0x000013B2
 		public string FullName { get; private set; }
 
-		// Token: 0x170000EC RID: 236
-		// (get) Token: 0x060002DE RID: 734 RVA: 0x0000BEF8 File Offset: 0x0000A0F8
-		// (set) Token: 0x060002DF RID: 735 RVA: 0x0000BF0F File Offset: 0x0000A10F
+		// Token: 0x17000013 RID: 19
+		// (get) Token: 0x0600006A RID: 106 RVA: 0x000031BB File Offset: 0x000013BB
+		// (set) Token: 0x0600006B RID: 107 RVA: 0x000031C3 File Offset: 0x000013C3
 		public string Name { get; private set; }
 
-		// Token: 0x170000ED RID: 237
-		// (get) Token: 0x060002E0 RID: 736 RVA: 0x0000BF18 File Offset: 0x0000A118
-		// (set) Token: 0x060002E1 RID: 737 RVA: 0x0000BF2F File Offset: 0x0000A12F
+		// Token: 0x17000014 RID: 20
+		// (get) Token: 0x0600006C RID: 108 RVA: 0x000031CC File Offset: 0x000013CC
+		// (set) Token: 0x0600006D RID: 109 RVA: 0x000031D4 File Offset: 0x000013D4
 		public long Length { get; private set; }
 
-		// Token: 0x060002E2 RID: 738 RVA: 0x0000BF38 File Offset: 0x0000A138
+		// Token: 0x0600006E RID: 110 RVA: 0x000031E0 File Offset: 0x000013E0
 		public PlatformId ReadFfuFilePlatformId(string ffuFilePath)
 		{
 			PlatformId platformId = new PlatformId();
@@ -54,12 +54,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 			return platformId;
 		}
 
-		// Token: 0x060002E3 RID: 739 RVA: 0x0000BF60 File Offset: 0x0000A160
+		// Token: 0x0600006F RID: 111 RVA: 0x00003208 File Offset: 0x00001408
 		public string ReadFfuPlatformId(string ffuFileName)
 		{
 			FileInfo fileInfo = new FileInfo(ffuFileName);
 			int num = this.ffuReaderManaged.ReadPlatformId(fileInfo.FullName);
-			if (num != 0)
+			bool flag = num != 0;
+			if (flag)
 			{
 				throw new FfuFileInfoReadException(num, ffuFileName);
 			}
@@ -71,12 +72,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 			return this.ffuReaderManaged.PlatformId;
 		}
 
-		// Token: 0x060002E4 RID: 740 RVA: 0x0000BFF4 File Offset: 0x0000A1F4
+		// Token: 0x06000070 RID: 112 RVA: 0x0000329C File Offset: 0x0000149C
 		public void ReadFfuFile(string ffuFileName)
 		{
 			FileInfo fileInfo = new FileInfo(ffuFileName);
 			int num = this.ffuReaderManaged.Read(fileInfo.FullName);
-			if (num != 0)
+			bool flag = num != 0;
+			if (flag)
 			{
 				throw new FfuFileInfoReadException(num, ffuFileName);
 			}
@@ -87,61 +89,56 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 			this.Length = fileInfo.Length;
 		}
 
-		// Token: 0x060002E5 RID: 741 RVA: 0x0000C078 File Offset: 0x0000A278
+		// Token: 0x06000071 RID: 113 RVA: 0x00003320 File Offset: 0x00001520
 		public bool TryReadFfuSoftwareVersion(string ffuFilePath, out string version)
 		{
 			version = null;
-			bool result;
+			bool flag;
 			try
 			{
 				FullFlashUpdateImage orReadImageFromFile = FfuFileInfoService.GetOrReadImageFromFile(ffuFilePath);
 				version = orReadImageFromFile.OSVersion;
-				result = true;
+				flag = true;
 			}
-			catch (Exception error)
+			catch (Exception ex)
 			{
-				Tracer<FfuFileInfoService>.WriteWarning(error, "Could not read ffu image: {0}", new object[]
-				{
-					ffuFilePath
-				});
-				result = false;
+				Tracer<FfuFileInfoService>.WriteWarning(ex, "Could not read ffu image: {0}", new object[] { ffuFilePath });
+				flag = false;
 			}
-			return result;
+			return flag;
 		}
 
-		// Token: 0x060002E6 RID: 742 RVA: 0x0000C0D0 File Offset: 0x0000A2D0
+		// Token: 0x06000072 RID: 114 RVA: 0x00003374 File Offset: 0x00001574
 		public bool TryReadAllFfuPlatformIds(string ffuFilePath, out IEnumerable<PlatformId> platformIds)
 		{
 			platformIds = null;
-			bool result;
+			bool flag;
 			try
 			{
 				FullFlashUpdateImage orReadImageFromFile = FfuFileInfoService.GetOrReadImageFromFile(ffuFilePath);
 				List<PlatformId> list = new List<PlatformId>();
-				foreach (string platformId in orReadImageFromFile.DevicePlatformIDs)
+				foreach (string text in orReadImageFromFile.DevicePlatformIDs)
 				{
-					PlatformId platformId2 = new PlatformId();
-					platformId2.SetPlatformId(platformId);
-					list.Add(platformId2);
+					PlatformId platformId = new PlatformId();
+					platformId.SetPlatformId(text);
+					list.Add(platformId);
 				}
 				platformIds = list;
-				result = true;
+				flag = true;
 			}
-			catch (Exception error)
+			catch (Exception ex)
 			{
-				Tracer<FfuFileInfoService>.WriteWarning(error, "Could not read ffu image: {0}", new object[]
-				{
-					ffuFilePath
-				});
-				result = false;
+				Tracer<FfuFileInfoService>.WriteWarning(ex, "Could not read ffu image: {0}", new object[] { ffuFilePath });
+				flag = false;
 			}
-			return result;
+			return flag;
 		}
 
-		// Token: 0x060002E7 RID: 743 RVA: 0x0000C170 File Offset: 0x0000A370
+		// Token: 0x06000073 RID: 115 RVA: 0x00003404 File Offset: 0x00001604
 		private static FullFlashUpdateImage GetOrReadImageFromFile(string ffuFilePath)
 		{
-			if (!FfuFileInfoService.imagesDataCache.ContainsKey(ffuFilePath))
+			bool flag = !FfuFileInfoService.imagesDataCache.ContainsKey(ffuFilePath);
+			if (flag)
 			{
 				FullFlashUpdateImage fullFlashUpdateImage = new FullFlashUpdateImage();
 				fullFlashUpdateImage.Initialize(ffuFilePath);
@@ -150,19 +147,20 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 			return FfuFileInfoService.imagesDataCache[ffuFilePath];
 		}
 
-		// Token: 0x060002E8 RID: 744 RVA: 0x0000C1BC File Offset: 0x0000A3BC
+		// Token: 0x06000074 RID: 116 RVA: 0x00003450 File Offset: 0x00001650
 		public void ClearDataForFfuFile(string ffuFilePath)
 		{
-			if (FfuFileInfoService.imagesDataCache.ContainsKey(ffuFilePath))
+			bool flag = FfuFileInfoService.imagesDataCache.ContainsKey(ffuFilePath);
+			if (flag)
 			{
 				FfuFileInfoService.imagesDataCache.Remove(ffuFilePath);
 			}
 		}
 
-		// Token: 0x0400016D RID: 365
+		// Token: 0x04000023 RID: 35
 		private readonly FfuReaderManaged ffuReaderManaged;
 
-		// Token: 0x0400016E RID: 366
+		// Token: 0x04000024 RID: 36
 		private static Dictionary<string, FullFlashUpdateImage> imagesDataCache = new Dictionary<string, FullFlashUpdateImage>();
 	}
 }

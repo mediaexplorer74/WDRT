@@ -12,71 +12,67 @@ using Nokia.Lucid.Primitives;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Lucid
 {
-	// Token: 0x02000008 RID: 8
+	// Token: 0x02000004 RID: 4
 	[Export(typeof(ILucidService))]
 	public sealed class LucidService : ILucidService
 	{
-		// Token: 0x06000010 RID: 16 RVA: 0x00002304 File Offset: 0x00000504
+		// Token: 0x06000007 RID: 7 RVA: 0x000020AC File Offset: 0x000002AC
 		public Task<string> TakeFirstDevicePathForInterfaceGuidAsync(string usbDeviceInterfaceDevicePath, Guid interfaceGuid, CancellationToken cancellationToken)
 		{
 			cancellationToken.ThrowIfCancellationRequested();
-			DeviceInfoSet deviceInfoSet = new DeviceInfoSet
+			Guid guid = new DeviceInfoSet
 			{
 				DeviceTypeMap = LucidService.UsbDeviceInterfaceTypeMap,
-				Filter = ((DeviceIdentifier identifier) => true)
-			};
-			Guid containerId = deviceInfoSet.GetDevice(usbDeviceInterfaceDevicePath).ReadContainerId();
+				Filter = (DeviceIdentifier identifier) => true
+			}.GetDevice(usbDeviceInterfaceDevicePath).ReadContainerId();
 			VidPidPair vidPidPair = VidPidPair.Parse(usbDeviceInterfaceDevicePath);
-			DeviceWatcher deviceWatcher = LucidService.GetDeviceWatcher(vidPidPair.Vid, vidPidPair.Pid, interfaceGuid, containerId);
-			DeviceInfoSet deviceInfoSet2 = LucidService.GetDeviceInfoSet(vidPidPair.Vid, vidPidPair.Pid, interfaceGuid, containerId);
-			return LucidService.TakeDevicePathAsync(deviceWatcher, deviceInfoSet2, cancellationToken);
+			DeviceWatcher deviceWatcher = LucidService.GetDeviceWatcher(vidPidPair.Vid, vidPidPair.Pid, interfaceGuid, guid);
+			DeviceInfoSet deviceInfoSet = LucidService.GetDeviceInfoSet(vidPidPair.Vid, vidPidPair.Pid, interfaceGuid, guid);
+			return LucidService.TakeDevicePathAsync(deviceWatcher, deviceInfoSet, cancellationToken);
 		}
 
-		// Token: 0x06000011 RID: 17 RVA: 0x000023BC File Offset: 0x000005BC
+		// Token: 0x06000008 RID: 8 RVA: 0x00002154 File Offset: 0x00000354
 		public Task<string> TakeFirstDevicePathForInterfaceGuidAsync(string usbDeviceInterfaceDevicePath, Guid interfaceGuid, int interfaceNumber, CancellationToken cancellationToken)
 		{
 			cancellationToken.ThrowIfCancellationRequested();
-			DeviceInfoSet deviceInfoSet = new DeviceInfoSet
+			Guid guid = new DeviceInfoSet
 			{
 				DeviceTypeMap = LucidService.UsbDeviceInterfaceTypeMap,
-				Filter = ((DeviceIdentifier identifier) => true)
-			};
-			Guid containerId = deviceInfoSet.GetDevice(usbDeviceInterfaceDevicePath).ReadContainerId();
+				Filter = (DeviceIdentifier identifier) => true
+			}.GetDevice(usbDeviceInterfaceDevicePath).ReadContainerId();
 			VidPidPair vidPidPair = VidPidPair.Parse(usbDeviceInterfaceDevicePath);
-			DeviceWatcher deviceWatcher = LucidService.GetDeviceWatcher(vidPidPair.Vid, vidPidPair.Pid, interfaceNumber, interfaceGuid, containerId);
-			DeviceInfoSet deviceInfoSet2 = LucidService.GetDeviceInfoSet(vidPidPair.Vid, vidPidPair.Pid, interfaceNumber, interfaceGuid, containerId);
-			return LucidService.TakeDevicePathAsync(deviceWatcher, deviceInfoSet2, cancellationToken);
+			DeviceWatcher deviceWatcher = LucidService.GetDeviceWatcher(vidPidPair.Vid, vidPidPair.Pid, interfaceNumber, interfaceGuid, guid);
+			DeviceInfoSet deviceInfoSet = LucidService.GetDeviceInfoSet(vidPidPair.Vid, vidPidPair.Pid, interfaceNumber, interfaceGuid, guid);
+			return LucidService.TakeDevicePathAsync(deviceWatcher, deviceInfoSet, cancellationToken);
 		}
 
-		// Token: 0x06000012 RID: 18 RVA: 0x00002478 File Offset: 0x00000678
+		// Token: 0x06000009 RID: 9 RVA: 0x00002200 File Offset: 0x00000400
 		public Task<string> TakeFirstDevicePathForDeviceAndInterfaceGuidsAsync(string usbDeviceInterfaceDevicePath, Guid deviceInterfaceGuid, Guid deviceSetupClassGuid, CancellationToken cancellationToken)
 		{
 			cancellationToken.ThrowIfCancellationRequested();
-			DeviceInfoSet deviceInfoSet = new DeviceInfoSet
+			Guid guid = new DeviceInfoSet
 			{
 				DeviceTypeMap = LucidService.UsbDeviceInterfaceTypeMap,
-				Filter = ((DeviceIdentifier identifier) => true)
-			};
-			Guid containerId = deviceInfoSet.GetDevice(usbDeviceInterfaceDevicePath).ReadContainerId();
+				Filter = (DeviceIdentifier identifier) => true
+			}.GetDevice(usbDeviceInterfaceDevicePath).ReadContainerId();
 			VidPidPair vidPidPair = VidPidPair.Parse(usbDeviceInterfaceDevicePath);
-			DeviceWatcher deviceWatcher = LucidService.GetDeviceWatcher(vidPidPair.Vid, vidPidPair.Pid, deviceInterfaceGuid, deviceSetupClassGuid, containerId);
-			DeviceInfoSet deviceInfoSet2 = LucidService.GetDeviceInfoSet(vidPidPair.Vid, vidPidPair.Pid, deviceInterfaceGuid, deviceSetupClassGuid, containerId);
-			return LucidService.TakeDevicePathAsync(deviceWatcher, deviceInfoSet2, cancellationToken);
+			DeviceWatcher deviceWatcher = LucidService.GetDeviceWatcher(vidPidPair.Vid, vidPidPair.Pid, deviceInterfaceGuid, deviceSetupClassGuid, guid);
+			DeviceInfoSet deviceInfoSet = LucidService.GetDeviceInfoSet(vidPidPair.Vid, vidPidPair.Pid, deviceInterfaceGuid, deviceSetupClassGuid, guid);
+			return LucidService.TakeDevicePathAsync(deviceWatcher, deviceInfoSet, cancellationToken);
 		}
 
-		// Token: 0x06000013 RID: 19 RVA: 0x00002534 File Offset: 0x00000734
+		// Token: 0x0600000A RID: 10 RVA: 0x000022AC File Offset: 0x000004AC
 		public DeviceInfo GetDeviceInfoForInterfaceGuid(string interfaceDevicePath, Guid interfaceGuid)
 		{
 			DeviceTypeMap deviceTypeMap = LucidService.GetDeviceTypeMap(interfaceGuid);
-			DeviceInfoSet deviceInfoSet = new DeviceInfoSet
+			return new DeviceInfoSet
 			{
 				DeviceTypeMap = deviceTypeMap,
-				Filter = ((DeviceIdentifier identifier) => true)
-			};
-			return deviceInfoSet.GetDevice(interfaceDevicePath);
+				Filter = (DeviceIdentifier identifier) => true
+			}.GetDevice(interfaceDevicePath);
 		}
 
-		// Token: 0x06000014 RID: 20 RVA: 0x000025A4 File Offset: 0x000007A4
+		// Token: 0x0600000B RID: 11 RVA: 0x00002313 File Offset: 0x00000513
 		private static DeviceWatcher GetDeviceWatcher(string vid, string pid, int mi, Guid interfaceGuid, Guid containerId)
 		{
 			return new DeviceWatcher
@@ -86,7 +82,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Lucid
 			};
 		}
 
-		// Token: 0x06000015 RID: 21 RVA: 0x000025D8 File Offset: 0x000007D8
+		// Token: 0x0600000C RID: 12 RVA: 0x00002337 File Offset: 0x00000537
 		private static DeviceInfoSet GetDeviceInfoSet(string vid, string pid, int mi, Guid interfaceGuid, Guid containerId)
 		{
 			return new DeviceInfoSet
@@ -96,7 +92,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Lucid
 			};
 		}
 
-		// Token: 0x06000016 RID: 22 RVA: 0x0000260C File Offset: 0x0000080C
+		// Token: 0x0600000D RID: 13 RVA: 0x0000235B File Offset: 0x0000055B
 		private static DeviceWatcher GetDeviceWatcher(string vid, string pid, Guid interfaceGuid, Guid containerId)
 		{
 			return new DeviceWatcher
@@ -106,7 +102,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Lucid
 			};
 		}
 
-		// Token: 0x06000017 RID: 23 RVA: 0x0000263C File Offset: 0x0000083C
+		// Token: 0x0600000E RID: 14 RVA: 0x0000237D File Offset: 0x0000057D
 		private static DeviceInfoSet GetDeviceInfoSet(string vid, string pid, Guid interfaceGuid, Guid containerId)
 		{
 			return new DeviceInfoSet
@@ -116,7 +112,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Lucid
 			};
 		}
 
-		// Token: 0x06000018 RID: 24 RVA: 0x0000266C File Offset: 0x0000086C
+		// Token: 0x0600000F RID: 15 RVA: 0x0000239F File Offset: 0x0000059F
 		private static DeviceWatcher GetDeviceWatcher(string vid, string pid, Guid interfaceGuid, Guid deviceSetupClassGuid, Guid containerId)
 		{
 			return new DeviceWatcher
@@ -126,7 +122,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Lucid
 			};
 		}
 
-		// Token: 0x06000019 RID: 25 RVA: 0x000026A0 File Offset: 0x000008A0
+		// Token: 0x06000010 RID: 16 RVA: 0x000023C3 File Offset: 0x000005C3
 		private static DeviceInfoSet GetDeviceInfoSet(string vid, string pid, Guid interfaceGuid, Guid deviceSetupClassGuid, Guid containerId)
 		{
 			return new DeviceInfoSet
@@ -136,13 +132,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Lucid
 			};
 		}
 
-		// Token: 0x0600001A RID: 26 RVA: 0x000026D1 File Offset: 0x000008D1
+		// Token: 0x06000011 RID: 17 RVA: 0x000023E7 File Offset: 0x000005E7
 		private static DeviceTypeMap GetDeviceTypeMap(Guid interfaceGuid)
 		{
 			return new DeviceTypeMap(interfaceGuid, DeviceType.Interface);
 		}
 
-		// Token: 0x0600001B RID: 27 RVA: 0x000027E4 File Offset: 0x000009E4
+		// Token: 0x06000012 RID: 18 RVA: 0x000023F0 File Offset: 0x000005F0
 		private static Expression<Func<DeviceIdentifier, bool>> GetFilter(string vid, string pid, Guid interfaceGuid, Guid containerId)
 		{
 			Func<DeviceIdentifier, bool> filterFunc = delegate(DeviceIdentifier identifier)
@@ -150,23 +146,23 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Lucid
 				DeviceInfoSet deviceInfoSet = new DeviceInfoSet
 				{
 					DeviceTypeMap = LucidService.GetDeviceTypeMap(interfaceGuid),
-					Filter = ((DeviceIdentifier deviceIdentifier) => deviceIdentifier.Vid(vid) && deviceIdentifier.Pid(pid))
+					Filter = (DeviceIdentifier deviceIdentifier) => deviceIdentifier.Vid(vid) && deviceIdentifier.Pid(pid)
 				};
-				bool result;
+				bool flag;
 				try
 				{
-					result = (deviceInfoSet.GetDevice(identifier.Value).ReadContainerId() == containerId);
+					flag = deviceInfoSet.GetDevice(identifier.Value).ReadContainerId() == containerId;
 				}
 				catch (Exception)
 				{
-					result = false;
+					flag = false;
 				}
-				return result;
+				return flag;
 			};
 			return (DeviceIdentifier identifier) => filterFunc(identifier);
 		}
 
-		// Token: 0x0600001C RID: 28 RVA: 0x000029B8 File Offset: 0x00000BB8
+		// Token: 0x06000013 RID: 19 RVA: 0x00002484 File Offset: 0x00000684
 		private static Expression<Func<DeviceIdentifier, bool>> GetFilter(string vid, string pid, int mi, Guid interfaceGuid, Guid containerId)
 		{
 			Func<DeviceIdentifier, bool> filterFunc = delegate(DeviceIdentifier identifier)
@@ -174,23 +170,23 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Lucid
 				DeviceInfoSet deviceInfoSet = new DeviceInfoSet
 				{
 					DeviceTypeMap = LucidService.GetDeviceTypeMap(interfaceGuid),
-					Filter = ((DeviceIdentifier deviceIdentifier) => deviceIdentifier.Vid(vid) && deviceIdentifier.Pid(pid) && deviceIdentifier.MI(mi))
+					Filter = (DeviceIdentifier deviceIdentifier) => deviceIdentifier.Vid(vid) && deviceIdentifier.Pid(pid) && deviceIdentifier.MI(mi)
 				};
-				bool result;
+				bool flag;
 				try
 				{
-					result = (deviceInfoSet.GetDevice(identifier.Value).ReadContainerId() == containerId);
+					flag = deviceInfoSet.GetDevice(identifier.Value).ReadContainerId() == containerId;
 				}
 				catch (Exception)
 				{
-					result = false;
+					flag = false;
 				}
-				return result;
+				return flag;
 			};
 			return (DeviceIdentifier identifier) => filterFunc(identifier);
 		}
 
-		// Token: 0x0600001D RID: 29 RVA: 0x00002B74 File Offset: 0x00000D74
+		// Token: 0x06000014 RID: 20 RVA: 0x00002520 File Offset: 0x00000720
 		private static Expression<Func<DeviceIdentifier, bool>> GetFilter(string vid, string pid, Guid interfaceGuid, Guid deviceSetupClassGuid, Guid containerId)
 		{
 			Func<DeviceIdentifier, bool> filterFunc = delegate(DeviceIdentifier identifier)
@@ -198,24 +194,24 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Lucid
 				DeviceInfoSet deviceInfoSet = new DeviceInfoSet
 				{
 					DeviceTypeMap = LucidService.GetDeviceTypeMap(interfaceGuid),
-					Filter = ((DeviceIdentifier deviceIdentifier) => deviceIdentifier.Vid(vid) && deviceIdentifier.Pid(pid))
+					Filter = (DeviceIdentifier deviceIdentifier) => deviceIdentifier.Vid(vid) && deviceIdentifier.Pid(pid)
 				};
-				bool result;
+				bool flag;
 				try
 				{
 					DeviceInfo device = deviceInfoSet.GetDevice(identifier.Value);
-					result = (device.ReadContainerId() == containerId && device.ReadClassGuid() == deviceSetupClassGuid);
+					flag = device.ReadContainerId() == containerId && device.ReadClassGuid() == deviceSetupClassGuid;
 				}
 				catch (Exception)
 				{
-					result = false;
+					flag = false;
 				}
-				return result;
+				return flag;
 			};
 			return (DeviceIdentifier identifier) => filterFunc(identifier);
 		}
 
-		// Token: 0x0600001E RID: 30 RVA: 0x00002F50 File Offset: 0x00001150
+		// Token: 0x06000015 RID: 21 RVA: 0x000025BC File Offset: 0x000007BC
 		private static async Task<string> TakeDevicePathAsync(DeviceWatcher deviceWatcher, DeviceInfoSet deviceInfoSet, CancellationToken cancellationToken)
 		{
 			bool completed = false;
@@ -236,24 +232,24 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Lucid
 				{
 					taskSource.SetCanceled();
 				}
-				catch (Exception exception)
+				catch (Exception ex)
 				{
-					taskSource.SetException(exception);
+					taskSource.SetException(ex);
 				}
 				deviceWatcherDisposable.Dispose();
 			};
-			EventHandler<DeviceChangedEventArgs> onDevice = delegate(object sender, DeviceChangedEventArgs args)
+			EventHandler<DeviceChangedEventArgs> eventHandler = delegate(object sender, DeviceChangedEventArgs args)
 			{
 				if (args.Action == DeviceChangeAction.Attach)
 				{
 					onMatchingDevicePath(args.Path);
 				}
 			};
-			EventHandler<DeviceChangedEventArgs> onDeviceChanged = SynchronizationHelper.ExecuteInCurrentContext<DeviceChangedEventArgs>(onDevice);
+			EventHandler<DeviceChangedEventArgs> onDeviceChanged = SynchronizationHelper.ExecuteInCurrentContext<DeviceChangedEventArgs>(eventHandler);
 			deviceWatcher.DeviceChanged += onDeviceChanged;
 			deviceWatcherDisposable = deviceWatcher.Start();
-			string result;
-			using (cancellationToken.Register(delegate()
+			string text;
+			using (cancellationToken.Register(delegate
 			{
 				taskSource.TrySetCanceled();
 			}))
@@ -264,23 +260,21 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Lucid
 				}
 				try
 				{
-					result = await taskSource.Task;
+					text = await taskSource.Task;
 				}
 				finally
 				{
 					deviceWatcher.DeviceChanged -= onDeviceChanged;
 				}
 			}
-			return result;
+			return text;
 		}
 
-		// Token: 0x04000007 RID: 7
-		private static readonly DeviceTypeMap UsbDeviceInterfaceTypeMap = new DeviceTypeMap(new Dictionary<Guid, DeviceType>
+		// Token: 0x04000002 RID: 2
+		private static readonly DeviceTypeMap UsbDeviceInterfaceTypeMap = new DeviceTypeMap(new Dictionary<Guid, DeviceType> { 
 		{
-			{
-				WellKnownGuids.UsbDeviceInterfaceGuid,
-				DeviceType.PhysicalDevice
-			}
-		});
+			WellKnownGuids.UsbDeviceInterfaceGuid,
+			DeviceType.PhysicalDevice
+		} });
 	}
 }

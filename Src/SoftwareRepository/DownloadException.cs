@@ -8,53 +8,58 @@ namespace SoftwareRepository
 	[Serializable]
 	public class DownloadException : Exception
 	{
-		// Token: 0x0600000A RID: 10 RVA: 0x000021AC File Offset: 0x000003AC
+		// Token: 0x0600000A RID: 10 RVA: 0x00002259 File Offset: 0x00000459
 		public DownloadException()
 		{
 			this.StatusCode = 0;
 		}
 
-		// Token: 0x0600000B RID: 11 RVA: 0x000021BB File Offset: 0x000003BB
+		// Token: 0x0600000B RID: 11 RVA: 0x0000226B File Offset: 0x0000046B
 		public DownloadException(int statusCode)
 		{
 			this.StatusCode = statusCode;
 		}
 
-		// Token: 0x0600000C RID: 12 RVA: 0x000021CA File Offset: 0x000003CA
-		public DownloadException(string message) : base(message)
+		// Token: 0x0600000C RID: 12 RVA: 0x0000227D File Offset: 0x0000047D
+		public DownloadException(string message)
+			: base(message)
 		{
 			this.StatusCode = 0;
 		}
 
-		// Token: 0x0600000D RID: 13 RVA: 0x000021DA File Offset: 0x000003DA
-		public DownloadException(int statusCode, string message) : base(message)
+		// Token: 0x0600000D RID: 13 RVA: 0x00002290 File Offset: 0x00000490
+		public DownloadException(int statusCode, string message)
+			: base(message)
 		{
 			this.StatusCode = statusCode;
 		}
 
-		// Token: 0x0600000E RID: 14 RVA: 0x000021EA File Offset: 0x000003EA
-		public DownloadException(string message, Exception innerException) : base(message, innerException)
+		// Token: 0x0600000E RID: 14 RVA: 0x000022A3 File Offset: 0x000004A3
+		public DownloadException(string message, Exception innerException)
+			: base(message, innerException)
 		{
 			this.StatusCode = 0;
 		}
 
-		// Token: 0x0600000F RID: 15 RVA: 0x000021FB File Offset: 0x000003FB
-		public DownloadException(int statusCode, string message, Exception innerException) : base(message, innerException)
+		// Token: 0x0600000F RID: 15 RVA: 0x000022B7 File Offset: 0x000004B7
+		public DownloadException(int statusCode, string message, Exception innerException)
+			: base(message, innerException)
 		{
 			this.StatusCode = statusCode;
 		}
 
-		// Token: 0x06000010 RID: 16 RVA: 0x000021A2 File Offset: 0x000003A2
-		protected DownloadException(SerializationInfo info, StreamingContext context) : base(info, context)
+		// Token: 0x06000010 RID: 16 RVA: 0x0000224D File Offset: 0x0000044D
+		protected DownloadException(SerializationInfo info, StreamingContext context)
+			: base(info, context)
 		{
 		}
 
 		// Token: 0x17000001 RID: 1
-		// (get) Token: 0x06000011 RID: 17 RVA: 0x0000220C File Offset: 0x0000040C
-		// (set) Token: 0x06000012 RID: 18 RVA: 0x00002214 File Offset: 0x00000414
+		// (get) Token: 0x06000011 RID: 17 RVA: 0x000022CB File Offset: 0x000004CB
+		// (set) Token: 0x06000012 RID: 18 RVA: 0x000022D3 File Offset: 0x000004D3
 		public int StatusCode { get; set; }
 
-		// Token: 0x06000013 RID: 19 RVA: 0x0000221D File Offset: 0x0000041D
+		// Token: 0x06000013 RID: 19 RVA: 0x000022DC File Offset: 0x000004DC
 		[SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
 		public override void GetObjectData(SerializationInfo info, StreamingContext context)
 		{

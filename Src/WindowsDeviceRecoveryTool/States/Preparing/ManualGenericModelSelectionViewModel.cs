@@ -18,11 +18,11 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.Enums;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 {
-	// Token: 0x0200009F RID: 159
+	// Token: 0x0200004A RID: 74
 	[Export]
 	public class ManualGenericModelSelectionViewModel : BaseViewModel, ICanHandle<SupportedAdaptationModelsMessage>, ICanHandle
 	{
-		// Token: 0x06000465 RID: 1125 RVA: 0x000151B0 File Offset: 0x000133B0
+		// Token: 0x060002E7 RID: 743 RVA: 0x000104B4 File Offset: 0x0000E6B4
 		[ImportingConstructor]
 		public ManualGenericModelSelectionViewModel(Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext, AdaptationManager adaptationManager)
 		{
@@ -31,13 +31,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			this.SelectTileCommand = new DelegateCommand<object>(new Action<object>(this.TileSelected));
 		}
 
-		// Token: 0x170000E8 RID: 232
-		// (get) Token: 0x06000466 RID: 1126 RVA: 0x000151EC File Offset: 0x000133EC
-		// (set) Token: 0x06000467 RID: 1127 RVA: 0x00015203 File Offset: 0x00013403
+		// Token: 0x170000C0 RID: 192
+		// (get) Token: 0x060002E8 RID: 744 RVA: 0x000104EF File Offset: 0x0000E6EF
+		// (set) Token: 0x060002E9 RID: 745 RVA: 0x000104F7 File Offset: 0x0000E6F7
 		public ICommand SelectTileCommand { get; private set; }
 
-		// Token: 0x170000E9 RID: 233
-		// (get) Token: 0x06000468 RID: 1128 RVA: 0x0001520C File Offset: 0x0001340C
+		// Token: 0x170000C1 RID: 193
+		// (get) Token: 0x060002EA RID: 746 RVA: 0x00010500 File Offset: 0x0000E700
 		public override string PreviousStateName
 		{
 			get
@@ -46,9 +46,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x170000EA RID: 234
-		// (get) Token: 0x06000469 RID: 1129 RVA: 0x00015224 File Offset: 0x00013424
-		// (set) Token: 0x0600046A RID: 1130 RVA: 0x0001523C File Offset: 0x0001343C
+		// Token: 0x170000C2 RID: 194
+		// (get) Token: 0x060002EB RID: 747 RVA: 0x00010518 File Offset: 0x0000E718
+		// (set) Token: 0x060002EC RID: 748 RVA: 0x00010530 File Offset: 0x0000E730
 		public ObservableCollection<Tile> Tiles
 		{
 			get
@@ -61,9 +61,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x170000EB RID: 235
-		// (get) Token: 0x0600046B RID: 1131 RVA: 0x0001528C File Offset: 0x0001348C
-		// (set) Token: 0x0600046C RID: 1132 RVA: 0x000152AC File Offset: 0x000134AC
+		// Token: 0x170000C3 RID: 195
+		// (get) Token: 0x060002ED RID: 749 RVA: 0x00010570 File Offset: 0x0000E770
+		// (set) Token: 0x060002EE RID: 750 RVA: 0x00010588 File Offset: 0x0000E788
 		public Tile SelectedModel
 		{
 			get
@@ -73,7 +73,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			set
 			{
 				base.SetValue<Tile>(() => this.SelectedModel, ref this.selectedModel, value);
-				if (value != null)
+				bool flag = value != null;
+				if (flag)
 				{
 					this.appContext.CurrentPhone = new Phone
 					{
@@ -87,8 +88,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 					};
 					this.goingForward = true;
 					BaseAdaptation adaptation = this.adaptationManager.GetAdaptation(value.Phone.Type);
+					bool flag2 = adaptation.ManuallySupportedVariants(value.Phone).Any<Phone>();
 					string nextState;
-					if (adaptation.ManuallySupportedVariants(value.Phone).Any<Phone>())
+					if (flag2)
 					{
 						nextState = "ManualGenericVariantSelectionState";
 					}
@@ -96,12 +98,12 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 					{
 						nextState = "CheckLatestPackageState";
 					}
-					//base.Commands.Run((AppController c) => c.SwitchToState(nextState));
+					base.Commands.Run((AppController c) => c.SwitchToState(nextState));
 				}
 			}
 		}
 
-		// Token: 0x0600046D RID: 1133 RVA: 0x00015464 File Offset: 0x00013664
+		// Token: 0x060002EF RID: 751 RVA: 0x00010734 File Offset: 0x0000E934
 		public override void OnStarted()
 		{
 			base.OnStarted();
@@ -109,34 +111,37 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			base.EventAggregator.Publish<IsBackButtonMessage>(new IsBackButtonMessage(true));
 			base.EventAggregator.Publish<BlockWindowMessage>(new BlockWindowMessage(false, null, null));
 			this.goingForward = false;
-			if (this.appContext.CurrentPhone != null && this.appContext.CurrentPhone.Type == PhoneTypes.UnknownWp)
+			bool flag = this.appContext.CurrentPhone != null && this.appContext.CurrentPhone.Type == PhoneTypes.UnknownWp;
+			if (flag)
 			{
 				this.appContext.CurrentPhone.Type = this.appContext.SelectedManufacturer;
 			}
-			//base.Commands.Run((FlowController c) => c.GetSupportedAdaptationModels(this.appContext.SelectedManufacturer));
-			//base.Commands.Run((FlowController c) => c.StartSessionFlow(string.Empty, CancellationToken.None));
+			base.Commands.Run((FlowController c) => c.GetSupportedAdaptationModels(this.appContext.SelectedManufacturer));
+			base.Commands.Run((FlowController c) => c.StartSessionFlow(string.Empty, CancellationToken.None));
 		}
 
-		// Token: 0x0600046E RID: 1134 RVA: 0x00015614 File Offset: 0x00013814
+		// Token: 0x060002F0 RID: 752 RVA: 0x000108D4 File Offset: 0x0000EAD4
 		public override void OnStopped()
 		{
 			base.OnStopped();
-			if (!this.goingForward && this.appContext.CurrentPhone != null)
+			bool flag = !this.goingForward && this.appContext.CurrentPhone != null;
+			if (flag)
 			{
 				this.appContext.CurrentPhone = null;
 			}
 		}
 
-		// Token: 0x0600046F RID: 1135 RVA: 0x00015656 File Offset: 0x00013856
+		// Token: 0x060002F1 RID: 753 RVA: 0x00010915 File Offset: 0x0000EB15
 		private void TileSelected(object obj)
 		{
-			this.SelectedModel = (obj as Tile);
+			this.SelectedModel = obj as Tile;
 		}
 
-		// Token: 0x06000470 RID: 1136 RVA: 0x00015668 File Offset: 0x00013868
+		// Token: 0x060002F2 RID: 754 RVA: 0x00010928 File Offset: 0x0000EB28
 		public void Handle(SupportedAdaptationModelsMessage message)
 		{
-			if (base.IsStarted)
+			bool isStarted = base.IsStarted;
+			if (isStarted)
 			{
 				this.Tiles.Clear();
 				foreach (Phone phone in message.Models)
@@ -153,10 +158,11 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x06000471 RID: 1137 RVA: 0x0001572C File Offset: 0x0001392C
+		// Token: 0x060002F3 RID: 755 RVA: 0x000109E4 File Offset: 0x0000EBE4
 		private BitmapImage GetImage(byte[] imageData)
 		{
-			if (imageData != null)
+			bool flag = imageData != null;
+			if (flag)
 			{
 				using (MemoryStream memoryStream = new MemoryStream(imageData))
 				{
@@ -172,19 +178,19 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			return null;
 		}
 
-		// Token: 0x040001EC RID: 492
+		// Token: 0x0400014E RID: 334
 		private readonly Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext;
 
-		// Token: 0x040001ED RID: 493
+		// Token: 0x0400014F RID: 335
 		private readonly AdaptationManager adaptationManager;
 
-		// Token: 0x040001EE RID: 494
+		// Token: 0x04000150 RID: 336
 		private bool goingForward;
 
-		// Token: 0x040001EF RID: 495
+		// Token: 0x04000151 RID: 337
 		private Tile selectedModel;
 
-		// Token: 0x040001F0 RID: 496
+		// Token: 0x04000152 RID: 338
 		private ObservableCollection<Tile> tiles = new ObservableCollection<Tile>();
 	}
 }

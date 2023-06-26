@@ -5,16 +5,18 @@ using Microsoft.WindowsDeviceRecoveryTool.Localization;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Styles.Converters
 {
-	// Token: 0x02000012 RID: 18
+	// Token: 0x02000006 RID: 6
 	public class SalesNameConverter : IValueConverter
 	{
-		// Token: 0x06000070 RID: 112 RVA: 0x000037D0 File Offset: 0x000019D0
+		// Token: 0x06000018 RID: 24 RVA: 0x00002504 File Offset: 0x00000704
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
 			string text = value as string;
-			if (text != null)
+			bool flag = text != null;
+			if (flag)
 			{
-				if (text == "DeviceInUefiMode")
+				bool flag2 = text == "DeviceInUefiMode";
+				if (flag2)
 				{
 					return LocalizationManager.GetTranslation("DeviceInUefiMode");
 				}
@@ -22,7 +24,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Styles.Converters
 			return value;
 		}
 
-		// Token: 0x06000071 RID: 113 RVA: 0x00003814 File Offset: 0x00001A14
+		// Token: 0x06000019 RID: 25 RVA: 0x000024A2 File Offset: 0x000006A2
 		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
 		{
 			throw new NotImplementedException();

@@ -31,12 +31,12 @@ namespace Nokia.Lucid.Primitives
 		// Token: 0x06000161 RID: 353 RVA: 0x0000B460 File Offset: 0x00009660
 		public static DeviceIdentifier Parse(string value)
 		{
-			DeviceIdentifier result;
-			if (!DeviceIdentifier.TryParse(value, out result))
+			DeviceIdentifier deviceIdentifier;
+			if (!DeviceIdentifier.TryParse(value, out deviceIdentifier))
 			{
 				throw new FormatException();
 			}
-			return result;
+			return deviceIdentifier;
 		}
 
 		// Token: 0x06000162 RID: 354 RVA: 0x0000B480 File Offset: 0x00009680

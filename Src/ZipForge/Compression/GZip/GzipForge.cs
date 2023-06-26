@@ -4,7 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using ComponentAce.Compression.Archiver;
-using ComponentAce.Compression.Exception1;
+using ComponentAce.Compression.Exception;
 using ComponentAce.Compression.Interfaces;
 using ComponentAce.Compression.Tar;
 using ComponentAce.Compression.ZipForge;
@@ -114,10 +114,7 @@ namespace ComponentAce.Compression.GZip
 					throw;
 				}
 			}
-			throw ExceptionBuilder.Exception(ErrorCode.FileNotFound, new object[]
-			{
-				fileMask
-			});
+			throw ExceptionBuilder.Exception(ErrorCode.FileNotFound, new object[] { fileMask });
 		}
 
 		// Token: 0x06000239 RID: 569 RVA: 0x00016B44 File Offset: 0x00015B44
@@ -147,27 +144,27 @@ namespace ComponentAce.Compression.GZip
 			while (processedBytesCount < length)
 			{
 				long num2 = length - processedBytesCount;
-				long num3 = (num2 > (long)blockSize) ? ((long)blockSize) : num2;
+				long num3 = ((num2 > (long)blockSize) ? ((long)blockSize) : num2);
 				this._totalProcessedFilesSize += num3;
 				if (this._progressEnabled)
 				{
 					DateTime now = DateTime.Now;
-					TimeSpan timeLeft = new TimeSpan(0L);
+					TimeSpan timeSpan = new TimeSpan(0L);
 					if (processedBytesCount != 0L)
 					{
-						timeLeft = new TimeSpan(length * (now.Ticks - this._currentItemOperationStartTime.Ticks) / processedBytesCount) - (now - this._currentItemOperationStartTime);
+						timeSpan = new TimeSpan(length * (now.Ticks - this._currentItemOperationStartTime.Ticks) / processedBytesCount) - (now - this._currentItemOperationStartTime);
 					}
-					this.DoOnFileProgress(item.Name, (double)processedBytesCount / (double)length * 100.0, now - this._currentItemOperationStartTime, timeLeft, item.Operation, ProgressPhase.Process, ref this._progressCancel);
+					this.DoOnFileProgress(item.Name, (double)processedBytesCount / (double)length * 100.0, now - this._currentItemOperationStartTime, timeSpan, item.Operation, ProgressPhase.Process, ref this._progressCancel);
 					if (this._progressCancel)
 					{
 						break;
 					}
-					TimeSpan timeLeft2 = new TimeSpan(0L);
+					TimeSpan timeSpan2 = new TimeSpan(0L);
 					if (this._totalProcessedFilesSize != 0L)
 					{
-						timeLeft2 = new TimeSpan(this._toProcessFilesTotalSize * (now.Ticks - this._operationStartTime.Ticks) / this._totalProcessedFilesSize) - (now - this._operationStartTime);
+						timeSpan2 = new TimeSpan(this._toProcessFilesTotalSize * (now.Ticks - this._operationStartTime.Ticks) / this._totalProcessedFilesSize) - (now - this._operationStartTime);
 					}
-					this.DoOnOverallProgress((double)this._totalProcessedFilesSize / (double)this._toProcessFilesTotalSize * 100.0, now - this._operationStartTime, timeLeft2, item.Operation, ProgressPhase.Process, ref this._progressCancel);
+					this.DoOnOverallProgress((double)this._totalProcessedFilesSize / (double)this._toProcessFilesTotalSize * 100.0, now - this._operationStartTime, timeSpan2, item.Operation, ProgressPhase.Process, ref this._progressCancel);
 					if (this._progressCancel)
 					{
 						break;
@@ -271,7 +268,7 @@ namespace ComponentAce.Compression.GZip
 		{
 			this._currentProcessedItem = dirItem;
 			this._decompressedStream = wfs;
-			bool result = false;
+			bool flag = false;
 			this._skipFile = false;
 			long num = rfs.Length - (long)dirItem.GetLocalHeaderSize() - 8L;
 			byte[] array = new byte[1048578];
@@ -299,12 +296,12 @@ namespace ComponentAce.Compression.GZip
 					int num4;
 					if (!ReadWriteHelper.ReadFromStream(array, 0, (int)num3, out num4, rfs, new DoOnStreamOperationFailureDelegate(base.DoOnReadFromStreamFailure)))
 					{
-						return result;
+						return flag;
 					}
 					long num5;
 					if (!deflateCompressor.DecompressBlock((int)num3, num2 + num3 >= num, array, out num5))
 					{
-						return result;
+						return flag;
 					}
 					actualDecompressedSize += num5;
 				}
@@ -328,8 +325,8 @@ namespace ComponentAce.Compression.GZip
 			{
 				throw ExceptionBuilder.Exception(ErrorCode.ReadFromStreamFailed);
 			}
-			MemoryStream input = new MemoryStream(array);
-			BinaryReader binaryReader = new BinaryReader(input);
+			MemoryStream memoryStream = new MemoryStream(array);
+			BinaryReader binaryReader = new BinaryReader(memoryStream);
 			item.Crc32 = binaryReader.ReadUInt32();
 		}
 
@@ -342,45 +339,45 @@ namespace ComponentAce.Compression.GZip
 			{
 				throw ExceptionBuilder.Exception(ErrorCode.ReadFromStreamFailed);
 			}
-			MemoryStream input = new MemoryStream(array);
-			BinaryReader binaryReader = new BinaryReader(input);
+			MemoryStream memoryStream = new MemoryStream(array);
+			BinaryReader binaryReader = new BinaryReader(memoryStream);
 			item.UncompressedSize = (long)((ulong)binaryReader.ReadUInt32());
 		}
 
 		// Token: 0x06000243 RID: 579 RVA: 0x00017184 File Offset: 0x00016184
 		private void decompressor_OnDecompressedBufferReady(byte[] buffer, int outBytes, out bool stopDecompression)
 		{
-			TimeSpan timeElapsed = new TimeSpan(DateTime.Now.Ticks - this._currentItemOperationStartTime.Ticks);
-			double progress = (double)this._currentItemBytesProcessed / (double)this._currentItemSize * 100.0;
-			TimeSpan timeLeft;
+			TimeSpan timeSpan = new TimeSpan(DateTime.Now.Ticks - this._currentItemOperationStartTime.Ticks);
+			double num = (double)this._currentItemBytesProcessed / (double)this._currentItemSize * 100.0;
+			TimeSpan timeSpan2;
 			if (this._currentItemBytesProcessed > 0L)
 			{
-				double num = (double)this._currentItemBytesProcessed / (double)timeElapsed.Ticks;
-				timeLeft = new TimeSpan((long)((double)(this._currentItemSize - this._currentItemBytesProcessed) / num));
+				double num2 = (double)this._currentItemBytesProcessed / (double)timeSpan.Ticks;
+				timeSpan2 = new TimeSpan((long)((double)(this._currentItemSize - this._currentItemBytesProcessed) / num2));
 			}
 			else
 			{
-				timeLeft = new TimeSpan(0L);
+				timeSpan2 = new TimeSpan(0L);
 			}
-			TimeSpan timeElapsed2 = new TimeSpan(DateTime.Now.Ticks - this._operationStartTime.Ticks);
-			TimeSpan timeLeft2;
+			TimeSpan timeSpan3 = new TimeSpan(DateTime.Now.Ticks - this._operationStartTime.Ticks);
+			TimeSpan timeSpan4;
 			if (this._totalProcessedFilesSize > 0L)
 			{
-				double num2 = (double)this._totalProcessedFilesSize / (double)timeElapsed2.Ticks;
-				timeLeft2 = new TimeSpan((long)((double)(this._toProcessFilesTotalSize - this._totalProcessedFilesSize) / num2));
+				double num3 = (double)this._totalProcessedFilesSize / (double)timeSpan3.Ticks;
+				timeSpan4 = new TimeSpan((long)((double)(this._toProcessFilesTotalSize - this._totalProcessedFilesSize) / num3));
 			}
 			else
 			{
-				timeLeft2 = new TimeSpan(0L);
+				timeSpan4 = new TimeSpan(0L);
 			}
-			double num3 = (double)this._totalProcessedFilesSize / (double)this._toProcessFilesTotalSize * 100.0;
-			if (num3 > 100.0)
+			double num4 = (double)this._totalProcessedFilesSize / (double)this._toProcessFilesTotalSize * 100.0;
+			if (num4 > 100.0)
 			{
-				num3 = 100.0;
+				num4 = 100.0;
 			}
 			stopDecompression = false;
-			this.DoOnFileProgress(this._currentProcessedItem.Name, progress, timeElapsed, timeLeft, ProcessOperation.Extract, ProgressPhase.Process, ref stopDecompression);
-			this.DoOnOverallProgress(num3, timeElapsed2, timeLeft2, ProcessOperation.Extract, ProgressPhase.Process, ref stopDecompression);
+			this.DoOnFileProgress(this._currentProcessedItem.Name, num, timeSpan, timeSpan2, ProcessOperation.Extract, ProgressPhase.Process, ref stopDecompression);
+			this.DoOnOverallProgress(num4, timeSpan3, timeSpan4, ProcessOperation.Extract, ProgressPhase.Process, ref stopDecompression);
 			if (!stopDecompression)
 			{
 				bool flag = ReadWriteHelper.WriteToStream(buffer, 0, outBytes, this._decompressedStream, new DoOnStreamOperationFailureDelegate(base.DoOnWriteToStreamFailure));
@@ -398,9 +395,9 @@ namespace ComponentAce.Compression.GZip
 		// Token: 0x06000244 RID: 580 RVA: 0x00017324 File Offset: 0x00016324
 		protected internal override void FillDirItem(int itemNo, string fileName)
 		{
-			FileAttributes attr = File.Exists(fileName) ? FileUtils.GetAttributes(fileName) : FileAttributes.Archive;
+			FileAttributes fileAttributes = (File.Exists(fileName) ? FileUtils.GetAttributes(fileName) : FileAttributes.Archive);
 			string fileName2 = Path.GetFileName(fileName);
-			this.FillDirItem(itemNo, fileName, fileName2, true, attr);
+			this.FillDirItem(itemNo, fileName, fileName2, true, fileAttributes);
 		}
 
 		// Token: 0x06000245 RID: 581 RVA: 0x00017358 File Offset: 0x00016358
@@ -411,14 +408,14 @@ namespace ComponentAce.Compression.GZip
 				return;
 			}
 			string text = FileUtils.StripSlash(fileName);
-			DateTime lastFileModificationTime = retrieveFileDate ? File.GetLastWriteTime(text) : DateTime.Now;
+			DateTime dateTime = (retrieveFileDate ? File.GetLastWriteTime(text) : DateTime.Now);
 			GzipItem gzipItem = new GzipItem(arcFileName, new DoOnStreamOperationFailureDelegate(base.DoOnWriteToStreamFailure), new DoOnStreamOperationFailureDelegate(base.DoOnReadFromStreamFailure));
 			this._itemsHandler.ItemsArray[itemNo] = gzipItem;
 			gzipItem.IsModified = true;
 			gzipItem.SrcFileName = text;
 			gzipItem.CompressionMode = (byte)this.CompressionLevel;
 			gzipItem.CompressionMethod = 8;
-			gzipItem.LastFileModificationTime = lastFileModificationTime;
+			gzipItem.LastFileModificationTime = dateTime;
 			gzipItem.Crc32 = uint.MaxValue;
 			gzipItem.CompressedSize = 0L;
 			gzipItem.UncompressedSize = 0L;
@@ -555,11 +552,11 @@ namespace ComponentAce.Compression.GZip
 				}
 				else
 				{
-					Stream destinationStream;
-					bool flag = this.CreateNewFileInOutputFilesDir(itemNo, out destinationStream);
+					Stream stream;
+					bool flag = this.CreateNewFileInOutputFilesDir(itemNo, out stream);
 					if (flag)
 					{
-						gzipItem.DestinationStream = destinationStream;
+						gzipItem.DestinationStream = stream;
 						gzipItem.NeedToDestroyDestinationStream = true;
 						return base.AddFromNewSource(itemNo, gzipItem.DestinationStream, ref action);
 					}
@@ -632,40 +629,37 @@ namespace ComponentAce.Compression.GZip
 			GzipArchiveItem gzipArchiveItem2 = gzipArchiveItem;
 			gzipArchiveItem2.FileName += ".gz";
 			this.DoOnArchiveSingleFile(ref gzipArchiveItem);
-			string fileName = gzipArchiveItem.FileName;
-			string str = CompressionUtils.GetSlashedDir(this._gzipArchiverOptions.OutputFilesDir);
-			if (fileName.IndexOf(":") > 0 || fileName.IndexOf("\\\\") > 0)
+			string text = gzipArchiveItem.FileName;
+			string text2 = CompressionUtils.GetSlashedDir(this._gzipArchiverOptions.OutputFilesDir);
+			if (text.IndexOf(":") > 0 || text.IndexOf("\\\\") > 0)
 			{
-				str = string.Empty;
+				text2 = string.Empty;
 			}
 			if (!this._gzipArchiverOptions.CreateDirs)
 			{
-				fileName = Path.GetFileName(fileName);
+				text = Path.GetFileName(text);
 			}
 			else if (this._gzipArchiverOptions.CreateDirs)
 			{
 				try
 				{
-					string path = str + Path.GetDirectoryName(fileName);
-					if (!FileUtils.DirectotyExists(path))
+					string text3 = text2 + Path.GetDirectoryName(text);
+					if (!FileUtils.DirectotyExists(text3))
 					{
-						Directory.CreateDirectory(path);
+						Directory.CreateDirectory(text3);
 					}
 				}
-				catch (Exception innerException)
+				catch (Exception ex)
 				{
-					throw ExceptionBuilder.Exception(ErrorCode.CannotCreateDir, new object[]
-					{
-						str + Path.GetDirectoryName(fileName)
-					}, innerException);
+					throw ExceptionBuilder.Exception(ErrorCode.CannotCreateDir, new object[] { text2 + Path.GetDirectoryName(text) }, ex);
 				}
 			}
-			string text = (str + fileName).Replace("/", "\\");
-			if (File.Exists(text))
+			string text4 = (text2 + text).Replace("/", "\\");
+			if (File.Exists(text4))
 			{
 				if (!this._gzipArchiverOptions.ReplaceReadOnly)
 				{
-					FileAttributes attributes = FileUtils.GetAttributes(text);
+					FileAttributes attributes = FileUtils.GetAttributes(text4);
 					if ((attributes & FileAttributes.ReadOnly) != (FileAttributes)0)
 					{
 						return false;
@@ -674,7 +668,7 @@ namespace ComponentAce.Compression.GZip
 				switch (this._gzipArchiverOptions.Overwrite)
 				{
 				case OverwriteMode.Prompt:
-					this.DoOnConfirmOverwriteOutputFile(fileName, ref text, ref flag, ref flag2);
+					this.DoOnConfirmOverwriteOutputFile(text, ref text4, ref flag, ref flag2);
 					if (!flag || flag2)
 					{
 						return false;
@@ -685,7 +679,7 @@ namespace ComponentAce.Compression.GZip
 				case OverwriteMode.IfNewer:
 				case OverwriteMode.IfOlder:
 				{
-					DateTime lastWriteTime = File.GetLastWriteTime(text);
+					DateTime lastWriteTime = File.GetLastWriteTime(text4);
 					DateTime lastModificationDateTime = this.GetLastModificationDateTime(this._itemsHandler.ItemsArray[itemNo]);
 					if ((lastWriteTime >= lastModificationDateTime && this._gzipArchiverOptions.Overwrite == OverwriteMode.IfNewer) || (lastWriteTime <= lastModificationDateTime && this._gzipArchiverOptions.Overwrite == OverwriteMode.IfOlder))
 					{
@@ -697,19 +691,16 @@ namespace ComponentAce.Compression.GZip
 			}
 			try
 			{
-				if (File.Exists(text))
+				if (File.Exists(text4))
 				{
-					CompressionUtils.FileSetAttr(text, (FileAttributes)0);
-					File.Delete(text);
+					CompressionUtils.FileSetAttr(text4, (FileAttributes)0);
+					File.Delete(text4);
 				}
-				destinationFileStream = new FileStream(text, FileMode.Create);
+				destinationFileStream = new FileStream(text4, FileMode.Create);
 			}
-			catch (Exception innerException2)
+			catch (Exception ex2)
 			{
-				throw ExceptionBuilder.Exception(ErrorCode.CannotCreateFile, new object[]
-				{
-					text
-				}, innerException2);
+				throw ExceptionBuilder.Exception(ErrorCode.CannotCreateFile, new object[] { text4 }, ex2);
 			}
 			return true;
 		}
@@ -777,8 +768,8 @@ namespace ComponentAce.Compression.GZip
 		// Token: 0x06000254 RID: 596 RVA: 0x00017C48 File Offset: 0x00016C48
 		protected override void AddNewItemToItemsHandler()
 		{
-			GzipItem item = new GzipItem(new DoOnStreamOperationFailureDelegate(base.DoOnWriteToStreamFailure), new DoOnStreamOperationFailureDelegate(base.DoOnReadFromStreamFailure));
-			this._itemsHandler.ItemsArray.AddItem(item);
+			GzipItem gzipItem = new GzipItem(new DoOnStreamOperationFailureDelegate(base.DoOnWriteToStreamFailure), new DoOnStreamOperationFailureDelegate(base.DoOnReadFromStreamFailure));
+			this._itemsHandler.ItemsArray.AddItem(gzipItem);
 		}
 
 		// Token: 0x06000255 RID: 597 RVA: 0x00017C84 File Offset: 0x00016C84

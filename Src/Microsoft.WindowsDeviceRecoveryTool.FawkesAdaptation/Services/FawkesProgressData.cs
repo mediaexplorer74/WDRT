@@ -2,24 +2,24 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.FawkesAdaptation.Services
 {
-	// Token: 0x0200000B RID: 11
+	// Token: 0x0200000A RID: 10
 	internal class FawkesProgressData
 	{
-		// Token: 0x06000063 RID: 99 RVA: 0x0000377E File Offset: 0x0000197E
+		// Token: 0x06000049 RID: 73 RVA: 0x00003396 File Offset: 0x00001596
 		internal FawkesProgressData(double? value, string message)
 		{
 			this.Value = value;
 			this.Message = message;
 		}
 
-		// Token: 0x17000018 RID: 24
-		// (get) Token: 0x06000064 RID: 100 RVA: 0x00003794 File Offset: 0x00001994
-		// (set) Token: 0x06000065 RID: 101 RVA: 0x0000379C File Offset: 0x0000199C
+		// Token: 0x1700000C RID: 12
+		// (get) Token: 0x0600004A RID: 74 RVA: 0x000033AC File Offset: 0x000015AC
+		// (set) Token: 0x0600004B RID: 75 RVA: 0x000033B4 File Offset: 0x000015B4
 		public double? Value { get; private set; }
 
-		// Token: 0x17000019 RID: 25
-		// (get) Token: 0x06000066 RID: 102 RVA: 0x000037A5 File Offset: 0x000019A5
-		// (set) Token: 0x06000067 RID: 103 RVA: 0x000037AD File Offset: 0x000019AD
+		// Token: 0x1700000D RID: 13
+		// (get) Token: 0x0600004C RID: 76 RVA: 0x000033BD File Offset: 0x000015BD
+		// (set) Token: 0x0600004D RID: 77 RVA: 0x000033C5 File Offset: 0x000015C5
 		public string Message { get; private set; }
 	}
 }

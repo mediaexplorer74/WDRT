@@ -3,10 +3,10 @@ using System.Threading;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.MTP
 {
-	// Token: 0x0200001F RID: 31
+	// Token: 0x02000026 RID: 38
 	internal static class SynchronizationHelper
 	{
-		// Token: 0x06000122 RID: 290 RVA: 0x000075C0 File Offset: 0x000057C0
+		// Token: 0x06000295 RID: 661 RVA: 0x00009228 File Offset: 0x00007428
 		public static EventHandler<T> ExecuteInCurrentContext<T>(EventHandler<T> handler)
 		{
 			SynchronizationContext context = SynchronizationContext.Current;

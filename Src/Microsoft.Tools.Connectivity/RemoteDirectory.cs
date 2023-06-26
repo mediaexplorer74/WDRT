@@ -23,15 +23,15 @@ namespace Microsoft.Tools.Connectivity
 		{
 			get
 			{
-				bool result = false;
+				bool flag = false;
 				try
 				{
-					result = this.CheckExists();
+					flag = this.CheckExists();
 				}
 				catch
 				{
 				}
-				return result;
+				return flag;
 			}
 		}
 
@@ -49,11 +49,8 @@ namespace Microsoft.Tools.Connectivity
 		internal RemoteDirectory(RemoteDevice remoteDevice, string directoryNamePath)
 		{
 			this.remoteDevice = remoteDevice;
-			char[] trimChars = new char[]
-			{
-				'\\'
-			};
-			this.remoteDirectoryName = directoryNamePath.TrimEnd(trimChars) + "\\";
+			char[] array = new char[] { '\\' };
+			this.remoteDirectoryName = directoryNamePath.TrimEnd(array) + "\\";
 			this.Timeout = this.remoteDevice.Timeout;
 		}
 
@@ -70,7 +67,7 @@ namespace Microsoft.Tools.Connectivity
 			if (this.RemoteDevice.Protocol != RemoteDevice.TransportProtocol.Ssh)
 			{
 				string reply = null;
-				CallbackHandler outputCallback = new CallbackHandler(delegate(uint flags, string data)
+				CallbackHandler callbackHandler = new CallbackHandler(delegate(uint flags, string data)
 				{
 					reply += data;
 				});
@@ -78,17 +75,11 @@ namespace Microsoft.Tools.Connectivity
 				uint num = 0U;
 				try
 				{
-					num = this.RemoteDevice.SirepClient.LaunchWithOutput((uint)this.Timeout.TotalMilliseconds, "\\windows\\system32\\cmd.exe", text,
-						Path.GetDirectoryName("\\windows\\system32\\cmd.exe"), 
-						0U, /*outputCallback*/null);
+					num = this.RemoteDevice.SirepClient.LaunchWithOutput((uint)this.Timeout.TotalMilliseconds, "\\windows\\system32\\cmd.exe", text, Path.GetDirectoryName("\\windows\\system32\\cmd.exe"), 0U, callbackHandler);
 				}
 				catch (COMException ex)
 				{
-					this.RemoteDevice.ExceptionHandler(ex, string.Format(CultureInfo.CurrentCulture, "Remote command '{0} {1}' execution failed.", new object[]
-					{
-						"\\windows\\system32\\cmd.exe",
-						text
-					}));
+					this.RemoteDevice.ExceptionHandler(ex, string.Format(CultureInfo.CurrentCulture, "Remote command '{0} {1}' execution failed.", new object[] { "\\windows\\system32\\cmd.exe", text }));
 				}
 				if (num != 0U)
 				{
@@ -99,12 +90,7 @@ namespace Microsoft.Tools.Connectivity
 					{
 						throw new ArgumentException(exceptionForHR.Message, exceptionForHR);
 					}
-					throw new OperationFailedException(string.Format(CultureInfo.CurrentCulture, "Remote command '{0} {1}' execution failed with {2}.", new object[]
-					{
-						"\\windows\\system32\\cmd.exe",
-						text,
-						exceptionForHR
-					}));
+					throw new OperationFailedException(string.Format(CultureInfo.CurrentCulture, "Remote command '{0} {1}' execution failed with {2}.", new object[] { "\\windows\\system32\\cmd.exe", text, exceptionForHR }));
 				}
 			}
 			else
@@ -115,10 +101,7 @@ namespace Microsoft.Tools.Connectivity
 				}
 				catch (COMException ex2)
 				{
-					this.RemoteDevice.ExceptionHandler(ex2, string.Format(CultureInfo.CurrentCulture, "Remote directory '{0}' creation failed.", new object[]
-					{
-						this.remoteDirectoryName
-					}));
+					this.RemoteDevice.ExceptionHandler(ex2, string.Format(CultureInfo.CurrentCulture, "Remote directory '{0}' creation failed.", new object[] { this.remoteDirectoryName }));
 				}
 			}
 		}
@@ -130,7 +113,7 @@ namespace Microsoft.Tools.Connectivity
 			if (this.RemoteDevice.Protocol != RemoteDevice.TransportProtocol.Ssh)
 			{
 				string reply = null;
-				CallbackHandler outputCallback = new CallbackHandler(delegate(uint flags, string data)
+				CallbackHandler callbackHandler = new CallbackHandler(delegate(uint flags, string data)
 				{
 					reply += data;
 				});
@@ -143,18 +126,11 @@ namespace Microsoft.Tools.Connectivity
 				uint num = 0U;
 				try
 				{
-					num = this.RemoteDevice.SirepClient.LaunchWithOutput((uint)this.Timeout.TotalMilliseconds, "\\windows\\system32\\cmd.exe", 
-						text, Path.GetDirectoryName("\\windows\\system32\\cmd.exe"), 
-						0U, 
-						/*outputCallback*/null);
+					num = this.RemoteDevice.SirepClient.LaunchWithOutput((uint)this.Timeout.TotalMilliseconds, "\\windows\\system32\\cmd.exe", text, Path.GetDirectoryName("\\windows\\system32\\cmd.exe"), 0U, callbackHandler);
 				}
 				catch (COMException ex)
 				{
-					this.RemoteDevice.ExceptionHandler(ex, string.Format(CultureInfo.CurrentCulture, "Remote command '{0} {1}' execution failed.", new object[]
-					{
-						"\\windows\\system32\\cmd.exe",
-						text
-					}));
+					this.RemoteDevice.ExceptionHandler(ex, string.Format(CultureInfo.CurrentCulture, "Remote command '{0} {1}' execution failed.", new object[] { "\\windows\\system32\\cmd.exe", text }));
 				}
 				if (num != 0U)
 				{
@@ -165,12 +141,7 @@ namespace Microsoft.Tools.Connectivity
 					{
 						throw new ArgumentException(exceptionForHR.Message, exceptionForHR);
 					}
-					throw new OperationFailedException(string.Format(CultureInfo.CurrentCulture, "Remote command '{0} {1}' execution failed with {2}.", new object[]
-					{
-						"\\windows\\system32\\cmd.exe",
-						text,
-						exceptionForHR
-					}));
+					throw new OperationFailedException(string.Format(CultureInfo.CurrentCulture, "Remote command '{0} {1}' execution failed with {2}.", new object[] { "\\windows\\system32\\cmd.exe", text, exceptionForHR }));
 				}
 			}
 			else
@@ -181,10 +152,7 @@ namespace Microsoft.Tools.Connectivity
 				}
 				catch (COMException ex2)
 				{
-					this.RemoteDevice.ExceptionHandler(ex2, string.Format(CultureInfo.CurrentCulture, "Remote directory '{0}' remove failed.", new object[]
-					{
-						this.remoteDirectoryName
-					}));
+					this.RemoteDevice.ExceptionHandler(ex2, string.Format(CultureInfo.CurrentCulture, "Remote directory '{0}' remove failed.", new object[] { this.remoteDirectoryName }));
 				}
 			}
 		}
@@ -240,7 +208,7 @@ namespace Microsoft.Tools.Connectivity
 			}
 			this.RemoteDevice.EnsureConnection();
 			StringBuilder reply = new StringBuilder();
-			CallbackHandler outputCallback = new CallbackHandler(delegate(uint flags, string data)
+			CallbackHandler callbackHandler = new CallbackHandler(delegate(uint flags, string data)
 			{
 				reply.Append(data);
 			});
@@ -263,34 +231,30 @@ namespace Microsoft.Tools.Connectivity
 				}
 				try
 				{
-					this.RemoteDevice.SirepClient.LaunchWithOutput((uint)this.Timeout.TotalMilliseconds, "<WPCONDEV>", 
-						text2, null, 0U, /*outputCallback*/null);
+					this.RemoteDevice.SirepClient.LaunchWithOutput((uint)this.Timeout.TotalMilliseconds, "<WPCONDEV>", text2, null, 0U, callbackHandler);
 				}
 				catch (COMException ex)
 				{
 					this.RemoteDevice.ExceptionHandler(ex);
 				}
-				string[] array = reply.ToString().Split(new string[]
-				{
-					"\r\r\n"
-				}, StringSplitOptions.RemoveEmptyEntries);
+				string[] array = reply.ToString().Split(new string[] { "\r\r\n" }, StringSplitOptions.RemoveEmptyEntries);
 				string[] array2 = array;
 				int i = 0;
 				while (i < array2.Length)
 				{
-					string input = array2[i];
-					MatchCollection matchCollection = RemoteDirectory.RegexEntry.Matches(input);
+					string text3 = array2[i];
+					MatchCollection matchCollection = RemoteDirectory.RegexEntry.Matches(text3);
 					if (matchCollection.Count != 0)
 					{
 						goto IL_1B7;
 					}
-					matchCollection = RemoteDirectory.RegexError.Matches(input);
+					matchCollection = RemoteDirectory.RegexError.Matches(text3);
 					if (matchCollection.Count > 0)
 					{
 						try
 						{
-							int errorCode = (int)uint.Parse(matchCollection[0].Groups["HR"].Value);
-							Marshal.ThrowExceptionForHR(errorCode);
+							int num = (int)uint.Parse(matchCollection[0].Groups["HR"].Value);
+							Marshal.ThrowExceptionForHR(num);
 							goto IL_23B;
 						}
 						catch (COMException ex2)
@@ -329,25 +293,22 @@ namespace Microsoft.Tools.Connectivity
 			{
 				try
 				{
-					this.RemoteDevice.SirepClient.SirepDirectoryEnum(this.remoteDirectoryName, /*outputCallback*/null);
+					this.RemoteDevice.SirepClient.SirepDirectoryEnum(this.remoteDirectoryName, callbackHandler);
 				}
 				catch (COMException ex4)
 				{
 					this.RemoteDevice.ExceptionHandler(ex4);
 				}
-				string[] array3 = reply.ToString().Split(new string[]
-				{
-					"\n"
-				}, StringSplitOptions.RemoveEmptyEntries);
+				string[] array3 = reply.ToString().Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
 				if (searchPattern != "*")
 				{
 					searchPattern = searchPattern.Replace(".", "\\.");
 					searchPattern = searchPattern.Replace("?", ".");
 					searchPattern = searchPattern.Replace("*", ".*");
 				}
-				foreach (string input2 in array3)
+				foreach (string text4 in array3)
 				{
-					MatchCollection matchCollection2 = RemoteDirectory.RegexEnum.Matches(input2);
+					MatchCollection matchCollection2 = RemoteDirectory.RegexEnum.Matches(text4);
 					if (matchCollection2.Count != 0)
 					{
 						string value2 = matchCollection2[0].Groups["Path"].Value;
@@ -379,11 +340,11 @@ namespace Microsoft.Tools.Connectivity
 		private bool CheckExists()
 		{
 			this.RemoteDevice.EnsureConnection();
-			bool result = false;
+			bool flag = false;
 			if (this.RemoteDevice.Protocol != RemoteDevice.TransportProtocol.Ssh)
 			{
 				string reply = null;
-				CallbackHandler outputCallback = new CallbackHandler(delegate(uint flags, string data)
+				CallbackHandler callbackHandler = new CallbackHandler(delegate(uint flags, string data)
 				{
 					reply += data;
 				});
@@ -391,16 +352,11 @@ namespace Microsoft.Tools.Connectivity
 				uint num = 0U;
 				try
 				{
-					num = this.RemoteDevice.SirepClient.LaunchWithOutput((uint)this.Timeout.TotalMilliseconds, "\\windows\\system32\\cmd.exe", text,
-						Path.GetDirectoryName("\\windows\\system32\\cmd.exe"), 0U, /*outputCallback*/null);
+					num = this.RemoteDevice.SirepClient.LaunchWithOutput((uint)this.Timeout.TotalMilliseconds, "\\windows\\system32\\cmd.exe", text, Path.GetDirectoryName("\\windows\\system32\\cmd.exe"), 0U, callbackHandler);
 				}
 				catch (COMException ex)
 				{
-					this.RemoteDevice.ExceptionHandler(ex, string.Format(CultureInfo.CurrentCulture, "Remote command '{0} {1}' execution failed.", new object[]
-					{
-						"\\windows\\system32\\cmd.exe",
-						text
-					}));
+					this.RemoteDevice.ExceptionHandler(ex, string.Format(CultureInfo.CurrentCulture, "Remote command '{0} {1}' execution failed.", new object[] { "\\windows\\system32\\cmd.exe", text }));
 				}
 				if (num != 0U)
 				{
@@ -409,18 +365,13 @@ namespace Microsoft.Tools.Connectivity
 					uint num2 = num;
 					if (num2 != 1U)
 					{
-						throw new OperationFailedException(string.Format(CultureInfo.CurrentCulture, "Remote command '{0} {1}' execution failed with {2}.", new object[]
-						{
-							"\\windows\\system32\\cmd.exe",
-							text,
-							exceptionForHR
-						}));
+						throw new OperationFailedException(string.Format(CultureInfo.CurrentCulture, "Remote command '{0} {1}' execution failed with {2}.", new object[] { "\\windows\\system32\\cmd.exe", text, exceptionForHR }));
 					}
-					result = false;
+					flag = false;
 				}
 				else
 				{
-					result = true;
+					flag = true;
 				}
 			}
 			else
@@ -431,11 +382,11 @@ namespace Microsoft.Tools.Connectivity
 					if (enumerator.MoveNext())
 					{
 						string text2 = enumerator.Current;
-						result = true;
+						flag = true;
 					}
 				}
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x0400009C RID: 156

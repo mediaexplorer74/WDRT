@@ -40,7 +40,7 @@ namespace Nokia.Mira.Metadata
 				throw new InvalidOperationException();
 			}
 			stream = localStream;
-			return new MetadataStreamContainer.StreamReservationContext(delegate()
+			return new MetadataStreamContainer.StreamReservationContext(delegate
 			{
 				localStream.Flush();
 				localStream.Seek(0L, SeekOrigin.Begin);
@@ -71,7 +71,8 @@ namespace Nokia.Mira.Metadata
 		private class StreamReservationContext : Disposable, IStreamReservationContext, IDisposable
 		{
 			// Token: 0x060000A5 RID: 165 RVA: 0x00003464 File Offset: 0x00001664
-			public StreamReservationContext(Action action) : base(action)
+			public StreamReservationContext(Action action)
+				: base(action)
 			{
 			}
 		}

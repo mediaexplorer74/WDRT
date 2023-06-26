@@ -8,17 +8,17 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AnalogAdaptation
 	// Token: 0x02000003 RID: 3
 	public static class BitmapExtensions
 	{
-		// Token: 0x06000007 RID: 7 RVA: 0x000024F0 File Offset: 0x000006F0
+		// Token: 0x06000007 RID: 7 RVA: 0x000021D0 File Offset: 0x000003D0
 		public static byte[] ToBytes(this Bitmap bitmap)
 		{
-			byte[] result;
+			byte[] array;
 			using (MemoryStream memoryStream = new MemoryStream())
 			{
 				bitmap.Save(memoryStream, ImageFormat.Png);
 				memoryStream.Seek(0L, SeekOrigin.Begin);
-				result = memoryStream.ToArray();
+				array = memoryStream.ToArray();
 			}
-			return result;
+			return array;
 		}
 	}
 }

@@ -33,12 +33,12 @@ namespace ComponentAce.Compression.Archiver
 		public static bool FindFirst(string fileMask, ref BaseArchiveItem f, FileAttributes searchAttr, string exclusionMask, IItemsArray cDir, bool recurse)
 		{
 			int length = CompressionUtils.ExtractFileDrive(fileMask).Length;
-			string text = (length > 0) ? fileMask.Substring(length, fileMask.Length - length) : fileMask;
+			string text = ((length > 0) ? fileMask.Substring(length, fileMask.Length - length) : fileMask);
 			text = text.Replace('\\', '/');
 			f.Handle.CFindMask = text;
 			f.Handle.ExclusionMask = exclusionMask;
 			f.Handle.UseProperties = false;
-			f.Handle.FWildCards = (text.IndexOf('*') >= 0 || text.IndexOf('?') >= 0);
+			f.Handle.FWildCards = text.IndexOf('*') >= 0 || text.IndexOf('?') >= 0;
 			f.Handle.FFindAttr = (int)searchAttr;
 			f.Handle.ItemNo = 0;
 			return CentralDirectorySearcher.InternalFind(ref f, cDir, recurse, null, null);
@@ -133,14 +133,14 @@ namespace ComponentAce.Compression.Archiver
 				text = text.Replace('/', '\\');
 				for (int i = 0; i < fileMasks.Count; i++)
 				{
-					string fileMask = fileMasks[i];
-					if (CentralDirectorySearcher.IsInternalFileMatchMask(text, fileMask))
+					string text2 = fileMasks[i];
+					if (CentralDirectorySearcher.IsInternalFileMatchMask(text, text2))
 					{
 						flag = true;
 						for (int j = 0; j < exclusionMasks.Count; j++)
 						{
-							string fileMask2 = exclusionMasks[j];
-							if (CentralDirectorySearcher.IsInternalFileMatchMask(text, fileMask2))
+							string text3 = exclusionMasks[j];
+							if (CentralDirectorySearcher.IsInternalFileMatchMask(text, text3))
 							{
 								return false;
 							}
@@ -160,8 +160,8 @@ namespace ComponentAce.Compression.Archiver
 				{
 					text = text.Substring(0, text.Length - 1);
 				}
-				string fileMask = f.Handle.CFindMask;
-				flag = (CentralDirectorySearcher.IsInternalFileMatchMask(text, fileMask) || CentralDirectorySearcher.IsInternalFileMatchMask(Path.GetFileName(text.Replace('/', '\\')), fileMask));
+				string text2 = f.Handle.CFindMask;
+				flag = CentralDirectorySearcher.IsInternalFileMatchMask(text, text2) || CentralDirectorySearcher.IsInternalFileMatchMask(Path.GetFileName(text.Replace('/', '\\')), text2);
 				if (flag && CentralDirectorySearcher.IsInternalFileMatchMask(text, f.Handle.ExclusionMask))
 				{
 					flag = false;

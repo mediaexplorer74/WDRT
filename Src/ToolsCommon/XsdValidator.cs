@@ -7,10 +7,10 @@ using System.Xml.Schema;
 
 namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 {
-	// Token: 0x02000055 RID: 85
+	// Token: 0x02000065 RID: 101
 	public class XsdValidator
 	{
-		// Token: 0x0600026E RID: 622 RVA: 0x0000B710 File Offset: 0x00009910
+		// Token: 0x0600027F RID: 639 RVA: 0x0000BB38 File Offset: 0x00009D38
 		public void ValidateXsd(string xsdFile, string xmlFile, IULogger logger)
 		{
 			if (!LongPathFile.Exists(xmlFile))
@@ -21,7 +21,8 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			{
 				string text = string.Empty;
 				Assembly executingAssembly = Assembly.GetExecutingAssembly();
-				foreach (string text2 in executingAssembly.GetManifestResourceNames())
+				string[] manifestResourceNames = executingAssembly.GetManifestResourceNames();
+				foreach (string text2 in manifestResourceNames)
 				{
 					if (text2.Contains(xsdFile))
 					{
@@ -40,7 +41,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x0600026F RID: 623 RVA: 0x0000B7D8 File Offset: 0x000099D8
+		// Token: 0x06000280 RID: 640 RVA: 0x0000BC08 File Offset: 0x00009E08
 		public void ValidateXsd(Stream xsdStream, string xmlFile, IULogger logger)
 		{
 			if (!LongPathFile.Exists(xmlFile))
@@ -53,7 +54,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x06000270 RID: 624 RVA: 0x0000B82C File Offset: 0x00009A2C
+		// Token: 0x06000281 RID: 641 RVA: 0x0000BC5C File Offset: 0x00009E5C
 		public void ValidateXsd(Stream xsdStream, Stream xmlStream, string xmlName, IULogger logger)
 		{
 			this._logger = logger;
@@ -65,63 +66,53 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			XmlDocument xmlDocument;
 			try
 			{
-				XmlSchema schema = null;
-				using (XmlReader xmlReader = XmlReader.Create(xsdStream))
-				{
-					schema = XmlSchema.Read(xmlReader, new ValidationEventHandler(this.ValidationHandler));
-				}
+				XmlSchema xmlSchema = XmlSchema.Read(xsdStream, new ValidationEventHandler(this.ValidationHandler));
 				xmlDocument = new XmlDocument();
-				xmlDocument.Schemas.Add(schema);
+				xmlDocument.Schemas.Add(xmlSchema);
 			}
-			catch (XmlSchemaException innerException)
+			catch (XmlSchemaException ex)
 			{
-				throw new XsdValidatorException("ToolsCommon!XsdValidator::ValidateXsd: Unable to use the schema provided for xml: " + xmlName, innerException);
+				throw new XsdValidatorException("ToolsCommon!XsdValidator::ValidateXsd: Unable to use the schema provided for xml: " + xmlName, ex);
 			}
 			try
 			{
 				xmlDocument.Load(xmlStream);
 				xmlDocument.Validate(new ValidationEventHandler(this.ValidationHandler));
 			}
-			catch (Exception innerException2)
+			catch (Exception ex2)
 			{
-				throw new XsdValidatorException("ToolsCommon!XsdValidator::ValidateXsd: There was a problem validating the XML file " + xmlName, innerException2);
+				throw new XsdValidatorException("ToolsCommon!XsdValidator::ValidateXsd: There was a problem validating the XML file " + xmlName, ex2);
 			}
 			if (!this._fileIsValid)
 			{
-				throw new XsdValidatorException(string.Format(CultureInfo.InvariantCulture, "ToolsCommon!XsdValidator::ValidateXsd: Validation of {0} failed", new object[]
-				{
-					xmlName
-				}));
+				string text = string.Format(CultureInfo.InvariantCulture, "ToolsCommon!XsdValidator::ValidateXsd: Validation of {0} failed", new object[] { xmlName });
+				throw new XsdValidatorException(text);
 			}
 		}
 
-		// Token: 0x06000271 RID: 625 RVA: 0x0000B930 File Offset: 0x00009B30
+		// Token: 0x06000282 RID: 642 RVA: 0x0000BD44 File Offset: 0x00009F44
 		private void ValidationHandler(object sender, ValidationEventArgs args)
 		{
-			string format = string.Format(CultureInfo.InvariantCulture, "\nToolsCommon!XsdValidator::ValidateXsd: XML Validation {0}: {1}", new object[]
-			{
-				args.Severity,
-				args.Message
-			});
+			string text = string.Format(CultureInfo.InvariantCulture, "\nToolsCommon!XsdValidator::ValidateXsd: XML Validation {0}: {1}", new object[] { args.Severity, args.Message });
 			if (args.Severity == XmlSeverityType.Error)
 			{
 				if (this._logger != null)
 				{
-					this._logger.LogError(format, new object[0]);
+					this._logger.LogError(text, new object[0]);
 				}
 				this._fileIsValid = false;
 				return;
 			}
 			if (this._logger != null)
 			{
-				this._logger.LogWarning(format, new object[0]);
+				this._logger.LogWarning(text, new object[0]);
 			}
 		}
 
-		// Token: 0x0400011C RID: 284
+		// Token: 0x0400017D RID: 381
 		private bool _fileIsValid = true;
 
-		// Token: 0x0400011D RID: 285
+		// Token: 0x0400017E RID: 382
 		private IULogger _logger;
 	}
 }

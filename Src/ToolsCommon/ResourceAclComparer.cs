@@ -3,29 +3,29 @@ using System.Collections.Generic;
 
 namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 {
-	// Token: 0x02000041 RID: 65
+	// Token: 0x0200004F RID: 79
 	public class ResourceAclComparer : IEqualityComparer<ResourceAcl>
 	{
-		// Token: 0x060001A7 RID: 423 RVA: 0x00008EE0 File Offset: 0x000070E0
+		// Token: 0x060001C0 RID: 448 RVA: 0x00009784 File Offset: 0x00007984
 		public bool Equals(ResourceAcl x, ResourceAcl y)
 		{
-			bool result = false;
+			bool flag = false;
 			if (!string.IsNullOrEmpty(x.Path) && !string.IsNullOrEmpty(y.Path))
 			{
-				result = x.Path.Equals(y.Path, StringComparison.OrdinalIgnoreCase);
+				flag = x.Path.Equals(y.Path, StringComparison.OrdinalIgnoreCase);
 			}
-			return result;
+			return flag;
 		}
 
-		// Token: 0x060001A8 RID: 424 RVA: 0x00008F20 File Offset: 0x00007120
+		// Token: 0x060001C1 RID: 449 RVA: 0x000097C4 File Offset: 0x000079C4
 		public int GetHashCode(ResourceAcl obj)
 		{
-			int result = 0;
+			int num = 0;
 			if (!string.IsNullOrEmpty(obj.Path))
 			{
-				result = obj.Path.GetHashCode();
+				num = obj.Path.GetHashCode();
 			}
-			return result;
+			return num;
 		}
 	}
 }

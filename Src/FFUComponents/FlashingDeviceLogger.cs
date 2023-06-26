@@ -34,20 +34,12 @@ namespace FFUComponents
 			byte b3 = binaryReader.ReadByte();
 			byte b4 = binaryReader.ReadByte();
 			int num2 = (int)binaryReader.ReadInt16();
-			long keywords = binaryReader.ReadInt64();
-			EventDescriptor eventDescriptor = new EventDescriptor(num, b, b2, b3, b4, num2, keywords);
+			long num3 = binaryReader.ReadInt64();
+			EventDescriptor eventDescriptor = new EventDescriptor(num, b, b2, b3, b4, num2, num3);
 			string text = binaryReader.ReadString();
 			if (b3 <= 2)
 			{
-				errInfo = string.Format("{{ 0x{0:x}, 0x{1:x}, 0x{2:x}, 0x{3:x}, 0x{4:x}, 0x{5:x} }}", new object[]
-				{
-					num,
-					b,
-					b2,
-					b3,
-					b4,
-					num2
-				});
+				errInfo = string.Format("{{ 0x{0:x}, 0x{1:x}, 0x{2:x}, 0x{3:x}, 0x{4:x}, 0x{5:x} }}", new object[] { num, b, b2, b3, b4, num2 });
 				if (text != "")
 				{
 					errInfo = errInfo + " : " + text;

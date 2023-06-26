@@ -2,11 +2,12 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model.DataPackage
 {
-	// Token: 0x02000024 RID: 36
+	// Token: 0x02000051 RID: 81
 	public class VplPackageFileInfo : PackageFileInfo
 	{
-		// Token: 0x06000128 RID: 296 RVA: 0x000043AC File Offset: 0x000025AC
-		public VplPackageFileInfo(string path, VariantInfo variantInfo) : base(path)
+		// Token: 0x060002A3 RID: 675 RVA: 0x0000710C File Offset: 0x0000530C
+		public VplPackageFileInfo(string path, VariantInfo variantInfo)
+			: base(path)
 		{
 			base.Path = path;
 			this.packageId = variantInfo.ProductCode;
@@ -16,8 +17,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model.DataPackage
 			this.FfuFilePath = variantInfo.FfuFilePath;
 		}
 
-		// Token: 0x17000073 RID: 115
-		// (get) Token: 0x06000129 RID: 297 RVA: 0x00004408 File Offset: 0x00002608
+		// Token: 0x17000103 RID: 259
+		// (get) Token: 0x060002A4 RID: 676 RVA: 0x00007168 File Offset: 0x00005368
 		public override string PackageId
 		{
 			get
@@ -26,8 +27,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model.DataPackage
 			}
 		}
 
-		// Token: 0x17000074 RID: 116
-		// (get) Token: 0x0600012A RID: 298 RVA: 0x00004420 File Offset: 0x00002620
+		// Token: 0x17000104 RID: 260
+		// (get) Token: 0x060002A5 RID: 677 RVA: 0x00007180 File Offset: 0x00005380
 		public override string Name
 		{
 			get
@@ -36,8 +37,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model.DataPackage
 			}
 		}
 
-		// Token: 0x17000075 RID: 117
-		// (get) Token: 0x0600012B RID: 299 RVA: 0x00004438 File Offset: 0x00002638
+		// Token: 0x17000105 RID: 261
+		// (get) Token: 0x060002A6 RID: 678 RVA: 0x00007198 File Offset: 0x00005398
 		public override string SoftwareVersion
 		{
 			get
@@ -46,8 +47,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model.DataPackage
 			}
 		}
 
-		// Token: 0x17000076 RID: 118
-		// (get) Token: 0x0600012C RID: 300 RVA: 0x00004450 File Offset: 0x00002650
+		// Token: 0x17000106 RID: 262
+		// (get) Token: 0x060002A7 RID: 679 RVA: 0x000071B0 File Offset: 0x000053B0
 		public override string AkVersion
 		{
 			get
@@ -56,21 +57,21 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model.DataPackage
 			}
 		}
 
-		// Token: 0x17000077 RID: 119
-		// (get) Token: 0x0600012D RID: 301 RVA: 0x00004468 File Offset: 0x00002668
-		// (set) Token: 0x0600012E RID: 302 RVA: 0x0000447F File Offset: 0x0000267F
+		// Token: 0x17000107 RID: 263
+		// (get) Token: 0x060002A8 RID: 680 RVA: 0x000071C8 File Offset: 0x000053C8
+		// (set) Token: 0x060002A9 RID: 681 RVA: 0x000071D0 File Offset: 0x000053D0
 		public string FfuFilePath { get; private set; }
 
-		// Token: 0x040000C2 RID: 194
+		// Token: 0x04000235 RID: 565
 		private readonly string packageId;
 
-		// Token: 0x040000C3 RID: 195
+		// Token: 0x04000236 RID: 566
 		private readonly string name;
 
-		// Token: 0x040000C4 RID: 196
+		// Token: 0x04000237 RID: 567
 		private readonly string softwareVersion;
 
-		// Token: 0x040000C5 RID: 197
+		// Token: 0x04000238 RID: 568
 		private readonly string akVersion;
 	}
 }

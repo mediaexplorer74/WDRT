@@ -1,0 +1,886 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ALinq_AnyAllNotSupportedInOrderBy" xml:space="preserve">
+    <value>'orderby' 查詢選項不支援方法 '{0}'。</value>
+  </data>
+  <data name="ALinq_BinaryNotSupported" xml:space="preserve">
+    <value>不支援二元運算子 '{0}'。</value>
+  </data>
+  <data name="ALinq_CanOnlyApplyOneKeyPredicate" xml:space="preserve">
+    <value>無法為同一個實體集指定多個索引鍵述詞。</value>
+  </data>
+  <data name="ALinq_CanOnlyProjectTheLeaf" xml:space="preserve">
+    <value>只能投影要轉譯之查詢中的最後實體類型。</value>
+  </data>
+  <data name="ALinq_CannotAddCountOption" xml:space="preserve">
+    <value>無法將計數選項加入資源集。</value>
+  </data>
+  <data name="ALinq_CannotAddCountOptionConflict" xml:space="preserve">
+    <value>無法將計數選項加入資源集，因為它會與現有的計數選項衝突。</value>
+  </data>
+  <data name="ALinq_CannotConstructKnownEntityTypes" xml:space="preserve">
+    <value>實體類型執行個體的建構必須使用含有預設建構函式的物件初始設定式。</value>
+  </data>
+  <data name="ALinq_CannotCreateConstantEntity" xml:space="preserve">
+    <value>當投影結果時，不支援參考本機實體類型執行個體。</value>
+  </data>
+  <data name="ALinq_CannotProjectWithExplicitExpansion" xml:space="preserve">
+    <value>無法在相同查詢上已指定明確展開時建立投影。</value>
+  </data>
+  <data name="ALinq_CannotUseTypeFiltersMultipleTimes" xml:space="preserve">
+    <value>每個資源集只能使用非多餘的類型篩選 (OfType&lt;T&gt;、C# 'as' 和 VB 'TryCast') 一次。</value>
+  </data>
+  <data name="ALinq_CantAddAstoriaQueryOption" xml:space="preserve">
+    <value>無法加入查詢選項 '{0}'，因為它會與根據 LINQ 運算式轉譯的查詢選項相衝突。</value>
+  </data>
+  <data name="ALinq_CantAddDuplicateQueryOption" xml:space="preserve">
+    <value>無法加入重複的查詢選項 '{0}'。</value>
+  </data>
+  <data name="ALinq_CantAddQueryOption" xml:space="preserve">
+    <value>不允許自訂查詢選項。</value>
+  </data>
+  <data name="ALinq_CantAddQueryOptionStartingWithDollarSign" xml:space="preserve">
+    <value>無法加入查詢選項 '{0}'，因為它以保留字元 '$' 開頭。</value>
+  </data>
+  <data name="ALinq_CantCastToUnsupportedPrimitive" xml:space="preserve">
+    <value>無法轉型成不支援的型別 '{0}'</value>
+  </data>
+  <data name="ALinq_CantExpand" xml:space="preserve">
+    <value>不允許展開查詢選項。</value>
+  </data>
+  <data name="ALinq_CantNavigateWithoutKeyPredicate" xml:space="preserve">
+    <value>個別屬性只能從單一資源中選取，或是做為類型的一部分。請指定索引鍵述詞將實體集限制為單一執行個體，或將屬性投影至命名或匿名類型。</value>
+  </data>
+  <data name="ALinq_CantReferToPublicField" xml:space="preserve">
+    <value>不支援在查詢選項運算式中參考公用欄位 '{0}'。請改用公用屬性。</value>
+  </data>
+  <data name="ALinq_CantTranslateExpression" xml:space="preserve">
+    <value>不支援運算式 {0}。</value>
+  </data>
+  <data name="ALinq_CollectionMemberAccessNotSupportedInNavigation" xml:space="preserve">
+    <value>不支援巡覽至 'select' 查詢運算式中集合屬性 '{0}' 的成員。</value>
+  </data>
+  <data name="ALinq_CollectionPropertyNotSupportedInOrderBy" xml:space="preserve">
+    <value>集合屬性 '{0}' 不能在 'orderby' 查詢運算式中使用。'orderby' 查詢選項不支援集合屬性。</value>
+  </data>
+  <data name="ALinq_CollectionPropertyNotSupportedInWhere" xml:space="preserve">
+    <value>集合屬性 '{0}' 不能在 'where' 查詢運算式中使用。只支援將集合屬性做為 'where' 查詢選項中 'any' 或 'all' 方法的來源。</value>
+  </data>
+  <data name="ALinq_ConditionalNotSupported" xml:space="preserve">
+    <value>不支援條件運算式。</value>
+  </data>
+  <data name="ALinq_ConstantNotSupported" xml:space="preserve">
+    <value>不支援 '{0}' 的常數。</value>
+  </data>
+  <data name="ALinq_CouldNotConvert" xml:space="preserve">
+    <value>無法將常數 {0} 運算式轉換成字串。</value>
+  </data>
+  <data name="ALinq_ExpressionCannotEndWithTypeAs" xml:space="preserve">
+    <value>'{1}' 方法包含不支援的運算式 '{0}'。運算式不能以 TypeAs 做為結尾。</value>
+  </data>
+  <data name="ALinq_ExpressionNotSupportedInProjection" xml:space="preserve">
+    <value>不支援使用運算式 {1} 建構或初始化類型 {0} 的執行個體。</value>
+  </data>
+  <data name="ALinq_ExpressionNotSupportedInProjectionToEntity" xml:space="preserve">
+    <value>不支援使用運算式 {1} 初始化實體類型 {0} 的執行個體。</value>
+  </data>
+  <data name="ALinq_FormatQueryOptionNotSupported" xml:space="preserve">
+    <value>不支援 '$format' 查詢選項。請使用 DataServiceContext.Format 屬性來設定所要的格式。</value>
+  </data>
+  <data name="ALinq_InvalidExpressionInNavigationPath" xml:space="preserve">
+    <value>運算式 '{0}' 不是導覽路徑的有效運算式。Lambda 運算式主體內唯一支援的作業為 MemberAccess 和 TypeAs。運算式必須至少包含一個 MemberAccess，並且不能以 TypeAs 做為結尾。</value>
+  </data>
+  <data name="ALinq_InvalidSourceForAnyAll" xml:space="preserve">
+    <value>'{0}' 方法的來源參數必須是導覽或集合屬性。</value>
+  </data>
+  <data name="ALinq_InvocationNotSupported" xml:space="preserve">
+    <value>不支援引動過程運算式。</value>
+  </data>
+  <data name="ALinq_LambdaNotSupported" xml:space="preserve">
+    <value>不支援 Lambda 運算式。</value>
+  </data>
+  <data name="ALinq_LinkPropertyNotSupportedInExpression" xml:space="preserve">
+    <value>類型 'DataServiceStreamLink' 的屬性 '{0}' 不能在 'where' 或 'orderby' 查詢運算式中使用。這些查詢選項不支援類型 'DataServiceStreamLink' 的屬性。</value>
+  </data>
+  <data name="ALinq_ListInitNotSupported" xml:space="preserve">
+    <value>不支援清單 Init 運算式。</value>
+  </data>
+  <data name="ALinq_MemberAccessNotSupported" xml:space="preserve">
+    <value>不支援 '{0}' 的成員存取。</value>
+  </data>
+  <data name="ALinq_MemberInitNotSupported" xml:space="preserve">
+    <value>不支援成員 Init 運算式。</value>
+  </data>
+  <data name="ALinq_MethodNotSupported" xml:space="preserve">
+    <value>不支援方法 '{0}'。</value>
+  </data>
+  <data name="ALinq_MethodNotSupportedForMaxDataServiceVersionLessThanX" xml:space="preserve">
+    <value>當 MaxProtocolVersion 小於 '{1}' 時，不支援方法 '{0}'。</value>
+  </data>
+  <data name="ALinq_NewArrayNotSupported" xml:space="preserve">
+    <value>不支援新增陣列運算式。</value>
+  </data>
+  <data name="ALinq_NewNotSupported" xml:space="preserve">
+    <value>不支援新增運算式。</value>
+  </data>
+  <data name="ALinq_OfTypeArgumentNotAvailable" xml:space="preserve">
+    <value>無法判斷 OfType 篩選的目標類型。</value>
+  </data>
+  <data name="ALinq_ParameterNotSupported" xml:space="preserve">
+    <value>不支援參數運算式。</value>
+  </data>
+  <data name="ALinq_ProjectionCanOnlyHaveOneProjection" xml:space="preserve">
+    <value>無法轉譯單一 'select' 查詢選項中的多個 Linq Select 作業。</value>
+  </data>
+  <data name="ALinq_ProjectionMemberAssignmentMismatch" xml:space="preserve">
+    <value>無法初始化實體類型 '{0}' 的執行個體，因為 '{1}' 和 '{2}' 未參考相同來源實體。</value>
+  </data>
+  <data name="ALinq_ProjectionOnlyAllowedOnLeafNodes" xml:space="preserve">
+    <value>在最後導覽之後只能指定 'select' 查詢選項。</value>
+  </data>
+  <data name="ALinq_PropertyNamesMustMatchInProjections" xml:space="preserve">
+    <value>無法將值從 {0} 屬性指定至 {1} 屬性。在將結果投影至實體類型時，對於所要投影的屬性，其來源類型和目標類型的屬性名稱必須相符。</value>
+  </data>
+  <data name="ALinq_QueryOptionOutOfOrder" xml:space="preserve">
+    <value>在 {1} 查詢選項後不能指定 {0} 查詢選項。</value>
+  </data>
+  <data name="ALinq_QueryOptionsOnlyAllowedOnLeafNodes" xml:space="preserve">
+    <value>在最後導覽之後只能指定查詢選項 (orderby、where、take、skip)。</value>
+  </data>
+  <data name="ALinq_QueryOptionsOnlyAllowedOnSingletons" xml:space="preserve">
+    <value>無法在單一資源上指定查詢選項 (orderby、where、take、skip、count)。</value>
+  </data>
+  <data name="ALinq_TranslationError" xml:space="preserve">
+    <value>將 LINQ 運算式轉換成 URI 時發生錯誤: {0}</value>
+  </data>
+  <data name="ALinq_TypeAsArgumentNotEntityType" xml:space="preserve">
+    <value>類型 '{0}' 不是實體類型。TypeAs 運算子的目標類型必須是實體類型。</value>
+  </data>
+  <data name="ALinq_TypeAsNotSupportedForMaxDataServiceVersionLessThan3" xml:space="preserve">
+    <value>當 MaxProtocolVersion 小於 '3.0' 時，不支援運算式 'TypeAs'。</value>
+  </data>
+  <data name="ALinq_TypeBinaryNotSupported" xml:space="preserve">
+    <value>不支援運算式與型別之間的運算。</value>
+  </data>
+  <data name="ALinq_UnaryNotSupported" xml:space="preserve">
+    <value>不支援一元運算子 '{0}'。</value>
+  </data>
+  <data name="ALinq_UnsupportedExpression" xml:space="preserve">
+    <value>不支援運算式型別 {0}。</value>
+  </data>
+  <data name="AtomMaterializer_CannotAssignNull" xml:space="preserve">
+    <value>無法將屬性 '{0}' 中的 null 值指定給類型 '{1}'。</value>
+  </data>
+  <data name="AtomMaterializer_CollectionExpectedCollection" xml:space="preserve">
+    <value>最上層集合的具體化需要 ICollection&lt;&gt;，但實際類型為 {0}。</value>
+  </data>
+  <data name="AtomMaterializer_DataServiceCollectionNotSupportedForNonEntities" xml:space="preserve">
+    <value>DataServiceCollection 只能包含實體類型。基本類型和複雜類型不可由這種集合所包含。</value>
+  </data>
+  <data name="AtomMaterializer_EntryIntoCollectionMismatch" xml:space="preserve">
+    <value>無法將類型 '{0}' 的項目加入包含類型 '{1}' 之執行個體的集合。當不同類型的現有項目具有相同的識別值，或者相同實體投影到單一查詢的兩個不同類型時，就可能發生這個問題。</value>
+  </data>
+  <data name="AtomMaterializer_EntryToAccessIsNull" xml:space="preserve">
+    <value>導覽屬性 '{0}' 傳回的項目為 null，因此無法初始化。您應該在存取這個屬性之前檢查是否有 null 值。</value>
+  </data>
+  <data name="AtomMaterializer_EntryToInitializeIsNull" xml:space="preserve">
+    <value>包含建立 '{0}' 類型之執行個體之資料的項目為 null，因此無法初始化。您應該在存取這個屬性之前檢查是否有 null 值。</value>
+  </data>
+  <data name="AtomMaterializer_InvalidCollectionItem" xml:space="preserve">
+    <value>元素 '{0}' 不是有效的集合項目。集合項目元素的名稱必須是 'element'，而且必須屬於 'http://schemas.microsoft.com/ado/2007/08/dataservices' 命名空間。</value>
+  </data>
+  <data name="AtomMaterializer_InvalidContentTypeEncountered" xml:space="preserve">
+    <value>目前不支援回應內容類型 '{0}'。</value>
+  </data>
+  <data name="AtomMaterializer_InvalidEntityType" xml:space="preserve">
+    <value>用戶端與服務之間的類型不符。類型 '{0}' 是實體類型，但是回應裝載中的類型不代表實體類型。請確定用戶端上定義的類型符合服務的資料模型，或是更新用戶端上的服務參考。</value>
+  </data>
+  <data name="AtomMaterializer_InvalidNonEntityType" xml:space="preserve">
+    <value>用戶端與服務之間的類型不符。類型 '{0}' 不是實體類型，但是回應裝載中的類型代表實體類型。請確定用戶端上定義的類型符合服務的資料模型，或是更新用戶端上的服務參考。</value>
+  </data>
+  <data name="AtomMaterializer_InvalidResponsePayload" xml:space="preserve">
+    <value>回應裝載不是有效的回應裝載。請確定最上層元素是有效的 Atom 或 JSON 元素，或屬於 '{0}' 命名空間。</value>
+  </data>
+  <data name="AtomMaterializer_MaterializationTypeError" xml:space="preserve">
+    <value>無法將結果具體化為集合類型 '{0}'，因為它沒有無參數的建構函式。</value>
+  </data>
+  <data name="AtomMaterializer_NoParameterlessCtorForCollectionProperty" xml:space="preserve">
+    <value>無法建立集合屬性 '{0}'，因為類型 '{1}' 沒有公用無參數的建構函式。</value>
+  </data>
+  <data name="AtomMaterializer_ProjectEntityTypeMismatch" xml:space="preserve">
+    <value>無法投影類型 '{0}' 的實體，因為 '{2}' 已經有類型 '{1}' 的執行個體。</value>
+  </data>
+  <data name="AtomMaterializer_PropertyMissing" xml:space="preserve">
+    <value>處理項目時，找不到需要的屬性 '{0}'。請在存取這個屬性之前，先檢查是否有 null。</value>
+  </data>
+  <data name="AtomMaterializer_PropertyNotExpectedEntry" xml:space="preserve">
+    <value>屬性 '{0}' 不是實體。</value>
+  </data>
+  <data name="AtomMaterializer_ResetAfterEnumeratorCreationError" xml:space="preserve">
+    <value>絕不能在內部可列舉的集合讀取器中呼叫重設。</value>
+  </data>
+  <data name="AtomMaterializer_TypeShouldBeCollectionError" xml:space="preserve">
+    <value>沒有類型 '{0}' 的集合，就無法具體化基本或複雜集合。</value>
+  </data>
+  <data name="AtomParser_SingleEntry_ExpectedFeedOrEntry" xml:space="preserve">
+    <value>伺服器的回應中必須是 Atom 摘要或輸入，但卻找到非預期的項目。</value>
+  </data>
+  <data name="AtomParser_SingleEntry_MultipleFound" xml:space="preserve">
+    <value>伺服器的回應中必須只有一個 Atom 輸入，但找到不止一個。</value>
+  </data>
+  <data name="AtomParser_SingleEntry_NoneFound" xml:space="preserve">
+    <value>伺服器的回應中必須只有一個 Atom 輸入，但一個也找不到。</value>
+  </data>
+  <data name="Batch_ExpectedContentType" xml:space="preserve">
+    <value>批次要求需要的內容類型是 "multipart/mixed;boundary=batch"，不是 "{0}"。</value>
+  </data>
+  <data name="Batch_ExpectedResponse" xml:space="preserve">
+    <value>POST 要求需要包含內容的回應。ID={0}</value>
+  </data>
+  <data name="Batch_IncompleteResponseCount" xml:space="preserve">
+    <value>不是批次中的所有要求都有回應。</value>
+  </data>
+  <data name="Batch_UnexpectedContent" xml:space="preserve">
+    <value>Web 回應包含了非預期的區段。ID={0}</value>
+  </data>
+  <data name="ClientTypeCache_NonEntityTypeCannotContainEntityProperties" xml:space="preserve">
+    <value>屬性 '{0}' 是實體類型，並且不可以是非實體類型之類型 '{1}' 的屬性。只有實體類型可以包含導覽屬性。</value>
+  </data>
+  <data name="ClientType_Ambiguous" xml:space="preserve">
+    <value>對繼承自 '{1}' 的 '{0}' 其中的類型進行解析，會導致模稜兩可。</value>
+  </data>
+  <data name="ClientType_CollectionOfCollectionNotSupported" xml:space="preserve">
+    <value>不支援集合類型的集合屬性。</value>
+  </data>
+  <data name="ClientType_CollectionPropertyNotSupportedInV2AndBelow" xml:space="preserve">
+    <value>類型 '{0}' 的屬性 '{1}' 是集合屬性。只有 'V3' 和以上版本的通訊協定支援集合屬性。</value>
+  </data>
+  <data name="ClientType_KeysMustBeSimpleTypes" xml:space="preserve">
+    <value>{0} 在非簡單類型上宣告索引鍵屬性。</value>
+  </data>
+  <data name="ClientType_KeysOnDifferentDeclaredType" xml:space="preserve">
+    <value>{0} 在其類型階層架構的不同層級宣告索引鍵屬性。</value>
+  </data>
+  <data name="ClientType_MissingMediaEntryProperty" xml:space="preserve">
+    <value>類型 '{0}' 具有參考稱為 '{1}' 之屬性 (Property) 的 MediaEntry 屬性 (Attribute)。不過，這個類型沒有屬性 '{1}'。</value>
+  </data>
+  <data name="ClientType_MissingMimeTypeDataProperty" xml:space="preserve">
+    <value>類型 '{0}' 具有參考資料屬性 (Property) '{1}' 的 MimeTypeProperty 屬性 (Attribute)。不過，這個類型沒有屬性 '{1}'。</value>
+  </data>
+  <data name="ClientType_MissingMimeTypeProperty" xml:space="preserve">
+    <value>類型 '{0}' 具有參考 MIME 類型屬性 (Property) '{1}' 的 MimeTypeProperty 屬性 (Attribute)。不過，這個類型沒有屬性 '{1}'。</value>
+  </data>
+  <data name="ClientType_MissingOpenProperty" xml:space="preserve">
+    <value>未定義開啟物件屬性 '{0}:{1}'。</value>
+  </data>
+  <data name="ClientType_MissingProperty" xml:space="preserve">
+    <value>封閉類型 {0} 沒有對應的 {1} 可設定屬性。</value>
+  </data>
+  <data name="ClientType_MultipleImplementationNotSupported" xml:space="preserve">
+    <value>不支援多個 ICollection&lt;T&gt; 實作。</value>
+  </data>
+  <data name="ClientType_MultipleTypesWithSameName" xml:space="preserve">
+    <value>找到多個具有相同名稱 '{0}' 的類型。類型名稱必須是唯一的。</value>
+  </data>
+  <data name="ClientType_NoSettableFields" xml:space="preserve">
+    <value>類型 '{0}' 沒有可設定的屬性。</value>
+  </data>
+  <data name="ClientType_NullOpenProperties" xml:space="preserve">
+    <value>開啟類型屬性 '{0}' 傳回 Null 執行個體。</value>
+  </data>
+  <data name="ClientType_UnsupportedType" xml:space="preserve">
+    <value>用戶端程式庫不支援類型 '{0}'。</value>
+  </data>
+  <data name="Clienttype_MultipleOpenProperty" xml:space="preserve">
+    <value>{0} 有多個 OpenObjectAttribute 的定義。</value>
+  </data>
+  <data name="Collection_ComplexTypesInCollectionOfPrimitiveTypesNotAllowed" xml:space="preserve">
+    <value>基本類型的集合屬性不可以包含複雜類型的項目。</value>
+  </data>
+  <data name="Collection_NullCollectionItemsNotSupported" xml:space="preserve">
+    <value>集合屬性中的項目具有 null 值。不支援包含具有 null 值的集合屬性。</value>
+  </data>
+  <data name="Collection_NullCollectionNotSupported" xml:space="preserve">
+    <value>屬性 '{0}' 的值為 null。屬於基本或複雜類型之集合類型的屬性不可以是 null。</value>
+  </data>
+  <data name="Collection_NullCollectionReference" xml:space="preserve">
+    <value>{0}.{1} 必須傳回非 null 的開啟屬性集合。</value>
+  </data>
+  <data name="Collection_NullNonPropertyCollectionNotSupported" xml:space="preserve">
+    <value>項目類型 '{0}' 的集合值為 null。集合不能有 null 值。</value>
+  </data>
+  <data name="Collection_PrimitiveTypesInCollectionOfComplexTypesNotAllowed" xml:space="preserve">
+    <value>複雜類型的集合屬性不可以包含基本類型的項目。</value>
+  </data>
+  <data name="Content_EntityIsNotEntityType" xml:space="preserve">
+    <value>這個作業需要實體必須是實體類型，請標示它的索引鍵屬性，或者使用 DataServiceEntityAttribute 設定類別的屬性</value>
+  </data>
+  <data name="Content_EntityWithoutKey" xml:space="preserve">
+    <value>這個作業需要實體必須是實體類型，並且具有至少一個索引鍵屬性。</value>
+  </data>
+  <data name="Context_AddLinkCollectionOnly" xml:space="preserve">
+    <value>AddLink 及 DeleteLink 方法只適用於 sourceProperty 為集合的情況。</value>
+  </data>
+  <data name="Context_AddRelatedObjectCollectionOnly" xml:space="preserve">
+    <value>AddRelatedObject 方法只適用於當 sourceProperty 為集合時。</value>
+  </data>
+  <data name="Context_AddRelatedObjectSourceDeleted" xml:space="preserve">
+    <value>只有當來源實體未被刪除時，才適用 AddRelatedObject 方法。</value>
+  </data>
+  <data name="Context_AsyncAlreadyDone" xml:space="preserve">
+    <value>非同步結果已經完成。</value>
+  </data>
+  <data name="Context_BaseUri" xml:space="preserve">
+    <value>需要不含查詢或片段的絕對、格式正確 http URL。</value>
+  </data>
+  <data name="Context_BaseUriRequired" xml:space="preserve">
+    <value>您必須先設定 BaseUri 屬性，然後再執行這項作業。</value>
+  </data>
+  <data name="Context_BatchExecuteError" xml:space="preserve">
+    <value>批次執行期間，這個查詢發生錯誤。如需詳細資訊，請參閱內部例外狀況。</value>
+  </data>
+  <data name="Context_BatchNotSupportedForMediaLink" xml:space="preserve">
+    <value>目前不支援在批次模式中儲存具有 [MediaEntry] 屬性的實體。請改用非批次模式。</value>
+  </data>
+  <data name="Context_BatchNotSupportedForNamedStreams" xml:space="preserve">
+    <value>當實體具有一個或多個相關聯的資料流時，無法以批次儲存變更。請重試 SaveChanges 作業，但不啟用 SaveChangesOptions.Batch 和 SaveChangesOptions.BatchWithIndependentOperations 選項。</value>
+  </data>
+  <data name="Context_BodyOperationParametersNotAllowedWithGet" xml:space="preserve">
+    <value>當 HttpMethod 設定為 GET 時，無法指定類型 BodyOperationParameter 的 OperationParameter。</value>
+  </data>
+  <data name="Context_BothLocationAndIdMustBeSpecified" xml:space="preserve">
+    <value>回應應同時具有 'Location' 和 'DataServiceId' 標頭，或者不可以有任一標頭。</value>
+  </data>
+  <data name="Context_BuildingRequestAndSendingRequestCannotBeUsedTogether" xml:space="preserve">
+    <value>SendingRequest 是已被取代的事件。如果使用 BuildingRequest，您就不能使用 SendingRequest。請改用 SendingRequest2。</value>
+  </data>
+  <data name="Context_CannotChangeStateIfAdded" xml:space="preserve">
+    <value>無法將處於 'Added' 狀態的實體變更為 '{0}'，它只能變更為 'Detached'。</value>
+  </data>
+  <data name="Context_CannotChangeStateToAdded" xml:space="preserve">
+    <value>ChangeState 方法不支援 'Added' 狀態，因為插入需要其他資訊。請改用 AddObject 或 AddRelatedObject。</value>
+  </data>
+  <data name="Context_CannotChangeStateToModifiedIfNotUnchanged" xml:space="preserve">
+    <value>如果實體的狀態目前為 'Unchanged'，則只能變更為 'Modified'。</value>
+  </data>
+  <data name="Context_CannotConvertKey" xml:space="preserve">
+    <value>無法將值 '{0}' 轉換為 URI 的金鑰字串。</value>
+  </data>
+  <data name="Context_ChildResourceExists" xml:space="preserve">
+    <value>嘗試刪除兩個物件間的連結失敗，因為連結的目標物件的識別是以連結的來源物件決定。</value>
+  </data>
+  <data name="Context_ContentTypeRequiredForNamedStream" xml:space="preserve">
+    <value>具名資料流的 ContentType 值不可以是 null 或空字串。</value>
+  </data>
+  <data name="Context_DidNotOriginateAsync" xml:space="preserve">
+    <value>目前的物件不是來自非同步結果。</value>
+  </data>
+  <data name="Context_DifferentEntityAlreadyContained" xml:space="preserve">
+    <value>內容已經在追蹤使用相同資源 URI 的不同實體。</value>
+  </data>
+  <data name="Context_DuplicateBodyOperationParameterName" xml:space="preserve">
+    <value>找到多個具有相同名稱的主體作業參數。主體作業參數名稱必須是唯一的。</value>
+  </data>
+  <data name="Context_DuplicateUriOperationParameterName" xml:space="preserve">
+    <value>找到多個具有相同名稱的 URI 作業參數。URI 作業參數名稱必須是唯一的。</value>
+  </data>
+  <data name="Context_EndExecuteExpectedVoidResponse" xml:space="preserve">
+    <value>void 服務作業和動作的 EndExecute 多載收到來自伺服器的非 void 回應。</value>
+  </data>
+  <data name="Context_EntityAlreadyContained" xml:space="preserve">
+    <value>內容已經在追蹤實體。</value>
+  </data>
+  <data name="Context_EntityDoesNotContainNamedStream" xml:space="preserve">
+    <value>實體沒有名稱為 '{0}' 的資料流。請確定資料流的名稱正確無誤。</value>
+  </data>
+  <data name="Context_EntityMetadataBuilderIsRequired" xml:space="preserve">
+    <value>必須實作 ODataEntityMetadataBuilder，但是從 GetEntityMetadataBuilder 傳回 null 值。</value>
+  </data>
+  <data name="Context_EntityNotContained" xml:space="preserve">
+    <value>內容目前不在追蹤實體。</value>
+  </data>
+  <data name="Context_EntityNotMediaLinkEntry" xml:space="preserve">
+    <value>這個作業要求指定的實體必須是 Media Link Entry，並且 ReadStreamUri 必須可供使用。不過，指定的實體不是 Media Link Entry 或沒有有效的 ReadStreamUri 值。如果實體是 Media Link Entry，請重新查詢這個實體的資料服務，以取得有效的 ReadStreamUri 值。</value>
+  </data>
+  <data name="Context_EntitySetName" xml:space="preserve">
+    <value>必須是不具查詢或片段的相對 URL。</value>
+  </data>
+  <data name="Context_ExecuteExpectedVoidResponse" xml:space="preserve">
+    <value>void 服務作業和動作的 Execute 多載收到來自伺服器的非 void 回應。</value>
+  </data>
+  <data name="Context_ExecuteExpectsGetOrPost" xml:space="preserve">
+    <value>HttpMethod 必須是 GET 或 POST。</value>
+  </data>
+  <data name="Context_InternalError" xml:space="preserve">
+    <value>System.Data.Services.Client 內部錯誤 {0}。</value>
+  </data>
+  <data name="Context_LinkResourceInsertFailure" xml:space="preserve">
+    <value>無法插入連結的其中一個資源。</value>
+  </data>
+  <data name="Context_LocationHeaderExpectsAbsoluteUri" xml:space="preserve">
+    <value>回應中指定的 'Location' 標頭值必須是絕對 URI。</value>
+  </data>
+  <data name="Context_MLEWithoutSaveStream" xml:space="preserve">
+    <value>實體類型 {0} 標記了 MediaEntry 屬性，但實體未設定儲存資料流。</value>
+  </data>
+  <data name="Context_MissingOperationParameterName" xml:space="preserve">
+    <value>OperationParameter 的 Name 屬性必須設定為非 Null、非空白的字串。</value>
+  </data>
+  <data name="Context_MissingSelfAndEditLinkForNamedStream" xml:space="preserve">
+    <value>名稱為 '{0}' 的資料流沒有自我 link 或編輯媒體 link。請確定已為這個資料流指定自我 link 或編輯媒體 link。</value>
+  </data>
+  <data name="Context_NoContentTypeForMediaLink" xml:space="preserve">
+    <value>類型 '{0}' 的媒體連結物件設定為使用屬性 '{1}' 中指定的 MIME 類型。但該屬性的值是 null 或空白。</value>
+  </data>
+  <data name="Context_NoLoadWithInsertEnd" xml:space="preserve">
+    <value>內容無法在已加入狀態下載入物件的相關集合或參考。</value>
+  </data>
+  <data name="Context_NoRelationWithDeleteEnd" xml:space="preserve">
+    <value>關聯性的一端或兩端處於已刪除狀態。</value>
+  </data>
+  <data name="Context_NoRelationWithInsertEnd" xml:space="preserve">
+    <value>關聯性的一端或兩端處於已加入狀態。</value>
+  </data>
+  <data name="Context_NullElementInOperationParameterArray" xml:space="preserve">
+    <value>作業參數陣列包含不允許的 null 元素。</value>
+  </data>
+  <data name="Context_NullKeysAreNotSupported" xml:space="preserve">
+    <value>索引鍵成員 '{0}' 中的序列化資源具有 null 值。索引鍵成員不支援 Null 值。</value>
+  </data>
+  <data name="Context_OnMessageCreatingReturningNull" xml:space="preserve">
+    <value>DataServiceContext.Configurations.RequestPipeline.OnMessageCreating 不可以傳回 null 值。請傳回這個屬性的非 null 值。</value>
+  </data>
+  <data name="Context_OperationCanceled" xml:space="preserve">
+    <value>作業已取消。</value>
+  </data>
+  <data name="Context_PropertyNotSupportedForMaxDataServiceVersionGreaterThanX" xml:space="preserve">
+    <value>當 MaxProtocolVersion 大於 '{1}' 時，不支援屬性 '{0}'。</value>
+  </data>
+  <data name="Context_RelationAlreadyContained" xml:space="preserve">
+    <value>內容已經在追蹤關聯性。</value>
+  </data>
+  <data name="Context_RelationNotRefOrCollection" xml:space="preserve">
+    <value>sourceProperty 不是目標的物件類型參考或集合。</value>
+  </data>
+  <data name="Context_RequestUriIsRelativeBaseUriRequired" xml:space="preserve">
+    <value>因為 requestUri 是相對 URI，所以您必須在 DataServiceContext 上設定 BaseUri 屬性。</value>
+  </data>
+  <data name="Context_RequestVersionIsBiggerThanProtocolVersion" xml:space="preserve">
+    <value>要求需要使用版本 {0} 的通訊協定，但是資料服務內容的 MaxProtocolVersion 設定為 {1}。請將 MaxProtocolVersion 設定為更新版本，然後重試作業。</value>
+  </data>
+  <data name="Context_ResolveEntitySetOrBaseUriRequired" xml:space="preserve">
+    <value>EntitySet '{0}' 的 ResolveEntitySet 函數傳回非 null 的 URI，或者您必須設定 BaseUri 屬性。</value>
+  </data>
+  <data name="Context_ResolveReturnedInvalidUri" xml:space="preserve">
+    <value>ResolveEntitySet 函數傳回的 URI 必須是具有 "http" 或 "https" 配置名稱或沒有任何查詢字串或片段識別碼且格式正確的絕對 URL。</value>
+  </data>
+  <data name="Context_ResponseVersionIsBiggerThanProtocolVersion" xml:space="preserve">
+    <value>回應版本是 {0}，但是資料服務內容的 MaxProtocolVersion 設定為 {1}。請將 MaxProtocolVersion 設定為回應所需的版本，然後重試要求。如果用戶端不支援所需的通訊協定版本，則升級用戶端。</value>
+  </data>
+  <data name="Context_SendingRequestEventArgsNotHttp" xml:space="preserve">
+    <value>目前這個屬性只允許 HttpWebRequest 的執行個體，不支援 WebRequest 的其他子類型。</value>
+  </data>
+  <data name="Context_SendingRequest_InvalidWhenUsingOnMessageCreating" xml:space="preserve">
+    <value>SendingRequest 不可與 DataServiceContext.Configurations.RequestPipeline.OnMessageCreating 屬性一起使用。請改為搭配 DataServiceContext.Configurations.RequestPipeline.OnMessageCreating 屬性使用 SendingRequest2。</value>
+  </data>
+  <data name="Context_SetLinkReferenceOnly" xml:space="preserve">
+    <value>SetLink 方法只適用於 sourceProperty 不是集合的情況。</value>
+  </data>
+  <data name="Context_SetSaveStreamOnInvalidEntityState" xml:space="preserve">
+    <value>不允許在狀態為 '{0}' 的實體上呼叫 SetSaveStream。</value>
+  </data>
+  <data name="Context_SetSaveStreamOnMediaEntryProperty" xml:space="preserve">
+    <value>無法在已定義媒體項目屬性之類型 {0} 的實體上使用 SetSaveStream。</value>
+  </data>
+  <data name="Context_SetSaveStreamWithoutEditMediaLink" xml:space="preserve">
+    <value>實體的媒體資料流沒有編輯媒體連結。請確定已為這個資料流指定編輯媒體連結。</value>
+  </data>
+  <data name="Context_SetSaveStreamWithoutNamedStreamEditLink" xml:space="preserve">
+    <value>無法修改名稱為 '{0}' 的資料流，因為它沒有編輯媒體 link。請確定資料流名稱正確無誤，以及這個資料流的編輯媒體 link 已包含在回應的輸入項目中。</value>
+  </data>
+  <data name="Context_TrackingExpectsAbsoluteUri" xml:space="preserve">
+    <value>Atom id 項目或 DataServiceId 標頭所指定的識別值必須是絕對 URI。</value>
+  </data>
+  <data name="Context_UnexpectedZeroRawRead" xml:space="preserve">
+    <value>讀取這個屬性的未經處理資料時，stream.Read() 傳回非預期的結果 (&lt;= 0)。</value>
+  </data>
+  <data name="Context_VersionNotSupported" xml:space="preserve">
+    <value>不支援回應版本 '{0}'。支援的唯一版本是: {1}。</value>
+  </data>
+  <data name="DSKAttribute_MustSpecifyAtleastOnePropertyName" xml:space="preserve">
+    <value>DataServiceKey 屬性 (Attribute) 必須至少指定一個屬性 (Property) 名稱。</value>
+  </data>
+  <data name="DataBinding_BindingOperation_ArrayItemNotEntity" xml:space="preserve">
+    <value>在 DataServiceCollection 上的 '{0}' 作業期間提供的值不是具有索引鍵的實體類型。</value>
+  </data>
+  <data name="DataBinding_BindingOperation_ArrayItemNull" xml:space="preserve">
+    <value>在 DataServiceCollection 上的 '{0}' 作業期間不允許 Null 值。</value>
+  </data>
+  <data name="DataBinding_BindingOperation_DetachedSource" xml:space="preserve">
+    <value>如果父實體已卸離，則無法在子實體上執行 Add/Update/Delete 作業。</value>
+  </data>
+  <data name="DataBinding_CollectionAssociatedWithMultipleEntities" xml:space="preserve">
+    <value>嘗試追蹤類型 '{0}' 的集合物件失敗，因為集合物件已在追蹤中。</value>
+  </data>
+  <data name="DataBinding_CollectionChangedUnknownActionCollection" xml:space="preserve">
+    <value>由類型 '{1}' 的集合物件引發的 OnCollectionChanged 事件上有未預期的動作 '{0}'。</value>
+  </data>
+  <data name="DataBinding_CollectionPropertySetterValueHasObserver" xml:space="preserve">
+    <value>DataServiceCollection 的執行個體如果已經受到追蹤，就不允許將此執行個體設定成實體屬性。實體類型 '{1}' 的屬性 '{0}' 上發生錯誤。</value>
+  </data>
+  <data name="DataBinding_ComplexObjectAssociatedWithMultipleEntities" xml:space="preserve">
+    <value>嘗試追蹤類型 '{0}' 的複雜物件失敗，因為複雜物件已在追蹤中。</value>
+  </data>
+  <data name="DataBinding_DataServiceCollectionArgumentMustHaveEntityType" xml:space="preserve">
+    <value>要追蹤的 DataServiceCollection 必須包含實體類型的項目，並且至少要有一個索引鍵屬性。項目類型 '{0}' 沒有任何索引鍵屬性。</value>
+  </data>
+  <data name="DataBinding_DataServiceCollectionChangedUnknownActionCollection" xml:space="preserve">
+    <value>由 DataServiceCollection 引發的 OnCollectionChanged 事件上有未預期的動作 '{0}'。</value>
+  </data>
+  <data name="DataBinding_EntityAlreadyInCollection" xml:space="preserve">
+    <value>嘗試在集合中加入類型 '{0}' 的實體，但同樣的實體已存在這個集合中。</value>
+  </data>
+  <data name="DataBinding_NotifyCollectionChangedNotImpl" xml:space="preserve">
+    <value>嘗試追蹤實體或複雜類型失敗，因為此實體或複雜類型包含未實作 INotifyCollectionChanged 介面之類型 '{0}' 的集合屬性。</value>
+  </data>
+  <data name="DataBinding_NotifyPropertyChangedNotImpl" xml:space="preserve">
+    <value>嘗試追蹤實體或複雜類型失敗，因為此實體或複雜類型 '{0}' 並未實作 INotifyPropertyChanged 介面。</value>
+  </data>
+  <data name="DataBinding_Util_UnknownEntitySetName" xml:space="preserve">
+    <value>未對類型 '{0}' 的實體提供實體集名稱。</value>
+  </data>
+  <data name="DataServiceClientFormat_AtomEventsOnlySupportedWithAtomFormat" xml:space="preserve">
+    <value>只有在使用 Atom 格式時，才支援 ReadingEntity 和 WritingEntity 事件。請使用 Atom 格式，或在啟用其他格式之前移除這些事件的所有已註冊處理常式。</value>
+  </data>
+  <data name="DataServiceClientFormat_JsonUnsupportedForLessThanV3" xml:space="preserve">
+    <value>當 MaxProtocolVersion 設定為小於 V3 時，不支援 UseJson。只有 OData v3 或更新版本才支援這個 JSON 格式。</value>
+  </data>
+  <data name="DataServiceClientFormat_JsonVerboseUnsupported" xml:space="preserve">
+    <value>不支援內容類型值 '{0}'。</value>
+  </data>
+  <data name="DataServiceClientFormat_LoadServiceModelRequired" xml:space="preserve">
+    <value>當您呼叫沒有參數的 UseJson 方法時，必須使用 LoadServiceModel 屬性，以提供有效的 IEdmModel 執行個體。</value>
+  </data>
+  <data name="DataServiceClientFormat_ValidServiceModelRequiredForJson" xml:space="preserve">
+    <value>若要使用 JSON 格式，您必須先呼叫 DataServiceContext.Format.UseJson() 並提供有效的服務模型。</value>
+  </data>
+  <data name="DataServiceCollection_CannotDetermineContextFromItems" xml:space="preserve">
+    <value>無法判斷 DataServiceCollection 執行個體屬於哪個DataServiceContext。此 DataServiceContext 必須由 DataServiceCollection 建構函式提供，或是用來建立 DataServiceCollection 中項目之來源的 DataServiceQuery 或 QueryOperationResponse 物件。</value>
+  </data>
+  <data name="DataServiceCollection_CannotStopTrackingChildCollection" xml:space="preserve">
+    <value>DataServiceCollection 的追蹤不會因為子集合而停止。</value>
+  </data>
+  <data name="DataServiceCollection_InsertIntoTrackedButNotLoadedCollection" xml:space="preserve">
+    <value>項目無法加入至集合。如果 DataServiceCollection 中的項目是由 DataServiceContext 進行追蹤，則新項目必須先載入到集合中才可加入。</value>
+  </data>
+  <data name="DataServiceCollection_LoadAsyncNoParamsWithoutParentEntity" xml:space="preserve">
+    <value>當 DataServiceCollection 不是相關實體的子集合時，無法呼叫 LoadAsync 方法。</value>
+  </data>
+  <data name="DataServiceCollection_LoadAsyncRequiresDataServiceQuery" xml:space="preserve">
+    <value>針對 DataServiceCollection 呼叫 LoadAsync 方法時，只能提供具類型的 DataServiceQuery 物件。</value>
+  </data>
+  <data name="DataServiceCollection_LoadRequiresTargetCollectionObserved" xml:space="preserve">
+    <value>Load 作業的目標集合必須有相關聯的 DataServiceContext。</value>
+  </data>
+  <data name="DataServiceCollection_MultipleLoadAsyncOperationsAtTheSameTime" xml:space="preserve">
+    <value>先前的 LoadAsync 作業尚未完成。在先前的作業完成之前，您無法再次針對 DataServiceCollection 呼叫 LoadAsync 方法。</value>
+  </data>
+  <data name="DataServiceCollection_OperationForTrackedOnly" xml:space="preserve">
+    <value>只有在要追蹤的集合上才支援這個作業。</value>
+  </data>
+  <data name="DataServiceException_GeneralError" xml:space="preserve">
+    <value>處理這個要求時發生錯誤。</value>
+  </data>
+  <data name="DataServiceQuery_EnumerationNotSupported" xml:space="preserve">
+    <value>此目標 Framework 無法讓您直接列舉資料服務查詢。這是因為自動列舉會傳送同步化要求至資料服務。因為此 Framework 只支援非同步的作業，您必須改為呼叫 BeginExecute 及 EndExecute 方法以取得支援列舉的查詢結果。</value>
+  </data>
+  <data name="DataServiceRequest_FailGetCount" xml:space="preserve">
+    <value>無法從伺服器取得計數值。</value>
+  </data>
+  <data name="Deserialize_Current" xml:space="preserve">
+    <value>目前值 '{1}' 類型與需要的 '{0}' 類型不相容。</value>
+  </data>
+  <data name="Deserialize_ExpectingSimpleValue" xml:space="preserve">
+    <value>處理回應資料流時發生錯誤。XML 項目包含混合內容。</value>
+  </data>
+  <data name="Deserialize_GetEnumerator" xml:space="preserve">
+    <value>這個 IEnumerable 只支援單一列舉。</value>
+  </data>
+  <data name="Deserialize_MismatchAtomLinkEntryPropertyIsCollection" xml:space="preserve">
+    <value>處理回應資料流時發生錯誤。Atom 裝載有輸入，而且屬性 '{0}' 是集合。</value>
+  </data>
+  <data name="Deserialize_MismatchAtomLinkFeedPropertyNotCollection" xml:space="preserve">
+    <value>處理回應資料流時發生錯誤。Atom 裝載有摘要，而且屬性 '{0}' 不是集合。</value>
+  </data>
+  <data name="Deserialize_MismatchAtomLinkLocalSimple" xml:space="preserve">
+    <value>處理回應資料流時發生錯誤。Atom 裝載有連結，而本機物件有簡單值。</value>
+  </data>
+  <data name="Deserialize_MissingIdElement" xml:space="preserve">
+    <value>處理回應資料流時發生錯誤。回應中缺少 id 項目。</value>
+  </data>
+  <data name="Deserialize_MixedTextWithComment" xml:space="preserve">
+    <value>處理回應資料流時發生錯誤。不支援項目值與註解位置顛倒。</value>
+  </data>
+  <data name="Deserialize_NoLocationHeader" xml:space="preserve">
+    <value>這個 POST 要求的回應不包含 'location' 標頭。這個用戶端不支援這種用法。</value>
+  </data>
+  <data name="Deserialize_ServerException" xml:space="preserve">
+    <value>處理回應資料流時發生錯誤。伺服器失敗，發生下列訊息:
+{0}</value>
+  </data>
+  <data name="EdmValueUtils_CannotConvertTypeToClrValue" xml:space="preserve">
+    <value>無法將具有基本種類 '{0}' 的值轉換為基本物件值。</value>
+  </data>
+  <data name="EdmValueUtils_IncorrectPrimitiveTypeKind" xml:space="preserve">
+    <value>發現不相容的基本類型種類。發現的類型 '{0}' 屬於種類 '{2}'，而不是需要的種類 '{1}'。</value>
+  </data>
+  <data name="EdmValueUtils_IncorrectPrimitiveTypeKindNoTypeName" xml:space="preserve">
+    <value>發現不相容的基本類型種類。發現類型種類 '{0}'，而不是需要的種類 '{1}'。</value>
+  </data>
+  <data name="EdmValueUtils_UnsupportedPrimitiveType" xml:space="preserve">
+    <value>找到基本值的類型 '{0}'。在 OData 中，類型 '{0}' 不是支援的基本類型。</value>
+  </data>
+  <data name="EntityDescriptor_MissingSelfEditLink" xml:space="preserve">
+    <value>識別為 '{0}' 的實體沒有相關聯的自我連結或編輯連結。請確定實體具有相關聯的自我連結或編輯連結。</value>
+  </data>
+  <data name="EpmSourceTree_CollectionPropertyCannotBeMapped" xml:space="preserve">
+    <value>類型 '{1}' 的屬性 '{0}' 是集合。集合屬性無法以實體屬性對應進行對應。</value>
+  </data>
+  <data name="EpmSourceTree_DuplicateEpmAttrsWithSameSourceName" xml:space="preserve">
+    <value>在資源類型 '{1}' 上的多個 EntityPropertyMappingAttribute 提供了一次以上 PropertyName 屬性值 '{0}'。</value>
+  </data>
+  <data name="EpmSourceTree_EndsWithNonPrimitiveType" xml:space="preserve">
+    <value>在某個資源類型上 EntityPropertyMappingAttribute 的 PropertyName 屬性結尾提供的屬性 '{0}' 不是基本類型。</value>
+  </data>
+  <data name="EpmSourceTree_InaccessiblePropertyOnType" xml:space="preserve">
+    <value>類型 '{1}' 上的屬性 '{0}' 不存在或無法存取。</value>
+  </data>
+  <data name="EpmSourceTree_InvalidSourcePath" xml:space="preserve">
+    <value>類型 '{0}' 上 EntityPropertyMappingAttribute 的 PropertyName 屬性值 '{1}' 無效。</value>
+  </data>
+  <data name="EpmSourceTree_NamedStreamCannotBeMapped" xml:space="preserve">
+    <value>類型 '{1}' 上的屬性 '{0}' 屬於類型 'DataServiceStreamLink'。無法以實體屬性對應來對應 Stream 屬性。</value>
+  </data>
+  <data name="EpmSourceTree_SpatialTypeCannotBeMapped" xml:space="preserve">
+    <value>類型 '{1}' 的屬性 '{0}' 是空間類型。無法以實體屬性對應來對應空間類型屬性。</value>
+  </data>
+  <data name="EpmTargetTree_AttributeInMiddle" xml:space="preserve">
+    <value>屬性識別項 '{0}' 是在 EntityPropertyMappingAttribute 的 TargetName 屬性中間提供的。</value>
+  </data>
+  <data name="EpmTargetTree_DuplicateEpmAttrsWithSameTargetName" xml:space="preserve">
+    <value>在資源類型 '{1}' 上有多個 EntityPropertyMappingAttribute 的 TargetName 屬性 '{0}' 具有相同的值。衝突的屬性為 '{2}' 和 '{3}'。</value>
+  </data>
+  <data name="EpmTargetTree_InvalidTargetPath" xml:space="preserve">
+    <value>EntityPropertyMappingAttribute 中設定的 TargetName 屬性路徑 '{0}' 無效。</value>
+  </data>
+  <data name="General_InternalError" xml:space="preserve">
+    <value>發生內部錯誤 '{0}'。</value>
+  </data>
+  <data name="HttpProcessUtility_ClosingQuoteNotFound" xml:space="preserve">
+    <value>MIME 類型參數 '{0}' 的值不正確，因為找不到右引號字元，但此參數值是以引號字元開頭。</value>
+  </data>
+  <data name="HttpProcessUtility_ContentTypeMissing" xml:space="preserve">
+    <value>遺漏 Content-Type 標頭值。</value>
+  </data>
+  <data name="HttpProcessUtility_EncodingNotSupported" xml:space="preserve">
+    <value>不支援字元集 '{0}'。</value>
+  </data>
+  <data name="HttpProcessUtility_EscapeCharAtEnd" xml:space="preserve">
+    <value>MIME 類型參數 '{0}' 的值不正確，因為它的結尾是逸出字元。參數值中的逸出字元後面一定要有其他字元。</value>
+  </data>
+  <data name="HttpProcessUtility_EscapeCharWithoutQuotes" xml:space="preserve">
+    <value>MIME 類型參數 '{0}' 的值不正確，因為它含有逸出字元，即使未加引號也一樣。</value>
+  </data>
+  <data name="HttpProcessUtility_MediaTypeMissingValue" xml:space="preserve">
+    <value>媒體類型遺漏參數值。</value>
+  </data>
+  <data name="HttpProcessUtility_MediaTypeRequiresSemicolonBeforeParameter" xml:space="preserve">
+    <value>媒體類型在參數定義前需要 ';' 字元。</value>
+  </data>
+  <data name="HttpProcessUtility_MediaTypeRequiresSlash" xml:space="preserve">
+    <value>媒體類型需要 '/' 字元。</value>
+  </data>
+  <data name="HttpProcessUtility_MediaTypeRequiresSubType" xml:space="preserve">
+    <value>媒體類型需要子類型定義。</value>
+  </data>
+  <data name="HttpProcessUtility_MediaTypeUnspecified" xml:space="preserve">
+    <value>未指定媒體類型。</value>
+  </data>
+  <data name="MaterializeFromAtom_CollectionKeyNotPresentInLinkTable" xml:space="preserve">
+    <value>集合不是目前項目的一部分</value>
+  </data>
+  <data name="MaterializeFromAtom_CountNotPresent" xml:space="preserve">
+    <value>Count 值不是回應資料流的一部分。</value>
+  </data>
+  <data name="MaterializeFromAtom_GetNestLinkForFlatCollection" xml:space="preserve">
+    <value>這個回應未包含任何巢狀集合。請改用 null 當做 Key。</value>
+  </data>
+  <data name="MaterializeFromAtom_TopLevelLinkNotAvailable" xml:space="preserve">
+    <value>只有在列舉回應之後才可以使用最上層連結。</value>
+  </data>
+  <data name="ODataMetadataBuilder_MissingEntityInstanceUri" xml:space="preserve">
+    <value>找不到實體集 '{0}' 的 'OData.EntityInstanceUri' 或 'OData.EntitySetUriSuffix' 註釋。需要兩者註釋之一。</value>
+  </data>
+  <data name="ODataMetadataBuilder_MissingEntitySetUri" xml:space="preserve">
+    <value>實體集 '{0}' 沒有 'OData.EntitySetUri' 註釋。需要這個註釋。</value>
+  </data>
+  <data name="ODataMetadataBuilder_MissingSegmentForEntitySetUriSuffix" xml:space="preserve">
+    <value>實體集 '{0}' 的 URI '{1}' 沒有路徑區段。實體集 URI 後置詞無法附加到沒有路徑區段的 URI。</value>
+  </data>
+  <data name="ODataRequestMessage_GetStreamMethodNotSupported" xml:space="preserve">
+    <value>不支援 GetStream 方法。</value>
+  </data>
+  <data name="Serializer_InvalidCollectionParamterItemType" xml:space="preserve">
+    <value>名稱為 '{0}' 的作業參數具有 Edm 類型種類的收集項目 '{1}'。收集項目必須是基本類型或複雜 Edm 類型種類。</value>
+  </data>
+  <data name="Serializer_InvalidParameterType" xml:space="preserve">
+    <value>名稱為 '{0}' 的作業參數屬於 Edm 類型種類 '{1}'。作業參數必須是基本類型、複雜類型或是基本或複雜類型的集合。</value>
+  </data>
+  <data name="Serializer_LoopsNotAllowedInComplexTypes" xml:space="preserve">
+    <value>序列化屬性 '{0}' 時偵測到循環迴圈。您必須確定傳回集合或複雜類型的屬性中沒有迴圈。</value>
+  </data>
+  <data name="Serializer_LoopsNotAllowedInNonPropertyComplexTypes" xml:space="preserve">
+    <value>序列化複雜類型 '{0}' 時偵測到循環迴圈。您必須確定集合或複雜類型中沒有迴圈。</value>
+  </data>
+  <data name="Serializer_NullCollectionParamterItemValue" xml:space="preserve">
+    <value>名稱為 '{0}' 的作業參數具有 null 收集項目。集合的項目不可為 null。</value>
+  </data>
+  <data name="Serializer_UriDoesNotContainParameterAlias" xml:space="preserve">
+    <value>要求 URI 中沒有參數別名 '{0}'。所有傳遞做為別名的參數都必須出現在要求 URI 中。</value>
+  </data>
+  <data name="Util_EmptyArray" xml:space="preserve">
+    <value>空陣列。</value>
+  </data>
+  <data name="Util_EmptyString" xml:space="preserve">
+    <value>空字串。</value>
+  </data>
+  <data name="Util_NullArrayElement" xml:space="preserve">
+    <value>陣列包含 null 項目。</value>
+  </data>
+  <data name="WebUtil_CollectionTypeNotSupportedInV2OrBelow" xml:space="preserve">
+    <value>類型 '{0}' 是集合類型。只有 'V3' 和以上版本的通訊協定支援集合類型。</value>
+  </data>
+  <data name="WebUtil_TypeMismatchInCollection" xml:space="preserve">
+    <value>集合屬性 '{0}' 中的項目不是正確的類型。集合屬性中的所有項目必須都是集合項目類型。</value>
+  </data>
+  <data name="WebUtil_TypeMismatchInNonPropertyCollection" xml:space="preserve">
+    <value>項目類型 '{0}' 的集合具有不是正確類型的項目。集合中的所有項目必須都是集合項目類型。</value>
+  </data>
+</root>

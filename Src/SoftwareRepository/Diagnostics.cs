@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
 namespace SoftwareRepository
@@ -12,6 +13,14 @@ namespace SoftwareRepository
 		[SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", MessageId = "formatMessage")]
 		internal static void Log(LogLevel level, string formatMessage, params object[] args)
 		{
+			Debug.WriteLine(string.Concat(new string[]
+			{
+				Diagnostics.Category,
+				"-",
+				level.ToString(),
+				": ",
+				string.Format(formatMessage, args)
+			}), Diagnostics.Category);
 		}
 
 		// Token: 0x0400000A RID: 10

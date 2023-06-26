@@ -7,29 +7,29 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.Enums;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model
 {
-	// Token: 0x0200004B RID: 75
+	// Token: 0x02000013 RID: 19
 	public class Phone : NotificationObject
 	{
-		// Token: 0x06000210 RID: 528 RVA: 0x0000615C File Offset: 0x0000435C
+		// Token: 0x060000F0 RID: 240 RVA: 0x000041CA File Offset: 0x000023CA
 		public Phone()
 		{
 		}
 
-		// Token: 0x06000211 RID: 529 RVA: 0x00006172 File Offset: 0x00004372
+		// Token: 0x060000F1 RID: 241 RVA: 0x000041DF File Offset: 0x000023DF
 		public Phone(string salesName, string type)
 		{
 			this.SalesName = salesName;
 			this.HardwareModel = type;
 		}
 
-		// Token: 0x06000212 RID: 530 RVA: 0x00006198 File Offset: 0x00004398
+		// Token: 0x060000F2 RID: 242 RVA: 0x00004204 File Offset: 0x00002404
 		public Phone(Guid id, PlatformId platformId)
 		{
 			this.ConnectionId = id;
 			this.PlatformId = platformId;
 		}
 
-		// Token: 0x06000213 RID: 531 RVA: 0x000061DC File Offset: 0x000043DC
+		// Token: 0x060000F3 RID: 243 RVA: 0x0000422C File Offset: 0x0000242C
 		public Phone(string portId, string vid, string pid, string locationPath, string hardwareModel, string hardwareVariant, string salesName, string softwareVersion, string path, PhoneTypes phoneType, string instanceId, ISalesNameProvider salesNameProvider, bool deviceReady = false, string mid = "", string cid = "")
 		{
 			this.PortId = portId;
@@ -50,56 +50,58 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			bool flag;
 			if (this.Type == PhoneTypes.Htc && ApplicationInfo.IsInternal())
 			{
-				flag = !this.Cid.All((char c) => c.Equals('1'));
+				flag = this.Cid.All((char c) => c.Equals('1'));
 			}
 			else
 			{
-				flag = true;
+				flag = false;
 			}
-			if (!flag)
+			bool flag2 = flag;
+			if (flag2)
 			{
 				this.Cid = null;
 			}
 		}
 
-		// Token: 0x06000214 RID: 532 RVA: 0x000062D0 File Offset: 0x000044D0
-		public Phone(UsbDevice usbDevice, PhoneTypes phoneType, ISalesNameProvider salesNameProvider = null, bool deviceReady = false, string mid = "", string cid = "") : this(usbDevice.PortId, usbDevice.Vid, usbDevice.Pid, usbDevice.LocationPath, usbDevice.TypeDesignator, usbDevice.ProductCode, usbDevice.SalesName, usbDevice.SoftwareVersion, usbDevice.Path, phoneType, usbDevice.InstanceId, salesNameProvider, deviceReady, mid, cid)
+		// Token: 0x060000F4 RID: 244 RVA: 0x0000431C File Offset: 0x0000251C
+		public Phone(UsbDevice usbDevice, PhoneTypes phoneType, ISalesNameProvider salesNameProvider = null, bool deviceReady = false, string mid = "", string cid = "")
+			: this(usbDevice.PortId, usbDevice.Vid, usbDevice.Pid, usbDevice.LocationPath, usbDevice.TypeDesignator, usbDevice.ProductCode, usbDevice.SalesName, usbDevice.SoftwareVersion, usbDevice.Path, phoneType, usbDevice.InstanceId, salesNameProvider, deviceReady, mid, cid)
 		{
 		}
 
-		// Token: 0x170000C8 RID: 200
-		// (get) Token: 0x06000215 RID: 533 RVA: 0x0000632C File Offset: 0x0000452C
-		// (set) Token: 0x06000216 RID: 534 RVA: 0x00006343 File Offset: 0x00004543
+		// Token: 0x17000069 RID: 105
+		// (get) Token: 0x060000F5 RID: 245 RVA: 0x00004375 File Offset: 0x00002575
+		// (set) Token: 0x060000F6 RID: 246 RVA: 0x0000437D File Offset: 0x0000257D
 		public ISalesNameProvider SalesNameProvider { get; set; }
 
-		// Token: 0x170000C9 RID: 201
-		// (get) Token: 0x06000217 RID: 535 RVA: 0x0000634C File Offset: 0x0000454C
-		// (set) Token: 0x06000218 RID: 536 RVA: 0x00006363 File Offset: 0x00004563
+		// Token: 0x1700006A RID: 106
+		// (get) Token: 0x060000F7 RID: 247 RVA: 0x00004386 File Offset: 0x00002586
+		// (set) Token: 0x060000F8 RID: 248 RVA: 0x0000438E File Offset: 0x0000258E
 		public string PortId { get; private set; }
 
-		// Token: 0x170000CA RID: 202
-		// (get) Token: 0x06000219 RID: 537 RVA: 0x0000636C File Offset: 0x0000456C
-		// (set) Token: 0x0600021A RID: 538 RVA: 0x00006383 File Offset: 0x00004583
+		// Token: 0x1700006B RID: 107
+		// (get) Token: 0x060000F9 RID: 249 RVA: 0x00004397 File Offset: 0x00002597
+		// (set) Token: 0x060000FA RID: 250 RVA: 0x0000439F File Offset: 0x0000259F
 		public string LocationPath { get; set; }
 
-		// Token: 0x170000CB RID: 203
-		// (get) Token: 0x0600021B RID: 539 RVA: 0x0000638C File Offset: 0x0000458C
-		// (set) Token: 0x0600021C RID: 540 RVA: 0x000063A3 File Offset: 0x000045A3
+		// Token: 0x1700006C RID: 108
+		// (get) Token: 0x060000FB RID: 251 RVA: 0x000043A8 File Offset: 0x000025A8
+		// (set) Token: 0x060000FC RID: 252 RVA: 0x000043B0 File Offset: 0x000025B0
 		public string Vid { get; private set; }
 
-		// Token: 0x170000CC RID: 204
-		// (get) Token: 0x0600021D RID: 541 RVA: 0x000063AC File Offset: 0x000045AC
-		// (set) Token: 0x0600021E RID: 542 RVA: 0x000063C3 File Offset: 0x000045C3
+		// Token: 0x1700006D RID: 109
+		// (get) Token: 0x060000FD RID: 253 RVA: 0x000043B9 File Offset: 0x000025B9
+		// (set) Token: 0x060000FE RID: 254 RVA: 0x000043C1 File Offset: 0x000025C1
 		public string Pid { get; private set; }
 
-		// Token: 0x170000CD RID: 205
-		// (get) Token: 0x0600021F RID: 543 RVA: 0x000063CC File Offset: 0x000045CC
-		// (set) Token: 0x06000220 RID: 544 RVA: 0x000063E3 File Offset: 0x000045E3
+		// Token: 0x1700006E RID: 110
+		// (get) Token: 0x060000FF RID: 255 RVA: 0x000043CA File Offset: 0x000025CA
+		// (set) Token: 0x06000100 RID: 256 RVA: 0x000043D2 File Offset: 0x000025D2
 		public string HardwareModel { get; set; }
 
-		// Token: 0x170000CE RID: 206
-		// (get) Token: 0x06000221 RID: 545 RVA: 0x000063EC File Offset: 0x000045EC
-		// (set) Token: 0x06000222 RID: 546 RVA: 0x00006404 File Offset: 0x00004604
+		// Token: 0x1700006F RID: 111
+		// (get) Token: 0x06000101 RID: 257 RVA: 0x000043DC File Offset: 0x000025DC
+		// (set) Token: 0x06000102 RID: 258 RVA: 0x000043F4 File Offset: 0x000025F4
 		public string HardwareVariant
 		{
 			get
@@ -112,49 +114,49 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000CF RID: 207
-		// (get) Token: 0x06000223 RID: 547 RVA: 0x00006454 File Offset: 0x00004654
-		// (set) Token: 0x06000224 RID: 548 RVA: 0x0000646B File Offset: 0x0000466B
+		// Token: 0x17000070 RID: 112
+		// (get) Token: 0x06000103 RID: 259 RVA: 0x00004434 File Offset: 0x00002634
+		// (set) Token: 0x06000104 RID: 260 RVA: 0x0000443C File Offset: 0x0000263C
 		public string ModelIdentificationInstruction { get; set; }
 
-		// Token: 0x170000D0 RID: 208
-		// (get) Token: 0x06000225 RID: 549 RVA: 0x00006474 File Offset: 0x00004674
-		// (set) Token: 0x06000226 RID: 550 RVA: 0x0000648B File Offset: 0x0000468B
+		// Token: 0x17000071 RID: 113
+		// (get) Token: 0x06000105 RID: 261 RVA: 0x00004445 File Offset: 0x00002645
+		// (set) Token: 0x06000106 RID: 262 RVA: 0x0000444D File Offset: 0x0000264D
 		public string InstanceId { get; set; }
 
-		// Token: 0x170000D1 RID: 209
-		// (get) Token: 0x06000227 RID: 551 RVA: 0x00006494 File Offset: 0x00004694
-		// (set) Token: 0x06000228 RID: 552 RVA: 0x000064AB File Offset: 0x000046AB
+		// Token: 0x17000072 RID: 114
+		// (get) Token: 0x06000107 RID: 263 RVA: 0x00004456 File Offset: 0x00002656
+		// (set) Token: 0x06000108 RID: 264 RVA: 0x0000445E File Offset: 0x0000265E
 		public PlatformId PlatformId { get; set; }
 
-		// Token: 0x170000D2 RID: 210
-		// (get) Token: 0x06000229 RID: 553 RVA: 0x000064B4 File Offset: 0x000046B4
-		// (set) Token: 0x0600022A RID: 554 RVA: 0x000064CB File Offset: 0x000046CB
+		// Token: 0x17000073 RID: 115
+		// (get) Token: 0x06000109 RID: 265 RVA: 0x00004467 File Offset: 0x00002667
+		// (set) Token: 0x0600010A RID: 266 RVA: 0x0000446F File Offset: 0x0000266F
 		public PhoneTypes Type { get; set; }
 
-		// Token: 0x170000D3 RID: 211
-		// (get) Token: 0x0600022B RID: 555 RVA: 0x000064D4 File Offset: 0x000046D4
-		// (set) Token: 0x0600022C RID: 556 RVA: 0x000064EB File Offset: 0x000046EB
+		// Token: 0x17000074 RID: 116
+		// (get) Token: 0x0600010B RID: 267 RVA: 0x00004478 File Offset: 0x00002678
+		// (set) Token: 0x0600010C RID: 268 RVA: 0x00004480 File Offset: 0x00002680
 		public Guid ConnectionId { get; set; }
 
-		// Token: 0x170000D4 RID: 212
-		// (get) Token: 0x0600022D RID: 557 RVA: 0x000064F4 File Offset: 0x000046F4
-		// (set) Token: 0x0600022E RID: 558 RVA: 0x0000650B File Offset: 0x0000470B
+		// Token: 0x17000075 RID: 117
+		// (get) Token: 0x0600010D RID: 269 RVA: 0x00004489 File Offset: 0x00002689
+		// (set) Token: 0x0600010E RID: 270 RVA: 0x00004491 File Offset: 0x00002691
 		public string PackageFilePath { get; set; }
 
-		// Token: 0x170000D5 RID: 213
-		// (get) Token: 0x0600022F RID: 559 RVA: 0x00006514 File Offset: 0x00004714
-		// (set) Token: 0x06000230 RID: 560 RVA: 0x0000652B File Offset: 0x0000472B
+		// Token: 0x17000076 RID: 118
+		// (get) Token: 0x0600010F RID: 271 RVA: 0x0000449A File Offset: 0x0000269A
+		// (set) Token: 0x06000110 RID: 272 RVA: 0x000044A2 File Offset: 0x000026A2
 		public byte[] ImageData { get; set; }
 
-		// Token: 0x170000D6 RID: 214
-		// (get) Token: 0x06000231 RID: 561 RVA: 0x00006534 File Offset: 0x00004734
-		// (set) Token: 0x06000232 RID: 562 RVA: 0x0000654B File Offset: 0x0000474B
+		// Token: 0x17000077 RID: 119
+		// (get) Token: 0x06000111 RID: 273 RVA: 0x000044AB File Offset: 0x000026AB
+		// (set) Token: 0x06000112 RID: 274 RVA: 0x000044B3 File Offset: 0x000026B3
 		public List<PhoneTypes> MatchedAdaptationTypes { get; set; }
 
-		// Token: 0x170000D7 RID: 215
-		// (get) Token: 0x06000233 RID: 563 RVA: 0x00006554 File Offset: 0x00004754
-		// (set) Token: 0x06000234 RID: 564 RVA: 0x0000656C File Offset: 0x0000476C
+		// Token: 0x17000078 RID: 120
+		// (get) Token: 0x06000113 RID: 275 RVA: 0x000044BC File Offset: 0x000026BC
+		// (set) Token: 0x06000114 RID: 276 RVA: 0x000044D4 File Offset: 0x000026D4
 		public PackageFileInfo PackageFileInfo
 		{
 			get
@@ -167,32 +169,38 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000D8 RID: 216
-		// (get) Token: 0x06000235 RID: 565 RVA: 0x000065BC File Offset: 0x000047BC
-		// (set) Token: 0x06000236 RID: 566 RVA: 0x00006674 File Offset: 0x00004874
+		// Token: 0x17000079 RID: 121
+		// (get) Token: 0x06000115 RID: 277 RVA: 0x00004514 File Offset: 0x00002714
+		// (set) Token: 0x06000116 RID: 278 RVA: 0x000045E3 File Offset: 0x000027E3
 		public string SalesName
 		{
 			get
 			{
-				if (this.SalesNameProvider != null)
+				bool flag = this.SalesNameProvider != null;
+				if (flag)
 				{
 					string text = this.SalesNameProvider.NameForVidPid(this.Vid, this.Pid);
-					if (!string.IsNullOrEmpty(text))
+					bool flag2 = !string.IsNullOrEmpty(text);
+					if (flag2)
 					{
 						return text;
 					}
-					if (!string.IsNullOrWhiteSpace(this.salesName))
+					bool flag3 = !string.IsNullOrWhiteSpace(this.salesName);
+					if (flag3)
 					{
 						text = this.SalesNameProvider.NameForString(this.salesName);
-						if (!string.IsNullOrEmpty(text))
+						bool flag4 = !string.IsNullOrEmpty(text);
+						if (flag4)
 						{
 							return text;
 						}
 					}
-					if (!string.IsNullOrWhiteSpace(this.HardwareModel))
+					bool flag5 = !string.IsNullOrWhiteSpace(this.HardwareModel);
+					if (flag5)
 					{
 						text = this.SalesNameProvider.NameForTypeDesignator(this.HardwareModel);
-						if (!string.IsNullOrEmpty(text))
+						bool flag6 = !string.IsNullOrEmpty(text);
+						if (flag6)
 						{
 							return text;
 						}
@@ -206,9 +214,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000D9 RID: 217
-		// (get) Token: 0x06000237 RID: 567 RVA: 0x000066C4 File Offset: 0x000048C4
-		// (set) Token: 0x06000238 RID: 568 RVA: 0x000066DC File Offset: 0x000048DC
+		// Token: 0x1700007A RID: 122
+		// (get) Token: 0x06000117 RID: 279 RVA: 0x00004624 File Offset: 0x00002824
+		// (set) Token: 0x06000118 RID: 280 RVA: 0x0000463C File Offset: 0x0000283C
 		public string SoftwareVersion
 		{
 			get
@@ -221,9 +229,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000DA RID: 218
-		// (get) Token: 0x06000239 RID: 569 RVA: 0x0000672C File Offset: 0x0000492C
-		// (set) Token: 0x0600023A RID: 570 RVA: 0x00006744 File Offset: 0x00004944
+		// Token: 0x1700007B RID: 123
+		// (get) Token: 0x06000119 RID: 281 RVA: 0x0000467C File Offset: 0x0000287C
+		// (set) Token: 0x0600011A RID: 282 RVA: 0x00004694 File Offset: 0x00002894
 		public string AkVersion
 		{
 			get
@@ -236,8 +244,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000DB RID: 219
-		// (get) Token: 0x0600023B RID: 571 RVA: 0x00006794 File Offset: 0x00004994
+		// Token: 0x1700007C RID: 124
+		// (get) Token: 0x0600011B RID: 283 RVA: 0x000046D4 File Offset: 0x000028D4
 		public string NewAkVersion
 		{
 			get
@@ -246,9 +254,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000DC RID: 220
-		// (get) Token: 0x0600023C RID: 572 RVA: 0x000067C0 File Offset: 0x000049C0
-		// (set) Token: 0x0600023D RID: 573 RVA: 0x000067D8 File Offset: 0x000049D8
+		// Token: 0x1700007D RID: 125
+		// (get) Token: 0x0600011C RID: 284 RVA: 0x000046FC File Offset: 0x000028FC
+		// (set) Token: 0x0600011D RID: 285 RVA: 0x00004714 File Offset: 0x00002914
 		public string Imei
 		{
 			get
@@ -261,23 +269,24 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000DD RID: 221
-		// (get) Token: 0x0600023E RID: 574 RVA: 0x00006828 File Offset: 0x00004A28
-		// (set) Token: 0x0600023F RID: 575 RVA: 0x00006870 File Offset: 0x00004A70
+		// Token: 0x1700007E RID: 126
+		// (get) Token: 0x0600011E RID: 286 RVA: 0x00004754 File Offset: 0x00002954
+		// (set) Token: 0x0600011F RID: 287 RVA: 0x00004798 File Offset: 0x00002998
 		public string NewSoftwareVersion
 		{
 			get
 			{
-				string result;
-				if (string.IsNullOrWhiteSpace(this.newSoftwareVersion) && this.packageFileInfo != null)
+				bool flag = string.IsNullOrWhiteSpace(this.newSoftwareVersion) && this.packageFileInfo != null;
+				string text;
+				if (flag)
 				{
-					result = this.packageFileInfo.SoftwareVersion;
+					text = this.packageFileInfo.SoftwareVersion;
 				}
 				else
 				{
-					result = this.newSoftwareVersion;
+					text = this.newSoftwareVersion;
 				}
-				return result;
+				return text;
 			}
 			set
 			{
@@ -285,18 +294,15 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000DE RID: 222
-		// (get) Token: 0x06000240 RID: 576 RVA: 0x000068C0 File Offset: 0x00004AC0
+		// Token: 0x1700007F RID: 127
+		// (get) Token: 0x06000120 RID: 288 RVA: 0x000047D8 File Offset: 0x000029D8
 		public string SerialNumber
 		{
 			get
 			{
 				try
 				{
-					string[] array = this.Path.Split(new char[]
-					{
-						'#'
-					});
+					string[] array = this.Path.Split(new char[] { '#' });
 					return array[2].Replace("&", "_");
 				}
 				catch
@@ -306,155 +312,133 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x170000DF RID: 223
-		// (get) Token: 0x06000241 RID: 577 RVA: 0x0000691C File Offset: 0x00004B1C
-		// (set) Token: 0x06000242 RID: 578 RVA: 0x00006933 File Offset: 0x00004B33
+		// Token: 0x17000080 RID: 128
+		// (get) Token: 0x06000121 RID: 289 RVA: 0x00004830 File Offset: 0x00002A30
+		// (set) Token: 0x06000122 RID: 290 RVA: 0x00004838 File Offset: 0x00002A38
 		public string Path { get; set; }
 
-		// Token: 0x170000E0 RID: 224
-		// (get) Token: 0x06000243 RID: 579 RVA: 0x0000693C File Offset: 0x00004B3C
-		// (set) Token: 0x06000244 RID: 580 RVA: 0x00006953 File Offset: 0x00004B53
+		// Token: 0x17000081 RID: 129
+		// (get) Token: 0x06000123 RID: 291 RVA: 0x00004841 File Offset: 0x00002A41
+		// (set) Token: 0x06000124 RID: 292 RVA: 0x00004849 File Offset: 0x00002A49
 		public string Mid { get; set; }
 
-		// Token: 0x170000E1 RID: 225
-		// (get) Token: 0x06000245 RID: 581 RVA: 0x0000695C File Offset: 0x00004B5C
-		// (set) Token: 0x06000246 RID: 582 RVA: 0x00006973 File Offset: 0x00004B73
+		// Token: 0x17000082 RID: 130
+		// (get) Token: 0x06000125 RID: 293 RVA: 0x00004852 File Offset: 0x00002A52
+		// (set) Token: 0x06000126 RID: 294 RVA: 0x0000485A File Offset: 0x00002A5A
 		public string Cid { get; set; }
 
-		// Token: 0x170000E2 RID: 226
-		// (get) Token: 0x06000247 RID: 583 RVA: 0x0000697C File Offset: 0x00004B7C
-		// (set) Token: 0x06000248 RID: 584 RVA: 0x00006993 File Offset: 0x00004B93
+		// Token: 0x17000083 RID: 131
+		// (get) Token: 0x06000127 RID: 295 RVA: 0x00004863 File Offset: 0x00002A63
+		// (set) Token: 0x06000128 RID: 296 RVA: 0x0000486B File Offset: 0x00002A6B
 		public bool DeviceReady { get; set; }
 
-		// Token: 0x170000E3 RID: 227
-		// (get) Token: 0x06000249 RID: 585 RVA: 0x0000699C File Offset: 0x00004B9C
-		// (set) Token: 0x0600024A RID: 586 RVA: 0x000069B3 File Offset: 0x00004BB3
+		// Token: 0x17000084 RID: 132
+		// (get) Token: 0x06000129 RID: 297 RVA: 0x00004874 File Offset: 0x00002A74
+		// (set) Token: 0x0600012A RID: 298 RVA: 0x0000487C File Offset: 0x00002A7C
 		public int BatteryLevel { get; set; }
 
-		// Token: 0x170000E4 RID: 228
-		// (get) Token: 0x0600024B RID: 587 RVA: 0x000069BC File Offset: 0x00004BBC
-		// (set) Token: 0x0600024C RID: 588 RVA: 0x000069D3 File Offset: 0x00004BD3
+		// Token: 0x17000085 RID: 133
+		// (get) Token: 0x0600012B RID: 299 RVA: 0x00004885 File Offset: 0x00002A85
+		// (set) Token: 0x0600012C RID: 300 RVA: 0x0000488D File Offset: 0x00002A8D
 		public List<string> PackageFiles { get; set; }
 
-		// Token: 0x170000E5 RID: 229
-		// (get) Token: 0x0600024D RID: 589 RVA: 0x000069DC File Offset: 0x00004BDC
-		// (set) Token: 0x0600024E RID: 590 RVA: 0x000069F3 File Offset: 0x00004BF3
+		// Token: 0x17000086 RID: 134
+		// (get) Token: 0x0600012D RID: 301 RVA: 0x00004896 File Offset: 0x00002A96
+		// (set) Token: 0x0600012E RID: 302 RVA: 0x0000489E File Offset: 0x00002A9E
 		public string ReportManufacturerName { get; set; }
 
-		// Token: 0x170000E6 RID: 230
-		// (get) Token: 0x0600024F RID: 591 RVA: 0x000069FC File Offset: 0x00004BFC
-		// (set) Token: 0x06000250 RID: 592 RVA: 0x00006A13 File Offset: 0x00004C13
+		// Token: 0x17000087 RID: 135
+		// (get) Token: 0x0600012F RID: 303 RVA: 0x000048A7 File Offset: 0x00002AA7
+		// (set) Token: 0x06000130 RID: 304 RVA: 0x000048AF File Offset: 0x00002AAF
 		public string ReportManufacturerProductLine { get; set; }
 
-		// Token: 0x170000E7 RID: 231
-		// (get) Token: 0x06000251 RID: 593 RVA: 0x00006A1C File Offset: 0x00004C1C
-		// (set) Token: 0x06000252 RID: 594 RVA: 0x00006A33 File Offset: 0x00004C33
+		// Token: 0x17000088 RID: 136
+		// (get) Token: 0x06000131 RID: 305 RVA: 0x000048B8 File Offset: 0x00002AB8
+		// (set) Token: 0x06000132 RID: 306 RVA: 0x000048C0 File Offset: 0x00002AC0
 		public EmergencyPackageInfo EmergencyPackageFileInfo { get; set; }
 
-		// Token: 0x170000E8 RID: 232
-		// (get) Token: 0x06000253 RID: 595 RVA: 0x00006A3C File Offset: 0x00004C3C
-		// (set) Token: 0x06000254 RID: 596 RVA: 0x00006A53 File Offset: 0x00004C53
+		// Token: 0x17000089 RID: 137
+		// (get) Token: 0x06000133 RID: 307 RVA: 0x000048C9 File Offset: 0x00002AC9
+		// (set) Token: 0x06000134 RID: 308 RVA: 0x000048D1 File Offset: 0x00002AD1
 		public QueryParameters QueryParameters { get; set; }
 
-		// Token: 0x170000E9 RID: 233
-		// (get) Token: 0x06000255 RID: 597 RVA: 0x00006A5C File Offset: 0x00004C5C
-		// (set) Token: 0x06000256 RID: 598 RVA: 0x00006A73 File Offset: 0x00004C73
+		// Token: 0x1700008A RID: 138
+		// (get) Token: 0x06000135 RID: 309 RVA: 0x000048DA File Offset: 0x00002ADA
+		// (set) Token: 0x06000136 RID: 310 RVA: 0x000048E2 File Offset: 0x00002AE2
 		public string HardwareId { get; set; }
 
-		// Token: 0x06000257 RID: 599 RVA: 0x00006A7C File Offset: 0x00004C7C
+		// Token: 0x06000137 RID: 311 RVA: 0x000048EC File Offset: 0x00002AEC
 		public bool IsWp10Device()
 		{
 			return this.Vid == "045E";
 		}
 
-		// Token: 0x06000258 RID: 600 RVA: 0x00006AA0 File Offset: 0x00004CA0
+		// Token: 0x06000138 RID: 312 RVA: 0x00004910 File Offset: 0x00002B10
 		public override string ToString()
 		{
-			string result;
-			if (this.Type == PhoneTypes.Htc)
+			bool flag = this.Type == PhoneTypes.Htc;
+			string text;
+			if (flag)
 			{
-				result = string.Format("VID: {0}, PID: {1}, Mid: {2}, Cid: {3}, Type: {4}", new object[]
-				{
-					this.Vid,
-					this.Pid,
-					this.Mid,
-					this.Cid,
-					this.Type
-				});
-			}
-			else if (this.Type == PhoneTypes.Lumia)
-			{
-				result = string.Format("VID: {0}, PID: {1}, Type Designator: {2}, Product Code: {3}, Type: {4}", new object[]
-				{
-					this.Vid,
-					this.Pid,
-					this.HardwareModel,
-					this.HardwareVariant,
-					this.Type
-				});
-			}
-			else if (this.Type == PhoneTypes.Analog)
-			{
-				result = string.Format("ConnectionId - {0}, PortId - {1}, Path - {2}, LocationPath - {3}, InstanceId - {4}", new object[]
-				{
-					this.ConnectionId,
-					this.PortId,
-					this.Path,
-					this.LocationPath,
-					this.InstanceId
-				});
+				text = string.Format("VID: {0}, PID: {1}, Mid: {2}, Cid: {3}, Type: {4}", new object[] { this.Vid, this.Pid, this.Mid, this.Cid, this.Type });
 			}
 			else
 			{
-				result = string.Format("VID: {0}, PID: {1}, Hardware Model: {2}, Hardware Variant: {3}, Mid: {4}, Cid: {5}, Type: {6}, PlatformID: {7}", new object[]
+				bool flag2 = this.Type == PhoneTypes.Lumia;
+				if (flag2)
 				{
-					this.Vid,
-					this.Pid,
-					this.HardwareModel,
-					this.HardwareVariant,
-					this.Mid,
-					this.Cid,
-					this.Type,
-					this.PlatformId
-				});
+					text = string.Format("VID: {0}, PID: {1}, Type Designator: {2}, Product Code: {3}, Type: {4}", new object[] { this.Vid, this.Pid, this.HardwareModel, this.HardwareVariant, this.Type });
+				}
+				else
+				{
+					bool flag3 = this.Type == PhoneTypes.Analog;
+					if (flag3)
+					{
+						text = string.Format("ConnectionId - {0}, PortId - {1}, Path - {2}, LocationPath - {3}, InstanceId - {4}", new object[] { this.ConnectionId, this.PortId, this.Path, this.LocationPath, this.InstanceId });
+					}
+					else
+					{
+						text = string.Format("VID: {0}, PID: {1}, Hardware Model: {2}, Hardware Variant: {3}, Mid: {4}, Cid: {5}, Type: {6}, PlatformID: {7}", new object[] { this.Vid, this.Pid, this.HardwareModel, this.HardwareVariant, this.Mid, this.Cid, this.Type, this.PlatformId });
+					}
+				}
 			}
-			return result;
+			return text;
 		}
 
-		// Token: 0x06000259 RID: 601 RVA: 0x00006C20 File Offset: 0x00004E20
+		// Token: 0x06000139 RID: 313 RVA: 0x00004A80 File Offset: 0x00002C80
 		public bool IsDeviceInEmergencyMode()
 		{
 			return this.Type == PhoneTypes.Lumia && this.Vid == "05C6" && this.Pid == "9008";
 		}
 
-		// Token: 0x0600025A RID: 602 RVA: 0x00006C60 File Offset: 0x00004E60
+		// Token: 0x0600013A RID: 314 RVA: 0x00004AC0 File Offset: 0x00002CC0
 		public bool IsProductCodeTypeEmpty()
 		{
 			return string.IsNullOrWhiteSpace(this.HardwareModel) || string.IsNullOrWhiteSpace(this.HardwareVariant);
 		}
 
-		// Token: 0x040001FB RID: 507
+		// Token: 0x04000049 RID: 73
 		private PackageFileInfo packageFileInfo;
 
-		// Token: 0x040001FC RID: 508
+		// Token: 0x0400004A RID: 74
 		private string salesName;
 
-		// Token: 0x040001FD RID: 509
+		// Token: 0x0400004B RID: 75
 		private string hardwareVariant;
 
-		// Token: 0x040001FE RID: 510
+		// Token: 0x0400004C RID: 76
 		private string softwareVersion;
 
-		// Token: 0x040001FF RID: 511
+		// Token: 0x0400004D RID: 77
 		private string imei;
 
-		// Token: 0x04000200 RID: 512
+		// Token: 0x0400004E RID: 78
 		private string adaptationKitVersion;
 
-		// Token: 0x04000201 RID: 513
+		// Token: 0x0400004F RID: 79
 		private string newSoftwareVersion;
 
-		// Token: 0x04000202 RID: 514
+		// Token: 0x04000050 RID: 80
 		private string manufacturerProductLine = "WindowsPhone";
 	}
 }

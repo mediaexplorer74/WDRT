@@ -150,8 +150,8 @@
 	<SolidColorBrush
 		x:Key="ComboBoxItemPressedForegroundThemeBrush">#FF000000</SolidColorBrush>
 	<SolidColorBrush
-		Color="{DynamicResource MinorColor}"
-		x:Key="ComboBoxItemSelectedBackgroundThemeBrush" />
+		x:Key="ComboBoxItemSelectedBackgroundThemeBrush"
+		Color="{DynamicResource MinorColor}" />
 	<SolidColorBrush
 		x:Key="ComboBoxItemSelectedForegroundThemeBrush">White</SolidColorBrush>
 	<SolidColorBrush
@@ -159,8 +159,8 @@
 	<SolidColorBrush
 		x:Key="ComboBoxItemSelectedDisabledForegroundThemeBrush">#99FFFFFF</SolidColorBrush>
 	<SolidColorBrush
-		Color="{DynamicResource HighlightMinorColor}"
-		x:Key="ComboBoxItemSelectedPointerOverBackgroundThemeBrush" />
+		x:Key="ComboBoxItemSelectedPointerOverBackgroundThemeBrush"
+		Color="{DynamicResource HighlightMinorColor}" />
 	<SolidColorBrush
 		x:Key="ComboBoxPlaceholderTextForegroundThemeBrush">#88000000</SolidColorBrush>
 	<SolidColorBrush
@@ -182,11 +182,11 @@
 	<SolidColorBrush
 		x:Key="ComboBoxPressedForegroundThemeBrush">#FF000000</SolidColorBrush>
 	<SolidColorBrush
-		Color="{DynamicResource MinorColor}"
-		x:Key="ComboBoxSelectedBackgroundThemeBrush" />
+		x:Key="ComboBoxSelectedBackgroundThemeBrush"
+		Color="{DynamicResource MinorColor}" />
 	<SolidColorBrush
-		Color="{DynamicResource HighlightMinorColor}"
-		x:Key="ComboBoxSelectedPointerOverBackgroundThemeBrush" />
+		x:Key="ComboBoxSelectedPointerOverBackgroundThemeBrush"
+		Color="{DynamicResource HighlightMinorColor}" />
 	<SolidColorBrush
 		x:Key="DatePickerHeaderForegroundThemeBrush">#FF000000</SolidColorBrush>
 	<SolidColorBrush
@@ -226,14 +226,14 @@
 	<SolidColorBrush
 		x:Key="HyperlinkDisabledThemeBrush">#66000000</SolidColorBrush>
 	<SolidColorBrush
-		Color="{DynamicResource MajorColor}"
-		x:Key="HyperlinkForegroundThemeBrush" />
+		x:Key="HyperlinkForegroundThemeBrush"
+		Color="{DynamicResource MajorColor}" />
 	<SolidColorBrush
-		Color="{DynamicResource MajorColor}"
-		x:Key="HyperlinkPointerOverForegroundThemeBrush" />
+		x:Key="HyperlinkPointerOverForegroundThemeBrush"
+		Color="{DynamicResource MajorColor}" />
 	<SolidColorBrush
-		Color="{DynamicResource HighlightMajorColor}"
-		x:Key="HyperlinkPressedForegroundThemeBrush" />
+		x:Key="HyperlinkPressedForegroundThemeBrush"
+		Color="{DynamicResource HighlightMajorColor}" />
 	<SolidColorBrush
 		x:Key="HubSectionHeaderPointerOverForegroundThemeBrush">#FFD1D1D1</SolidColorBrush>
 	<SolidColorBrush
@@ -249,8 +249,8 @@
 	<SolidColorBrush
 		x:Key="IMECandidateSecondaryForegroundThemeBrush">#FF707070</SolidColorBrush>
 	<SolidColorBrush
-		Color="{DynamicResource MajorColor}"
-		x:Key="IMECandidateSelectedBackgroundThemeBrush" />
+		x:Key="IMECandidateSelectedBackgroundThemeBrush"
+		Color="{DynamicResource MajorColor}" />
 	<SolidColorBrush
 		x:Key="IMECandidateSelectedForegroundThemeBrush">#FFFFFFFF</SolidColorBrush>
 	<SolidColorBrush
@@ -296,8 +296,8 @@
 	<SolidColorBrush
 		x:Key="ListBoxItemSelectedDisabledForegroundThemeBrush">#FF000000</SolidColorBrush>
 	<SolidColorBrush
-		Color="{DynamicResource MajorColor}"
-		x:Key="ListBoxItemSelectedForegroundThemeBrush" />
+		x:Key="ListBoxItemSelectedForegroundThemeBrush"
+		Color="{DynamicResource MajorColor}" />
 	<SolidColorBrush
 		x:Key="ListBoxItemSelectedPointerOverBackgroundThemeBrush">#8C000000</SolidColorBrush>
 	<SolidColorBrush
@@ -305,14 +305,14 @@
 	<SolidColorBrush
 		x:Key="ListViewGroupHeaderPointerOverForegroundThemeBrush">White</SolidColorBrush>
 	<SolidColorBrush
-		Color="{DynamicResource HeaderFontColor}"
-		x:Key="ListViewGroupHeaderPressedForegroundThemeBrush" />
+		x:Key="ListViewGroupHeaderPressedForegroundThemeBrush"
+		Color="{DynamicResource HeaderFontColor}" />
 	<SolidColorBrush
-		Color="{DynamicResource MajorColor}"
-		x:Key="ListViewItemCheckHintThemeBrush" />
+		x:Key="ListViewItemCheckHintThemeBrush"
+		Color="{DynamicResource MajorColor}" />
 	<SolidColorBrush
-		Color="{DynamicResource MajorColor}"
-		x:Key="ListViewItemCheckSelectingThemeBrush" />
+		x:Key="ListViewItemCheckSelectingThemeBrush"
+		Color="{DynamicResource MajorColor}" />
 	<SolidColorBrush
 		x:Key="ListViewItemCheckThemeBrush">#FFFFFFFF</SolidColorBrush>
 	<SolidColorBrush
@@ -322,8 +322,8 @@
 	<SolidColorBrush
 		x:Key="ListViewItemFocusBorderThemeBrush">#FF000000</SolidColorBrush>
 	<SolidColorBrush
-		Color="{DynamicResource MajorColor}"
-		x:Key="ListViewItemOverlayBackgroundThemeBrush" />
+		x:Key="ListViewItemOverlayBackgroundThemeBrush"
+		Color="{DynamicResource MajorColor}" />
 	<SolidColorBrush
 		x:Key="ListViewItemOverlayForegroundThemeBrush">#FFFFFFFF</SolidColorBrush>
 	<SolidColorBrush
@@ -333,16 +333,16 @@
 	<SolidColorBrush
 		x:Key="ListViewItemPointerOverBackgroundThemeBrush">#4D000000</SolidColorBrush>
 	<SolidColorBrush
-		Color="{DynamicResource MajorColor}"
-		x:Key="ListViewItemSelectedBackgroundThemeBrush" />
+		x:Key="ListViewItemSelectedBackgroundThemeBrush"
+		Color="{DynamicResource MajorColor}" />
 	<SolidColorBrush
 		x:Key="ListViewItemSelectedForegroundThemeBrush">#FF000000</SolidColorBrush>
 	<SolidColorBrush
-		Color="{DynamicResource HeaderFontColor}"
-		x:Key="ListViewItemSelectedPointerOverBackgroundThemeBrush" />
+		x:Key="ListViewItemSelectedPointerOverBackgroundThemeBrush"
+		Color="{DynamicResource HeaderFontColor}" />
 	<SolidColorBrush
-		Color="{DynamicResource HeaderFontColor}"
-		x:Key="ListViewItemSelectedPointerOverBorderThemeBrush" />
+		x:Key="ListViewItemSelectedPointerOverBorderThemeBrush"
+		Color="{DynamicResource HeaderFontColor}" />
 	<SolidColorBrush
 		x:Key="MediaButtonForegroundThemeBrush">#FFFFFFFF</SolidColorBrush>
 	<SolidColorBrush
@@ -388,11 +388,11 @@
 	<SolidColorBrush
 		x:Key="ProgressBarBorderThemeBrush">Transparent</SolidColorBrush>
 	<SolidColorBrush
-		Color="{DynamicResource MajorColor}"
-		x:Key="ProgressBarForegroundThemeBrush" />
+		x:Key="ProgressBarForegroundThemeBrush"
+		Color="{DynamicResource MajorColor}" />
 	<SolidColorBrush
-		Color="{DynamicResource MajorColor}"
-		x:Key="ProgressBarIndeterminateForegroundThemeBrush" />
+		x:Key="ProgressBarIndeterminateForegroundThemeBrush"
+		Color="{DynamicResource MajorColor}" />
 	<SolidColorBrush
 		x:Key="RadioButtonBackgroundThemeBrush">#CCFFFFFF</SolidColorBrush>
 	<SolidColorBrush
@@ -496,23 +496,23 @@
 	<SolidColorBrush
 		x:Key="SearchBoxFocusedBorderThemeBrush">#FF2A2A2A</SolidColorBrush>
 	<SolidColorBrush
-		Color="{DynamicResource MajorColor}"
-		x:Key="SearchBoxButtonBackgroundThemeBrush" />
+		x:Key="SearchBoxButtonBackgroundThemeBrush"
+		Color="{DynamicResource MajorColor}" />
 	<SolidColorBrush
 		x:Key="SearchBoxButtonForegroundThemeBrush">White</SolidColorBrush>
 	<SolidColorBrush
 		x:Key="SearchBoxButtonPointerOverForegroundThemeBrush">#FFFFFFFF</SolidColorBrush>
 	<SolidColorBrush
-		Color="{DynamicResource HeaderFontColor}"
-		x:Key="SearchBoxButtonPointerOverBackgroundThemeBrush" />
+		x:Key="SearchBoxButtonPointerOverBackgroundThemeBrush"
+		Color="{DynamicResource HeaderFontColor}" />
 	<SolidColorBrush
 		x:Key="SearchBoxSeparatorSuggestionForegroundThemeBrush">#FF000000</SolidColorBrush>
 	<SolidColorBrush
-		Color="{DynamicResource MajorColor}"
-		x:Key="SearchBoxHitHighlightForegroundThemeBrush" />
+		x:Key="SearchBoxHitHighlightForegroundThemeBrush"
+		Color="{DynamicResource MajorColor}" />
 	<SolidColorBrush
-		Color="{DynamicResource HighlightMinorColor}"
-		x:Key="SearchBoxHitHighlightSelectedForegroundThemeBrush" />
+		x:Key="SearchBoxHitHighlightSelectedForegroundThemeBrush"
+		Color="{DynamicResource HighlightMinorColor}" />
 	<SolidColorBrush
 		x:Key="SearchBoxIMECandidateListSeparatorThemeBrush">#FF2A2A2A</SolidColorBrush>
 	<SolidColorBrush
@@ -572,16 +572,16 @@
 	<SolidColorBrush
 		x:Key="SliderTrackBackgroundThemeBrush">#1A000000</SolidColorBrush>
 	<SolidColorBrush
-		Color="{DynamicResource MajorColor}"
-		x:Key="SliderTrackDecreaseBackgroundThemeBrush" />
+		x:Key="SliderTrackDecreaseBackgroundThemeBrush"
+		Color="{DynamicResource MajorColor}" />
 	<SolidColorBrush
 		x:Key="SliderTrackDecreaseDisabledBackgroundThemeBrush">#1C000000</SolidColorBrush>
 	<SolidColorBrush
-		Color="{DynamicResource HeaderFontColor}"
-		x:Key="SliderTrackDecreasePointerOverBackgroundThemeBrush" />
+		x:Key="SliderTrackDecreasePointerOverBackgroundThemeBrush"
+		Color="{DynamicResource HeaderFontColor}" />
 	<SolidColorBrush
-		Color="{DynamicResource MinorColor}"
-		x:Key="SliderTrackDecreasePressedBackgroundThemeBrush" />
+		x:Key="SliderTrackDecreasePressedBackgroundThemeBrush"
+		Color="{DynamicResource MinorColor}" />
 	<SolidColorBrush
 		x:Key="SliderTrackDisabledBackgroundThemeBrush">#1A000000</SolidColorBrush>
 	<SolidColorBrush
@@ -597,8 +597,8 @@
 	<SolidColorBrush
 		x:Key="TextBoxBackgroundThemeBrush">#FFFFFFFF</SolidColorBrush>
 	<SolidColorBrush
-		Color="{DynamicResource MajorColor}"
-		x:Key="TextSelectionHighlightColorThemeBrush" />
+		x:Key="TextSelectionHighlightColorThemeBrush"
+		Color="{DynamicResource MajorColor}" />
 	<SolidColorBrush
 		x:Key="TextBoxBorderThemeBrush">#A3000000</SolidColorBrush>
 	<SolidColorBrush
@@ -626,8 +626,8 @@
 	<SolidColorBrush
 		x:Key="TextBoxDisabledForegroundThemeBrush">#FF666666</SolidColorBrush>
 	<SolidColorBrush
-		Color="{DynamicResource MinorColor}"
-		x:Key="TextBoxFocusedBorderThemeBrush" />
+		x:Key="TextBoxFocusedBorderThemeBrush"
+		Color="{DynamicResource MinorColor}" />
 	<SolidColorBrush
 		x:Key="TextBoxForegroundThemeBrush">#FF000000</SolidColorBrush>
 	<SolidColorBrush
@@ -683,16 +683,16 @@
 	<SolidColorBrush
 		x:Key="ToggleButtonPressedForegroundThemeBrush">#FFFFFFFF</SolidColorBrush>
 	<SolidColorBrush
-		Color="{DynamicResource MajorColor}"
-		x:Key="ToggleSwitchCurtainBackgroundThemeBrush" />
+		x:Key="ToggleSwitchCurtainBackgroundThemeBrush"
+		Color="{DynamicResource MajorColor}" />
 	<SolidColorBrush
 		x:Key="ToggleSwitchCurtainDisabledBackgroundThemeBrush">Transparent</SolidColorBrush>
 	<SolidColorBrush
-		Color="{DynamicResource HeaderFontColor}"
-		x:Key="ToggleSwitchCurtainPointerOverBackgroundThemeBrush" />
+		x:Key="ToggleSwitchCurtainPointerOverBackgroundThemeBrush"
+		Color="{DynamicResource HeaderFontColor}" />
 	<SolidColorBrush
-		Color="{DynamicResource MinorColor}"
-		x:Key="ToggleSwitchCurtainPressedBackgroundThemeBrush" />
+		x:Key="ToggleSwitchCurtainPressedBackgroundThemeBrush"
+		Color="{DynamicResource MinorColor}" />
 	<SolidColorBrush
 		x:Key="ToggleSwitchDisabledForegroundThemeBrush">#66000000</SolidColorBrush>
 	<SolidColorBrush
@@ -738,9 +738,9 @@
 	<SolidColorBrush
 		x:Key="ToolTipForegroundThemeBrush">#FF666666</SolidColorBrush>
 	<SolidColorBrush
+		x:Key="MinorWithHalfOpacityBrush"
 		Color="{DynamicResource MinorColor}"
-		Opacity="0.5"
-		x:Key="MinorWithHalfOpacityBrush" />
+		Opacity="0.5" />
 	<Thickness
 		x:Key="ButtonBorderThemeThickness">0</Thickness>
 	<Thickness

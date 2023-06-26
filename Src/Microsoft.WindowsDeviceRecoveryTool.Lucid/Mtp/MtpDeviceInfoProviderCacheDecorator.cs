@@ -7,11 +7,11 @@ using Microsoft.WindowsDeviceRecoveryTool.Core.Cache;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Lucid.Mtp
 {
-	// Token: 0x02000005 RID: 5
+	// Token: 0x02000008 RID: 8
 	[Export(typeof(IMtpDeviceInfoProvider))]
 	internal sealed class MtpDeviceInfoProviderCacheDecorator : IMtpDeviceInfoProvider, IDeviceInformationProvider<MtpInterfaceInfo>
 	{
-		// Token: 0x0600000A RID: 10 RVA: 0x00002088 File Offset: 0x00000288
+		// Token: 0x0600001F RID: 31 RVA: 0x000026BF File Offset: 0x000008BF
 		[ImportingConstructor]
 		public MtpDeviceInfoProviderCacheDecorator(MtpDeviceInfoProvider deviceInfoProvider, IDeviceInformationCacheManager cacheManager)
 		{
@@ -19,16 +19,16 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Lucid.Mtp
 			this.cacheManager = cacheManager;
 		}
 
-		// Token: 0x0600000B RID: 11 RVA: 0x0000209E File Offset: 0x0000029E
+		// Token: 0x06000020 RID: 32 RVA: 0x000026D5 File Offset: 0x000008D5
 		public Task<MtpInterfaceInfo> ReadInformationAsync(string devicePath, CancellationToken token)
 		{
 			return this.deviceInfoProvider.ReadInformationAsync(devicePath, this.cacheManager, token);
 		}
 
-		// Token: 0x04000003 RID: 3
+		// Token: 0x04000008 RID: 8
 		private readonly MtpDeviceInfoProvider deviceInfoProvider;
 
-		// Token: 0x04000004 RID: 4
+		// Token: 0x04000009 RID: 9
 		private readonly IDeviceInformationCacheManager cacheManager;
 	}
 }

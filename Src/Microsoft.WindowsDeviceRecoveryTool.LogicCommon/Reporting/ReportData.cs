@@ -5,10 +5,10 @@ using Microsoft.WindowsDeviceRecoveryTool.Model;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Reporting
 {
-	// Token: 0x0200002C RID: 44
+	// Token: 0x0200001A RID: 26
 	public class ReportData
 	{
-		// Token: 0x060001F5 RID: 501 RVA: 0x0000989A File Offset: 0x00007A9A
+		// Token: 0x060001BC RID: 444 RVA: 0x00007E62 File Offset: 0x00006062
 		public ReportData(string description, string sessionId)
 		{
 			this.Description = description;
@@ -17,90 +17,92 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Reporting
 			this.SessionId = sessionId;
 		}
 
-		// Token: 0x17000097 RID: 151
-		// (get) Token: 0x060001F6 RID: 502 RVA: 0x000098D4 File Offset: 0x00007AD4
-		// (set) Token: 0x060001F7 RID: 503 RVA: 0x000098EB File Offset: 0x00007AEB
+		// Token: 0x1700006C RID: 108
+		// (get) Token: 0x060001BD RID: 445 RVA: 0x00007E99 File Offset: 0x00006099
+		// (set) Token: 0x060001BE RID: 446 RVA: 0x00007EA1 File Offset: 0x000060A1
 		public Exception Exception { get; private set; }
 
-		// Token: 0x17000098 RID: 152
-		// (get) Token: 0x060001F8 RID: 504 RVA: 0x000098F4 File Offset: 0x00007AF4
-		// (set) Token: 0x060001F9 RID: 505 RVA: 0x0000990B File Offset: 0x00007B0B
+		// Token: 0x1700006D RID: 109
+		// (get) Token: 0x060001BF RID: 447 RVA: 0x00007EAA File Offset: 0x000060AA
+		// (set) Token: 0x060001C0 RID: 448 RVA: 0x00007EB2 File Offset: 0x000060B2
 		public UriData UriData { get; set; }
 
-		// Token: 0x17000099 RID: 153
-		// (get) Token: 0x060001FA RID: 506 RVA: 0x00009914 File Offset: 0x00007B14
-		// (set) Token: 0x060001FB RID: 507 RVA: 0x0000992B File Offset: 0x00007B2B
+		// Token: 0x1700006E RID: 110
+		// (get) Token: 0x060001C1 RID: 449 RVA: 0x00007EBB File Offset: 0x000060BB
+		// (set) Token: 0x060001C2 RID: 450 RVA: 0x00007EC3 File Offset: 0x000060C3
 		public Phone PhoneInfo { get; private set; }
 
-		// Token: 0x1700009A RID: 154
-		// (get) Token: 0x060001FC RID: 508 RVA: 0x00009934 File Offset: 0x00007B34
-		// (set) Token: 0x060001FD RID: 509 RVA: 0x0000994B File Offset: 0x00007B4B
+		// Token: 0x1700006F RID: 111
+		// (get) Token: 0x060001C3 RID: 451 RVA: 0x00007ECC File Offset: 0x000060CC
+		// (set) Token: 0x060001C4 RID: 452 RVA: 0x00007ED4 File Offset: 0x000060D4
 		public long DownloadDuration { get; private set; }
 
-		// Token: 0x1700009B RID: 155
-		// (get) Token: 0x060001FE RID: 510 RVA: 0x00009954 File Offset: 0x00007B54
-		// (set) Token: 0x060001FF RID: 511 RVA: 0x0000996B File Offset: 0x00007B6B
+		// Token: 0x17000070 RID: 112
+		// (get) Token: 0x060001C5 RID: 453 RVA: 0x00007EDD File Offset: 0x000060DD
+		// (set) Token: 0x060001C6 RID: 454 RVA: 0x00007EE5 File Offset: 0x000060E5
 		public long UpdateDuration { get; private set; }
 
-		// Token: 0x1700009C RID: 156
-		// (get) Token: 0x06000200 RID: 512 RVA: 0x00009974 File Offset: 0x00007B74
-		// (set) Token: 0x06000201 RID: 513 RVA: 0x0000998B File Offset: 0x00007B8B
+		// Token: 0x17000071 RID: 113
+		// (get) Token: 0x060001C7 RID: 455 RVA: 0x00007EEE File Offset: 0x000060EE
+		// (set) Token: 0x060001C8 RID: 456 RVA: 0x00007EF6 File Offset: 0x000060F6
 		public string ConnectionName { get; private set; }
 
-		// Token: 0x1700009D RID: 157
-		// (get) Token: 0x06000202 RID: 514 RVA: 0x00009994 File Offset: 0x00007B94
-		// (set) Token: 0x06000203 RID: 515 RVA: 0x000099AB File Offset: 0x00007BAB
+		// Token: 0x17000072 RID: 114
+		// (get) Token: 0x060001C9 RID: 457 RVA: 0x00007EFF File Offset: 0x000060FF
+		// (set) Token: 0x060001CA RID: 458 RVA: 0x00007F07 File Offset: 0x00006107
 		public string Description { get; private set; }
 
-		// Token: 0x1700009E RID: 158
-		// (get) Token: 0x06000204 RID: 516 RVA: 0x000099B4 File Offset: 0x00007BB4
-		// (set) Token: 0x06000205 RID: 517 RVA: 0x000099CB File Offset: 0x00007BCB
+		// Token: 0x17000073 RID: 115
+		// (get) Token: 0x060001CB RID: 459 RVA: 0x00007F10 File Offset: 0x00006110
+		// (set) Token: 0x060001CC RID: 460 RVA: 0x00007F18 File Offset: 0x00006118
 		public string SystemInfo { get; private set; }
 
-		// Token: 0x1700009F RID: 159
-		// (get) Token: 0x06000206 RID: 518 RVA: 0x000099D4 File Offset: 0x00007BD4
-		// (set) Token: 0x06000207 RID: 519 RVA: 0x000099EB File Offset: 0x00007BEB
+		// Token: 0x17000074 RID: 116
+		// (get) Token: 0x060001CD RID: 461 RVA: 0x00007F21 File Offset: 0x00006121
+		// (set) Token: 0x060001CE RID: 462 RVA: 0x00007F29 File Offset: 0x00006129
 		public string LocalPath { get; set; }
 
-		// Token: 0x170000A0 RID: 160
-		// (get) Token: 0x06000208 RID: 520 RVA: 0x000099F4 File Offset: 0x00007BF4
-		// (set) Token: 0x06000209 RID: 521 RVA: 0x00009A0B File Offset: 0x00007C0B
+		// Token: 0x17000075 RID: 117
+		// (get) Token: 0x060001CF RID: 463 RVA: 0x00007F32 File Offset: 0x00006132
+		// (set) Token: 0x060001D0 RID: 464 RVA: 0x00007F3A File Offset: 0x0000613A
 		public long PackageSize { get; set; }
 
-		// Token: 0x170000A1 RID: 161
-		// (get) Token: 0x0600020A RID: 522 RVA: 0x00009A14 File Offset: 0x00007C14
-		// (set) Token: 0x0600020B RID: 523 RVA: 0x00009A2B File Offset: 0x00007C2B
+		// Token: 0x17000076 RID: 118
+		// (get) Token: 0x060001D1 RID: 465 RVA: 0x00007F43 File Offset: 0x00006143
+		// (set) Token: 0x060001D2 RID: 466 RVA: 0x00007F4B File Offset: 0x0000614B
 		public int ResumeCounter { get; set; }
 
-		// Token: 0x170000A2 RID: 162
-		// (get) Token: 0x0600020C RID: 524 RVA: 0x00009A34 File Offset: 0x00007C34
-		// (set) Token: 0x0600020D RID: 525 RVA: 0x00009A4B File Offset: 0x00007C4B
+		// Token: 0x17000077 RID: 119
+		// (get) Token: 0x060001D3 RID: 467 RVA: 0x00007F54 File Offset: 0x00006154
+		// (set) Token: 0x060001D4 RID: 468 RVA: 0x00007F5C File Offset: 0x0000615C
 		public long DownloadedBytes { get; set; }
 
-		// Token: 0x170000A3 RID: 163
-		// (get) Token: 0x0600020E RID: 526 RVA: 0x00009A54 File Offset: 0x00007C54
-		// (set) Token: 0x0600020F RID: 527 RVA: 0x00009A6B File Offset: 0x00007C6B
+		// Token: 0x17000078 RID: 120
+		// (get) Token: 0x060001D5 RID: 469 RVA: 0x00007F65 File Offset: 0x00006165
+		// (set) Token: 0x060001D6 RID: 470 RVA: 0x00007F6D File Offset: 0x0000616D
 		public string SessionId { get; private set; }
 
-		// Token: 0x170000A4 RID: 164
-		// (get) Token: 0x06000210 RID: 528 RVA: 0x00009A74 File Offset: 0x00007C74
-		// (set) Token: 0x06000211 RID: 529 RVA: 0x00009A8B File Offset: 0x00007C8B
+		// Token: 0x17000079 RID: 121
+		// (get) Token: 0x060001D7 RID: 471 RVA: 0x00007F76 File Offset: 0x00006176
+		// (set) Token: 0x060001D8 RID: 472 RVA: 0x00007F7E File Offset: 0x0000617E
 		public Exception LastError { get; set; }
 
-		// Token: 0x06000212 RID: 530 RVA: 0x00009A94 File Offset: 0x00007C94
+		// Token: 0x060001D9 RID: 473 RVA: 0x00007F87 File Offset: 0x00006187
 		public void SetPhoneInfo(Phone phone)
 		{
 			this.PhoneInfo = phone;
 		}
 
-		// Token: 0x06000213 RID: 531 RVA: 0x00009AA0 File Offset: 0x00007CA0
+		// Token: 0x060001DA RID: 474 RVA: 0x00007F94 File Offset: 0x00006194
 		public void StartUpdateTimer()
 		{
-			if (this.updateTimer == null)
+			bool flag = this.updateTimer == null;
+			if (flag)
 			{
 				this.updateTimer = new Stopwatch();
 			}
-			if (this.updateTimer.IsRunning || this.updateTimer.ElapsedMilliseconds != 0L)
+			bool flag2 = this.updateTimer.IsRunning || this.updateTimer.ElapsedMilliseconds != 0L;
+			if (flag2)
 			{
 				this.updateTimer.Restart();
 			}
@@ -110,23 +112,26 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Reporting
 			}
 		}
 
-		// Token: 0x06000214 RID: 532 RVA: 0x00009B10 File Offset: 0x00007D10
+		// Token: 0x060001DB RID: 475 RVA: 0x00008000 File Offset: 0x00006200
 		public void StopUpdateTimer()
 		{
-			if (this.updateTimer != null)
+			bool flag = this.updateTimer != null;
+			if (flag)
 			{
 				this.updateTimer.Stop();
 			}
 		}
 
-		// Token: 0x06000215 RID: 533 RVA: 0x00009B3C File Offset: 0x00007D3C
+		// Token: 0x060001DC RID: 476 RVA: 0x0000802C File Offset: 0x0000622C
 		public void StartDownloadTimer()
 		{
-			if (this.downloadTimer == null)
+			bool flag = this.downloadTimer == null;
+			if (flag)
 			{
 				this.downloadTimer = new Stopwatch();
 			}
-			if (this.downloadTimer.IsRunning || this.downloadTimer.ElapsedMilliseconds != 0L)
+			bool flag2 = this.downloadTimer.IsRunning || this.downloadTimer.ElapsedMilliseconds != 0L;
+			if (flag2)
 			{
 				this.downloadTimer.Restart();
 			}
@@ -136,41 +141,44 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Reporting
 			}
 		}
 
-		// Token: 0x06000216 RID: 534 RVA: 0x00009BAC File Offset: 0x00007DAC
+		// Token: 0x060001DD RID: 477 RVA: 0x00008098 File Offset: 0x00006298
 		public void StopDownloadTimer()
 		{
-			if (this.downloadTimer != null)
+			bool flag = this.downloadTimer != null;
+			if (flag)
 			{
 				this.downloadTimer.Stop();
 			}
 		}
 
-		// Token: 0x06000217 RID: 535 RVA: 0x00009BD5 File Offset: 0x00007DD5
+		// Token: 0x060001DE RID: 478 RVA: 0x000080C1 File Offset: 0x000062C1
 		public void SetResult(UriData uriData, Exception exception)
 		{
 			this.UriData = uriData;
 			this.Exception = exception;
 		}
 
-		// Token: 0x06000218 RID: 536 RVA: 0x00009BE8 File Offset: 0x00007DE8
+		// Token: 0x060001DF RID: 479 RVA: 0x000080D4 File Offset: 0x000062D4
 		public void EndDataCollecting()
 		{
 			this.StopUpdateTimer();
 			this.StopDownloadTimer();
-			if (this.updateTimer != null)
+			bool flag = this.updateTimer != null;
+			if (flag)
 			{
 				this.UpdateDuration = this.updateTimer.ElapsedMilliseconds;
 			}
-			if (this.downloadTimer != null)
+			bool flag2 = this.downloadTimer != null;
+			if (flag2)
 			{
 				this.DownloadDuration = this.downloadTimer.ElapsedMilliseconds;
 			}
 		}
 
-		// Token: 0x040000FA RID: 250
+		// Token: 0x040000A6 RID: 166
 		private Stopwatch updateTimer;
 
-		// Token: 0x040000FB RID: 251
+		// Token: 0x040000A7 RID: 167
 		private Stopwatch downloadTimer;
 	}
 }

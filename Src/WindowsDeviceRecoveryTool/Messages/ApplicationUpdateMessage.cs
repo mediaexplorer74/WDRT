@@ -3,18 +3,18 @@ using Microsoft.WindowsDeviceRecoveryTool.Model;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Messages
 {
-	// Token: 0x0200004F RID: 79
+	// Token: 0x02000098 RID: 152
 	public class ApplicationUpdateMessage
 	{
-		// Token: 0x060002B0 RID: 688 RVA: 0x0000FB0E File Offset: 0x0000DD0E
+		// Token: 0x0600052E RID: 1326 RVA: 0x0001B2A5 File Offset: 0x000194A5
 		public ApplicationUpdateMessage(ApplicationUpdate update)
 		{
 			this.Update = update;
 		}
 
-		// Token: 0x17000073 RID: 115
-		// (get) Token: 0x060002B1 RID: 689 RVA: 0x0000FB24 File Offset: 0x0000DD24
-		// (set) Token: 0x060002B2 RID: 690 RVA: 0x0000FB3B File Offset: 0x0000DD3B
+		// Token: 0x17000123 RID: 291
+		// (get) Token: 0x0600052F RID: 1327 RVA: 0x0001B2B7 File Offset: 0x000194B7
+		// (set) Token: 0x06000530 RID: 1328 RVA: 0x0001B2BF File Offset: 0x000194BF
 		public ApplicationUpdate Update { get; set; }
 	}
 }

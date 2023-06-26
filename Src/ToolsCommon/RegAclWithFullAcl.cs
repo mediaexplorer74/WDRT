@@ -4,23 +4,23 @@ using System.Xml.Serialization;
 
 namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 {
-	// Token: 0x02000045 RID: 69
+	// Token: 0x02000053 RID: 83
 	public class RegAclWithFullAcl : RegistryAcl
 	{
-		// Token: 0x060001C3 RID: 451 RVA: 0x0000962C File Offset: 0x0000782C
+		// Token: 0x060001DC RID: 476 RVA: 0x00009E98 File Offset: 0x00008098
 		public RegAclWithFullAcl()
 		{
 		}
 
-		// Token: 0x060001C4 RID: 452 RVA: 0x00009634 File Offset: 0x00007834
+		// Token: 0x060001DD RID: 477 RVA: 0x00009EA0 File Offset: 0x000080A0
 		public RegAclWithFullAcl(NativeObjectSecurity nos)
 		{
 			this.m_nos = nos;
 		}
 
-		// Token: 0x1700003A RID: 58
-		// (get) Token: 0x060001C5 RID: 453 RVA: 0x00009643 File Offset: 0x00007843
-		// (set) Token: 0x060001C6 RID: 454 RVA: 0x0000964B File Offset: 0x0000784B
+		// Token: 0x1700003F RID: 63
+		// (get) Token: 0x060001DE RID: 478 RVA: 0x00009EAF File Offset: 0x000080AF
+		// (set) Token: 0x060001DF RID: 479 RVA: 0x00009EB7 File Offset: 0x000080B7
 		[XmlAttribute("FullACL")]
 		public string FullRegACL
 		{

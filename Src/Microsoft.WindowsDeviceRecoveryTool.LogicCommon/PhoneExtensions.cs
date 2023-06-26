@@ -5,13 +5,13 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.Enums;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon
 {
-	// Token: 0x02000020 RID: 32
+	// Token: 0x02000005 RID: 5
 	public static class PhoneExtensions
 	{
-		// Token: 0x06000123 RID: 291 RVA: 0x000075F8 File Offset: 0x000057F8
+		// Token: 0x06000045 RID: 69 RVA: 0x00002738 File Offset: 0x00000938
 		public static bool IsPhoneDeviceType(this Phone phone)
 		{
-			PhoneTypes[] source = new PhoneTypes[]
+			PhoneTypes[] array = new PhoneTypes[]
 			{
 				PhoneTypes.Alcatel,
 				PhoneTypes.Blu,
@@ -20,7 +20,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon
 				PhoneTypes.Lumia,
 				PhoneTypes.Mcj
 			};
-			return source.Contains(phone.Type);
+			return array.Contains(phone.Type);
 		}
 	}
 }

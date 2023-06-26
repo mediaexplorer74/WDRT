@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using ComponentAce.Compression.Archiver;
-using ComponentAce.Compression.Exception1;
+using ComponentAce.Compression.Exception;
 
 namespace ComponentAce.Compression.Tar
 {
@@ -14,7 +14,8 @@ namespace ComponentAce.Compression.Tar
 		}
 
 		// Token: 0x0600041E RID: 1054 RVA: 0x0001F440 File Offset: 0x0001E440
-		public TarArchiveItem(string fileName) : this(fileName, string.Empty, StorePathMode.RelativePath)
+		public TarArchiveItem(string fileName)
+			: this(fileName, string.Empty, StorePathMode.RelativePath)
 		{
 		}
 
@@ -30,10 +31,7 @@ namespace ComponentAce.Compression.Tar
 			bool flag = FileUtils.DirectotyExists(fileName);
 			if (!flag && !File.Exists(fileName))
 			{
-				throw ExceptionBuilder.Exception(ErrorCode.FileNotFound, new object[]
-				{
-					fileName
-				});
+				throw ExceptionBuilder.Exception(ErrorCode.FileNotFound, new object[] { fileName });
 			}
 			if (!flag)
 			{

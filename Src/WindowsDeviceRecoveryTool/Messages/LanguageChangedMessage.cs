@@ -3,18 +3,18 @@ using System.Globalization;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Messages
 {
-	// Token: 0x0200005C RID: 92
+	// Token: 0x020000A3 RID: 163
 	public class LanguageChangedMessage
 	{
-		// Token: 0x060002D7 RID: 727 RVA: 0x0000FDC4 File Offset: 0x0000DFC4
+		// Token: 0x06000555 RID: 1365 RVA: 0x0001B471 File Offset: 0x00019671
 		public LanguageChangedMessage(CultureInfo language)
 		{
 			this.Language = language;
 		}
 
-		// Token: 0x17000081 RID: 129
-		// (get) Token: 0x060002D8 RID: 728 RVA: 0x0000FDD8 File Offset: 0x0000DFD8
-		// (set) Token: 0x060002D9 RID: 729 RVA: 0x0000FDEF File Offset: 0x0000DFEF
+		// Token: 0x17000131 RID: 305
+		// (get) Token: 0x06000556 RID: 1366 RVA: 0x0001B483 File Offset: 0x00019683
+		// (set) Token: 0x06000557 RID: 1367 RVA: 0x0001B48B File Offset: 0x0001968B
 		public CultureInfo Language { get; private set; }
 	}
 }

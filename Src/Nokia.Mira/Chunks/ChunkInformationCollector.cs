@@ -28,8 +28,7 @@ namespace Nokia.Mira.Chunks
 			lock (this.syncRoot)
 			{
 				this.MergeWithCurrentInformations(chunkInformation);
-				this.writer.Write(from ch in this.internalInformations
-				select new ChunkRaw(ch.Begin, ch.Current));
+				this.writer.Write(this.internalInformations.Select((ChunkInformation ch) => new ChunkRaw(ch.Begin, ch.Current)));
 			}
 		}
 

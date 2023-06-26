@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Threading;
@@ -17,7 +18,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HPAdaptation
 	[Export(typeof(IDeviceSupport))]
 	internal class HPSupport : IDeviceSupport
 	{
-		// Token: 0x06000006 RID: 6 RVA: 0x000022E4 File Offset: 0x000004E4
+		// Token: 0x06000006 RID: 6 RVA: 0x000022B7 File Offset: 0x000004B7
 		[ImportingConstructor]
 		public HPSupport(IMtpDeviceInfoProvider mtpDeviceInfoProvider)
 		{
@@ -31,7 +32,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HPAdaptation
 		}
 
 		// Token: 0x17000001 RID: 1
-		// (get) Token: 0x06000007 RID: 7 RVA: 0x0000232E File Offset: 0x0000052E
+		// (get) Token: 0x06000007 RID: 7 RVA: 0x000022F4 File Offset: 0x000004F4
 		public Guid Id
 		{
 			get
@@ -40,13 +41,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HPAdaptation
 			}
 		}
 
-		// Token: 0x06000008 RID: 8 RVA: 0x00002335 File Offset: 0x00000535
+		// Token: 0x06000008 RID: 8 RVA: 0x000022FB File Offset: 0x000004FB
 		public DeviceDetectionInformation[] GetDeviceDetectionInformation()
 		{
 			return this.catalog.GetDeviceDetectionInformations();
 		}
 
-		// Token: 0x06000009 RID: 9 RVA: 0x0000267C File Offset: 0x0000087C
+		// Token: 0x06000009 RID: 9 RVA: 0x00002308 File Offset: 0x00000508
 		public async Task UpdateDeviceDetectionDataAsync(DeviceDetectionData detectionData, CancellationToken cancellationToken)
 		{
 			if (detectionData.IsDeviceSupported)
@@ -55,35 +56,41 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HPAdaptation
 			}
 			cancellationToken.ThrowIfCancellationRequested();
 			VidPidPair vidPidPair = detectionData.VidPidPair;
-			string devicePath = detectionData.UsbDeviceInterfaceDevicePath;
-			if (this.catalog.Models.FirstOrDefault((ModelInfo m) => m.DetectionInfo.DeviceDetectionInformations.Any((DeviceDetectionInformation di) => di.VidPidPair == vidPidPair)) == null)
+			string usbDeviceInterfaceDevicePath = detectionData.UsbDeviceInterfaceDevicePath;
+			Func<DeviceDetectionInformation, bool> <>9__1;
+			if (this.catalog.Models.FirstOrDefault(delegate(ModelInfo m)
 			{
-				Tracer<HPSupport>.WriteInformation("No HP device detected. Path: {0}", new object[]
+				IEnumerable<DeviceDetectionInformation> deviceDetectionInformations = m.DetectionInfo.DeviceDetectionInformations;
+				Func<DeviceDetectionInformation, bool> func;
+				if ((func = <>9__1) == null)
 				{
-					detectionData.UsbDeviceInterfaceDevicePath
-				});
+					func = (<>9__1 = (DeviceDetectionInformation di) => di.VidPidPair == vidPidPair);
+				}
+				return deviceDetectionInformations.Any(func);
+			}) == null)
+			{
+				Tracer<HPSupport>.WriteInformation("No HP device detected. Path: {0}", new object[] { detectionData.UsbDeviceInterfaceDevicePath });
 			}
 			else
 			{
-				MtpInterfaceInfo deviceInfo = await this.mtpDeviceInfoProvider.ReadInformationAsync(devicePath, cancellationToken);
-				string mtpDeviceDescription = deviceInfo.Description;
-				int tIndex = mtpDeviceDescription.ToLower().IndexOf("telstra");
-				int vIndex = mtpDeviceDescription.ToLower().IndexOf("verizon");
-				if (tIndex < 0 && vIndex < 0)
+				string description = (await this.mtpDeviceInfoProvider.ReadInformationAsync(usbDeviceInterfaceDevicePath, cancellationToken)).Description;
+				int num = description.ToLower().IndexOf("telstra");
+				int num2 = description.ToLower().IndexOf("verizon");
+				if (num < 0 && num2 < 0)
 				{
 					HPModels.Elitex3.Variants[0].IdentificationInfo.DeviceReturnedValues[0] = HPModels.Elitex3.Variants[0].IdentificationInfo.DeviceReturnedValues[0].Replace("Standard", "").Trim();
 				}
 				else if (HPModels.Elitex3.Variants[0].IdentificationInfo.DeviceReturnedValues[0].IndexOf("Standard", StringComparison.OrdinalIgnoreCase) < 0)
 				{
 					string[] deviceReturnedValues = HPModels.Elitex3.Variants[0].IdentificationInfo.DeviceReturnedValues;
-					deviceReturnedValues[0] = deviceReturnedValues[0] + " Standard";
+					int num3 = 0;
+					deviceReturnedValues[num3] += " Standard";
 				}
 				ModelInfo modelInfo;
-				if (this.catalog.TryGetModelInfo(mtpDeviceDescription, out modelInfo))
+				if (this.catalog.TryGetModelInfo(description, out modelInfo))
 				{
 					string name = modelInfo.Name;
-					byte[] deviceBitmapBytes = modelInfo.Bitmap.ToBytes();
-					detectionData.DeviceBitmapBytes = deviceBitmapBytes;
+					detectionData.DeviceBitmapBytes = modelInfo.Bitmap.ToBytes();
 					detectionData.DeviceSalesName = name;
 					detectionData.IsDeviceSupported = true;
 				}

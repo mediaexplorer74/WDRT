@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -7,25 +8,28 @@ using Microsoft.WindowsDeviceRecoveryTool.Common.Tracing;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Framework
 {
-	// Token: 0x02000044 RID: 68
+	// Token: 0x0200007E RID: 126
 	public class AsyncDelegateCommand<T> : IAsyncDelegateCommand, IDelegateCommand, ICommand, IDisposable
 	{
-		// Token: 0x0600025B RID: 603 RVA: 0x0000ED4E File Offset: 0x0000CF4E
-		public AsyncDelegateCommand(Action<T, CancellationToken> execute) : this(execute, null, null)
+		// Token: 0x06000448 RID: 1096 RVA: 0x000162FC File Offset: 0x000144FC
+		public AsyncDelegateCommand(Action<T, CancellationToken> execute)
+			: this(execute, null, null)
 		{
 		}
 
-		// Token: 0x0600025C RID: 604 RVA: 0x0000ED5C File Offset: 0x0000CF5C
-		public AsyncDelegateCommand(Action<T, CancellationToken> execute, Func<object, bool> canExecute) : this(execute, canExecute, null)
+		// Token: 0x06000449 RID: 1097 RVA: 0x00016309 File Offset: 0x00014509
+		public AsyncDelegateCommand(Action<T, CancellationToken> execute, Func<object, bool> canExecute)
+			: this(execute, canExecute, null)
 		{
 		}
 
-		// Token: 0x0600025D RID: 605 RVA: 0x0000ED6A File Offset: 0x0000CF6A
-		public AsyncDelegateCommand(Action<T, CancellationToken> execute, KeyGesture keyGesture) : this(execute, null, keyGesture)
+		// Token: 0x0600044A RID: 1098 RVA: 0x00016316 File Offset: 0x00014516
+		public AsyncDelegateCommand(Action<T, CancellationToken> execute, KeyGesture keyGesture)
+			: this(execute, null, keyGesture)
 		{
 		}
 
-		// Token: 0x0600025E RID: 606 RVA: 0x0000ED78 File Offset: 0x0000CF78
+		// Token: 0x0600044B RID: 1099 RVA: 0x00016323 File Offset: 0x00014523
 		public AsyncDelegateCommand(Action<T, CancellationToken> execute, Func<object, bool> canExecute, KeyGesture keyGesture)
 		{
 			this.execute = execute;
@@ -33,18 +37,19 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Framework
 			this.KeyGesture = keyGesture;
 		}
 
-		// Token: 0x14000007 RID: 7
-		// (add) Token: 0x0600025F RID: 607 RVA: 0x0000ED9C File Offset: 0x0000CF9C
-		// (remove) Token: 0x06000260 RID: 608 RVA: 0x0000EDD8 File Offset: 0x0000CFD8
+		// Token: 0x14000008 RID: 8
+		// (add) Token: 0x0600044C RID: 1100 RVA: 0x00016344 File Offset: 0x00014544
+		// (remove) Token: 0x0600044D RID: 1101 RVA: 0x0001637C File Offset: 0x0001457C
+		[field: DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event EventHandler CanExecuteChanged;
 
-		// Token: 0x17000069 RID: 105
-		// (get) Token: 0x06000261 RID: 609 RVA: 0x0000EE14 File Offset: 0x0000D014
-		// (set) Token: 0x06000262 RID: 610 RVA: 0x0000EE2B File Offset: 0x0000D02B
+		// Token: 0x1700010F RID: 271
+		// (get) Token: 0x0600044E RID: 1102 RVA: 0x000163B1 File Offset: 0x000145B1
+		// (set) Token: 0x0600044F RID: 1103 RVA: 0x000163B9 File Offset: 0x000145B9
 		public KeyGesture KeyGesture { get; private set; }
 
-		// Token: 0x1700006A RID: 106
-		// (get) Token: 0x06000263 RID: 611 RVA: 0x0000EE34 File Offset: 0x0000D034
+		// Token: 0x17000110 RID: 272
+		// (get) Token: 0x06000450 RID: 1104 RVA: 0x000163C4 File Offset: 0x000145C4
 		public CancellationTokenSource CancellationTokenSource
 		{
 			get
@@ -53,35 +58,37 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Framework
 			}
 		}
 
-		// Token: 0x06000264 RID: 612 RVA: 0x0000EE4C File Offset: 0x0000D04C
+		// Token: 0x06000451 RID: 1105 RVA: 0x000163DC File Offset: 0x000145DC
 		public bool CanExecute(object parameter)
 		{
-			bool result;
-			if (this.canExecute != null)
+			bool flag = this.canExecute != null;
+			bool flag3;
+			if (flag)
 			{
-				bool flag = false;
+				bool flag2 = false;
 				try
 				{
-					flag = this.canExecute(parameter);
+					flag2 = this.canExecute(parameter);
 				}
-				catch (Exception error)
+				catch (Exception ex)
 				{
-					Tracer<IAsyncDelegateCommand>.WriteError(error);
+					Tracer<IAsyncDelegateCommand>.WriteError(ex);
 					throw;
 				}
-				result = flag;
+				flag3 = flag2;
 			}
 			else
 			{
-				result = true;
+				flag3 = true;
 			}
-			return result;
+			return flag3;
 		}
 
-		// Token: 0x06000265 RID: 613 RVA: 0x0000EEA0 File Offset: 0x0000D0A0
+		// Token: 0x06000452 RID: 1106 RVA: 0x00016430 File Offset: 0x00014630
 		public void Execute(object parameter)
 		{
-			if (parameter is T)
+			bool flag = parameter is T;
+			if (flag)
 			{
 				this.Execute((T)((object)parameter));
 			}
@@ -91,38 +98,41 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Framework
 			}
 		}
 
-		// Token: 0x06000266 RID: 614 RVA: 0x0000EF00 File Offset: 0x0000D100
+		// Token: 0x06000453 RID: 1107 RVA: 0x00016470 File Offset: 0x00014670
 		public virtual void Execute(T parameter)
 		{
 			this.tokenSource = new CancellationTokenSource();
-			this.currentTask = Task.Run(delegate()
+			this.currentTask = Task.Run(delegate
 			{
 				this.SafeExecute(parameter);
 			});
 		}
 
-		// Token: 0x06000267 RID: 615 RVA: 0x0000EF48 File Offset: 0x0000D148
+		// Token: 0x06000454 RID: 1108 RVA: 0x000164B4 File Offset: 0x000146B4
 		public void Cancel()
 		{
-			if (this.tokenSource != null)
+			bool flag = this.tokenSource != null;
+			if (flag)
 			{
 				this.tokenSource.Cancel();
 			}
 		}
 
-		// Token: 0x06000268 RID: 616 RVA: 0x0000EF74 File Offset: 0x0000D174
+		// Token: 0x06000455 RID: 1109 RVA: 0x000164E0 File Offset: 0x000146E0
 		public void Wait()
 		{
-			if (this.currentTask != null && !this.currentTask.IsCompleted)
+			bool flag = this.currentTask != null && !this.currentTask.IsCompleted;
+			if (flag)
 			{
 				this.currentTask.Wait();
 			}
 		}
 
-		// Token: 0x06000269 RID: 617 RVA: 0x0000EFC0 File Offset: 0x0000D1C0
+		// Token: 0x06000456 RID: 1110 RVA: 0x0001651C File Offset: 0x0001471C
 		public void RaiseCanExecuteChanged()
 		{
-			if (this.CanExecuteChanged != null)
+			bool flag = this.CanExecuteChanged != null;
+			if (flag)
 			{
 				AppDispatcher.Execute(delegate
 				{
@@ -131,21 +141,23 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Framework
 			}
 		}
 
-		// Token: 0x0600026A RID: 618 RVA: 0x0000EFFA File Offset: 0x0000D1FA
+		// Token: 0x06000457 RID: 1111 RVA: 0x0001654C File Offset: 0x0001474C
 		public void Dispose()
 		{
 			this.Dispose(true);
 			GC.SuppressFinalize(this);
 		}
 
-		// Token: 0x0600026B RID: 619 RVA: 0x0000F00C File Offset: 0x0000D20C
+		// Token: 0x06000458 RID: 1112 RVA: 0x00016560 File Offset: 0x00014760
 		private void Dispose(bool disposing)
 		{
-			if (!this.disposed)
+			bool flag = this.disposed;
+			if (!flag)
 			{
 				if (disposing)
 				{
-					if (this.tokenSource != null)
+					bool flag2 = this.tokenSource != null;
+					if (flag2)
 					{
 						this.tokenSource.Dispose();
 					}
@@ -154,7 +166,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Framework
 			}
 		}
 
-		// Token: 0x0600026C RID: 620 RVA: 0x0000F068 File Offset: 0x0000D268
+		// Token: 0x06000459 RID: 1113 RVA: 0x000165A4 File Offset: 0x000147A4
 		private void SafeExecute(T parameter)
 		{
 			try
@@ -163,8 +175,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Framework
 			}
 			catch (Exception ex)
 			{
-				//Exception ex2;
-				//Exception ex = ex2;
+				Exception ex3;
+				Exception ex2 = ex3;
+				Exception ex = ex2;
 				Tracer<IAsyncDelegateCommand>.WriteError(ex);
 				AppDispatcher.Execute(delegate
 				{
@@ -173,19 +186,19 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Framework
 			}
 		}
 
-		// Token: 0x040000F2 RID: 242
+		// Token: 0x04000213 RID: 531
 		private readonly Action<T, CancellationToken> execute;
 
-		// Token: 0x040000F3 RID: 243
+		// Token: 0x04000214 RID: 532
 		private readonly Func<object, bool> canExecute;
 
-		// Token: 0x040000F4 RID: 244
+		// Token: 0x04000215 RID: 533
 		private CancellationTokenSource tokenSource;
 
-		// Token: 0x040000F5 RID: 245
+		// Token: 0x04000216 RID: 534
 		private Task currentTask;
 
-		// Token: 0x040000F6 RID: 246
+		// Token: 0x04000217 RID: 535
 		private bool disposed;
 	}
 }

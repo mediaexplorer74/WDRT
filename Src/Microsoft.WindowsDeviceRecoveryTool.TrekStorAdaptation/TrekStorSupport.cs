@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Threading;
@@ -13,23 +14,20 @@ using Microsoft.WindowsDeviceRecoveryTool.TrekStorAdaptation.Properties;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.TrekStorAdaptation
 {
-	// Token: 0x02000006 RID: 6
+	// Token: 0x02000004 RID: 4
 	[Export(typeof(IDeviceSupport))]
 	internal class TrekStorSupport : IDeviceSupport
 	{
-		// Token: 0x06000029 RID: 41 RVA: 0x000029F4 File Offset: 0x00000BF4
+		// Token: 0x06000004 RID: 4 RVA: 0x0000211C File Offset: 0x0000031C
 		[ImportingConstructor]
 		public TrekStorSupport(IMtpDeviceInfoProvider trekttorDeviceInfoProvider)
 		{
 			this.TrekStorDeviceInfoProvider = trekttorDeviceInfoProvider;
-			this.catalog = new ManufacturerModelsCatalog(TrekStorSupport.TrekStorManufacturerInfo, new ModelInfo[]
-			{
-				TrekStorModels.TrekStor_Winphone_5_0_LTE
-			});
+			this.catalog = new ManufacturerModelsCatalog(TrekStorSupport.TrekStorManufacturerInfo, new ModelInfo[] { TrekStorModels.TrekStor_Winphone_5_0_LTE });
 		}
 
-		// Token: 0x1700000C RID: 12
-		// (get) Token: 0x0600002A RID: 42 RVA: 0x00002A2E File Offset: 0x00000C2E
+		// Token: 0x17000001 RID: 1
+		// (get) Token: 0x06000005 RID: 5 RVA: 0x00002149 File Offset: 0x00000349
 		public Guid Id
 		{
 			get
@@ -38,13 +36,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.TrekStorAdaptation
 			}
 		}
 
-		// Token: 0x0600002B RID: 43 RVA: 0x00002A35 File Offset: 0x00000C35
+		// Token: 0x06000006 RID: 6 RVA: 0x00002150 File Offset: 0x00000350
 		public DeviceDetectionInformation[] GetDeviceDetectionInformation()
 		{
 			return this.catalog.GetDeviceDetectionInformations();
 		}
 
-		// Token: 0x0600002C RID: 44 RVA: 0x00002C9C File Offset: 0x00000E9C
+		// Token: 0x06000007 RID: 7 RVA: 0x00002160 File Offset: 0x00000360
 		public async Task UpdateDeviceDetectionDataAsync(DeviceDetectionData detectionData, CancellationToken cancellationToken)
 		{
 			if (detectionData.IsDeviceSupported)
@@ -53,40 +51,45 @@ namespace Microsoft.WindowsDeviceRecoveryTool.TrekStorAdaptation
 			}
 			cancellationToken.ThrowIfCancellationRequested();
 			VidPidPair vidPidPair = detectionData.VidPidPair;
-			string devicePath = detectionData.UsbDeviceInterfaceDevicePath;
-			if (this.catalog.Models.FirstOrDefault((ModelInfo m) => m.DetectionInfo.DeviceDetectionInformations.Any((DeviceDetectionInformation di) => di.VidPidPair == vidPidPair)) == null)
+			string usbDeviceInterfaceDevicePath = detectionData.UsbDeviceInterfaceDevicePath;
+			Func<DeviceDetectionInformation, bool> <>9__1;
+			if (this.catalog.Models.FirstOrDefault(delegate(ModelInfo m)
 			{
-				Tracer<TrekStorSupport>.WriteInformation("No TrekStor device detected. Path: {0}", new object[]
+				IEnumerable<DeviceDetectionInformation> deviceDetectionInformations = m.DetectionInfo.DeviceDetectionInformations;
+				Func<DeviceDetectionInformation, bool> func;
+				if ((func = <>9__1) == null)
 				{
-					detectionData.UsbDeviceInterfaceDevicePath
-				});
+					func = (<>9__1 = (DeviceDetectionInformation di) => di.VidPidPair == vidPidPair);
+				}
+				return deviceDetectionInformations.Any(func);
+			}) == null)
+			{
+				Tracer<TrekStorSupport>.WriteInformation("No TrekStor device detected. Path: {0}", new object[] { detectionData.UsbDeviceInterfaceDevicePath });
 			}
 			else
 			{
-				MtpInterfaceInfo deviceInfo = await this.TrekStorDeviceInfoProvider.ReadInformationAsync(devicePath, cancellationToken);
-				string mtpDeviceDescription = deviceInfo.Description;
+				string description = (await this.TrekStorDeviceInfoProvider.ReadInformationAsync(usbDeviceInterfaceDevicePath, cancellationToken)).Description;
 				ModelInfo modelInfo;
-				if (this.catalog.TryGetModelInfo(mtpDeviceDescription, out modelInfo))
+				if (this.catalog.TryGetModelInfo(description, out modelInfo))
 				{
 					string name = modelInfo.Name;
-					byte[] deviceBitmapBytes = modelInfo.Bitmap.ToBytes();
-					detectionData.DeviceBitmapBytes = deviceBitmapBytes;
+					detectionData.DeviceBitmapBytes = modelInfo.Bitmap.ToBytes();
 					detectionData.DeviceSalesName = name;
 					detectionData.IsDeviceSupported = true;
 				}
 			}
 		}
 
-		// Token: 0x0400000D RID: 13
+		// Token: 0x04000003 RID: 3
 		private static readonly Guid SupportGuid = new Guid("C3D0AA61-0D19-41C8-AD30-99D46A4CAB60");
 
-		// Token: 0x0400000E RID: 14
+		// Token: 0x04000004 RID: 4
 		private static readonly ManufacturerInfo TrekStorManufacturerInfo = new ManufacturerInfo(Resources.FriendlyName_Manufacturer, Resources.Trekstor_logo);
 
-		// Token: 0x0400000F RID: 15
+		// Token: 0x04000005 RID: 5
 		private readonly IMtpDeviceInfoProvider TrekStorDeviceInfoProvider;
 
-		// Token: 0x04000010 RID: 16
+		// Token: 0x04000006 RID: 6
 		private readonly ManufacturerModelsCatalog catalog;
 	}
 }

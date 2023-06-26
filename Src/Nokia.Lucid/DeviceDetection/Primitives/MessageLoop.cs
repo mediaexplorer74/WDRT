@@ -35,7 +35,7 @@ namespace Nokia.Lucid.DeviceDetection.Primitives
 		// Token: 0x0600000A RID: 10 RVA: 0x00002114 File Offset: 0x00000314
 		public static int Run()
 		{
-			int result = 0;
+			int num = 0;
 			bool flag = true;
 			bool flag2 = false;
 			bool flag3 = false;
@@ -66,7 +66,7 @@ namespace Nokia.Lucid.DeviceDetection.Primitives
 							{
 								RobustTrace.Trace(new Action(MessageTraceSource.Instance.MessageLoopExit_Start));
 								flag = false;
-								result = msg.wParam.ToInt32();
+								num = msg.wParam.ToInt32();
 								break;
 							}
 							if (msg.hwnd == IntPtr.Zero)
@@ -115,7 +115,7 @@ namespace Nokia.Lucid.DeviceDetection.Primitives
 				}
 			}
 			RobustTrace.Trace(new Action(MessageTraceSource.Instance.MessageLoopExit_Stop));
-			return result;
+			return num;
 		}
 
 		// Token: 0x04000002 RID: 2

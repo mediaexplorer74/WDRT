@@ -1,0 +1,1123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccentColor" xml:space="preserve">
+    <value>Accent color</value>
+  </data>
+  <data name="AccentColorBlack" xml:space="preserve">
+    <value>Black</value>
+  </data>
+  <data name="AccentColorBlue" xml:space="preserve">
+    <value>Blue</value>
+  </data>
+  <data name="AccentColorCobalt" xml:space="preserve">
+    <value>Cobalt</value>
+  </data>
+  <data name="AccentColorCrimson" xml:space="preserve">
+    <value>Crimson</value>
+  </data>
+  <data name="AccentColorEmerald" xml:space="preserve">
+    <value>Emerald</value>
+  </data>
+  <data name="AccentColorIndigo" xml:space="preserve">
+    <value>Indigo</value>
+  </data>
+  <data name="AccentColorMauve" xml:space="preserve">
+    <value>Mauve</value>
+  </data>
+  <data name="AccentColorSienna" xml:space="preserve">
+    <value>Sienna</value>
+  </data>
+  <data name="AddressForm" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="AllFilesSize" xml:space="preserve">
+    <value>All files size: {0}</value>
+  </data>
+  <data name="AnalogBatteryChecking" xml:space="preserve">
+    <value>Please make sure you have charged your battery to 25%. You may not continue until you have done so.</value>
+  </data>
+  <data name="AnalogRecoveryDisclaimerFirst" xml:space="preserve">
+    <value>Recovering your HoloLens will erase all of your content, including apps, games, pictures, music, and videos, and will restore the factory settings.</value>
+  </data>
+  <data name="AnalogRecoveryDisclaimerSecond" xml:space="preserve">
+    <value>Once you start, you won’t be able to cancel or go back.</value>
+  </data>
+  <data name="AnalogRecoveryDisclaimerThird" xml:space="preserve">
+    <value>Recovering your device can take up to 30 minutes, and you’ll need to keep it plugged in until it’s finished. It’s best not to use your PC during recovery.</value>
+  </data>
+  <data name="AnalogRecoverySubheader" xml:space="preserve">
+    <value>Since your HoloLens wasn’t automatically detected, you’ll need to put it into recovery mode with the following steps.</value>
+  </data>
+  <data name="AnotherInstanceAlreadyRunning" xml:space="preserve">
+    <value>Another instance of {0} is already running.</value>
+  </data>
+  <data name="ApplicationData" xml:space="preserve">
+    <value>Application data</value>
+  </data>
+  <data name="ApplicationUpdate" xml:space="preserve">
+    <value>Application update</value>
+  </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>Are you sure?</value>
+  </data>
+  <data name="AutomaticPackageFileSelection" xml:space="preserve">
+    <value>Searching correct package for connected device.</value>
+  </data>
+  <data name="AutomaticPackageSelection" xml:space="preserve">
+    <value>Automatic package selection</value>
+  </data>
+  <data name="AvailablePackageIsOlder" xml:space="preserve">
+    <value>Available software is older than that on your device.</value>
+  </data>
+  <data name="AwaitRecoveryAfterEmergencyFlashingInstruction" xml:space="preserve">
+    <value>Waiting for device after succesfull recovery operation.
+If battery is low it may take up to 30 minutes.</value>
+  </data>
+  <data name="BatteryCheckHeader" xml:space="preserve">
+    <value>Check battery</value>
+  </data>
+  <data name="BatteryCheckingCancelled" xml:space="preserve">
+    <value>Battery checking was cancelled.</value>
+  </data>
+  <data name="BatteryWarning" xml:space="preserve">
+    <value>Make sure that your battery level is at least 25%. Otherwise it may damage your device.</value>
+  </data>
+  <data name="Build" xml:space="preserve">
+    <value>Build: </value>
+  </data>
+  <data name="ButtonBrowse" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="ButtonCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ButtonChangePackagePath" xml:space="preserve">
+    <value>Change package path</value>
+  </data>
+  <data name="ButtonClean" xml:space="preserve">
+    <value>Clean all app data</value>
+  </data>
+  <data name="ButtonCleanOneCategory" xml:space="preserve">
+    <value>Clean</value>
+  </data>
+  <data name="ButtonCollectLogs" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="ButtonContinue" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="ButtonDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="ButtonExit" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="ButtonFinish" xml:space="preserve">
+    <value>Finish</value>
+  </data>
+  <data name="ButtonGoUp" xml:space="preserve">
+    <value>Go up</value>
+  </data>
+  <data name="ButtonInstall" xml:space="preserve">
+    <value>Install</value>
+  </data>
+  <data name="ButtonInstallSoftware" xml:space="preserve">
+    <value>Install software</value>
+  </data>
+  <data name="ButtonMyPhoneIsNotOnTheList" xml:space="preserve">
+    <value>My device is not on the list</value>
+  </data>
+  <data name="ButtonMyPhoneWasNotDetected" xml:space="preserve">
+    <value>My device was not detected</value>
+  </data>
+  <data name="ButtonNewFolder" xml:space="preserve">
+    <value>New Folder</value>
+  </data>
+  <data name="ButtonNext" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="ButtonNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="ButtonOff" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="ButtonOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ButtonOn" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="ButtonReset" xml:space="preserve">
+    <value>Reset to default</value>
+  </data>
+  <data name="ButtonTryAgain" xml:space="preserve">
+    <value>Try again</value>
+  </data>
+  <data name="ButtonYes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="CapsLockIsOn" xml:space="preserve">
+    <value>Caps Lock is on</value>
+  </data>
+  <data name="CheckIfPhoneIsDetectedAsQHUSB_DLOAD" xml:space="preserve">
+    <value>Check if the device is detected as USB device QHUSB_DLOAD</value>
+  </data>
+  <data name="CheckLatestPackageHeader" xml:space="preserve">
+    <value>Device info</value>
+  </data>
+  <data name="CheckLatestPackageView_UseSignatureCheck_CheckBox_Content" xml:space="preserve">
+    <value>Enforce signature check</value>
+  </data>
+  <data name="CheckingAlreadyDownloadedFiles" xml:space="preserve">
+    <value>Checking compatibility of downloaded files</value>
+  </data>
+  <data name="CheckingAppUpdate" xml:space="preserve">
+    <value>Checking for available application updates</value>
+  </data>
+  <data name="CheckingFirmwareAvailability" xml:space="preserve">
+    <value>Checking software availability</value>
+  </data>
+  <data name="CheckingPackageIntegrity" xml:space="preserve">
+    <value>Checking package integrity</value>
+  </data>
+  <data name="CleanLogFiles" xml:space="preserve">
+    <value>Clean log files</value>
+  </data>
+  <data name="CleanPackages" xml:space="preserve">
+    <value>Clean packages</value>
+  </data>
+  <data name="CleanReports" xml:space="preserve">
+    <value>Clean reports</value>
+  </data>
+  <data name="CleanUserDataQuestion" xml:space="preserve">
+    <value>Are you sure you want to delete all application data (reports, device software packages, log files)?</value>
+  </data>
+  <data name="CloseWindow" xml:space="preserve">
+    <value>Close Window</value>
+  </data>
+  <data name="CollectingLogFilesInfo" xml:space="preserve">
+    <value>Collecting log files. Please wait.</value>
+  </data>
+  <data name="ComputerBatteryWarning" xml:space="preserve">
+    <value>The battery on your computer is running low. Please connect your computer to a charger and try again.</value>
+  </data>
+  <data name="ConnectPhone" xml:space="preserve">
+    <value>Connect your device</value>
+  </data>
+  <data name="ConnectPhoneWithUsbCable" xml:space="preserve">
+    <value>Connect USB cable to the device.</value>
+  </data>
+  <data name="ConnectedDeviceCannotBeRecovered" xml:space="preserve">
+    <value>The connected device cannot be recovered.</value>
+  </data>
+  <data name="CouldNotDetectPhone" xml:space="preserve">
+    <value>Could not detect your device</value>
+  </data>
+  <data name="CreatingNewFolderMessage" xml:space="preserve">
+    <value>Create new folder</value>
+  </data>
+  <data name="CurrentFirmwareVersion" xml:space="preserve">
+    <value>Installed software version:</value>
+  </data>
+  <data name="CustomPackagesPath" xml:space="preserve">
+    <value>Use custom Packages path</value>
+  </data>
+  <data name="DeleteLogsQuestion" xml:space="preserve">
+    <value>Are you sure you want to delete log files?</value>
+  </data>
+  <data name="DeletePackagesQuestion" xml:space="preserve">
+    <value>Are you sure you want to delete software recovery files?</value>
+  </data>
+  <data name="DeleteReportsQuestion" xml:space="preserve">
+    <value>Are you sure you want to delete report files?</value>
+  </data>
+  <data name="DeletingLogFilesInfo" xml:space="preserve">
+    <value>Deleting log files</value>
+  </data>
+  <data name="DeletingPackagesInfo" xml:space="preserve">
+    <value>Deleting software recovery files</value>
+  </data>
+  <data name="DeletingReportsInfo" xml:space="preserve">
+    <value>Deleting report files</value>
+  </data>
+  <data name="Desktop" xml:space="preserve">
+    <value>Desktop</value>
+  </data>
+  <data name="DetailsHeader" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="Device" xml:space="preserve">
+    <value>Device</value>
+  </data>
+  <data name="DeviceConnected" xml:space="preserve">
+    <value>Device connected</value>
+  </data>
+  <data name="DeviceDisconnected" xml:space="preserve">
+    <value>Device disconnected</value>
+  </data>
+  <data name="DeviceFlashing" xml:space="preserve">
+    <value>Software package installation</value>
+  </data>
+  <data name="DeviceInUefiMode" xml:space="preserve">
+    <value>Lumia phone</value>
+  </data>
+  <data name="DeviceSelectionHeader" xml:space="preserve">
+    <value>Device selection</value>
+  </data>
+  <data name="DirectoryNotSet" xml:space="preserve">
+    <value>Directory not selected or does not exist.</value>
+  </data>
+  <data name="DisclaimerBackupInfo" xml:space="preserve">
+    <value>Personal content on the device will be erased during the installation. We recommend that you create a backup on your device, under:</value>
+  </data>
+  <data name="DisclaimerHeader" xml:space="preserve">
+    <value>Disclaimer</value>
+  </data>
+  <data name="DisclaimerInfoInstallationDuration" xml:space="preserve">
+    <value>Installing the software should take about 15 minutes. The download time of the software package depends on network speed.</value>
+  </data>
+  <data name="DisconnectPhone" xml:space="preserve">
+    <value>Disconnect USB cable from the device.</value>
+  </data>
+  <data name="DoYouWantToContinue" xml:space="preserve">
+    <value>Do you want to continue?</value>
+  </data>
+  <data name="DowngradeSoftwareQuestion" xml:space="preserve">
+    <value>You are trying to install software that is older than installed on your device. Do you want to continue?</value>
+  </data>
+  <data name="DownloadCancelled" xml:space="preserve">
+    <value>Download was cancelled</value>
+  </data>
+  <data name="DownloadCompleted" xml:space="preserve">
+    <value>Download completed</value>
+  </data>
+  <data name="DownloadProgressExactMinute" xml:space="preserve">
+    <value>About {0} minutes left</value>
+  </data>
+  <data name="DownloadProgressMinute" xml:space="preserve">
+    <value>About one minute left</value>
+  </data>
+  <data name="DownloadProgressMinuteLess" xml:space="preserve">
+    <value>Less than a minute left</value>
+  </data>
+  <data name="DownloadStarted" xml:space="preserve">
+    <value>Download started</value>
+  </data>
+  <data name="DownloadingCancelMessage" xml:space="preserve">
+    <value>This will cancel the download. Already downloaded files will not be deleted. You may resume download later.</value>
+  </data>
+  <data name="DownloadingEmergencyPackage" xml:space="preserve">
+    <value>Downloading emergency package</value>
+  </data>
+  <data name="DownloadingFiles" xml:space="preserve">
+    <value>Downloading files: {0}/{1} ({2})</value>
+  </data>
+  <data name="DownloadingInstallPacket" xml:space="preserve">
+    <value>Downloading new version</value>
+  </data>
+  <data name="DownloadingPackage" xml:space="preserve">
+    <value>Downloading package</value>
+  </data>
+  <data name="EmergencyFlashingMessage" xml:space="preserve">
+    <value>Emergency flashing</value>
+  </data>
+  <data name="EmergencyMode" xml:space="preserve">
+    <value>Emergency mode</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ErrorDescription_AutoUpdateException" xml:space="preserve">
+    <value>There seems to be a problem connecting to the server. Check your Internet connection. Make sure that your proxy, firewall, and virus protection settings are correct. Please also check your time and date settings.</value>
+  </data>
+  <data name="ErrorDescription_CannotAccessDirectoryException" xml:space="preserve">
+    <value>It seems that you do not have the necessary permission for the directory. Please change the directory path or change the directory permissions.</value>
+  </data>
+  <data name="ErrorDescription_DeviceNotFoundException" xml:space="preserve">
+    <value>Device was not found.</value>
+  </data>
+  <data name="ErrorDescription_DownloadPackageException" xml:space="preserve">
+    <value>Please check if proxy settings are correct and click "{0}". If you want to cancel downloading process please click "{1}".</value>
+  </data>
+  <data name="ErrorDescription_EmergencyPackageNotFoundOnServerException" xml:space="preserve">
+    <value>Emergency flashing for your device is currently not supported</value>
+  </data>
+  <data name="ErrorDescription_FirmwareFileNotFoundException" xml:space="preserve">
+    <value>Software package is incomplete. One or more files are missing. Download package again or select other software.</value>
+  </data>
+  <data name="ErrorDescription_HtcDeviceCommunicationException" xml:space="preserve">
+    <value>Restart device to {0} mode.</value>
+  </data>
+  <data name="ErrorDescription_HtcPackageFileCheckException" xml:space="preserve">
+    <value>Re-download ROM package file.</value>
+  </data>
+  <data name="ErrorDescription_HtcServiceControlException" xml:space="preserve">
+    <value>Check if {0} service is stopped.</value>
+  </data>
+  <data name="ErrorDescription_HtcUsbCommunicationException" xml:space="preserve">
+    <value>Restart device to {0}.
+Check device USB connection.</value>
+  </data>
+  <data name="ErrorDescription_HtcUsbPortOpenException" xml:space="preserve">
+    <value>Check if other application occupies port.
+Check device USB connection.</value>
+  </data>
+  <data name="ErrorDescription_InvalidOperationException" xml:space="preserve">
+    <value>Please restart the application.</value>
+  </data>
+  <data name="ErrorDescription_NoInternetConnectionException" xml:space="preserve">
+    <value>The latest operation could not be completed because the Internet connection is not active.</value>
+  </data>
+  <data name="ErrorDescription_NotEnoughSpaceException" xml:space="preserve">
+    <value>We need at least {0} of additional free space on the {1} drive.</value>
+  </data>
+  <data name="ErrorDescription_OperationCanceledException" xml:space="preserve">
+    <value>The operation was cancelled.</value>
+  </data>
+  <data name="ErrorDescription_PackageNotFoundException" xml:space="preserve">
+    <value>Software package not available for this device.</value>
+  </data>
+  <data name="ErrorDescription_PlannedServiceBreakException" xml:space="preserve">
+    <value>The service is unavailable between {0} and {1}. Please try again later.</value>
+  </data>
+  <data name="ErrorDescription_ReadPhoneInformationException" xml:space="preserve">
+    <value>We could not read information from your device.</value>
+  </data>
+  <data name="ErrorDescription_RestartApplicationException" xml:space="preserve">
+    <value>Please disconnect all devices and restart application. If the problem persists, uninstall {0} and download the latest version of the application.</value>
+  </data>
+  <data name="ErrorDescription_UnknownError" xml:space="preserve">
+    <value>The operation could not be completed.</value>
+  </data>
+  <data name="ErrorDescription_WebException" xml:space="preserve">
+    <value>There seems to be a problem connecting to the server. Check your Internet connection. Make sure that your proxy, firewall, and virus protection settings are correct.</value>
+  </data>
+  <data name="ErrorDetails_NotEnoughSpaceOnTheDiskException" xml:space="preserve">
+    <value>Minimum amount of free space on disk {0} required for update is {1}. Free some space and try again.</value>
+  </data>
+  <data name="ErrorHeader" xml:space="preserve">
+    <value>Sorry, we ran into a problem</value>
+  </data>
+  <data name="Error_AutoUpdateException" xml:space="preserve">
+    <value>Checking application update failed</value>
+  </data>
+  <data name="Error_CannotAccessDirectoryException" xml:space="preserve">
+    <value>Cannot access directory</value>
+  </data>
+  <data name="Error_DeviceDisconnectedException" xml:space="preserve">
+    <value>Device was disconnected</value>
+  </data>
+  <data name="Error_DeviceNotFoundException" xml:space="preserve">
+    <value>The device could not be found</value>
+  </data>
+  <data name="Error_DownloadPackageException" xml:space="preserve">
+    <value>There was a problem while downloading the software package</value>
+  </data>
+  <data name="Error_EmergencyPackageNotFoundOnServerException" xml:space="preserve">
+    <value>Emergency package was not found</value>
+  </data>
+  <data name="Error_FileNotFoundException" xml:space="preserve">
+    <value>File or path: "{0}" was not found</value>
+  </data>
+  <data name="Error_FirmwareFileNotFoundException" xml:space="preserve">
+    <value>Software file not found</value>
+  </data>
+  <data name="Error_HtcDeviceCommunicationException" xml:space="preserve">
+    <value>Device communication error</value>
+  </data>
+  <data name="Error_HtcDeviceHandshakingException" xml:space="preserve">
+    <value>Device handshaking error</value>
+  </data>
+  <data name="Error_HtcPackageFileCheckException" xml:space="preserve">
+    <value>Package file check error</value>
+  </data>
+  <data name="Error_HtcServiceControlException" xml:space="preserve">
+    <value>Service control error</value>
+  </data>
+  <data name="Error_HtcUsbCommunicationException" xml:space="preserve">
+    <value>USB communication error</value>
+  </data>
+  <data name="Error_HtcUsbPortOpenException" xml:space="preserve">
+    <value>USB port open error</value>
+  </data>
+  <data name="Error_InvalidOperationException" xml:space="preserve">
+    <value>Operation failed</value>
+  </data>
+  <data name="Error_NoInternetConnectionException" xml:space="preserve">
+    <value>No internet connection</value>
+  </data>
+  <data name="Error_NotEnoughSpaceException" xml:space="preserve">
+    <value>Not enough space on the disk</value>
+  </data>
+  <data name="Error_NotEnoughSpaceOnTheDiskException" xml:space="preserve">
+    <value>Not enough space on the disk</value>
+  </data>
+  <data name="Error_OperationCanceledException" xml:space="preserve">
+    <value>Operation cancelled</value>
+  </data>
+  <data name="Error_PackageNotFoundException" xml:space="preserve">
+    <value>Variant package not found</value>
+  </data>
+  <data name="Error_PlannedServiceBreakException" xml:space="preserve">
+    <value>Could not connect to server</value>
+  </data>
+  <data name="Error_ReadPhoneInformationException" xml:space="preserve">
+    <value>Reading device info failed</value>
+  </data>
+  <data name="Error_RestartApplicationException" xml:space="preserve">
+    <value>Restart application</value>
+  </data>
+  <data name="Error_SoftwareInstallationFailed" xml:space="preserve">
+    <value>Software installation failed. Please try restarting your device, and try the software installation again. If your device is not detected please use button "{0}" on Welcome screen.</value>
+  </data>
+  <data name="Error_SoftwareInstallationFailed_ReconnectUSB" xml:space="preserve">
+    <value>Software installation failed. Please check the USB cable connected to the device and try the software installation again after disconnecting-reconnecting the USB cable. </value>
+  </data>
+  <data name="Error_SoftwareIsNotCorrectlySignedException" xml:space="preserve">
+    <value>The software is not correctly signed or not signed for this device.</value>
+  </data>
+  <data name="Error_UnauthorizedAccessException" xml:space="preserve">
+    <value>Access is denied</value>
+  </data>
+  <data name="Error_UnknownError" xml:space="preserve">
+    <value>Unknown error occurred</value>
+  </data>
+  <data name="Error_WebException" xml:space="preserve">
+    <value>Could not connect to the server</value>
+  </data>
+  <data name="FFUCheckingDirectory" xml:space="preserve">
+    <value>Checking directory</value>
+  </data>
+  <data name="FFUCheckingFile" xml:space="preserve">
+    <value>Checking selected file</value>
+  </data>
+  <data name="FFUFamily" xml:space="preserve">
+    <value>Family:</value>
+  </data>
+  <data name="FFUManufacturer" xml:space="preserve">
+    <value>Manufacturer:</value>
+  </data>
+  <data name="FFUProductName" xml:space="preserve">
+    <value>Product name:</value>
+  </data>
+  <data name="FFUVersion" xml:space="preserve">
+    <value>Version:</value>
+  </data>
+  <data name="FawkesRecoveryManual_Step1" xml:space="preserve">
+    <value>Press and hold down  the click button</value>
+  </data>
+  <data name="FawkesRecoveryManual_Step2" xml:space="preserve">
+    <value>Simultaneously press and hold down the pairing button using a stylus (or pen)</value>
+  </data>
+  <data name="FawkesRecoveryManual_Step3" xml:space="preserve">
+    <value>Keep holding both the buttons together for 15 seconds for device to reset</value>
+  </data>
+  <data name="FawkesRecoverySubheader" xml:space="preserve">
+    <value>Since your Clicker was not automatically detected, you will need to reset it with the following steps:</value>
+  </data>
+  <data name="FeaturedFolders" xml:space="preserve">
+    <value>Featured Folders</value>
+  </data>
+  <data name="FirmwareIntegrityError" xml:space="preserve">
+    <value>Software package {0} is corrupted. Download package again or select other software.</value>
+  </data>
+  <data name="FirmwareVersion" xml:space="preserve">
+    <value>Firmware version: </value>
+  </data>
+  <data name="FirmwareVersionUnknown" xml:space="preserve">
+    <value>Firmware version: unknown</value>
+  </data>
+  <data name="FlashCancelMessage" xml:space="preserve">
+    <value>Software package installation is in progress. Cancelling may damage your device. Are you sure you want to cancel the action?</value>
+  </data>
+  <data name="FlashMode" xml:space="preserve">
+    <value>Flash mode</value>
+  </data>
+  <data name="FlashWarningMessage1" xml:space="preserve">
+    <value>Do not use your device. Do not disconnect the cable. Do not switch off the device. Otherwise your device may stop working.</value>
+  </data>
+  <data name="FlashWarningMessage2" xml:space="preserve">
+    <value>During the installation, your device restarts and the screen goes blank.
+You can ignore all Windows notifications about USB cable connection.</value>
+  </data>
+  <data name="FlashWarningMessage_Fawkes" xml:space="preserve">
+    <value>During the installation, your device restarts and the led will blink. You can ignore all Windows notifications about USB cable connection.</value>
+  </data>
+  <data name="Flashing" xml:space="preserve">
+    <value>Installing software to your device</value>
+  </data>
+  <data name="FlashingMessageChangeToFlashMode" xml:space="preserve">
+    <value>Switching the device to flashing mode</value>
+  </data>
+  <data name="FlashingMessageCheckingAntiTheftStatus" xml:space="preserve">
+    <value>Checking Anti Theft Protection status</value>
+  </data>
+  <data name="FlashingMessageConnectingWithPhone" xml:space="preserve">
+    <value>Connecting with the device</value>
+  </data>
+  <data name="FlashingMessageInstallingSoftware" xml:space="preserve">
+    <value>Installing software</value>
+  </data>
+  <data name="FlashingMessageOperationStarted" xml:space="preserve">
+    <value>Software installation has started</value>
+  </data>
+  <data name="FlashingResult" xml:space="preserve">
+    <value>Software package installation result</value>
+  </data>
+  <data name="FolderName" xml:space="preserve">
+    <value>Folder name</value>
+  </data>
+  <data name="Folders" xml:space="preserve">
+    <value>Folders</value>
+  </data>
+  <data name="FollowInstructions" xml:space="preserve">
+    <value>Follow the on-screen instructions.</value>
+  </data>
+  <data name="GoToMyPhoneHasNotBeenDetected" xml:space="preserve">
+    <value>Go to '{0}' page.</value>
+  </data>
+  <data name="GoToMyPhoneHasNotBeenDetectedIfNotDetected" xml:space="preserve">
+    <value>If your device is not detected, go to '{0}' page.</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="HelpPages" xml:space="preserve">
+    <value>Help Pages</value>
+  </data>
+  <data name="HtcBootloaderMode" xml:space="preserve">
+    <value>HTC {0} mode</value>
+  </data>
+  <data name="HtcPackageNotFound" xml:space="preserve">
+    <value>Software package is not found on server</value>
+  </data>
+  <data name="IfYourPhoneIsWorking" xml:space="preserve">
+    <value>If your device is working normally, you can install new software.</value>
+  </data>
+  <data name="InstallationCompleted" xml:space="preserve">
+    <value>Installation completed</value>
+  </data>
+  <data name="InstallationStarted" xml:space="preserve">
+    <value>Installation started</value>
+  </data>
+  <data name="KeepButtonTillImage" xml:space="preserve">
+    <value>Keep the button pressed until you see an image like on the screen.</value>
+  </data>
+  <data name="KeepButtonsTillImage" xml:space="preserve">
+    <value>Keep the buttons pressed until you see an image like on the screen.</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="LocalPackage" xml:space="preserve">
+    <value>Local package</value>
+  </data>
+  <data name="LogFiles" xml:space="preserve">
+    <value>Log files</value>
+  </data>
+  <data name="LumiaBatteryChecking" xml:space="preserve">
+    <value>Your device battery is running low. You can continue, but it may damage your device.</value>
+  </data>
+  <data name="ManualDeviceSelection" xml:space="preserve">
+    <value>Device selection</value>
+  </data>
+  <data name="ManualModelSelection" xml:space="preserve">
+    <value>Model selection</value>
+  </data>
+  <data name="ManualPackageSelection" xml:space="preserve">
+    <value>Manual package selection</value>
+  </data>
+  <data name="ManualRestartHtcInfo" xml:space="preserve">
+    <value>Device information could not be read. Please follow steps below to continue or click "{0}" to cancel process.</value>
+  </data>
+  <data name="ManufacturerDetectionFailed" xml:space="preserve">
+    <value>Sorry, we could not determine your device's manufacturer.</value>
+  </data>
+  <data name="ManufacturerHeader" xml:space="preserve">
+    <value>Device manufacturer</value>
+  </data>
+  <data name="MaximizeWindow" xml:space="preserve">
+    <value>Maximize Window</value>
+  </data>
+  <data name="MinimizeWindow" xml:space="preserve">
+    <value>Minimize Window</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>{0} mode</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model: </value>
+  </data>
+  <data name="ModelIdentificationAcerM220" xml:space="preserve">
+    <value>In order to ensure the correct software is provided for your device, please open 'Settings &gt; Device Information &gt; Product SKU' and read 'Product SKU' from your phone and verify the specific model you have. Installing the software for a different model may render your device inoperative. Once verified, please choose from one of the choices below.</value>
+  </data>
+  <data name="ModelIdentificationAcerM330" xml:space="preserve">
+    <value>In order to ensure the correct software is provided for your device, please open 'Settings &gt; Extra &gt; Extra &gt; Device Info' and read 'Product SKU' from your phone and verify the specific model you have. Installing the software for a different model may render your device inoperative. Once verified, please choose from one of the choices below.</value>
+  </data>
+  <data name="ModelIdentificationUnderBackCover" xml:space="preserve">
+    <value>In order to ensure the correct software is provided for your device, please remove the back cover from your phone and verify the specific model you have. Installing the software for a different model may render your device inoperative. Once verified, please choose from one of the choices below.</value>
+  </data>
+  <data name="ModelIndentificationAlcatelIDO4S" xml:space="preserve">
+    <value>In oder to ensure the correct software is provided for your device, please open 'Settings &gt; System &gt; About &gt; More Info' and read the value for 'Model:'</value>
+  </data>
+  <data name="ModelIndentificationHPElite3" xml:space="preserve">
+    <value>In order to ensure the correct software is provided for your device, please open 'Settings &gt; System &gt; About &gt; More Info'. You will see the Model name under ‘Device Information’. Use this name to select one of the icons below.</value>
+  </data>
+  <data name="ModelUnknown" xml:space="preserve">
+    <value>Model: unknown</value>
+  </data>
+  <data name="MoreThanOnePackageFound" xml:space="preserve">
+    <value>Found more than one package - please select one and click "{0}" to continue.</value>
+  </data>
+  <data name="MyComputer" xml:space="preserve">
+    <value>My Computer</value>
+  </data>
+  <data name="Network" xml:space="preserve">
+    <value>Network</value>
+  </data>
+  <data name="NoPackagesFoundSelectAnotherDirectory" xml:space="preserve">
+    <value>Could not find correct package. Please select different directory or select package manually.</value>
+  </data>
+  <data name="NormalMode" xml:space="preserve">
+    <value>Normal mode</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>Not found</value>
+  </data>
+  <data name="OnePackageFound" xml:space="preserve">
+    <value>Found one package for: {0}. Please click "{1}" to continue or select different folder or file.</value>
+  </data>
+  <data name="OperatingSystemUnknown" xml:space="preserve">
+    <value>Operating system version: unknown</value>
+  </data>
+  <data name="OperatingSystemVersion" xml:space="preserve">
+    <value>Operating system version: </value>
+  </data>
+  <data name="OperationFailed" xml:space="preserve">
+    <value>Operation ended with failure</value>
+  </data>
+  <data name="OperationPassed" xml:space="preserve">
+    <value>Operation successfully completed</value>
+  </data>
+  <data name="OtherOEMs_GroupTile_Title" xml:space="preserve">
+    <value>Other OEMs</value>
+  </data>
+  <data name="PackageDirectory" xml:space="preserve">
+    <value>Package directory: {0}</value>
+  </data>
+  <data name="PackageFileHeader" xml:space="preserve">
+    <value>Package file</value>
+  </data>
+  <data name="PackageFilePath" xml:space="preserve">
+    <value>Package path: {0}</value>
+  </data>
+  <data name="PackageIntegrityCheck" xml:space="preserve">
+    <value>Package integrity check</value>
+  </data>
+  <data name="PackageNotCompatible" xml:space="preserve">
+    <value>Selected package is not compatible with connected device.</value>
+  </data>
+  <data name="PackageNotFound" xml:space="preserve">
+    <value>Package not available for this device.</value>
+  </data>
+  <data name="PackagePathNotSet" xml:space="preserve">
+    <value>Package path not set</value>
+  </data>
+  <data name="PackageSelection" xml:space="preserve">
+    <value>Package selection</value>
+  </data>
+  <data name="Packages" xml:space="preserve">
+    <value>Packages</value>
+  </data>
+  <data name="PackagesPath" xml:space="preserve">
+    <value>Packages path</value>
+  </data>
+  <data name="PageNext" xml:space="preserve">
+    <value>Next page</value>
+  </data>
+  <data name="PagePrevious" xml:space="preserve">
+    <value>Previous page</value>
+  </data>
+  <data name="PasswordForm" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PhoneAddedHeader" xml:space="preserve">
+    <value>Device connected</value>
+  </data>
+  <data name="PhoneAddedMessage" xml:space="preserve">
+    <value>New device {0} has been connected.</value>
+  </data>
+  <data name="PhoneIsUpToDate" xml:space="preserve">
+    <value>You have the latest available software version.</value>
+  </data>
+  <data name="PhoneRemovedHeader" xml:space="preserve">
+    <value>Device disconnected</value>
+  </data>
+  <data name="PhoneRemovedMessage" xml:space="preserve">
+    <value>Device {0} has been disconnected.</value>
+  </data>
+  <data name="PhoneRestart" xml:space="preserve">
+    <value>Device restart</value>
+  </data>
+  <data name="PhoneSettingsBackupPathWin10" xml:space="preserve">
+    <value>Settings &gt; Update and Recovery &gt; Backup</value>
+  </data>
+  <data name="PhoneSettingsBackupPathWin8" xml:space="preserve">
+    <value>Settings &gt; backup</value>
+  </data>
+  <data name="PlatformId" xml:space="preserve">
+    <value>Platform Id: </value>
+  </data>
+  <data name="PlatformIdUnknown" xml:space="preserve">
+    <value>Platform Id: unknown</value>
+  </data>
+  <data name="PleaseConnectDevice" xml:space="preserve">
+    <value>Please connect your device</value>
+  </data>
+  <data name="PleaseConnectOneDevice" xml:space="preserve">
+    <value>Please connect only one device</value>
+  </data>
+  <data name="PleaseSelectAFolder" xml:space="preserve">
+    <value>Please select a folder</value>
+  </data>
+  <data name="PleaseSelectDeviceToContinue" xml:space="preserve">
+    <value>Please select device to continue</value>
+  </data>
+  <data name="PleaseSelectManufacturer" xml:space="preserve">
+    <value>Please select the correct one below:</value>
+  </data>
+  <data name="PleaseSelectTheImage" xml:space="preserve">
+    <value>Please, select the image that presents the state of your device.</value>
+  </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>Please wait</value>
+  </data>
+  <data name="PortForm" xml:space="preserve">
+    <value>Port</value>
+  </data>
+  <data name="Preferences" xml:space="preserve">
+    <value>Preferences</value>
+  </data>
+  <data name="PreparingForSoftwareInstallation" xml:space="preserve">
+    <value>Preparing for software installation</value>
+  </data>
+  <data name="PressAndHoldPowerButton" xml:space="preserve">
+    <value>While holding the volume up button, press and hold the power button for 10 seconds, until the middle LED on the device arm lights up.</value>
+  </data>
+  <data name="PressAndHoldVolumeUp" xml:space="preserve">
+    <value>Press and hold the volume up button.</value>
+  </data>
+  <data name="PressPowerAndVolumeDown" xml:space="preserve">
+    <value>Press Power and "Volume down" at the same time.</value>
+  </data>
+  <data name="PressThePowerButton" xml:space="preserve">
+    <value>Press the Power button. </value>
+  </data>
+  <data name="PressThePowerButtonUntilSwitchOff" xml:space="preserve">
+    <value>Press and hold "Power" button until device vibrates.</value>
+  </data>
+  <data name="PressVolumeUpVolumeDown" xml:space="preserve">
+    <value>When device vibrates, press "Volume up" and "Volume down" at the same time.</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="PuttingDeviceInRecoveryMode" xml:space="preserve">
+    <value>Putting device in recovery mode</value>
+  </data>
+  <data name="ReadingDeviceInfo" xml:space="preserve">
+    <value>Reading device information</value>
+  </data>
+  <data name="RebootHtc" xml:space="preserve">
+    <value>You can now restart your device back to normal mode. To restart the device please press the power button and hold for a while.</value>
+  </data>
+  <data name="RebootPhoneInstructions" xml:space="preserve">
+    <value>Device could not be found.
+Please try to reboot your device by pressing Power and "Volume down" at the same time.
+Keep the buttons pressed until the device vibrates.</value>
+  </data>
+  <data name="RecoveryImpossibleFromEmergencyMode" xml:space="preserve">
+    <value>Unfortunately, if your device is not on the list of downloaded packages, you can not repair your device using WDRT application.</value>
+  </data>
+  <data name="ReinstallSoftware" xml:space="preserve">
+    <value>Reinstall software</value>
+  </data>
+  <data name="ReleasePowerPressVolumeUp" xml:space="preserve">
+    <value>When device vibrates, release the Power button and press "Volume up".</value>
+  </data>
+  <data name="RemovingPackages" xml:space="preserve">
+    <value>Removing packages</value>
+  </data>
+  <data name="RemovingReports" xml:space="preserve">
+    <value>Removing reports</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>Reports</value>
+  </data>
+  <data name="ResetSettingsQuestion" xml:space="preserve">
+    <value>Are you sure you want to reset all settings to the default values?</value>
+  </data>
+  <data name="RestartDeviceHeader" xml:space="preserve">
+    <value>Restart device</value>
+  </data>
+  <data name="RestoreWindow" xml:space="preserve">
+    <value>Restore Window</value>
+  </data>
+  <data name="SelectDeviceToRecover" xml:space="preserve">
+    <value>Select device you want to recover</value>
+  </data>
+  <data name="SelectPhone" xml:space="preserve">
+    <value>Select device</value>
+  </data>
+  <data name="SelectPhoneAndFollowInstructions" xml:space="preserve">
+    <value>If your device is detected, select it from the list of devices and follow on-screen instructions.</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="SettingsPages" xml:space="preserve">
+    <value>Settings Pages</value>
+  </data>
+  <data name="SoftwareInstallation" xml:space="preserve">
+    <value>Software installation</value>
+  </data>
+  <data name="SoftwareOnServer" xml:space="preserve">
+    <value>Software available on server</value>
+  </data>
+  <data name="SoftwarePackage" xml:space="preserve">
+    <value>Software package</value>
+  </data>
+  <data name="StartRecoveryManually" xml:space="preserve">
+    <value>Start recovery manually</value>
+  </data>
+  <data name="SthWentWrongMessage" xml:space="preserve">
+    <value>Something went wrong</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="Survey1" xml:space="preserve">
+    <value>Survey</value>
+  </data>
+  <data name="Survey_Button_ContinueNoSubmit1" xml:space="preserve">
+    <value>Continue without submitting</value>
+  </data>
+  <data name="Survey_Button_SubmitAndContinue1" xml:space="preserve">
+    <value>Submit and continue recovery</value>
+  </data>
+  <data name="Survey_Choice_AppsNotWorking1" xml:space="preserve">
+    <value>My apps are not working as expected</value>
+  </data>
+  <data name="Survey_Choice_DeviceNotWorking1" xml:space="preserve">
+    <value>My device is not working as expected</value>
+  </data>
+  <data name="Survey_Choice_InsiderProgram_AnswerContent" xml:space="preserve">
+    <value>I am in the insider program</value>
+  </data>
+  <data name="Survey_Choice_MoreAbout_QuestionContent" xml:space="preserve">
+    <value>More about you</value>
+  </data>
+  <data name="Survey_Choice_PerformanceIssues1" xml:space="preserve">
+    <value>I am encountering performance issues</value>
+  </data>
+  <data name="Survey_Choice_PrevVersionFaster1" xml:space="preserve">
+    <value>The previous version seemed faster</value>
+  </data>
+  <data name="Survey_Choice_PrevVersionMoreReliable1" xml:space="preserve">
+    <value>The previous version seemed more reliable</value>
+  </data>
+  <data name="Survey_Header1" xml:space="preserve">
+    <value>Why are you recovering your device?</value>
+  </data>
+  <data name="Survey_TellUsMore1" xml:space="preserve">
+    <value>Tell us more</value>
+  </data>
+  <data name="Theme" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="ThemeHighContrast" xml:space="preserve">
+    <value>High Contrast</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="ThereIsMandatoryApplicationUpdate" xml:space="preserve">
+    <value>There is a mandatory application update {0}.</value>
+  </data>
+  <data name="ThisUpdateMustBeInstalled" xml:space="preserve">
+    <value>This {0} update must be installed and cannot be skipped. The application can not be used until it is updated.
+Before installing this update please unplug all devices.</value>
+  </data>
+  <data name="TraceEnabled" xml:space="preserve">
+    <value>Create a log file</value>
+  </data>
+  <data name="Troubleshooting" xml:space="preserve">
+    <value>Troubleshooting</value>
+  </data>
+  <data name="TrySoftResetInEmergencyMode" xml:space="preserve">
+    <value>Try 'soft reset': press Power button and Volume down button simultaneously and hold for about 10 seconds. When the device is in this mode, it will not vibrate, but it will be restarted. If resetting didn't help, you will need to perform recovery procedure.</value>
+  </data>
+  <data name="TrySoftResetInFlashMode" xml:space="preserve">
+    <value>Try restarting the device using 'soft reset': press Power button and Volume down button simultaneously and hold for about 10 seconds. The device should vibrate after a while, signalizing that it will restart. If restarting didn't bring you into normal mode, you will need to install new software on the device.</value>
+  </data>
+  <data name="TurnOffPhone" xml:space="preserve">
+    <value>Turn off your device.</value>
+  </data>
+  <data name="TurnOffYourHoloLens" xml:space="preserve">
+    <value>Turn off your HoloLens by pressing the power button for 15 seconds, until all of the lights are off.</value>
+  </data>
+  <data name="UpdateAvailable" xml:space="preserve">
+    <value>There is an update for your device</value>
+  </data>
+  <data name="UseProxyServer" xml:space="preserve">
+    <value>Use proxy server</value>
+  </data>
+  <data name="UserNameForm" xml:space="preserve">
+    <value>User name</value>
+  </data>
+  <data name="VerificationCompleted" xml:space="preserve">
+    <value>Verification completed</value>
+  </data>
+  <data name="VerificationStarted" xml:space="preserve">
+    <value>Verification started</value>
+  </data>
+  <data name="VerifyingDownloadedFiles" xml:space="preserve">
+    <value>Verifying downloaded files</value>
+  </data>
+  <data name="WaitForDeviceToBoot" xml:space="preserve">
+    <value>Waiting for device to boot</value>
+  </data>
+  <data name="WaitUntilPhoneTurnsOn" xml:space="preserve">
+    <value>Wait until device turns on.</value>
+  </data>
+  <data name="WaitingForConnection" xml:space="preserve">
+    <value>Waiting for connection</value>
+  </data>
+  <data name="WarningHeader" xml:space="preserve">
+    <value>Warning!</value>
+  </data>
+  <data name="WelcomeHeader" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
+</root>

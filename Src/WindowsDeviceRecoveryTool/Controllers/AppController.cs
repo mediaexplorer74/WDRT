@@ -22,99 +22,101 @@ using Microsoft.WindowsDeviceRecoveryTool.States.Shell;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 {
-	// Token: 0x020000E4 RID: 228
+	// Token: 0x02000093 RID: 147
 	[Export("Microsoft.WindowsDeviceRecoveryTool.Controllers.AppController", typeof(IController))]
 	public class AppController : BaseController, ICanHandle<BlockWindowMessage>, ICanHandle
 	{
-		// Token: 0x0600074F RID: 1871 RVA: 0x00026B9C File Offset: 0x00024D9C
+		// Token: 0x06000508 RID: 1288 RVA: 0x0001A7FC File Offset: 0x000189FC
 		[ImportingConstructor]
-		public AppController(ICommandRepository commandRepository, LogicContext logics, EventAggregator eventAggregator) : base(commandRepository, eventAggregator)
+		public AppController(ICommandRepository commandRepository, LogicContext logics, EventAggregator eventAggregator)
+			: base(commandRepository, eventAggregator)
 		{
 			this.logics = logics;
-			if (base.EventAggregator != null)
+			bool flag = base.EventAggregator != null;
+			if (flag)
 			{
 				base.EventAggregator.Subscribe(this);
 			}
 		}
 
-		// Token: 0x06000750 RID: 1872 RVA: 0x00026BF4 File Offset: 0x00024DF4
+		// Token: 0x06000509 RID: 1289 RVA: 0x0001A853 File Offset: 0x00018A53
 		[CustomCommand]
 		public void EndCurrentState()
 		{
 			this.shellState.CurrentState.Finish(string.Empty);
 		}
 
-		// Token: 0x06000751 RID: 1873 RVA: 0x00026C10 File Offset: 0x00024E10
+		// Token: 0x0600050A RID: 1290 RVA: 0x0001A86C File Offset: 0x00018A6C
 		[CustomCommand]
 		public void SwitchSettingsState(string stateName)
 		{
 			SettingsState settingsState = this.shellState.CurrentState as SettingsState;
-			if (settingsState != null)
+			bool flag = settingsState != null;
+			if (flag)
 			{
 				settingsState.CurrentState.Finish(stateName);
 			}
 		}
 
-		// Token: 0x06000752 RID: 1874 RVA: 0x00026C48 File Offset: 0x00024E48
+		// Token: 0x0600050B RID: 1291 RVA: 0x0001A8A4 File Offset: 0x00018AA4
 		[CustomCommand]
 		public void SwitchHelpState(string stateName)
 		{
 			HelpState helpState = this.shellState.CurrentState as HelpState;
-			if (helpState != null)
+			bool flag = helpState != null;
+			if (flag)
 			{
 				helpState.CurrentState.Finish(stateName);
 			}
 		}
 
-		// Token: 0x06000753 RID: 1875 RVA: 0x00026C7E File Offset: 0x00024E7E
+		// Token: 0x0600050C RID: 1292 RVA: 0x0001A8DA File Offset: 0x00018ADA
 		[CustomCommand]
 		public void SwitchToState(string stateName)
 		{
 			this.shellState.CurrentState.Finish(stateName);
 		}
 
-		// Token: 0x06000754 RID: 1876 RVA: 0x00026CA0 File Offset: 0x00024EA0
+		// Token: 0x0600050D RID: 1293 RVA: 0x0001A8F0 File Offset: 0x00018AF0
 		[CustomCommand]
 		public void ExitApplication()
 		{
 			Tracer<AppController>.WriteInformation("Shutdown the application");
 			this.logics.Dispose();
-			Application.Current.Dispatcher.BeginInvoke(new Action(delegate()
+			Application.Current.Dispatcher.BeginInvoke(new Action(delegate
 			{
 				Application.Current.Shutdown();
 			}), new object[0]);
 		}
 
-		// Token: 0x06000755 RID: 1877 RVA: 0x00026CFC File Offset: 0x00024EFC
+		// Token: 0x0600050E RID: 1294 RVA: 0x0001A94C File Offset: 0x00018B4C
 		[CustomCommand]
 		public void PreviousState(object parameter)
 		{
 			BaseViewModel baseViewModel = parameter as BaseViewModel;
-			if (baseViewModel != null)
+			bool flag = baseViewModel != null;
+			if (flag)
 			{
 				this.SwitchToState(baseViewModel.PreviousStateName);
 			}
 		}
 
-		// Token: 0x06000756 RID: 1878 RVA: 0x00026D28 File Offset: 0x00024F28
+		// Token: 0x0600050F RID: 1295 RVA: 0x0001A978 File Offset: 0x00018B78
 		[CustomCommand(IsAsynchronous = true)]
 		public void CheckForAppUpdate(object parameter, CancellationToken cancellationToken)
 		{
 			try
 			{
-				if (ApplicationBuildSettings.SkipApplicationUpdate || !this.IsAvailableAppUpdate())
+				bool flag = ApplicationBuildSettings.SkipApplicationUpdate || !this.IsAvailableAppUpdate();
+				if (flag)
 				{
-                    //RnD
-                    base.Commands.Run((AppController c) =>
-                    {
-                        c.SwitchToState("AutomaticManufacturerSelectionState");
-                    });
-                    
-                }
+					base.Commands.Run((AppController c) => c.SwitchToState("AutomaticManufacturerSelectionState"));
+				}
 			}
 			catch (Exception ex)
 			{
-				if (ex is PlannedServiceBreakException || ex is IOException)
+				bool flag2 = ex is PlannedServiceBreakException || ex is IOException;
+				if (flag2)
 				{
 					throw;
 				}
@@ -122,45 +124,42 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 			}
 		}
 
-		// Token: 0x06000757 RID: 1879 RVA: 0x00026DF8 File Offset: 0x00024FF8
+		// Token: 0x06000510 RID: 1296 RVA: 0x0001AA40 File Offset: 0x00018C40
 		[CustomCommand(IsAsynchronous = true)]
 		public void SendNotification(NotificationMessage notificationData, CancellationToken cancellationToken)
 		{
-			lock (this.notificationLock)
+			object obj = this.notificationLock;
+			lock (obj)
 			{
-				Tracer<AppController>.WriteInformation("Sending notification - Header: {0}    message: {1}", new object[]
-				{
-					notificationData.Header,
-					notificationData.Text
-				});
+				Tracer<AppController>.WriteInformation("Sending notification - Header: {0}    message: {1}", new object[] { notificationData.Header, notificationData.Text });
 				base.EventAggregator.Publish<NotificationMessage>(new NotificationMessage(true, notificationData.Header, notificationData.Text));
 				Thread.Sleep(5000);
 				base.EventAggregator.Publish<NotificationMessage>(new NotificationMessage(false, null, null));
 			}
 		}
 
-		// Token: 0x06000758 RID: 1880 RVA: 0x00026EA0 File Offset: 0x000250A0
+		// Token: 0x06000511 RID: 1297 RVA: 0x0001AAE0 File Offset: 0x00018CE0
 		[CustomCommand(IsAsynchronous = true)]
 		public void InstallAppUpdate(object parameter, CancellationToken cancellationToken)
 		{
-			//RnD
 			base.Commands.Run((AppController c) => c.SwitchToState("AppAutoUpdateState"));
 		}
 
-		// Token: 0x06000759 RID: 1881 RVA: 0x00026F14 File Offset: 0x00025114
+		// Token: 0x06000512 RID: 1298 RVA: 0x0001AB50 File Offset: 0x00018D50
 		[CustomCommand(IsAsynchronous = true)]
 		public void UpdateApplication(object parameter, CancellationToken token)
 		{
 			Tracer<AppController>.WriteInformation("Start update application");
-			string downloadPath = Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.AppDataPath(SpecialFolder.AppUpdate);
+			string text = Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.AppDataPath(SpecialFolder.AppUpdate);
 			try
 			{
 				this.CheckFreeDiskSpace();
 				this.logics.AutoUpdateService.DownloadProgressChanged += this.AutoUpdateServiceOnDownloadProgressChanged;
-				string text = this.logics.AutoUpdateService.DownloadAppPacket(this.packageToDownload, downloadPath, token);
-				if (!string.IsNullOrEmpty(text))
+				string text2 = this.logics.AutoUpdateService.DownloadAppPacket(this.packageToDownload, text, token);
+				bool flag = !string.IsNullOrEmpty(text2);
+				if (flag)
 				{
-					this.InstallPacket(text);
+					this.InstallPacket(text2);
 				}
 			}
 			catch (AutoUpdateNotEnoughSpaceException)
@@ -170,7 +169,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 			catch (Exception ex)
 			{
 				Tracer<AppController>.WriteError(ex);
-				if (!token.IsCancellationRequested)
+				bool flag2 = !token.IsCancellationRequested;
+				if (flag2)
 				{
 					throw new AutoUpdateException("Application auto update failed.", ex);
 				}
@@ -181,40 +181,41 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 			}
 		}
 
-		// Token: 0x0600075A RID: 1882 RVA: 0x00027000 File Offset: 0x00025200
+		// Token: 0x06000513 RID: 1299 RVA: 0x0001AC40 File Offset: 0x00018E40
 		[CustomCommand]
 		public void StartSoftwareInstall(SwVersionComparisonResult softwareComparisonStatus)
 		{
 			this.StartSoftwareInstallStatus(new Tuple<SwVersionComparisonResult, string>(softwareComparisonStatus, "DisclaimerState"));
 		}
 
-		// Token: 0x0600075B RID: 1883 RVA: 0x00027020 File Offset: 0x00025220
+		// Token: 0x06000514 RID: 1300 RVA: 0x0001AC58 File Offset: 0x00018E58
 		[CustomCommand]
 		public void StartSoftwareInstallStatus(Tuple<SwVersionComparisonResult, string> comparisonStatusAndStateTuple)
 		{
-			if (comparisonStatusAndStateTuple.Item1 == SwVersionComparisonResult.FirstIsGreater)
+			bool flag = comparisonStatusAndStateTuple.Item1 == SwVersionComparisonResult.FirstIsGreater;
+			if (flag)
 			{
-				if (new DialogMessageManager().ShowQuestionDialog(LocalizationManager.GetTranslation("DowngradeSoftwareQuestion"), null, true) == false)
+				DialogMessageManager dialogMessageManager = new DialogMessageManager();
+				bool? flag2 = dialogMessageManager.ShowQuestionDialog(LocalizationManager.GetTranslation("DowngradeSoftwareQuestion"), null, true);
+				bool flag3 = false;
+				bool flag4 = (flag2.GetValueOrDefault() == flag3) & (flag2 != null);
+				if (flag4)
 				{
 					return;
 				}
 			}
-			
-			//RnD
 			base.Commands.Run((AppController c) => c.SwitchToState(comparisonStatusAndStateTuple.Item2));
 		}
 
-		// Token: 0x0600075C RID: 1884 RVA: 0x00027118 File Offset: 0x00025318
+		// Token: 0x06000515 RID: 1301 RVA: 0x0001AD4C File Offset: 0x00018F4C
 		[CustomCommand]
 		public void CancelDownloadAppUpdate()
 		{
 			((IAsyncDelegateCommand)base.Commands["UpdateApplication"]).Cancel();
-			
-			//RnD
 			base.Commands.Run((AppController c) => c.SwitchToState("CheckAppAutoUpdateState"));
 		}
 
-		// Token: 0x0600075D RID: 1885 RVA: 0x000271A7 File Offset: 0x000253A7
+		// Token: 0x06000516 RID: 1302 RVA: 0x0001ADD7 File Offset: 0x00018FD7
 		public void Handle(BlockWindowMessage blockWindowMessage)
 		{
 			this.isBlock = blockWindowMessage.Block;
@@ -222,14 +223,16 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 			this.title = blockWindowMessage.Title;
 		}
 
-		// Token: 0x0600075E RID: 1886 RVA: 0x000271D0 File Offset: 0x000253D0
+		// Token: 0x06000517 RID: 1303 RVA: 0x0001AE00 File Offset: 0x00019000
 		[CustomCommand(IsAsynchronous = true)]
 		public void CloseAppOperations(MainWindow mainWindow, CancellationToken token)
 		{
 			Tracer<AppController>.LogEntry("CloseAppOperations");
-			lock (this.appClosingLock)
+			object obj = this.appClosingLock;
+			lock (obj)
 			{
-				if (this.appClosing)
+				bool flag2 = this.appClosing;
+				if (flag2)
 				{
 					Tracer<AppController>.WriteInformation("App is already being closed. Skipping operation");
 					return;
@@ -237,7 +240,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 				this.appClosing = true;
 			}
 			Settings.Default.Save();
-			if (this.CanAppClose(mainWindow))
+			bool flag3 = this.CanAppClose(mainWindow);
+			if (flag3)
 			{
 				this.logics.ReportingService.MsrReportingService.SessionReportsSendingCompleted += this.OnSessionReportsSendingCompleted;
 				this.logics.ReportingService.SendSessionReports();
@@ -249,16 +253,22 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 			Tracer<AppController>.LogExit("CloseAppOperations");
 		}
 
-		// Token: 0x0600075F RID: 1887 RVA: 0x000272C4 File Offset: 0x000254C4
+		// Token: 0x06000518 RID: 1304 RVA: 0x0001AECC File Offset: 0x000190CC
 		private bool CanAppClose(MainWindow mainWindow)
 		{
-			if (this.isBlock)
+			bool flag = this.isBlock;
+			if (flag)
 			{
-				Application.Current.Dispatcher.Invoke(delegate()
+				Application.Current.Dispatcher.Invoke(delegate
 				{
 					this.RestoreWindow(mainWindow);
 				});
-				if (new DialogMessageManager().ShowQuestionDialog(this.message, this.title, true) == false)
+				DialogMessageManager dialogMessageManager = new DialogMessageManager();
+				bool? flag2 = dialogMessageManager.ShowQuestionDialog(this.message, this.title, true);
+				bool? flag3 = flag2;
+				bool flag4 = false;
+				bool flag5 = (flag3.GetValueOrDefault() == flag4) & (flag3 != null);
+				if (flag5)
 				{
 					return false;
 				}
@@ -266,60 +276,63 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 			return true;
 		}
 
-		// Token: 0x06000760 RID: 1888 RVA: 0x00027364 File Offset: 0x00025564
+		// Token: 0x06000519 RID: 1305 RVA: 0x0001AF5C File Offset: 0x0001915C
 		private void RestoreWindow(MainWindow mainWindow)
 		{
-			if (mainWindow.WindowState == WindowState.Minimized)
+			bool flag = mainWindow.WindowState == WindowState.Minimized;
+			if (flag)
 			{
 				SystemCommands.RestoreWindow(mainWindow);
 			}
 		}
 
-		// Token: 0x06000761 RID: 1889 RVA: 0x0002738B File Offset: 0x0002558B
+		// Token: 0x0600051A RID: 1306 RVA: 0x0001AF80 File Offset: 0x00019180
 		private void OnSessionReportsSendingCompleted()
 		{
 			this.ExitApplication();
 		}
 
-		// Token: 0x06000762 RID: 1890 RVA: 0x00027395 File Offset: 0x00025595
+		// Token: 0x0600051B RID: 1307 RVA: 0x0001AF8A File Offset: 0x0001918A
 		private void AutoUpdateServiceOnDownloadProgressChanged(DownloadingProgressChangedEventArgs args)
 		{
 			base.EventAggregator.Publish<ProgressMessage>(new ProgressMessage(args.Percentage, args.Message, args.DownloadedSize, args.TotalSize, args.BytesPerSecond, args.SecondsLeft));
 		}
 
-		// Token: 0x06000763 RID: 1891 RVA: 0x000273DC File Offset: 0x000255DC
+		// Token: 0x0600051C RID: 1308 RVA: 0x0001AFC4 File Offset: 0x000191C4
 		private void InstallPacket(string path)
 		{
-			if (this.IsInstallFile(path))
+			bool flag = this.IsInstallFile(path);
+			if (flag)
 			{
 				try
 				{
 					Process.Start(path);
-					Application.Current.Dispatcher.BeginInvoke(new Action(delegate()
+					Application.Current.Dispatcher.BeginInvoke(new Action(delegate
 					{
 						Application.Current.Shutdown();
 					}), new object[0]);
 				}
-				catch (Exception error)
+				catch (Exception ex)
 				{
-					Tracer<AppController>.WriteError(error);
+					Tracer<AppController>.WriteError(ex);
 				}
 			}
 		}
 
-		// Token: 0x06000764 RID: 1892 RVA: 0x00027458 File Offset: 0x00025658
+		// Token: 0x0600051D RID: 1309 RVA: 0x0001B03C File Offset: 0x0001923C
 		private bool IsInstallFile(string path)
 		{
 			return !string.IsNullOrEmpty(path) && (path.EndsWith(".exe", StringComparison.OrdinalIgnoreCase) || path.EndsWith(".msi", StringComparison.OrdinalIgnoreCase) || path.EndsWith(".com", StringComparison.OrdinalIgnoreCase));
 		}
 
-		// Token: 0x06000765 RID: 1893 RVA: 0x000274A4 File Offset: 0x000256A4
+		// Token: 0x0600051E RID: 1310 RVA: 0x0001B084 File Offset: 0x00019284
 		private void CheckFreeDiskSpace()
 		{
 			long size = this.packageToDownload.Size;
 			long availableFreeSpace = this.GetAvailableFreeSpace();
 			long num = Math.Max(size, 157286400L);
-			if (num > availableFreeSpace)
+			bool flag = num > availableFreeSpace;
+			if (flag)
 			{
 				Tracer<AppController>.WriteError("Not enough space on the disk", new object[0]);
 				throw new AutoUpdateNotEnoughSpaceException
@@ -331,97 +344,98 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 			}
 		}
 
-		// Token: 0x06000766 RID: 1894 RVA: 0x0002751C File Offset: 0x0002571C
+		// Token: 0x0600051F RID: 1311 RVA: 0x0001B0F4 File Offset: 0x000192F4
 		private long GetAvailableFreeSpace()
 		{
 			this.driveInfo = new DriveInfo(Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.AppDataPath(SpecialFolder.AppUpdate));
 			return this.driveInfo.AvailableFreeSpace;
 		}
 
-		// Token: 0x06000767 RID: 1895 RVA: 0x0002754C File Offset: 0x0002574C
+		// Token: 0x06000520 RID: 1312 RVA: 0x0001B124 File Offset: 0x00019324
 		private bool IsAvailableAppUpdate()
 		{
-			bool result;
-			if (this.isDebugSession)
+			bool flag = this.isDebugSession;
+			bool flag2;
+			if (flag)
 			{
 				Tracer<AppController>.WriteInformation("Debug session: Skipping looking for app updates");
-				result = false;
+				flag2 = false;
 			}
 			else
 			{
 				int applicationId = AppInfo.ApplicationId;
 				string version = AppInfo.Version;
-				bool useTestServer = this.CheckIfUseTestServer();
-				ApplicationUpdate applicationUpdate = this.logics.AutoUpdateService.ReadLatestAppVersion(applicationId, version, useTestServer);
-				if (applicationUpdate != null && !string.IsNullOrWhiteSpace(applicationUpdate.PackageUri))
+				bool flag3 = this.CheckIfUseTestServer();
+				ApplicationUpdate applicationUpdate = this.logics.AutoUpdateService.ReadLatestAppVersion(applicationId, version, flag3);
+				bool flag4 = applicationUpdate != null && !string.IsNullOrWhiteSpace(applicationUpdate.PackageUri);
+				if (flag4)
 				{
 					base.EventAggregator.Publish<ApplicationUpdateMessage>(new ApplicationUpdateMessage(applicationUpdate));
 					this.packageToDownload = applicationUpdate;
-					result = true;
+					flag2 = true;
 				}
 				else
 				{
-					result = false;
+					flag2 = false;
 				}
 			}
-			return result;
+			return flag2;
 		}
 
-		// Token: 0x06000768 RID: 1896 RVA: 0x000275E0 File Offset: 0x000257E0
+		// Token: 0x06000521 RID: 1313 RVA: 0x0001B1B8 File Offset: 0x000193B8
 		private bool CheckIfUseTestServer()
 		{
 			string registryValue = ApplicationInfo.GetRegistryValue("UseTestServer");
-			if (!string.IsNullOrEmpty(registryValue))
+			bool flag = !string.IsNullOrEmpty(registryValue);
+			if (flag)
 			{
-				Tracer<AppController>.WriteInformation("Registry value data: {0}", new object[]
-				{
-					registryValue
-				});
-				bool result;
-				if (bool.TryParse(registryValue, out result))
+				Tracer<AppController>.WriteInformation("Registry value data: {0}", new object[] { registryValue });
+				bool flag3;
+				bool flag2 = bool.TryParse(registryValue, out flag3);
+				if (flag2)
 				{
 					Tracer<AppController>.WriteInformation("Registry value parsed succesfully");
-					return result;
+					return flag3;
 				}
 			}
 			return false;
 		}
 
-		// Token: 0x04000347 RID: 839
+		// Token: 0x04000236 RID: 566
 		public const string IsTestServer = "UseTestServer";
 
-		// Token: 0x04000348 RID: 840
+		// Token: 0x04000237 RID: 567
 		private readonly bool isDebugSession = false;
 
-		// Token: 0x04000349 RID: 841
+		// Token: 0x04000238 RID: 568
 		private readonly object appClosingLock = new object();
 
-		// Token: 0x0400034A RID: 842
+		// Token: 0x04000239 RID: 569
 		private readonly object notificationLock = new object();
 
-		// Token: 0x0400034B RID: 843
+		// Token: 0x0400023A RID: 570
 		private readonly LogicContext logics;
 
-		// Token: 0x0400034C RID: 844
+		// Token: 0x0400023B RID: 571
 		private ApplicationUpdate packageToDownload;
 
-		// Token: 0x0400034D RID: 845
+		// Token: 0x0400023C RID: 572
 		private DriveInfo driveInfo;
 
-		// Token: 0x0400034E RID: 846
+		// Token: 0x0400023D RID: 573
 		private string message;
 
-		// Token: 0x0400034F RID: 847
+		// Token: 0x0400023E RID: 574
 		private string title;
 
-		// Token: 0x04000350 RID: 848
+		// Token: 0x0400023F RID: 575
 		private bool isBlock;
 
-		// Token: 0x04000351 RID: 849
+		// Token: 0x04000240 RID: 576
 		[Import]
 		private ShellState shellState;
 
-		// Token: 0x04000352 RID: 850
+		// Token: 0x04000241 RID: 577
 		private bool appClosing;
 	}
 }

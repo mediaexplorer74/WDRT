@@ -2,34 +2,34 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Messages
 {
-	// Token: 0x02000050 RID: 80
+	// Token: 0x02000099 RID: 153
 	public class ApplicationDataSizeMessage
 	{
-		// Token: 0x060002B3 RID: 691 RVA: 0x0000FB44 File Offset: 0x0000DD44
+		// Token: 0x06000531 RID: 1329 RVA: 0x0001B2C8 File Offset: 0x000194C8
 		public ApplicationDataSizeMessage(ApplicationDataSizeMessage.DataType type, long filesSize)
 		{
 			this.Type = type;
 			this.FilesSize = filesSize;
 		}
 
-		// Token: 0x17000074 RID: 116
-		// (get) Token: 0x060002B4 RID: 692 RVA: 0x0000FB60 File Offset: 0x0000DD60
-		// (set) Token: 0x060002B5 RID: 693 RVA: 0x0000FB77 File Offset: 0x0000DD77
+		// Token: 0x17000124 RID: 292
+		// (get) Token: 0x06000532 RID: 1330 RVA: 0x0001B2E2 File Offset: 0x000194E2
+		// (set) Token: 0x06000533 RID: 1331 RVA: 0x0001B2EA File Offset: 0x000194EA
 		public long FilesSize { get; private set; }
 
-		// Token: 0x17000075 RID: 117
-		// (get) Token: 0x060002B6 RID: 694 RVA: 0x0000FB80 File Offset: 0x0000DD80
-		// (set) Token: 0x060002B7 RID: 695 RVA: 0x0000FB97 File Offset: 0x0000DD97
+		// Token: 0x17000125 RID: 293
+		// (get) Token: 0x06000534 RID: 1332 RVA: 0x0001B2F3 File Offset: 0x000194F3
+		// (set) Token: 0x06000535 RID: 1333 RVA: 0x0001B2FB File Offset: 0x000194FB
 		public ApplicationDataSizeMessage.DataType Type { get; private set; }
 
-		// Token: 0x02000051 RID: 81
+		// Token: 0x02000141 RID: 321
 		public enum DataType
 		{
-			// Token: 0x0400010A RID: 266
+			// Token: 0x04000407 RID: 1031
 			Logs,
-			// Token: 0x0400010B RID: 267
+			// Token: 0x04000408 RID: 1032
 			Reports,
-			// Token: 0x0400010C RID: 268
+			// Token: 0x04000409 RID: 1033
 			Packages
 		}
 	}

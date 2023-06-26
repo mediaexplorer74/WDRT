@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 using ComponentAce.Compression.Archiver;
-using ComponentAce.Compression.Exception1;
+using ComponentAce.Compression.Exception;
 
 namespace ComponentAce.Compression.ZipForge
 {
@@ -10,7 +10,8 @@ namespace ComponentAce.Compression.ZipForge
 	internal class UnicodeExtraFieldData : ExtraFieldData
 	{
 		// Token: 0x060006DE RID: 1758 RVA: 0x0002AE1A File Offset: 0x00029E1A
-		public UnicodeExtraFieldData() : this("")
+		public UnicodeExtraFieldData()
+			: this("")
 		{
 		}
 

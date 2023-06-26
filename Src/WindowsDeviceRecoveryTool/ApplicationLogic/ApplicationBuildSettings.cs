@@ -2,11 +2,11 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 {
-	// Token: 0x02000006 RID: 6
+	// Token: 0x020000E5 RID: 229
 	internal static class ApplicationBuildSettings
 	{
-		// Token: 0x17000012 RID: 18
-		// (get) Token: 0x06000045 RID: 69 RVA: 0x00003314 File Offset: 0x00001514
+		// Token: 0x170001A9 RID: 425
+		// (get) Token: 0x06000766 RID: 1894 RVA: 0x0002157C File Offset: 0x0001F77C
 		public static DateTime ExpirationDate
 		{
 			get
@@ -15,8 +15,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 			}
 		}
 
-		// Token: 0x17000013 RID: 19
-		// (get) Token: 0x06000046 RID: 70 RVA: 0x0000332C File Offset: 0x0000152C
+		// Token: 0x170001AA RID: 426
+		// (get) Token: 0x06000767 RID: 1895 RVA: 0x00021594 File Offset: 0x0001F794
 		public static bool SkipApplicationUpdate
 		{
 			get
@@ -25,13 +25,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic
 			}
 		}
 
-		// Token: 0x17000014 RID: 20
-		// (get) Token: 0x06000047 RID: 71 RVA: 0x00003340 File Offset: 0x00001540
+		// Token: 0x170001AB RID: 427
+		// (get) Token: 0x06000768 RID: 1896 RVA: 0x000215A8 File Offset: 0x0001F7A8
 		public static int ApplicationId
 		{
 			get
 			{
-				return 3900;
+				return 3901;
 			}
 		}
 	}

@@ -13,11 +13,11 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.Enums;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 {
-	// Token: 0x02000094 RID: 148
+	// Token: 0x0200003F RID: 63
 	[Export]
 	public class BatteryCheckingViewModel : BaseViewModel, ICanHandle<DeviceBatteryStatusReadMessage>, ICanHandle
 	{
-		// Token: 0x06000408 RID: 1032 RVA: 0x00013703 File Offset: 0x00011903
+		// Token: 0x0600028A RID: 650 RVA: 0x0000EBAC File Offset: 0x0000CDAC
 		[ImportingConstructor]
 		public BatteryCheckingViewModel(Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext)
 		{
@@ -25,13 +25,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			this.ReadDeviceBatteryStatusCommand = new DelegateCommand<object>(new Action<object>(this.ReadDeviceBatteryStatus));
 		}
 
-		// Token: 0x170000D0 RID: 208
-		// (get) Token: 0x06000409 RID: 1033 RVA: 0x00013730 File Offset: 0x00011930
-		// (set) Token: 0x0600040A RID: 1034 RVA: 0x00013747 File Offset: 0x00011947
+		// Token: 0x170000A8 RID: 168
+		// (get) Token: 0x0600028B RID: 651 RVA: 0x0000EBD5 File Offset: 0x0000CDD5
+		// (set) Token: 0x0600028C RID: 652 RVA: 0x0000EBDD File Offset: 0x0000CDDD
 		public ICommand ReadDeviceBatteryStatusCommand { get; private set; }
 
-		// Token: 0x170000D1 RID: 209
-		// (get) Token: 0x0600040B RID: 1035 RVA: 0x00013750 File Offset: 0x00011950
+		// Token: 0x170000A9 RID: 169
+		// (get) Token: 0x0600028D RID: 653 RVA: 0x0000EBE8 File Offset: 0x0000CDE8
 		public override string PreviousStateName
 		{
 			get
@@ -40,8 +40,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x170000D2 RID: 210
-		// (get) Token: 0x0600040C RID: 1036 RVA: 0x00013768 File Offset: 0x00011968
+		// Token: 0x170000AA RID: 170
+		// (get) Token: 0x0600028E RID: 654 RVA: 0x0000EC00 File Offset: 0x0000CE00
 		public string NextCommand
 		{
 			get
@@ -80,9 +80,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x170000D3 RID: 211
-		// (get) Token: 0x0600040D RID: 1037 RVA: 0x00013818 File Offset: 0x00011A18
-		// (set) Token: 0x0600040E RID: 1038 RVA: 0x00013830 File Offset: 0x00011A30
+		// Token: 0x170000AB RID: 171
+		// (get) Token: 0x0600028F RID: 655 RVA: 0x0000ECB0 File Offset: 0x0000CEB0
+		// (set) Token: 0x06000290 RID: 656 RVA: 0x0000ECC8 File Offset: 0x0000CEC8
 		public string Description
 		{
 			get
@@ -95,9 +95,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x170000D4 RID: 212
-		// (get) Token: 0x0600040F RID: 1039 RVA: 0x00013880 File Offset: 0x00011A80
-		// (set) Token: 0x06000410 RID: 1040 RVA: 0x00013898 File Offset: 0x00011A98
+		// Token: 0x170000AC RID: 172
+		// (get) Token: 0x06000291 RID: 657 RVA: 0x0000ED08 File Offset: 0x0000CF08
+		// (set) Token: 0x06000292 RID: 658 RVA: 0x0000ED20 File Offset: 0x0000CF20
 		public bool BlockFlow
 		{
 			get
@@ -110,9 +110,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x170000D5 RID: 213
-		// (get) Token: 0x06000411 RID: 1041 RVA: 0x000138E8 File Offset: 0x00011AE8
-		// (set) Token: 0x06000412 RID: 1042 RVA: 0x00013900 File Offset: 0x00011B00
+		// Token: 0x170000AD RID: 173
+		// (get) Token: 0x06000293 RID: 659 RVA: 0x0000ED60 File Offset: 0x0000CF60
+		// (set) Token: 0x06000294 RID: 660 RVA: 0x0000ED78 File Offset: 0x0000CF78
 		public bool CheckingBatteryStatus
 		{
 			get
@@ -125,7 +125,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x06000413 RID: 1043 RVA: 0x00013950 File Offset: 0x00011B50
+		// Token: 0x06000295 RID: 661 RVA: 0x0000EDB8 File Offset: 0x0000CFB8
 		public override void OnStarted()
 		{
 			base.OnStarted();
@@ -137,60 +137,58 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			this.ReadDeviceBatteryStatus(null);
 		}
 
-		// Token: 0x06000414 RID: 1044 RVA: 0x000139F8 File Offset: 0x00011BF8
+		// Token: 0x06000296 RID: 662 RVA: 0x0000EE5C File Offset: 0x0000D05C
 		private void CheckBatteries(BatteryStatus status)
 		{
 			this.SetupPageContent(status);
 			bool flag = this.CheckComputerBattery();
-			this.BlockFlow = (this.BlockFlow || !flag);
-			if (status == BatteryStatus.BatteryOk && flag)
+			this.BlockFlow = this.BlockFlow || !flag;
+			bool flag2 = status == BatteryStatus.BatteryOk && flag;
+			if (flag2)
 			{
-				//base.Commands.Run((AppController c) => c.SwitchToState(this.NextCommand));
+				base.Commands.Run((AppController c) => c.SwitchToState(this.NextCommand));
 			}
 		}
 
-		// Token: 0x06000415 RID: 1045 RVA: 0x00013AC0 File Offset: 0x00011CC0
+		// Token: 0x06000297 RID: 663 RVA: 0x0000EF10 File Offset: 0x0000D110
 		private bool CheckComputerBattery()
 		{
 			PowerStatus powerStatus = SystemInformation.PowerStatus;
-			Tracer<BatteryCheckingViewModel>.WriteInformation(string.Concat(new object[]
-			{
-				"ComputerBattery PowerStatus: ",
-				powerStatus.BatteryChargeStatus,
-				", Percent: ",
-				powerStatus.BatteryLifePercent
-			}));
-			bool result;
-			if ((double)powerStatus.BatteryLifePercent < 0.25 && powerStatus.PowerLineStatus == PowerLineStatus.Offline)
+			Tracer<BatteryCheckingViewModel>.WriteInformation("ComputerBattery PowerStatus: " + powerStatus.BatteryChargeStatus.ToString() + ", Percent: " + powerStatus.BatteryLifePercent.ToString());
+			bool flag = (double)powerStatus.BatteryLifePercent < 0.25 && powerStatus.PowerLineStatus == PowerLineStatus.Offline;
+			bool flag2;
+			if (flag)
 			{
 				base.EventAggregator.Publish<HeaderMessage>(new HeaderMessage(LocalizationManager.GetTranslation("BatteryCheckHeader"), ""));
 				this.Description = LocalizationManager.GetTranslation("ComputerBatteryWarning");
-				result = false;
+				flag2 = false;
 			}
 			else
 			{
-				result = true;
+				flag2 = true;
 			}
-			return result;
+			return flag2;
 		}
 
-		// Token: 0x06000416 RID: 1046 RVA: 0x00013B74 File Offset: 0x00011D74
+		// Token: 0x06000298 RID: 664 RVA: 0x0000EFBC File Offset: 0x0000D1BC
 		private string GetDescription(PhoneTypes phoneType, BatteryStatus deviceBatteryStatus)
 		{
-			if (deviceBatteryStatus != BatteryStatus.BatteryUnknown)
+			bool flag = deviceBatteryStatus != BatteryStatus.BatteryUnknown;
+			if (flag)
 			{
-				switch (phoneType)
+				if (phoneType == PhoneTypes.Lumia)
 				{
-				case PhoneTypes.Lumia:
 					return LocalizationManager.GetTranslation("LumiaBatteryChecking");
-				case PhoneTypes.Analog:
+				}
+				if (phoneType == PhoneTypes.Analog)
+				{
 					return LocalizationManager.GetTranslation("AnalogBatteryChecking");
 				}
 			}
 			return LocalizationManager.GetTranslation("BatteryWarning");
 		}
 
-		// Token: 0x06000417 RID: 1047 RVA: 0x00013BCC File Offset: 0x00011DCC
+		// Token: 0x06000299 RID: 665 RVA: 0x0000F010 File Offset: 0x0000D210
 		private void SetupPageContent(BatteryStatus deviceBatteryStatus)
 		{
 			switch (deviceBatteryStatus)
@@ -209,32 +207,33 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x06000418 RID: 1048 RVA: 0x00013C58 File Offset: 0x00011E58
+		// Token: 0x0600029A RID: 666 RVA: 0x0000F09C File Offset: 0x0000D29C
 		private void ReadDeviceBatteryStatus(object obj)
 		{
 			this.CheckingBatteryStatus = true;
-			//base.Commands.Run((FlowController c) => c.ReadDeviceBatteryStatus(this.appContext.CurrentPhone, CancellationToken.None));
+			base.Commands.Run((FlowController c) => c.ReadDeviceBatteryStatus(this.appContext.CurrentPhone, CancellationToken.None));
 		}
 
-		// Token: 0x06000419 RID: 1049 RVA: 0x00013D10 File Offset: 0x00011F10
+		// Token: 0x0600029B RID: 667 RVA: 0x0000F14C File Offset: 0x0000D34C
 		public void Handle(DeviceBatteryStatusReadMessage message)
 		{
-			if (base.IsStarted)
+			bool isStarted = base.IsStarted;
+			if (isStarted)
 			{
 				this.CheckBatteries(message.Status);
 			}
 		}
 
-		// Token: 0x040001CF RID: 463
+		// Token: 0x04000131 RID: 305
 		private readonly Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext;
 
-		// Token: 0x040001D0 RID: 464
+		// Token: 0x04000132 RID: 306
 		private string description;
 
-		// Token: 0x040001D1 RID: 465
+		// Token: 0x04000133 RID: 307
 		private bool blockFlow;
 
-		// Token: 0x040001D2 RID: 466
+		// Token: 0x04000134 RID: 308
 		private bool checkingBatteryStatus;
 	}
 }

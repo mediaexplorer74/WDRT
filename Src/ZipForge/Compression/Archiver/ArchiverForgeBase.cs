@@ -6,7 +6,7 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using ComponentAce.Compression.Exception1;
+using ComponentAce.Compression.Exception;
 using ComponentAce.Compression.Interfaces;
 
 namespace ComponentAce.Compression.Archiver
@@ -293,10 +293,7 @@ namespace ComponentAce.Compression.Archiver
 					throw;
 				}
 			}
-			throw ExceptionBuilder.Exception(ErrorCode.FileNotFound, new object[]
-			{
-				fileMask
-			});
+			throw ExceptionBuilder.Exception(ErrorCode.FileNotFound, new object[] { fileMask });
 		}
 
 		// Token: 0x0600008E RID: 142 RVA: 0x0000C048 File Offset: 0x0000B048
@@ -703,10 +700,7 @@ namespace ComponentAce.Compression.Archiver
 					memoryStream.Close();
 				}
 			}
-			throw ExceptionBuilder.Exception(ErrorCode.FileNotFound, new object[]
-			{
-				fileName
-			});
+			throw ExceptionBuilder.Exception(ErrorCode.FileNotFound, new object[] { fileName });
 		}
 
 		// Token: 0x060000A5 RID: 165 RVA: 0x0000C9F8 File Offset: 0x0000B9F8
@@ -721,10 +715,7 @@ namespace ComponentAce.Compression.Archiver
 				this.ExtractItem(baseArchiveItem.Handle.ItemNo, stream);
 				return;
 			}
-			throw ExceptionBuilder.Exception(ErrorCode.FileNotFound, new object[]
-			{
-				fileName
-			});
+			throw ExceptionBuilder.Exception(ErrorCode.FileNotFound, new object[] { fileName });
 		}
 
 		// Token: 0x060000A6 RID: 166 RVA: 0x0000CA50 File Offset: 0x0000BA50
@@ -750,10 +741,7 @@ namespace ComponentAce.Compression.Archiver
 					memoryStream.Close();
 				}
 			}
-			throw ExceptionBuilder.Exception(ErrorCode.FileNotFound, new object[]
-			{
-				fileName
-			});
+			throw ExceptionBuilder.Exception(ErrorCode.FileNotFound, new object[] { fileName });
 		}
 
 		// Token: 0x060000A7 RID: 167 RVA: 0x0000CAE0 File Offset: 0x0000BAE0
@@ -899,24 +887,15 @@ namespace ComponentAce.Compression.Archiver
 			}
 			if (fileMode != FileMode.Create && fileMode != FileMode.OpenOrCreate && fileMode != FileMode.CreateNew && !File.Exists(this._fileName))
 			{
-				throw ExceptionBuilder.Exception(ErrorCode.FileNotFound, new object[]
-				{
-					this._fileName
-				});
+				throw ExceptionBuilder.Exception(ErrorCode.FileNotFound, new object[] { this._fileName });
 			}
 			if (fileMode != FileMode.Create && this._isInMemory)
 			{
-				throw ExceptionBuilder.Exception(ErrorCode.InMemoryArchiveCanBeCreatedOnly, new object[]
-				{
-					this._fileName
-				});
+				throw ExceptionBuilder.Exception(ErrorCode.InMemoryArchiveCanBeCreatedOnly, new object[] { this._fileName });
 			}
 			if (fileMode == FileMode.CreateNew && File.Exists(this._fileName))
 			{
-				throw ExceptionBuilder.Exception(ErrorCode.BlankFileName, new object[]
-				{
-					this._fileName
-				});
+				throw ExceptionBuilder.Exception(ErrorCode.BlankFileName, new object[] { this._fileName });
 			}
 			this.CloseArchive();
 			this._isCustomStream = false;
@@ -1039,42 +1018,42 @@ namespace ComponentAce.Compression.Archiver
 			{
 				this._itemsHandler.ItemsArray[itemNo] = this._itemsHandler.ItemsArrayBackup[itemNoInBackupArray];
 			}
-			long offset = this._itemsHandler.ItemsArrayBackup[itemNoInBackupArray].RelativeLocalHeaderOffset - backupOffset;
+			long num = this._itemsHandler.ItemsArrayBackup[itemNoInBackupArray].RelativeLocalHeaderOffset - backupOffset;
 			this._itemsHandler.ItemsArray[itemNo].RelativeLocalHeaderOffset = compressedStream.Position;
-			backupFileStream.Seek(offset, SeekOrigin.Begin);
+			backupFileStream.Seek(num, SeekOrigin.Begin);
 			if (this._itemsHandler.ItemsArray[itemNo].IsModified && (this._itemsHandler.ItemsArray[itemNo].Operation == ProcessOperation.Rename || this._itemsHandler.ItemsArray[itemNo].Operation == ProcessOperation.ChangeComment))
 			{
 				backupFileStream.Seek((long)this._itemsHandler.ItemsArrayBackup[itemNoInBackupArray].GetDataOffset(), SeekOrigin.Current);
 				this.SaveRenamedItemToArchive(backupFileStream, compressedStream, itemNo, itemNoInBackupArray);
 				return;
 			}
-			long count;
+			long num2;
 			if (itemNoInBackupArray < this._itemsHandler.ItemsArrayBackup.Count - 1)
 			{
-				count = this._itemsHandler.ItemsArrayBackup[itemNoInBackupArray + 1].RelativeLocalHeaderOffset - backupFileStream.Position - backupOffset;
+				num2 = this._itemsHandler.ItemsArrayBackup[itemNoInBackupArray + 1].RelativeLocalHeaderOffset - backupFileStream.Position - backupOffset;
 			}
 			else
 			{
-				count = this.GetEndOfTheDataStreamPosition(itemNo) - backupFileStream.Position - backupOffset;
+				num2 = this.GetEndOfTheDataStreamPosition(itemNo) - backupFileStream.Position - backupOffset;
 			}
-			CompressionUtils.CopyStream(backupFileStream, compressedStream, count);
+			CompressionUtils.CopyStream(backupFileStream, compressedStream, num2);
 		}
 
 		// Token: 0x060000BE RID: 190 RVA: 0x0000D140 File Offset: 0x0000C140
 		protected internal int GetItemNoInBackupArray(int itemNo)
 		{
-			int result = -1;
-			int num = 0;
-			while (num < this._itemsHandler.ItemsArrayBackup.Count && itemNo < this._itemsHandler.ItemsArray.Count)
+			int num = -1;
+			int num2 = 0;
+			while (num2 < this._itemsHandler.ItemsArrayBackup.Count && itemNo < this._itemsHandler.ItemsArray.Count)
 			{
-				if (this._itemsHandler.ItemsArrayBackup[num].Name == this._itemsHandler.ItemsArray[itemNo].Name || (this._itemsHandler.ItemsArray[itemNo].Operation == ProcessOperation.Rename && this._itemsHandler.ItemsArrayBackup[num].Name == this._itemsHandler.ItemsArray[itemNo].OldName))
+				if (this._itemsHandler.ItemsArrayBackup[num2].Name == this._itemsHandler.ItemsArray[itemNo].Name || (this._itemsHandler.ItemsArray[itemNo].Operation == ProcessOperation.Rename && this._itemsHandler.ItemsArrayBackup[num2].Name == this._itemsHandler.ItemsArray[itemNo].OldName))
 				{
-					result = num;
+					num = num2;
 					break;
 				}
-				num++;
+				num2++;
 			}
-			return result;
+			return num;
 		}
 
 		// Token: 0x060000BF RID: 191
@@ -1087,9 +1066,9 @@ namespace ComponentAce.Compression.Archiver
 		protected internal virtual bool AddFromNewSource(int itemNo, Stream compressedStream, ref FailureAction action)
 		{
 			Stream stream = null;
-			long oldPosition = 0L;
+			long num = 0L;
 			string empty = string.Empty;
-			bool result = false;
+			bool flag = false;
 			IItem item = this._itemsHandler.ItemsArray[itemNo];
 			this._currentItemOperationStartTime = DateTime.Now;
 			if (item.Operation == ProcessOperation.Add || item.Operation == ProcessOperation.Move)
@@ -1106,7 +1085,7 @@ namespace ComponentAce.Compression.Archiver
 			}
 			try
 			{
-				oldPosition = 0L;
+				num = 0L;
 				if (item.Stream == null)
 				{
 					if ((item.ExternalAttributes & FileAttributes.Directory) != (FileAttributes)0)
@@ -1118,16 +1097,13 @@ namespace ComponentAce.Compression.Archiver
 						stream = new FileStream(item.SrcFileName, FileMode.Open, FileAccess.Read, this._archiverOptions.ShareMode);
 						goto IL_133;
 					}
-					catch (Exception innerException)
+					catch (Exception ex)
 					{
-						throw ExceptionBuilder.Exception(ErrorCode.CannotOpenFile, new object[]
-						{
-							this._itemsHandler.ItemsArray[itemNo].SrcFileName
-						}, innerException);
+						throw ExceptionBuilder.Exception(ErrorCode.CannotOpenFile, new object[] { this._itemsHandler.ItemsArray[itemNo].SrcFileName }, ex);
 					}
 				}
 				stream = item.Stream;
-				oldPosition = stream.Position;
+				num = stream.Position;
 				stream.Position = (long)item.StreamPosition;
 				IL_133:
 				item.RelativeLocalHeaderOffset = compressedStream.Position;
@@ -1143,7 +1119,7 @@ namespace ComponentAce.Compression.Archiver
 					item.WriteLocalHeaderToStream(compressedStream, 0);
 					if (this._progressCancel)
 					{
-						this.CloseStream(itemNo, ref stream, oldPosition);
+						this.CloseStream(itemNo, ref stream, num);
 						return false;
 					}
 					compressedStream.Seek(0L, SeekOrigin.End);
@@ -1155,7 +1131,7 @@ namespace ComponentAce.Compression.Archiver
 						File.Delete(empty);
 					}
 				}
-				this.CloseStream(itemNo, ref stream, oldPosition);
+				this.CloseStream(itemNo, ref stream, num);
 				if (item.Operation == ProcessOperation.Add || item.Operation == ProcessOperation.Move)
 				{
 					this.DoOnFileProgress(item.SrcFileName, 100.0, DateTime.Now - this._currentItemOperationStartTime, new TimeSpan(0L), item.Operation, ProgressPhase.End, ref this._progressCancel);
@@ -1164,30 +1140,30 @@ namespace ComponentAce.Compression.Archiver
 				{
 					this.DoOnFileProgress(item.Name, 100.0, DateTime.Now - this._currentItemOperationStartTime, new TimeSpan(0L), item.Operation, ProgressPhase.End, ref this._progressCancel);
 				}
-				result = true;
+				flag = true;
 			}
-			catch (ArchiverException ex)
+			catch (ArchiverException ex2)
 			{
-				this.CloseStream(itemNo, ref stream, oldPosition);
+				this.CloseStream(itemNo, ref stream, num);
 				if (this._compressedStream == null)
 				{
 					action = FailureAction.Abort;
 				}
 				else if (item.Operation == ProcessOperation.Update)
 				{
-					this.DoOnProcessFileFailure(item.Name, item.Operation, ex.ErrorCode, ex.Args, ex.Message, ex.InnerException, ref action);
+					this.DoOnProcessFileFailure(item.Name, item.Operation, ex2.ErrorCode, ex2.Args, ex2.Message, ex2.InnerException, ref action);
 				}
 				else
 				{
-					this.DoOnProcessFileFailure(item.SrcFileName, item.Operation, ex.ErrorCode, ex.Args, ex.Message, ex, ref action);
+					this.DoOnProcessFileFailure(item.SrcFileName, item.Operation, ex2.ErrorCode, ex2.Args, ex2.Message, ex2, ref action);
 				}
 			}
 			catch
 			{
-				this.CloseStream(itemNo, ref stream, oldPosition);
+				this.CloseStream(itemNo, ref stream, num);
 				throw;
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x060000C2 RID: 194 RVA: 0x0000D56C File Offset: 0x0000C56C
@@ -1257,24 +1233,21 @@ namespace ComponentAce.Compression.Archiver
 								{
 									File.Delete(this._itemsHandler.ItemsArray[i].SrcFileName);
 								}
-								catch (Exception innerException)
+								catch (Exception ex)
 								{
-									throw ExceptionBuilder.Exception(ErrorCode.CannotDeleteFile, new object[]
-									{
-										this._itemsHandler.ItemsArray[i].SrcFileName
-									}, innerException);
+									throw ExceptionBuilder.Exception(ErrorCode.CannotDeleteFile, new object[] { this._itemsHandler.ItemsArray[i].SrcFileName }, ex);
 								}
 							}
 						}
-						catch (Exception ex)
+						catch (Exception ex2)
 						{
-							if (ex is ArchiverException)
+							if (ex2 is ArchiverException)
 							{
-								this.DoOnProcessFileFailure(this._itemsHandler.ItemsArray[i].SrcFileName, this._itemsHandler.ItemsArray[i].Operation, ((ArchiverException)ex).ErrorCode, ((ArchiverException)ex).Args, ex.Message, ex.InnerException, ref failureAction);
+								this.DoOnProcessFileFailure(this._itemsHandler.ItemsArray[i].SrcFileName, this._itemsHandler.ItemsArray[i].Operation, ((ArchiverException)ex2).ErrorCode, ((ArchiverException)ex2).Args, ex2.Message, ex2.InnerException, ref failureAction);
 							}
 							else
 							{
-								this.DoOnProcessFileFailure(this._itemsHandler.ItemsArray[i].SrcFileName, this._itemsHandler.ItemsArray[i].Operation, ErrorCode.UnknownError, null, ex.Message, ex, ref failureAction);
+								this.DoOnProcessFileFailure(this._itemsHandler.ItemsArray[i].SrcFileName, this._itemsHandler.ItemsArray[i].Operation, ErrorCode.UnknownError, null, ex2.Message, ex2, ref failureAction);
 							}
 						}
 					}
@@ -1294,17 +1267,17 @@ namespace ComponentAce.Compression.Archiver
 		// Token: 0x060000C7 RID: 199 RVA: 0x0000D810 File Offset: 0x0000C810
 		protected internal int GetIndexOfFirstChange()
 		{
-			int num = (this._itemsHandler.ItemsArrayBackup.Count < this._itemsHandler.ItemsArray.Count) ? this._itemsHandler.ItemsArrayBackup.Count : this._itemsHandler.ItemsArray.Count;
-			int result = num;
+			int num = ((this._itemsHandler.ItemsArrayBackup.Count < this._itemsHandler.ItemsArray.Count) ? this._itemsHandler.ItemsArrayBackup.Count : this._itemsHandler.ItemsArray.Count);
+			int num2 = num;
 			for (int i = 0; i < num; i++)
 			{
 				if (this._itemsHandler.ItemsArrayBackup[i].Name != this._itemsHandler.ItemsArray[i].Name || this._itemsHandler.ItemsArray[i].IsModified)
 				{
-					result = i;
+					num2 = i;
 					break;
 				}
 			}
-			return result;
+			return num2;
 		}
 
 		// Token: 0x060000C8 RID: 200 RVA: 0x0000D8C0 File Offset: 0x0000C8C0
@@ -1315,26 +1288,22 @@ namespace ComponentAce.Compression.Archiver
 			long num = 0L;
 			long num2 = 0L;
 			uint maxValue = uint.MaxValue;
-			int blockSize = (int)this.GetBlockSize(item);
-			this.DoCompress(false, item, blockSize, currentItemStream, compressedStream, ref num, ref num2, ref maxValue);
-			bool result;
+			int num3 = (int)this.GetBlockSize(item);
+			this.DoCompress(false, item, num3, currentItemStream, compressedStream, ref num, ref num2, ref maxValue);
+			bool flag;
 			if (num == length)
 			{
-				result = true;
+				flag = true;
 			}
 			else
 			{
 				if (!this._progressCancel)
 				{
-					throw ExceptionBuilder.Exception(ErrorCode.InvalidFormat, new object[]
-					{
-						currentItemStream.Length,
-						num
-					});
+					throw ExceptionBuilder.Exception(ErrorCode.InvalidFormat, new object[] { currentItemStream.Length, num });
 				}
-				result = false;
+				flag = false;
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x060000C9 RID: 201 RVA: 0x0000D940 File Offset: 0x0000C940
@@ -1371,9 +1340,9 @@ namespace ComponentAce.Compression.Archiver
 		protected internal virtual int AddNewItemToArchive(BaseArchiveItem item, bool move)
 		{
 			string fullName = item.FullName;
-			ProcessOperation operation = move ? ProcessOperation.Move : ProcessOperation.Add;
+			ProcessOperation processOperation = (move ? ProcessOperation.Move : ProcessOperation.Add);
 			bool flag = true;
-			this.DoOnConfirmProcessFile(fullName, operation, ref flag);
+			this.DoOnConfirmProcessFile(fullName, processOperation, ref flag);
 			if (!flag)
 			{
 				return -1;
@@ -1425,7 +1394,7 @@ namespace ComponentAce.Compression.Archiver
 				{
 					DateTime lastModificationDateTime = this.GetLastModificationDateTime(item2);
 					DateTime fileModificationDateTime = item.FileModificationDateTime;
-					flag2 = ((!(lastModificationDateTime >= fileModificationDateTime) || this._archiverOptions.Overwrite != OverwriteMode.IfNewer) && (!(lastModificationDateTime <= fileModificationDateTime) || this._archiverOptions.Overwrite != OverwriteMode.IfOlder));
+					flag2 = (!(lastModificationDateTime >= fileModificationDateTime) || this._archiverOptions.Overwrite != OverwriteMode.IfNewer) && (!(lastModificationDateTime <= fileModificationDateTime) || this._archiverOptions.Overwrite != OverwriteMode.IfOlder);
 					break;
 				}
 				default:
@@ -1489,9 +1458,9 @@ namespace ComponentAce.Compression.Archiver
 		// Token: 0x060000D2 RID: 210 RVA: 0x0000DC64 File Offset: 0x0000CC64
 		protected internal bool CheckNameMatchInMaskList(string name, StringCollection maskList, bool isDir)
 		{
-			foreach (string fileMask in maskList)
+			foreach (string text in maskList)
 			{
-				if (this.IsExternalFileMatchMask(name, fileMask, isDir))
+				if (this.IsExternalFileMatchMask(name, text, isDir))
 				{
 					return true;
 				}
@@ -1590,8 +1559,8 @@ namespace ComponentAce.Compression.Archiver
 		{
 			if (this.OnFileProgress != null)
 			{
-				string fileName2 = fileName.Replace('/', '\\');
-				this.OnFileProgress(this, fileName2, progress, timeElapsed, timeLeft, operation, progressPhase, ref cancel);
+				string text = fileName.Replace('/', '\\');
+				this.OnFileProgress(this, text, progress, timeElapsed, timeLeft, operation, progressPhase, ref cancel);
 				return;
 			}
 			cancel = false;
@@ -1651,91 +1620,79 @@ namespace ComponentAce.Compression.Archiver
 			{
 				try
 				{
-					string path2 = path + Path.GetDirectoryName(text);
-					if (!FileUtils.DirectotyExists(path2))
+					string text2 = path + Path.GetDirectoryName(text);
+					if (!FileUtils.DirectotyExists(text2))
 					{
-						Directory.CreateDirectory(path2);
+						Directory.CreateDirectory(text2);
 					}
 				}
-				catch (Exception innerException)
+				catch (Exception ex)
 				{
-					throw ExceptionBuilder.Exception(ErrorCode.CannotCreateDir, new object[]
-					{
-						path + Path.GetDirectoryName(text)
-					}, innerException);
+					throw ExceptionBuilder.Exception(ErrorCode.CannotCreateDir, new object[] { path + Path.GetDirectoryName(text) }, ex);
 				}
 			}
-			string text2 = (path + text).Replace("/", "\\");
+			string text3 = (path + text).Replace("/", "\\");
 			if (this._itemsHandler.ItemsArray[itemNo].IsDirectory())
 			{
 				if (this._archiverOptions.SetAttributes)
 				{
-					CompressionUtils.FileSetAttr(text2, baseArchiveItem.ExternalFileAttributes);
+					CompressionUtils.FileSetAttr(text3, baseArchiveItem.ExternalFileAttributes);
 				}
 				return;
 			}
-			if (File.Exists(text2))
+			if (File.Exists(text3))
 			{
 				if (!this._archiverOptions.ReplaceReadOnly)
 				{
-					FileAttributes attributes = FileUtils.GetAttributes(text2);
+					FileAttributes attributes = FileUtils.GetAttributes(text3);
 					if ((attributes & FileAttributes.ReadOnly) != (FileAttributes)0)
 					{
 						return;
 					}
 				}
-
 				switch (this._archiverOptions.Overwrite)
 				{
 				case OverwriteMode.Prompt:
-					this.DoOnConfirmOverwrite(text, ref text2, ref flag, ref cancel);
+					this.DoOnConfirmOverwrite(text, ref text3, ref flag, ref cancel);
 					if (flag && !cancel)
 					{
-						//goto IL_1CA;
+						goto IL_1CA;
 					}
 					break;
 				case OverwriteMode.Always:
-						//goto IL_1CA;
-						break;
+					goto IL_1CA;
 				case OverwriteMode.Never:
 					break;
 				case OverwriteMode.IfNewer:
-						break;
 				case OverwriteMode.IfOlder:
-				
-					DateTime lastWriteTime = File.GetLastWriteTime(text2);
+				{
+					DateTime lastWriteTime = File.GetLastWriteTime(text3);
 					DateTime lastModificationDateTime = this.GetLastModificationDateTime(this._itemsHandler.ItemsArray[itemNo]);
 					if ((lastWriteTime >= lastModificationDateTime && this._archiverOptions.Overwrite == OverwriteMode.IfNewer) || (lastWriteTime <= lastModificationDateTime && this._archiverOptions.Overwrite == OverwriteMode.IfOlder))
 					{
 						return;
 					}
-							//goto IL_1CA;
-							
-				    break;
-				    
-				//default:
-					//goto IL_1CA;
-
+					goto IL_1CA;
+				}
+				default:
+					goto IL_1CA;
 				}
 				return;
 			}
 			FileStream fileStream;
 			try
 			{
-				//IL_1CA:
-				if (File.Exists(text2))
+				IL_1CA:
+				if (File.Exists(text3))
 				{
-					CompressionUtils.FileSetAttr(text2, (FileAttributes)0);
-					File.Delete(text2);
+					CompressionUtils.FileSetAttr(text3, (FileAttributes)0);
+					File.Delete(text3);
 				}
-				fileStream = new FileStream(text2, FileMode.Create);
+				fileStream = new FileStream(text3, FileMode.Create);
 			}
-			catch (Exception innerException2)
+			catch (Exception ex2)
 			{
-				throw ExceptionBuilder.Exception(ErrorCode.CannotCreateFile, new object[]
-				{
-					text2
-				}, innerException2);
+				throw ExceptionBuilder.Exception(ErrorCode.CannotCreateFile, new object[] { text3 }, ex2);
 			}
 			try
 			{
@@ -1748,17 +1705,17 @@ namespace ComponentAce.Compression.Archiver
 				this.SetFileLastWriteTime(itemNo, fileStream);
 				if (this._skipFile || this._progressCancel)
 				{
-					File.Delete(text2);
+					File.Delete(text3);
 				}
 				else if (this._archiverOptions.SetAttributes)
 				{
-					CompressionUtils.FileSetAttr(text2, baseArchiveItem.ExternalFileAttributes);
+					CompressionUtils.FileSetAttr(text3, baseArchiveItem.ExternalFileAttributes);
 				}
 			}
 			catch (Exception)
 			{
 				fileStream.Close();
-				File.Delete(text2);
+				File.Delete(text3);
 				throw;
 			}
 		}
@@ -1778,7 +1735,7 @@ namespace ComponentAce.Compression.Archiver
 		{
 			if (this._updateCount > 0)
 			{
-				Stream backupFileStream = null;
+				Stream stream = null;
 				this._processedFileNo = 0;
 				this._processedFileCount = 0;
 				this._progressCancel = false;
@@ -1786,11 +1743,11 @@ namespace ComponentAce.Compression.Archiver
 				int num = -1;
 				this.CalculateTotalProcessFilesSize(ref num);
 				int indexOfFirstChange = this.GetIndexOfFirstChange();
-				ProcessOperation operation = (num >= 0) ? this._itemsHandler.ItemsArray[num].Operation : ProcessOperation.Delete;
+				ProcessOperation processOperation = ((num >= 0) ? this._itemsHandler.ItemsArray[num].Operation : ProcessOperation.Delete);
 				this._operationStartTime = DateTime.Now;
 				if (num >= 0 || indexOfFirstChange < this._itemsHandler.ItemsArrayBackup.Count)
 				{
-					this.DoOnOverallProgress(0.0, new TimeSpan(0L), new TimeSpan(0L), operation, ProgressPhase.Start, ref this._progressCancel);
+					this.DoOnOverallProgress(0.0, new TimeSpan(0L), new TimeSpan(0L), processOperation, ProgressPhase.Start, ref this._progressCancel);
 				}
 				if (this._progressCancel)
 				{
@@ -1799,7 +1756,7 @@ namespace ComponentAce.Compression.Archiver
 				string empty = string.Empty;
 				if (indexOfFirstChange < this._itemsHandler.ItemsArrayBackup.Count)
 				{
-					this.BackupFileRest(indexOfFirstChange, ref empty, ref backupFileStream);
+					this.BackupFileRest(indexOfFirstChange, ref empty, ref stream);
 				}
 				long num2;
 				this.CalculateBackupOffset(indexOfFirstChange, out num2);
@@ -1819,7 +1776,7 @@ namespace ComponentAce.Compression.Archiver
 							IItem item = this._itemsHandler.ItemsArray[num3];
 							if (!item.IsModified || item.Operation == ProcessOperation.Rename || item.Operation == ProcessOperation.ChangeComment || item.Operation == ProcessOperation.ChangeAttr)
 							{
-								this.AddFromFileRest(num3, backupFileStream, num2, this._compressedStream);
+								this.AddFromFileRest(num3, stream, num2, this._compressedStream);
 							}
 							else
 							{
@@ -1842,14 +1799,14 @@ namespace ComponentAce.Compression.Archiver
 						}
 						else
 						{
-							this.AddFromFileRest(num3, backupFileStream, num2, this._compressedStream);
+							this.AddFromFileRest(num3, stream, num2, this._compressedStream);
 							num3++;
 						}
 					}
 					if (!this._progressCancel && failureAction != FailureAction.Abort)
 					{
 						this._itemsHandler.SaveItemsArray(this._compressedStream);
-						this.DeleteFileRest(ref backupFileStream, empty);
+						this.DeleteFileRest(ref stream, empty);
 					}
 				}
 				catch (ArchiverException ex)
@@ -1858,12 +1815,12 @@ namespace ComponentAce.Compression.Archiver
 					{
 						throw;
 					}
-					this.Rollback(ref backupFileStream, indexOfFirstChange, num2, empty);
+					this.Rollback(ref stream, indexOfFirstChange, num2, empty);
 					throw;
 				}
 				catch
 				{
-					this.Rollback(ref backupFileStream, indexOfFirstChange, num2, empty);
+					this.Rollback(ref stream, indexOfFirstChange, num2, empty);
 					throw;
 				}
 				if (!this._progressCancel && failureAction != FailureAction.Abort && !this.DeleteFilesAfterMove())
@@ -1872,11 +1829,11 @@ namespace ComponentAce.Compression.Archiver
 				}
 				if ((num >= 0 || indexOfFirstChange < this._itemsHandler.ItemsArrayBackup.Count) && !this._progressCancel && failureAction != FailureAction.Abort)
 				{
-					this.DoOnOverallProgress(100.0, DateTime.Now - this._operationStartTime, new TimeSpan(0L), operation, ProgressPhase.End, ref this._progressCancel);
+					this.DoOnOverallProgress(100.0, DateTime.Now - this._operationStartTime, new TimeSpan(0L), processOperation, ProgressPhase.End, ref this._progressCancel);
 				}
 				if (this._progressCancel || failureAction == FailureAction.Abort)
 				{
-					this.Rollback(ref backupFileStream, indexOfFirstChange, num2, empty);
+					this.Rollback(ref stream, indexOfFirstChange, num2, empty);
 				}
 				else if (this._archiverOptions.FlushBuffers && this._compressedStream != null && this._compressedStream is FileStream)
 				{
@@ -2033,9 +1990,9 @@ namespace ComponentAce.Compression.Archiver
 				try
 				{
 					string text = this._itemsHandler.ItemsArray[baseArchiveItem.Handle.ItemNo].Name;
-					string oldValue = oldName.Replace('\\', '/');
-					string newValue = newName.Replace('\\', '/');
-					text = text.Replace(oldValue, newValue);
+					string text2 = oldName.Replace('\\', '/');
+					string text3 = newName.Replace('\\', '/');
+					text = text.Replace(text2, text3);
 					this._itemsHandler.ItemsArray[baseArchiveItem.Handle.ItemNo].Name = text;
 					if (!this._itemsHandler.ItemsArray[baseArchiveItem.Handle.ItemNo].IsModified || this._itemsHandler.ItemsArray[baseArchiveItem.Handle.ItemNo].Operation == ProcessOperation.ChangeAttr || this._itemsHandler.ItemsArray[baseArchiveItem.Handle.ItemNo].Operation == ProcessOperation.ChangeComment)
 					{
@@ -2051,10 +2008,7 @@ namespace ComponentAce.Compression.Archiver
 					throw;
 				}
 			}
-			throw ExceptionBuilder.Exception(ErrorCode.FileNotFound, new object[]
-			{
-				oldName
-			});
+			throw ExceptionBuilder.Exception(ErrorCode.FileNotFound, new object[] { oldName });
 		}
 
 		// Token: 0x060000ED RID: 237 RVA: 0x0000E92C File Offset: 0x0000D92C
@@ -2159,12 +2113,12 @@ namespace ComponentAce.Compression.Archiver
 			}
 			else
 			{
-				flag = (text != exclusionMasks[0]);
+				flag = text != exclusionMasks[0];
 			}
 			if (flag)
 			{
-				BaseArchiveItem item = this.CreateNewArchiveItem(text, baseDir, this.Options.StorePath);
-				int num = this.AddNewItemToArchive(item, move);
+				BaseArchiveItem baseArchiveItem = this.CreateNewArchiveItem(text, baseDir, this.Options.StorePath);
+				int num = this.AddNewItemToArchive(baseArchiveItem, move);
 				if (num >= 0 && File.Exists(this._itemsHandler.ItemsArray[num].SrcFileName))
 				{
 					this._itemsHandler.ItemsArray[num].UncompressedSize = new FileInfo(this._itemsHandler.ItemsArray[num].SrcFileName).Length;
@@ -2196,7 +2150,7 @@ namespace ComponentAce.Compression.Archiver
 					this.DoOnOverallProgress(0.0, new TimeSpan(0L), new TimeSpan(0L), operation, ProgressPhase.Start, ref this._progressCancel);
 				}
 				FailureAction failureAction = FailureAction.Ignore;
-				bool progressCancel;
+				bool flag2;
 				if (this._itemsHandler.ItemsArray[itemNo].IsTagged)
 				{
 					failureAction = FailureAction.Ignore;
@@ -2234,12 +2188,12 @@ namespace ComponentAce.Compression.Archiver
 									this.TestTaggedFile(itemNo, text);
 									break;
 								}
-								progressCancel = this._progressCancel;
+								flag2 = this._progressCancel;
 								if (operation == ProcessOperation.Extract || operation == ProcessOperation.Test)
 								{
 									this.DoOnFileProgress(this._itemsHandler.ItemsArray[itemNo].Name, 100.0, DateTime.Now - this._currentItemOperationStartTime, new TimeSpan(0L), operation, ProgressPhase.End, ref this._progressCancel);
 								}
-								this._progressCancel = (this._progressCancel || progressCancel);
+								this._progressCancel = this._progressCancel || flag2;
 								if (this._progressCancel)
 								{
 									break;
@@ -2261,12 +2215,12 @@ namespace ComponentAce.Compression.Archiver
 					}
 					while (failureAction == FailureAction.Retry);
 				}
-				progressCancel = this._progressCancel;
+				flag2 = this._progressCancel;
 				if (operation == ProcessOperation.Extract || operation == ProcessOperation.Test)
 				{
 					this.DoOnOverallProgress(100.0, DateTime.Now - this._operationStartTime, new TimeSpan(0L), operation, ProgressPhase.End, ref this._progressCancel);
 				}
-				this._progressCancel = (this._progressCancel || progressCancel);
+				this._progressCancel = this._progressCancel || flag2;
 				if (this._progressCancel || failureAction == FailureAction.Abort)
 				{
 					this.CancelUpdate();
@@ -2302,7 +2256,7 @@ namespace ComponentAce.Compression.Archiver
 				}
 				FailureAction failureAction = FailureAction.Ignore;
 				i = 0;
-				bool progressCancel;
+				bool flag2;
 				while (i < this._itemsHandler.ItemsArray.Count && !this._progressCancel)
 				{
 					if (this._itemsHandler.ItemsArray[i].IsTagged)
@@ -2342,12 +2296,12 @@ namespace ComponentAce.Compression.Archiver
 										this.TestTaggedFile(i, text);
 										break;
 									}
-									progressCancel = this._progressCancel;
+									flag2 = this._progressCancel;
 									if (operation == ProcessOperation.Extract || operation == ProcessOperation.Test)
 									{
 										this.DoOnFileProgress(this._itemsHandler.ItemsArray[i].Name, 100.0, DateTime.Now - this._currentItemOperationStartTime, new TimeSpan(0L), operation, ProgressPhase.End, ref this._progressCancel);
 									}
-									this._progressCancel = (this._progressCancel || progressCancel);
+									this._progressCancel = this._progressCancel || flag2;
 									if (this._progressCancel)
 									{
 										break;
@@ -2382,12 +2336,12 @@ namespace ComponentAce.Compression.Archiver
 						i++;
 					}
 				}
-				progressCancel = this._progressCancel;
+				flag2 = this._progressCancel;
 				if (operation == ProcessOperation.Extract || operation == ProcessOperation.Test)
 				{
 					this.DoOnOverallProgress(100.0, DateTime.Now - this._operationStartTime, new TimeSpan(0L), operation, ProgressPhase.End, ref this._progressCancel);
 				}
-				this._progressCancel = (this._progressCancel || progressCancel);
+				this._progressCancel = this._progressCancel || flag2;
 				if (this._progressCancel || failureAction == FailureAction.Abort)
 				{
 					this.CancelUpdate();
@@ -2418,7 +2372,7 @@ namespace ComponentAce.Compression.Archiver
 			bool flag = false;
 			string fullMask = this.GetFullMask(mask, startDir, ref flag);
 			string fileName = Path.GetFileName(fullMask);
-			string text = (fullMask.IndexOf("..\\") < 0) ? Path.GetDirectoryName(fullMask) : (this.BaseDir + "\\" + Path.GetDirectoryName(fullMask) + "\\");
+			string text = ((fullMask.IndexOf("..\\") < 0) ? Path.GetDirectoryName(fullMask) : (this.BaseDir + "\\" + Path.GetDirectoryName(fullMask) + "\\"));
 			if (mask == fullMask && mask.IndexOf('*') == -1 && mask.IndexOf('?') == -1 && File.Exists(fullMask))
 			{
 				this.ProcessFile(fileName, exclusionMasks, text, baseDir, move, retrieveFileDate, retrieveAttributes);
@@ -2607,12 +2561,9 @@ namespace ComponentAce.Compression.Archiver
 			{
 				fileStream = new FileStream(tempFileName, FileMode.Open);
 			}
-			catch (Exception innerException)
+			catch (Exception ex)
 			{
-				throw ExceptionBuilder.Exception(ErrorCode.CannotCreateFile, new object[]
-				{
-					tempFileName
-				}, innerException);
+				throw ExceptionBuilder.Exception(ErrorCode.CannotCreateFile, new object[] { tempFileName }, ex);
 			}
 			try
 			{
@@ -2757,9 +2708,9 @@ namespace ComponentAce.Compression.Archiver
 		{
 			get
 			{
-				BaseArchiveItem result = this.CreateNewArchiveItem();
-				this._itemsHandler.ItemsArray[this._currentItemIndex].GetArchiveItem(ref result);
-				return result;
+				BaseArchiveItem baseArchiveItem = this.CreateNewArchiveItem();
+				this._itemsHandler.ItemsArray[this._currentItemIndex].GetArchiveItem(ref baseArchiveItem);
+				return baseArchiveItem;
 			}
 		}
 

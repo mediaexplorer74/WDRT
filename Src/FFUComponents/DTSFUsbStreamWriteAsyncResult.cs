@@ -6,7 +6,8 @@ namespace FFUComponents
 	internal class DTSFUsbStreamWriteAsyncResult : AsyncResultNoResult
 	{
 		// Token: 0x06000194 RID: 404 RVA: 0x000084E6 File Offset: 0x000066E6
-		public DTSFUsbStreamWriteAsyncResult(AsyncCallback callback, object state) : base(callback, state)
+		public DTSFUsbStreamWriteAsyncResult(AsyncCallback callback, object state)
+			: base(callback, state)
 		{
 		}
 

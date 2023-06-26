@@ -10,15 +10,12 @@ using Microsoft.WindowsDeviceRecoveryTool.Framework;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 {
-	// Token: 0x020000E2 RID: 226
+	// Token: 0x02000023 RID: 35
 	[Export]
-	[Region(new string[]
-	{
-		"MainArea"
-	})]
+	[Region(new string[] { "MainArea" })]
 	public partial class UnsupportedDeviceView : Grid
 	{
-		// Token: 0x06000749 RID: 1865 RVA: 0x00026AF6 File Offset: 0x00024CF6
+		// Token: 0x06000194 RID: 404 RVA: 0x0000A0DA File Offset: 0x000082DA
 		public UnsupportedDeviceView()
 		{
 			this.InitializeComponent();

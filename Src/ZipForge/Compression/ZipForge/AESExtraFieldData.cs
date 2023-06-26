@@ -7,18 +7,15 @@ namespace ComponentAce.Compression.ZipForge
 	internal class AESExtraFieldData : ExtraFieldData
 	{
 		// Token: 0x060006FC RID: 1788 RVA: 0x0002B320 File Offset: 0x0002A320
-		public AESExtraFieldData() : this(0, 0, 0)
+		public AESExtraFieldData()
+			: this(0, 0, 0)
 		{
 		}
 
 		// Token: 0x060006FD RID: 1789 RVA: 0x0002B32C File Offset: 0x0002A32C
 		public AESExtraFieldData(ushort versionNumber, byte strength, ushort compressionMethod)
 		{
-			this.vendorID = new byte[]
-			{
-				65,
-				69
-			};
+			this.vendorID = new byte[] { 65, 69 };
 			this.HeaderId = 39169;
 			this.strength = strength;
 			switch (strength)

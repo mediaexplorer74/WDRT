@@ -9,19 +9,19 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Localization
 	// Token: 0x02000005 RID: 5
 	public class ResourceLocalizationProvider
 	{
-		// Token: 0x0600001E RID: 30 RVA: 0x0000278C File Offset: 0x0000098C
+		// Token: 0x0600001D RID: 29 RVA: 0x00002741 File Offset: 0x00000941
 		public ResourceLocalizationProvider(string baseName, Assembly assembly)
 		{
 			this.resourceManager = new ResourceManager(baseName, assembly);
 		}
 
-		// Token: 0x0600001F RID: 31 RVA: 0x000027A4 File Offset: 0x000009A4
+		// Token: 0x0600001E RID: 30 RVA: 0x00002758 File Offset: 0x00000958
 		public object Translate(string key, CultureInfo cultureInfo)
 		{
 			return this.resourceManager.GetString(key, cultureInfo);
 		}
 
-		// Token: 0x06000020 RID: 32 RVA: 0x00003004 File Offset: 0x00001204
+		// Token: 0x0600001F RID: 31 RVA: 0x00002777 File Offset: 0x00000977
 		public IEnumerable<CultureInfo> Languages()
 		{
 			yield return CultureInfo.GetCultureInfo("ar-SA");
@@ -67,7 +67,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Localization
 			yield break;
 		}
 
-		// Token: 0x04000011 RID: 17
+		// Token: 0x04000010 RID: 16
 		private readonly ResourceManager resourceManager;
 	}
 }

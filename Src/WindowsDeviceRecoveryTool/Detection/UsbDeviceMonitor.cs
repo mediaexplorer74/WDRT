@@ -12,20 +12,21 @@ using Nokia.Lucid.Primitives;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Detection
 {
-	// Token: 0x0200001D RID: 29
+	// Token: 0x020000BD RID: 189
 	public sealed class UsbDeviceMonitor : IUsbDeviceMonitor, IDisposable
 	{
-		// Token: 0x060000E3 RID: 227 RVA: 0x00006048 File Offset: 0x00004248
+		// Token: 0x060005D4 RID: 1492 RVA: 0x0001BBDB File Offset: 0x00019DDB
 		private UsbDeviceMonitor(IDisposable notificationTicket)
 		{
 			this.events = new BlockingCollection<UsbDeviceChangeEvent>(25);
 			this.notificationTicket = notificationTicket;
 		}
 
-		// Token: 0x060000E4 RID: 228 RVA: 0x0000608C File Offset: 0x0000428C
+		// Token: 0x060005D5 RID: 1493 RVA: 0x0001BBFC File Offset: 0x00019DFC
 		public static UsbDeviceMonitor StartNew(DeviceTypeMap deviceTypeMap, Expression<Func<DeviceIdentifier, bool>> deviceIdentifierFilter)
 		{
-			if (deviceIdentifierFilter == null)
+			bool flag = deviceIdentifierFilter == null;
+			if (flag)
 			{
 				throw new ArgumentNullException("deviceIdentifierFilter");
 			}
@@ -46,41 +47,44 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Detection
 				DeviceTypeMap = deviceTypeMap,
 				Filter = deviceIdentifierFilter
 			};
-			foreach (Nokia.Lucid.DeviceInformation.DeviceInfo deviceInfo in deviceInfoSet.EnumeratePresentDevices())
+			foreach (DeviceInfo deviceInfo in deviceInfoSet.EnumeratePresentDevices())
 			{
-				DeviceChangedEventArgs data = new DeviceChangedEventArgs(DeviceChangeAction.Attach, deviceInfo.Path, deviceInfo.DeviceType);
-				deviceMonitor.DeviceWatcherOnDeviceChanged(context, deviceWatcher, new UsbDeviceChangeEvent(data, true));
+				DeviceChangedEventArgs deviceChangedEventArgs = new DeviceChangedEventArgs(DeviceChangeAction.Attach, deviceInfo.Path, deviceInfo.DeviceType);
+				deviceMonitor.DeviceWatcherOnDeviceChanged(context, deviceWatcher, new UsbDeviceChangeEvent(deviceChangedEventArgs, true));
 			}
 			return deviceMonitor;
 		}
 
-		// Token: 0x060000E5 RID: 229 RVA: 0x000063D0 File Offset: 0x000045D0
+		// Token: 0x060005D6 RID: 1494 RVA: 0x0001BD04 File Offset: 0x00019F04
 		public async Task<UsbDeviceChangeEvent> TakeDeviceChangeEventAsync(CancellationToken cancellationToken)
 		{
 			cancellationToken.ThrowIfCancellationRequested();
 			UsbDeviceChangeEvent @event;
-			UsbDeviceChangeEvent result;
-			if (this.events.TryTake(out @event))
+			bool flag = this.events.TryTake(out @event);
+			UsbDeviceChangeEvent usbDeviceChangeEvent;
+			if (flag)
 			{
-				result = @event;
+				usbDeviceChangeEvent = @event;
 			}
 			else
 			{
 				TaskCompletionSource<UsbDeviceChangeEvent> completionSource = new TaskCompletionSource<UsbDeviceChangeEvent>();
-				using (cancellationToken.Register(delegate()
+				using (cancellationToken.Register(delegate
 				{
 					completionSource.TrySetCanceled();
 				}))
 				{
 					this.pendingTask = completionSource;
-					@event = await this.pendingTask.Task;
-					result = @event;
+					UsbDeviceChangeEvent usbDeviceChangeEvent2 = await this.pendingTask.Task;
+					@event = usbDeviceChangeEvent2;
+					usbDeviceChangeEvent2 = null;
+					usbDeviceChangeEvent = @event;
 				}
 			}
-			return result;
+			return usbDeviceChangeEvent;
 		}
 
-		// Token: 0x060000E6 RID: 230 RVA: 0x00006422 File Offset: 0x00004622
+		// Token: 0x060005D7 RID: 1495 RVA: 0x0001BD4F File Offset: 0x00019F4F
 		public void Dispose()
 		{
 			this.notificationTicket.Dispose();
@@ -88,12 +92,14 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Detection
 			this.events.Dispose();
 		}
 
-		// Token: 0x060000E7 RID: 231 RVA: 0x0000644C File Offset: 0x0000464C
+		// Token: 0x060005D8 RID: 1496 RVA: 0x0001BD78 File Offset: 0x00019F78
 		private static void TraceDeviceChanged(DeviceChangedEventArgs args)
 		{
-			if (args != null)
+			bool flag = args == null;
+			if (!flag)
 			{
-				if (args.Action == DeviceChangeAction.Attach)
+				bool flag2 = args.Action == DeviceChangeAction.Attach;
+				if (flag2)
 				{
 					Tracer<UsbDeviceMonitor>.WriteInformation("Device attached: {0}, Path: {1}", new object[]
 					{
@@ -112,26 +118,33 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Detection
 			}
 		}
 
-		// Token: 0x060000E8 RID: 232 RVA: 0x00006600 File Offset: 0x00004800
+		// Token: 0x060005D9 RID: 1497 RVA: 0x0001BE08 File Offset: 0x0001A008
 		private void DeviceWatcherOnDeviceChanged(SynchronizationContext synchronizationContext, object sender, UsbDeviceChangeEvent args)
 		{
-			if (args == null)
+			bool flag = args == null;
+			if (flag)
 			{
 				throw new ArgumentNullException("args");
 			}
 			UsbDeviceMonitor.TraceDeviceChanged(args.Data);
 			EventHandler<UsbDeviceChangeEvent> baseHandler = delegate(object s, UsbDeviceChangeEvent a)
 			{
-				if (this.pendingTask != null && this.pendingTask.TrySetResult(a))
+				bool flag3 = this.pendingTask != null && this.pendingTask.TrySetResult(a);
+				if (flag3)
 				{
 					this.pendingTask = null;
 				}
-				else if (!this.events.Any((UsbDeviceChangeEvent e) => string.Equals(e.Data.Path, a.Data.Path, StringComparison.InvariantCultureIgnoreCase) && e.Data.Action == a.Data.Action && e.Data.DeviceType == a.Data.DeviceType))
+				else
 				{
-					this.events.TryAdd(a);
+					bool flag4 = !this.events.Any((UsbDeviceChangeEvent e) => string.Equals(e.Data.Path, a.Data.Path, StringComparison.InvariantCultureIgnoreCase) && e.Data.Action == a.Data.Action && e.Data.DeviceType == a.Data.DeviceType);
+					if (flag4)
+					{
+						this.events.TryAdd(a);
+					}
 				}
 			};
-			if (synchronizationContext == null || synchronizationContext.GetType() == typeof(SynchronizationContext))
+			bool flag2 = synchronizationContext == null || synchronizationContext.GetType() == typeof(SynchronizationContext);
+			if (flag2)
 			{
 				baseHandler(sender, args);
 			}
@@ -144,13 +157,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Detection
 			}
 		}
 
-		// Token: 0x04000054 RID: 84
+		// Token: 0x0400028A RID: 650
 		private readonly BlockingCollection<UsbDeviceChangeEvent> events;
 
-		// Token: 0x04000055 RID: 85
+		// Token: 0x0400028B RID: 651
 		private readonly IDisposable notificationTicket;
 
-		// Token: 0x04000056 RID: 86
+		// Token: 0x0400028C RID: 652
 		private TaskCompletionSource<UsbDeviceChangeEvent> pendingTask;
 	}
 }

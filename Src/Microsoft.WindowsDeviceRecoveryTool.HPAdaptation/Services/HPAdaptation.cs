@@ -25,12 +25,12 @@ using Microsoft.WindowsDeviceRecoveryTool.OemAdaptation.Primitives;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.HPAdaptation.Services
 {
-	// Token: 0x02000006 RID: 6
-	[PartCreationPolicy(CreationPolicy.Shared)]
+	// Token: 0x02000005 RID: 5
 	[ExportAdaptation(Type = PhoneTypes.HP)]
+	[PartCreationPolicy(CreationPolicy.Shared)]
 	public class HPAdaptation : BaseAdaptation
 	{
-		// Token: 0x06000015 RID: 21 RVA: 0x000027F8 File Offset: 0x000009F8
+		// Token: 0x0600000B RID: 11 RVA: 0x00002380 File Offset: 0x00000580
 		[ImportingConstructor]
 		public HPAdaptation(FfuFileInfoService ffuFileInfoService, MsrService msrService, ReportingService reportingService)
 		{
@@ -40,8 +40,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HPAdaptation.Services
 			this.msrService.ProgressChanged += this.MsrDownloadProgressEvent;
 		}
 
-		// Token: 0x1700000A RID: 10
-		// (get) Token: 0x06000016 RID: 22 RVA: 0x0000284D File Offset: 0x00000A4D
+		// Token: 0x17000002 RID: 2
+		// (get) Token: 0x0600000C RID: 12 RVA: 0x000023D5 File Offset: 0x000005D5
 		public override string PackageExtension
 		{
 			get
@@ -50,8 +50,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HPAdaptation.Services
 			}
 		}
 
-		// Token: 0x1700000B RID: 11
-		// (get) Token: 0x06000017 RID: 23 RVA: 0x00002854 File Offset: 0x00000A54
+		// Token: 0x17000003 RID: 3
+		// (get) Token: 0x0600000D RID: 13 RVA: 0x000023DC File Offset: 0x000005DC
 		public override PhoneTypes PhoneType
 		{
 			get
@@ -60,8 +60,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HPAdaptation.Services
 			}
 		}
 
-		// Token: 0x1700000C RID: 12
-		// (get) Token: 0x06000018 RID: 24 RVA: 0x00002858 File Offset: 0x00000A58
+		// Token: 0x17000004 RID: 4
+		// (get) Token: 0x0600000E RID: 14 RVA: 0x000023E0 File Offset: 0x000005E0
 		public override bool RecoverySupport
 		{
 			get
@@ -70,8 +70,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HPAdaptation.Services
 			}
 		}
 
-		// Token: 0x1700000D RID: 13
-		// (get) Token: 0x06000019 RID: 25 RVA: 0x0000285B File Offset: 0x00000A5B
+		// Token: 0x17000005 RID: 5
+		// (get) Token: 0x0600000F RID: 15 RVA: 0x000023E3 File Offset: 0x000005E3
 		public override string ReportManufacturerName
 		{
 			get
@@ -80,8 +80,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HPAdaptation.Services
 			}
 		}
 
-		// Token: 0x1700000E RID: 14
-		// (get) Token: 0x0600001A RID: 26 RVA: 0x00002862 File Offset: 0x00000A62
+		// Token: 0x17000006 RID: 6
+		// (get) Token: 0x06000010 RID: 16 RVA: 0x000023E3 File Offset: 0x000005E3
 		public override string ManufacturerName
 		{
 			get
@@ -90,7 +90,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HPAdaptation.Services
 			}
 		}
 
-		// Token: 0x0600001B RID: 27 RVA: 0x0000286C File Offset: 0x00000A6C
+		// Token: 0x06000011 RID: 17 RVA: 0x000023EC File Offset: 0x000005EC
 		public override PackageFileInfo CheckLatestPackage(Phone phone, CancellationToken cancellationToken)
 		{
 			PackageFileInfo result;
@@ -111,9 +111,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HPAdaptation.Services
 				{
 					throw new WebException();
 				}
-				if (ex is OperationCanceledException || ex.InnerException is TaskCanceledException)
+				if (!(ex is OperationCanceledException))
 				{
-					throw;
+					TaskCanceledException ex2 = ex.InnerException as TaskCanceledException;
 				}
 				throw;
 			}
@@ -124,7 +124,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HPAdaptation.Services
 			return result;
 		}
 
-		// Token: 0x0600001C RID: 28 RVA: 0x0000291C File Offset: 0x00000B1C
+		// Token: 0x06000012 RID: 18 RVA: 0x00002498 File Offset: 0x00000698
 		public override void CheckPackageIntegrity(Phone phone, CancellationToken cancellationToken)
 		{
 			Tracer<HPAdaptation>.LogEntry("CheckPackageIntegrity");
@@ -132,19 +132,19 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HPAdaptation.Services
 			Tracer<HPAdaptation>.LogExit("CheckPackageIntegrity");
 		}
 
-		// Token: 0x0600001D RID: 29 RVA: 0x00002943 File Offset: 0x00000B43
+		// Token: 0x06000013 RID: 19 RVA: 0x000024BF File Offset: 0x000006BF
 		public override SwVersionComparisonResult CompareFirmwareVersions(Phone phone)
 		{
 			return SwVersionComparisonResult.UnableToCompare;
 		}
 
-		// Token: 0x0600001E RID: 30 RVA: 0x00002946 File Offset: 0x00000B46
+		// Token: 0x06000014 RID: 20 RVA: 0x000024C2 File Offset: 0x000006C2
 		public override void DownloadEmergencyPackage(Phone currentPhone, CancellationToken cancellationToken)
 		{
 			throw new NotSupportedException();
 		}
 
-		// Token: 0x0600001F RID: 31 RVA: 0x00002950 File Offset: 0x00000B50
+		// Token: 0x06000015 RID: 21 RVA: 0x000024CC File Offset: 0x000006CC
 		public override void DownloadPackage(Phone phone, CancellationToken cancellationToken)
 		{
 			Tracer<HPAdaptation>.LogEntry("DownloadPackage");
@@ -158,10 +158,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HPAdaptation.Services
 					DestinationFolder = ((!string.IsNullOrEmpty(phone.QueryParameters.ManufacturerHardwareModel)) ? Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.GetHPProductsPath(phone.QueryParameters.ManufacturerHardwareModel) : Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.GetHPProductsPath(phone.QueryParameters.ManufacturerHardwareVariant)),
 					FilesVersioned = true
 				};
-				Tracer<HPAdaptation>.WriteInformation("Download Params: {0}", new object[]
-				{
-					downloadParameters
-				});
+				Tracer<HPAdaptation>.WriteInformation("Download Params: {0}", new object[] { downloadParameters });
 				phone.PackageFiles = this.msrService.DownloadLatestPackage(downloadParameters, cancellationToken);
 				Tuple<long, long, bool> downloadPackageInformation = this.msrService.GetDownloadPackageInformation();
 				this.reportingService.SetDownloadByteInformation(phone, ReportOperationType.DownloadPackage, downloadPackageInformation.Item1, downloadPackageInformation.Item2, downloadPackageInformation.Item3);
@@ -170,19 +167,19 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HPAdaptation.Services
 			catch (Exception ex)
 			{
 				bool flag = true;
-				UriData resultUriData;
+				UriData uriData;
 				if (ex is OperationCanceledException || ex.GetBaseException() is TaskCanceledException)
 				{
-					resultUriData = UriData.DownloadVariantPackageAbortedByUser;
+					uriData = UriData.DownloadVariantPackageAbortedByUser;
 					flag = false;
 				}
 				else
 				{
-					resultUriData = UriData.FailedToDownloadVariantPackage;
+					uriData = UriData.FailedToDownloadVariantPackage;
 				}
 				Tuple<long, long, bool> downloadPackageInformation2 = this.msrService.GetDownloadPackageInformation();
 				this.reportingService.SetDownloadByteInformation(phone, ReportOperationType.DownloadPackage, downloadPackageInformation2.Item1, downloadPackageInformation2.Item2, downloadPackageInformation2.Item3);
-				this.reportingService.OperationFailed(phone, ReportOperationType.DownloadPackage, resultUriData, ex);
+				this.reportingService.OperationFailed(phone, ReportOperationType.DownloadPackage, uriData, ex);
 				Tracer<HPAdaptation>.WriteError(ex);
 				if (flag)
 				{
@@ -195,19 +192,19 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HPAdaptation.Services
 			}
 		}
 
-		// Token: 0x06000020 RID: 32 RVA: 0x00002AEC File Offset: 0x00000CEC
+		// Token: 0x06000016 RID: 22 RVA: 0x000024C2 File Offset: 0x000006C2
 		public override List<PackageFileInfo> FindAllPackages(string directory, CancellationToken cancellationToken)
 		{
 			throw new NotSupportedException();
 		}
 
-		// Token: 0x06000021 RID: 33 RVA: 0x00002AF3 File Offset: 0x00000CF3
+		// Token: 0x06000017 RID: 23 RVA: 0x000024C2 File Offset: 0x000006C2
 		public override List<PackageFileInfo> FindPackage(string directory, Phone currentPhone, CancellationToken cancellationToken)
 		{
 			throw new NotSupportedException();
 		}
 
-		// Token: 0x06000022 RID: 34 RVA: 0x00002AFC File Offset: 0x00000CFC
+		// Token: 0x06000018 RID: 24 RVA: 0x0000265C File Offset: 0x0000085C
 		public override void FlashDevice(Phone phone, CancellationToken cancellationToken)
 		{
 			Tracer<HPAdaptation>.LogEntry("FlashDevice");
@@ -228,20 +225,20 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HPAdaptation.Services
 			Tracer<HPAdaptation>.LogExit("FlashDevice");
 		}
 
-		// Token: 0x06000023 RID: 35 RVA: 0x00002B7C File Offset: 0x00000D7C
+		// Token: 0x06000019 RID: 25 RVA: 0x000026DC File Offset: 0x000008DC
 		private void FlashProgressEvent(object obj, ProgressEventArgs progress)
 		{
 			double num = (double)progress.Position / (double)progress.Length * 100.0;
 			base.RaiseProgressPercentageChanged((int)num, this.progressMessage);
 		}
 
-		// Token: 0x06000024 RID: 36 RVA: 0x00002BB1 File Offset: 0x00000DB1
+		// Token: 0x0600001A RID: 26 RVA: 0x00002711 File Offset: 0x00000911
 		public override bool IsDeviceInFlashModeConnected(Phone phone, CancellationToken cancellationToken)
 		{
 			return this.GetFfuDevice(phone) != null;
 		}
 
-		// Token: 0x06000025 RID: 37 RVA: 0x00002BC0 File Offset: 0x00000DC0
+		// Token: 0x0600001B RID: 27 RVA: 0x00002720 File Offset: 0x00000920
 		public override void ReadDeviceInfo(Phone currentPhone, CancellationToken cancellationToken)
 		{
 			try
@@ -266,7 +263,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HPAdaptation.Services
 			throw new ReadPhoneInformationException("Cannot find selected device!");
 		}
 
-		// Token: 0x06000026 RID: 38 RVA: 0x00002C4C File Offset: 0x00000E4C
+		// Token: 0x0600001C RID: 28 RVA: 0x000027AC File Offset: 0x000009AC
 		protected override void FillSupportedDeviceIdentifiers()
 		{
 			this.SupportedNormalModeIds.Add(new DeviceIdentifier("045E", "F0CA"));
@@ -274,7 +271,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HPAdaptation.Services
 			this.SupportedFlashModeIds.Add(new DeviceIdentifier("045E", "062A"));
 		}
 
-		// Token: 0x06000027 RID: 39 RVA: 0x00002CA8 File Offset: 0x00000EA8
+		// Token: 0x0600001D RID: 29 RVA: 0x00002808 File Offset: 0x00000A08
 		private Phone GetPhone(ModelInfo modelInfo)
 		{
 			return new Phone
@@ -287,11 +284,10 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HPAdaptation.Services
 			};
 		}
 
-		// Token: 0x06000028 RID: 40 RVA: 0x00002D7C File Offset: 0x00000F7C
+		// Token: 0x0600001E RID: 30 RVA: 0x00002860 File Offset: 0x00000A60
 		private Phone[] GetPhoneVariants(ModelInfo modelInfo)
 		{
-			return (from v in modelInfo.Variants
-			select new Phone
+			return modelInfo.Variants.Select((Microsoft.WindowsDeviceRecoveryTool.OemAdaptation.Primitives.VariantInfo v) => new Phone
 			{
 				Type = this.PhoneType,
 				SalesName = v.Name,
@@ -302,16 +298,15 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HPAdaptation.Services
 			}).ToArray<Phone>();
 		}
 
-		// Token: 0x06000029 RID: 41 RVA: 0x00002DC0 File Offset: 0x00000FC0
+		// Token: 0x0600001F RID: 31 RVA: 0x000028A4 File Offset: 0x00000AA4
 		protected override void InitializeManuallySupportedModels()
 		{
-			ModelInfo[] array = new ModelInfo[]
+			foreach (ModelInfo modelInfo in new ModelInfo[]
 			{
 				HPModels.Elitex3,
 				HPModels.Elitex3_Telstra,
 				HPModels.Elitex3_Verizon
-			};
-			foreach (ModelInfo modelInfo in array)
+			})
 			{
 				Phone phone = this.GetPhone(modelInfo);
 				this.manuallySupportedModels.Add(phone);
@@ -327,26 +322,23 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HPAdaptation.Services
 			}
 		}
 
-		// Token: 0x0600002A RID: 42 RVA: 0x00002E57 File Offset: 0x00001057
+		// Token: 0x06000020 RID: 32 RVA: 0x0000292C File Offset: 0x00000B2C
 		public override List<Phone> ManuallySupportedModels()
 		{
 			return this.manuallySupportedModels;
 		}
 
-		// Token: 0x0600002B RID: 43 RVA: 0x00002E80 File Offset: 0x00001080
+		// Token: 0x06000021 RID: 33 RVA: 0x00002934 File Offset: 0x00000B34
 		public override List<Phone> ManuallySupportedVariants(Phone phone)
 		{
-			return (from variant in this.manuallySupportedVariants
-			where string.Equals(variant.HardwareModel, phone.HardwareModel, StringComparison.OrdinalIgnoreCase)
-			select variant).ToList<Phone>();
+			return this.manuallySupportedVariants.Where((Phone variant) => string.Equals(variant.HardwareModel, phone.HardwareModel, StringComparison.OrdinalIgnoreCase)).ToList<Phone>();
 		}
 
-		// Token: 0x0600002C RID: 44 RVA: 0x00002EC4 File Offset: 0x000010C4
+		// Token: 0x06000022 RID: 34 RVA: 0x0000296C File Offset: 0x00000B6C
 		protected override Stream GetImageDataStream(Phone phone)
 		{
 			Assembly executingAssembly = Assembly.GetExecutingAssembly();
-			string[] manifestResourceNames = executingAssembly.GetManifestResourceNames();
-			string text = manifestResourceNames.FirstOrDefault((string resourceName) => resourceName.Contains("EliteX3_Gallery_Zoom1.jpg"));
+			string text = executingAssembly.GetManifestResourceNames().FirstOrDefault((string resourceName) => resourceName.Contains("EliteX3_Gallery_Zoom1.jpg"));
 			if (!string.IsNullOrEmpty(text))
 			{
 				return executingAssembly.GetManifestResourceStream(text);
@@ -354,12 +346,11 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HPAdaptation.Services
 			return base.GetImageDataStream(phone);
 		}
 
-		// Token: 0x0600002D RID: 45 RVA: 0x00002F28 File Offset: 0x00001128
+		// Token: 0x06000023 RID: 35 RVA: 0x000029C4 File Offset: 0x00000BC4
 		protected override Stream GetManufacturerImageDataStream()
 		{
 			Assembly executingAssembly = Assembly.GetExecutingAssembly();
-			string[] manifestResourceNames = executingAssembly.GetManifestResourceNames();
-			string text = manifestResourceNames.FirstOrDefault((string resourceName) => resourceName.Contains("HP logo.jpg"));
+			string text = executingAssembly.GetManifestResourceNames().FirstOrDefault((string resourceName) => resourceName.Contains("HP logo.jpg"));
 			if (!string.IsNullOrEmpty(text))
 			{
 				return executingAssembly.GetManifestResourceStream(text);
@@ -367,13 +358,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HPAdaptation.Services
 			return null;
 		}
 
-		// Token: 0x0600002E RID: 46 RVA: 0x00002F77 File Offset: 0x00001177
+		// Token: 0x06000024 RID: 36 RVA: 0x00002A13 File Offset: 0x00000C13
 		private void MsrDownloadProgressEvent(ProgressChangedEventArgs progressArgs)
 		{
 			base.RaiseProgressPercentageChanged(progressArgs.Percentage, progressArgs.Message, progressArgs.DownloadedSize, progressArgs.TotalSize, progressArgs.BytesPerSecond, progressArgs.SecondsLeft);
 		}
 
-		// Token: 0x0600002F RID: 47 RVA: 0x00002FA4 File Offset: 0x000011A4
+		// Token: 0x06000025 RID: 37 RVA: 0x00002A40 File Offset: 0x00000C40
 		private IFFUDevice GetFfuDevice(Phone phone)
 		{
 			Tracer<HPAdaptation>.LogEntry("GetFfuDevice");
@@ -391,22 +382,22 @@ namespace Microsoft.WindowsDeviceRecoveryTool.HPAdaptation.Services
 			return flashableDevice;
 		}
 
-		// Token: 0x0400000D RID: 13
+		// Token: 0x0400000B RID: 11
 		private readonly MsrService msrService;
 
-		// Token: 0x0400000E RID: 14
+		// Token: 0x0400000C RID: 12
 		private readonly ReportingService reportingService;
 
-		// Token: 0x0400000F RID: 15
+		// Token: 0x0400000D RID: 13
 		private readonly FfuFileInfoService ffuFileInfoService;
 
-		// Token: 0x04000010 RID: 16
+		// Token: 0x0400000E RID: 14
 		private readonly List<Phone> manuallySupportedModels = new List<Phone>();
 
-		// Token: 0x04000011 RID: 17
+		// Token: 0x0400000F RID: 15
 		private readonly List<Phone> manuallySupportedVariants = new List<Phone>();
 
-		// Token: 0x04000012 RID: 18
+		// Token: 0x04000010 RID: 16
 		private string progressMessage;
 	}
 }

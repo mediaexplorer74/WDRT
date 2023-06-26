@@ -45,29 +45,23 @@ namespace Nokia.Lucid.DeviceInformation
 				throw new ArgumentNullException("path");
 			}
 			this.EnsureInitialized();
-			DeviceIdentifier arg;
-			if (!DeviceIdentifier.TryParse(path, out arg) || !this.compiledFilter(arg))
+			DeviceIdentifier deviceIdentifier;
+			if (!DeviceIdentifier.TryParse(path, out deviceIdentifier) || !this.compiledFilter(deviceIdentifier))
 			{
-				string message = string.Format(CultureInfo.CurrentCulture, Resources.InvalidOperationException_MessageFormat_CouldNotRetrieveDeviceInfo, new object[]
-				{
-					path
-				});
-				throw new InvalidOperationException(message);
+				string text = string.Format(CultureInfo.CurrentCulture, Resources.InvalidOperationException_MessageFormat_CouldNotRetrieveDeviceInfo, new object[] { path });
+				throw new InvalidOperationException(text);
 			}
-			SP_DEVICE_INTERFACE_DATA interfaceData = new SP_DEVICE_INTERFACE_DATA
+			SP_DEVICE_INTERFACE_DATA sp_DEVICE_INTERFACE_DATA = new SP_DEVICE_INTERFACE_DATA
 			{
 				cbSize = Marshal.SizeOf(typeof(SP_DEVICE_INTERFACE_DATA))
 			};
 			DeviceInfoSet.NativeDeviceInfoSet nativeDeviceInfoSet = new DeviceInfoSet.NativeDeviceInfoSet();
-			if (!SetupApiNativeMethods.SetupDiOpenDeviceInterface(nativeDeviceInfoSet.SafeDeviceInfoSetHandle, path, 0, ref interfaceData))
+			if (!SetupApiNativeMethods.SetupDiOpenDeviceInterface(nativeDeviceInfoSet.SafeDeviceInfoSetHandle, path, 0, ref sp_DEVICE_INTERFACE_DATA))
 			{
 				if (Marshal.GetLastWin32Error() == -536870363)
 				{
-					string message2 = string.Format(CultureInfo.CurrentCulture, Resources.InvalidOperationException_MessageFormat_CouldNotRetrieveDeviceInfo, new object[]
-					{
-						path
-					});
-					throw new InvalidOperationException(message2);
+					string text2 = string.Format(CultureInfo.CurrentCulture, Resources.InvalidOperationException_MessageFormat_CouldNotRetrieveDeviceInfo, new object[] { path });
+					throw new InvalidOperationException(text2);
 				}
 				throw new Win32Exception();
 			}
@@ -77,13 +71,13 @@ namespace Nokia.Lucid.DeviceInformation
 				{
 					cbSize = Marshal.SizeOf(typeof(SP_DEVINFO_DATA))
 				};
-				if (!SetupApiNativeMethods.SetupDiGetDeviceInterfaceDetail(nativeDeviceInfoSet.SafeDeviceInfoSetHandle, ref interfaceData, IntPtr.Zero, 0, IntPtr.Zero, ref sp_DEVINFO_DATA) && Marshal.GetLastWin32Error() != 122)
+				if (!SetupApiNativeMethods.SetupDiGetDeviceInterfaceDetail(nativeDeviceInfoSet.SafeDeviceInfoSetHandle, ref sp_DEVICE_INTERFACE_DATA, IntPtr.Zero, 0, IntPtr.Zero, ref sp_DEVINFO_DATA) && Marshal.GetLastWin32Error() != 122)
 				{
 					throw new Win32Exception();
 				}
-				DeviceType mapping = this.cachedTypeMap.GetMapping(interfaceData.InterfaceClassGuid);
+				DeviceType mapping = this.cachedTypeMap.GetMapping(sp_DEVICE_INTERFACE_DATA.InterfaceClassGuid);
 				string deviceInstanceId = nativeDeviceInfoSet.GetDeviceInstanceId(ref sp_DEVINFO_DATA);
-				return new DeviceInfo(nativeDeviceInfoSet, path, sp_DEVINFO_DATA.DevInst, deviceInstanceId, sp_DEVINFO_DATA.ClassGuid, mapping, interfaceData, sp_DEVINFO_DATA.Reserved);
+				return new DeviceInfo(nativeDeviceInfoSet, path, sp_DEVINFO_DATA.DevInst, deviceInstanceId, sp_DEVINFO_DATA.ClassGuid, mapping, sp_DEVICE_INTERFACE_DATA, sp_DEVINFO_DATA.Reserved);
 			}
 		}
 
@@ -117,8 +111,8 @@ namespace Nokia.Lucid.DeviceInformation
 		public IEnumerable<DeviceInfo> EnumeratePresentDevices()
 		{
 			return from d in this.EnumerateDevices()
-			where d.IsPresent
-			select d;
+				where d.IsPresent
+				select d;
 		}
 
 		// Token: 0x060000E7 RID: 231 RVA: 0x00009D03 File Offset: 0x00007F03

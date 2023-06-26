@@ -3,7 +3,7 @@ using Microsoft.WindowsDeviceRecoveryTool.Core;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Lucid.Mtp
 {
-	// Token: 0x02000004 RID: 4
+	// Token: 0x02000009 RID: 9
 	public interface IMtpDeviceInfoProvider : IDeviceInformationProvider<MtpInterfaceInfo>
 	{
 	}

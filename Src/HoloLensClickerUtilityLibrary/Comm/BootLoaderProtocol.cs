@@ -188,19 +188,17 @@ namespace ClickerUtilityLibrary.Comm
 					else
 					{
 						int cDEIndex;
-						Predicate<DataElement> f9__0 = default;
+						Predicate<DataElement> <>9__0;
 						for (;;)
 						{
 							cDEIndex = (int)BitConverter.ToUInt16(packet.RawPacket, num);
-							List<DataElement> responseArgs 
-								= CommandDictionary.Instance[command].ResponseArgs;
-							Predicate<DataElement> match;
-							if ((match = f9__0) == null)
+							List<DataElement> responseArgs = CommandDictionary.Instance[command].ResponseArgs;
+							Predicate<DataElement> predicate;
+							if ((predicate = <>9__0) == null)
 							{
-								match = (f9__0 = ((DataElement i) 
-									=> i.Type == (DataElementType)cDEIndex));
+								predicate = (<>9__0 = (DataElement i) => i.Type == (DataElementType)cDEIndex);
 							}
-							DataElement dataElement = responseArgs.Find(match);
+							DataElement dataElement = responseArgs.Find(predicate);
 							bool flag5 = dataElement == null;
 							if (flag5)
 							{
@@ -210,8 +208,8 @@ namespace ClickerUtilityLibrary.Comm
 							bool flag6 = dataElement.DataType == DataType.DATA_TYPE_BINARYSTREAM;
 							if (flag6)
 							{
-								ushort length = BitConverter.ToUInt16(packet.RawPacket, num);
-								dataElement.Length = (int)length;
+								ushort num2 = BitConverter.ToUInt16(packet.RawPacket, num);
+								dataElement.Length = (int)num2;
 								num += 2;
 							}
 							Array.Copy(packet.RawPacket, num, dataElement.GetRawData(), 0, dataElement.Length);
@@ -260,99 +258,99 @@ namespace ClickerUtilityLibrary.Comm
 				throw new ArgumentNullException("value");
 			}
 			bool flag2 = value.Length < 1;
-			bool result;
+			bool flag3;
 			if (flag2)
 			{
-				result = false;
+				flag3 = false;
 			}
 			else
 			{
-				bool flag3 = value[0] == 85;
-				result = flag3;
+				bool flag4 = value[0] == 85;
+				flag3 = flag4;
 			}
-			return result;
+			return flag3;
 		}
 
 		// Token: 0x0600010D RID: 269 RVA: 0x00007058 File Offset: 0x00005258
 		public bool IsPacketTypeValid(IPacket packet)
 		{
 			bool flag = packet == null;
-			bool result;
+			bool flag2;
 			if (flag)
 			{
-				result = false;
+				flag2 = false;
 			}
 			else
 			{
-				bool flag2 = packet.Type > 3;
-				result = !flag2;
+				bool flag3 = packet.Type > 3;
+				flag2 = !flag3;
 			}
-			return result;
+			return flag2;
 		}
 
 		// Token: 0x0600010E RID: 270 RVA: 0x0000708C File Offset: 0x0000528C
 		public bool IsHeaderValid(IPacket packet)
 		{
 			bool flag = packet == null;
-			bool result;
+			bool flag2;
 			if (flag)
 			{
-				result = false;
+				flag2 = false;
 			}
 			else
 			{
 				this.ParseHeader(packet);
-				bool flag2 = !this.IsPacketTypeValid(packet);
-				bool flag3;
-				if (flag2)
+				bool flag3 = !this.IsPacketTypeValid(packet);
+				bool flag4;
+				if (flag3)
 				{
 					packet.Status = FStatus.COMM_H_BAD_PACKET_TYPE;
-					flag3 = false;
+					flag4 = false;
 				}
 				else
 				{
-					bool flag4 = packet.BodySize > this.MaxPacketSize;
-					if (flag4)
+					bool flag5 = packet.BodySize > this.MaxPacketSize;
+					if (flag5)
 					{
 						packet.Status = FStatus.COMM_H_BAD_BODY_SIZE;
-						flag3 = false;
+						flag4 = false;
 					}
 					else
 					{
-						flag3 = true;
+						flag4 = true;
 					}
 				}
-				result = flag3;
+				flag2 = flag4;
 			}
-			return result;
+			return flag2;
 		}
 
 		// Token: 0x0600010F RID: 271 RVA: 0x000070FC File Offset: 0x000052FC
 		public bool IsPacketValid(IPacket packet)
 		{
 			bool flag = packet == null;
-			bool result;
+			bool flag2;
 			if (flag)
 			{
-				result = false;
+				flag2 = false;
 			}
 			else
 			{
 				this.IsHeaderValid(packet);
 				packet.ReceiveTimeStamp = DateTime.Now;
-				bool flag2 = this.CalculateChecksum(packet) != packet.Checksum;
-				if (flag2)
+				bool flag3 = this.CalculateChecksum(packet) != packet.Checksum;
+				if (flag3)
 				{
 					packet.Status = FStatus.COMM_H_BAD_CHECKSUM;
-					result = false;
+					flag2 = false;
 				}
 				else
 				{
 					packet.IsValid = true;
-					result = packet.IsValid;
+					flag2 = packet.IsValid;
 				}
 			}
-			return result;
+			return flag2;
 		}
 
 		// Token: 0x040000D7 RID: 215

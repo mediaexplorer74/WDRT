@@ -1,44 +1,39 @@
-﻿using Nokia.Lucid;
-using System;
+﻿using System;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Detection
 {
-	// Token: 0x0200001A RID: 26
-	public sealed class DeviceInfo
+	// Token: 0x020000BA RID: 186
+	internal sealed class DeviceInfo
 	{
-        internal string InstanceId;
-        internal string Path;
-        internal DeviceType DeviceType;
-
-        // Token: 0x060000D2 RID: 210 RVA: 0x00005F14 File Offset: 0x00004114
-        public DeviceInfo(string deviceIdentifier)
+		// Token: 0x060005C2 RID: 1474 RVA: 0x0001BB19 File Offset: 0x00019D19
+		public DeviceInfo(string deviceIdentifier)
 		{
 			this.DeviceIdentifier = deviceIdentifier;
 		}
 
-		// Token: 0x17000029 RID: 41
-		// (get) Token: 0x060000D3 RID: 211 RVA: 0x00005F28 File Offset: 0x00004128
-		// (set) Token: 0x060000D4 RID: 212 RVA: 0x00005F3F File Offset: 0x0000413F
+		// Token: 0x17000158 RID: 344
+		// (get) Token: 0x060005C3 RID: 1475 RVA: 0x0001BB2B File Offset: 0x00019D2B
+		// (set) Token: 0x060005C4 RID: 1476 RVA: 0x0001BB33 File Offset: 0x00019D33
 		public string DeviceIdentifier { get; private set; }
 
-		// Token: 0x1700002A RID: 42
-		// (get) Token: 0x060000D5 RID: 213 RVA: 0x00005F48 File Offset: 0x00004148
-		// (set) Token: 0x060000D6 RID: 214 RVA: 0x00005F5F File Offset: 0x0000415F
+		// Token: 0x17000159 RID: 345
+		// (get) Token: 0x060005C5 RID: 1477 RVA: 0x0001BB3C File Offset: 0x00019D3C
+		// (set) Token: 0x060005C6 RID: 1478 RVA: 0x0001BB44 File Offset: 0x00019D44
 		public bool IsDeviceSupported { get; set; }
 
-		// Token: 0x1700002B RID: 43
-		// (get) Token: 0x060000D7 RID: 215 RVA: 0x00005F68 File Offset: 0x00004168
-		// (set) Token: 0x060000D8 RID: 216 RVA: 0x00005F7F File Offset: 0x0000417F
+		// Token: 0x1700015A RID: 346
+		// (get) Token: 0x060005C7 RID: 1479 RVA: 0x0001BB4D File Offset: 0x00019D4D
+		// (set) Token: 0x060005C8 RID: 1480 RVA: 0x0001BB55 File Offset: 0x00019D55
 		public Guid SupportId { get; set; }
 
-		// Token: 0x1700002C RID: 44
-		// (get) Token: 0x060000D9 RID: 217 RVA: 0x00005F88 File Offset: 0x00004188
-		// (set) Token: 0x060000DA RID: 218 RVA: 0x00005F9F File Offset: 0x0000419F
+		// Token: 0x1700015B RID: 347
+		// (get) Token: 0x060005C9 RID: 1481 RVA: 0x0001BB5E File Offset: 0x00019D5E
+		// (set) Token: 0x060005CA RID: 1482 RVA: 0x0001BB66 File Offset: 0x00019D66
 		public string DeviceSalesName { get; set; }
 
-		// Token: 0x1700002D RID: 45
-		// (get) Token: 0x060000DB RID: 219 RVA: 0x00005FA8 File Offset: 0x000041A8
-		// (set) Token: 0x060000DC RID: 220 RVA: 0x00005FBF File Offset: 0x000041BF
+		// Token: 0x1700015C RID: 348
+		// (get) Token: 0x060005CB RID: 1483 RVA: 0x0001BB6F File Offset: 0x00019D6F
+		// (set) Token: 0x060005CC RID: 1484 RVA: 0x0001BB77 File Offset: 0x00019D77
 		public byte[] DeviceBitmapBytes { get; set; }
 	}
 }

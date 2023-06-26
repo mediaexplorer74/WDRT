@@ -13,44 +13,46 @@ using Microsoft.WindowsDeviceRecoveryTool.Controls;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Shell
 {
-	// Token: 0x020000EA RID: 234
+	// Token: 0x0200000B RID: 11
 	[Export]
 	public sealed partial class ShellView : ContentControl
 	{
-		// Token: 0x06000787 RID: 1927 RVA: 0x00027C88 File Offset: 0x00025E88
+		// Token: 0x06000072 RID: 114 RVA: 0x00004870 File Offset: 0x00002A70
 		public ShellView()
 		{
 			this.InitializeComponent();
-			this.animation = (Application.Current.Resources["StartAnimationStoryboard"] as Storyboard);
+			this.animation = Application.Current.Resources["StartAnimationStoryboard"] as Storyboard;
 			this.focusDelayTimer = (DispatcherTimer)base.Resources["FocusDelayTimer"];
 		}
 
-		// Token: 0x06000788 RID: 1928 RVA: 0x00027CE0 File Offset: 0x00025EE0
+		// Token: 0x06000073 RID: 115 RVA: 0x000048C8 File Offset: 0x00002AC8
 		private void FocusDelayTimer_OnTick(object sender, EventArgs e)
 		{
 			this.focusDelayTimer.Stop();
-			if (!this.GenericRoot.IsKeyboardFocusWithin || this.BackButton.IsKeyboardFocused)
+			bool flag = !this.GenericRoot.IsKeyboardFocusWithin || this.BackButton.IsKeyboardFocused;
+			if (flag)
 			{
 				this.GenericRoot.Focus();
 			}
 		}
 
-		// Token: 0x06000789 RID: 1929 RVA: 0x00027D2B File Offset: 0x00025F2B
+		// Token: 0x06000074 RID: 116 RVA: 0x0000490F File Offset: 0x00002B0F
 		private void ShellView_OnMouseRightButtonDown(object sender, MouseButtonEventArgs e)
 		{
 			this.SettingsControl.SetCurrentValue(SettingsControl.IsOpenedProperty, !this.SettingsControl.IsOpened);
 		}
 
-		// Token: 0x0600078A RID: 1930 RVA: 0x00027D54 File Offset: 0x00025F54
+		// Token: 0x06000075 RID: 117 RVA: 0x00004938 File Offset: 0x00002B38
 		private void ShellView_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
 		{
-			if (this.SettingsControl.IsOpened)
+			bool isOpened = this.SettingsControl.IsOpened;
+			if (isOpened)
 			{
 				this.SettingsControl.SetCurrentValue(SettingsControl.IsOpenedProperty, false);
 			}
 		}
 
-		// Token: 0x0600078B RID: 1931 RVA: 0x00027D8D File Offset: 0x00025F8D
+		// Token: 0x06000076 RID: 118 RVA: 0x0000496E File Offset: 0x00002B6E
 		private void MainContent_OnContentChanged(object sender, RoutedEventArgs e)
 		{
 			this.animation.Begin(this.GenericRoot);
@@ -58,25 +60,22 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Shell
 			this.focusDelayTimer.Start();
 		}
 
-		// Token: 0x0600078C RID: 1932 RVA: 0x00027DB4 File Offset: 0x00025FB4
+		// Token: 0x06000077 RID: 119 RVA: 0x00004995 File Offset: 0x00002B95
 		private void ShellView_OnPreviewKeyDown(object sender, KeyEventArgs e)
 		{
 			this.SettingsControl.SetCurrentValue(SettingsControl.IsOpenedProperty, false);
 		}
 
-		// Token: 0x0600078D RID: 1933 RVA: 0x00027DCE File Offset: 0x00025FCE
+		// Token: 0x06000078 RID: 120 RVA: 0x000049AF File Offset: 0x00002BAF
 		private void ShellView_OnUnloaded(object sender, RoutedEventArgs e)
 		{
 			this.focusDelayTimer.Stop();
 		}
 
-		// Token: 0x0400035C RID: 860
+		// Token: 0x0400005E RID: 94
 		private readonly Storyboard animation;
 
-		// Token: 0x0400035D RID: 861
+		// Token: 0x0400005F RID: 95
 		private readonly DispatcherTimer focusDelayTimer;
-        //private SettingsControl SettingsControl;
-
-        //public FrameworkElement GenericRoot { get; private set; }
-    }
+	}
 }

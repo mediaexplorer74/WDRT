@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using ComponentAce.Compression.Archiver;
-using ComponentAce.Compression.Exception1;
+using ComponentAce.Compression.Exception;
 
 namespace ComponentAce.Compression.GZip
 {
@@ -11,7 +11,7 @@ namespace ComponentAce.Compression.GZip
 		// Token: 0x06000226 RID: 550 RVA: 0x00016722 File Offset: 0x00015722
 		public GzipArchiveItem()
 		{
-			this.ExternalFileAttributes = (FileAttributes.ReadOnly | FileAttributes.Hidden | FileAttributes.System | FileAttributes.Directory | FileAttributes.Archive | FileAttributes.Device | FileAttributes.Normal | FileAttributes.Temporary | FileAttributes.SparseFile | FileAttributes.ReparsePoint | FileAttributes.Compressed | FileAttributes.Offline | FileAttributes.NotContentIndexed | FileAttributes.Encrypted);
+			this.ExternalFileAttributes = FileAttributes.ReadOnly | FileAttributes.Hidden | FileAttributes.System | FileAttributes.Directory | FileAttributes.Archive | FileAttributes.Device | FileAttributes.Normal | FileAttributes.Temporary | FileAttributes.SparseFile | FileAttributes.ReparsePoint | FileAttributes.Compressed | FileAttributes.Offline | FileAttributes.NotContentIndexed | FileAttributes.Encrypted;
 		}
 
 		// Token: 0x1700003D RID: 61
@@ -54,10 +54,7 @@ namespace ComponentAce.Compression.GZip
 			base.SrcFileName = fileName;
 			if (!File.Exists(fileName))
 			{
-				throw ExceptionBuilder.Exception(ErrorCode.FileNotFound, new object[]
-				{
-					fileName
-				});
+				throw ExceptionBuilder.Exception(ErrorCode.FileNotFound, new object[] { fileName });
 			}
 			base.FileName = Path.GetFileName(fileName);
 			FileInfo fileInfo = new FileInfo(fileName);

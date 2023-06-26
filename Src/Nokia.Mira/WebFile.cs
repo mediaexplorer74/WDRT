@@ -12,7 +12,8 @@ namespace Nokia.Mira
 	public sealed class WebFile : IWebFile
 	{
 		// Token: 0x060000E1 RID: 225 RVA: 0x000047A8 File Offset: 0x000029A8
-		public WebFile(Uri uri) : this(new HttpWebRequestFactory(uri))
+		public WebFile(Uri uri)
+			: this(new HttpWebRequestFactory(uri))
 		{
 		}
 

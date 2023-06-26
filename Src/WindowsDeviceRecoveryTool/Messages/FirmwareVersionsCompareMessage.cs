@@ -3,18 +3,18 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.Enums;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Messages
 {
-	// Token: 0x0200005D RID: 93
+	// Token: 0x020000A4 RID: 164
 	public class FirmwareVersionsCompareMessage
 	{
-		// Token: 0x060002DA RID: 730 RVA: 0x0000FDF8 File Offset: 0x0000DFF8
+		// Token: 0x06000558 RID: 1368 RVA: 0x0001B494 File Offset: 0x00019694
 		public FirmwareVersionsCompareMessage(SwVersionComparisonResult status)
 		{
 			this.Status = status;
 		}
 
-		// Token: 0x17000082 RID: 130
-		// (get) Token: 0x060002DB RID: 731 RVA: 0x0000FE0C File Offset: 0x0000E00C
-		// (set) Token: 0x060002DC RID: 732 RVA: 0x0000FE23 File Offset: 0x0000E023
+		// Token: 0x17000132 RID: 306
+		// (get) Token: 0x06000559 RID: 1369 RVA: 0x0001B4A6 File Offset: 0x000196A6
+		// (set) Token: 0x0600055A RID: 1370 RVA: 0x0001B4AE File Offset: 0x000196AE
 		public SwVersionComparisonResult Status { get; set; }
 	}
 }

@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 using ComponentAce.Compression.Archiver;
-using ComponentAce.Compression.Exception1;
+using ComponentAce.Compression.Exception;
 using ComponentAce.Compression.Interfaces;
 using ComponentAce.Compression.ZipForge.Encryption;
 
@@ -34,7 +34,8 @@ namespace ComponentAce.Compression.ZipForge
 		}
 
 		// Token: 0x060005E5 RID: 1509 RVA: 0x00026E89 File Offset: 0x00025E89
-		public DirItem(string name) : this()
+		public DirItem(string name)
+			: this()
 		{
 			this._itemName = name;
 		}
@@ -186,8 +187,8 @@ namespace ComponentAce.Compression.ZipForge
 			archiveItem._encrypted = this.IsGeneralPurposeFlagBitSet(0);
 			archiveItem.LastModFileDate = this.LastModificationDate;
 			archiveItem.LastModFileTime = this.LastModificationTime;
-			uint dosDateTime = (uint)((int)this.LastModificationDate << 16 | (int)this.LastModificationTime);
-			archiveItem.FileModificationDateTime = CompressionUtils.DosDateTimeToDateTime(dosDateTime);
+			uint num = (uint)(((int)this.LastModificationDate << 16) | (int)this.LastModificationTime);
+			archiveItem.FileModificationDateTime = CompressionUtils.DosDateTimeToDateTime(num);
 			NTFSExtraFieldData ntfsextraFieldData = this.ExtraFields.GetExtraFieldById(10) as NTFSExtraFieldData;
 			if (ntfsextraFieldData != null)
 			{
@@ -585,20 +586,20 @@ namespace ComponentAce.Compression.ZipForge
 				}
 				if (!ZipForgeCryptoTransformFactory.IsAESEncryption(this._encryptionAlgorithm) && this._extraFields.GetExtraFieldById(39169) == null && ZipForgeCryptoTransformFactory.IsAESEncryption(value))
 				{
-					byte strength = 0;
+					byte b = 0;
 					switch (value)
 					{
 					case EncryptionAlgorithm.Aes128:
-						strength = 1;
+						b = 1;
 						break;
 					case EncryptionAlgorithm.Aes192:
-						strength = 2;
+						b = 2;
 						break;
 					case EncryptionAlgorithm.Aes256:
-						strength = 3;
+						b = 3;
 						break;
 					}
-					this.ExtraFields.AddExtraField(new AESExtraFieldData(2, strength, this.CompressionMethod), this);
+					this.ExtraFields.AddExtraField(new AESExtraFieldData(2, b, this.CompressionMethod), this);
 					this.CompressionMethod = 99;
 				}
 				this._encryptionAlgorithm = value;
@@ -880,29 +881,28 @@ namespace ComponentAce.Compression.ZipForge
 			get
 			{
 				this.FireLocalHeaderExtraFieldsNeededEvent();
-				long result;
+				long num;
 				if (this._extraFields.Zip64ExtraField == null)
 				{
-					result = (long)((ulong)this._compSize);
+					num = (long)((ulong)this._compSize);
 				}
 				else if (this._extraFields.Zip64ExtraField.CompressedFileSize >= 0L)
 				{
-					result = this._extraFields.Zip64ExtraField.CompressedFileSize;
+					num = this._extraFields.Zip64ExtraField.CompressedFileSize;
 				}
 				else
 				{
-					result = (long)((ulong)this._compSize);
+					num = (long)((ulong)this._compSize);
 				}
-				if (this._dataDescriptor != null && this._dataDescriptor.CompressedSize > 0L 
-					&& this._dataDescriptor.CompressedSize != (long)((int)-1))
+				if (this._dataDescriptor != null && this._dataDescriptor.CompressedSize > 0L && this._dataDescriptor.CompressedSize != (long)((ulong)(-1)))
 				{
-					result = this._dataDescriptor.CompressedSize;
+					num = this._dataDescriptor.CompressedSize;
 				}
-				return result;
+				return num;
 			}
 			set
 			{
-				if (value < (long)((int)-1) && this._extraFields.Zip64ExtraField == null)
+				if (value < (long)((ulong)(-1)) && this._extraFields.Zip64ExtraField == null)
 				{
 					this._compSize = (uint)value;
 					if (this._dataDescriptor != null)
@@ -936,29 +936,28 @@ namespace ComponentAce.Compression.ZipForge
 			get
 			{
 				this.FireLocalHeaderExtraFieldsNeededEvent();
-				long result;
+				long num;
 				if (this._extraFields.Zip64ExtraField == null)
 				{
-					result = (long)((ulong)this._uncompSize);
+					num = (long)((ulong)this._uncompSize);
 				}
 				else if (this._extraFields.Zip64ExtraField.UncompressedFileSize >= 0L)
 				{
-					result = this._extraFields.Zip64ExtraField.UncompressedFileSize;
+					num = this._extraFields.Zip64ExtraField.UncompressedFileSize;
 				}
 				else
 				{
-					result = (long)((ulong)this._uncompSize);
+					num = (long)((ulong)this._uncompSize);
 				}
-				if (this._dataDescriptor != null && this._dataDescriptor.UncompressedSize > 0L 
-					&& this._dataDescriptor.UncompressedSize != (long)((int)-1))
+				if (this._dataDescriptor != null && this._dataDescriptor.UncompressedSize > 0L && this._dataDescriptor.UncompressedSize != (long)((ulong)(-1)))
 				{
-					result = this._dataDescriptor.UncompressedSize;
+					num = this._dataDescriptor.UncompressedSize;
 				}
-				return result;
+				return num;
 			}
 			set
 			{
-				if (value < (long)((int)-1) && this._extraFields.Zip64ExtraField == null)
+				if (value < (long)((ulong)(-1)) && this._extraFields.Zip64ExtraField == null)
 				{
 					this._uncompSize = (uint)value;
 					if (this._dataDescriptor != null)
@@ -1181,7 +1180,7 @@ namespace ComponentAce.Compression.ZipForge
 			}
 			set
 			{
-				if (value < (long)((int)-1) && this._extraFields.Zip64ExtraField == null)
+				if (value < (long)((ulong)(-1)) && this._extraFields.Zip64ExtraField == null)
 				{
 					this._relOffsetLh = (uint)value;
 					return;

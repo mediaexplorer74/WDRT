@@ -3,6 +3,6 @@ using System.Runtime.CompilerServices;
 
 // Token: 0x0200000C RID: 12
 [NativeCppClass]
-public struct IUnknown
+internal struct IUnknown
 {
 }

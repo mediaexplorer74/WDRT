@@ -12,16 +12,13 @@ namespace Nokia.Lucid.DeviceInformation
 		// Token: 0x060000C1 RID: 193 RVA: 0x00007690 File Offset: 0x00005890
 		public object ReadFrom(byte[] buffer, int index, int count, PropertyType propertyType)
 		{
-			object result;
-			if (!this.TryReadFrom(buffer, index, count, propertyType, out result))
+			object obj;
+			if (!this.TryReadFrom(buffer, index, count, propertyType, out obj))
 			{
-				string message = string.Format(CultureInfo.CurrentCulture, Resources.NotSupportedException_MessageFormat_PropertyTypeNotSupported, new object[]
-				{
-					propertyType
-				});
-				throw new NotSupportedException(message);
+				string text = string.Format(CultureInfo.CurrentCulture, Resources.NotSupportedException_MessageFormat_PropertyTypeNotSupported, new object[] { propertyType });
+				throw new NotSupportedException(text);
 			}
-			return result;
+			return obj;
 		}
 
 		// Token: 0x060000C2 RID: 194 RVA: 0x000076D8 File Offset: 0x000058D8
@@ -106,15 +103,15 @@ namespace Nokia.Lucid.DeviceInformation
 		private static string[] ReadUnicodeStringArray(byte[] buffer, int index, int count)
 		{
 			string @string = Encoding.Unicode.GetString(buffer, index, count);
-			char[] separator = new char[1];
-			return @string.Split(separator, StringSplitOptions.RemoveEmptyEntries);
+			char[] array = new char[1];
+			return @string.Split(array, StringSplitOptions.RemoveEmptyEntries);
 		}
 
 		// Token: 0x060000C5 RID: 197 RVA: 0x00007850 File Offset: 0x00005A50
 		private static DateTime ReadFileTime(byte[] buffer, int index)
 		{
-			long fileTime = BitConverter.ToInt64(buffer, index);
-			return DateTime.FromFileTimeUtc(fileTime);
+			long num = BitConverter.ToInt64(buffer, index);
+			return DateTime.FromFileTimeUtc(num);
 		}
 
 		// Token: 0x060000C6 RID: 198 RVA: 0x0000786C File Offset: 0x00005A6C
@@ -140,8 +137,8 @@ namespace Nokia.Lucid.DeviceInformation
 		{
 			string @string = Encoding.Unicode.GetString(buffer, index, count);
 			string text = @string;
-			char[] trimChars = new char[1];
-			return text.TrimEnd(trimChars);
+			char[] array = new char[1];
+			return text.TrimEnd(array);
 		}
 
 		// Token: 0x060000C9 RID: 201 RVA: 0x000078D9 File Offset: 0x00005AD9

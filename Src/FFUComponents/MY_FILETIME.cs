@@ -12,8 +12,8 @@ namespace FFUComponents
 		{
 			ulong num = (ulong)this.dwHighDateTime << 32;
 			ulong num2 = (ulong)this.dwLowDateTime;
-			ulong fileTime = num | num2;
-			return DateTime.FromFileTime((long)fileTime);
+			ulong num3 = num | num2;
+			return DateTime.FromFileTime((long)num3);
 		}
 
 		// Token: 0x040000F1 RID: 241

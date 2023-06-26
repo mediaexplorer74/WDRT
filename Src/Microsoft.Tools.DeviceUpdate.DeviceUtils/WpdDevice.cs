@@ -313,13 +313,7 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 		{
 			get
 			{
-				return string.Format("{0}.{1}.{2}.{3}", new object[]
-				{
-					this.Branch,
-					this.CoreSysBuildNumber,
-					this.WindowsPhoneBuildNumber,
-					this.BuildTimeStamp
-				});
+				return string.Format("{0}.{1}.{2}.{3}", new object[] { this.Branch, this.CoreSysBuildNumber, this.WindowsPhoneBuildNumber, this.BuildTimeStamp });
 			}
 		}
 
@@ -432,16 +426,16 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 			get
 			{
 				this.LoadDuMtpService();
-				string result;
+				string text;
 				try
 				{
-					result = "0X" + WpdUtils.GetServicePropertyUnsignedIntegerValue(this.duMtpDeviceService, WpdDevice.WPD_MTPDUDEVICESERVICE_DUDEVICEUPDATERESULT).ToString("X");
+					text = "0X" + WpdUtils.GetServicePropertyUnsignedIntegerValue(this.duMtpDeviceService, WpdDevice.WPD_MTPDUDEVICESERVICE_DUDEVICEUPDATERESULT).ToString("X");
 				}
 				catch
 				{
-					result = "0x1";
+					text = "0x1";
 				}
-				return result;
+				return text;
 			}
 		}
 
@@ -452,16 +446,16 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 			get
 			{
 				this.LoadDuMtpService();
-				string result;
+				string text;
 				try
 				{
-					result = "0X" + WpdUtils.GetServicePropertyUnsignedIntegerValue(this.duMtpDeviceService, WpdDevice.WPD_MTPDUDEVICESERVICE_DUSHELLSTARTREADY).ToString("X");
+					text = "0X" + WpdUtils.GetServicePropertyUnsignedIntegerValue(this.duMtpDeviceService, WpdDevice.WPD_MTPDUDEVICESERVICE_DUSHELLSTARTREADY).ToString("X");
 				}
 				catch
 				{
-					result = "0X0";
+					text = "0X0";
 				}
-				return result;
+				return text;
 			}
 		}
 
@@ -483,16 +477,16 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 			get
 			{
 				this.LoadDuMtpService();
-				string result;
+				string text;
 				try
 				{
-					result = "0X" + WpdUtils.GetServicePropertyUnsignedIntegerValue(this.duMtpDeviceService, WpdDevice.WPD_MTPDUDEVICESERVICE_DUSHELLAPIREADY).ToString("X");
+					text = "0X" + WpdUtils.GetServicePropertyUnsignedIntegerValue(this.duMtpDeviceService, WpdDevice.WPD_MTPDUDEVICESERVICE_DUSHELLAPIREADY).ToString("X");
 				}
 				catch
 				{
-					result = "0X0";
+					text = "0X0";
 				}
-				return result;
+				return text;
 			}
 		}
 
@@ -574,9 +568,9 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 		{
 			uint num = 0U;
 			uint num2 = 0U;
-			PortableDeviceApiLib.IPortableDevicePropVariantCollection mtpParameters = (PortableDeviceApiLib.IPortableDevicePropVariantCollection)((PortableDevicePropVariantCollection)Activator.CreateInstance(Type.GetTypeFromCLSID(new Guid("08A99E2F-6D6D-4B80-AF5A-BAF2BCBE4CB9"))));
-			WpdUtils.AddUnsignedIntegerValue(mtpParameters, target);
-			WpdUtils.ExecuteMtpOpcode(portableDevice, 37893U, mtpParameters, out num, out num2);
+			PortableDeviceApiLib.IPortableDevicePropVariantCollection portableDevicePropVariantCollection = (PortableDeviceApiLib.IPortableDevicePropVariantCollection)((PortableDevicePropVariantCollection)Activator.CreateInstance(Type.GetTypeFromCLSID(new Guid("08A99E2F-6D6D-4B80-AF5A-BAF2BCBE4CB9"))));
+			WpdUtils.AddUnsignedIntegerValue(portableDevicePropVariantCollection, target);
+			WpdUtils.ExecuteMtpOpcode(portableDevice, 37893U, portableDevicePropVariantCollection, out num, out num2);
 			if (num != 0U)
 			{
 				if (2147942431U != num)
@@ -595,9 +589,9 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 		{
 			uint num = 0U;
 			uint num2 = 0U;
-			PortableDeviceApiLib.IPortableDevicePropVariantCollection mtpParameters = (PortableDeviceApiLib.IPortableDevicePropVariantCollection)((PortableDevicePropVariantCollection)Activator.CreateInstance(Type.GetTypeFromCLSID(new Guid("08A99E2F-6D6D-4B80-AF5A-BAF2BCBE4CB9"))));
-			WpdUtils.AddUnsignedIntegerValue(mtpParameters, throttle);
-			WpdUtils.ExecuteMtpOpcode(this.portableDevice, 37908U, mtpParameters, out num, out num2);
+			PortableDeviceApiLib.IPortableDevicePropVariantCollection portableDevicePropVariantCollection = (PortableDeviceApiLib.IPortableDevicePropVariantCollection)((PortableDevicePropVariantCollection)Activator.CreateInstance(Type.GetTypeFromCLSID(new Guid("08A99E2F-6D6D-4B80-AF5A-BAF2BCBE4CB9"))));
+			WpdUtils.AddUnsignedIntegerValue(portableDevicePropVariantCollection, throttle);
+			WpdUtils.ExecuteMtpOpcode(this.portableDevice, 37908U, portableDevicePropVariantCollection, out num, out num2);
 			if (num != 0U)
 			{
 				if (2147942431U != num)
@@ -658,9 +652,9 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 			uint num = 0U;
 			uint num2 = 0U;
 			PortableDeviceApiLib.IPortableDevicePropVariantCollection portableDevicePropVariantCollection = null;
-			PortableDeviceApiLib.IPortableDevicePropVariantCollection mtpParameters = (PortableDeviceApiLib.IPortableDevicePropVariantCollection)((PortableDevicePropVariantCollection)Activator.CreateInstance(Type.GetTypeFromCLSID(new Guid("08A99E2F-6D6D-4B80-AF5A-BAF2BCBE4CB9"))));
-			WpdUtils.AddUnsignedIntegerValue(mtpParameters, (uint)stream.Length);
-			WpdUtils.ExecuteMtpOpcodeAndWriteData(this.portableDevice, mtpParameters, 37907U, stream, (uint)stream.Length, out num, out num2, out portableDevicePropVariantCollection);
+			PortableDeviceApiLib.IPortableDevicePropVariantCollection portableDevicePropVariantCollection2 = (PortableDeviceApiLib.IPortableDevicePropVariantCollection)((PortableDevicePropVariantCollection)Activator.CreateInstance(Type.GetTypeFromCLSID(new Guid("08A99E2F-6D6D-4B80-AF5A-BAF2BCBE4CB9"))));
+			WpdUtils.AddUnsignedIntegerValue(portableDevicePropVariantCollection2, (uint)stream.Length);
+			WpdUtils.ExecuteMtpOpcodeAndWriteData(this.portableDevice, portableDevicePropVariantCollection2, 37907U, stream, (uint)stream.Length, out num, out num2, out portableDevicePropVariantCollection);
 			if (num != 0U)
 			{
 				throw new DeviceException(string.Format("SendIuPackage, hresult: {0}", num));
@@ -679,9 +673,9 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 			uint num2 = 0U;
 			using (FileStream fileStream = new FileStream(path, FileMode.Create))
 			{
-				PortableDeviceApiLib.IPortableDevicePropVariantCollection mtpParameters = (PortableDeviceApiLib.IPortableDevicePropVariantCollection)((PortableDevicePropVariantCollection)Activator.CreateInstance(Type.GetTypeFromCLSID(new Guid("08A99E2F-6D6D-4B80-AF5A-BAF2BCBE4CB9"))));
-				WpdUtils.AddUnsignedIntegerValue(mtpParameters, 1U);
-				WpdUtils.ExecuteMtpOpcodeAndReadData(this.portableDevice, mtpParameters, 37904U, fileStream, out num, out num2);
+				PortableDeviceApiLib.IPortableDevicePropVariantCollection portableDevicePropVariantCollection = (PortableDeviceApiLib.IPortableDevicePropVariantCollection)((PortableDevicePropVariantCollection)Activator.CreateInstance(Type.GetTypeFromCLSID(new Guid("08A99E2F-6D6D-4B80-AF5A-BAF2BCBE4CB9"))));
+				WpdUtils.AddUnsignedIntegerValue(portableDevicePropVariantCollection, 1U);
+				WpdUtils.ExecuteMtpOpcodeAndReadData(this.portableDevice, portableDevicePropVariantCollection, 37904U, fileStream, out num, out num2);
 			}
 			if (num != 0U)
 			{
@@ -700,9 +694,9 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 			uint num2 = 0U;
 			using (FileStream fileStream = new FileStream(path, FileMode.Create))
 			{
-				PortableDeviceApiLib.IPortableDevicePropVariantCollection mtpParameters = (PortableDeviceApiLib.IPortableDevicePropVariantCollection)((PortableDevicePropVariantCollection)Activator.CreateInstance(Type.GetTypeFromCLSID(new Guid("08A99E2F-6D6D-4B80-AF5A-BAF2BCBE4CB9"))));
-				WpdUtils.AddUnsignedIntegerValue(mtpParameters, 1U);
-				WpdUtils.ExecuteMtpOpcodeAndReadData(this.portableDevice, mtpParameters, 37909U, fileStream, out num, out num2);
+				PortableDeviceApiLib.IPortableDevicePropVariantCollection portableDevicePropVariantCollection = (PortableDeviceApiLib.IPortableDevicePropVariantCollection)((PortableDevicePropVariantCollection)Activator.CreateInstance(Type.GetTypeFromCLSID(new Guid("08A99E2F-6D6D-4B80-AF5A-BAF2BCBE4CB9"))));
+				WpdUtils.AddUnsignedIntegerValue(portableDevicePropVariantCollection, 1U);
+				WpdUtils.ExecuteMtpOpcodeAndReadData(this.portableDevice, portableDevicePropVariantCollection, 37909U, fileStream, out num, out num2);
 			}
 			if (num != 0U)
 			{
@@ -720,7 +714,7 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 			this.OnNormalMessageEvent("Retrieving list of installed packages...");
 			string text = null;
 			string text2 = null;
-			InstalledPackageInfo[] result;
+			InstalledPackageInfo[] array2;
 			try
 			{
 				try
@@ -751,16 +745,13 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 					string text3;
 					while ((text3 = streamReader.ReadLine()) != null)
 					{
-						string[] array = text3.Split(new char[]
-						{
-							','
-						});
+						string[] array = text3.Split(new char[] { ',' });
 						if (3 != array.Length)
 						{
 							throw new DeviceException(string.Format("{0} file in DuDiagnostics has invalid format", "InstalledPackages.csv"));
 						}
-						InstalledPackageInfo item = new InstalledPackageInfo(array[0].ToUpper(), array[1].ToUpper(), array[2].ToUpper());
-						list.Add(item);
+						InstalledPackageInfo installedPackageInfo = new InstalledPackageInfo(array[0].ToUpper(), array[1].ToUpper(), array[2].ToUpper());
+						list.Add(installedPackageInfo);
 					}
 				}
 				WpdDevice.Delete(text2);
@@ -769,11 +760,11 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 				{
 					throw new DeviceException("Device package count is 0");
 				}
-				result = list.ToArray();
+				array2 = list.ToArray();
 			}
-			catch (Exception arg)
+			catch (Exception ex)
 			{
-				throw new DeviceException(string.Format("Error retrieving list of installed packages: {0}", arg));
+				throw new DeviceException(string.Format("Error retrieving list of installed packages: {0}", ex));
 			}
 			finally
 			{
@@ -786,7 +777,7 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 					WpdDevice.Delete(text2);
 				}
 			}
-			return result;
+			return array2;
 		}
 
 		// Token: 0x06000133 RID: 307 RVA: 0x00010EC0 File Offset: 0x0000F0C0

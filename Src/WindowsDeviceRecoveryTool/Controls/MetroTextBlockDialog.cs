@@ -8,10 +8,10 @@ using Microsoft.WindowsDeviceRecoveryTool.Localization;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 {
-	// Token: 0x0200002A RID: 42
+	// Token: 0x020000CC RID: 204
 	public class MetroTextBlockDialog : MetroDialog
 	{
-		// Token: 0x06000154 RID: 340 RVA: 0x0000A2C8 File Offset: 0x000084C8
+		// Token: 0x06000648 RID: 1608 RVA: 0x0001DEA4 File Offset: 0x0001C0A4
 		public MetroTextBlockDialog()
 		{
 			base.YesButtonFocused = true;
@@ -25,16 +25,16 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 				((TextBoxBase)s).SelectAll();
 			};
 			AutomationProperties.SetName(this.textBox, LocalizationManager.GetTranslation("FolderName"));
-			base.Loaded += delegate(object param0, RoutedEventArgs param1)
+			base.Loaded += delegate
 			{
 				this.textBox.Focus();
 			};
 			this.GridContent.Children.Add(this.textBox);
 		}
 
-		// Token: 0x17000042 RID: 66
-		// (get) Token: 0x06000155 RID: 341 RVA: 0x0000A37C File Offset: 0x0000857C
-		// (set) Token: 0x06000156 RID: 342 RVA: 0x0000A399 File Offset: 0x00008599
+		// Token: 0x1700016B RID: 363
+		// (get) Token: 0x06000649 RID: 1609 RVA: 0x0001DF4C File Offset: 0x0001C14C
+		// (set) Token: 0x0600064A RID: 1610 RVA: 0x0001DF69 File Offset: 0x0001C169
 		public string InputText
 		{
 			get
@@ -47,9 +47,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x17000043 RID: 67
-		// (get) Token: 0x06000157 RID: 343 RVA: 0x0000A3AC File Offset: 0x000085AC
-		// (set) Token: 0x06000158 RID: 344 RVA: 0x0000A3C4 File Offset: 0x000085C4
+		// Token: 0x1700016C RID: 364
+		// (get) Token: 0x0600064B RID: 1611 RVA: 0x0001DF7C File Offset: 0x0001C17C
+		// (set) Token: 0x0600064C RID: 1612 RVA: 0x0001DF94 File Offset: 0x0001C194
 		public new string NoButtonText
 		{
 			get
@@ -62,9 +62,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x17000044 RID: 68
-		// (get) Token: 0x06000159 RID: 345 RVA: 0x0000A3D0 File Offset: 0x000085D0
-		// (set) Token: 0x0600015A RID: 346 RVA: 0x0000A3E8 File Offset: 0x000085E8
+		// Token: 0x1700016D RID: 365
+		// (get) Token: 0x0600064D RID: 1613 RVA: 0x0001DFA0 File Offset: 0x0001C1A0
+		// (set) Token: 0x0600064E RID: 1614 RVA: 0x0001DFB8 File Offset: 0x0001C1B8
 		public new string YesButtonText
 		{
 			get
@@ -77,7 +77,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x040000A5 RID: 165
+		// Token: 0x040002DB RID: 731
 		private readonly TextBox textBox;
 	}
 }

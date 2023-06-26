@@ -8,17 +8,17 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AlcatelAdaptation
 	// Token: 0x02000004 RID: 4
 	public static class BitmapExtensions
 	{
-		// Token: 0x06000006 RID: 6 RVA: 0x0000238C File Offset: 0x0000058C
+		// Token: 0x06000006 RID: 6 RVA: 0x0000234C File Offset: 0x0000054C
 		public static byte[] ToBytes(this Bitmap bitmap)
 		{
-			byte[] result;
+			byte[] array;
 			using (MemoryStream memoryStream = new MemoryStream())
 			{
 				bitmap.Save(memoryStream, ImageFormat.Png);
 				memoryStream.Seek(0L, SeekOrigin.Begin);
-				result = memoryStream.ToArray();
+				array = memoryStream.ToArray();
 			}
-			return result;
+			return array;
 		}
 	}
 }

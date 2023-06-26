@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
@@ -11,13 +12,14 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Localization
 	public class LocalizationManager
 	{
 		// Token: 0x14000002 RID: 2
-		// (add) Token: 0x06000011 RID: 17 RVA: 0x000024AC File Offset: 0x000006AC
-		// (remove) Token: 0x06000012 RID: 18 RVA: 0x000024E8 File Offset: 0x000006E8
+		// (add) Token: 0x06000010 RID: 16 RVA: 0x00002478 File Offset: 0x00000678
+		// (remove) Token: 0x06000011 RID: 17 RVA: 0x000024B0 File Offset: 0x000006B0
+		[field: DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event EventHandler LanguageChanged;
 
 		// Token: 0x17000002 RID: 2
-		// (get) Token: 0x06000013 RID: 19 RVA: 0x00002524 File Offset: 0x00000724
-		// (set) Token: 0x06000014 RID: 20 RVA: 0x0000254C File Offset: 0x0000074C
+		// (get) Token: 0x06000012 RID: 18 RVA: 0x000024E8 File Offset: 0x000006E8
+		// (set) Token: 0x06000013 RID: 19 RVA: 0x00002510 File Offset: 0x00000710
 		public CultureInfo CurrentLanguage
 		{
 			get
@@ -26,7 +28,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Localization
 			}
 			set
 			{
-				if (value != Application.Current.Dispatcher.Thread.CurrentUICulture)
+				bool flag = value != Application.Current.Dispatcher.Thread.CurrentUICulture;
+				if (flag)
 				{
 					Application.Current.Dispatcher.Thread.CurrentUICulture = value;
 					this.OnLanguageChanged();
@@ -35,20 +38,21 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Localization
 		}
 
 		// Token: 0x17000003 RID: 3
-		// (get) Token: 0x06000015 RID: 21 RVA: 0x00002594 File Offset: 0x00000794
-		// (set) Token: 0x06000016 RID: 22 RVA: 0x000025AB File Offset: 0x000007AB
+		// (get) Token: 0x06000014 RID: 20 RVA: 0x0000255B File Offset: 0x0000075B
+		// (set) Token: 0x06000015 RID: 21 RVA: 0x00002563 File Offset: 0x00000763
 		private ResourceLocalizationProvider TranslationProvider { get; set; }
 
-		// Token: 0x06000017 RID: 23 RVA: 0x000025B4 File Offset: 0x000007B4
+		// Token: 0x06000016 RID: 22 RVA: 0x0000256C File Offset: 0x0000076C
 		public static string GetTranslation(string key)
 		{
 			return LocalizationManager.Instance().Translate(key).ToString();
 		}
 
-		// Token: 0x06000018 RID: 24 RVA: 0x000025D8 File Offset: 0x000007D8
+		// Token: 0x06000017 RID: 23 RVA: 0x00002590 File Offset: 0x00000790
 		public static LocalizationManager Instance()
 		{
-			if (LocalizationManager.localizationManager == null)
+			bool flag = LocalizationManager.localizationManager == null;
+			if (flag)
 			{
 				LocalizationManager.localizationManager = new LocalizationManager
 				{
@@ -58,37 +62,38 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Localization
 			return LocalizationManager.localizationManager;
 		}
 
-		// Token: 0x06000019 RID: 25 RVA: 0x00002624 File Offset: 0x00000824
+		// Token: 0x06000018 RID: 24 RVA: 0x000025D8 File Offset: 0x000007D8
 		public IEnumerable<CultureInfo> Languages()
 		{
-			IEnumerable<CultureInfo> result;
-			if (this.TranslationProvider != null)
+			bool flag = this.TranslationProvider != null;
+			IEnumerable<CultureInfo> enumerable;
+			if (flag)
 			{
-				result = this.TranslationProvider.Languages();
+				enumerable = this.TranslationProvider.Languages();
 			}
 			else
 			{
-				result = Enumerable.Empty<CultureInfo>();
+				enumerable = Enumerable.Empty<CultureInfo>();
 			}
-			return result;
+			return enumerable;
 		}
 
-		// Token: 0x0600001A RID: 26 RVA: 0x00002658 File Offset: 0x00000858
+		// Token: 0x06000019 RID: 25 RVA: 0x0000260C File Offset: 0x0000080C
 		public object Translate(string key)
 		{
-			if (this.TranslationProvider != null)
+			bool flag = this.TranslationProvider != null;
+			if (flag)
 			{
 				object obj = this.TranslationProvider.Translate(key, this.CurrentLanguage);
-				if (obj != null)
+				bool flag2 = obj != null;
+				if (flag2)
 				{
 					return obj.ToString();
 				}
-				string arg = key.Split(new char[]
-				{
-					'_'
-				}).FirstOrDefault<string>();
-				obj = this.TranslationProvider.Translate(string.Format("{0}_UnknownError", arg), this.CurrentLanguage);
-				if (obj != null)
+				string text = key.Split(new char[] { '_' }).FirstOrDefault<string>();
+				obj = this.TranslationProvider.Translate(string.Format("{0}_UnknownError", text), this.CurrentLanguage);
+				bool flag3 = obj != null;
+				if (flag3)
 				{
 					return obj.ToString();
 				}
@@ -96,13 +101,15 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Localization
 			return "KEY: " + key + " NOT FOUND";
 		}
 
-		// Token: 0x0600001B RID: 27 RVA: 0x000026FC File Offset: 0x000008FC
+		// Token: 0x0600001A RID: 26 RVA: 0x000026B0 File Offset: 0x000008B0
 		public object EnglishResource(string key)
 		{
-			if (this.TranslationProvider != null)
+			bool flag = this.TranslationProvider != null;
+			if (flag)
 			{
 				object obj = this.TranslationProvider.Translate(key, new CultureInfo("en-US"));
-				if (obj != null)
+				bool flag2 = obj != null;
+				if (flag2)
 				{
 					return obj.ToString();
 				}
@@ -110,17 +117,18 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Localization
 			return "KEY: " + key + " NOT FOUND";
 		}
 
-		// Token: 0x0600001C RID: 28 RVA: 0x00002758 File Offset: 0x00000958
+		// Token: 0x0600001B RID: 27 RVA: 0x0000270C File Offset: 0x0000090C
 		private void OnLanguageChanged()
 		{
 			EventHandler languageChanged = this.LanguageChanged;
-			if (languageChanged != null)
+			bool flag = languageChanged != null;
+			if (flag)
 			{
 				languageChanged(this, EventArgs.Empty);
 			}
 		}
 
-		// Token: 0x04000009 RID: 9
+		// Token: 0x04000008 RID: 8
 		private static LocalizationManager localizationManager;
 	}
 }

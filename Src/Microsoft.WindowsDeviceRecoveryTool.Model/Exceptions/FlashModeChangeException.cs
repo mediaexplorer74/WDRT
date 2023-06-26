@@ -3,27 +3,30 @@ using System.Runtime.Serialization;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model.Exceptions
 {
-	// Token: 0x02000016 RID: 22
+	// Token: 0x02000027 RID: 39
 	[Serializable]
 	public class FlashModeChangeException : Exception
 	{
-		// Token: 0x060000A7 RID: 167 RVA: 0x000032B9 File Offset: 0x000014B9
+		// Token: 0x060001FA RID: 506 RVA: 0x00006346 File Offset: 0x00004546
 		public FlashModeChangeException()
 		{
 		}
 
-		// Token: 0x060000A8 RID: 168 RVA: 0x000032C4 File Offset: 0x000014C4
-		public FlashModeChangeException(string message) : base(message)
+		// Token: 0x060001FB RID: 507 RVA: 0x00006350 File Offset: 0x00004550
+		public FlashModeChangeException(string message)
+			: base(message)
 		{
 		}
 
-		// Token: 0x060000A9 RID: 169 RVA: 0x000032D0 File Offset: 0x000014D0
-		public FlashModeChangeException(string message, Exception innerException) : base(message, innerException)
+		// Token: 0x060001FC RID: 508 RVA: 0x0000635B File Offset: 0x0000455B
+		public FlashModeChangeException(string message, Exception innerException)
+			: base(message, innerException)
 		{
 		}
 
-		// Token: 0x060000AA RID: 170 RVA: 0x000032DD File Offset: 0x000014DD
-		protected FlashModeChangeException(SerializationInfo info, StreamingContext context) : base(info, context)
+		// Token: 0x060001FD RID: 509 RVA: 0x00006367 File Offset: 0x00004567
+		protected FlashModeChangeException(SerializationInfo info, StreamingContext context)
+			: base(info, context)
 		{
 		}
 	}

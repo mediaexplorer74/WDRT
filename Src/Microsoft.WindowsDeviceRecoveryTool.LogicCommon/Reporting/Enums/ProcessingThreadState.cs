@@ -2,14 +2,14 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Reporting.Enums
 {
-	// Token: 0x02000022 RID: 34
+	// Token: 0x02000020 RID: 32
 	public enum ProcessingThreadState
 	{
-		// Token: 0x04000091 RID: 145
+		// Token: 0x040000FB RID: 251
 		None,
-		// Token: 0x04000092 RID: 146
+		// Token: 0x040000FC RID: 252
 		StartSessionRequest,
-		// Token: 0x04000093 RID: 147
+		// Token: 0x040000FD RID: 253
 		SessionInProgress
 	}
 }

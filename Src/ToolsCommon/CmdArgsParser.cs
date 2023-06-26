@@ -12,16 +12,16 @@ using System.Xml.Linq;
 
 namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 {
-	// Token: 0x02000007 RID: 7
+	// Token: 0x0200000C RID: 12
 	public class CmdArgsParser
 	{
-		// Token: 0x0600004A RID: 74 RVA: 0x000036EE File Offset: 0x000018EE
+		// Token: 0x06000060 RID: 96 RVA: 0x00003D66 File Offset: 0x00001F66
 		public static T ParseArgs<T>(string[] args, params object[] configuration) where T : class, new()
 		{
 			return CmdArgsParser.ParseArgs<T>(args.ToList<string>(), configuration);
 		}
 
-		// Token: 0x0600004B RID: 75 RVA: 0x000036FC File Offset: 0x000018FC
+		// Token: 0x06000061 RID: 97 RVA: 0x00003DA0 File Offset: 0x00001FA0
 		public static T ParseArgs<T>(List<string> args, params object[] configuration) where T : class, new()
 		{
 			List<CmdModes> list = new List<CmdModes>();
@@ -36,15 +36,15 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			List<string> list2 = new List<string>();
 			foreach (string text in args)
 			{
-				if (text.StartsWith("@", StringComparison.OrdinalIgnoreCase))
+				if (text.StartsWith("@"))
 				{
 					if (!File.Exists(text.Substring(1)))
 					{
 						throw new FileNotFoundException(string.Format("Response file '{0}' could not be found.", text.Substring(1)));
 					}
-					foreach (string item in File.ReadAllLines(text.Substring(1)))
+					foreach (string text2 in File.ReadAllLines(text.Substring(1)))
 					{
-						list2.Add(item);
+						list2.Add(text2);
 					}
 				}
 				else
@@ -62,71 +62,106 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 			while (!list.Contains(CmdModes.DisableCFG) && dictionary.ContainsKey("cfg"))
 			{
-				string configLocation = dictionary["cfg"];
+				string text3 = dictionary["cfg"];
 				dictionary.Remove("cfg");
-				dictionary = CmdArgsParser.ParseConfig(configLocation, dictionary, list);
+				dictionary = CmdArgsParser.ParseConfig(text3, dictionary, list);
 			}
 			CmdArgsParser.MissingArguments<T>(dictionary, list);
 			dictionary = CmdArgsParser.ExtraArguments<T>(dictionary, list);
-			T t = Activator.CreateInstance<T>();
+			T t = new T();
 			using (Dictionary<string, string>.Enumerator enumerator2 = dictionary.GetEnumerator())
 			{
 				while (enumerator2.MoveNext())
 				{
 					KeyValuePair<string, string> commandEntry = enumerator2.Current;
-					PropertyInfo property = typeFromHandle.GetProperty(commandEntry.Key);
-					Type type = Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType;
-					if (type.IsGenericType)
+					Type type = typeFromHandle;
+					KeyValuePair<string, string> commandEntry14 = commandEntry;
+					PropertyInfo property = type.GetProperty(commandEntry14.Key);
+					Type type2 = Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType;
+					if (type2.IsGenericType)
 					{
-						if (type.GetGenericTypeDefinition() == typeof(List<>))
+						if (type2.GetGenericTypeDefinition() == typeof(List<>))
 						{
-							IList value = CmdArgsParser.ReflectionListFactory(type.GetGenericArguments()[0], commandEntry.Value);
-							property.SetValue(t, value, null);
+							Type type3 = type2.GetGenericArguments()[0];
+							Type type4 = type3;
+							KeyValuePair<string, string> commandEntry2 = commandEntry;
+							IList list3 = CmdArgsParser.ReflectionListFactory(type4, commandEntry2.Value);
+							property.SetValue(t, list3, null);
 						}
-						else if (type.GetGenericTypeDefinition() == typeof(Dictionary<, >))
+						else if (type2.GetGenericTypeDefinition() == typeof(Dictionary<, >))
 						{
-							Type keyType = type.GetGenericArguments()[0];
-							Type valueType = type.GetGenericArguments()[1];
-							IDictionary value2 = CmdArgsParser.ReflectionDictionaryFactory(keyType, valueType, commandEntry.Value);
-							property.SetValue(t, value2, null);
+							Type type5 = type2.GetGenericArguments()[0];
+							Type type6 = type2.GetGenericArguments()[1];
+							Type type7 = type5;
+							Type type8 = type6;
+							KeyValuePair<string, string> commandEntry3 = commandEntry;
+							IDictionary dictionary2 = CmdArgsParser.ReflectionDictionaryFactory(type7, type8, commandEntry3.Value);
+							property.SetValue(t, dictionary2, null);
 						}
 						else
 						{
-							if (!(type.GetGenericTypeDefinition() == typeof(HashSet<>)))
+							if (!(type2.GetGenericTypeDefinition() == typeof(HashSet<>)))
 							{
-								throw new NotImplementedException(string.Format("CmdArgsParser does not support generic type '{0}'.", type.Name));
+								throw new NotImplementedException(string.Format("CmdArgsParser does not support generic type '{0}'.", type2.Name));
 							}
-							IEnumerable value3 = CmdArgsParser.ReflectionSetFactory(type.GetGenericArguments()[0], commandEntry.Value, commandEntry.Key);
-							property.SetValue(t, value3, null);
+							Type type9 = type2.GetGenericArguments()[0];
+							Type type10 = type9;
+							KeyValuePair<string, string> commandEntry4 = commandEntry;
+							string value = commandEntry4.Value;
+							KeyValuePair<string, string> commandEntry5 = commandEntry;
+							IEnumerable enumerable = CmdArgsParser.ReflectionSetFactory(type10, value, commandEntry5.Key);
+							property.SetValue(t, enumerable, null);
 						}
 					}
-					else if (type.IsEnum)
+					else if (type2.IsEnum)
 					{
-						if (!Enum.GetNames(type).Any((string x) => x.Equals(commandEntry.Value, StringComparison.OrdinalIgnoreCase)))
+						if (!Enum.GetNames(type2).Any(delegate(string x)
 						{
-							string text2 = Enum.GetNames(type)[0];
-							foreach (string arg in Enum.GetNames(type).Skip(1))
+							KeyValuePair<string, string> commandEntry13 = commandEntry;
+							return x.Equals(commandEntry13.Value, StringComparison.OrdinalIgnoreCase);
+						}))
+						{
+							string text4 = Enum.GetNames(type2)[0];
+							foreach (string text5 in Enum.GetNames(type2).Skip(1))
 							{
-								text2 += string.Format(" {0}", arg);
+								text4 += string.Format(" {0}", text5);
 							}
-							throw new ArgumentException(string.Format("The value for \"{0}\" is incorrect.\nValue: {1}\nSupported Values: {2}", commandEntry.Key, commandEntry.Value, text2));
+							string text6 = "The value for \"{0}\" is incorrect.\nValue: {1}\nSupported Values: {2}";
+							KeyValuePair<string, string> commandEntry6 = commandEntry;
+							object key = commandEntry6.Key;
+							KeyValuePair<string, string> commandEntry7 = commandEntry;
+							throw new ArgumentException(string.Format(text6, key, commandEntry7.Value, text4));
 						}
-						property.SetValue(t, Convert.ChangeType(Enum.Parse(type, commandEntry.Value, true), type), null);
+						PropertyInfo propertyInfo = property;
+						object obj2 = t;
+						Type type11 = type2;
+						KeyValuePair<string, string> commandEntry8 = commandEntry;
+						propertyInfo.SetValue(obj2, Convert.ChangeType(Enum.Parse(type11, commandEntry8.Value, true), type2), null);
 					}
 					else
 					{
-						if (!TypeDescriptor.GetConverter(type).IsValid(commandEntry.Value))
+						TypeConverter converter = TypeDescriptor.GetConverter(type2);
+						TypeConverter typeConverter = converter;
+						KeyValuePair<string, string> commandEntry9 = commandEntry;
+						if (!typeConverter.IsValid(commandEntry9.Value))
 						{
-							throw new ArgumentException(string.Format("The value for \"{0}\" is incorrect.\nValue '{1}' cannot be converted to switch type '{2}'.", commandEntry.Key, commandEntry.Value, type.Name));
+							string text7 = "The value for \"{0}\" is incorrect.\nValue '{1}' cannot be converted to switch type '{2}'.";
+							KeyValuePair<string, string> commandEntry10 = commandEntry;
+							object key2 = commandEntry10.Key;
+							KeyValuePair<string, string> commandEntry11 = commandEntry;
+							throw new ArgumentException(string.Format(text7, key2, commandEntry11.Value, type2.Name));
 						}
-						property.SetValue(t, Convert.ChangeType(commandEntry.Value, type), null);
+						PropertyInfo propertyInfo2 = property;
+						object obj3 = t;
+						KeyValuePair<string, string> commandEntry12 = commandEntry;
+						propertyInfo2.SetValue(obj3, Convert.ChangeType(commandEntry12.Value, type2), null);
 					}
 				}
 			}
 			return t;
 		}
 
-		// Token: 0x0600004C RID: 76 RVA: 0x00003B90 File Offset: 0x00001D90
+		// Token: 0x06000062 RID: 98 RVA: 0x00004280 File Offset: 0x00002480
 		public static void ParseUsage<T>(List<CmdModes> modes) where T : class, new()
 		{
 			if (modes.Contains(CmdModes.DisableUsage))
@@ -136,12 +171,8 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			int num = 12;
 			Type typeFromHandle = typeof(T);
 			PropertyInfo[] properties = typeFromHandle.GetProperties();
-			T t = Activator.CreateInstance<T>();
+			T t = new T();
 			string text = string.Format("Usage: {0}", Path.GetFileName(Process.GetCurrentProcess().MainModule.FileName));
-			foreach (DescriptionAttribute descriptionAttribute in typeFromHandle.GetCustomAttributes(typeof(DescriptionAttribute), false))
-			{
-				text = text + "\n" + descriptionAttribute.Description;
-			}
 			foreach (PropertyInfo propertyInfo in properties)
 			{
 				string text2;
@@ -166,14 +197,9 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			foreach (PropertyInfo propertyInfo2 in properties)
 			{
 				string text3 = "";
-				object[] customAttributes = propertyInfo2.GetCustomAttributes(typeof(DescriptionAttribute), false);
-				for (int j = 0; j < customAttributes.Length; j++)
+				foreach (DescriptionAttribute descriptionAttribute in propertyInfo2.GetCustomAttributes(typeof(DescriptionAttribute), false))
 				{
-					text3 = ((DescriptionAttribute)customAttributes[j]).Description;
-				}
-				if (propertyInfo2.GetCustomAttributes(typeof(CmdArgsParser.CaseInsensitive), false).Any<object>())
-				{
-					text3 = text3 + "\n" + new string(' ', num + 3) + "Case Insensitive.";
+					text3 = descriptionAttribute.Description;
 				}
 				string text4 = null;
 				string text5;
@@ -195,13 +221,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 				}
 				string text6 = new string('·', num - text5.Length);
 				string text7 = new string(' ', num);
-				string text8 = string.Format("  {0}{1} {2}\n{3}  ", new object[]
-				{
-					text5,
-					text6,
-					text3,
-					text7
-				});
+				string text8 = string.Format("  {0}{1} {2}\n{3}  ", new object[] { text5, text6, text3, text7 });
 				Type type = Nullable.GetUnderlyingType(propertyInfo2.PropertyType) ?? propertyInfo2.PropertyType;
 				if (type.IsGenericType)
 				{
@@ -221,9 +241,9 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 				else if (type.IsEnum)
 				{
 					text8 += string.Format(" Values:<{0}", Enum.GetNames(type)[0]);
-					foreach (string arg in Enum.GetNames(type).Skip(1))
+					foreach (string text9 in Enum.GetNames(type).Skip(1))
 					{
-						text8 += string.Format(" | {0}", arg);
+						text8 += string.Format(" | {0}", text9);
 					}
 					text8 += ">";
 				}
@@ -262,21 +282,14 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 			if (!modes.Contains(CmdModes.DisableCFG))
 			{
-				string text9 = new string('·', num - "[cfg]".Length);
-				string text10 = new string(' ', num);
-				text += string.Format("\n  {0}{1} {2}\n{3}   {4}\n{3}   Values:<Free Text>", new object[]
-				{
-					"[cfg]",
-					text9,
-					"A configuration file used to configure the enviornment.",
-					text10,
-					"If supplied the configuration file will override the command line. Used as named argument only."
-				});
+				string text10 = new string('·', num - "[cfg]".Length);
+				string text11 = new string(' ', num);
+				text += string.Format("\n  {0}{1} {2}\n{3}   {4}\n{3}   Values:<Free Text>", new object[] { "[cfg]", text10, "A configuration file used to configure the enviornment.", text11, "If supplied the configuration file will override the command line. Used as named argument only." });
 			}
 			Console.WriteLine(text);
 		}
 
-		// Token: 0x0600004D RID: 77 RVA: 0x0000411C File Offset: 0x0000231C
+		// Token: 0x06000063 RID: 99 RVA: 0x000047B4 File Offset: 0x000029B4
 		public static Dictionary<string, string> ParseConfig(string configLocation, Dictionary<string, string> cmds, List<CmdModes> modes)
 		{
 			if (string.IsNullOrEmpty(configLocation) || configLocation.Equals("true"))
@@ -383,8 +396,8 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 						}
 						else if (flag)
 						{
-							string key = text;
-							cmds[key] += string.Format(";{0}", text2);
+							string text3;
+							cmds[text3 = text] = cmds[text3] + string.Format(";{0}", text2);
 						}
 					}
 					else
@@ -395,17 +408,17 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 			if (list.Any<string>())
 			{
-				string text3 = list.First<string>();
-				foreach (string arg in list.Skip(1))
+				string text4 = list.First<string>();
+				foreach (string text5 in list.Skip(1))
 				{
-					text3 += string.Format("\n{0}", arg);
+					text4 += string.Format("\n{0}", text5);
 				}
-				throw new FormatException(string.Format("There were {0} duplicate entries in {1}. Duplicate Keys:\n{2}", list.Count<string>(), configLocation, text3));
+				throw new FormatException(string.Format("There were {0} duplicate entries in {1}. Duplicate Keys:\n{2}", list.Count<string>(), configLocation, text4));
 			}
 			return cmds;
 		}
 
-		// Token: 0x0600004E RID: 78 RVA: 0x00004730 File Offset: 0x00002930
+		// Token: 0x06000064 RID: 100 RVA: 0x00004DC4 File Offset: 0x00002FC4
 		private static void MissingArguments<T>(Dictionary<string, string> commandTable, List<CmdModes> modes) where T : class, new()
 		{
 			Type typeFromHandle = typeof(T);
@@ -421,15 +434,15 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			{
 				CmdArgsParser.ParseUsage<T>(modes);
 				string text = string.Format("\"{0}\"", list.First<string>());
-				foreach (string arg in list.Skip(1))
+				foreach (string text2 in list.Skip(1))
 				{
-					text += string.Format(", \"{0}\"", arg);
+					text += string.Format(", \"{0}\"", text2);
 				}
 				throw new ArgumentNullException(string.Format("Required argument {0} {1} not specified.", text, (list.Count > 1) ? "were" : "was"));
 			}
 		}
 
-		// Token: 0x0600004F RID: 79 RVA: 0x00004838 File Offset: 0x00002A38
+		// Token: 0x06000065 RID: 101 RVA: 0x00004ED0 File Offset: 0x000030D0
 		private static Dictionary<string, string> ExtraArguments<T>(Dictionary<string, string> commandTable, List<CmdModes> modes) where T : class, new()
 		{
 			Type typeFromHandle = typeof(T);
@@ -466,16 +479,16 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			{
 				CmdArgsParser.ParseUsage<T>(modes);
 				string text = string.Format("\"{0}\"", list.First<string>());
-				foreach (string arg in list.Skip(1))
+				foreach (string text2 in list.Skip(1))
 				{
-					text += string.Format(", \"{0}\"", arg);
+					text += string.Format(", \"{0}\"", text2);
 				}
 				throw new ArgumentOutOfRangeException(string.Format("Unknown argument {0} {1} provided.", text, (list.Count > 1) ? "were" : "was"));
 			}
 			return dictionary;
 		}
 
-		// Token: 0x06000050 RID: 80 RVA: 0x000049D4 File Offset: 0x00002BD4
+		// Token: 0x06000066 RID: 102 RVA: 0x0000506C File Offset: 0x0000326C
 		private static Dictionary<string, string> ProcessCommandLine<T>(List<string> args, List<CmdModes> modes) where T : class, new()
 		{
 			Type typeFromHandle = typeof(T);
@@ -483,14 +496,14 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			bool flag = false;
 			foreach (string text in args)
 			{
-				string value = "true";
+				string text2 = "true";
 				bool flag2 = false;
 				if (modes.Contains(CmdModes.LegacySwitchFormat))
 				{
 					if (text.First<char>() == '-')
 					{
 						flag2 = true;
-						value = "false";
+						text2 = "false";
 					}
 					else if (text.First<char>() == '+')
 					{
@@ -501,7 +514,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 				{
 					throw new FormatException(string.Format("Argument {0} is in the wrong format. Legacy arguments are not supported. ARG={1}", dictionary.Count + 1, text));
 				}
-				string text2;
+				string text3;
 				if (text.First<char>() != '/' && !flag2)
 				{
 					if (flag)
@@ -512,104 +525,71 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 					{
 						throw new ArgumentException(string.Format("To many positional arguments supplied. Amount allowed: {0}\nOffending Argument: {1}", typeFromHandle.GetProperties().Count<PropertyInfo>(), text));
 					}
-					text2 = typeFromHandle.GetProperties()[dictionary.Count].Name;
-					value = text;
+					text3 = typeFromHandle.GetProperties()[dictionary.Count].Name;
+					text2 = text;
 				}
 				else
 				{
 					flag = true;
-					if (text.IndexOf(":", StringComparison.OrdinalIgnoreCase) == -1)
+					if (text.IndexOf(":") == -1)
 					{
-						text2 = text.Substring(1);
+						text3 = text.Substring(1);
 					}
 					else
 					{
-						text2 = text.Substring(1, text.IndexOf(":", StringComparison.OrdinalIgnoreCase) - 1);
+						text3 = text.Substring(1, text.IndexOf(":") - 1);
 					}
-					if (text.IndexOf(":", StringComparison.OrdinalIgnoreCase) != -1)
+					if (text.IndexOf(":") != -1)
 					{
-						string text3 = text;
-						value = text3.Substring(text3.IndexOf(":", StringComparison.OrdinalIgnoreCase) + 1);
+						text2 = text.Substring(text.IndexOf(":") + 1);
 					}
-					else
+					else if (typeFromHandle.GetProperty(text3) != null)
 					{
-						PropertyInfo propertyInfo = typeFromHandle.GetProperty(text2);
-						if (propertyInfo == null)
+						PropertyInfo property = typeFromHandle.GetProperty(text3);
+						Type type = Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType;
+						if (!type.IsAssignableFrom(typeof(bool)))
 						{
-							propertyInfo = typeFromHandle.GetProperty(text2, BindingFlags.IgnoreCase | BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public);
-							if (propertyInfo != null)
-							{
-								if (propertyInfo.GetCustomAttributes(typeof(CmdArgsParser.CaseInsensitive), false).Any<object>())
-								{
-									text2 = propertyInfo.Name;
-								}
-								else
-								{
-									propertyInfo = null;
-								}
-							}
-						}
-						if (propertyInfo != null)
-						{
-							Type type = Nullable.GetUnderlyingType(propertyInfo.PropertyType) ?? propertyInfo.PropertyType;
-							if (!type.IsAssignableFrom(typeof(bool)))
-							{
-								throw new ArgumentException(string.Format("{0} was used as a 'Boolean' switch however the switch type is '{1}'.", text2, type.Name));
-							}
+							throw new ArgumentException(string.Format("{0} was used as a 'Boolean' switch however the switch type is '{1}'.", text3, type.Name));
 						}
 					}
 				}
-				if (dictionary.ContainsKey(text2))
+				if (dictionary.ContainsKey(text3))
 				{
-					throw new FormatException(string.Format("Argument {0} has already been declared. ARG={1}", text2, text));
+					throw new FormatException(string.Format("Argument {0} has already been declared. ARG={1}", text3, text));
 				}
-				dictionary.Add(text2, value);
+				dictionary.Add(text3, text2);
 			}
 			return dictionary;
 		}
 
-		// Token: 0x06000051 RID: 81 RVA: 0x00004C60 File Offset: 0x00002E60
+		// Token: 0x06000067 RID: 103 RVA: 0x000052A0 File Offset: 0x000034A0
 		public static IList ReflectionListFactory(Type contentType, string dataSource)
 		{
-			IList list = (IList)Activator.CreateInstance(typeof(List<>).MakeGenericType(new Type[]
-			{
-				contentType
-			}));
-			foreach (string value in dataSource.Split(new char[]
-			{
-				';'
-			}))
+			Type type = typeof(List<>).MakeGenericType(new Type[] { contentType });
+			IList list = (IList)Activator.CreateInstance(type);
+			foreach (string text in dataSource.Split(new char[] { ';' }))
 			{
 				if (contentType.IsEnum)
 				{
-					list.Add(Convert.ChangeType(Enum.Parse(contentType, value), contentType));
+					list.Add(Convert.ChangeType(Enum.Parse(contentType, text), contentType));
 				}
 				else
 				{
-					list.Add(Convert.ChangeType(value, contentType));
+					list.Add(Convert.ChangeType(text, contentType));
 				}
 			}
 			return list;
 		}
 
-		// Token: 0x06000052 RID: 82 RVA: 0x00004CE4 File Offset: 0x00002EE4
+		// Token: 0x06000068 RID: 104 RVA: 0x00005334 File Offset: 0x00003534
 		public static IDictionary ReflectionDictionaryFactory(Type keyType, Type valueType, string dataSource)
 		{
-			IDictionary dictionary = (IDictionary)Activator.CreateInstance(typeof(Dictionary<, >).MakeGenericType(new Type[]
-			{
-				keyType,
-				valueType
-			}));
+			Type type = typeof(Dictionary<, >).MakeGenericType(new Type[] { keyType, valueType });
+			IDictionary dictionary = (IDictionary)Activator.CreateInstance(type);
 			HashSet<object> hashSet = new HashSet<object>();
-			foreach (string text in dataSource.Split(new char[]
+			foreach (string text in dataSource.Split(new char[] { ';' }))
 			{
-				';'
-			}))
-			{
-				string[] array2 = text.Split(new char[]
-				{
-					'='
-				});
+				string[] array2 = text.Split(new char[] { '=' });
 				if (array2.Count<string>() != 2)
 				{
 					throw new FormatException(string.Format("The format of a dictionary argument is incorrect. The format is 'key=value'. Offending value: '{0}'", text));
@@ -617,7 +597,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 				object obj;
 				if (keyType.IsEnum)
 				{
-					obj = Convert.ChangeType(Enum.Parse(keyType, array2[0], true), keyType);
+					obj = Convert.ChangeType(Enum.Parse(keyType, array2[0]), keyType);
 				}
 				else
 				{
@@ -626,99 +606,76 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 				if (!hashSet.Contains(obj))
 				{
 					hashSet.Add(obj);
-					object value;
+					object obj2;
 					if (valueType.IsEnum)
 					{
-						value = Convert.ChangeType(Enum.Parse(valueType, array2[1], true), valueType);
+						obj2 = Convert.ChangeType(Enum.Parse(valueType, array2[1]), valueType);
 					}
 					else
 					{
-						value = Convert.ChangeType(array2[1], valueType);
+						obj2 = Convert.ChangeType(array2[1], valueType);
 					}
-					dictionary.Add(obj, value);
+					dictionary.Add(obj, obj2);
 				}
 			}
 			return dictionary;
 		}
 
-		// Token: 0x06000053 RID: 83 RVA: 0x00004DEC File Offset: 0x00002FEC
+		// Token: 0x06000069 RID: 105 RVA: 0x00005450 File Offset: 0x00003650
 		public static IEnumerable ReflectionSetFactory(Type contentType, string dataSource, string name)
 		{
-			Type type = typeof(HashSet<>).MakeGenericType(new Type[]
-			{
-				contentType
-			});
+			Type type = typeof(HashSet<>).MakeGenericType(new Type[] { contentType });
 			IEnumerable enumerable = (IEnumerable)Activator.CreateInstance(type);
 			MethodInfo method = type.GetMethod("Add");
 			MethodInfo method2 = type.GetMethod("Contains");
+			new HashSet<object>();
 			List<string> list = new List<string>();
-			foreach (string value in dataSource.Split(new char[]
-			{
-				';'
-			}))
+			foreach (string text in dataSource.Split(new char[] { ';' }))
 			{
 				if (contentType.IsEnum)
 				{
-					object obj = Convert.ChangeType(Enum.Parse(contentType, value), contentType);
-					if ((bool)method2.Invoke(enumerable, new object[]
-					{
-						obj
-					}))
+					object obj = Convert.ChangeType(Enum.Parse(contentType, text), contentType);
+					if ((bool)method2.Invoke(enumerable, new object[] { obj }))
 					{
 						list.Add(obj.ToString());
 					}
 					else
 					{
-						method.Invoke(enumerable, new object[]
-						{
-							obj
-						});
+						method.Invoke(enumerable, new object[] { obj });
 					}
 				}
 				else
 				{
-					object obj2 = Convert.ChangeType(value, contentType);
-					if ((bool)method2.Invoke(enumerable, new object[]
-					{
-						obj2
-					}))
+					object obj2 = Convert.ChangeType(text, contentType);
+					if ((bool)method2.Invoke(enumerable, new object[] { obj2 }))
 					{
 						list.Add(obj2.ToString());
 					}
 					else
 					{
-						method.Invoke(enumerable, new object[]
-						{
-							obj2
-						});
+						method.Invoke(enumerable, new object[] { obj2 });
 					}
 				}
 			}
 			if (list.Any<string>())
 			{
-				string text = string.Format("\"{0}\"", list.First<string>());
-				foreach (string arg in list.Skip(1))
+				string text2 = string.Format("\"{0}\"", list.First<string>());
+				foreach (string text3 in list.Skip(1))
 				{
-					text += string.Format(", \"{0}\"", arg);
+					text2 += string.Format(", \"{0}\"", text3);
 				}
 				throw new FormatException(string.Format("HashSet '{0}' had {1} duplicate value{2}. Duplicates: {3}", new object[]
 				{
 					name,
 					list.Count<string>(),
 					(list.Count<string>() > 1) ? "s" : "",
-					text
+					text2
 				}));
 			}
 			return enumerable;
 		}
 
-		// Token: 0x04000021 RID: 33
+		// Token: 0x0400002D RID: 45
 		private const int HELP_INDENTATION = 12;
-
-		// Token: 0x0200005D RID: 93
-		[AttributeUsage(AttributeTargets.Property)]
-		public class CaseInsensitive : Attribute
-		{
-		}
 	}
 }

@@ -3,7 +3,7 @@
 namespace ComponentAce.Compression.Libs.PPMd
 {
 	// Token: 0x0200004F RID: 79
-	public struct MemoryNode
+	internal struct MemoryNode
 	{
 		// Token: 0x06000325 RID: 805 RVA: 0x0001A27B File Offset: 0x0001927B
 		public MemoryNode(uint address)
@@ -18,7 +18,7 @@ namespace ComponentAce.Compression.Libs.PPMd
 		{
 			get
 			{
-				return (uint)((int)MemoryNode.Memory[(int)((UIntPtr)this.Address)] | (int)MemoryNode.Memory[(int)((UIntPtr)(this.Address + 1U))] << 8 | (int)MemoryNode.Memory[(int)((UIntPtr)(this.Address + 2U))] << 16 | (int)MemoryNode.Memory[(int)((UIntPtr)(this.Address + 3U))] << 24);
+				return (uint)((int)MemoryNode.Memory[(int)((UIntPtr)this.Address)] | ((int)MemoryNode.Memory[(int)((UIntPtr)(this.Address + 1U))] << 8) | ((int)MemoryNode.Memory[(int)((UIntPtr)(this.Address + 2U))] << 16) | ((int)MemoryNode.Memory[(int)((UIntPtr)(this.Address + 3U))] << 24));
 			}
 			set
 			{
@@ -36,7 +36,7 @@ namespace ComponentAce.Compression.Libs.PPMd
 		{
 			get
 			{
-				return new MemoryNode((uint)((int)MemoryNode.Memory[(int)((UIntPtr)(this.Address + 4U))] | (int)MemoryNode.Memory[(int)((UIntPtr)(this.Address + 5U))] << 8 | (int)MemoryNode.Memory[(int)((UIntPtr)(this.Address + 6U))] << 16 | (int)MemoryNode.Memory[(int)((UIntPtr)(this.Address + 7U))] << 24));
+				return new MemoryNode((uint)((int)MemoryNode.Memory[(int)((UIntPtr)(this.Address + 4U))] | ((int)MemoryNode.Memory[(int)((UIntPtr)(this.Address + 5U))] << 8) | ((int)MemoryNode.Memory[(int)((UIntPtr)(this.Address + 6U))] << 16) | ((int)MemoryNode.Memory[(int)((UIntPtr)(this.Address + 7U))] << 24)));
 			}
 			set
 			{
@@ -54,7 +54,7 @@ namespace ComponentAce.Compression.Libs.PPMd
 		{
 			get
 			{
-				return (uint)((int)MemoryNode.Memory[(int)((UIntPtr)(this.Address + 8U))] | (int)MemoryNode.Memory[(int)((UIntPtr)(this.Address + 9U))] << 8 | (int)MemoryNode.Memory[(int)((UIntPtr)(this.Address + 10U))] << 16 | (int)MemoryNode.Memory[(int)((UIntPtr)(this.Address + 11U))] << 24);
+				return (uint)((int)MemoryNode.Memory[(int)((UIntPtr)(this.Address + 8U))] | ((int)MemoryNode.Memory[(int)((UIntPtr)(this.Address + 9U))] << 8) | ((int)MemoryNode.Memory[(int)((UIntPtr)(this.Address + 10U))] << 16) | ((int)MemoryNode.Memory[(int)((UIntPtr)(this.Address + 11U))] << 24));
 			}
 			set
 			{

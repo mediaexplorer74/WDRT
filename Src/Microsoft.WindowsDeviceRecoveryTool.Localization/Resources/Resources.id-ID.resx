@@ -1,0 +1,892 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccentColor" xml:space="preserve">
+    <value>Warna aksen</value>
+  </data>
+  <data name="AccentColorBlack" xml:space="preserve">
+    <value>Hitam</value>
+  </data>
+  <data name="AccentColorBlue" xml:space="preserve">
+    <value>Biru</value>
+  </data>
+  <data name="AccentColorCobalt" xml:space="preserve">
+    <value>Kobalt</value>
+  </data>
+  <data name="AccentColorCrimson" xml:space="preserve">
+    <value>Merah tua</value>
+  </data>
+  <data name="AccentColorEmerald" xml:space="preserve">
+    <value>Hijau zambrut</value>
+  </data>
+  <data name="AccentColorIndigo" xml:space="preserve">
+    <value>Indigo</value>
+  </data>
+  <data name="AccentColorMauve" xml:space="preserve">
+    <value>Ungu muda</value>
+  </data>
+  <data name="AccentColorSienna" xml:space="preserve">
+    <value>Cokelat muda</value>
+  </data>
+  <data name="AddressForm" xml:space="preserve">
+    <value>Alamat</value>
+  </data>
+  <data name="AllFilesSize" xml:space="preserve">
+    <value>Semua ukuran file: {0}</value>
+  </data>
+  <data name="AnotherInstanceAlreadyRunning" xml:space="preserve">
+    <value>Kegiatan lain dari {0} sedang berjalan.</value>
+  </data>
+  <data name="ApplicationData" xml:space="preserve">
+    <value>Basis data MDS</value>
+  </data>
+  <data name="ApplicationUpdate" xml:space="preserve">
+    <value>Pembaruan aplikasi</value>
+  </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>Anda yakin?</value>
+  </data>
+  <data name="AutomaticPackageFileSelection" xml:space="preserve">
+    <value>Mencari paket yang benar untuk telepon yang tersambung.</value>
+  </data>
+  <data name="AutomaticPackageSelection" xml:space="preserve">
+    <value>Pemilihan paket otomatis</value>
+  </data>
+  <data name="AvailablePackageIsOlder" xml:space="preserve">
+    <value>Perangkat lunak yang tersedia lebih lama daripada yang ada di telepon Anda.</value>
+  </data>
+  <data name="AwaitRecoveryAfterEmergencyFlashingInstruction" xml:space="preserve">
+    <value>Menunggu telepon setelah operasi pemulihan berhasil.
+Jika daya baterai rendah, bisa berlangsung hingga 30 menit.</value>
+  </data>
+  <data name="BatteryCheckHeader" xml:space="preserve">
+    <value>Periksa baterai</value>
+  </data>
+  <data name="BatteryCheckingCancelled" xml:space="preserve">
+    <value>Pemeriksaan baterai telah dibatalkan.</value>
+  </data>
+  <data name="BatteryWarning" xml:space="preserve">
+    <value>Pastikan level baterai minimal 25%. Atau telepon Anda bisa rusak.</value>
+  </data>
+  <data name="ButtonBrowse" xml:space="preserve">
+    <value>Jelajahi</value>
+  </data>
+  <data name="ButtonCancel" xml:space="preserve">
+    <value>Batal</value>
+  </data>
+  <data name="ButtonChangePackagePath" xml:space="preserve">
+    <value>Ubah jalur paket</value>
+  </data>
+  <data name="ButtonClean" xml:space="preserve">
+    <value>Bersihkan semua data aplikasi</value>
+  </data>
+  <data name="ButtonCleanOneCategory" xml:space="preserve">
+    <value>Bersihkan</value>
+  </data>
+  <data name="ButtonCollectLogs" xml:space="preserve">
+    <value>Ekspor</value>
+  </data>
+  <data name="ButtonContinue" xml:space="preserve">
+    <value>Lanjutkan</value>
+  </data>
+  <data name="ButtonDelete" xml:space="preserve">
+    <value>Hapus</value>
+  </data>
+  <data name="ButtonExit" xml:space="preserve">
+    <value>Keluar</value>
+  </data>
+  <data name="ButtonFinish" xml:space="preserve">
+    <value>Selesai</value>
+  </data>
+  <data name="ButtonInstall" xml:space="preserve">
+    <value>Instal</value>
+  </data>
+  <data name="ButtonInstallSoftware" xml:space="preserve">
+    <value>Instal perangkat lunak</value>
+  </data>
+  <data name="ButtonMyPhoneIsNotOnTheList" xml:space="preserve">
+    <value>Telepon saya tidak ada dalam daftar</value>
+  </data>
+  <data name="ButtonMyPhoneWasNotDetected" xml:space="preserve">
+    <value>Telepon saya tidak terdeteksi</value>
+  </data>
+  <data name="ButtonNewFolder" xml:space="preserve">
+    <value>Folder Baru</value>
+  </data>
+  <data name="ButtonNext" xml:space="preserve">
+    <value>Berikutnya</value>
+  </data>
+  <data name="ButtonNo" xml:space="preserve">
+    <value>Tidak</value>
+  </data>
+  <data name="ButtonOff" xml:space="preserve">
+    <value>Mati</value>
+  </data>
+  <data name="ButtonOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ButtonOn" xml:space="preserve">
+    <value>Hidup</value>
+  </data>
+  <data name="ButtonReset" xml:space="preserve">
+    <value>Atur ulang ke default</value>
+  </data>
+  <data name="ButtonTryAgain" xml:space="preserve">
+    <value>Coba lagi</value>
+  </data>
+  <data name="ButtonYes" xml:space="preserve">
+    <value>Ya</value>
+  </data>
+  <data name="CapsLockIsOn" xml:space="preserve">
+    <value>Huruf Besar aktif</value>
+  </data>
+  <data name="CheckLatestPackageHeader" xml:space="preserve">
+    <value>Info telepon</value>
+  </data>
+  <data name="CheckingAlreadyDownloadedFiles" xml:space="preserve">
+    <value>Memeriksa kompatibilitas file yang diunduh</value>
+  </data>
+  <data name="CheckingAppUpdate" xml:space="preserve">
+    <value>Memeriksa pembaruan aplikasi yang tersedia</value>
+  </data>
+  <data name="CheckingFirmwareAvailability" xml:space="preserve">
+    <value>Memeriksa ketersediaan perangkat lunak</value>
+  </data>
+  <data name="CheckingPackageIntegrity" xml:space="preserve">
+    <value>Memeriksa integritas paket</value>
+  </data>
+  <data name="CleanUserDataQuestion" xml:space="preserve">
+    <value>Anda yakin ingin menghapus semua data aplikasi (laporan, paket perangkat lunak telepon, file log)?</value>
+  </data>
+  <data name="CollectingLogFilesInfo" xml:space="preserve">
+    <value>Mengumpulkan file log. Harap tunggu.</value>
+  </data>
+  <data name="ComputerBatteryWarning" xml:space="preserve">
+    <value>Baterai komputer Anda sudah melemah. Sambungan komputer ke pengisi daya dan coba lagi.</value>
+  </data>
+  <data name="ConnectPhone" xml:space="preserve">
+    <value>Sambungkan telepon Anda</value>
+  </data>
+  <data name="ConnectPhoneWithUsbCable" xml:space="preserve">
+    <value>Sambungkan kabel USB ke telepon.</value>
+  </data>
+  <data name="ConnectedDeviceCannotBeRecovered" xml:space="preserve">
+    <value>Telepon yang tersambung tidak dapat dipulihkan.</value>
+  </data>
+  <data name="CouldNotDetectPhone" xml:space="preserve">
+    <value>Tidak dapat mendeteksi telepon Anda</value>
+  </data>
+  <data name="CreatingNewFolderMessage" xml:space="preserve">
+    <value>Buat folder baru</value>
+  </data>
+  <data name="CurrentFirmwareVersion" xml:space="preserve">
+    <value>Versi perangkat lunak yang terinstal:</value>
+  </data>
+  <data name="CustomPackagesPath" xml:space="preserve">
+    <value>Gunakan jalur Paket khusus</value>
+  </data>
+  <data name="DeleteLogsQuestion" xml:space="preserve">
+    <value>Yakin ingin menghapus file log?</value>
+  </data>
+  <data name="DeletePackagesQuestion" xml:space="preserve">
+    <value>Yakin ingin menghapus file pemulihan perangkat lunak?</value>
+  </data>
+  <data name="DeleteReportsQuestion" xml:space="preserve">
+    <value>Yakin ingin menghapus file laporan?</value>
+  </data>
+  <data name="DeletingLogFilesInfo" xml:space="preserve">
+    <value>Menghapus file log</value>
+  </data>
+  <data name="DeletingPackagesInfo" xml:space="preserve">
+    <value>Menghapus file pemulihan perangkat lunak</value>
+  </data>
+  <data name="DeletingReportsInfo" xml:space="preserve">
+    <value>Menghapus file laporan</value>
+  </data>
+  <data name="DetailsHeader" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="Device" xml:space="preserve">
+    <value>Telepon</value>
+  </data>
+  <data name="DeviceFlashing" xml:space="preserve">
+    <value>Instalasi paket perangkat lunak</value>
+  </data>
+  <data name="DeviceInUefiMode" xml:space="preserve">
+    <value>Telepon Lumia</value>
+  </data>
+  <data name="DeviceSelectionHeader" xml:space="preserve">
+    <value>Pemilihan telepon</value>
+  </data>
+  <data name="DirectoryNotSet" xml:space="preserve">
+    <value>Direktori tidak dipilih atau tidak ada.</value>
+  </data>
+  <data name="DisclaimerBackupInfo" xml:space="preserve">
+    <value>Konten pribadi di telepon akan dihapus dalam penginstalan. Aplikasi telepon Kami sarankan agar Anda membuat cadangan pada telepon Anda, di:</value>
+  </data>
+  <data name="DisclaimerHeader" xml:space="preserve">
+    <value>Sanggahan</value>
+  </data>
+  <data name="DisclaimerInfoInstallationDuration" xml:space="preserve">
+    <value>Penginstalan perangkat lunak akan memerlukan waktu kira-kira 15 menit. Waktu mengunduh paket perangkat lunak bergantung pada kecepatan jaringan internet.</value>
+  </data>
+  <data name="DisconnectPhone" xml:space="preserve">
+    <value>Cabut kabel USB dari telepon.</value>
+  </data>
+  <data name="DowngradeSoftwareQuestion" xml:space="preserve">
+    <value>Anda mencoba menginstal perangkat lunak yang lebih lama daripada yang terinstal di telepon Anda. Lanjutkan?</value>
+  </data>
+  <data name="DownloadCancelled" xml:space="preserve">
+    <value>Pengunduhan telah dibatalkan</value>
+  </data>
+  <data name="DownloadProgressExactMinute" xml:space="preserve">
+    <value>Sekitar {0} menit tersisa</value>
+  </data>
+  <data name="DownloadProgressMinute" xml:space="preserve">
+    <value>Sekitar satu menit lagi</value>
+  </data>
+  <data name="DownloadProgressMinuteLess" xml:space="preserve">
+    <value>Kurang dari satu menit lagi</value>
+  </data>
+  <data name="DownloadingCancelMessage" xml:space="preserve">
+    <value>Ini akan membatalkan pengunduhan. File yang sudah diunduh tidak akan dihapus. Anda bisa melanjutkan pengunduhan nanti.</value>
+  </data>
+  <data name="DownloadingEmergencyPackage" xml:space="preserve">
+    <value>Mengunduh paket darurat</value>
+  </data>
+  <data name="DownloadingFiles" xml:space="preserve">
+    <value>Mengunduh file: {0}/{1} ({2})</value>
+  </data>
+  <data name="DownloadingInstallPacket" xml:space="preserve">
+    <value>Mengunduh versi baru</value>
+  </data>
+  <data name="DownloadingPackage" xml:space="preserve">
+    <value>Mengunduh paket</value>
+  </data>
+  <data name="EmergencyFlashingMessage" xml:space="preserve">
+    <value>Pemrograman darurat</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Kesalahan</value>
+  </data>
+  <data name="ErrorDescription_AutoUpdateException" xml:space="preserve">
+    <value>Tampaknya ada masalah dalam menyambungkan ke server. Periksa sambungan Internet Anda. Pastikan pengaturan proksi, firewall, dan perlindungan virus sudah benar. Pilih juga pengaturan waktu dan tanggal.</value>
+  </data>
+  <data name="ErrorDescription_CannotAccessDirectoryException" xml:space="preserve">
+    <value>Tampaknya Anda tidak memiliki izin yang diperlukan untuk direktori. Ubah jalur direktori atau ubah izin direktori.</value>
+  </data>
+  <data name="ErrorDescription_DeviceNotFoundException" xml:space="preserve">
+    <value>Telepon tidak ditemukan.</value>
+  </data>
+  <data name="ErrorDescription_DownloadPackageException" xml:space="preserve">
+    <value>Periksa apakah pengaturan proksi benar dan klik "{0}". Jika Anda ingin membatalkan proses pengunduhan, silakan klik "{1}".</value>
+  </data>
+  <data name="ErrorDescription_EmergencyPackageNotFoundOnServerException" xml:space="preserve">
+    <value>Pemrograman darurat untuk telepon Anda saat ini tidak didukung</value>
+  </data>
+  <data name="ErrorDescription_FirmwareFileNotFoundException" xml:space="preserve">
+    <value>Paket perangkat lunak tidak lengkap. Satu file atau lebih tidak ada. Unduh paket sekali lagi atau pilih perangkat lunak lainnya.</value>
+  </data>
+  <data name="ErrorDescription_HtcDeviceCommunicationException" xml:space="preserve">
+    <value>Hidupkan ulang perangkat ke mode {0}.</value>
+  </data>
+  <data name="ErrorDescription_HtcPackageFileCheckException" xml:space="preserve">
+    <value>Unduh ulang file paket ROM.</value>
+  </data>
+  <data name="ErrorDescription_HtcServiceControlException" xml:space="preserve">
+    <value>Periksa apakah layanan {0} dihentikan.</value>
+  </data>
+  <data name="ErrorDescription_HtcUsbCommunicationException" xml:space="preserve">
+    <value>Hidupkan ulang perangkat di {0}.
+Periksa sambungan USB perangkat.</value>
+  </data>
+  <data name="ErrorDescription_HtcUsbPortOpenException" xml:space="preserve">
+    <value>Periksa apakah aplikasi lain menggunakan port.
+Periksa sambungan USB perangkat.</value>
+  </data>
+  <data name="ErrorDescription_InvalidOperationException" xml:space="preserve">
+    <value>Jalankan ulang aplikasi.</value>
+  </data>
+  <data name="ErrorDescription_NoInternetConnectionException" xml:space="preserve">
+    <value>Pengoperasian terakhir tidak dapat diselesaikan karena sambungan Internet tidak aktif.</value>
+  </data>
+  <data name="ErrorDescription_NotEnoughSpaceException" xml:space="preserve">
+    <value>{0} tidak ada dalam disk {1}. Kosongkan memori, dan coba lagi.</value>
+  </data>
+  <data name="ErrorDescription_OperationCanceledException" xml:space="preserve">
+    <value>Operasi telah dibatalkan.</value>
+  </data>
+  <data name="ErrorDescription_PackageNotFoundException" xml:space="preserve">
+    <value>Paket perangkat lunak tidak tersedia untuk telepon ini.</value>
+  </data>
+  <data name="ErrorDescription_PlannedServiceBreakException" xml:space="preserve">
+    <value>Layanan tidak tersedia antara {0} dan {1}. Harap coba lagi nanti.</value>
+  </data>
+  <data name="ErrorDescription_ReadPhoneInformationException" xml:space="preserve">
+    <value>Kami tidak dapat membaca informasi dari telepon Anda.</value>
+  </data>
+  <data name="ErrorDescription_RestartApplicationException" xml:space="preserve">
+    <value>Cabut semua telepon dan hidupkan ulang aplikasi. Apabila masih terus bermasalah, hapus {0} dan unduh versi terbaru aplikasi ini.</value>
+  </data>
+  <data name="ErrorDescription_UnknownError" xml:space="preserve">
+    <value>Operasi tidak dapat diselesaikan.</value>
+  </data>
+  <data name="ErrorDescription_WebException" xml:space="preserve">
+    <value>Tampaknya ada masalah dalam menyambungkan ke server. Periksa sambungan Internet Anda. Pastikan pengaturan proksi, firewall, dan perlindungan virus sudah benar.</value>
+  </data>
+  <data name="ErrorDetails_NotEnoughSpaceOnTheDiskException" xml:space="preserve">
+    <value>Jumlah ruang kosong minimal pada disk {0} diperlukan untuk pembaruan adalah {1}. Kosongkan memori, dan coba lagi.</value>
+  </data>
+  <data name="ErrorHeader" xml:space="preserve">
+    <value>Maaf, kami sedang mengalami masalah</value>
+  </data>
+  <data name="Error_AutoUpdateException" xml:space="preserve">
+    <value>Pemeriksaan pembaruan aplikasi gagal</value>
+  </data>
+  <data name="Error_CannotAccessDirectoryException" xml:space="preserve">
+    <value>Tidak dapat mengakses direktori</value>
+  </data>
+  <data name="Error_DeviceNotFoundException" xml:space="preserve">
+    <value>Telepon tidak dapat ditemukan</value>
+  </data>
+  <data name="Error_DownloadPackageException" xml:space="preserve">
+    <value>Ada masalah saat mengunduh paket perangkat lunak</value>
+  </data>
+  <data name="Error_EmergencyPackageNotFoundOnServerException" xml:space="preserve">
+    <value>Paket darurat tidak ditemukan</value>
+  </data>
+  <data name="Error_FileNotFoundException" xml:space="preserve">
+    <value>File atau jalur: "{0}" tidak ditemukan</value>
+  </data>
+  <data name="Error_FirmwareFileNotFoundException" xml:space="preserve">
+    <value>File perangkat lunak tidak ditemukan</value>
+  </data>
+  <data name="Error_HtcDeviceCommunicationException" xml:space="preserve">
+    <value>Kesalahan komunikasi perangkat</value>
+  </data>
+  <data name="Error_HtcDeviceHandshakingException" xml:space="preserve">
+    <value>Kesalahan pertukaran informasi perangkat</value>
+  </data>
+  <data name="Error_HtcPackageFileCheckException" xml:space="preserve">
+    <value>Kesalahan pemeriksaan file paket</value>
+  </data>
+  <data name="Error_HtcServiceControlException" xml:space="preserve">
+    <value>Kesalahan kontrol layanan</value>
+  </data>
+  <data name="Error_HtcUsbCommunicationException" xml:space="preserve">
+    <value>Kesalahan komunikasi USB</value>
+  </data>
+  <data name="Error_HtcUsbPortOpenException" xml:space="preserve">
+    <value>Kesalahan port USB terbuka</value>
+  </data>
+  <data name="Error_InvalidOperationException" xml:space="preserve">
+    <value>Operasi gagal</value>
+  </data>
+  <data name="Error_NoInternetConnectionException" xml:space="preserve">
+    <value>Tidak ada sambungan internet</value>
+  </data>
+  <data name="Error_NotEnoughSpaceException" xml:space="preserve">
+    <value>Ruang di disk tidak cukup</value>
+  </data>
+  <data name="Error_NotEnoughSpaceOnTheDiskException" xml:space="preserve">
+    <value>Ruang di disk tidak cukup</value>
+  </data>
+  <data name="Error_OperationCanceledException" xml:space="preserve">
+    <value>Operasi dibatalkan</value>
+  </data>
+  <data name="Error_PackageNotFoundException" xml:space="preserve">
+    <value>Paket varian tidak ditemukan</value>
+  </data>
+  <data name="Error_PlannedServiceBreakException" xml:space="preserve">
+    <value>Tidak dapat menyambung ke server</value>
+  </data>
+  <data name="Error_ReadPhoneInformationException" xml:space="preserve">
+    <value>Pembacaan info telepon gagal</value>
+  </data>
+  <data name="Error_RestartApplicationException" xml:space="preserve">
+    <value>Hidupkan ulang aplikasi</value>
+  </data>
+  <data name="Error_SoftwareInstallationFailed" xml:space="preserve">
+    <value>Penginstalan perangkat lunak gagal. Cobalah menghidupkan ulang telepon Anda, dan coba kembali instalasi perangkat lunak. Jika telepon Anda tidak terdeteksi, gunakan tombol "{0}" di layar Selamat Datang.</value>
+  </data>
+  <data name="Error_SoftwareIsNotCorrectlySignedException" xml:space="preserve">
+    <value>Perangkat lunak tidak ditandatangani dengan benar atau tidak ditandatangani untuk telepon ini.</value>
+  </data>
+  <data name="Error_UnauthorizedAccessException" xml:space="preserve">
+    <value>Akses ditolak</value>
+  </data>
+  <data name="Error_UnknownError" xml:space="preserve">
+    <value>Terjadi kesalahan yang tidak diketahui</value>
+  </data>
+  <data name="Error_WebException" xml:space="preserve">
+    <value>Tidak dapat menyambung ke server</value>
+  </data>
+  <data name="FFUCheckingDirectory" xml:space="preserve">
+    <value>Memeriksa direktori</value>
+  </data>
+  <data name="FFUCheckingFile" xml:space="preserve">
+    <value>Memeriksa file yang dipilih</value>
+  </data>
+  <data name="FFUFamily" xml:space="preserve">
+    <value>Keluarga:</value>
+  </data>
+  <data name="FFUManufacturer" xml:space="preserve">
+    <value>Produsen:</value>
+  </data>
+  <data name="FFUProductName" xml:space="preserve">
+    <value>Nama produk:</value>
+  </data>
+  <data name="FFUVersion" xml:space="preserve">
+    <value>Versi:</value>
+  </data>
+  <data name="FirmwareIntegrityError" xml:space="preserve">
+    <value>Paket perangkat lunak {0} rusak. Unduh paket sekali lagi atau pilih perangkat lunak lainnya.</value>
+  </data>
+  <data name="FirmwareVersion" xml:space="preserve">
+    <value>Versi firmware: </value>
+  </data>
+  <data name="FirmwareVersionUnknown" xml:space="preserve">
+    <value>Versi firmware: tidak diketahui</value>
+  </data>
+  <data name="FlashCancelMessage" xml:space="preserve">
+    <value>Instalasi paket perangkat lunak sedang berlangsung. Membatalkan bisa menyebabkan kerusakan pada telepon Anda. Anda yakin ingin membatalkan tindakan ini?</value>
+  </data>
+  <data name="FlashWarningMessage1" xml:space="preserve">
+    <value>Jangan gunakan telepon Anda. Jangan mencabut kabel. Jangan mematikan telepon. Atau telepon tidak dapat berfungsi dengan baik.</value>
+  </data>
+  <data name="FlashWarningMessage2" xml:space="preserve">
+    <value>Selama instalasi, telepon Anda akan dihidupkan ulang dan layar akan kosong.
+Anda dapat mengabaikan semua pemberitahuan Windows tentang sambungan kabel USB.</value>
+  </data>
+  <data name="Flashing" xml:space="preserve">
+    <value>Menginstal perangkat lunak ke telepon Anda</value>
+  </data>
+  <data name="FlashingMessageChangeToFlashMode" xml:space="preserve">
+    <value>Mengalihkan telepon ke mode pemrograman</value>
+  </data>
+  <data name="FlashingMessageCheckingAntiTheftStatus" xml:space="preserve">
+    <value>Memeriksa status Proteksi Anti-Pencurian</value>
+  </data>
+  <data name="FlashingMessageConnectingWithPhone" xml:space="preserve">
+    <value>Menyambungkan dengan telepon</value>
+  </data>
+  <data name="FlashingMessageInstallingSoftware" xml:space="preserve">
+    <value>Menginstal perangkat lunak</value>
+  </data>
+  <data name="FlashingMessageOperationStarted" xml:space="preserve">
+    <value>Instalasi perangkat lunak telah dimulai</value>
+  </data>
+  <data name="FlashingResult" xml:space="preserve">
+    <value>Hasil instalasi paket perangkat lunak</value>
+  </data>
+  <data name="HtcBootloaderMode" xml:space="preserve">
+    <value>Mode {0} HTC</value>
+  </data>
+  <data name="HtcPackageNotFound" xml:space="preserve">
+    <value>Paket perangkat lunak tidak ditemukan di server</value>
+  </data>
+  <data name="KeepButtonTillImage" xml:space="preserve">
+    <value>Terus tekan tombol hingga Anda melihat gambar seperti pada layar.</value>
+  </data>
+  <data name="KeepButtonsTillImage" xml:space="preserve">
+    <value>Terus tekan tombol hingga Anda melihat gambar seperti pada layar.</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Bahasa</value>
+  </data>
+  <data name="LogFiles" xml:space="preserve">
+    <value>File log</value>
+  </data>
+  <data name="LumiaBatteryChecking" xml:space="preserve">
+    <value>Baterai telepon Anda lemah. Anda dapat melanjutkan, namun  dapat merusak telepon Anda.</value>
+  </data>
+  <data name="ManualDeviceSelection" xml:space="preserve">
+    <value>Pemilihan telepon</value>
+  </data>
+  <data name="ManualRestartHtcInfo" xml:space="preserve">
+    <value>Informasi telepon tidak dapat dibaca. Ikuti langkah di bawah untuk melanjutkan atau klik "{0}" untuk membatalkan proses.</value>
+  </data>
+  <data name="ManufacturerDetectionFailed" xml:space="preserve">
+    <value>Maaf, kami tidak dapat menentukan produsen telepon Anda.</value>
+  </data>
+  <data name="ManufacturerHeader" xml:space="preserve">
+    <value>Produsen telepon</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>Mode {0}</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model: </value>
+  </data>
+  <data name="ModelUnknown" xml:space="preserve">
+    <value>Model: tidak diketahui</value>
+  </data>
+  <data name="MoreThanOnePackageFound" xml:space="preserve">
+    <value>Ditemukan lebih dari satu paket - pilih salah satu dan klik "{0}" untuk melanjutkan.</value>
+  </data>
+  <data name="Network" xml:space="preserve">
+    <value>Jaringan</value>
+  </data>
+  <data name="NoPackagesFoundSelectAnotherDirectory" xml:space="preserve">
+    <value>Tidak dapat menemukan paket yang benar. Pilih direktori lain atau pilih paket secara manual.</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>Tidak ditemukan</value>
+  </data>
+  <data name="OnePackageFound" xml:space="preserve">
+    <value>Ditemukan satu paket untuk: {0}. Klik "{1}" untuk melanjutkan atau memilih folder atau file lain.</value>
+  </data>
+  <data name="OperatingSystemUnknown" xml:space="preserve">
+    <value>Versi sistem operasi: tidak diketahui</value>
+  </data>
+  <data name="OperatingSystemVersion" xml:space="preserve">
+    <value>Versi sistem operasi: </value>
+  </data>
+  <data name="OperationFailed" xml:space="preserve">
+    <value>Operasi diakhiri dengan kesalahan</value>
+  </data>
+  <data name="OperationPassed" xml:space="preserve">
+    <value>Operasi berhasil dijalankan</value>
+  </data>
+  <data name="PackageDirectory" xml:space="preserve">
+    <value>Direktori paket: {0}</value>
+  </data>
+  <data name="PackageFileHeader" xml:space="preserve">
+    <value>File paket</value>
+  </data>
+  <data name="PackageFilePath" xml:space="preserve">
+    <value>Jalur paket: {0}</value>
+  </data>
+  <data name="PackageIntegrityCheck" xml:space="preserve">
+    <value>Pemeriksaan integritas paket</value>
+  </data>
+  <data name="PackageNotFound" xml:space="preserve">
+    <value>Paket tidak tersedia untuk telepon ini.</value>
+  </data>
+  <data name="PackagePathNotSet" xml:space="preserve">
+    <value>Jalur paket tidak ditetapkan</value>
+  </data>
+  <data name="PackageSelection" xml:space="preserve">
+    <value>Pilihan paket</value>
+  </data>
+  <data name="Packages" xml:space="preserve">
+    <value>Paket</value>
+  </data>
+  <data name="PackagesPath" xml:space="preserve">
+    <value>Jalur paket</value>
+  </data>
+  <data name="PasswordForm" xml:space="preserve">
+    <value>Sandi</value>
+  </data>
+  <data name="PhoneAddedHeader" xml:space="preserve">
+    <value>Telepon tersambung</value>
+  </data>
+  <data name="PhoneAddedMessage" xml:space="preserve">
+    <value>Telepon {0} baru sudah tersambung.</value>
+  </data>
+  <data name="PhoneIsUpToDate" xml:space="preserve">
+    <value>Anda memiliki versi perangkat lunak yang terbaru.</value>
+  </data>
+  <data name="PhoneRemovedHeader" xml:space="preserve">
+    <value>Telepon tidak tersambung</value>
+  </data>
+  <data name="PhoneRemovedMessage" xml:space="preserve">
+    <value>Telepon {0} sudah tidak tersambung.</value>
+  </data>
+  <data name="PhoneRestart" xml:space="preserve">
+    <value>Penghidupan ulang telepon</value>
+  </data>
+  <data name="PhoneSettingsBackupPathWin10" xml:space="preserve">
+    <value>Pengaturan &gt; Pembaruan dan Pemulihan &gt; Cadangkan</value>
+  </data>
+  <data name="PhoneSettingsBackupPathWin8" xml:space="preserve">
+    <value>Pengaturan &gt; cadangkan</value>
+  </data>
+  <data name="PleaseConnectDevice" xml:space="preserve">
+    <value>Sambungkan telepon Anda</value>
+  </data>
+  <data name="PleaseConnectOneDevice" xml:space="preserve">
+    <value>Sambungkan hanya satu telepon</value>
+  </data>
+  <data name="PleaseSelectAFolder" xml:space="preserve">
+    <value>Pilih folder</value>
+  </data>
+  <data name="PleaseSelectDeviceToContinue" xml:space="preserve">
+    <value>Pilih telepon untuk melanjutkan</value>
+  </data>
+  <data name="PleaseSelectManufacturer" xml:space="preserve">
+    <value>Pilih satu yang benar di bawah:</value>
+  </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>Harap tunggu</value>
+  </data>
+  <data name="PortForm" xml:space="preserve">
+    <value>Port</value>
+  </data>
+  <data name="Preferences" xml:space="preserve">
+    <value>Preferensi</value>
+  </data>
+  <data name="PressPowerAndVolumeDown" xml:space="preserve">
+    <value>Tekan tombol Daya "Volume turun" secara bersamaan.</value>
+  </data>
+  <data name="PressThePowerButton" xml:space="preserve">
+    <value>Tekan tombol Daya. </value>
+  </data>
+  <data name="PressThePowerButtonUntilSwitchOff" xml:space="preserve">
+    <value>Tekan dan tahan tombol "Daya" sampai telepon bergetar.</value>
+  </data>
+  <data name="PressVolumeUpVolumeDown" xml:space="preserve">
+    <value>Saat telepon bergetar, tekan "Volume naik" dan "Volume turun" secara bersamaan.</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Kebijakan Privasi</value>
+  </data>
+  <data name="ReadingDeviceInfo" xml:space="preserve">
+    <value>Membaca informasi telepon</value>
+  </data>
+  <data name="RebootHtc" xml:space="preserve">
+    <value>Sekarang Anda dapat menghidupkan ulang telepon Anda kembali ke mode normal. Untuk menghidupkan ulang telepon, tekan dan tahan tombol daya beberapa saat.</value>
+  </data>
+  <data name="RebootPhoneInstructions" xml:space="preserve">
+    <value>Telepon tidak bisa ditemukan.
+Cobalah lakukan reboot pada telepon Anda dengan menekan tombol Daya dan "Volume turun" secara bersamaan.
+Terus tekan tombol hingga telepon bergetar.</value>
+  </data>
+  <data name="ReinstallSoftware" xml:space="preserve">
+    <value>Instal ulang perangkat lunak</value>
+  </data>
+  <data name="ReleasePowerPressVolumeUp" xml:space="preserve">
+    <value>Saat telepon bergetar, lepas tombol Daya dan tekan "Volume naik".</value>
+  </data>
+  <data name="RemovingPackages" xml:space="preserve">
+    <value>Menghapus paket</value>
+  </data>
+  <data name="RemovingReports" xml:space="preserve">
+    <value>Menghapus laporan</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>Laporan</value>
+  </data>
+  <data name="ResetSettingsQuestion" xml:space="preserve">
+    <value>Anda ingin mengatur ulang semua pengaturan ke nilai default?</value>
+  </data>
+  <data name="RestartDeviceHeader" xml:space="preserve">
+    <value>Hidupkan ulang telepon</value>
+  </data>
+  <data name="SelectDeviceToRecover" xml:space="preserve">
+    <value>Pilih telepon yang ingin dipulihkan</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Pengaturan</value>
+  </data>
+  <data name="SoftwareInstallation" xml:space="preserve">
+    <value>Instalasi perangkat lunak</value>
+  </data>
+  <data name="SoftwareOnServer" xml:space="preserve">
+    <value>Perangkat lunak tersedia di server</value>
+  </data>
+  <data name="SoftwarePackage" xml:space="preserve">
+    <value>Paket perangkat lunak</value>
+  </data>
+  <data name="SthWentWrongMessage" xml:space="preserve">
+    <value>Terjadi kesalahan</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>Rangkuman</value>
+  </data>
+  <data name="Survey1" xml:space="preserve">
+    <value>Survei</value>
+  </data>
+  <data name="Survey_Button_ContinueNoSubmit1" xml:space="preserve">
+    <value>Lanjutkan tanpa mengirim</value>
+  </data>
+  <data name="Survey_Button_SubmitAndContinue1" xml:space="preserve">
+    <value>Kirim dan lanjutkan pemulihan</value>
+  </data>
+  <data name="Survey_Choice_AppsNotWorking1" xml:space="preserve">
+    <value>Aplikasi saya tidak berfungsi sesuai harapan</value>
+  </data>
+  <data name="Survey_Choice_DeviceNotWorking1" xml:space="preserve">
+    <value>Perangkat saya tidak berfungsi sesuai harapan</value>
+  </data>
+  <data name="Survey_Choice_PerformanceIssues1" xml:space="preserve">
+    <value>Saya mengalami masalah kinerja</value>
+  </data>
+  <data name="Survey_Choice_PrevVersionFaster1" xml:space="preserve">
+    <value>Versi sebelumnya lebih cepat</value>
+  </data>
+  <data name="Survey_Choice_PrevVersionMoreReliable1" xml:space="preserve">
+    <value>Versi sebelumnya lebih andal</value>
+  </data>
+  <data name="Survey_Header1" xml:space="preserve">
+    <value>Mengapa Anda memulihkan perangkat?</value>
+  </data>
+  <data name="Survey_TellUsMore1" xml:space="preserve">
+    <value>Beritahu kami selengkapnya</value>
+  </data>
+  <data name="Theme" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>Gelap</value>
+  </data>
+  <data name="ThemeHighContrast" xml:space="preserve">
+    <value>Kontras Tinggi</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>Terang</value>
+  </data>
+  <data name="ThereIsMandatoryApplicationUpdate" xml:space="preserve">
+    <value>Tersedia pembaruan aplikasi wajib {0}.</value>
+  </data>
+  <data name="ThisUpdateMustBeInstalled" xml:space="preserve">
+    <value>Pembaruan {0} ini harus diinstal dan tidak boleh dilewatkan. Aplikasi tidak dapat digunakan hingga diperbarui.
+Sebelum menginstal pembaruan ini, cabut semua perangkat.</value>
+  </data>
+  <data name="TraceEnabled" xml:space="preserve">
+    <value>Buat file log</value>
+  </data>
+  <data name="Troubleshooting" xml:space="preserve">
+    <value>Pemecahan Masalah</value>
+  </data>
+  <data name="TurnOffPhone" xml:space="preserve">
+    <value>Matikan telepon Anda.</value>
+  </data>
+  <data name="UpdateAvailable" xml:space="preserve">
+    <value>Terdapat sebuah pembaruan untuk telepon Anda</value>
+  </data>
+  <data name="UseProxyServer" xml:space="preserve">
+    <value>Gunakan server proksi</value>
+  </data>
+  <data name="UserNameForm" xml:space="preserve">
+    <value>Nama pengguna</value>
+  </data>
+  <data name="VerifyingDownloadedFiles" xml:space="preserve">
+    <value>Memverifikasi file yang diunduh</value>
+  </data>
+  <data name="WaitUntilPhoneTurnsOn" xml:space="preserve">
+    <value>Tunggu hingga telepon dihidupkan.</value>
+  </data>
+  <data name="WaitingForConnection" xml:space="preserve">
+    <value>Menunggu sambungan</value>
+  </data>
+  <data name="WelcomeHeader" xml:space="preserve">
+    <value>Selamat Datang</value>
+  </data>
+</root>

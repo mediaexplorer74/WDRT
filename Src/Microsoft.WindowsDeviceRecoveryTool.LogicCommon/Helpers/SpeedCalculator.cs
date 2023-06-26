@@ -5,41 +5,41 @@ using System.Timers;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Helpers
 {
-	// Token: 0x0200000C RID: 12
+	// Token: 0x02000033 RID: 51
 	public class SpeedCalculator
 	{
-		// Token: 0x17000028 RID: 40
-		// (get) Token: 0x06000072 RID: 114 RVA: 0x00002E7C File Offset: 0x0000107C
-		// (set) Token: 0x06000073 RID: 115 RVA: 0x00002E93 File Offset: 0x00001093
+		// Token: 0x170000E8 RID: 232
+		// (get) Token: 0x06000335 RID: 821 RVA: 0x0000CA67 File Offset: 0x0000AC67
+		// (set) Token: 0x06000336 RID: 822 RVA: 0x0000CA6F File Offset: 0x0000AC6F
 		public long TotalFilesSize { get; private set; }
 
-		// Token: 0x17000029 RID: 41
-		// (get) Token: 0x06000074 RID: 116 RVA: 0x00002E9C File Offset: 0x0000109C
-		// (set) Token: 0x06000075 RID: 117 RVA: 0x00002EB3 File Offset: 0x000010B3
+		// Token: 0x170000E9 RID: 233
+		// (get) Token: 0x06000337 RID: 823 RVA: 0x0000CA78 File Offset: 0x0000AC78
+		// (set) Token: 0x06000338 RID: 824 RVA: 0x0000CA80 File Offset: 0x0000AC80
 		public long PreviousDownloadedSize { get; set; }
 
-		// Token: 0x1700002A RID: 42
-		// (get) Token: 0x06000076 RID: 118 RVA: 0x00002EBC File Offset: 0x000010BC
-		// (set) Token: 0x06000077 RID: 119 RVA: 0x00002ED3 File Offset: 0x000010D3
+		// Token: 0x170000EA RID: 234
+		// (get) Token: 0x06000339 RID: 825 RVA: 0x0000CA89 File Offset: 0x0000AC89
+		// (set) Token: 0x0600033A RID: 826 RVA: 0x0000CA91 File Offset: 0x0000AC91
 		public long CurrentDownloadedSize { get; set; }
 
-		// Token: 0x1700002B RID: 43
-		// (get) Token: 0x06000078 RID: 120 RVA: 0x00002EDC File Offset: 0x000010DC
-		// (set) Token: 0x06000079 RID: 121 RVA: 0x00002EF3 File Offset: 0x000010F3
+		// Token: 0x170000EB RID: 235
+		// (get) Token: 0x0600033B RID: 827 RVA: 0x0000CA9A File Offset: 0x0000AC9A
+		// (set) Token: 0x0600033C RID: 828 RVA: 0x0000CAA2 File Offset: 0x0000ACA2
 		public long CurrentPartlyDownloadedSize { get; set; }
 
-		// Token: 0x1700002C RID: 44
-		// (get) Token: 0x0600007A RID: 122 RVA: 0x00002EFC File Offset: 0x000010FC
-		// (set) Token: 0x0600007B RID: 123 RVA: 0x00002F13 File Offset: 0x00001113
+		// Token: 0x170000EC RID: 236
+		// (get) Token: 0x0600033D RID: 829 RVA: 0x0000CAAB File Offset: 0x0000ACAB
+		// (set) Token: 0x0600033E RID: 830 RVA: 0x0000CAB3 File Offset: 0x0000ACB3
 		public bool IsResumed { get; set; }
 
-		// Token: 0x1700002D RID: 45
-		// (get) Token: 0x0600007C RID: 124 RVA: 0x00002F1C File Offset: 0x0000111C
-		// (set) Token: 0x0600007D RID: 125 RVA: 0x00002F33 File Offset: 0x00001133
+		// Token: 0x170000ED RID: 237
+		// (get) Token: 0x0600033F RID: 831 RVA: 0x0000CABC File Offset: 0x0000ACBC
+		// (set) Token: 0x06000340 RID: 832 RVA: 0x0000CAC4 File Offset: 0x0000ACC4
 		public bool IsDownloadStarted { get; set; }
 
-		// Token: 0x1700002E RID: 46
-		// (get) Token: 0x0600007E RID: 126 RVA: 0x00002F3C File Offset: 0x0000113C
+		// Token: 0x170000EE RID: 238
+		// (get) Token: 0x06000341 RID: 833 RVA: 0x0000CAD0 File Offset: 0x0000ACD0
 		public long TotalDownloadedSize
 		{
 			get
@@ -48,17 +48,17 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Helpers
 			}
 		}
 
-		// Token: 0x1700002F RID: 47
-		// (get) Token: 0x0600007F RID: 127 RVA: 0x00002F64 File Offset: 0x00001164
-		// (set) Token: 0x06000080 RID: 128 RVA: 0x00002F7B File Offset: 0x0000117B
+		// Token: 0x170000EF RID: 239
+		// (get) Token: 0x06000342 RID: 834 RVA: 0x0000CAF6 File Offset: 0x0000ACF6
+		// (set) Token: 0x06000343 RID: 835 RVA: 0x0000CAFE File Offset: 0x0000ACFE
 		public long RemaingSeconds { get; set; }
 
-		// Token: 0x17000030 RID: 48
-		// (get) Token: 0x06000081 RID: 129 RVA: 0x00002F84 File Offset: 0x00001184
-		// (set) Token: 0x06000082 RID: 130 RVA: 0x00002F9B File Offset: 0x0000119B
+		// Token: 0x170000F0 RID: 240
+		// (get) Token: 0x06000344 RID: 836 RVA: 0x0000CB07 File Offset: 0x0000AD07
+		// (set) Token: 0x06000345 RID: 837 RVA: 0x0000CB0F File Offset: 0x0000AD0F
 		public double BytesPerSecond { get; private set; }
 
-		// Token: 0x06000083 RID: 131 RVA: 0x00002FA4 File Offset: 0x000011A4
+		// Token: 0x06000346 RID: 838 RVA: 0x0000CB18 File Offset: 0x0000AD18
 		public void Start(long totalFilesSize, long previousDownloadedSize = 0L)
 		{
 			this.Reset();
@@ -75,17 +75,18 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Helpers
 			this.oneSecondTick.Elapsed += this.OneSecondTickElapsed;
 		}
 
-		// Token: 0x06000084 RID: 132 RVA: 0x0000302C File Offset: 0x0000122C
+		// Token: 0x06000347 RID: 839 RVA: 0x0000CBA0 File Offset: 0x0000ADA0
 		public void Stop()
 		{
-			if (this.oneSecondTick != null)
+			bool flag = this.oneSecondTick != null;
+			if (flag)
 			{
 				this.oneSecondTick.Stop();
 				this.oneSecondTick.Elapsed -= this.OneSecondTickElapsed;
 			}
 		}
 
-		// Token: 0x06000085 RID: 133 RVA: 0x00003070 File Offset: 0x00001270
+		// Token: 0x06000348 RID: 840 RVA: 0x0000CBE4 File Offset: 0x0000ADE4
 		public void Reset()
 		{
 			this.Stop();
@@ -96,21 +97,24 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Helpers
 			this.RemaingSeconds = 0L;
 			this.BytesPerSecond = 0.0;
 			this.IsDownloadStarted = false;
-			if (this.packetsInOneSecond != null)
+			bool flag = this.packetsInOneSecond != null;
+			if (flag)
 			{
 				this.packetsInOneSecond.Clear();
 			}
 		}
 
-		// Token: 0x06000086 RID: 134 RVA: 0x000030E8 File Offset: 0x000012E8
+		// Token: 0x06000349 RID: 841 RVA: 0x0000CC5C File Offset: 0x0000AE5C
 		private void OneSecondTickElapsed(object sender, ElapsedEventArgs e)
 		{
 			this.packetsInOneSecond.Enqueue(this.CurrentDownloadedSize);
-			if (this.packetsInOneSecond.Count > 5)
+			bool flag = this.packetsInOneSecond.Count > 5;
+			if (flag)
 			{
-				long num = (this.packetsInOneSecond.Count > this.queueCapacity) ? this.packetsInOneSecond.Dequeue() : this.packetsInOneSecond.First<long>();
+				long num = ((this.packetsInOneSecond.Count > this.queueCapacity) ? this.packetsInOneSecond.Dequeue() : this.packetsInOneSecond.First<long>());
 				this.BytesPerSecond = this.smoothFactor * (double)(this.packetsInOneSecond.Last<long>() - this.packetsInOneSecond.ElementAt(this.packetsInOneSecond.Count - 2)) / 2.0 + (1.0 - this.smoothFactor) * (double)(this.packetsInOneSecond.Last<long>() - num) / (double)this.packetsInOneSecond.Count;
-				if (this.BytesPerSecond > 1.0)
+				bool flag2 = this.BytesPerSecond > 1.0;
+				if (flag2)
 				{
 					long num2 = this.TotalFilesSize - this.TotalDownloadedSize;
 					this.RemaingSeconds = (long)((double)num2 / this.BytesPerSecond);
@@ -118,16 +122,16 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Helpers
 			}
 		}
 
-		// Token: 0x0400001B RID: 27
+		// Token: 0x04000140 RID: 320
 		private Timer oneSecondTick;
 
-		// Token: 0x0400001C RID: 28
+		// Token: 0x04000141 RID: 321
 		private int queueCapacity;
 
-		// Token: 0x0400001D RID: 29
+		// Token: 0x04000142 RID: 322
 		private double smoothFactor;
 
-		// Token: 0x0400001E RID: 30
+		// Token: 0x04000143 RID: 323
 		private Queue<long> packetsInOneSecond;
 	}
 }

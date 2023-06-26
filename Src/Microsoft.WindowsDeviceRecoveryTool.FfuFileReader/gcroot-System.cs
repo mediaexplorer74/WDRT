@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-// Token: 0x0200029C RID: 668
+// Token: 0x02000331 RID: 817
 [NativeCppClass]
-internal struct gcroot//<System::String\u0020^>
+internal struct gcroot<System::String\u0020^>
 {
 }

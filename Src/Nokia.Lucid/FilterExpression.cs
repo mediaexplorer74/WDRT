@@ -25,16 +25,7 @@ namespace Nokia.Lucid
 		// Token: 0x060001EB RID: 491 RVA: 0x0000D47C File Offset: 0x0000B67C
 		public static Expression<Func<DeviceIdentifier, bool>> CreateDefaultExpression()
 		{
-			return (DeviceIdentifier s) => (s.Vid("0421") && ((s.Pid("0660") && s.MI(new int[]
-			{
-				4,
-				5,
-				6
-			})) || (s.Pid("0661") && s.MI(new int[]
-			{
-				2,
-				3
-			})) || s.Pid("066E"))) || s.Guid(WindowsPhoneIdentifiers.NcsdDeviceInterfaceGuid) || s.Guid(WindowsPhoneIdentifiers.TestServerDeviceInterfaceGuid) || s.Guid(WindowsPhoneIdentifiers.LabelAppDeviceInterfaceGuid) || s.Guid(WindowsPhoneIdentifiers.UefiDeviceInterfaceGuid) || s.Guid(WindowsPhoneIdentifiers.EdDeviceInterfaceGuid) || ((s.Vid("0421") || s.Vid("045E")) && s.Guid(WindowsPhoneIdentifiers.GenericUsbDeviceInterfaceGuid));
+			return (DeviceIdentifier s) => (s.Vid("0421") && ((s.Pid("0660") && s.MI(new int[] { 4, 5, 6 })) || (s.Pid("0661") && s.MI(new int[] { 2, 3 })) || s.Pid("066E"))) || s.Guid(WindowsPhoneIdentifiers.NcsdDeviceInterfaceGuid) || s.Guid(WindowsPhoneIdentifiers.TestServerDeviceInterfaceGuid) || s.Guid(WindowsPhoneIdentifiers.LabelAppDeviceInterfaceGuid) || s.Guid(WindowsPhoneIdentifiers.UefiDeviceInterfaceGuid) || s.Guid(WindowsPhoneIdentifiers.EdDeviceInterfaceGuid) || ((s.Vid("0421") || s.Vid("045E")) && s.Guid(WindowsPhoneIdentifiers.GenericUsbDeviceInterfaceGuid));
 		}
 
 		// Token: 0x0400013B RID: 315

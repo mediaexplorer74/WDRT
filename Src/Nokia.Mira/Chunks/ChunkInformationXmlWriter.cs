@@ -31,8 +31,7 @@ namespace Nokia.Mira.Chunks
 		private void WriteInternal(IEnumerable<ChunkRaw> chunkInformations)
 		{
 			WebFileSerializable webFileSerializable = new WebFileSerializable();
-			webFileSerializable.Chunks = (from ch in chunkInformations
-			select new ChunkSerializable
+			webFileSerializable.Chunks = chunkInformations.Select((ChunkRaw ch) => new ChunkSerializable
 			{
 				Begin = new long?(ch.Begin),
 				Current = new long?(ch.Current)

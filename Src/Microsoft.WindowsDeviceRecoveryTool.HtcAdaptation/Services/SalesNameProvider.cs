@@ -3,22 +3,23 @@ using Microsoft.WindowsDeviceRecoveryTool.LogicCommon;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.HtcAdaptation.Services
 {
-	// Token: 0x02000009 RID: 9
+	// Token: 0x02000007 RID: 7
 	public class SalesNameProvider : BaseSalesNameProvider
 	{
-		// Token: 0x06000043 RID: 67 RVA: 0x000039A0 File Offset: 0x00001BA0
+		// Token: 0x06000031 RID: 49 RVA: 0x000033FC File Offset: 0x000015FC
 		public override string NameForString(string text)
 		{
-			string result;
-			if (text.Equals("USB BLDR"))
+			bool flag = text.Equals("USB BLDR");
+			string text2;
+			if (flag)
 			{
-				result = "HTC";
+				text2 = "HTC";
 			}
 			else
 			{
-				result = base.NameForString(text);
+				text2 = base.NameForString(text);
 			}
-			return result;
+			return text2;
 		}
 	}
 }

@@ -6,7 +6,8 @@ namespace Nokia.Mira
 	public sealed class DownloadProgressInfo
 	{
 		// Token: 0x06000098 RID: 152 RVA: 0x00003308 File Offset: 0x00001508
-		public DownloadProgressInfo(long bytesReceived) : this(bytesReceived, null)
+		public DownloadProgressInfo(long bytesReceived)
+			: this(bytesReceived, null)
 		{
 		}
 

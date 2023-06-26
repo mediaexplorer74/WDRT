@@ -3,6 +3,6 @@ using System.Runtime.CompilerServices;
 
 // Token: 0x02000094 RID: 148
 [NativeCppClass]
-public struct exception
+internal struct exception
 {
 }

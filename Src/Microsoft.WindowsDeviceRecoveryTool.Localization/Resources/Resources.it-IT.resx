@@ -1,0 +1,892 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccentColor" xml:space="preserve">
+    <value>Colore evidenziatore</value>
+  </data>
+  <data name="AccentColorBlack" xml:space="preserve">
+    <value>Nero</value>
+  </data>
+  <data name="AccentColorBlue" xml:space="preserve">
+    <value>Blu</value>
+  </data>
+  <data name="AccentColorCobalt" xml:space="preserve">
+    <value>Cobalto</value>
+  </data>
+  <data name="AccentColorCrimson" xml:space="preserve">
+    <value>Porpora</value>
+  </data>
+  <data name="AccentColorEmerald" xml:space="preserve">
+    <value>Smeraldo</value>
+  </data>
+  <data name="AccentColorIndigo" xml:space="preserve">
+    <value>Indaco</value>
+  </data>
+  <data name="AccentColorMauve" xml:space="preserve">
+    <value>Malva</value>
+  </data>
+  <data name="AccentColorSienna" xml:space="preserve">
+    <value>Terra di Siena</value>
+  </data>
+  <data name="AddressForm" xml:space="preserve">
+    <value>Indirizzo</value>
+  </data>
+  <data name="AllFilesSize" xml:space="preserve">
+    <value>Dimensione di tutti i file: {0}</value>
+  </data>
+  <data name="AnotherInstanceAlreadyRunning" xml:space="preserve">
+    <value>Un'altra istanza di {0} è già in esecuzione.</value>
+  </data>
+  <data name="ApplicationData" xml:space="preserve">
+    <value>Dati dell'applicazione</value>
+  </data>
+  <data name="ApplicationUpdate" xml:space="preserve">
+    <value>Aggiornamento applicazione</value>
+  </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>Continuare?</value>
+  </data>
+  <data name="AutomaticPackageFileSelection" xml:space="preserve">
+    <value>Ricerca in corso del pacchetto corretto per il telefono connesso.</value>
+  </data>
+  <data name="AutomaticPackageSelection" xml:space="preserve">
+    <value>Selezione automatica del pacchetto</value>
+  </data>
+  <data name="AvailablePackageIsOlder" xml:space="preserve">
+    <value>Il software disponibile è meno recente rispetto a quello già installato sul telefono.</value>
+  </data>
+  <data name="AwaitRecoveryAfterEmergencyFlashingInstruction" xml:space="preserve">
+    <value>Attendere il telefono dopo l'operazione di ripristino.
+Se il livello della batteria è basso, l'operazione potrebbe richiedere fino a 30 minuti.</value>
+  </data>
+  <data name="BatteryCheckHeader" xml:space="preserve">
+    <value>Controlla batteria</value>
+  </data>
+  <data name="BatteryCheckingCancelled" xml:space="preserve">
+    <value>Il controllo della batteria è stato annullato.</value>
+  </data>
+  <data name="BatteryWarning" xml:space="preserve">
+    <value>Assicurarsi che il livello di carica della batteria sia almeno del 25%. In caso contrario, il telefono potrebbe danneggiarsi.</value>
+  </data>
+  <data name="ButtonBrowse" xml:space="preserve">
+    <value>Sfoglia</value>
+  </data>
+  <data name="ButtonCancel" xml:space="preserve">
+    <value>Annulla</value>
+  </data>
+  <data name="ButtonChangePackagePath" xml:space="preserve">
+    <value>Modifica percorso del pacchetto</value>
+  </data>
+  <data name="ButtonClean" xml:space="preserve">
+    <value>Elimina tutti i dati dell'app</value>
+  </data>
+  <data name="ButtonCleanOneCategory" xml:space="preserve">
+    <value>Pulisci</value>
+  </data>
+  <data name="ButtonCollectLogs" xml:space="preserve">
+    <value>Esporta</value>
+  </data>
+  <data name="ButtonContinue" xml:space="preserve">
+    <value>Continua</value>
+  </data>
+  <data name="ButtonDelete" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="ButtonExit" xml:space="preserve">
+    <value>Esci</value>
+  </data>
+  <data name="ButtonFinish" xml:space="preserve">
+    <value>Fine</value>
+  </data>
+  <data name="ButtonInstall" xml:space="preserve">
+    <value>Installa</value>
+  </data>
+  <data name="ButtonInstallSoftware" xml:space="preserve">
+    <value>Installa software</value>
+  </data>
+  <data name="ButtonMyPhoneIsNotOnTheList" xml:space="preserve">
+    <value>Il telefono non è nell'elenco</value>
+  </data>
+  <data name="ButtonMyPhoneWasNotDetected" xml:space="preserve">
+    <value>Telefono non rilevato</value>
+  </data>
+  <data name="ButtonNewFolder" xml:space="preserve">
+    <value>Nuova cartella</value>
+  </data>
+  <data name="ButtonNext" xml:space="preserve">
+    <value>Avanti</value>
+  </data>
+  <data name="ButtonNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="ButtonOff" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="ButtonOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ButtonOn" xml:space="preserve">
+    <value>Sì</value>
+  </data>
+  <data name="ButtonReset" xml:space="preserve">
+    <value>Ripristina predefiniti</value>
+  </data>
+  <data name="ButtonTryAgain" xml:space="preserve">
+    <value>Riprova</value>
+  </data>
+  <data name="ButtonYes" xml:space="preserve">
+    <value>Sì</value>
+  </data>
+  <data name="CapsLockIsOn" xml:space="preserve">
+    <value>Il blocco maiuscole è attivo</value>
+  </data>
+  <data name="CheckLatestPackageHeader" xml:space="preserve">
+    <value>Info sul telefono</value>
+  </data>
+  <data name="CheckingAlreadyDownloadedFiles" xml:space="preserve">
+    <value>Verifica della compatibilità dei file scaricati in corso</value>
+  </data>
+  <data name="CheckingAppUpdate" xml:space="preserve">
+    <value>Ricerca in corso degli aggiornamenti disponibili per l'applicazione</value>
+  </data>
+  <data name="CheckingFirmwareAvailability" xml:space="preserve">
+    <value>Controllo della disponibilità del software in corso</value>
+  </data>
+  <data name="CheckingPackageIntegrity" xml:space="preserve">
+    <value>Controllo dell'integrità del pacchetto in corso</value>
+  </data>
+  <data name="CleanUserDataQuestion" xml:space="preserve">
+    <value>Eliminare tutti i dati dell'applicazione (report, pacchetti software del telefono, file di registro)?</value>
+  </data>
+  <data name="CollectingLogFilesInfo" xml:space="preserve">
+    <value>Raccolta file di registro. Attendere prego.</value>
+  </data>
+  <data name="ComputerBatteryWarning" xml:space="preserve">
+    <value>La batteria del computer in uso è quasi scarica. Collegare il computer a un caricabatterie e riprovare.</value>
+  </data>
+  <data name="ConnectPhone" xml:space="preserve">
+    <value>Connetti il telefono</value>
+  </data>
+  <data name="ConnectPhoneWithUsbCable" xml:space="preserve">
+    <value>Collegare il cavo USB al telefono.</value>
+  </data>
+  <data name="ConnectedDeviceCannotBeRecovered" xml:space="preserve">
+    <value>Impossibile eseguire il ripristino del telefono collegato.</value>
+  </data>
+  <data name="CouldNotDetectPhone" xml:space="preserve">
+    <value>Impossibile rilevare il telefono</value>
+  </data>
+  <data name="CreatingNewFolderMessage" xml:space="preserve">
+    <value>Crea nuova cartella</value>
+  </data>
+  <data name="CurrentFirmwareVersion" xml:space="preserve">
+    <value>Versione software installata:</value>
+  </data>
+  <data name="CustomPackagesPath" xml:space="preserve">
+    <value>Usa percorso dei pacchetti personalizzato</value>
+  </data>
+  <data name="DeleteLogsQuestion" xml:space="preserve">
+    <value>Eliminare i file di registro?</value>
+  </data>
+  <data name="DeletePackagesQuestion" xml:space="preserve">
+    <value>Eliminare i file di ripristino del software?</value>
+  </data>
+  <data name="DeleteReportsQuestion" xml:space="preserve">
+    <value>Eliminare i file di registro?</value>
+  </data>
+  <data name="DeletingLogFilesInfo" xml:space="preserve">
+    <value>Eliminazione dei file di registro</value>
+  </data>
+  <data name="DeletingPackagesInfo" xml:space="preserve">
+    <value>Eliminazione dei file di ripristino del software</value>
+  </data>
+  <data name="DeletingReportsInfo" xml:space="preserve">
+    <value>Eliminazione dei file di registro</value>
+  </data>
+  <data name="DetailsHeader" xml:space="preserve">
+    <value>Dettagli</value>
+  </data>
+  <data name="Device" xml:space="preserve">
+    <value>Telefono</value>
+  </data>
+  <data name="DeviceFlashing" xml:space="preserve">
+    <value>Installazione del pacchetto software</value>
+  </data>
+  <data name="DeviceInUefiMode" xml:space="preserve">
+    <value>Telefono Lumia</value>
+  </data>
+  <data name="DeviceSelectionHeader" xml:space="preserve">
+    <value>Selezione telefono</value>
+  </data>
+  <data name="DirectoryNotSet" xml:space="preserve">
+    <value>Directory non selezionata o non esistente.</value>
+  </data>
+  <data name="DisclaimerBackupInfo" xml:space="preserve">
+    <value>Durante l'installazione, i contenuti personali presenti sul telefono verranno cancellati. Consigliamo di creare un backup sul telefono, in:</value>
+  </data>
+  <data name="DisclaimerHeader" xml:space="preserve">
+    <value>Dichiarazione di non responsabilità</value>
+  </data>
+  <data name="DisclaimerInfoInstallationDuration" xml:space="preserve">
+    <value>L'installazione del software dovrebbe richiedere circa 15 minuti. Il tempo di download del pacchetto del software dipende dalla velocità della rete.</value>
+  </data>
+  <data name="DisconnectPhone" xml:space="preserve">
+    <value>Scollegare il cavo USB dal telefono.</value>
+  </data>
+  <data name="DowngradeSoftwareQuestion" xml:space="preserve">
+    <value>Si sta tentando di installare un software meno recente rispetto a quello già installato sul telefono. Continuare?</value>
+  </data>
+  <data name="DownloadCancelled" xml:space="preserve">
+    <value>Download annullato</value>
+  </data>
+  <data name="DownloadProgressExactMinute" xml:space="preserve">
+    <value>Tempo rimanente: circa {0} minuti</value>
+  </data>
+  <data name="DownloadProgressMinute" xml:space="preserve">
+    <value>Tempo rimanente: circa un minuto</value>
+  </data>
+  <data name="DownloadProgressMinuteLess" xml:space="preserve">
+    <value>Tempo rimanente: meno di un minuto</value>
+  </data>
+  <data name="DownloadingCancelMessage" xml:space="preserve">
+    <value>Questa operazione annullerà il download. I file già scaricati non saranno eliminati. È possibile riprendere il download in seguito.</value>
+  </data>
+  <data name="DownloadingEmergencyPackage" xml:space="preserve">
+    <value>Download pacchetto di emergenza</value>
+  </data>
+  <data name="DownloadingFiles" xml:space="preserve">
+    <value>Download in corso dei file: {0}/{1} ({2})</value>
+  </data>
+  <data name="DownloadingInstallPacket" xml:space="preserve">
+    <value>Download della nuova versione in corso</value>
+  </data>
+  <data name="DownloadingPackage" xml:space="preserve">
+    <value>Download del pacchetto in corso</value>
+  </data>
+  <data name="EmergencyFlashingMessage" xml:space="preserve">
+    <value>Aggiornamento di emergenza</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Errore</value>
+  </data>
+  <data name="ErrorDescription_AutoUpdateException" xml:space="preserve">
+    <value>Probabile problema con la connessione al server. Verificare la connessione Internet. Assicurarsi che le impostazioni proxy, firewall e di protezione antivirus siano corrette. Controllare anche le impostazioni di data e ora.</value>
+  </data>
+  <data name="ErrorDescription_CannotAccessDirectoryException" xml:space="preserve">
+    <value>Sembra che l'utente non sia in possesso delle autorizzazioni necessarie per la directory. Modificare il percorso della directory o modificare le autorizzazioni per la directory.</value>
+  </data>
+  <data name="ErrorDescription_DeviceNotFoundException" xml:space="preserve">
+    <value>Telefono non trovato.</value>
+  </data>
+  <data name="ErrorDescription_DownloadPackageException" xml:space="preserve">
+    <value>Controllare se le impostazioni proxy sono corrette e fare clic su "{0}". Se si desidera annullare il processo di download, fare clic su "{1}".</value>
+  </data>
+  <data name="ErrorDescription_EmergencyPackageNotFoundOnServerException" xml:space="preserve">
+    <value>Aggiornamento di emergenza per il telefono attualmente non supportato</value>
+  </data>
+  <data name="ErrorDescription_FirmwareFileNotFoundException" xml:space="preserve">
+    <value>Il pacchetto software è incompleto. Mancano uno o più file. Effettuare nuovamente il download del pacchetto o selezionare un altro software.</value>
+  </data>
+  <data name="ErrorDescription_HtcDeviceCommunicationException" xml:space="preserve">
+    <value>Riavviare il dispositivo in modalità {0}.</value>
+  </data>
+  <data name="ErrorDescription_HtcPackageFileCheckException" xml:space="preserve">
+    <value>Riscaricare il file del pacchetto ROM.</value>
+  </data>
+  <data name="ErrorDescription_HtcServiceControlException" xml:space="preserve">
+    <value>Controllare se il servizio {0} si è arrestato.</value>
+  </data>
+  <data name="ErrorDescription_HtcUsbCommunicationException" xml:space="preserve">
+    <value>Riavviare il dispositivo in modalità {0}.
+Controllare il collegamento USB del dispositivo.</value>
+  </data>
+  <data name="ErrorDescription_HtcUsbPortOpenException" xml:space="preserve">
+    <value>Controllare se un'altra applicazione sta occupando la porta.
+Controllare il collegamento USB del dispositivo.</value>
+  </data>
+  <data name="ErrorDescription_InvalidOperationException" xml:space="preserve">
+    <value>Riavviare l'applicazione.</value>
+  </data>
+  <data name="ErrorDescription_NoInternetConnectionException" xml:space="preserve">
+    <value>Impossibile completare l'ultima operazione poiché la connessione Internet non è attiva.</value>
+  </data>
+  <data name="ErrorDescription_NotEnoughSpaceException" xml:space="preserve">
+    <value>{0} di spazio mancante sul disco {1}. Liberare spazio e riprovare.</value>
+  </data>
+  <data name="ErrorDescription_OperationCanceledException" xml:space="preserve">
+    <value>L'operazione è stata annullata.</value>
+  </data>
+  <data name="ErrorDescription_PackageNotFoundException" xml:space="preserve">
+    <value>Pacchetto software non disponibile per questo telefono.</value>
+  </data>
+  <data name="ErrorDescription_PlannedServiceBreakException" xml:space="preserve">
+    <value>Il servizio non è disponibile tra {0} e {1}. Riprovare più tardi.</value>
+  </data>
+  <data name="ErrorDescription_ReadPhoneInformationException" xml:space="preserve">
+    <value>Impossibile leggere le informazioni dal telefono.</value>
+  </data>
+  <data name="ErrorDescription_RestartApplicationException" xml:space="preserve">
+    <value>Scollegare tutti i telefoni e riavviare l'applicazione. Se il problema persiste, disinstallare {0} e scaricare la versione più recente dell'applicazione.</value>
+  </data>
+  <data name="ErrorDescription_UnknownError" xml:space="preserve">
+    <value>Impossibile completare l'operazione.</value>
+  </data>
+  <data name="ErrorDescription_WebException" xml:space="preserve">
+    <value>Probabile problema con la connessione al server. Verificare la connessione Internet. Assicurarsi che le impostazioni proxy, firewall e di protezione antivirus siano corrette.</value>
+  </data>
+  <data name="ErrorDetails_NotEnoughSpaceOnTheDiskException" xml:space="preserve">
+    <value>La quantità minima di spazio libero su disco {0} necessaria per l'aggiornamento è {1}. Liberare spazio e riprovare.</value>
+  </data>
+  <data name="ErrorHeader" xml:space="preserve">
+    <value>Siamo spiacenti, si è verificato un problema</value>
+  </data>
+  <data name="Error_AutoUpdateException" xml:space="preserve">
+    <value>Verifica aggiornamento applicazione non riuscita</value>
+  </data>
+  <data name="Error_CannotAccessDirectoryException" xml:space="preserve">
+    <value>Impossibile accedere alla directory</value>
+  </data>
+  <data name="Error_DeviceNotFoundException" xml:space="preserve">
+    <value>Impossibile trovare il telefono</value>
+  </data>
+  <data name="Error_DownloadPackageException" xml:space="preserve">
+    <value>Si è verificato un problema durante il download del pacchetto software</value>
+  </data>
+  <data name="Error_EmergencyPackageNotFoundOnServerException" xml:space="preserve">
+    <value>Pacchetto di emergenza non trovato</value>
+  </data>
+  <data name="Error_FileNotFoundException" xml:space="preserve">
+    <value>File o percorso: "{0}" non trovato</value>
+  </data>
+  <data name="Error_FirmwareFileNotFoundException" xml:space="preserve">
+    <value>File del software non trovato</value>
+  </data>
+  <data name="Error_HtcDeviceCommunicationException" xml:space="preserve">
+    <value>Errore di comunicazione con il dispositivo</value>
+  </data>
+  <data name="Error_HtcDeviceHandshakingException" xml:space="preserve">
+    <value>Errore di handshaking con il dispositivo</value>
+  </data>
+  <data name="Error_HtcPackageFileCheckException" xml:space="preserve">
+    <value>Errore controllo file del pacchetto</value>
+  </data>
+  <data name="Error_HtcServiceControlException" xml:space="preserve">
+    <value>Errore controllo servizio</value>
+  </data>
+  <data name="Error_HtcUsbCommunicationException" xml:space="preserve">
+    <value>Errore di comunicazione USB</value>
+  </data>
+  <data name="Error_HtcUsbPortOpenException" xml:space="preserve">
+    <value>Errore di apertura porta USB</value>
+  </data>
+  <data name="Error_InvalidOperationException" xml:space="preserve">
+    <value>Operazione non riuscita</value>
+  </data>
+  <data name="Error_NoInternetConnectionException" xml:space="preserve">
+    <value>Connessione Internet assente</value>
+  </data>
+  <data name="Error_NotEnoughSpaceException" xml:space="preserve">
+    <value>Spazio su disco insufficiente</value>
+  </data>
+  <data name="Error_NotEnoughSpaceOnTheDiskException" xml:space="preserve">
+    <value>Spazio su disco insufficiente</value>
+  </data>
+  <data name="Error_OperationCanceledException" xml:space="preserve">
+    <value>Operazione annullata</value>
+  </data>
+  <data name="Error_PackageNotFoundException" xml:space="preserve">
+    <value>Pacchetto di varianti non trovato</value>
+  </data>
+  <data name="Error_PlannedServiceBreakException" xml:space="preserve">
+    <value>Impossibile connettersi al server</value>
+  </data>
+  <data name="Error_ReadPhoneInformationException" xml:space="preserve">
+    <value>Lettura informazioni telefono non riuscita</value>
+  </data>
+  <data name="Error_RestartApplicationException" xml:space="preserve">
+    <value>Riavvia l'applicazione</value>
+  </data>
+  <data name="Error_SoftwareInstallationFailed" xml:space="preserve">
+    <value>Installazione del software fallita. Provare a riavviare il telefono e riprovare a installare il software. Se il telefono non viene rilevato, usare il pulsante "{0}" nella schermata iniziale.</value>
+  </data>
+  <data name="Error_SoftwareIsNotCorrectlySignedException" xml:space="preserve">
+    <value>Il software non è firmato correttamente o non è firmato per questo telefono.</value>
+  </data>
+  <data name="Error_UnauthorizedAccessException" xml:space="preserve">
+    <value>Accesso negato</value>
+  </data>
+  <data name="Error_UnknownError" xml:space="preserve">
+    <value>Si è verificato un errore sconosciuto</value>
+  </data>
+  <data name="Error_WebException" xml:space="preserve">
+    <value>Impossibile connettersi al server</value>
+  </data>
+  <data name="FFUCheckingDirectory" xml:space="preserve">
+    <value>Controllo directory in corso</value>
+  </data>
+  <data name="FFUCheckingFile" xml:space="preserve">
+    <value>Controllo del file selezionato in corso</value>
+  </data>
+  <data name="FFUFamily" xml:space="preserve">
+    <value>Famiglia:</value>
+  </data>
+  <data name="FFUManufacturer" xml:space="preserve">
+    <value>Produttore:</value>
+  </data>
+  <data name="FFUProductName" xml:space="preserve">
+    <value>Nome prodotto:</value>
+  </data>
+  <data name="FFUVersion" xml:space="preserve">
+    <value>Versione:</value>
+  </data>
+  <data name="FirmwareIntegrityError" xml:space="preserve">
+    <value>Il pacchetto software {0} è corrotto. Effettuare nuovamente il download del pacchetto o selezionare un altro software.</value>
+  </data>
+  <data name="FirmwareVersion" xml:space="preserve">
+    <value>Versione firmware: </value>
+  </data>
+  <data name="FirmwareVersionUnknown" xml:space="preserve">
+    <value>Versione firmware: sconosciuta</value>
+  </data>
+  <data name="FlashCancelMessage" xml:space="preserve">
+    <value>È in corso l'installazione del pacchetto software. Se si annulla l'operazione il telefono potrebbe danneggiarsi. Annullare l'operazione?</value>
+  </data>
+  <data name="FlashWarningMessage1" xml:space="preserve">
+    <value>Non utilizzare il telefono. Non scollegare il cavo. Non spegnere il telefono. In caso contrario, il telefono potrebbe smettere di funzionare.</value>
+  </data>
+  <data name="FlashWarningMessage2" xml:space="preserve">
+    <value>Durante l'installazione, il telefono si riavvia e lo schermo diventa nero.
+È possibile ignorare tutte le notifiche Windows riguardo al collegamento del cavo USB.</value>
+  </data>
+  <data name="Flashing" xml:space="preserve">
+    <value>Installazione del software sul telefono in corso</value>
+  </data>
+  <data name="FlashingMessageChangeToFlashMode" xml:space="preserve">
+    <value>Passaggio alla modalità di aggiornamento</value>
+  </data>
+  <data name="FlashingMessageCheckingAntiTheftStatus" xml:space="preserve">
+    <value>Verifica stato Anti Theft Protection</value>
+  </data>
+  <data name="FlashingMessageConnectingWithPhone" xml:space="preserve">
+    <value>Collegamento con il telefono</value>
+  </data>
+  <data name="FlashingMessageInstallingSoftware" xml:space="preserve">
+    <value>Installazione del software</value>
+  </data>
+  <data name="FlashingMessageOperationStarted" xml:space="preserve">
+    <value>Installazione del software avviata</value>
+  </data>
+  <data name="FlashingResult" xml:space="preserve">
+    <value>Risultato dell'installazione del pacchetto software</value>
+  </data>
+  <data name="HtcBootloaderMode" xml:space="preserve">
+    <value>Modalità HTC {0}</value>
+  </data>
+  <data name="HtcPackageNotFound" xml:space="preserve">
+    <value>Pacchetto software non trovato sul server</value>
+  </data>
+  <data name="KeepButtonTillImage" xml:space="preserve">
+    <value>Tenere premuto il pulsante finché non è visibile un'immagine uguale a quella visualizzata sullo schermo.</value>
+  </data>
+  <data name="KeepButtonsTillImage" xml:space="preserve">
+    <value>Tenere premuti i pulsanti finché non è visibile un'immagine uguale a quella visualizzata sullo schermo.</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Lingua</value>
+  </data>
+  <data name="LogFiles" xml:space="preserve">
+    <value>File di registro</value>
+  </data>
+  <data name="LumiaBatteryChecking" xml:space="preserve">
+    <value>La batteria del telefono è quasi scarica. È possibile continuare, ma il telefono potrebbe danneggiarsi.</value>
+  </data>
+  <data name="ManualDeviceSelection" xml:space="preserve">
+    <value>Selezione telefono</value>
+  </data>
+  <data name="ManualRestartHtcInfo" xml:space="preserve">
+    <value>Impossibile leggere le informazioni del telefono. Attenersi alla seguente procedura per continuare oppure fare clic su "{0}" per annullare il processo.</value>
+  </data>
+  <data name="ManufacturerDetectionFailed" xml:space="preserve">
+    <value>Siamo spiacenti ma non è stato possibile stabilire il produttore del telefono.</value>
+  </data>
+  <data name="ManufacturerHeader" xml:space="preserve">
+    <value>Produttore del telefono</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>Modalità {0}</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Modello: </value>
+  </data>
+  <data name="ModelUnknown" xml:space="preserve">
+    <value>Modello: sconosciuto</value>
+  </data>
+  <data name="MoreThanOnePackageFound" xml:space="preserve">
+    <value>Trovato più di un pacchetto. Selezionarne uno e fare clic su "{0}" per continuare.</value>
+  </data>
+  <data name="Network" xml:space="preserve">
+    <value>Rete</value>
+  </data>
+  <data name="NoPackagesFoundSelectAnotherDirectory" xml:space="preserve">
+    <value>Impossibile trovare il pacchetto corretto. Selezionare una directory diversa oppure selezionare il pacchetto manualmente.</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>Non trovato</value>
+  </data>
+  <data name="OnePackageFound" xml:space="preserve">
+    <value>Trovato un pacchetto per: {0}. Fare clic su "{1}" per continuare oppure selezionare una cartella o un file diverso.</value>
+  </data>
+  <data name="OperatingSystemUnknown" xml:space="preserve">
+    <value>Versione sistema operativo: sconosciuta</value>
+  </data>
+  <data name="OperatingSystemVersion" xml:space="preserve">
+    <value>Versione sistema operativo: </value>
+  </data>
+  <data name="OperationFailed" xml:space="preserve">
+    <value>Operazione terminata con errore</value>
+  </data>
+  <data name="OperationPassed" xml:space="preserve">
+    <value>Operazione completata</value>
+  </data>
+  <data name="PackageDirectory" xml:space="preserve">
+    <value>Directory del pacchetto: {0}</value>
+  </data>
+  <data name="PackageFileHeader" xml:space="preserve">
+    <value>File del pacchetto</value>
+  </data>
+  <data name="PackageFilePath" xml:space="preserve">
+    <value>Percorso del pacchetto: {0}</value>
+  </data>
+  <data name="PackageIntegrityCheck" xml:space="preserve">
+    <value>Controllo integrità pacchetto</value>
+  </data>
+  <data name="PackageNotFound" xml:space="preserve">
+    <value>Pacchetto non disponibile per questo telefono.</value>
+  </data>
+  <data name="PackagePathNotSet" xml:space="preserve">
+    <value>Percorso pacchetto non impostato</value>
+  </data>
+  <data name="PackageSelection" xml:space="preserve">
+    <value>Selezione del pacchetto</value>
+  </data>
+  <data name="Packages" xml:space="preserve">
+    <value>Pacchetti</value>
+  </data>
+  <data name="PackagesPath" xml:space="preserve">
+    <value>Percorso dei pacchetti</value>
+  </data>
+  <data name="PasswordForm" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PhoneAddedHeader" xml:space="preserve">
+    <value>Telefono collegato</value>
+  </data>
+  <data name="PhoneAddedMessage" xml:space="preserve">
+    <value>Il nuovo telefono {0} è stato collegato.</value>
+  </data>
+  <data name="PhoneIsUpToDate" xml:space="preserve">
+    <value>La versione del software installata è la più recente.</value>
+  </data>
+  <data name="PhoneRemovedHeader" xml:space="preserve">
+    <value>Telefono scollegato</value>
+  </data>
+  <data name="PhoneRemovedMessage" xml:space="preserve">
+    <value>Il telefono {0} è stato scollegato.</value>
+  </data>
+  <data name="PhoneRestart" xml:space="preserve">
+    <value>Riavvio del telefono</value>
+  </data>
+  <data name="PhoneSettingsBackupPathWin10" xml:space="preserve">
+    <value>Impostazioni &gt; Aggiorna e ripristina &gt; Backup</value>
+  </data>
+  <data name="PhoneSettingsBackupPathWin8" xml:space="preserve">
+    <value>Impostazioni &gt; Backup</value>
+  </data>
+  <data name="PleaseConnectDevice" xml:space="preserve">
+    <value>Connettere il telefono</value>
+  </data>
+  <data name="PleaseConnectOneDevice" xml:space="preserve">
+    <value>Connettere un solo telefono</value>
+  </data>
+  <data name="PleaseSelectAFolder" xml:space="preserve">
+    <value>Selezionare una cartella</value>
+  </data>
+  <data name="PleaseSelectDeviceToContinue" xml:space="preserve">
+    <value>Selezionare il telefono per continuare</value>
+  </data>
+  <data name="PleaseSelectManufacturer" xml:space="preserve">
+    <value>Selezionare il produttore corretto di seguito:</value>
+  </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>Attendere prego</value>
+  </data>
+  <data name="PortForm" xml:space="preserve">
+    <value>Porta</value>
+  </data>
+  <data name="Preferences" xml:space="preserve">
+    <value>Preferenze</value>
+  </data>
+  <data name="PressPowerAndVolumeDown" xml:space="preserve">
+    <value>Premere contemporaneamente il pulsante di accensione e il tasto "Volume giù".</value>
+  </data>
+  <data name="PressThePowerButton" xml:space="preserve">
+    <value>Premere il pulsante di accensione. </value>
+  </data>
+  <data name="PressThePowerButtonUntilSwitchOff" xml:space="preserve">
+    <value>Premere il pulsante di "accensione" e tenerlo premuto fino ad avvertire la vibrazione del telefono.</value>
+  </data>
+  <data name="PressVolumeUpVolumeDown" xml:space="preserve">
+    <value>Quando il telefono vibra, premi contemporaneamente i tasti "Volume su" e "Volume giù".</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Informativa sulla privacy</value>
+  </data>
+  <data name="ReadingDeviceInfo" xml:space="preserve">
+    <value>Lettura informazioni del telefono in corso</value>
+  </data>
+  <data name="RebootHtc" xml:space="preserve">
+    <value>Ora il telefono può essere nuovamente riavviato in modalità normale. Per riavviare il telefono, premere il pulsante di accensione e tenerlo premuto per qualche istante.</value>
+  </data>
+  <data name="RebootPhoneInstructions" xml:space="preserve">
+    <value>Impossibile trovare il telefono.
+Provare a riavviare il telefono premendo il tasto di accensione e il tasto di riduzione del volume contemporaneamente.
+Tenere premuti entrambi i tasti fino ad avvertire la vibrazione del telefono.</value>
+  </data>
+  <data name="ReinstallSoftware" xml:space="preserve">
+    <value>Reinstalla software</value>
+  </data>
+  <data name="ReleasePowerPressVolumeUp" xml:space="preserve">
+    <value>Quando il telefono vibra, rilasciare il pulsante di accensione e premere il tasto "Volume su".</value>
+  </data>
+  <data name="RemovingPackages" xml:space="preserve">
+    <value>Rimozione dei pacchetti in corso</value>
+  </data>
+  <data name="RemovingReports" xml:space="preserve">
+    <value>Rimozione dei report in corso</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="ResetSettingsQuestion" xml:space="preserve">
+    <value>Ripristinare tutte le impostazioni ai valori predefiniti?</value>
+  </data>
+  <data name="RestartDeviceHeader" xml:space="preserve">
+    <value>Riavvia telefono</value>
+  </data>
+  <data name="SelectDeviceToRecover" xml:space="preserve">
+    <value>Seleziona il telefono di cui vuoi eseguire il ripristino</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Impostazioni</value>
+  </data>
+  <data name="SoftwareInstallation" xml:space="preserve">
+    <value>Installazione del software</value>
+  </data>
+  <data name="SoftwareOnServer" xml:space="preserve">
+    <value>Software disponibile sul server</value>
+  </data>
+  <data name="SoftwarePackage" xml:space="preserve">
+    <value>Pacchetto software</value>
+  </data>
+  <data name="SthWentWrongMessage" xml:space="preserve">
+    <value>Si è verificato un errore</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>Riepilogo</value>
+  </data>
+  <data name="Survey1" xml:space="preserve">
+    <value>Sondaggio</value>
+  </data>
+  <data name="Survey_Button_ContinueNoSubmit1" xml:space="preserve">
+    <value>Continua senza inviare</value>
+  </data>
+  <data name="Survey_Button_SubmitAndContinue1" xml:space="preserve">
+    <value>Invia e continua ripristino</value>
+  </data>
+  <data name="Survey_Choice_AppsNotWorking1" xml:space="preserve">
+    <value>Le app non funzionano come previsto</value>
+  </data>
+  <data name="Survey_Choice_DeviceNotWorking1" xml:space="preserve">
+    <value>Il dispositivo non funziona come previsto</value>
+  </data>
+  <data name="Survey_Choice_PerformanceIssues1" xml:space="preserve">
+    <value>Si riscontrano problemi di prestazioni</value>
+  </data>
+  <data name="Survey_Choice_PrevVersionFaster1" xml:space="preserve">
+    <value>La versione precedente sembrava più veloce</value>
+  </data>
+  <data name="Survey_Choice_PrevVersionMoreReliable1" xml:space="preserve">
+    <value>La versione precedente sembrava più affidabile</value>
+  </data>
+  <data name="Survey_Header1" xml:space="preserve">
+    <value>Perché si intende ripristinare il dispositivo?</value>
+  </data>
+  <data name="Survey_TellUsMore1" xml:space="preserve">
+    <value>Altre informazioni</value>
+  </data>
+  <data name="Theme" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>Scuro</value>
+  </data>
+  <data name="ThemeHighContrast" xml:space="preserve">
+    <value>Contrasto elevato</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>Chiaro</value>
+  </data>
+  <data name="ThereIsMandatoryApplicationUpdate" xml:space="preserve">
+    <value>È disponibile questo aggiornamento obbligatorio per l'applicazione: {0}.</value>
+  </data>
+  <data name="ThisUpdateMustBeInstalled" xml:space="preserve">
+    <value>L'aggiornamento {0} deve essere installato e non può essere ignorato. Impossibile usare l'applicazione finché non verrà aggiornata.
+Prima di installare l'aggiornamento, scollegare tutti i dispositivi.</value>
+  </data>
+  <data name="TraceEnabled" xml:space="preserve">
+    <value>Crea un file di registro</value>
+  </data>
+  <data name="Troubleshooting" xml:space="preserve">
+    <value>Risoluzione dei problemi</value>
+  </data>
+  <data name="TurnOffPhone" xml:space="preserve">
+    <value>Spegnere il telefono.</value>
+  </data>
+  <data name="UpdateAvailable" xml:space="preserve">
+    <value>È disponibile un aggiornamento per il telefono</value>
+  </data>
+  <data name="UseProxyServer" xml:space="preserve">
+    <value>Usa server proxy</value>
+  </data>
+  <data name="UserNameForm" xml:space="preserve">
+    <value>Nome utente</value>
+  </data>
+  <data name="VerifyingDownloadedFiles" xml:space="preserve">
+    <value>Verifica dei file scaricati in corso</value>
+  </data>
+  <data name="WaitUntilPhoneTurnsOn" xml:space="preserve">
+    <value>Attendere l'accensione del telefono.</value>
+  </data>
+  <data name="WaitingForConnection" xml:space="preserve">
+    <value>In attesa di connessione</value>
+  </data>
+  <data name="WelcomeHeader" xml:space="preserve">
+    <value>Benvenuto</value>
+  </data>
+</root>

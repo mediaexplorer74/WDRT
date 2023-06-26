@@ -1,0 +1,892 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccentColor" xml:space="preserve">
+    <value>Accent na kulay</value>
+  </data>
+  <data name="AccentColorBlack" xml:space="preserve">
+    <value>Itim</value>
+  </data>
+  <data name="AccentColorBlue" xml:space="preserve">
+    <value>Bughaw</value>
+  </data>
+  <data name="AccentColorCobalt" xml:space="preserve">
+    <value>Cobalt</value>
+  </data>
+  <data name="AccentColorCrimson" xml:space="preserve">
+    <value>Crimson</value>
+  </data>
+  <data name="AccentColorEmerald" xml:space="preserve">
+    <value>Emerald</value>
+  </data>
+  <data name="AccentColorIndigo" xml:space="preserve">
+    <value>Indigo</value>
+  </data>
+  <data name="AccentColorMauve" xml:space="preserve">
+    <value>Mauve</value>
+  </data>
+  <data name="AccentColorSienna" xml:space="preserve">
+    <value>Sienna</value>
+  </data>
+  <data name="AddressForm" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="AllFilesSize" xml:space="preserve">
+    <value>Lahat ng laki ng file: {0}</value>
+  </data>
+  <data name="AnotherInstanceAlreadyRunning" xml:space="preserve">
+    <value>Isa pang halimbawa ng {0} ay tumatakbo.</value>
+  </data>
+  <data name="ApplicationData" xml:space="preserve">
+    <value>Mga data ng application</value>
+  </data>
+  <data name="ApplicationUpdate" xml:space="preserve">
+    <value>Update sa application</value>
+  </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>Sigurado ka?</value>
+  </data>
+  <data name="AutomaticPackageFileSelection" xml:space="preserve">
+    <value>Naghahanap ng tamang package para sa nakakonektang telepono.</value>
+  </data>
+  <data name="AutomaticPackageSelection" xml:space="preserve">
+    <value>Awtomatikong pagpipilian ng package</value>
+  </data>
+  <data name="AvailablePackageIsOlder" xml:space="preserve">
+    <value>Luma na ang available na software na nasa telepono mo.</value>
+  </data>
+  <data name="AwaitRecoveryAfterEmergencyFlashingInstruction" xml:space="preserve">
+    <value>Hinihintay ang telepono matapos ang matagumpay na recovery operation.
+Kung mahina na ang baterya tatagal ito ng mga 30 minuto.</value>
+  </data>
+  <data name="BatteryCheckHeader" xml:space="preserve">
+    <value>Tingnan ang baterya</value>
+  </data>
+  <data name="BatteryCheckingCancelled" xml:space="preserve">
+    <value>Nakansela ang pagtingin sa baterya.</value>
+  </data>
+  <data name="BatteryWarning" xml:space="preserve">
+    <value>Tiyakin na ang baterya mo ay nasa hindi bababa sa 25%. Kung hindi, pwede nitong masira ang telepono mo.</value>
+  </data>
+  <data name="ButtonBrowse" xml:space="preserve">
+    <value>Mag-browse</value>
+  </data>
+  <data name="ButtonCancel" xml:space="preserve">
+    <value>Kanselahin</value>
+  </data>
+  <data name="ButtonChangePackagePath" xml:space="preserve">
+    <value>Baguhin ang path ng package</value>
+  </data>
+  <data name="ButtonClean" xml:space="preserve">
+    <value>Linisin lahat ng app data</value>
+  </data>
+  <data name="ButtonCleanOneCategory" xml:space="preserve">
+    <value>Linisin</value>
+  </data>
+  <data name="ButtonCollectLogs" xml:space="preserve">
+    <value>I-export</value>
+  </data>
+  <data name="ButtonContinue" xml:space="preserve">
+    <value>Magpatuloy</value>
+  </data>
+  <data name="ButtonDelete" xml:space="preserve">
+    <value>I-delete</value>
+  </data>
+  <data name="ButtonExit" xml:space="preserve">
+    <value>Umalis</value>
+  </data>
+  <data name="ButtonFinish" xml:space="preserve">
+    <value>Tapusin</value>
+  </data>
+  <data name="ButtonInstall" xml:space="preserve">
+    <value>I-install</value>
+  </data>
+  <data name="ButtonInstallSoftware" xml:space="preserve">
+    <value>I-install ang software</value>
+  </data>
+  <data name="ButtonMyPhoneIsNotOnTheList" xml:space="preserve">
+    <value>Wala sa listahan ang aking telepono</value>
+  </data>
+  <data name="ButtonMyPhoneWasNotDetected" xml:space="preserve">
+    <value>Hindi nakita ang aking telepono</value>
+  </data>
+  <data name="ButtonNewFolder" xml:space="preserve">
+    <value>Bagong Folder</value>
+  </data>
+  <data name="ButtonNext" xml:space="preserve">
+    <value>Sususnod</value>
+  </data>
+  <data name="ButtonNo" xml:space="preserve">
+    <value>Hindi</value>
+  </data>
+  <data name="ButtonOff" xml:space="preserve">
+    <value>I-off</value>
+  </data>
+  <data name="ButtonOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ButtonOn" xml:space="preserve">
+    <value>I-on</value>
+  </data>
+  <data name="ButtonReset" xml:space="preserve">
+    <value>I-reset sa default</value>
+  </data>
+  <data name="ButtonTryAgain" xml:space="preserve">
+    <value>Subukan uli</value>
+  </data>
+  <data name="ButtonYes" xml:space="preserve">
+    <value>Oo</value>
+  </data>
+  <data name="CapsLockIsOn" xml:space="preserve">
+    <value>Naka-on ang caps lock</value>
+  </data>
+  <data name="CheckLatestPackageHeader" xml:space="preserve">
+    <value>Impo ng telepono</value>
+  </data>
+  <data name="CheckingAlreadyDownloadedFiles" xml:space="preserve">
+    <value>Tinitingnan ang pagkakatugma sa mga nai-download na mga file</value>
+  </data>
+  <data name="CheckingAppUpdate" xml:space="preserve">
+    <value>Tinitingnan ang mga available na update ng application</value>
+  </data>
+  <data name="CheckingFirmwareAvailability" xml:space="preserve">
+    <value>Tinitingnan ang available na software</value>
+  </data>
+  <data name="CheckingPackageIntegrity" xml:space="preserve">
+    <value>Tinitingnan ang integridad ng package</value>
+  </data>
+  <data name="CleanUserDataQuestion" xml:space="preserve">
+    <value>Sigurado ka gusto mong tanggalin ang lahat ng application data (mga ulat, software ng mga package ng telepono, mga talaga ng file)?</value>
+  </data>
+  <data name="CollectingLogFilesInfo" xml:space="preserve">
+    <value>Kinokolekta ang mga tala ng file. Mangyaring maghintay.</value>
+  </data>
+  <data name="ComputerBatteryWarning" xml:space="preserve">
+    <value>Mahina na ang baterya ng computer mo. Pakikonekta ang iyong computer sa isang charger at subukan uli.</value>
+  </data>
+  <data name="ConnectPhone" xml:space="preserve">
+    <value>Ikonekta ang iyong telepono</value>
+  </data>
+  <data name="ConnectPhoneWithUsbCable" xml:space="preserve">
+    <value>Ikoneksta ang USB cable sa telepono.</value>
+  </data>
+  <data name="ConnectedDeviceCannotBeRecovered" xml:space="preserve">
+    <value>Hindi mare-recover ang nakakonektang telepono.</value>
+  </data>
+  <data name="CouldNotDetectPhone" xml:space="preserve">
+    <value>Hindi makita ang iyong telepono</value>
+  </data>
+  <data name="CreatingNewFolderMessage" xml:space="preserve">
+    <value>Gumawa ng bagong folder</value>
+  </data>
+  <data name="CurrentFirmwareVersion" xml:space="preserve">
+    <value>Naka-Install na bersyon ng software:</value>
+  </data>
+  <data name="CustomPackagesPath" xml:space="preserve">
+    <value>Gumamit ng pinasadyang path ng Package</value>
+  </data>
+  <data name="DeleteLogsQuestion" xml:space="preserve">
+    <value>Sigurado ka gusto mong tanggalin ang mga file ng tala?</value>
+  </data>
+  <data name="DeletePackagesQuestion" xml:space="preserve">
+    <value>Sigurado ka gusto mong tanggalin ang lahat ng mga file ng software?</value>
+  </data>
+  <data name="DeleteReportsQuestion" xml:space="preserve">
+    <value>Sigurado ka gusto mong tanggalin ang mga file ng ulat?</value>
+  </data>
+  <data name="DeletingLogFilesInfo" xml:space="preserve">
+    <value>Tinatanggal ang file ng log</value>
+  </data>
+  <data name="DeletingPackagesInfo" xml:space="preserve">
+    <value>Tinatanggal ang mga file ng software recovery</value>
+  </data>
+  <data name="DeletingReportsInfo" xml:space="preserve">
+    <value>Tinatanggal ang mga file ng ulat</value>
+  </data>
+  <data name="DetailsHeader" xml:space="preserve">
+    <value>Mga detalye</value>
+  </data>
+  <data name="Device" xml:space="preserve">
+    <value>Telepono</value>
+  </data>
+  <data name="DeviceFlashing" xml:space="preserve">
+    <value>Pag-install sa package ng software</value>
+  </data>
+  <data name="DeviceInUefiMode" xml:space="preserve">
+    <value>Lumia na telepono</value>
+  </data>
+  <data name="DeviceSelectionHeader" xml:space="preserve">
+    <value>Pagpipilian ng telepono</value>
+  </data>
+  <data name="DirectoryNotSet" xml:space="preserve">
+    <value>Hindi napili ang direktoryo o walang umiiral.</value>
+  </data>
+  <data name="DisclaimerBackupInfo" xml:space="preserve">
+    <value>Ang personal na nilalaman sa telepono ay buburahin sa panahon ng pag-i-install. Iminumungkahi namin na gumawa kayo ng backup sa iyong telepono, sa ilalim ng:</value>
+  </data>
+  <data name="DisclaimerHeader" xml:space="preserve">
+    <value>Pagtatatuwa</value>
+  </data>
+  <data name="DisclaimerInfoInstallationDuration" xml:space="preserve">
+    <value>Magtatagal ng nasa 15 minuto ang pag-i-install sa software. Depende sa bilis ng network ang oras ng pag-download sa software package.</value>
+  </data>
+  <data name="DisconnectPhone" xml:space="preserve">
+    <value>Idiskonekta ang USB cable mula sa telepono.</value>
+  </data>
+  <data name="DowngradeSoftwareQuestion" xml:space="preserve">
+    <value>Sinusubukan mong i-install ang software na mas luma na naka-install sa telepono mo. Gusto mo bang magpatuloy?</value>
+  </data>
+  <data name="DownloadCancelled" xml:space="preserve">
+    <value>Nakansela ang pag-download</value>
+  </data>
+  <data name="DownloadProgressExactMinute" xml:space="preserve">
+    <value>Mga {0} minutong natitira</value>
+  </data>
+  <data name="DownloadProgressMinute" xml:space="preserve">
+    <value>Isang minuto ang nalalabi</value>
+  </data>
+  <data name="DownloadProgressMinuteLess" xml:space="preserve">
+    <value>Mas mababa sa isang minuto ang nalalabi</value>
+  </data>
+  <data name="DownloadingCancelMessage" xml:space="preserve">
+    <value>Kakanselahin nito ang download. Hindi tatanggalin ang nai-download ng mga file. Maari kang bumalik mamaya sa pag-download.</value>
+  </data>
+  <data name="DownloadingEmergencyPackage" xml:space="preserve">
+    <value>Dina-download ang emergency package</value>
+  </data>
+  <data name="DownloadingFiles" xml:space="preserve">
+    <value>Dina-download ang mga file: {0}/{1} ({2})</value>
+  </data>
+  <data name="DownloadingInstallPacket" xml:space="preserve">
+    <value>Dina-download ang bagong bersyon</value>
+  </data>
+  <data name="DownloadingPackage" xml:space="preserve">
+    <value>Dina-download ang package</value>
+  </data>
+  <data name="EmergencyFlashingMessage" xml:space="preserve">
+    <value>Nagpa-flash ang emergency</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ErrorDescription_AutoUpdateException" xml:space="preserve">
+    <value>Mukhang may problema sa pagkonekta sa server. Tingnan ang iyong koneksyon sa Internet. Tiyakin na tama ang mga setting mo sa proxy, firewall, at proteksyon sa virus. Pakitingnan din ang inyong setting ng oras at petsa.</value>
+  </data>
+  <data name="ErrorDescription_CannotAccessDirectoryException" xml:space="preserve">
+    <value>Mukhang wala kang tamang pahintulot para sa direktoryo. Pakibago ang path ng direktoryo o baguhin ang pahintulot ng permiso.</value>
+  </data>
+  <data name="ErrorDescription_DeviceNotFoundException" xml:space="preserve">
+    <value>Hindi nakita ang telepono.</value>
+  </data>
+  <data name="ErrorDescription_DownloadPackageException" xml:space="preserve">
+    <value>Pakitingnan kung tama ang setting ng proxy at i-click ang "{0}". Kung gusto mong ikansela ang proseso ng pag-download paki-click ang "{1}".</value>
+  </data>
+  <data name="ErrorDescription_EmergencyPackageNotFoundOnServerException" xml:space="preserve">
+    <value>Kasalukuyang hindi suportado ang emergency flashing para sa iyong telepono</value>
+  </data>
+  <data name="ErrorDescription_FirmwareFileNotFoundException" xml:space="preserve">
+    <value>Hindi kumpleto ang software  package. Nawawala ang isa o mas maraming file. I-download muli ang package o pumili ng ibang software.</value>
+  </data>
+  <data name="ErrorDescription_HtcDeviceCommunicationException" xml:space="preserve">
+    <value>I-restart ang device sa {0} mode.</value>
+  </data>
+  <data name="ErrorDescription_HtcPackageFileCheckException" xml:space="preserve">
+    <value>I-redownload ang ROM package file.</value>
+  </data>
+  <data name="ErrorDescription_HtcServiceControlException" xml:space="preserve">
+    <value>Tingnan kung {0} huminto ang serbisyo.</value>
+  </data>
+  <data name="ErrorDescription_HtcUsbCommunicationException" xml:space="preserve">
+    <value>I-restart ang device sa {0}.
+Tingnan ang USB koneksyon ng device.</value>
+  </data>
+  <data name="ErrorDescription_HtcUsbPortOpenException" xml:space="preserve">
+    <value>Tingnan kung inookupahan ng ibang application ang port.
+Tingnan ang USB koneksyon ng device.</value>
+  </data>
+  <data name="ErrorDescription_InvalidOperationException" xml:space="preserve">
+    <value>Pakirestart ang application.</value>
+  </data>
+  <data name="ErrorDescription_NoInternetConnectionException" xml:space="preserve">
+    <value>Hindi matapos ang pinakahuling operasyon dahil hindi aktibo ang koneksyon sa Internet.</value>
+  </data>
+  <data name="ErrorDescription_NotEnoughSpaceException" xml:space="preserve">
+    <value>{0} ay nawawala sa {1} disk. Maglibre ng kaunting espasyo at subukang muli.</value>
+  </data>
+  <data name="ErrorDescription_OperationCanceledException" xml:space="preserve">
+    <value>Kinansela ang operasyon.</value>
+  </data>
+  <data name="ErrorDescription_PackageNotFoundException" xml:space="preserve">
+    <value>Hindi available sa teleponong ito ang software package.</value>
+  </data>
+  <data name="ErrorDescription_PlannedServiceBreakException" xml:space="preserve">
+    <value>Hindi available ang serbisyo sa pagitan ng {0} at {1}. Pakisubukan uli mamaya.</value>
+  </data>
+  <data name="ErrorDescription_ReadPhoneInformationException" xml:space="preserve">
+    <value>Hindi namin mabasa ang impormasyon mula sa iyong telepono.</value>
+  </data>
+  <data name="ErrorDescription_RestartApplicationException" xml:space="preserve">
+    <value>Paki-diskonekta ang lahat ng mga telepono at i-restart ang application.. Kung magpatuloy ang problema, i-uninstall ang {0} at i-download ang pinakabagong bersyon ng application.</value>
+  </data>
+  <data name="ErrorDescription_UnknownError" xml:space="preserve">
+    <value>Hindi makumpleto ang operasyon.</value>
+  </data>
+  <data name="ErrorDescription_WebException" xml:space="preserve">
+    <value>Mukhang may problema sa pagkonekta sa server. Tingnan ang iyong koneksyon sa Internet. Tiyakin na tama ang mga setting mo sa proxy, firewall, at proteksyon sa virus.</value>
+  </data>
+  <data name="ErrorDetails_NotEnoughSpaceOnTheDiskException" xml:space="preserve">
+    <value>Pinaka-kaunting libreng espasyo ng disk {0} ang kailangan para sa update ay  {1}. Maglibre ng kaunting espasyo at subukang muli.</value>
+  </data>
+  <data name="ErrorHeader" xml:space="preserve">
+    <value>Paumanhin, nagkaproblema kami</value>
+  </data>
+  <data name="Error_AutoUpdateException" xml:space="preserve">
+    <value>Nabigo ang pagtingin sa update ng application</value>
+  </data>
+  <data name="Error_CannotAccessDirectoryException" xml:space="preserve">
+    <value>Hindi ma-access ang direktoryo</value>
+  </data>
+  <data name="Error_DeviceNotFoundException" xml:space="preserve">
+    <value>Hindi mahanap ang telepono</value>
+  </data>
+  <data name="Error_DownloadPackageException" xml:space="preserve">
+    <value>May problema habang dina-download ang software package</value>
+  </data>
+  <data name="Error_EmergencyPackageNotFoundOnServerException" xml:space="preserve">
+    <value>Hindi makita ang emergency package</value>
+  </data>
+  <data name="Error_FileNotFoundException" xml:space="preserve">
+    <value>Hindi nakita ang "{0}" File or path:</value>
+  </data>
+  <data name="Error_FirmwareFileNotFoundException" xml:space="preserve">
+    <value>Hindi nakita ang software</value>
+  </data>
+  <data name="Error_HtcDeviceCommunicationException" xml:space="preserve">
+    <value>Error sa komunikasyon ng device</value>
+  </data>
+  <data name="Error_HtcDeviceHandshakingException" xml:space="preserve">
+    <value>Error sa handshaking ng device</value>
+  </data>
+  <data name="Error_HtcPackageFileCheckException" xml:space="preserve">
+    <value>Error sa package file check</value>
+  </data>
+  <data name="Error_HtcServiceControlException" xml:space="preserve">
+    <value>Error sa kontrol ng serbisyo</value>
+  </data>
+  <data name="Error_HtcUsbCommunicationException" xml:space="preserve">
+    <value>Error sa komunikasyon ng USB</value>
+  </data>
+  <data name="Error_HtcUsbPortOpenException" xml:space="preserve">
+    <value>Error sa bukas na USB port</value>
+  </data>
+  <data name="Error_InvalidOperationException" xml:space="preserve">
+    <value>Nabigo ang operasyon</value>
+  </data>
+  <data name="Error_NoInternetConnectionException" xml:space="preserve">
+    <value>Walang koneksyon sa internet</value>
+  </data>
+  <data name="Error_NotEnoughSpaceException" xml:space="preserve">
+    <value>Walang sapat na space sa disk</value>
+  </data>
+  <data name="Error_NotEnoughSpaceOnTheDiskException" xml:space="preserve">
+    <value>Walang sapat na space sa disk</value>
+  </data>
+  <data name="Error_OperationCanceledException" xml:space="preserve">
+    <value>Kinansela ang operasyon</value>
+  </data>
+  <data name="Error_PackageNotFoundException" xml:space="preserve">
+    <value>Hindi nakita ang variant package</value>
+  </data>
+  <data name="Error_PlannedServiceBreakException" xml:space="preserve">
+    <value>Hindi makakonekta sa server</value>
+  </data>
+  <data name="Error_ReadPhoneInformationException" xml:space="preserve">
+    <value>Nabigo ang pagbasa sa impo ng telepono</value>
+  </data>
+  <data name="Error_RestartApplicationException" xml:space="preserve">
+    <value>I-restart ang application</value>
+  </data>
+  <data name="Error_SoftwareInstallationFailed" xml:space="preserve">
+    <value>Nabigo ang pag-i-install ng software. Pakisubukang i-restart ang iyong telepono, at subukan ulit ang pag-install ng software. Kapag hindi nakita ang iyong telepono paki-gamit ang buton na "{0}" sa Welcome screen.</value>
+  </data>
+  <data name="Error_SoftwareIsNotCorrectlySignedException" xml:space="preserve">
+    <value>Hindi tamang na-sign ang hindi na-sign para sa teleponong ito ang software.</value>
+  </data>
+  <data name="Error_UnauthorizedAccessException" xml:space="preserve">
+    <value>Tinanggihan ang access</value>
+  </data>
+  <data name="Error_UnknownError" xml:space="preserve">
+    <value>Nangyari ang hindi matukoy na error</value>
+  </data>
+  <data name="Error_WebException" xml:space="preserve">
+    <value>Hindi makakonekta sa server</value>
+  </data>
+  <data name="FFUCheckingDirectory" xml:space="preserve">
+    <value>Tingnan ang direktoryo</value>
+  </data>
+  <data name="FFUCheckingFile" xml:space="preserve">
+    <value>Tinitingnan ang piniling file</value>
+  </data>
+  <data name="FFUFamily" xml:space="preserve">
+    <value>Pamilya:</value>
+  </data>
+  <data name="FFUManufacturer" xml:space="preserve">
+    <value>Tagagawa:</value>
+  </data>
+  <data name="FFUProductName" xml:space="preserve">
+    <value>Pangalan ng produkto:</value>
+  </data>
+  <data name="FFUVersion" xml:space="preserve">
+    <value>Bersyon:</value>
+  </data>
+  <data name="FirmwareIntegrityError" xml:space="preserve">
+    <value>Sira ang software {0} package. I-download muli ang package o pumili ng ibang software.</value>
+  </data>
+  <data name="FirmwareVersion" xml:space="preserve">
+    <value>Bersyon ng firmware: </value>
+  </data>
+  <data name="FirmwareVersionUnknown" xml:space="preserve">
+    <value>Bersyon ng firmware: hindi matukoy</value>
+  </data>
+  <data name="FlashCancelMessage" xml:space="preserve">
+    <value>Nasa progreso ang pag-install ng software Maaring makasira sa telepono mo ang pagkansela. Sigurado ka gusto mong kanselahin ang gawain?</value>
+  </data>
+  <data name="FlashWarningMessage1" xml:space="preserve">
+    <value>Huwag gamitin ang iyong telepono. Huwag tanggalin ang cable. Huwag i-off ang telepono. Kung hindi, baka tumigil sa paggana ang iyong telepono.</value>
+  </data>
+  <data name="FlashWarningMessage2" xml:space="preserve">
+    <value>Habang nag-iinstall, nag-restart ang telepono mo at naging blangko ang screen.
+Maari mong balewalain ang lahat ng mga abiso ng Windows tungkol sa koneksyon ng USB cable.</value>
+  </data>
+  <data name="Flashing" xml:space="preserve">
+    <value>Ang pag-install ng software sa iyong telepono</value>
+  </data>
+  <data name="FlashingMessageChangeToFlashMode" xml:space="preserve">
+    <value>Inililipat ang telepono sa flashing mode</value>
+  </data>
+  <data name="FlashingMessageCheckingAntiTheftStatus" xml:space="preserve">
+    <value>Tinitingnan ang katayuan ng Anti Theft Protection</value>
+  </data>
+  <data name="FlashingMessageConnectingWithPhone" xml:space="preserve">
+    <value>Komokonekta sa telepono</value>
+  </data>
+  <data name="FlashingMessageInstallingSoftware" xml:space="preserve">
+    <value>Ini-install ang software</value>
+  </data>
+  <data name="FlashingMessageOperationStarted" xml:space="preserve">
+    <value>Nagsimula na ang pag-install ng software</value>
+  </data>
+  <data name="FlashingResult" xml:space="preserve">
+    <value>Resulta ng pag-install ng software package</value>
+  </data>
+  <data name="HtcBootloaderMode" xml:space="preserve">
+    <value>HTC {0} mode</value>
+  </data>
+  <data name="HtcPackageNotFound" xml:space="preserve">
+    <value>Hindi nakikita sa server ang software package</value>
+  </data>
+  <data name="KeepButtonTillImage" xml:space="preserve">
+    <value>Panatilihing nakapindot sa buton hanggang makita mo ang isang larawan tulad ng nasa screen.</value>
+  </data>
+  <data name="KeepButtonsTillImage" xml:space="preserve">
+    <value>Panatiling nakapindot sa buton hanggang makita mo ang larawan tulad ng nasa screen.</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Wika</value>
+  </data>
+  <data name="LogFiles" xml:space="preserve">
+    <value>Mga tala ng file</value>
+  </data>
+  <data name="LumiaBatteryChecking" xml:space="preserve">
+    <value>Mahina na lang ang baterya ng telepono mo. Pwede kang magpatuloy, pero baka masira nito ang telepono mo.</value>
+  </data>
+  <data name="ManualDeviceSelection" xml:space="preserve">
+    <value>Pagpipilian ng telepono</value>
+  </data>
+  <data name="ManualRestartHtcInfo" xml:space="preserve">
+    <value>Hindi mabasa ang impormasyon ng telepono. Pakisundan ang mga hakbang para magpatuloy o i-click ang "{0}" para ikansela ang proseso.</value>
+  </data>
+  <data name="ManufacturerDetectionFailed" xml:space="preserve">
+    <value>Paumanhin, hindi namin matukoy ang tagagawa ng telepono mo.</value>
+  </data>
+  <data name="ManufacturerHeader" xml:space="preserve">
+    <value>Telepono ng tagagawa</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>{0} mode</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Modelo: </value>
+  </data>
+  <data name="ModelUnknown" xml:space="preserve">
+    <value>Modelo: hindi matukoy</value>
+  </data>
+  <data name="MoreThanOnePackageFound" xml:space="preserve">
+    <value>Higit sa isang package ang nakita - pakipili ng isa at i-click ang "{0}" para magpatuloy.</value>
+  </data>
+  <data name="Network" xml:space="preserve">
+    <value>Network</value>
+  </data>
+  <data name="NoPackagesFoundSelectAnotherDirectory" xml:space="preserve">
+    <value>Hindi mahanap ang tamang package. Pakipili ng ibang direktoryo o manwal na piliin ang package.</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>Hindi nakita</value>
+  </data>
+  <data name="OnePackageFound" xml:space="preserve">
+    <value>Isang package ang nakita para sa: {0}. Paki-click ang "{1}" para magpatuloy o piliin ang ibang folder o file.</value>
+  </data>
+  <data name="OperatingSystemUnknown" xml:space="preserve">
+    <value>Bersyon ng operating system: hindi matukoy</value>
+  </data>
+  <data name="OperatingSystemVersion" xml:space="preserve">
+    <value>Bersyon ng operating system: </value>
+  </data>
+  <data name="OperationFailed" xml:space="preserve">
+    <value>Nabigo ang pagtatapos ng operasyon</value>
+  </data>
+  <data name="OperationPassed" xml:space="preserve">
+    <value>Matagumpay na nakumpleto ang operasyon</value>
+  </data>
+  <data name="PackageDirectory" xml:space="preserve">
+    <value>Direktoryo ng package: {0}</value>
+  </data>
+  <data name="PackageFileHeader" xml:space="preserve">
+    <value>Package ng file</value>
+  </data>
+  <data name="PackageFilePath" xml:space="preserve">
+    <value>Patch ng package: {0}</value>
+  </data>
+  <data name="PackageIntegrityCheck" xml:space="preserve">
+    <value>Pagtingin sa integridad ng package</value>
+  </data>
+  <data name="PackageNotFound" xml:space="preserve">
+    <value>Hindi available sa teleponong ito ang package.</value>
+  </data>
+  <data name="PackagePathNotSet" xml:space="preserve">
+    <value>Hindi naka-set ang path ng package</value>
+  </data>
+  <data name="PackageSelection" xml:space="preserve">
+    <value>Pagpipilian ng package</value>
+  </data>
+  <data name="Packages" xml:space="preserve">
+    <value>Mga package</value>
+  </data>
+  <data name="PackagesPath" xml:space="preserve">
+    <value>Path ng packages</value>
+  </data>
+  <data name="PasswordForm" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PhoneAddedHeader" xml:space="preserve">
+    <value>Nakakonekta ang telepono</value>
+  </data>
+  <data name="PhoneAddedMessage" xml:space="preserve">
+    <value>Bagong telepono {0} nakonekta.</value>
+  </data>
+  <data name="PhoneIsUpToDate" xml:space="preserve">
+    <value>Mayroon ka ng pinakabagong bersyon ng software.</value>
+  </data>
+  <data name="PhoneRemovedHeader" xml:space="preserve">
+    <value>Nadiskonekta ang telepono</value>
+  </data>
+  <data name="PhoneRemovedMessage" xml:space="preserve">
+    <value>Nadiskonekta {0} ang telepono.</value>
+  </data>
+  <data name="PhoneRestart" xml:space="preserve">
+    <value>I-restart ang telepono</value>
+  </data>
+  <data name="PhoneSettingsBackupPathWin10" xml:space="preserve">
+    <value>Mga Setting &gt; Update at Pagbawi &gt; Backup</value>
+  </data>
+  <data name="PhoneSettingsBackupPathWin8" xml:space="preserve">
+    <value>Mga Setting &gt; backup</value>
+  </data>
+  <data name="PleaseConnectDevice" xml:space="preserve">
+    <value>Pakikonekta ang iyong telepono</value>
+  </data>
+  <data name="PleaseConnectOneDevice" xml:space="preserve">
+    <value>Paki-konekta lamang ang isang telepono</value>
+  </data>
+  <data name="PleaseSelectAFolder" xml:space="preserve">
+    <value>Pumili sana ng isang folder</value>
+  </data>
+  <data name="PleaseSelectDeviceToContinue" xml:space="preserve">
+    <value>Pakipili ang telepono para magpatuloy</value>
+  </data>
+  <data name="PleaseSelectManufacturer" xml:space="preserve">
+    <value>Paki-pili ang tama sa ibaba.</value>
+  </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>Pakihintay</value>
+  </data>
+  <data name="PortForm" xml:space="preserve">
+    <value>Port</value>
+  </data>
+  <data name="Preferences" xml:space="preserve">
+    <value>Mga Preferences</value>
+  </data>
+  <data name="PressPowerAndVolumeDown" xml:space="preserve">
+    <value>Pindutin ang Power at "Volume down" ng sabay.</value>
+  </data>
+  <data name="PressThePowerButton" xml:space="preserve">
+    <value>Pindutin ang buton ng power </value>
+  </data>
+  <data name="PressThePowerButtonUntilSwitchOff" xml:space="preserve">
+    <value>Pindutin at diinan ang "Power" na buton hanggang mag-vibrate ang telepono.</value>
+  </data>
+  <data name="PressVolumeUpVolumeDown" xml:space="preserve">
+    <value>Kapag nag-vibrate ang telepono, pindutin ang "Volume up" at "Volume down" ng sabay.</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Patakaran ng Pagkapribado</value>
+  </data>
+  <data name="ReadingDeviceInfo" xml:space="preserve">
+    <value>Binabasa ang impormasyon ng telepono</value>
+  </data>
+  <data name="RebootHtc" xml:space="preserve">
+    <value>Maari mo ng i-restart ang iyong telepono pabalik sa normal mode. Para i-restart ang telepono pakipindot ang buton ng power at diinan sandali.</value>
+  </data>
+  <data name="RebootPhoneInstructions" xml:space="preserve">
+    <value>Hindi mahanap ang telepono.
+Paki-subukang i-reboot ang inyong telepono sa pamamagitan ng pagpindot sa Power at "Hinaan ang volume".
+Pindutin lamang ang boton hanggang mag-vibrate ang telepono.</value>
+  </data>
+  <data name="ReinstallSoftware" xml:space="preserve">
+    <value>I-reinstall ang software</value>
+  </data>
+  <data name="ReleasePowerPressVolumeUp" xml:space="preserve">
+    <value>Kapag nag-vibrate ang telepono, bitawan ang buton ng Power at pindutin ang "Volume up".</value>
+  </data>
+  <data name="RemovingPackages" xml:space="preserve">
+    <value>Tinatanggal ang mga package</value>
+  </data>
+  <data name="RemovingReports" xml:space="preserve">
+    <value>Tinatanggal ang mga ulat</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>Mga report</value>
+  </data>
+  <data name="ResetSettingsQuestion" xml:space="preserve">
+    <value>Sigurado ka bang gusto mong i-reset ang lahat ng settings sa default values?</value>
+  </data>
+  <data name="RestartDeviceHeader" xml:space="preserve">
+    <value>I-restart ang telepono</value>
+  </data>
+  <data name="SelectDeviceToRecover" xml:space="preserve">
+    <value>Piliin ang telepono na gusto ninyong i-recover</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Mga settings</value>
+  </data>
+  <data name="SoftwareInstallation" xml:space="preserve">
+    <value>Pag-install ng software</value>
+  </data>
+  <data name="SoftwareOnServer" xml:space="preserve">
+    <value>Available sa server ang software</value>
+  </data>
+  <data name="SoftwarePackage" xml:space="preserve">
+    <value>Software package</value>
+  </data>
+  <data name="SthWentWrongMessage" xml:space="preserve">
+    <value>Mayroong nangyaring mali</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>Buod</value>
+  </data>
+  <data name="Survey1" xml:space="preserve">
+    <value>Survey</value>
+  </data>
+  <data name="Survey_Button_ContinueNoSubmit1" xml:space="preserve">
+    <value>Tumuloy nang hindi nagsusumite</value>
+  </data>
+  <data name="Survey_Button_SubmitAndContinue1" xml:space="preserve">
+    <value>Isumite at ituloy ang pagpapanumbalik</value>
+  </data>
+  <data name="Survey_Choice_AppsNotWorking1" xml:space="preserve">
+    <value>Hindi gumagana ang mga app ko gaya ng inaasahan</value>
+  </data>
+  <data name="Survey_Choice_DeviceNotWorking1" xml:space="preserve">
+    <value>Hindi gumagana ang device ko gaya ng inaasahan</value>
+  </data>
+  <data name="Survey_Choice_PerformanceIssues1" xml:space="preserve">
+    <value>Nagkakaroon ako ng mga isyu sa performance</value>
+  </data>
+  <data name="Survey_Choice_PrevVersionFaster1" xml:space="preserve">
+    <value>Mukhang mas mabilis ang nakaraang bersyon</value>
+  </data>
+  <data name="Survey_Choice_PrevVersionMoreReliable1" xml:space="preserve">
+    <value>Mukhang mas maaasahan ang nakaraang bersyon</value>
+  </data>
+  <data name="Survey_Header1" xml:space="preserve">
+    <value>Bakit mo ipinapanumbalik ang iyong device?</value>
+  </data>
+  <data name="Survey_TellUsMore1" xml:space="preserve">
+    <value>Magkuwento pa sa amin</value>
+  </data>
+  <data name="Theme" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>Madilim</value>
+  </data>
+  <data name="ThemeHighContrast" xml:space="preserve">
+    <value>Mataas na Contrast</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>Maliwanag</value>
+  </data>
+  <data name="ThereIsMandatoryApplicationUpdate" xml:space="preserve">
+    <value>Mayroong sapilitang update ng application {0}.</value>
+  </data>
+  <data name="ThisUpdateMustBeInstalled" xml:space="preserve">
+    <value>Itong {0} update ay dapat na i-install at hindi dapat laktawan. Hindi magagamit ang application hanggang mai-update ito..
+Bago i-install ang update na ito paki-unplug ang lahat ng mga device.</value>
+  </data>
+  <data name="TraceEnabled" xml:space="preserve">
+    <value>Gumawa ng log file.</value>
+  </data>
+  <data name="Troubleshooting" xml:space="preserve">
+    <value>Nagto-troubleshoot</value>
+  </data>
+  <data name="TurnOffPhone" xml:space="preserve">
+    <value>I-off ang iyong telepono.</value>
+  </data>
+  <data name="UpdateAvailable" xml:space="preserve">
+    <value>Mayroong update sa iyong telepono</value>
+  </data>
+  <data name="UseProxyServer" xml:space="preserve">
+    <value>Gamitin ang proxy server</value>
+  </data>
+  <data name="UserNameForm" xml:space="preserve">
+    <value>User name</value>
+  </data>
+  <data name="VerifyingDownloadedFiles" xml:space="preserve">
+    <value>Pinapatunayan ang mga nai-download na file.</value>
+  </data>
+  <data name="WaitUntilPhoneTurnsOn" xml:space="preserve">
+    <value>Hintayin hanggang mag-on ang telepono.</value>
+  </data>
+  <data name="WaitingForConnection" xml:space="preserve">
+    <value>Naghihintay ng koneksyon</value>
+  </data>
+  <data name="WelcomeHeader" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
+</root>

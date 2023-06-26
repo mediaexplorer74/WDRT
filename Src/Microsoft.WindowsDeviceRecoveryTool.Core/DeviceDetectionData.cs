@@ -2,39 +2,39 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Core
 {
-	// Token: 0x0200000B RID: 11
+	// Token: 0x02000003 RID: 3
 	public class DeviceDetectionData
 	{
-		// Token: 0x0600001D RID: 29 RVA: 0x000024A2 File Offset: 0x000006A2
+		// Token: 0x06000006 RID: 6 RVA: 0x00002088 File Offset: 0x00000288
 		public DeviceDetectionData(string usbDeviceInterfaceDevicePath)
 		{
 			this.UsbDeviceInterfaceDevicePath = usbDeviceInterfaceDevicePath;
 			this.VidPidPair = VidPidPair.Parse(usbDeviceInterfaceDevicePath);
 		}
 
-		// Token: 0x17000006 RID: 6
-		// (get) Token: 0x0600001E RID: 30 RVA: 0x000024BD File Offset: 0x000006BD
-		// (set) Token: 0x0600001F RID: 31 RVA: 0x000024C5 File Offset: 0x000006C5
+		// Token: 0x17000003 RID: 3
+		// (get) Token: 0x06000007 RID: 7 RVA: 0x000020A3 File Offset: 0x000002A3
+		// (set) Token: 0x06000008 RID: 8 RVA: 0x000020AB File Offset: 0x000002AB
 		public VidPidPair VidPidPair { get; private set; }
 
-		// Token: 0x17000007 RID: 7
-		// (get) Token: 0x06000020 RID: 32 RVA: 0x000024CE File Offset: 0x000006CE
-		// (set) Token: 0x06000021 RID: 33 RVA: 0x000024D6 File Offset: 0x000006D6
+		// Token: 0x17000004 RID: 4
+		// (get) Token: 0x06000009 RID: 9 RVA: 0x000020B4 File Offset: 0x000002B4
+		// (set) Token: 0x0600000A RID: 10 RVA: 0x000020BC File Offset: 0x000002BC
 		public string UsbDeviceInterfaceDevicePath { get; private set; }
 
-		// Token: 0x17000008 RID: 8
-		// (get) Token: 0x06000022 RID: 34 RVA: 0x000024DF File Offset: 0x000006DF
-		// (set) Token: 0x06000023 RID: 35 RVA: 0x000024E7 File Offset: 0x000006E7
+		// Token: 0x17000005 RID: 5
+		// (get) Token: 0x0600000B RID: 11 RVA: 0x000020C5 File Offset: 0x000002C5
+		// (set) Token: 0x0600000C RID: 12 RVA: 0x000020CD File Offset: 0x000002CD
 		public bool IsDeviceSupported { get; set; }
 
-		// Token: 0x17000009 RID: 9
-		// (get) Token: 0x06000024 RID: 36 RVA: 0x000024F0 File Offset: 0x000006F0
-		// (set) Token: 0x06000025 RID: 37 RVA: 0x000024F8 File Offset: 0x000006F8
+		// Token: 0x17000006 RID: 6
+		// (get) Token: 0x0600000D RID: 13 RVA: 0x000020D6 File Offset: 0x000002D6
+		// (set) Token: 0x0600000E RID: 14 RVA: 0x000020DE File Offset: 0x000002DE
 		public string DeviceSalesName { get; set; }
 
-		// Token: 0x1700000A RID: 10
-		// (get) Token: 0x06000026 RID: 38 RVA: 0x00002501 File Offset: 0x00000701
-		// (set) Token: 0x06000027 RID: 39 RVA: 0x00002509 File Offset: 0x00000709
+		// Token: 0x17000007 RID: 7
+		// (get) Token: 0x0600000F RID: 15 RVA: 0x000020E7 File Offset: 0x000002E7
+		// (set) Token: 0x06000010 RID: 16 RVA: 0x000020EF File Offset: 0x000002EF
 		public byte[] DeviceBitmapBytes { get; set; }
 	}
 }

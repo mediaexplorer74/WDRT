@@ -6,28 +6,30 @@ using Microsoft.WindowsDeviceRecoveryTool.Localization;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.BaseStates
 {
-	// Token: 0x020000DF RID: 223
+	// Token: 0x0200007A RID: 122
 	public class UiState<TView, TViewModel> : UiBaseState where TView : FrameworkElement where TViewModel : BaseViewModel
 	{
-		// Token: 0x06000726 RID: 1830 RVA: 0x0002605C File Offset: 0x0002425C
+		// Token: 0x06000412 RID: 1042 RVA: 0x00015B84 File Offset: 0x00013D84
 		public UiState(TView view, TViewModel viewModel, string showInRegion = null)
 		{
 			this.view = view;
 			this.viewModel = viewModel;
-			if (!string.IsNullOrWhiteSpace(showInRegion))
+			bool flag = !string.IsNullOrWhiteSpace(showInRegion);
+			if (flag)
 			{
 				RegionAttribute regionAttribute = this.GetRegionAttribute();
-				if (!regionAttribute.Names.Contains(showInRegion))
+				bool flag2 = regionAttribute.Names.Contains(showInRegion);
+				if (!flag2)
 				{
-					string message = string.Format(LocalizationManager.GetTranslation("MissingAttributeExceptionMessage"), showInRegion, view);
-					throw new NotImplementedException(message);
+					string text = string.Format(LocalizationManager.GetTranslation("MissingAttributeExceptionMessage"), showInRegion, view);
+					throw new NotImplementedException(text);
 				}
 				this.showInRegion = showInRegion;
 			}
 		}
 
-		// Token: 0x1700019F RID: 415
-		// (get) Token: 0x06000727 RID: 1831 RVA: 0x000260D0 File Offset: 0x000242D0
+		// Token: 0x170000F8 RID: 248
+		// (get) Token: 0x06000413 RID: 1043 RVA: 0x00015BF8 File Offset: 0x00013DF8
 		protected TView View
 		{
 			get
@@ -36,11 +38,10 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.BaseStates
 			}
 		}
 
-		// Token: 0x06000728 RID: 1832 RVA: 0x00026104 File Offset: 0x00024304
+		// Token: 0x06000414 RID: 1044 RVA: 0x00015C10 File Offset: 0x00013E10
 		public override void Start()
 		{
-			TView tview = this.view;
-			tview.DataContext = this.viewModel;
+			this.view.DataContext = this.viewModel;
 			this.VisibleRegions.ForEach(delegate(string region)
 			{
 				RegionManager.Instance.ShowRegion(region);
@@ -51,50 +52,45 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.BaseStates
 			});
 			this.ShowView();
 			base.Start();
-			TViewModel tviewModel = this.viewModel;
-			tviewModel.IsStarted = true;
-			tviewModel = this.viewModel;
-			tviewModel.OnStarted();
+			this.viewModel.IsStarted = true;
+			this.viewModel.OnStarted();
 		}
 
-		// Token: 0x06000729 RID: 1833 RVA: 0x000261C4 File Offset: 0x000243C4
+		// Token: 0x06000415 RID: 1045 RVA: 0x00015CC1 File Offset: 0x00013EC1
 		public override void Stop()
 		{
-			TViewModel tviewModel = this.viewModel;
-			tviewModel.IsStarted = false;
-			tviewModel = this.viewModel;
-			tviewModel.OnStopped();
+			this.viewModel.IsStarted = false;
+			this.viewModel.OnStopped();
 			base.Stop();
 		}
 
-		// Token: 0x0600072A RID: 1834 RVA: 0x00026204 File Offset: 0x00024404
+		// Token: 0x06000416 RID: 1046 RVA: 0x00015CF0 File Offset: 0x00013EF0
 		private void ShowView()
 		{
 			RegionAttribute regionAttribute = this.GetRegionAttribute();
-			string regionName = string.IsNullOrWhiteSpace(this.showInRegion) ? regionAttribute.Names[0] : this.showInRegion;
-			RegionManager.Instance.ShowView(regionName, this.view);
+			string text = (string.IsNullOrWhiteSpace(this.showInRegion) ? regionAttribute.Names[0] : this.showInRegion);
+			RegionManager.Instance.ShowView(text, this.view);
 		}
 
-		// Token: 0x0600072B RID: 1835 RVA: 0x00026254 File Offset: 0x00024454
+		// Token: 0x06000417 RID: 1047 RVA: 0x00015D40 File Offset: 0x00013F40
 		private RegionAttribute GetRegionAttribute()
 		{
 			RegionAttribute attribute = this.view.GetAttribute<RegionAttribute>();
-			if (attribute == null)
+			bool flag = attribute == null;
+			if (flag)
 			{
-				string format = "The class {0} should have RegionAttribute. Please correct it.";
-				TView tview = this.view;
-				throw new NotImplementedException(string.Format(format, tview.GetType().Name));
+				throw new NotImplementedException(string.Format("The class {0} should have RegionAttribute. Please correct it.", this.view.GetType().Name));
 			}
 			return attribute;
 		}
 
-		// Token: 0x04000335 RID: 821
+		// Token: 0x040001CF RID: 463
 		private readonly TView view;
 
-		// Token: 0x04000336 RID: 822
+		// Token: 0x040001D0 RID: 464
 		private readonly TViewModel viewModel;
 
-		// Token: 0x04000337 RID: 823
+		// Token: 0x040001D1 RID: 465
 		private readonly string showInRegion;
 	}
 }

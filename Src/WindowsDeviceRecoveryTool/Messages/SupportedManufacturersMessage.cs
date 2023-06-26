@@ -4,18 +4,18 @@ using Microsoft.WindowsDeviceRecoveryTool.Model;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Messages
 {
-	// Token: 0x02000023 RID: 35
+	// Token: 0x02000097 RID: 151
 	public class SupportedManufacturersMessage
 	{
-		// Token: 0x06000103 RID: 259 RVA: 0x00008490 File Offset: 0x00006690
+		// Token: 0x0600052B RID: 1323 RVA: 0x0001B282 File Offset: 0x00019482
 		public SupportedManufacturersMessage(List<ManufacturerInfo> adaptationsData)
 		{
 			this.Manufacturers = adaptationsData;
 		}
 
-		// Token: 0x17000033 RID: 51
-		// (get) Token: 0x06000104 RID: 260 RVA: 0x000084A4 File Offset: 0x000066A4
-		// (set) Token: 0x06000105 RID: 261 RVA: 0x000084BB File Offset: 0x000066BB
+		// Token: 0x17000122 RID: 290
+		// (get) Token: 0x0600052C RID: 1324 RVA: 0x0001B294 File Offset: 0x00019494
+		// (set) Token: 0x0600052D RID: 1325 RVA: 0x0001B29C File Offset: 0x0001949C
 		public List<ManufacturerInfo> Manufacturers { get; private set; }
 	}
 }

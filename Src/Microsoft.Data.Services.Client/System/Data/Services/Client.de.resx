@@ -1,0 +1,886 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ALinq_AnyAllNotSupportedInOrderBy" xml:space="preserve">
+    <value>Die Methode "{0}" wird von der Abfrageoption "orderby" nicht unterstützt.</value>
+  </data>
+  <data name="ALinq_BinaryNotSupported" xml:space="preserve">
+    <value>Der binäre Operator "{0}" wird nicht unterstützt.</value>
+  </data>
+  <data name="ALinq_CanOnlyApplyOneKeyPredicate" xml:space="preserve">
+    <value>Es können nicht mehrere Schlüsselprädikate für dieselbe Entitätenmenge angegeben werden.</value>
+  </data>
+  <data name="ALinq_CanOnlyProjectTheLeaf" xml:space="preserve">
+    <value>In der derzeit übersetzten Abfrage kann nur der letzte Entitätstyp projiziert werden.</value>
+  </data>
+  <data name="ALinq_CannotAddCountOption" xml:space="preserve">
+    <value>Die count-Option kann dem Ressourcensatz nicht hinzugefügt werden.</value>
+  </data>
+  <data name="ALinq_CannotAddCountOptionConflict" xml:space="preserve">
+    <value>Die count-Option kann dem Ressourcensatz nicht hinzugefügt werden, da sie mit vorhandenen count-Optionen in Konflikt steht.</value>
+  </data>
+  <data name="ALinq_CannotConstructKnownEntityTypes" xml:space="preserve">
+    <value>Bei der Erstellung der Entitätstypinstanzen muss der Objektinitialisierer mit dem Standardkonstruktor verwendet werden.</value>
+  </data>
+  <data name="ALinq_CannotCreateConstantEntity" xml:space="preserve">
+    <value>Verweise auf lokale Entitätstypinstanzen werden beim Projizieren von Ergebnissen nicht unterstützt.</value>
+  </data>
+  <data name="ALinq_CannotProjectWithExplicitExpansion" xml:space="preserve">
+    <value>Die Projektion kann nicht erstellt werden, wenn eine explizite Erweiterung in der gleichen Abfrage angegeben ist.</value>
+  </data>
+  <data name="ALinq_CannotUseTypeFiltersMultipleTimes" xml:space="preserve">
+    <value>Nicht redundante Typfilter (OfType&lt;T&gt;, C# "as" und VB "TryCast") können in einem Ressourcensatz nur einmal verwendet werden.</value>
+  </data>
+  <data name="ALinq_CantAddAstoriaQueryOption" xml:space="preserve">
+    <value>Die Abfrageoption "{0}" kann nicht hinzugefügt werden, da sie mit den Abfrageoptionen aus dem LINQ-Ausdruck in Konflikt stehen würde.</value>
+  </data>
+  <data name="ALinq_CantAddDuplicateQueryOption" xml:space="preserve">
+    <value>Es kann keine doppelte Abfrageoption "{0}" hinzugefügt werden.</value>
+  </data>
+  <data name="ALinq_CantAddQueryOption" xml:space="preserve">
+    <value>Die benutzerdefinierte Abfrageoption ist nicht zulässig.</value>
+  </data>
+  <data name="ALinq_CantAddQueryOptionStartingWithDollarSign" xml:space="preserve">
+    <value>Die Abfrageoption "{0}" kann nicht hinzugefügt werden, da sie mit dem reservierten Zeichen "$" beginnt.</value>
+  </data>
+  <data name="ALinq_CantCastToUnsupportedPrimitive" xml:space="preserve">
+    <value>Umwandlung in den nicht unterstützten Typ "{0}" nicht möglich</value>
+  </data>
+  <data name="ALinq_CantExpand" xml:space="preserve">
+    <value>Expand-Abfrageoption ist nicht zulässig.</value>
+  </data>
+  <data name="ALinq_CantNavigateWithoutKeyPredicate" xml:space="preserve">
+    <value>Einzelne Eigenschaften können nur aus einer einzelnen Ressource oder als Teil eines Typs ausgewählt werden. Geben Sie ein Schlüsselprädikat an, um die Entitätenmenge auf eine einzelne Instanz zu beschränken, oder projizieren Sie die Eigenschaft in einen benannten oder anonymen Typ.</value>
+  </data>
+  <data name="ALinq_CantReferToPublicField" xml:space="preserve">
+    <value>Das Verweisen auf das öffentliche Feld "{0}" wird in dem Abfrageoptionsausdruck nicht unterstützt. Verwenden Sie stattdessen eine öffentliche Eigenschaft.</value>
+  </data>
+  <data name="ALinq_CantTranslateExpression" xml:space="preserve">
+    <value>Der Ausdruck "{0}" wird nicht unterstützt.</value>
+  </data>
+  <data name="ALinq_CollectionMemberAccessNotSupportedInNavigation" xml:space="preserve">
+    <value>Die Navigation zu Elementen der Auflistungseigenschaft '{0}' in einem select-Abfrageausdruck wird nicht unterstützt.</value>
+  </data>
+  <data name="ALinq_CollectionPropertyNotSupportedInOrderBy" xml:space="preserve">
+    <value>Die Auflistungseigenschaft '{0}' kann in einem orderby-Abfrageausdruck nicht verwendet werden. Auflistungseigenschaften werden von der Abfrageoption 'orderby' nicht unterstützt.</value>
+  </data>
+  <data name="ALinq_CollectionPropertyNotSupportedInWhere" xml:space="preserve">
+    <value>Die Auflistungseigenschaft '{0}' kann in einem where-Abfrageausdruck nicht verwendet werden. Auflistungseigenschaften werden nur als Quelle einer any-Methode oder all-Methode in einer where-Abfrageoption unterstützt.</value>
+  </data>
+  <data name="ALinq_ConditionalNotSupported" xml:space="preserve">
+    <value>Der bedingte Ausdruck wird nicht unterstützt.</value>
+  </data>
+  <data name="ALinq_ConstantNotSupported" xml:space="preserve">
+    <value>Die Konstante für "{0}" wird nicht unterstützt.</value>
+  </data>
+  <data name="ALinq_CouldNotConvert" xml:space="preserve">
+    <value>Der konstante {0}-Ausdruck konnte nicht in eine Zeichenfolge konvertiert werden.</value>
+  </data>
+  <data name="ALinq_ExpressionCannotEndWithTypeAs" xml:space="preserve">
+    <value>Nicht unterstützter Ausdruck "{0}" in der {1}-Methode. Der Ausdruck darf nicht mit TypeAs enden.</value>
+  </data>
+  <data name="ALinq_ExpressionNotSupportedInProjection" xml:space="preserve">
+    <value>Die Erstellung oder Initialisierung von Instanzen des Typs "{0}" mit dem Ausdruck "{1}" wird nicht unterstützt.</value>
+  </data>
+  <data name="ALinq_ExpressionNotSupportedInProjectionToEntity" xml:space="preserve">
+    <value>Die Initialisierung von Instanzen des Entitätstyps "{0}" mit dem Ausdruck "{1}" wird nicht unterstützt.</value>
+  </data>
+  <data name="ALinq_FormatQueryOptionNotSupported" xml:space="preserve">
+    <value>Die $format-Abfrageoption wird nicht unterstützt. Verwenden Sie die DataServiceContext.Format-Eigenschaft, um das gewünschte Format festzulegen.</value>
+  </data>
+  <data name="ALinq_InvalidExpressionInNavigationPath" xml:space="preserve">
+    <value>Der Ausdruck "{0}" ist kein gültiger Ausdruck für einen Navigationspfad. Im Text des Lambda-Ausdrucks werden nur die Vorgänge MemberAccess und TypeAs unterstützt. Der Ausdruck muss mindestens einen MemberAccess enthalten und darf nicht mit TypeAs enden.</value>
+  </data>
+  <data name="ALinq_InvalidSourceForAnyAll" xml:space="preserve">
+    <value>Der Quellparameter für die {0}-Methode muss entweder eine Navigations- oder eine Auflistungseigenschaft sein.</value>
+  </data>
+  <data name="ALinq_InvocationNotSupported" xml:space="preserve">
+    <value>Das Aufrufen von Ausdrücken wird nicht unterstützt.</value>
+  </data>
+  <data name="ALinq_LambdaNotSupported" xml:space="preserve">
+    <value>Lambda-Ausdrücke werden nicht unterstützt.</value>
+  </data>
+  <data name="ALinq_LinkPropertyNotSupportedInExpression" xml:space="preserve">
+    <value>Die Eigenschaft "{0}" des Typs "DataServiceStreamLink" kann in den Abfrageausdrücken "where" und "orderby" nicht verwendet werden. Eigenschaften des Typs "DataServiceStreamLink" werden von diesen Abfrageoptionen nicht unterstützt.</value>
+  </data>
+  <data name="ALinq_ListInitNotSupported" xml:space="preserve">
+    <value>List-Init-Ausdrücke werden nicht unterstützt.</value>
+  </data>
+  <data name="ALinq_MemberAccessNotSupported" xml:space="preserve">
+    <value>Der Elementzugriff von "{0}" wird nicht unterstützt.</value>
+  </data>
+  <data name="ALinq_MemberInitNotSupported" xml:space="preserve">
+    <value>Member-Init-Ausdrücke werden nicht unterstützt.</value>
+  </data>
+  <data name="ALinq_MethodNotSupported" xml:space="preserve">
+    <value>Die Methode "{0}" wird nicht unterstützt.</value>
+  </data>
+  <data name="ALinq_MethodNotSupportedForMaxDataServiceVersionLessThanX" xml:space="preserve">
+    <value>Die Methode "{0}" wird nicht unterstützt, wenn MaxProtocolVersion kleiner als "{1}" ist.</value>
+  </data>
+  <data name="ALinq_NewArrayNotSupported" xml:space="preserve">
+    <value>New-Array-Ausdrücke werden nicht unterstützt.</value>
+  </data>
+  <data name="ALinq_NewNotSupported" xml:space="preserve">
+    <value>New-Ausdrücke werden nicht unterstützt.</value>
+  </data>
+  <data name="ALinq_OfTypeArgumentNotAvailable" xml:space="preserve">
+    <value>Der Zieltyp für einen OfType-Filter konnte nicht ermittelt werden.</value>
+  </data>
+  <data name="ALinq_ParameterNotSupported" xml:space="preserve">
+    <value>Der Parameterausdruck wird nicht unterstützt.</value>
+  </data>
+  <data name="ALinq_ProjectionCanOnlyHaveOneProjection" xml:space="preserve">
+    <value>Es können nicht mehrere Linq Select-Vorgänge in einer einzelnen select-Abfrageoption übersetzt werden.</value>
+  </data>
+  <data name="ALinq_ProjectionMemberAssignmentMismatch" xml:space="preserve">
+    <value>Eine Instanz des Entitätstyps "{0}" kann nicht initialisiert werden, da "{1}" und "{2}" nicht auf die gleiche Quellentität verweisen.</value>
+  </data>
+  <data name="ALinq_ProjectionOnlyAllowedOnLeafNodes" xml:space="preserve">
+    <value>Nach der letzten Navigation kann nur die select-Abfrageoption angegeben werden.</value>
+  </data>
+  <data name="ALinq_PropertyNamesMustMatchInProjections" xml:space="preserve">
+    <value>Der Wert der Eigenschaft "{0}" kann der Eigenschaft "{1}" nicht zugewiesen werden. Beim Projizieren von Ergebnissen in einen Entitätstyp müssen die Eigenschaftsnamen des Quell- und des Zieltyps für die projizierten Eigenschaften übereinstimmen.</value>
+  </data>
+  <data name="ALinq_QueryOptionOutOfOrder" xml:space="preserve">
+    <value>Die Abfrageoption "{0}" kann nicht nach der Abfrageoption "{1}" angegeben werden.</value>
+  </data>
+  <data name="ALinq_QueryOptionsOnlyAllowedOnLeafNodes" xml:space="preserve">
+    <value>Nach der letzten Navigation können nur Abfrageoptionen (orderby, where, take, skip) angegeben werden.</value>
+  </data>
+  <data name="ALinq_QueryOptionsOnlyAllowedOnSingletons" xml:space="preserve">
+    <value>Abfrageoptionen (orderby, where, take, skip, count) können nicht für eine einzelne Ressource angegeben werden.</value>
+  </data>
+  <data name="ALinq_TranslationError" xml:space="preserve">
+    <value>Fehler beim Übersetzen des LINQ-Ausdrucks in den URI: {0}</value>
+  </data>
+  <data name="ALinq_TypeAsArgumentNotEntityType" xml:space="preserve">
+    <value>Der Typ "{0}" ist kein Entitätstyp. Der Zieltyp für einen TypeAs-Operator muss ein Entitätstyp sein.</value>
+  </data>
+  <data name="ALinq_TypeAsNotSupportedForMaxDataServiceVersionLessThan3" xml:space="preserve">
+    <value>Der Ausdruck "TypeAs" wird nicht unterstützt, wenn MaxProtocolVersion kleiner als "3.0" ist.</value>
+  </data>
+  <data name="ALinq_TypeBinaryNotSupported" xml:space="preserve">
+    <value>Ein Vorgang zwischen einem Ausdruck und einem Typ wird nicht unterstützt.</value>
+  </data>
+  <data name="ALinq_UnaryNotSupported" xml:space="preserve">
+    <value>Der unäre Operator "{0}" wird nicht unterstützt.</value>
+  </data>
+  <data name="ALinq_UnsupportedExpression" xml:space="preserve">
+    <value>Der Ausdruckstyp "{0}" wird nicht unterstützt.</value>
+  </data>
+  <data name="AtomMaterializer_CannotAssignNull" xml:space="preserve">
+    <value>Der NULL-Wert der Eigenschaft "{0}" kann dem Typ "{1}" nicht zugeordnet werden.</value>
+  </data>
+  <data name="AtomMaterializer_CollectionExpectedCollection" xml:space="preserve">
+    <value>Bei der Materialisierung einer Auflistung der obersten Ebene wurde ICollection&lt;&gt; erwartet, der tatsächliche Typ war jedoch {0}.</value>
+  </data>
+  <data name="AtomMaterializer_DataServiceCollectionNotSupportedForNonEntities" xml:space="preserve">
+    <value>Eine DataServiceCollection kann nur Entitätstypen enthalten. Primitive und komplexe Typen können in dieser Art von Auflistungen nicht enthalten sein.</value>
+  </data>
+  <data name="AtomMaterializer_EntryIntoCollectionMismatch" xml:space="preserve">
+    <value>Ein Eintrag vom Typ "{0}" kann keiner Auflistung hinzugefügt werden, die Instanzen vom Typ "{1}" enthält. Dies kann der Fall sein, wenn ein vorhandener Eintrag eines anderen Typs den gleichen Identitätswert besitzt oder wenn die gleiche Entität in einer einzelnen Abfrage in zwei verschiedene Typen projiziert wird.</value>
+  </data>
+  <data name="AtomMaterializer_EntryToAccessIsNull" xml:space="preserve">
+    <value>Ein von der Navigationseigenschaft "{0}" zurückgegebener Eintrag ist NULL und kann nicht initialisiert werden. Führen Sie eine Überprüfung auf NULL-Werte aus, bevor Sie auf die Eigenschaft zugreifen.</value>
+  </data>
+  <data name="AtomMaterializer_EntryToInitializeIsNull" xml:space="preserve">
+    <value>Ein Eintrag, der die zum Erstellen einer Instanz vom Typ "{0}" erforderlichen Daten enthält, ist NULL und kann nicht initialisiert werden. Führen Sie eine Überprüfung auf einen NULL-Wert aus, bevor Sie auf den Eintrag zugreifen.</value>
+  </data>
+  <data name="AtomMaterializer_InvalidCollectionItem" xml:space="preserve">
+    <value>Das Element '{0}' ist kein gültiges Auflistungselement. Der Name des Auflistungselements muss 'element' sein, und es muss zum Namespace 'http://schemas.microsoft.com/ado/2007/08/dataservices' gehören.</value>
+  </data>
+  <data name="AtomMaterializer_InvalidContentTypeEncountered" xml:space="preserve">
+    <value>Der Antwortinhaltstyp '{0}' wird derzeit nicht unterstützt.</value>
+  </data>
+  <data name="AtomMaterializer_InvalidEntityType" xml:space="preserve">
+    <value>Zwischen Client und Dienst liegt ein Typenkonflikt vor. Der Typ "{0}" ist ein Entitätstyp, der Typ in der Antwortnutzlast stellt jedoch keinen Entitätstyp dar. Stellen Sie sicher, dass die im Client definierten Typen mit dem Datenmodell des Diensts übereinstimmen, oder aktualisieren Sie den Dienstverweis des Clients.</value>
+  </data>
+  <data name="AtomMaterializer_InvalidNonEntityType" xml:space="preserve">
+    <value>Zwischen Client und Dienst liegt ein Typenkonflikt vor. Der Typ "{0}" ist kein Entitätstyp, der Typ in der Antwortnutzlast stellt jedoch einen Entitätstyp dar. Stellen Sie sicher, dass die im Client definierten Typen mit dem Datenmodell des Diensts übereinstimmen, oder aktualisieren Sie den Dienstverweis des Clients.</value>
+  </data>
+  <data name="AtomMaterializer_InvalidResponsePayload" xml:space="preserve">
+    <value>Die Antwortnutzlast ist keine gültige Antwortnutzlast. Stellen Sie sicher, dass das Element der obersten Ebene ein gültiges Atom- oder JSON-Element ist oder dem {0}-Namespace angehört.</value>
+  </data>
+  <data name="AtomMaterializer_MaterializationTypeError" xml:space="preserve">
+    <value>Die Ergebnisse können nicht in den Auflistungstyp '{0}' materialisiert werden, weil dieser keinen parameterlosen Konstruktor hat.</value>
+  </data>
+  <data name="AtomMaterializer_NoParameterlessCtorForCollectionProperty" xml:space="preserve">
+    <value>Die Auflistungseigenschaft '{0}' kann nicht erstellt werden, weil der Typ '{1}' über keinen öffentlichen parameterlosen Konstruktor verfügt.</value>
+  </data>
+  <data name="AtomMaterializer_ProjectEntityTypeMismatch" xml:space="preserve">
+    <value>Eine Entität vom Typ "{0}" kann nicht projiziert werden, da für "{2}" bereits eine Instanz vom Typ "{1}" vorhanden ist.</value>
+  </data>
+  <data name="AtomMaterializer_PropertyMissing" xml:space="preserve">
+    <value>Die erwartete {0}-Eigenschaft wurde während der Verarbeitung eines Eintrags nicht gefunden. Führen Sie eine Überprüfung auf NULL aus, bevor Sie auf die Eigenschaft zugreifen.</value>
+  </data>
+  <data name="AtomMaterializer_PropertyNotExpectedEntry" xml:space="preserve">
+    <value>Die {0}-Eigenschaft ist keine Entität.</value>
+  </data>
+  <data name="AtomMaterializer_ResetAfterEnumeratorCreationError" xml:space="preserve">
+    <value>Zurücksetzen sollte nie für einen Auflistungsreader in einem internen aufzählbaren Element aufgerufen werden.</value>
+  </data>
+  <data name="AtomMaterializer_TypeShouldBeCollectionError" xml:space="preserve">
+    <value>Eine Auflistung von primitiven oder komplexen Typen kann nicht materialisiert werden, wenn der Typ '{0}' keine Auflistung ist.</value>
+  </data>
+  <data name="AtomParser_SingleEntry_ExpectedFeedOrEntry" xml:space="preserve">
+    <value>In der Antwort vom Server wurde ein Atom-Feed oder -Eintrag erwartet, stattdessen wurde ein unerwartetes Element gefunden.</value>
+  </data>
+  <data name="AtomParser_SingleEntry_MultipleFound" xml:space="preserve">
+    <value>In der Antwort vom Server wurde genau ein Atom-Eintrag erwartet, aber es wurden mehrere gefunden.</value>
+  </data>
+  <data name="AtomParser_SingleEntry_NoneFound" xml:space="preserve">
+    <value>In der Antwort vom Server wurde genau ein Atom-Eintrag erwartet, aber es wurde kein Eintrag gefunden.</value>
+  </data>
+  <data name="Batch_ExpectedContentType" xml:space="preserve">
+    <value>Der erwartete Inhaltstyp für eine Batchanforderung ist "multipart/mixed;boundary=batch", nicht "{0}".</value>
+  </data>
+  <data name="Batch_ExpectedResponse" xml:space="preserve">
+    <value>Die POST-Anforderung hat eine Antwort mit Inhalt erwartet. ID={0}</value>
+  </data>
+  <data name="Batch_IncompleteResponseCount" xml:space="preserve">
+    <value>Nicht alle Anforderungen aus dem Batch wurden beantwortet.</value>
+  </data>
+  <data name="Batch_UnexpectedContent" xml:space="preserve">
+    <value>In der Webantwort befanden sich unerwartete Abschnitte. ID={0}</value>
+  </data>
+  <data name="ClientTypeCache_NonEntityTypeCannotContainEntityProperties" xml:space="preserve">
+    <value>Die Eigenschaft "{0}" ist ein Entitätstyp und kann nicht als Eigenschaft des Typs "{1}" festgelegt werden, der kein Entitätstyp ist. Nur Entitätstypen können Navigationseigenschaften enthalten.</value>
+  </data>
+  <data name="ClientType_Ambiguous" xml:space="preserve">
+    <value>Die Auflösung des Typs von "{0}", der von "{1}" erbt, ist nicht eindeutig.</value>
+  </data>
+  <data name="ClientType_CollectionOfCollectionNotSupported" xml:space="preserve">
+    <value>Auflistungseigenschaften eines Auflistungstyps werden nicht unterstützt.</value>
+  </data>
+  <data name="ClientType_CollectionPropertyNotSupportedInV2AndBelow" xml:space="preserve">
+    <value>Der Typ '{0}' verfügt über die Eigenschaft '{1}', die einer Auflistungseigenschaft entspricht. Auflistungseigenschaften werden nur in Version 'V3' des Protokolls und höheren Versionen unterstützt.</value>
+  </data>
+  <data name="ClientType_KeysMustBeSimpleTypes" xml:space="preserve">
+    <value>{0} besitzt Schlüsseleigenschaften, die in einem nicht einfachen Typ deklariert sind.</value>
+  </data>
+  <data name="ClientType_KeysOnDifferentDeclaredType" xml:space="preserve">
+    <value>{0} besitzt Schlüsseleigenschaften, die in dessen Typhierarchie auf unterschiedlichen Ebenen deklariert sind.</value>
+  </data>
+  <data name="ClientType_MissingMediaEntryProperty" xml:space="preserve">
+    <value>Der Typ "{0}" verfügt über ein MediaEntry-Attribut, das auf eine Eigenschaft mit dem Namen "{1}" verweist. Dieser Typ verfügt jedoch nicht über eine Eigenschaft "{1}".</value>
+  </data>
+  <data name="ClientType_MissingMimeTypeDataProperty" xml:space="preserve">
+    <value>Der Typ "{0}" verfügt über ein MimeTypeProperty-Attribut, das auf die Dateneigenschaft "{1}" verweist. Dieser Typ verfügt jedoch nicht über eine Eigenschaft "{1}".</value>
+  </data>
+  <data name="ClientType_MissingMimeTypeProperty" xml:space="preserve">
+    <value>Der Typ "{0}" verfügt über ein MimeTypeProperty-Attribut, das auf die MIME-Typ-Eigenschaft "{1}" verweist. Dieser Typ verfügt jedoch nicht über eine Eigenschaft "{1}".</value>
+  </data>
+  <data name="ClientType_MissingOpenProperty" xml:space="preserve">
+    <value>Die offene Objekteigenschaft "{0}:{1}" ist nicht definiert.</value>
+  </data>
+  <data name="ClientType_MissingProperty" xml:space="preserve">
+    <value>Der geschlossene Typ "{0}" verfügt über keine zugehörige Eigenschaft "{1}", die festgelegt werden kann.</value>
+  </data>
+  <data name="ClientType_MultipleImplementationNotSupported" xml:space="preserve">
+    <value>Mehrere Implementierungen von ICollection&lt;T&gt; werden nicht unterstützt.</value>
+  </data>
+  <data name="ClientType_MultipleTypesWithSameName" xml:space="preserve">
+    <value>Es wurden mehrere Typen mit dem gleichen Namen '{0}' gefunden. Typnamen müssen eindeutig sein.</value>
+  </data>
+  <data name="ClientType_NoSettableFields" xml:space="preserve">
+    <value>Der Typ "{0}" hat keine festlegbaren Eigenschaften.</value>
+  </data>
+  <data name="ClientType_NullOpenProperties" xml:space="preserve">
+    <value>Die Eigenschaft "{0}" des offenen Typs hat eine NULL-Instanz zurückgegeben.</value>
+  </data>
+  <data name="ClientType_UnsupportedType" xml:space="preserve">
+    <value>Der Typ "{0}" wird von der Clientbibliothek nicht unterstützt.</value>
+  </data>
+  <data name="Clienttype_MultipleOpenProperty" xml:space="preserve">
+    <value>{0} verfügt über mehrere Definitionen für OpenObjectAttribute.</value>
+  </data>
+  <data name="Collection_ComplexTypesInCollectionOfPrimitiveTypesNotAllowed" xml:space="preserve">
+    <value>Eine Auflistungseigenschaft primitiver Typen darf kein Element eines komplexen Typs enthalten.</value>
+  </data>
+  <data name="Collection_NullCollectionItemsNotSupported" xml:space="preserve">
+    <value>Ein Element in der Auflistungseigenschaft weist einen NULL-Wert auf. Auflistungseigenschaften, die Elemente mit NULL-Werten enthalten, werden nicht unterstützt.</value>
+  </data>
+  <data name="Collection_NullCollectionNotSupported" xml:space="preserve">
+    <value>Der Wert der Eigenschaft '{0}' ist NULL. Eigenschaften mit dem primitiven oder komplexen Auflistungstyp dürfen nicht NULL sein.</value>
+  </data>
+  <data name="Collection_NullCollectionReference" xml:space="preserve">
+    <value>{0}.{1} muss eine Auflistung offener Eigenschaften zurückgeben, die nicht NULL ist.</value>
+  </data>
+  <data name="Collection_NullNonPropertyCollectionNotSupported" xml:space="preserve">
+    <value>Der Wert der Auflistung des Elementtyps '{0}' ist NULL. Eine Auflistung darf keinen NULL-Wert aufweisen.</value>
+  </data>
+  <data name="Collection_PrimitiveTypesInCollectionOfComplexTypesNotAllowed" xml:space="preserve">
+    <value>Eine Auflistungseigenschaft komplexer Typen darf kein Element eines primitiven Typs aufweisen.</value>
+  </data>
+  <data name="Content_EntityIsNotEntityType" xml:space="preserve">
+    <value>Für diesen Vorgang muss die Entität einem Entitätstyp angehören. Zudem müssen entweder die Schlüsseleigenschaften markiert werden, oder der Klasse muss ein DataServiceEntityAttribute zugeordnet werden.</value>
+  </data>
+  <data name="Content_EntityWithoutKey" xml:space="preserve">
+    <value>Für diesen Vorgang muss die Entität einem Entitätstyp angehören und mindestens eine Schlüsseleigenschaft besitzen.</value>
+  </data>
+  <data name="Context_AddLinkCollectionOnly" xml:space="preserve">
+    <value>AddLink- und DeleteLink-Methoden sind nur funktionsfähig, wenn "sourceProperty" eine Auflistung ist.</value>
+  </data>
+  <data name="Context_AddRelatedObjectCollectionOnly" xml:space="preserve">
+    <value>Die AddRelatedObject-Methode ist nur funktionsfähig, wenn "sourceProperty" eine Auflistung ist.</value>
+  </data>
+  <data name="Context_AddRelatedObjectSourceDeleted" xml:space="preserve">
+    <value>Die AddRelatedObject-Methode ist nur funktionsfähig, wenn die Quellentität einen nicht gelöschten Status aufweist.</value>
+  </data>
+  <data name="Context_AsyncAlreadyDone" xml:space="preserve">
+    <value>Das asynchrone Ergebnis wurde bereits abgeschlossen.</value>
+  </data>
+  <data name="Context_BaseUri" xml:space="preserve">
+    <value>Erwartet wird eine absolute, korrekt aufgebaute HTTP-URL ohne Abfrage oder Fragment.</value>
+  </data>
+  <data name="Context_BaseUriRequired" xml:space="preserve">
+    <value>Sie müssen die BaseUri-Eigenschaft festlegen, bevor Sie diesen Vorgang ausführen.</value>
+  </data>
+  <data name="Context_BatchExecuteError" xml:space="preserve">
+    <value>Fehler bei dieser Abfrage während der Batchausführung. Detailinformationen finden Sie in der inneren Ausnahme.</value>
+  </data>
+  <data name="Context_BatchNotSupportedForMediaLink" xml:space="preserve">
+    <value>Das Speichern von Entitäten mit dem [MediaEntry]-Attribut wird im Batchmodus derzeit nicht unterstützt. Verwenden Sie stattdessen einen Nicht-Batch-Modus.</value>
+  </data>
+  <data name="Context_BatchNotSupportedForNamedStreams" xml:space="preserve">
+    <value>Änderungen können nicht als Batch gespeichert werden, wenn einer Entität einer oder mehrere Datenströme zugeordnet sind. Wiederholen Sie den SaveChanges-Vorgang, ohne die SaveChangesOptions.Batch-Option und die SaveChangesOptions.BatchWithIndependentOperations-Option zu aktivieren.</value>
+  </data>
+  <data name="Context_BodyOperationParametersNotAllowedWithGet" xml:space="preserve">
+    <value>OperationParameter des Typs BodyOperationParameter kann nicht angegeben werden, wenn HttpMethod auf GET festgelegt ist.</value>
+  </data>
+  <data name="Context_BothLocationAndIdMustBeSpecified" xml:space="preserve">
+    <value>Die Antwort muss entweder die beiden Header "Location" und "DataServiceId" oder keinen der Header enthalten.</value>
+  </data>
+  <data name="Context_BuildingRequestAndSendingRequestCannotBeUsedTogether" xml:space="preserve">
+    <value>'SendingRequest' ist ein veraltetes Ereignis. 'BuildingRequest' kann nicht gleichzeitig mit 'SendingRequest' verwendet werden. Verwenden Sie stattdessen 'SendingRequest2'.</value>
+  </data>
+  <data name="Context_CannotChangeStateIfAdded" xml:space="preserve">
+    <value>Eine Entität im Added-Zustand kann nicht in '{0}', sondern nur in 'Detached' geändert werden.</value>
+  </data>
+  <data name="Context_CannotChangeStateToAdded" xml:space="preserve">
+    <value>Die ChangeState-Methode unterstützt den Added-Zustand nicht, weil zusätzliche Informationen für Einfügungen benötigt werden. Verwenden Sie stattdessen AddObject oder AddRelatedObject.</value>
+  </data>
+  <data name="Context_CannotChangeStateToModifiedIfNotUnchanged" xml:space="preserve">
+    <value>Der Zustand der Entität kann nur in 'Modified' geändert werden, wenn er derzeit 'Unchanged' lautet.</value>
+  </data>
+  <data name="Context_CannotConvertKey" xml:space="preserve">
+    <value>Der Wert "{0}" kann nicht in eine Schlüsselzeichenfolge für einen URI konvertiert werden.</value>
+  </data>
+  <data name="Context_ChildResourceExists" xml:space="preserve">
+    <value>Ein Link zwischen zwei Objekten konnte nicht gelöscht werden, weil die Identität des Linkzielobjekts vom Linkquellobjekt abhängig ist.</value>
+  </data>
+  <data name="Context_ContentTypeRequiredForNamedStream" xml:space="preserve">
+    <value>Der ContentType-Wert für einen benannten Datenstrom darf nicht NULL sein oder einer leeren Zeichenfolge entsprechen.</value>
+  </data>
+  <data name="Context_DidNotOriginateAsync" xml:space="preserve">
+    <value>Das aktuelle Objekt hat das asynchrone Ergebnis nicht verursacht.</value>
+  </data>
+  <data name="Context_DifferentEntityAlreadyContained" xml:space="preserve">
+    <value>Der Kontext verfolgt bereits eine andere Entität mit dem gleichen Ressourcen-URI.</value>
+  </data>
+  <data name="Context_DuplicateBodyOperationParameterName" xml:space="preserve">
+    <value>Es wurden mehrere body-Vorgangsparameter mit demselben Namen gefunden. Body-Vorgangsparameter müssen eindeutig sein.</value>
+  </data>
+  <data name="Context_DuplicateUriOperationParameterName" xml:space="preserve">
+    <value>Es wurden mehrere uri-Vorgangsparameter mit demselben Namen gefunden. Uri-Vorgangsparameter müssen eindeutig sein.</value>
+  </data>
+  <data name="Context_EndExecuteExpectedVoidResponse" xml:space="preserve">
+    <value>Eine EndExecute-Überladung für void-Dienstvorgänge und -aktionen hat eine Serverantwort erhalten, die nicht void ist.</value>
+  </data>
+  <data name="Context_EntityAlreadyContained" xml:space="preserve">
+    <value>Der Kontext verfolgt die Entität bereits.</value>
+  </data>
+  <data name="Context_EntityDoesNotContainNamedStream" xml:space="preserve">
+    <value>Die Entität enthält keinen Datenstrom mit dem Namen "{0}". Stellen Sie sicher, dass der Name des Datenstroms korrekt ist.</value>
+  </data>
+  <data name="Context_EntityMetadataBuilderIsRequired" xml:space="preserve">
+    <value>Eine ODataEntityMetadataBuilder-Implementierung ist erforderlich, von 'GetEntityMetadataBuilder' wurde jedoch ein NULL-Wert zurückgegeben.</value>
+  </data>
+  <data name="Context_EntityNotContained" xml:space="preserve">
+    <value>Der Kontext verfolgt die Entität derzeit nicht.</value>
+  </data>
+  <data name="Context_EntityNotMediaLinkEntry" xml:space="preserve">
+    <value>Dieser Vorgang erfordert, dass die angegebene Entität ein Media Link Entry ist und dass ReadStreamUri verfügbar ist. Der angegebene Eintrag ist jedoch kein Media Link Entry, oder er verfügt nicht über einen gültigen ReadStreamUri-Wert. Wenn die Entität ein Media Link Entry ist, fragen Sie diese Entität erneut vom Datendienst ab, um einen gültigen ReadStreamUri-Wert zu erhalten.</value>
+  </data>
+  <data name="Context_EntitySetName" xml:space="preserve">
+    <value>Es wurde ein relativer URL-Pfad ohne Abfrage oder Fragment erwartet.</value>
+  </data>
+  <data name="Context_ExecuteExpectedVoidResponse" xml:space="preserve">
+    <value>Eine Execute-Überladung für void-Dienstvorgänge und -aktionen hat eine Serverantwort erhalten, die nicht void ist.</value>
+  </data>
+  <data name="Context_ExecuteExpectsGetOrPost" xml:space="preserve">
+    <value>HttpMethod muss GET oder POST sein.</value>
+  </data>
+  <data name="Context_InternalError" xml:space="preserve">
+    <value>System.Data.Services.Client interner Fehler {0}.</value>
+  </data>
+  <data name="Context_LinkResourceInsertFailure" xml:space="preserve">
+    <value>Fehler beim Einfügen einer der Ressourcen des Links.</value>
+  </data>
+  <data name="Context_LocationHeaderExpectsAbsoluteUri" xml:space="preserve">
+    <value>Der in der Antwort angegebene Location-Headerwert muss ein absoluter URI sein.</value>
+  </data>
+  <data name="Context_MLEWithoutSaveStream" xml:space="preserve">
+    <value>Der Entitätstyp {0} ist mit dem MediaEntry-Attribut markiert, es wurde jedoch kein Speicherdatenstrom für die Entität festgelegt.</value>
+  </data>
+  <data name="Context_MissingOperationParameterName" xml:space="preserve">
+    <value>Die Eigenschaft "Name" für einen OperationParameter darf nicht NULL sein und muss auf eine nicht leere Zeichenfolge festgelegt werden.</value>
+  </data>
+  <data name="Context_MissingSelfAndEditLinkForNamedStream" xml:space="preserve">
+    <value>Im Datenstrom mit dem Namen "{0}" ist kein self-link oder edit-media-Link vorhanden. Stellen Sie sicher, dass entweder ein self-link oder ein edit-media-link für diesen Datenstrom angegeben ist.</value>
+  </data>
+  <data name="Context_NoContentTypeForMediaLink" xml:space="preserve">
+    <value>Das Medienlinkobjekt vom Typ "{0}" ist zum Verwenden des in der Eigenschaft "{1}" angegebenen MIME-Typs konfiguriert. Der Wert dieser Eigenschaft ist jedoch NULL oder leer.</value>
+  </data>
+  <data name="Context_NoLoadWithInsertEnd" xml:space="preserve">
+    <value>Der Kontext kann die zugehörige Auflistung oder den zugehörigen Verweis für Objekte im hinzugefügten Zustand nicht laden.</value>
+  </data>
+  <data name="Context_NoRelationWithDeleteEnd" xml:space="preserve">
+    <value>Ein oder beide Enden der Beziehung befinden sich im gelöschten Zustand.</value>
+  </data>
+  <data name="Context_NoRelationWithInsertEnd" xml:space="preserve">
+    <value>Ein oder beide Enden der Beziehung befinden sich im hinzugefügten Zustand.</value>
+  </data>
+  <data name="Context_NullElementInOperationParameterArray" xml:space="preserve">
+    <value>Das Vorgangsparameter-Array enthält ein NULL-Element. Dies ist nicht zulässig.</value>
+  </data>
+  <data name="Context_NullKeysAreNotSupported" xml:space="preserve">
+    <value>Die serialisierte Ressource enthält einen NULL-Wert im Schlüsselelement "{0}". NULL-Werte werden in Schlüsselelementen nicht unterstützt.</value>
+  </data>
+  <data name="Context_OnMessageCreatingReturningNull" xml:space="preserve">
+    <value>Die DataServiceContext.Configurations.RequestPipeline.OnMessageCreating-Eigenschaft darf keinen NULL-Wert zurückgeben. Geben Sie einen Wert ungleich NULL für diese Eigenschaft zurück.</value>
+  </data>
+  <data name="Context_OperationCanceled" xml:space="preserve">
+    <value>Der Vorgang wurde abgebrochen.</value>
+  </data>
+  <data name="Context_PropertyNotSupportedForMaxDataServiceVersionGreaterThanX" xml:space="preserve">
+    <value>Die Eigenschaft '{0}' wird nicht unterstützt, wenn 'MaxProtocolVersion ' größer als '{1}' ist.</value>
+  </data>
+  <data name="Context_RelationAlreadyContained" xml:space="preserve">
+    <value>Die Beziehung wird vom Kontext bereits nachverfolgt.</value>
+  </data>
+  <data name="Context_RelationNotRefOrCollection" xml:space="preserve">
+    <value>sourceProperty ist kein Verweis oder keine Auflistung des Objekttyps des Ziels.</value>
+  </data>
+  <data name="Context_RequestUriIsRelativeBaseUriRequired" xml:space="preserve">
+    <value>Da requestUri ein relativer URI ist, müssen Sie die Eigenschaft BaseUri in DataServiceContext festlegen.</value>
+  </data>
+  <data name="Context_RequestVersionIsBiggerThanProtocolVersion" xml:space="preserve">
+    <value>Die Anforderung erfordert, dass Version '{0}' des Protokolls verwendet wird, aber MaxProtocolVersion des Datendienstkontexts ist auf '{1}' festgelegt. Legen Sie MaxProtocolVersion auf eine höhere Version fest, und wiederholen Sie anschließend den Vorgang.</value>
+  </data>
+  <data name="Context_ResolveEntitySetOrBaseUriRequired" xml:space="preserve">
+    <value>Die ResolveEntitySet-Funktion muss einen URI ungleich NULL für EntitySet "{0}" zurückgeben, oder Sie müssen die Eigenschaft BaseUri festlegen.</value>
+  </data>
+  <data name="Context_ResolveReturnedInvalidUri" xml:space="preserve">
+    <value>Der URI, der von der ResolveEntitySet-Funktion zurückgegeben wird, muss eine absolute, wohlgeformte URL mit dem Schemanamen "http" oder "https" sein, die keine Abfragezeichenfolgen oder Fragmentbezeichner enthält.</value>
+  </data>
+  <data name="Context_ResponseVersionIsBiggerThanProtocolVersion" xml:space="preserve">
+    <value>Die Antwortversion ist {0}, aber MaxProtocolVersion des Datendienstkontexts ist auf {1} festgelegt. Legen Sie MaxProtocolVersion auf die für die Antwort erforderliche Version fest, und wiederholen Sie die Anforderung. Wenn der Client die erforderliche Protokollversion nicht unterstützt, aktualisieren Sie den Client.</value>
+  </data>
+  <data name="Context_SendingRequestEventArgsNotHttp" xml:space="preserve">
+    <value>Für diese Eigenschaft sind derzeit nur Instanzen von HttpWebRequest erlaubt. Andere Untertypen von WebRequest werden nicht unterstützt.</value>
+  </data>
+  <data name="Context_SendingRequest_InvalidWhenUsingOnMessageCreating" xml:space="preserve">
+    <value>SendingRequest kann nicht in Verbindung mit der Eigenschaft DataServiceContext.Configurations.RequestPipeline.OnMessageCreating verwendet werden. Bitte verwenden Sie stattdessen SendingRequest2 mit der Eigenschaft DataServiceContext.Configurations.RequestPipeline.OnMessageCreating.</value>
+  </data>
+  <data name="Context_SetLinkReferenceOnly" xml:space="preserve">
+    <value>Die SetLink-Methode ist nur funktionsfähig, wenn "sourceProperty" keine Auflistung ist.</value>
+  </data>
+  <data name="Context_SetSaveStreamOnInvalidEntityState" xml:space="preserve">
+    <value>Das Aufrufen von SetSaveStream für eine Entität mit dem Status "{0}" ist nicht zulässig.</value>
+  </data>
+  <data name="Context_SetSaveStreamOnMediaEntryProperty" xml:space="preserve">
+    <value>SetSaveStream kann nicht für eine Entität mit dem Typ "{0}" verwendet werden, für die eine Media Entry-Eigenschaft definiert wurde.</value>
+  </data>
+  <data name="Context_SetSaveStreamWithoutEditMediaLink" xml:space="preserve">
+    <value>Für den Mediendatenstrom der Entität ist kein edit-media-link festgelegt. Stellen Sie sicher, dass der edit-media-link für diesen Datenstrom angegeben ist.</value>
+  </data>
+  <data name="Context_SetSaveStreamWithoutNamedStreamEditLink" xml:space="preserve">
+    <value>Der Datenstrom mit dem Namen "{0}" kann nicht geändert werden, da er nicht über einen edit-media-link verfügt. Stellen Sie sicher, dass der Name des Datenstroms korrekt ist und dass für diesen Datenstrom ein edit-media-link im Eintragselement in der Antwort enthalten ist.</value>
+  </data>
+  <data name="Context_TrackingExpectsAbsoluteUri" xml:space="preserve">
+    <value>Der im Atom-Element id oder im DataServiceId-Header angegebene Identitätswert muss ein absoluter URI sein.</value>
+  </data>
+  <data name="Context_UnexpectedZeroRawRead" xml:space="preserve">
+    <value>Beim Lesen von Rohdaten für diese Eigenschaft aus stream.Read() ist ein unerwartetes Ergebnis (&lt;= 0) aufgetreten.</value>
+  </data>
+  <data name="Context_VersionNotSupported" xml:space="preserve">
+    <value>Die Antwortversion "{0}" wird nicht unterstützt. Unterstützt werden nur die Versionen {1}.</value>
+  </data>
+  <data name="DSKAttribute_MustSpecifyAtleastOnePropertyName" xml:space="preserve">
+    <value>Das Attribut DataServiceKey muss mindestens einen Eigenschaftennamen angeben.</value>
+  </data>
+  <data name="DataBinding_BindingOperation_ArrayItemNotEntity" xml:space="preserve">
+    <value>Ein während des {0}-Vorgangs für DataServiceCollection angegebener Wert ist kein Entitätstyp mit Schlüssel.</value>
+  </data>
+  <data name="DataBinding_BindingOperation_ArrayItemNull" xml:space="preserve">
+    <value>Bei {0}-Vorgängen für DataServiceCollection sind keine NULL-Werte zulässig.</value>
+  </data>
+  <data name="DataBinding_BindingOperation_DetachedSource" xml:space="preserve">
+    <value>Add-/Update-/Delete-Vorgang kann für eine untergeordnete Entität nicht durchgeführt werden, wenn die übergeordnete Entität bereits getrennt wurde.</value>
+  </data>
+  <data name="DataBinding_CollectionAssociatedWithMultipleEntities" xml:space="preserve">
+    <value>Fehler beim Versuch, ein Auflistungsobjekt des Typs '{0}' nachzuverfolgen, weil das Auflistungsobjekt bereits nachverfolgt wird.</value>
+  </data>
+  <data name="DataBinding_CollectionChangedUnknownActionCollection" xml:space="preserve">
+    <value>Unerwartete Aktion '{0}' für das vom Auflistungsobjekt des Typs '{1}' ausgelöste OnCollectionChanged-Ereignis.</value>
+  </data>
+  <data name="DataBinding_CollectionPropertySetterValueHasObserver" xml:space="preserve">
+    <value>Das Festlegen einer Instanz von DataServiceCollection auf eine Entitätseigenschaft ist nicht zulässig, wenn die Instanz bereits nachverfolgt wird. Fehler in der Eigenschaft "{0}" für den Entitätstyp "{1}".</value>
+  </data>
+  <data name="DataBinding_ComplexObjectAssociatedWithMultipleEntities" xml:space="preserve">
+    <value>Fehler beim Versuch, ein komplexes Objekt vom Typ "{0}" nachzuverfolgen, da das komplexe Objekt bereits verfolgt wird.</value>
+  </data>
+  <data name="DataBinding_DataServiceCollectionArgumentMustHaveEntityType" xml:space="preserve">
+    <value>Die nachzuverfolgende DataServiceCollection muss Entitätstypelemente mit mindestens einer Schlüsseleigenschaft enthalten. Der Elementtyp "{0}" besitzt keine Schlüsseleigenschaft.</value>
+  </data>
+  <data name="DataBinding_DataServiceCollectionChangedUnknownActionCollection" xml:space="preserve">
+    <value>Unerwartete Aktion '{0}' für das durch DataServiceCollection ausgelöste OnCollectionChanged-Ereignis.</value>
+  </data>
+  <data name="DataBinding_EntityAlreadyInCollection" xml:space="preserve">
+    <value>Es wurde versucht, eine Entität des Typs "{0}" einer Auflistung hinzuzufügen, in der die gleiche Entität bereits vorhanden ist.</value>
+  </data>
+  <data name="DataBinding_NotifyCollectionChangedNotImpl" xml:space="preserve">
+    <value>Fehler beim Nachverfolgen einer Entität oder eines komplexen Typs, da die Entität bzw. der komplexe Typ eine Auflistungseigenschaft vom Typ '{0}' enthält, die die INotifyCollectionChanged-Schnittstelle nicht implementiert.</value>
+  </data>
+  <data name="DataBinding_NotifyPropertyChangedNotImpl" xml:space="preserve">
+    <value>Fehler beim Nachverfolgen einer Entität oder eines komplexen Typs, da von der Entität bzw. dem komplexen Typ "{0}" die INotifyPropertyChanged-Schnittstelle nicht implementiert wird.</value>
+  </data>
+  <data name="DataBinding_Util_UnknownEntitySetName" xml:space="preserve">
+    <value>Für eine Entität des Typs "{0}" wurde kein Entitätenmengenname angegeben.</value>
+  </data>
+  <data name="DataServiceClientFormat_AtomEventsOnlySupportedWithAtomFormat" xml:space="preserve">
+    <value>Das ReadingEntity-Ereignis und das WritingEntity-Ereignis werden nur bei Verwendung des Atom-Formats unterstützt. Verwenden Sie das Atom-Format, oder entfernen Sie alle registrierten Handler für diese Ereignisse, bevor Sie ein anderes Format aktivieren.</value>
+  </data>
+  <data name="DataServiceClientFormat_JsonUnsupportedForLessThanV3" xml:space="preserve">
+    <value>'UseJson' wird nicht unterstützt, wenn 'MaxProtocolVersion' auf einen kleineren Wert als 'V3' festgelegt ist. Das JSON-Format wird nur von OData, Version 3 oder höher, unterstützt.</value>
+  </data>
+  <data name="DataServiceClientFormat_JsonVerboseUnsupported" xml:space="preserve">
+    <value>Der ContentType-Wert '{0}' wird nicht unterstützt.</value>
+  </data>
+  <data name="DataServiceClientFormat_LoadServiceModelRequired" xml:space="preserve">
+    <value>Wenn Sie die UseJson-Methode ohne Parameter aufrufen, müssen Sie die LoadServiceModel-Eigenschaft verwenden, um eine gültige IEdmModel-Instanz bereitzustellen.</value>
+  </data>
+  <data name="DataServiceClientFormat_ValidServiceModelRequiredForJson" xml:space="preserve">
+    <value>Zur Verwendung des JSON-Formats müssen Sie erst 'DataServiceContext.Format.UseJson()' aufrufen und ein gültiges Dienstmodell bereitstellen.</value>
+  </data>
+  <data name="DataServiceCollection_CannotDetermineContextFromItems" xml:space="preserve">
+    <value>Der DataServiceContext, zu dem die DataServiceCollection-Instanz gehört, konnte nicht bestimmt werden. Der DataServiceContext muss entweder im DataServiceCollection-Konstruktor bereitgestellt werden oder zum Erstellen des DataServiceQuery- oder QueryOperationResponse-Objekts verwendet werden, bei dem es sich um die Quelle der Elemente in der DataServiceCollection handelt.</value>
+  </data>
+  <data name="DataServiceCollection_CannotStopTrackingChildCollection" xml:space="preserve">
+    <value>Die Nachverfolgung von DataServiceCollection kann für untergeordnete Auflistungen nicht beendet werden.</value>
+  </data>
+  <data name="DataServiceCollection_InsertIntoTrackedButNotLoadedCollection" xml:space="preserve">
+    <value>Der Auflistung konnte ein Element nicht hinzugefügt werden. Wenn Elemente in einer DataServiceCollection vom DataServiceContext nachverfolgt werden, können keine neuen Elemente hinzugefügt werden, bevor Elemente in die Auflistung geladen wurden.</value>
+  </data>
+  <data name="DataServiceCollection_LoadAsyncNoParamsWithoutParentEntity" xml:space="preserve">
+    <value>Die LoadAsync-Methode kann nicht aufgerufen werden, wenn 'DataServiceCollection' keine untergeordnete Auflistung einer verknüpften Entität ist.</value>
+  </data>
+  <data name="DataServiceCollection_LoadAsyncRequiresDataServiceQuery" xml:space="preserve">
+    <value>Wenn die LoadAsync-Methode für 'DataServiceCollection' aufgerufen wird, kann nur ein typisiertes DataServiceQuery-Objekt bereitgestellt werden.</value>
+  </data>
+  <data name="DataServiceCollection_LoadRequiresTargetCollectionObserved" xml:space="preserve">
+    <value>Die Zielauflistung für diesen Load-Vorgang muss über einen zugeordneten DataServiceContext verfügen.</value>
+  </data>
+  <data name="DataServiceCollection_MultipleLoadAsyncOperationsAtTheSameTime" xml:space="preserve">
+    <value>Ein vorheriger LoadAsync-Vorgang wurde noch nicht abgeschlossen. Sie können die LoadAsync-Methode erst wieder für 'DataServiceCollection' aufrufen, wenn der vorherige Vorgang abgeschlossen ist.</value>
+  </data>
+  <data name="DataServiceCollection_OperationForTrackedOnly" xml:space="preserve">
+    <value>Der Vorgang wird nur für Auflistungen unterstützt, die nachverfolgt werden.</value>
+  </data>
+  <data name="DataServiceException_GeneralError" xml:space="preserve">
+    <value>Fehler beim Verarbeiten dieser Anforderung.</value>
+  </data>
+  <data name="DataServiceQuery_EnumerationNotSupported" xml:space="preserve">
+    <value>Die direkte Enumeration über eine Datendienstabfrage wird vom Zielframework nicht unterstützt. Dies liegt daran, dass bei der Enumeration automatisch eine synchrone Anforderung an den Datendienst gesendet wird. Da dieses Framework nur asynchrone Vorgänge unterstützt, müssen stattdessen die BeginExecute-Methode und die EndExecute-Methode aufgerufen werden, um ein Abfrageergebnis zu erhalten, das Enumerationen unterstützt.</value>
+  </data>
+  <data name="DataServiceRequest_FailGetCount" xml:space="preserve">
+    <value>Fehler beim Abrufen des count-Werts vom Server.</value>
+  </data>
+  <data name="Deserialize_Current" xml:space="preserve">
+    <value>Der aktuelle Werttyp "{1}" ist mit dem erwarteten Typ "{0}" nicht kompatibel.</value>
+  </data>
+  <data name="Deserialize_ExpectingSimpleValue" xml:space="preserve">
+    <value>Fehler beim Verarbeiten des Antwortdatenstroms. Das XML-Element enthält gemischte Inhalte.</value>
+  </data>
+  <data name="Deserialize_GetEnumerator" xml:space="preserve">
+    <value>Von dieser IEnumerable wird nur eine einzige Aufzählung unterstützt.</value>
+  </data>
+  <data name="Deserialize_MismatchAtomLinkEntryPropertyIsCollection" xml:space="preserve">
+    <value>Fehler beim Verarbeiten des Antwortdatenstroms. Die Atom-Nutzlast verfügt über einen Eintrag, und die Eigenschaft "{0}" ist eine Auflistung.</value>
+  </data>
+  <data name="Deserialize_MismatchAtomLinkFeedPropertyNotCollection" xml:space="preserve">
+    <value>Fehler beim Verarbeiten des Antwortdatenstroms. Die Atom-Nutzlast verfügt über einen Feed, und die Eigenschaft "{0}" ist keine Auflistung.</value>
+  </data>
+  <data name="Deserialize_MismatchAtomLinkLocalSimple" xml:space="preserve">
+    <value>Fehler beim Verarbeiten des Antwortdatenstroms. Die Atom-Nutzlast verfügt über einen Link, und das lokale Objekt verfügt über einen einfachen Wert.</value>
+  </data>
+  <data name="Deserialize_MissingIdElement" xml:space="preserve">
+    <value>Fehler beim Verarbeiten des Antwortdatenstroms. In der Antwort fehlt ein ID-Element.</value>
+  </data>
+  <data name="Deserialize_MixedTextWithComment" xml:space="preserve">
+    <value>Fehler beim Verarbeiten des Antwortdatenstroms. Der Elementwert enthält eine Anmerkung. Dies wird nicht unterstützt.</value>
+  </data>
+  <data name="Deserialize_NoLocationHeader" xml:space="preserve">
+    <value>Die Antwort auf diese POST-Anforderung enthielt keinen Header "location". Dies wird von diesem Client nicht unterstützt.</value>
+  </data>
+  <data name="Deserialize_ServerException" xml:space="preserve">
+    <value>Fehler beim Verarbeiten des Antwortdatenstroms. Es ist ein Fehler mit der folgenden Nachricht auf dem Server aufgetreten:
+{0}</value>
+  </data>
+  <data name="EdmValueUtils_CannotConvertTypeToClrValue" xml:space="preserve">
+    <value>Ein Wert mit der Primitive-Art '{0}' kann nicht in einen Primitive-Objektwert konvertiert werden.</value>
+  </data>
+  <data name="EdmValueUtils_IncorrectPrimitiveTypeKind" xml:space="preserve">
+    <value>Inkompatible Arten des Primitive-Typs wurden gefunden. Der Typ '{0}' weist anstelle der erwarteten Art '{1}' die Art '{2}' auf.</value>
+  </data>
+  <data name="EdmValueUtils_IncorrectPrimitiveTypeKindNoTypeName" xml:space="preserve">
+    <value>Inkompatible Arten des Primitive-Typs wurden gefunden. Die Typart '{0}' wurde anstelle der erwarteten Art '{1}' gefunden.</value>
+  </data>
+  <data name="EdmValueUtils_UnsupportedPrimitiveType" xml:space="preserve">
+    <value>Der Typ '{0}' wurde für einen Primitive-Wert gefunden. In OData ist der Typ '{0}' ein nicht unterstützter Primitive-Typ.</value>
+  </data>
+  <data name="EntityDescriptor_MissingSelfEditLink" xml:space="preserve">
+    <value>Der Entität mit der Identität "{0}" ist kein self-link oder edit-link zugeordnet. Stellen Sie sicher, dass der Entität entweder ein self-link oder ein edit-link zugeordnet ist.</value>
+  </data>
+  <data name="EpmSourceTree_CollectionPropertyCannotBeMapped" xml:space="preserve">
+    <value>Die Eigenschaft '{0}' für den Typ '{1}' ist eine Auflistung. Auflistungseigenschaften können nicht mit einer Entitätseigenschaftenzuordnung zugeordnet werden.</value>
+  </data>
+  <data name="EpmSourceTree_DuplicateEpmAttrsWithSameSourceName" xml:space="preserve">
+    <value>Der PropertyName-Eigenschaftswert "{0}" für mehr als ein EntityPropertyMappingAttribute für den Ressourcentyp "{1}" wurde mehr als einmal bereitgestellt.</value>
+  </data>
+  <data name="EpmSourceTree_EndsWithNonPrimitiveType" xml:space="preserve">
+    <value>Die am Ende der PropertyName-Eigenschaft des EntityPropertyMappingAttribute für einen Ressourcentyp bereitgestellte Eigenschaft "{0}" ist kein primitiver Typ.</value>
+  </data>
+  <data name="EpmSourceTree_InaccessiblePropertyOnType" xml:space="preserve">
+    <value>Die Eigenschaft "{0}" für den Typ "{1}" ist nicht vorhanden, oder es kann nicht darauf zugegriffen werden.</value>
+  </data>
+  <data name="EpmSourceTree_InvalidSourcePath" xml:space="preserve">
+    <value>Der PropertyName-Eigenschaftswert "{1}" des EntityPropertyMappingAttribute für den Typ "{0}" ist ungültig.</value>
+  </data>
+  <data name="EpmSourceTree_NamedStreamCannotBeMapped" xml:space="preserve">
+    <value>Die Eigenschaft "{0}" für den Typ "{1}" ist vom Typ "DataServiceStreamLink". Datenstromeigenschaften können nicht mit einer Entitätseigenschaftenzuordnung zugeordnet werden.</value>
+  </data>
+  <data name="EpmSourceTree_SpatialTypeCannotBeMapped" xml:space="preserve">
+    <value>Die Eigenschaft "{0}" für den Typ "{1}" besitzt einen räumlichen Typ. Eigenschaften mit räumlichem Typ können nicht mit einer Entitätseigenschaftenzuordnung zugeordnet werden.</value>
+  </data>
+  <data name="EpmTargetTree_AttributeInMiddle" xml:space="preserve">
+    <value>Der Attributbezeichner "{0}" wurde in der Mitte der TargetName-Eigenschaft des EntityPropertyMappingAttribute angegeben.</value>
+  </data>
+  <data name="EpmTargetTree_DuplicateEpmAttrsWithSameTargetName" xml:space="preserve">
+    <value>Die TargetName-Eigenschaft "{0}" für mehr als ein EntityPropertyMappingAttribute für den Ressourcentyp "{1}" hat den gleichen Wert. Die in Konflikt stehenden Eigenschaften sind "{2}" und "{3}".</value>
+  </data>
+  <data name="EpmTargetTree_InvalidTargetPath" xml:space="preserve">
+    <value>Der im EntityPropertyMappingAttribute festgelegte TargetName-Eigenschaftspfad "{0}" ist ungültig.</value>
+  </data>
+  <data name="General_InternalError" xml:space="preserve">
+    <value>Interner Fehler '{0}'.</value>
+  </data>
+  <data name="HttpProcessUtility_ClosingQuoteNotFound" xml:space="preserve">
+    <value>Der Wert für den MIME-Typparameter "{0}" ist nicht korrekt, da kein schließendes Anführungszeichen gefunden wurde, obwohl der Parameterwert mit einem Anführungszeichen beginnt.</value>
+  </data>
+  <data name="HttpProcessUtility_ContentTypeMissing" xml:space="preserve">
+    <value>Der Wert für den Content-Type-Header fehlt.</value>
+  </data>
+  <data name="HttpProcessUtility_EncodingNotSupported" xml:space="preserve">
+    <value>Der Zeichensatz "{0}" wird nicht unterstützt.</value>
+  </data>
+  <data name="HttpProcessUtility_EscapeCharAtEnd" xml:space="preserve">
+    <value>Der Wert für den MIME-Typparameter "{0}" ist nicht korrekt, da er mit einem Escapezeichen beendet wird. In einem Parameterwert muss auf Escapezeichen stets ein Zeichen folgen.</value>
+  </data>
+  <data name="HttpProcessUtility_EscapeCharWithoutQuotes" xml:space="preserve">
+    <value>Der Wert für den MIME-Typparameter "{0}" ist nicht korrekt, da er Escapezeichen enthält, jedoch nicht in Anführungszeichen eingeschlossen ist.</value>
+  </data>
+  <data name="HttpProcessUtility_MediaTypeMissingValue" xml:space="preserve">
+    <value>Im Medientyp fehlt ein Parameterwert.</value>
+  </data>
+  <data name="HttpProcessUtility_MediaTypeRequiresSemicolonBeforeParameter" xml:space="preserve">
+    <value>Der Medientyp erfordert ein ";" vor einer Parameterdefinition.</value>
+  </data>
+  <data name="HttpProcessUtility_MediaTypeRequiresSlash" xml:space="preserve">
+    <value>Der Medientyp erfordert "/".</value>
+  </data>
+  <data name="HttpProcessUtility_MediaTypeRequiresSubType" xml:space="preserve">
+    <value>Der Medientyp erfordert eine Untertypdefinition.</value>
+  </data>
+  <data name="HttpProcessUtility_MediaTypeUnspecified" xml:space="preserve">
+    <value>Der Medientyp ist nicht angegeben.</value>
+  </data>
+  <data name="MaterializeFromAtom_CollectionKeyNotPresentInLinkTable" xml:space="preserve">
+    <value>Die Auflistung ist nicht Bestandteil des aktuellen Eintrags.</value>
+  </data>
+  <data name="MaterializeFromAtom_CountNotPresent" xml:space="preserve">
+    <value>Der Count-Wert ist kein Teil des Antwortdatenstroms.</value>
+  </data>
+  <data name="MaterializeFromAtom_GetNestLinkForFlatCollection" xml:space="preserve">
+    <value>Die Antwort enthält keine geschachtelten Auflistungen. Verwenden Sie als Key stattdessen NULL.</value>
+  </data>
+  <data name="MaterializeFromAtom_TopLevelLinkNotAvailable" xml:space="preserve">
+    <value>Der Link auf oberster Ebene ist erst verfügbar, nachdem die Antwort durchlaufen wurde.</value>
+  </data>
+  <data name="ODataMetadataBuilder_MissingEntityInstanceUri" xml:space="preserve">
+    <value>Für die Entitätenmenge '{0}' wurde weder die OData.EntityInstanceUri-Anmerkung noch die OData.EntitySetUriSuffix-Anmerkung gefunden. Eine dieser Anmerkungen ist erforderlich.</value>
+  </data>
+  <data name="ODataMetadataBuilder_MissingEntitySetUri" xml:space="preserve">
+    <value>Die Entitätenmenge '{0}' verfügt nicht über die OData.EntitySetUri-Anmerkung. Diese Anmerkung ist erforderlich.</value>
+  </data>
+  <data name="ODataMetadataBuilder_MissingSegmentForEntitySetUriSuffix" xml:space="preserve">
+    <value>Die Entitätenmenge '{0}' verfügt über den URI '{1}', der keine Pfadsegmente aufweist. Ein Suffix für einen Entitätenmengen-URI kann nicht an einen URI ohne Pfadsegmente angefügt werden.</value>
+  </data>
+  <data name="ODataRequestMessage_GetStreamMethodNotSupported" xml:space="preserve">
+    <value>Die GetStream-Methode wird nicht unterstützt.</value>
+  </data>
+  <data name="Serializer_InvalidCollectionParamterItemType" xml:space="preserve">
+    <value>Der Vorgangsparameter mit dem Namen "{0}" enthält ein Auflistungselement des Edm-Typs "{1}". Ein Auflistungselement muss entweder einen primitiven Typ oder einen komplexen Edm-Typ aufweisen.</value>
+  </data>
+  <data name="Serializer_InvalidParameterType" xml:space="preserve">
+    <value>Der Vorgangsparameter mit dem Namen "{0}" hat den Edm-Typ "{1}". Ein Vorgangsparameter muss entweder einen primitiven oder einen komplexen Typ aufweisen oder eine Auflistung mit primitiven oder komplexen Typen enthalten.</value>
+  </data>
+  <data name="Serializer_LoopsNotAllowedInComplexTypes" xml:space="preserve">
+    <value>Beim Serialisieren der Eigenschaft '{0}' wurde eine Dauerschleife erkannt. Sie müssen sicherstellen, dass keine Schleifen in Eigenschaften auftreten, die einen Auflistungs- oder einen komplexen Typ zurückgeben.</value>
+  </data>
+  <data name="Serializer_LoopsNotAllowedInNonPropertyComplexTypes" xml:space="preserve">
+    <value>Beim Serialisieren des komplexen Typs '{0}' wurde eine Dauerschleife erkannt. Sie müssen sicherstellen, dass in einem Auflistungs- oder einem komplexen Typ keine Schleifen auftreten.</value>
+  </data>
+  <data name="Serializer_NullCollectionParamterItemValue" xml:space="preserve">
+    <value>Der Vorgangsparameter mit dem Namen "{0}" enthält ein Auflistungselement mit einem NULL-Wert. Die Elemente einer Auflistung dürfen nicht NULL sein.</value>
+  </data>
+  <data name="Serializer_UriDoesNotContainParameterAlias" xml:space="preserve">
+    <value>Der Parameteralias "{0}" wurde in der Anforderungs-URI nicht gefunden. Alle als Alias übergebenen Parameter müssen in der Anforderungs-URI enthalten sein.</value>
+  </data>
+  <data name="Util_EmptyArray" xml:space="preserve">
+    <value>Leeres Array.</value>
+  </data>
+  <data name="Util_EmptyString" xml:space="preserve">
+    <value>Leere Zeichenfolge.</value>
+  </data>
+  <data name="Util_NullArrayElement" xml:space="preserve">
+    <value>Das Array enthält ein NULL-Element.</value>
+  </data>
+  <data name="WebUtil_CollectionTypeNotSupportedInV2OrBelow" xml:space="preserve">
+    <value>Der Typ '{0}' ist ein Auflistungstyp. Auflistungstypen werden erst ab Version 'V3' des Protokolls unterstützt.</value>
+  </data>
+  <data name="WebUtil_TypeMismatchInCollection" xml:space="preserve">
+    <value>Ein Element in der Auflistungseigenschaft '{0}' weist nicht den richtigen Typ auf. Alle Elemente in der Auflistungseigenschaft müssen den Auflistungselementtyp aufweisen.</value>
+  </data>
+  <data name="WebUtil_TypeMismatchInNonPropertyCollection" xml:space="preserve">
+    <value>Eine Auflistung des Elementtyps '{0}' verfügt über ein Element, das nicht den richtigen Typ aufweist. Alle Elemente in der Auflistung müssen den Auflistungselementtyp aufweisen.</value>
+  </data>
+</root>

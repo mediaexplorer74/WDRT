@@ -9,10 +9,10 @@ namespace SoftwareRepository.Streaming
 	[Serializable]
 	internal class DownloadMetadata
 	{
-		// Token: 0x0600002D RID: 45 RVA: 0x00002ABC File Offset: 0x00000CBC
+		// Token: 0x0600002D RID: 45 RVA: 0x00002CC4 File Offset: 0x00000EC4
 		internal byte[] Serialize()
 		{
-			byte[] result;
+			byte[] array;
 			using (MemoryStream memoryStream = new MemoryStream())
 			{
 				try
@@ -23,12 +23,12 @@ namespace SoftwareRepository.Streaming
 				{
 					return null;
 				}
-				result = memoryStream.ToArray();
+				array = memoryStream.ToArray();
 			}
-			return result;
+			return array;
 		}
 
-		// Token: 0x0600002E RID: 46 RVA: 0x00002B14 File Offset: 0x00000D14
+		// Token: 0x0600002E RID: 46 RVA: 0x00002D24 File Offset: 0x00000F24
 		internal static DownloadMetadata Deserialize(byte[] data)
 		{
 			DownloadMetadata downloadMetadata;
@@ -36,40 +36,54 @@ namespace SoftwareRepository.Streaming
 			{
 				try
 				{
-					downloadMetadata = (new BinaryFormatter().Deserialize(memoryStream) as DownloadMetadata);
+					downloadMetadata = new BinaryFormatter().Deserialize(memoryStream) as DownloadMetadata;
 				}
 				catch
 				{
 					return null;
 				}
 			}
-			if (downloadMetadata == null || !downloadMetadata.IsValid())
+			bool flag = downloadMetadata == null || !downloadMetadata.IsValid();
+			DownloadMetadata downloadMetadata2;
+			if (flag)
 			{
-				return null;
+				downloadMetadata2 = null;
 			}
-			return downloadMetadata;
+			else
+			{
+				downloadMetadata2 = downloadMetadata;
+			}
+			return downloadMetadata2;
 		}
 
-		// Token: 0x0600002F RID: 47 RVA: 0x00002B78 File Offset: 0x00000D78
+		// Token: 0x0600002F RID: 47 RVA: 0x00002D9C File Offset: 0x00000F9C
 		private bool IsValid()
 		{
-			if (this.ChunkStates == null)
+			bool flag = this.ChunkStates == null;
+			bool flag2;
+			if (flag)
 			{
-				return false;
+				flag2 = false;
 			}
-			int num = 0;
-			for (int i = 0; i < this.ChunkStates.Length; i++)
+			else
 			{
-				if (this.ChunkStates[i] == ChunkState.PartiallyDownloaded)
+				int num = 0;
+				for (int i = 0; i < this.ChunkStates.Length; i++)
 				{
-					num++;
-					if (this.PartialProgress == null || !this.PartialProgress.ContainsKey(i))
+					bool flag3 = this.ChunkStates[i] == ChunkState.PartiallyDownloaded;
+					if (flag3)
 					{
-						return false;
+						num++;
+						bool flag4 = this.PartialProgress == null || !this.PartialProgress.ContainsKey(i);
+						if (flag4)
+						{
+							return false;
+						}
 					}
 				}
+				flag2 = this.PartialProgress == null || num == this.PartialProgress.Count;
 			}
-			return this.PartialProgress == null || num == this.PartialProgress.Count;
+			return flag2;
 		}
 
 		// Token: 0x04000028 RID: 40

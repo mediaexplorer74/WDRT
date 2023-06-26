@@ -2,12 +2,12 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Common
 {
-	// Token: 0x02000007 RID: 7
+	// Token: 0x02000006 RID: 6
 	public interface INotifyLiveRegionChanged
 	{
 		// Token: 0x14000001 RID: 1
-		// (add) Token: 0x06000017 RID: 23
-		// (remove) Token: 0x06000018 RID: 24
+		// (add) Token: 0x0600000E RID: 14
+		// (remove) Token: 0x0600000F RID: 15
 		event EventHandler LiveRegionChanged;
 	}
 }

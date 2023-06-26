@@ -4,19 +4,20 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.Enums;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Contracts
 {
-	// Token: 0x02000006 RID: 6
+	// Token: 0x0200003C RID: 60
 	[MetadataAttribute]
 	[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method | AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
 	public class ExportAdaptationAttribute : ExportAttribute
 	{
-		// Token: 0x06000041 RID: 65 RVA: 0x000027A1 File Offset: 0x000009A1
-		public ExportAdaptationAttribute() : base(typeof(IAdaptation))
+		// Token: 0x0600035D RID: 861 RVA: 0x0000D169 File Offset: 0x0000B369
+		public ExportAdaptationAttribute()
+			: base(typeof(IAdaptation))
 		{
 		}
 
-		// Token: 0x1700000A RID: 10
-		// (get) Token: 0x06000042 RID: 66 RVA: 0x000027B8 File Offset: 0x000009B8
-		// (set) Token: 0x06000043 RID: 67 RVA: 0x000027CF File Offset: 0x000009CF
+		// Token: 0x170000F3 RID: 243
+		// (get) Token: 0x0600035E RID: 862 RVA: 0x0000D17D File Offset: 0x0000B37D
+		// (set) Token: 0x0600035F RID: 863 RVA: 0x0000D185 File Offset: 0x0000B385
 		public PhoneTypes Type { get; set; }
 	}
 }

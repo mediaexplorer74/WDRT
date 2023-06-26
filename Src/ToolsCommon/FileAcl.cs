@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 using System.IO;
 using System.Security.AccessControl;
 using System.Security.Principal;
@@ -7,26 +6,26 @@ using System.Xml.Serialization;
 
 namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 {
-	// Token: 0x02000043 RID: 67
+	// Token: 0x02000051 RID: 81
 	public class FileAcl : ResourceAcl
 	{
-		// Token: 0x060001B3 RID: 435 RVA: 0x00008F49 File Offset: 0x00007149
+		// Token: 0x060001CC RID: 460 RVA: 0x00009A66 File Offset: 0x00007C66
 		public FileAcl()
 		{
 		}
 
-		// Token: 0x060001B4 RID: 436 RVA: 0x000091E0 File Offset: 0x000073E0
+		// Token: 0x060001CD RID: 461 RVA: 0x00009A70 File Offset: 0x00007C70
 		public FileAcl(string file, string rootPath)
 		{
 			if (!LongPathFile.Exists(file))
 			{
 				throw new FileNotFoundException("Specified file cannot be found", file);
 			}
-			FileInfo fi = new FileInfo(file);
-			this.Initialize(fi, rootPath);
+			FileInfo fileInfo = new FileInfo(file);
+			this.Initialize(fileInfo, rootPath);
 		}
 
-		// Token: 0x060001B5 RID: 437 RVA: 0x00009216 File Offset: 0x00007416
+		// Token: 0x060001CE RID: 462 RVA: 0x00009AA6 File Offset: 0x00007CA6
 		public FileAcl(FileInfo fi, string rootPath)
 		{
 			if (fi == null)
@@ -36,28 +35,24 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			this.Initialize(fi, rootPath);
 		}
 
-		// Token: 0x17000034 RID: 52
-		// (get) Token: 0x060001B6 RID: 438 RVA: 0x00009234 File Offset: 0x00007434
-		// (set) Token: 0x060001B7 RID: 439 RVA: 0x00009012 File Offset: 0x00007212
+		// Token: 0x17000039 RID: 57
+		// (get) Token: 0x060001CF RID: 463 RVA: 0x00009AC4 File Offset: 0x00007CC4
+		// (set) Token: 0x060001D0 RID: 464 RVA: 0x00009B17 File Offset: 0x00007D17
 		[XmlAttribute("SACL")]
 		public override string MandatoryIntegrityLabel
 		{
 			get
 			{
-				if (!this.m_macLablelProcessed)
+				if (this.m_nos != null)
 				{
-					this.m_macLablelProcessed = true;
-					if (this.m_nos != null)
+					this.m_macLabel = SecurityUtils.GetFileSystemMandatoryLevel(this.m_fullPath);
+					if (string.IsNullOrEmpty(this.m_macLabel))
 					{
-						this.m_macLabel = SecurityUtils.GetFileSystemMandatoryLevel(this.m_fullPath);
-						if (string.IsNullOrEmpty(this.m_macLabel))
-						{
-							this.m_macLabel = null;
-						}
-						else
-						{
-							this.m_macLabel = SddlNormalizer.FixAceSddl(this.m_macLabel);
-						}
+						this.m_macLabel = null;
+					}
+					else
+					{
+						this.m_macLabel = SddlNormalizer.FixAceSddl(this.m_macLabel);
 					}
 				}
 				return this.m_macLabel;
@@ -68,24 +63,24 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x17000035 RID: 53
-		// (get) Token: 0x060001B8 RID: 440 RVA: 0x00009298 File Offset: 0x00007498
+		// Token: 0x1700003A RID: 58
+		// (get) Token: 0x060001D1 RID: 465 RVA: 0x00009B20 File Offset: 0x00007D20
 		public override NativeObjectSecurity ObjectSecurity
 		{
 			get
 			{
-				if (this.m_objectSecurity == null && this.m_nos != null)
+				FileSecurity fileSecurity = null;
+				if (this.m_nos != null)
 				{
-					FileSecurity fileSecurity = new FileSecurity();
+					fileSecurity = new FileSecurity();
 					fileSecurity.SetSecurityDescriptorBinaryForm(this.m_nos.GetSecurityDescriptorBinaryForm());
-					this.m_objectSecurity = fileSecurity;
 				}
-				return this.m_objectSecurity;
+				return fileSecurity;
 			}
 		}
 
-		// Token: 0x17000036 RID: 54
-		// (get) Token: 0x060001B9 RID: 441 RVA: 0x000092DB File Offset: 0x000074DB
+		// Token: 0x1700003B RID: 59
+		// (get) Token: 0x060001D2 RID: 466 RVA: 0x00009B4F File Offset: 0x00007D4F
 		protected override string TypeString
 		{
 			get
@@ -94,7 +89,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x060001BA RID: 442 RVA: 0x000092E4 File Offset: 0x000074E4
+		// Token: 0x060001D3 RID: 467 RVA: 0x00009B58 File Offset: 0x00007D58
 		protected override string ComputeExplicitDACL()
 		{
 			FileSecurity accessControl = this.m_fi.GetAccessControl(AccessControlSections.All);
@@ -125,7 +120,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return SddlNormalizer.FixAceSddl(text);
 		}
 
-		// Token: 0x060001BB RID: 443 RVA: 0x000093C4 File Offset: 0x000075C4
+		// Token: 0x060001D4 RID: 468 RVA: 0x00009C40 File Offset: 0x00007E40
 		private void Initialize(FileInfo fi, string rootPath)
 		{
 			if (fi == null)
@@ -135,13 +130,10 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			this.m_fi = fi;
 			this.m_nos = fi.GetAccessControl(AccessControlSections.All);
 			this.m_fullPath = fi.FullName;
-			this.m_path = System.IO.Path.Combine("\\", this.m_fullPath.Remove(0, rootPath.Length)).ToUpper(CultureInfo.InvariantCulture);
+			this.m_path = System.IO.Path.Combine("\\", this.m_fullPath.Remove(0, rootPath.Length)).ToUpper();
 		}
 
-		// Token: 0x040000E1 RID: 225
+		// Token: 0x0400013F RID: 319
 		private FileInfo m_fi;
-
-		// Token: 0x040000E2 RID: 226
-		private NativeObjectSecurity m_objectSecurity;
 	}
 }

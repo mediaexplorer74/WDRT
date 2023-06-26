@@ -9,20 +9,20 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.Enums;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 {
-	// Token: 0x020000D3 RID: 211
+	// Token: 0x02000020 RID: 32
 	[Export]
 	public class SummaryViewModel : BaseViewModel, ICanHandle<FlashResultMessage>, ICanHandle
 	{
-		// Token: 0x06000678 RID: 1656 RVA: 0x0002179F File Offset: 0x0001F99F
+		// Token: 0x06000168 RID: 360 RVA: 0x000094E0 File Offset: 0x000076E0
 		[ImportingConstructor]
 		public SummaryViewModel(Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext)
 		{
 			this.appContext = appContext;
 		}
 
-		// Token: 0x1700017E RID: 382
-		// (get) Token: 0x06000679 RID: 1657 RVA: 0x000217B4 File Offset: 0x0001F9B4
-		// (set) Token: 0x0600067A RID: 1658 RVA: 0x000217CC File Offset: 0x0001F9CC
+		// Token: 0x1700005F RID: 95
+		// (get) Token: 0x06000169 RID: 361 RVA: 0x000094F4 File Offset: 0x000076F4
+		// (set) Token: 0x0600016A RID: 362 RVA: 0x0000950C File Offset: 0x0000770C
 		public Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext AppContext
 		{
 			get
@@ -35,9 +35,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x1700017F RID: 383
-		// (get) Token: 0x0600067B RID: 1659 RVA: 0x0002181C File Offset: 0x0001FA1C
-		// (set) Token: 0x0600067C RID: 1660 RVA: 0x00021834 File Offset: 0x0001FA34
+		// Token: 0x17000060 RID: 96
+		// (get) Token: 0x0600016B RID: 363 RVA: 0x0000954C File Offset: 0x0000774C
+		// (set) Token: 0x0600016C RID: 364 RVA: 0x00009564 File Offset: 0x00007764
 		public bool IsPassed
 		{
 			get
@@ -50,9 +50,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x17000180 RID: 384
-		// (get) Token: 0x0600067D RID: 1661 RVA: 0x00021884 File Offset: 0x0001FA84
-		// (set) Token: 0x0600067E RID: 1662 RVA: 0x0002189C File Offset: 0x0001FA9C
+		// Token: 0x17000061 RID: 97
+		// (get) Token: 0x0600016D RID: 365 RVA: 0x000095A4 File Offset: 0x000077A4
+		// (set) Token: 0x0600016E RID: 366 RVA: 0x000095BC File Offset: 0x000077BC
 		public string FinishText
 		{
 			get
@@ -65,9 +65,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x17000181 RID: 385
-		// (get) Token: 0x0600067F RID: 1663 RVA: 0x000218EC File Offset: 0x0001FAEC
-		// (set) Token: 0x06000680 RID: 1664 RVA: 0x00021904 File Offset: 0x0001FB04
+		// Token: 0x17000062 RID: 98
+		// (get) Token: 0x0600016F RID: 367 RVA: 0x000095FC File Offset: 0x000077FC
+		// (set) Token: 0x06000170 RID: 368 RVA: 0x00009614 File Offset: 0x00007814
 		public string ResultMessage
 		{
 			get
@@ -80,9 +80,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x17000182 RID: 386
-		// (get) Token: 0x06000681 RID: 1665 RVA: 0x00021954 File Offset: 0x0001FB54
-		// (set) Token: 0x06000682 RID: 1666 RVA: 0x0002196C File Offset: 0x0001FB6C
+		// Token: 0x17000063 RID: 99
+		// (get) Token: 0x06000171 RID: 369 RVA: 0x00009654 File Offset: 0x00007854
+		// (set) Token: 0x06000172 RID: 370 RVA: 0x0000966C File Offset: 0x0000786C
 		public string InstructionMessage
 		{
 			get
@@ -95,9 +95,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x17000183 RID: 387
-		// (get) Token: 0x06000683 RID: 1667 RVA: 0x000219BC File Offset: 0x0001FBBC
-		// (set) Token: 0x06000684 RID: 1668 RVA: 0x000219D4 File Offset: 0x0001FBD4
+		// Token: 0x17000064 RID: 100
+		// (get) Token: 0x06000173 RID: 371 RVA: 0x000096AC File Offset: 0x000078AC
+		// (set) Token: 0x06000174 RID: 372 RVA: 0x000096C4 File Offset: 0x000078C4
 		private FlashResultMessage Message
 		{
 			get
@@ -110,13 +110,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x06000685 RID: 1669 RVA: 0x00021A24 File Offset: 0x0001FC24
+		// Token: 0x06000175 RID: 373 RVA: 0x00009704 File Offset: 0x00007904
 		public void Handle(FlashResultMessage flashResultMessage)
 		{
 			this.Message = flashResultMessage;
 		}
 
-		// Token: 0x06000686 RID: 1670 RVA: 0x00021A30 File Offset: 0x0001FC30
+		// Token: 0x06000176 RID: 374 RVA: 0x00009710 File Offset: 0x00007910
 		public override void OnStarted()
 		{
 			base.OnStarted();
@@ -126,7 +126,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			this.RefreshResults();
 		}
 
-		// Token: 0x06000687 RID: 1671 RVA: 0x00021A94 File Offset: 0x0001FC94
+		// Token: 0x06000177 RID: 375 RVA: 0x00009774 File Offset: 0x00007974
 		private void RefreshResults()
 		{
 			this.IsPassed = this.Message.Result;
@@ -135,48 +135,58 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			this.FinishText = ((!this.IsPassed && this.appContext.SelectedManufacturer == PhoneTypes.Htc) ? LocalizationManager.GetTranslation("ButtonContinue") : LocalizationManager.GetTranslation("ButtonFinish"));
 		}
 
-		// Token: 0x06000688 RID: 1672 RVA: 0x00021B28 File Offset: 0x0001FD28
+		// Token: 0x06000178 RID: 376 RVA: 0x00009804 File Offset: 0x00007A04
 		private string ConstructExtendedMessage(List<string> extendedMessage)
 		{
-			string result = string.Empty;
-			if (extendedMessage == null || extendedMessage.Count == 0)
+			string text = string.Empty;
+			bool flag = extendedMessage == null || extendedMessage.Count == 0;
+			if (flag)
 			{
-				result = string.Empty;
+				text = string.Empty;
 			}
-			else if (extendedMessage.Count == 1)
+			else
 			{
-				if (string.IsNullOrEmpty(this.Message.Argument))
+				bool flag2 = extendedMessage.Count == 1;
+				if (flag2)
 				{
-					result = string.Format(LocalizationManager.GetTranslation(extendedMessage[0]), new object[0]);
+					bool flag3 = string.IsNullOrEmpty(this.Message.Argument);
+					if (flag3)
+					{
+						text = string.Format(LocalizationManager.GetTranslation(extendedMessage[0]), new object[0]);
+					}
+					else
+					{
+						text = string.Format(LocalizationManager.GetTranslation(extendedMessage[0]), this.Message.Argument);
+					}
 				}
 				else
 				{
-					result = string.Format(LocalizationManager.GetTranslation(extendedMessage[0]), this.Message.Argument);
+					bool flag4 = extendedMessage.Count == 2;
+					if (flag4)
+					{
+						text = string.Format(LocalizationManager.GetTranslation(extendedMessage[0]), LocalizationManager.GetTranslation(extendedMessage[1]));
+					}
 				}
 			}
-			else if (extendedMessage.Count == 2)
-			{
-				result = string.Format(LocalizationManager.GetTranslation(extendedMessage[0]), LocalizationManager.GetTranslation(extendedMessage[1]));
-			}
-			return result;
+			return text;
 		}
 
-		// Token: 0x040002B5 RID: 693
+		// Token: 0x040000BF RID: 191
 		private string resultMessage;
 
-		// Token: 0x040002B6 RID: 694
+		// Token: 0x040000C0 RID: 192
 		private string instructionMessage;
 
-		// Token: 0x040002B7 RID: 695
+		// Token: 0x040000C1 RID: 193
 		private bool isPassed;
 
-		// Token: 0x040002B8 RID: 696
+		// Token: 0x040000C2 RID: 194
 		private string finishText;
 
-		// Token: 0x040002B9 RID: 697
+		// Token: 0x040000C3 RID: 195
 		private Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext;
 
-		// Token: 0x040002BA RID: 698
+		// Token: 0x040000C4 RID: 196
 		private FlashResultMessage message;
 	}
 }

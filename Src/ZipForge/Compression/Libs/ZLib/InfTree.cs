@@ -184,9 +184,9 @@ namespace ComponentAce.Compression.Libs.ZLib
 		// Token: 0x060007F4 RID: 2036 RVA: 0x0003429C File Offset: 0x0003329C
 		internal static int inflate_trees_bits(int[] c, int[] bb, int[] tb, int[] hp, ZStream z)
 		{
-			int[] hn = new int[1];
-			int[] v = new int[19];
-			int num = InfTree.huft_build(c, 0, 19, 19, null, null, tb, bb, hp, hn, v);
+			int[] array = new int[1];
+			int[] array2 = new int[19];
+			int num = InfTree.huft_build(c, 0, 19, 19, null, null, tb, bb, hp, array, array2);
 			if (num == -3)
 			{
 				z.msg = "oversubscribed dynamic bit lengths tree";
@@ -202,9 +202,9 @@ namespace ComponentAce.Compression.Libs.ZLib
 		// Token: 0x060007F5 RID: 2037 RVA: 0x000342F8 File Offset: 0x000332F8
 		internal static int inflate_trees_dynamic(int nl, int nd, int[] c, int[] bl, int[] bd, int[] tl, int[] td, int[] hp, ZStream z)
 		{
-			int[] hn = new int[1];
-			int[] v = new int[288];
-			int num = InfTree.huft_build(c, 0, nl, 257, InfTreeUtil.cplens, InfTreeUtil.cplext, tl, bl, hp, hn, v);
+			int[] array = new int[1];
+			int[] array2 = new int[288];
+			int num = InfTree.huft_build(c, 0, nl, 257, InfTreeUtil.cplens, InfTreeUtil.cplext, tl, bl, hp, array, array2);
 			if (num != 0 || bl[0] == 0)
 			{
 				if (num == -3)
@@ -218,7 +218,7 @@ namespace ComponentAce.Compression.Libs.ZLib
 				}
 				return num;
 			}
-			num = InfTree.huft_build(c, nl, nd, 0, InfTreeUtil.cpdist, InfTreeUtil.cpdext, td, bd, hp, hn, v);
+			num = InfTree.huft_build(c, nl, nd, 0, InfTreeUtil.cpdist, InfTreeUtil.cpdext, td, bd, hp, array, array2);
 			if (num != 0 || (bd[0] == 0 && nl > 257))
 			{
 				if (num == -3)

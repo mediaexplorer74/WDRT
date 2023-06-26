@@ -4,15 +4,16 @@ using Microsoft.WindowsDeviceRecoveryTool.StateMachine.Transitions;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.BaseStates
 {
-	// Token: 0x02000072 RID: 114
+	// Token: 0x02000075 RID: 117
 	public class PreviousStateTransition : StateStatusTransition
 	{
-		// Token: 0x06000363 RID: 867 RVA: 0x00010993 File Offset: 0x0000EB93
-		public PreviousStateTransition(BaseState next, string stateName) : base(next, stateName)
+		// Token: 0x060003FB RID: 1019 RVA: 0x000158CD File Offset: 0x00013ACD
+		public PreviousStateTransition(BaseState next, string stateName)
+			: base(next, stateName)
 		{
 		}
 
-		// Token: 0x06000364 RID: 868 RVA: 0x000109A0 File Offset: 0x0000EBA0
+		// Token: 0x060003FC RID: 1020 RVA: 0x000158D9 File Offset: 0x00013AD9
 		public void SetNextState(BaseState state)
 		{
 			this.Next = state;

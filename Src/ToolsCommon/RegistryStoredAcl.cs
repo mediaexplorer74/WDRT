@@ -7,28 +7,20 @@ using System.Xml.Serialization;
 
 namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 {
-	// Token: 0x02000046 RID: 70
+	// Token: 0x02000054 RID: 84
 	public class RegistryStoredAcl : ResourceAcl
 	{
-		// Token: 0x060001C7 RID: 455 RVA: 0x0000964D File Offset: 0x0000784D
+		// Token: 0x060001E0 RID: 480 RVA: 0x00009EB9 File Offset: 0x000080B9
 		public RegistryStoredAcl()
 		{
 		}
 
-		// Token: 0x060001C8 RID: 456 RVA: 0x00009660 File Offset: 0x00007860
+		// Token: 0x060001E1 RID: 481 RVA: 0x00009ECC File Offset: 0x000080CC
 		public RegistryStoredAcl(string typeName, string path, byte[] rawSecurityDescriptor)
 		{
-			if (rawSecurityDescriptor == null)
+			if (rawSecurityDescriptor == null || string.IsNullOrEmpty(path) || string.IsNullOrEmpty(typeName))
 			{
-				throw new ArgumentNullException("rawSecurityDescriptor", "rawSecurityDescriptor Cannot be null.");
-			}
-			if (string.IsNullOrEmpty(path))
-			{
-				throw new ArgumentNullException("path", "path Cannot be null.");
-			}
-			if (string.IsNullOrEmpty(typeName))
-			{
-				throw new ArgumentNullException("typeName", "typeName Cannot be null.");
+				throw new ArgumentNullException("SDRegValue");
 			}
 			RegistrySecurity registrySecurity = new RegistrySecurity();
 			registrySecurity.SetSecurityDescriptorBinaryForm(rawSecurityDescriptor);
@@ -39,9 +31,9 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			this.m_typeName = typeName;
 		}
 
-		// Token: 0x1700003B RID: 59
-		// (get) Token: 0x060001C9 RID: 457 RVA: 0x000096F1 File Offset: 0x000078F1
-		// (set) Token: 0x060001CA RID: 458 RVA: 0x000096F9 File Offset: 0x000078F9
+		// Token: 0x17000040 RID: 64
+		// (get) Token: 0x060001E2 RID: 482 RVA: 0x00009F38 File Offset: 0x00008138
+		// (set) Token: 0x060001E3 RID: 483 RVA: 0x00009F40 File Offset: 0x00008140
 		[XmlAttribute("Type")]
 		public string SDRegValueTypeName
 		{
@@ -55,35 +47,29 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x1700003C RID: 60
-		// (get) Token: 0x060001CB RID: 459 RVA: 0x00009704 File Offset: 0x00007904
-		// (set) Token: 0x060001CC RID: 460 RVA: 0x00009012 File Offset: 0x00007212
+		// Token: 0x17000041 RID: 65
+		// (get) Token: 0x060001E4 RID: 484 RVA: 0x00009F4C File Offset: 0x0000814C
+		// (set) Token: 0x060001E5 RID: 485 RVA: 0x00009FDA File Offset: 0x000081DA
 		[XmlAttribute("SACL")]
 		public override string MandatoryIntegrityLabel
 		{
 			get
 			{
-				if (!this.m_macLablelProcessed)
+				this.m_macLabel = null;
+				string text = SecurityUtils.ConvertSDToStringSD(this.m_rawsd, SecurityInformationFlags.MANDATORY_ACCESS_LABEL);
+				if (this.SDRegValueTypeName == "COM" && text == "S:")
 				{
-					this.m_macLablelProcessed = true;
-					if (this.m_macLabel == null)
+					return string.Empty;
+				}
+				if (!string.IsNullOrEmpty(text))
+				{
+					Match match = ResourceAcl.regexExtractMIL.Match(text);
+					if (match.Success)
 					{
-						string text = SecurityUtils.ConvertSDToStringSD(this.m_rawsd, SecurityInformationFlags.MANDATORY_ACCESS_LABEL);
-						if (this.SDRegValueTypeName == "COM" && text == "S:")
+						Group group = match.Groups["MIL"];
+						if (group != null)
 						{
-							this.m_macLabel = string.Empty;
-						}
-						else if (!string.IsNullOrEmpty(text))
-						{
-							Match match = ResourceAcl.regexExtractMIL.Match(text);
-							if (match.Success)
-							{
-								Group group = match.Groups["MIL"];
-								if (group != null)
-								{
-									this.m_macLabel = SddlNormalizer.FixAceSddl(group.Value);
-								}
-							}
+							this.m_macLabel = SddlNormalizer.FixAceSddl(group.Value);
 						}
 					}
 				}
@@ -95,9 +81,9 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x1700003D RID: 61
-		// (get) Token: 0x060001CD RID: 461 RVA: 0x000097AC File Offset: 0x000079AC
-		// (set) Token: 0x060001CE RID: 462 RVA: 0x00008CE8 File Offset: 0x00006EE8
+		// Token: 0x17000042 RID: 66
+		// (get) Token: 0x060001E6 RID: 486 RVA: 0x00009FE4 File Offset: 0x000081E4
+		// (set) Token: 0x060001E7 RID: 487 RVA: 0x0000A0A1 File Offset: 0x000082A1
 		[XmlAttribute]
 		public override string AttributeHash
 		{
@@ -135,24 +121,20 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x1700003E RID: 62
-		// (get) Token: 0x060001CF RID: 463 RVA: 0x0000986C File Offset: 0x00007A6C
+		// Token: 0x17000043 RID: 67
+		// (get) Token: 0x060001E8 RID: 488 RVA: 0x0000A0AC File Offset: 0x000082AC
 		public override NativeObjectSecurity ObjectSecurity
 		{
 			get
 			{
-				if (this.m_objectSecurity == null)
-				{
-					RegistrySecurity registrySecurity = new RegistrySecurity();
-					registrySecurity.SetSecurityDescriptorBinaryForm(this.m_rawsd);
-					this.m_objectSecurity = registrySecurity;
-				}
-				return this.m_objectSecurity;
+				RegistrySecurity registrySecurity = new RegistrySecurity();
+				registrySecurity.SetSecurityDescriptorBinaryForm(this.m_rawsd);
+				return registrySecurity;
 			}
 		}
 
-		// Token: 0x1700003F RID: 63
-		// (get) Token: 0x060001D0 RID: 464 RVA: 0x000098A0 File Offset: 0x00007AA0
+		// Token: 0x17000044 RID: 68
+		// (get) Token: 0x060001E9 RID: 489 RVA: 0x0000A0CC File Offset: 0x000082CC
 		protected override string TypeString
 		{
 			get
@@ -161,7 +143,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x060001D1 RID: 465 RVA: 0x000098A8 File Offset: 0x00007AA8
+		// Token: 0x060001EA RID: 490 RVA: 0x0000A0D4 File Offset: 0x000082D4
 		protected override string ComputeExplicitDACL()
 		{
 			RegistrySecurity registrySecurity = new RegistrySecurity();
@@ -194,13 +176,10 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return text;
 		}
 
-		// Token: 0x040000E5 RID: 229
+		// Token: 0x04000141 RID: 321
 		protected string m_typeName = "Unknown";
 
-		// Token: 0x040000E6 RID: 230
+		// Token: 0x04000142 RID: 322
 		protected byte[] m_rawsd;
-
-		// Token: 0x040000E7 RID: 231
-		private NativeObjectSecurity m_objectSecurity;
 	}
 }

@@ -5,14 +5,14 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 
-[assembly: AssemblyVersion("3.14.7501.0")]
-[assembly: AssemblyFileVersion("3.14.07501")]
-[assembly: Guid("ce606dde-1fc7-4a6c-b232-8d22affe9371")]
-[assembly: ComVisible(false)]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyVersion("3.14.0.0")]
 [assembly: AssemblyTitle("BluAdaptation")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("BluAdaptation")]
-[assembly: AssemblyCopyright("Copyright © 2015 Microsoft Mobile Oy.")]
+[assembly: AssemblyCopyright("Copyright Â© 2015 Microsoft Mobile Oy.")]
 [assembly: AssemblyTrademark("")]
+[assembly: ComVisible(false)]
+[assembly: Guid("ce606dde-1fc7-4a6c-b232-8d22affe9371")]
+[assembly: AssemblyFileVersion("3.14")]

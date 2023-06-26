@@ -61,8 +61,8 @@ namespace FFUComponents
 						this.syncMutex.Close();
 						this.syncMutex = null;
 					}
-					string str = this.GetPnPIdFromDevicePath(value).Replace('\\', '_');
-					this.syncMutex = new Mutex(false, "Global\\FFU_Mutex_" + str);
+					string text = this.GetPnPIdFromDevicePath(value).Replace('\\', '_');
+					this.syncMutex = new Mutex(false, "Global\\FFU_Mutex_" + text);
 					this.usbDevicePath = value;
 				}
 			}
@@ -174,25 +174,22 @@ namespace FFUComponents
 			this.lastProgress = 0L;
 			this.fConnected = true;
 			this.fOperationStarted = true;
-			Guid sessionId = Guid.NewGuid();
+			Guid guid = Guid.NewGuid();
 			try
 			{
 				using (this.packets.DataStream = this.GetBufferedFileStream(ffuFilePath))
 				{
 					this.InitFlashingStream(optimizeHint, out flag);
-					this.telemetryLogger.LogFlashingInitialized(sessionId, this, optimizeHint, ffuFilePath);
+					this.telemetryLogger.LogFlashingInitialized(guid, this, optimizeHint, ffuFilePath);
 					this.hostLogger.EventWriteDeviceFlashParameters(this.usbTransactionSize, (int)this.packets.PacketDataSize);
 					Assembly executingAssembly = Assembly.GetExecutingAssembly();
 					object[] customAttributes = executingAssembly.GetCustomAttributes(typeof(AssemblyVersionAttribute), false);
 					if (customAttributes.Length > 0)
 					{
 						AssemblyVersionAttribute assemblyVersionAttribute = (AssemblyVersionAttribute)customAttributes[0];
-						this.hostLogger.EventWriteFlash_Start(this.DeviceUniqueID, this.DeviceFriendlyName, string.Format(CultureInfo.CurrentCulture, Resources.MODULE_VERSION, new object[]
-						{
-							assemblyVersionAttribute.ToString()
-						}));
+						this.hostLogger.EventWriteFlash_Start(this.DeviceUniqueID, this.DeviceFriendlyName, string.Format(CultureInfo.CurrentCulture, Resources.MODULE_VERSION, new object[] { assemblyVersionAttribute.ToString() }));
 					}
-					this.telemetryLogger.LogFlashingStarted(sessionId);
+					this.telemetryLogger.LogFlashingStarted(guid);
 					Stopwatch stopwatch = new Stopwatch();
 					stopwatch.Start();
 					if (flag)
@@ -203,13 +200,13 @@ namespace FFUComponents
 					this.TransferPackets(flag);
 					this.WaitForEndResponse(flag);
 					stopwatch.Stop();
-					this.telemetryLogger.LogFlashingEnded(sessionId, stopwatch, ffuFilePath, this);
+					this.telemetryLogger.LogFlashingEnded(guid, stopwatch, ffuFilePath, this);
 					this.hostLogger.EventWriteFlash_Stop(this.DeviceUniqueID, this.DeviceFriendlyName);
 				}
 			}
-			catch (Exception e)
+			catch (Exception ex)
 			{
-				this.telemetryLogger.LogFlashingException(sessionId, e);
+				this.telemetryLogger.LogFlashingException(guid, ex);
 				throw;
 			}
 			finally
@@ -241,7 +238,7 @@ namespace FFUComponents
 		// Token: 0x06000118 RID: 280 RVA: 0x00004D98 File Offset: 0x00002F98
 		public bool WriteWim(string wimPath)
 		{
-			bool result = false;
+			bool flag = false;
 			lock (this.pathSync)
 			{
 				if (this.fConnected || !this.AcquirePathMutex())
@@ -267,7 +264,7 @@ namespace FFUComponents
 									this.hostLogger.EventWriteWimWin32Exception(this.DeviceUniqueID, this.DeviceFriendlyName, ex.NativeErrorCode);
 								}
 								this.usbStream.SetTransferTimeout(TimeSpan.FromSeconds(15.0));
-								result = this.ReadStatus();
+								flag = this.ReadStatus();
 							}
 						}
 					}
@@ -285,13 +282,13 @@ namespace FFUComponents
 					this.ReleasePathMutex();
 				}
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x06000119 RID: 281 RVA: 0x00004FB4 File Offset: 0x000031B4
 		public bool GetDiskInfo(out uint blockSize, out ulong lastBlock)
 		{
-			bool result = false;
+			bool flag = false;
 			blockSize = 0U;
 			lastBlock = 0UL;
 			lock (this.pathSync)
@@ -305,7 +302,7 @@ namespace FFUComponents
 					using (this.usbStream = new DTSFUsbStream(this.UsbDevicePath, TimeSpan.FromSeconds(1.0)))
 					{
 						this.ReadDiskInfo(out this.diskTransferSize, out this.diskBlockSize, out this.diskLastBlock);
-						result = true;
+						flag = true;
 					}
 				}
 				catch (IOException)
@@ -321,13 +318,13 @@ namespace FFUComponents
 			}
 			blockSize = this.diskBlockSize;
 			lastBlock = this.diskLastBlock;
-			return result;
+			return flag;
 		}
 
 		// Token: 0x0600011A RID: 282 RVA: 0x000050B0 File Offset: 0x000032B0
 		public string GetServicingLogs(string logFolderPath)
 		{
-			string result = null;
+			string text = null;
 			lock (this.pathSync)
 			{
 				if (this.fConnected || !this.AcquirePathMutex())
@@ -352,10 +349,10 @@ namespace FFUComponents
 						byte[] array2 = new byte[4];
 						int num2 = this.usbStream.Read(array2, 0, array2.Length);
 						int num3 = BitConverter.ToInt32(array2, 0);
-						string text = LongPath.GetFullPath(logFolderPath);
-						LongPathDirectory.CreateDirectory(text);
-						text = Path.Combine(text, Path.GetRandomFileName() + ".cab");
-						using (FileStream fileStream = LongPathFile.Open(text, FileMode.Create, FileAccess.Write))
+						string text2 = LongPath.GetFullPath(logFolderPath);
+						LongPathDirectory.CreateDirectory(text2);
+						text2 = Path.Combine(text2, Path.GetRandomFileName() + ".cab");
+						using (FileStream fileStream = LongPathFile.Open(text2, FileMode.Create, FileAccess.Write))
 						{
 							do
 							{
@@ -365,7 +362,7 @@ namespace FFUComponents
 								fileStream.Write(array, 0, array.Length);
 							}
 							while (num != num3);
-							result = text;
+							text = text2;
 						}
 					}
 				}
@@ -374,7 +371,7 @@ namespace FFUComponents
 					this.ReleasePathMutex();
 				}
 			}
-			return result;
+			return text;
 		}
 
 		// Token: 0x0600011B RID: 283 RVA: 0x0000527C File Offset: 0x0000347C
@@ -402,9 +399,9 @@ namespace FFUComponents
 				{
 					throw new FFUDeviceNotReadyException(this);
 				}
-				catch (Win32Exception e)
+				catch (Win32Exception ex)
 				{
-					throw new FFUDeviceDiskReadException(this, Resources.ERROR_USB_TRANSFER, e);
+					throw new FFUDeviceDiskReadException(this, Resources.ERROR_USB_TRANSFER, ex);
 				}
 				finally
 				{
@@ -438,9 +435,9 @@ namespace FFUComponents
 				{
 					throw new FFUDeviceNotReadyException(this);
 				}
-				catch (Win32Exception e)
+				catch (Win32Exception ex)
 				{
-					throw new FFUDeviceDiskWriteException(this, Resources.ERROR_USB_TRANSFER, e);
+					throw new FFUDeviceDiskWriteException(this, Resources.ERROR_USB_TRANSFER, ex);
 				}
 				finally
 				{
@@ -452,7 +449,7 @@ namespace FFUComponents
 		// Token: 0x0600011D RID: 285 RVA: 0x000054B4 File Offset: 0x000036B4
 		public bool SkipTransfer()
 		{
-			bool result = false;
+			bool flag = false;
 			lock (this.pathSync)
 			{
 				if (this.curPosition != 0L || this.fConnected || !this.AcquirePathMutex())
@@ -464,7 +461,7 @@ namespace FFUComponents
 				{
 					using (DTSFUsbStream dtsfusbStream = new DTSFUsbStream(this.UsbDevicePath, TimeSpan.FromSeconds(5.0)))
 					{
-						result = this.WriteSkip(dtsfusbStream);
+						flag = this.WriteSkip(dtsfusbStream);
 					}
 				}
 				catch (IOException)
@@ -480,13 +477,13 @@ namespace FFUComponents
 					this.ReleasePathMutex();
 				}
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x0600011E RID: 286 RVA: 0x000055C8 File Offset: 0x000037C8
 		public bool EndTransfer()
 		{
-			bool result = false;
+			bool flag = false;
 			if (this.curPosition == 0L)
 			{
 				return true;
@@ -513,7 +510,7 @@ namespace FFUComponents
 							this.ReadBootmeFromStream(dtsfusbStream);
 							if (this.curPosition == 0L)
 							{
-								result = true;
+								flag = true;
 							}
 						}
 					}
@@ -529,13 +526,13 @@ namespace FFUComponents
 					this.ReleasePathMutex();
 				}
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x0600011F RID: 287 RVA: 0x000056D8 File Offset: 0x000038D8
 		public bool Reboot()
 		{
-			bool result = false;
+			bool flag = false;
 			lock (this.pathSync)
 			{
 				if (this.fConnected || !this.AcquirePathMutex())
@@ -547,7 +544,7 @@ namespace FFUComponents
 					using (DTSFUsbStream dtsfusbStream = new DTSFUsbStream(this.UsbDevicePath, TimeSpan.FromSeconds(5.0)))
 					{
 						dtsfusbStream.WriteByte(10);
-						result = true;
+						flag = true;
 					}
 				}
 				catch (IOException)
@@ -563,7 +560,7 @@ namespace FFUComponents
 					this.ReleasePathMutex();
 				}
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x06000120 RID: 288 RVA: 0x000057DC File Offset: 0x000039DC
@@ -604,9 +601,9 @@ namespace FFUComponents
 				{
 					throw new FFUDeviceNotReadyException(this);
 				}
-				catch (Win32Exception e)
+				catch (Win32Exception ex)
 				{
-					throw new FFUDeviceRetailUnlockException(this, Resources.ERROR_USB_TRANSFER, e);
+					throw new FFUDeviceRetailUnlockException(this, Resources.ERROR_USB_TRANSFER, ex);
 				}
 				finally
 				{
@@ -646,9 +643,9 @@ namespace FFUComponents
 				{
 					throw new FFUDeviceNotReadyException(this);
 				}
-				catch (Win32Exception e)
+				catch (Win32Exception ex)
 				{
-					throw new FFUDeviceRetailUnlockException(this, Resources.ERROR_USB_TRANSFER, e);
+					throw new FFUDeviceRetailUnlockException(this, Resources.ERROR_USB_TRANSFER, ex);
 				}
 				finally
 				{
@@ -660,8 +657,8 @@ namespace FFUComponents
 		// Token: 0x06000122 RID: 290 RVA: 0x00005A34 File Offset: 0x00003C34
 		public void WriteUnlockTokenFile(uint unlockTokenId, byte[] fileData)
 		{
-			uint value = 0U;
-			uint value2 = (uint)fileData.Length;
+			uint num = 0U;
+			uint num2 = (uint)fileData.Length;
 			if (1048576 < fileData.Length)
 			{
 				throw new ArgumentException("fileData");
@@ -687,14 +684,14 @@ namespace FFUComponents
 							throw new FFUDeviceCommandNotAvailableException(this);
 						}
 						binaryWriter.Write(28);
-						binaryWriter.Write(value);
-						binaryWriter.Write(value2);
+						binaryWriter.Write(num);
+						binaryWriter.Write(num2);
 						binaryWriter.Write(unlockTokenId);
 						binaryWriter.Write(fileData);
-						int num = binaryReader.ReadInt32();
-						if (num != 0)
+						int num3 = binaryReader.ReadInt32();
+						if (num3 != 0)
 						{
-							throw new FFUDeviceRetailUnlockException(this, num);
+							throw new FFUDeviceRetailUnlockException(this, num3);
 						}
 					}
 				}
@@ -702,9 +699,9 @@ namespace FFUComponents
 				{
 					throw new FFUDeviceNotReadyException(this);
 				}
-				catch (Win32Exception e)
+				catch (Win32Exception ex)
 				{
-					throw new FFUDeviceRetailUnlockException(this, Resources.ERROR_USB_TRANSFER, e);
+					throw new FFUDeviceRetailUnlockException(this, Resources.ERROR_USB_TRANSFER, ex);
 				}
 				finally
 				{
@@ -716,7 +713,7 @@ namespace FFUComponents
 		// Token: 0x06000123 RID: 291 RVA: 0x00005B94 File Offset: 0x00003D94
 		public uint[] QueryUnlockTokenFiles()
 		{
-			byte[] bytes = new byte[16];
+			byte[] array = new byte[16];
 			List<uint> list = new List<uint>();
 			lock (this.pathSync)
 			{
@@ -737,8 +734,8 @@ namespace FFUComponents
 						binaryWriter.Write(27);
 						int num = binaryReader.ReadInt32();
 						binaryReader.ReadUInt32();
-						bytes = binaryReader.ReadBytes(16);
-						BitArray bitArray = new BitArray(bytes);
+						array = binaryReader.ReadBytes(16);
+						BitArray bitArray = new BitArray(array);
 						uint num2 = 0U;
 						while ((ulong)num2 < (ulong)((long)bitArray.Count))
 						{
@@ -758,9 +755,9 @@ namespace FFUComponents
 				{
 					throw new FFUDeviceNotReadyException(this);
 				}
-				catch (Win32Exception e)
+				catch (Win32Exception ex)
 				{
-					throw new FFUDeviceRetailUnlockException(this, Resources.ERROR_USB_TRANSFER, e);
+					throw new FFUDeviceRetailUnlockException(this, Resources.ERROR_USB_TRANSFER, ex);
 				}
 				finally
 				{
@@ -773,7 +770,7 @@ namespace FFUComponents
 		// Token: 0x06000124 RID: 292 RVA: 0x00005D04 File Offset: 0x00003F04
 		public bool QueryBitlockerState()
 		{
-			bool result = false;
+			bool flag = false;
 			lock (this.pathSync)
 			{
 				if (this.fConnected || !this.AcquirePathMutex())
@@ -792,7 +789,7 @@ namespace FFUComponents
 						}
 						binaryWriter.Write(29);
 						int num = binaryReader.ReadInt32();
-						result = (binaryReader.ReadByte() != 0);
+						flag = binaryReader.ReadByte() != 0;
 						if (num != 0)
 						{
 							throw new FFUDeviceRetailUnlockException(this, num);
@@ -803,22 +800,22 @@ namespace FFUComponents
 				{
 					throw new FFUDeviceNotReadyException(this);
 				}
-				catch (Win32Exception e)
+				catch (Win32Exception ex)
 				{
-					throw new FFUDeviceRetailUnlockException(this, Resources.ERROR_USB_TRANSFER, e);
+					throw new FFUDeviceRetailUnlockException(this, Resources.ERROR_USB_TRANSFER, ex);
 				}
 				finally
 				{
 					this.ReleasePathMutex();
 				}
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x06000125 RID: 293 RVA: 0x00005E24 File Offset: 0x00004024
 		public bool EnterMassStorage()
 		{
-			bool result = false;
+			bool flag = false;
 			lock (this.pathSync)
 			{
 				if (this.fConnected || !this.AcquirePathMutex())
@@ -833,7 +830,7 @@ namespace FFUComponents
 						int num = dtsfusbStream.ReadByte();
 						if (num == 3)
 						{
-							result = true;
+							flag = true;
 						}
 					}
 				}
@@ -850,13 +847,13 @@ namespace FFUComponents
 					this.ReleasePathMutex();
 				}
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x06000126 RID: 294 RVA: 0x00005F34 File Offset: 0x00004134
 		public bool ClearIdOverride()
 		{
-			bool result = false;
+			bool flag = false;
 			lock (this.pathSync)
 			{
 				if (this.fConnected || !this.AcquirePathMutex())
@@ -871,7 +868,7 @@ namespace FFUComponents
 						int num = dtsfusbStream.ReadByte();
 						if (num == 3)
 						{
-							result = true;
+							flag = true;
 							this.ReadBootmeFromStream(dtsfusbStream);
 						}
 					}
@@ -889,18 +886,18 @@ namespace FFUComponents
 					this.ReleasePathMutex();
 				}
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x06000127 RID: 295 RVA: 0x0000604C File Offset: 0x0000424C
 		public uint SetBootMode(uint bootMode, string profileName)
 		{
-			uint result = 2147483669U;
+			uint num = 2147483669U;
 			lock (this.pathSync)
 			{
 				if (this.fConnected || !this.AcquirePathMutex())
 				{
-					return result;
+					return num;
 				}
 				try
 				{
@@ -908,21 +905,21 @@ namespace FFUComponents
 					{
 						if (Encoding.Unicode.GetByteCount(profileName) >= 128)
 						{
-							result = 2147483650U;
+							num = 2147483650U;
 							throw new Win32Exception(87);
 						}
-						uint num = 132U;
-						byte[] array = new byte[num];
+						uint num2 = 132U;
+						byte[] array = new byte[num2];
 						Array.Clear(array, 0, array.Length);
-						byte[] bytes = BitConverter.GetBytes(bootMode);
-						bytes.CopyTo(array, 0);
-						bytes = Encoding.Unicode.GetBytes(profileName);
-						bytes.CopyTo(array, 4);
+						byte[] array2 = BitConverter.GetBytes(bootMode);
+						array2.CopyTo(array, 0);
+						array2 = Encoding.Unicode.GetBytes(profileName);
+						array2.CopyTo(array, 4);
 						dtsfusbStream.WriteByte(19);
 						dtsfusbStream.Write(array, 0, array.Length);
-						byte[] array2 = new byte[4];
-						dtsfusbStream.Read(array2, 0, array2.Length);
-						result = BitConverter.ToUInt32(array2, 0);
+						byte[] array3 = new byte[4];
+						dtsfusbStream.Read(array3, 0, array3.Length);
+						num = BitConverter.ToUInt32(array3, 0);
 					}
 				}
 				catch (IOException)
@@ -938,7 +935,7 @@ namespace FFUComponents
 					this.ReleasePathMutex();
 				}
 			}
-			return result;
+			return num;
 		}
 
 		// Token: 0x06000128 RID: 296 RVA: 0x0000621C File Offset: 0x0000441C
@@ -977,33 +974,33 @@ namespace FFUComponents
 		// Token: 0x0600012C RID: 300 RVA: 0x00006294 File Offset: 0x00004494
 		private bool AcquirePathMutex()
 		{
-			TimeSpan timeout = TimeSpan.FromMinutes(2.0);
-			TimeoutHelper timeoutHelper = new TimeoutHelper(timeout);
+			TimeSpan timeSpan = TimeSpan.FromMinutes(2.0);
+			TimeoutHelper timeoutHelper = new TimeoutHelper(timeSpan);
 			TimeSpan remaining = timeoutHelper.Remaining;
 			if (remaining <= TimeSpan.Zero)
 			{
 				this.hostLogger.EventWriteMutexTimeout(this.DeviceUniqueID, this.DeviceFriendlyName);
 				return false;
 			}
-			bool result;
+			bool flag;
 			try
 			{
 				if (!this.syncMutex.WaitOne(remaining, false))
 				{
 					this.hostLogger.EventWriteMutexTimeout(this.DeviceUniqueID, this.DeviceFriendlyName);
-					result = false;
+					flag = false;
 				}
 				else
 				{
-					result = true;
+					flag = true;
 				}
 			}
 			catch (AbandonedMutexException)
 			{
 				this.hostLogger.EventWriteWaitAbandoned(this.DeviceUniqueID, this.DeviceFriendlyName);
-				result = true;
+				flag = true;
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x0600012D RID: 301 RVA: 0x00006344 File Offset: 0x00004544
@@ -1047,7 +1044,7 @@ namespace FFUComponents
 							num++;
 						}
 						while (!this.supportsFastFlash && !this.supportsCompatFastFlash && num < 1000);
-						flag2 = (this.supportsFastFlash || this.supportsCompatFastFlash);
+						flag2 = this.supportsFastFlash || this.supportsCompatFastFlash;
 					}
 					if (!flag2)
 					{
@@ -1101,10 +1098,7 @@ namespace FFUComponents
 				if (sioOpcode == SimpleIODevice.SioOpcode.SioErr)
 				{
 					this.hostLogger.EventWriteFlash_Error(this.DeviceUniqueID, this.DeviceFriendlyName);
-					throw new FFUFlashException(this.DeviceFriendlyName, this.DeviceUniqueID, (FFUFlashException.ErrorCode)this.errId, string.Format(CultureInfo.CurrentCulture, Resources.ERROR_FLASH, new object[]
-					{
-						this.errInfo
-					}));
+					throw new FFUFlashException(this.DeviceFriendlyName, this.DeviceUniqueID, (FFUFlashException.ErrorCode)this.errId, string.Format(CultureInfo.CurrentCulture, Resources.ERROR_FLASH, new object[] { this.errInfo }));
 				}
 				throw new FFUFlashException();
 			}
@@ -1160,11 +1154,7 @@ namespace FFUComponents
 		private void SendPacket(byte[] packet, bool optimize)
 		{
 			bool flag = false;
-			WaitHandle[] waitHandles = new WaitHandle[]
-			{
-				this.writeEvent,
-				this.errorEvent
-			};
+			WaitHandle[] array = new WaitHandle[] { this.writeEvent, this.errorEvent };
 			while (!flag)
 			{
 				try
@@ -1174,7 +1164,7 @@ namespace FFUComponents
 						if (optimize)
 						{
 							this.usbStream.BeginWrite(packet, i, Math.Min(this.usbTransactionSize, packet.Length - i), new AsyncCallback(this.WriteCallback), this.writeEvent);
-							int num = WaitHandle.WaitAny(waitHandles);
+							int num = WaitHandle.WaitAny(array);
 							if (num == 1)
 							{
 								if (this.usbStream != null)
@@ -1184,10 +1174,7 @@ namespace FFUComponents
 									this.fConnected = false;
 								}
 								this.hostLogger.EventWriteFlash_Error(this.DeviceUniqueID, this.DeviceFriendlyName);
-								throw new FFUFlashException(this.DeviceFriendlyName, this.DeviceUniqueID, (FFUFlashException.ErrorCode)this.errId, string.Format(CultureInfo.CurrentCulture, Resources.ERROR_FLASH, new object[]
-								{
-									this.errInfo
-								}));
+								throw new FFUFlashException(this.DeviceFriendlyName, this.DeviceUniqueID, (FFUFlashException.ErrorCode)this.errId, string.Format(CultureInfo.CurrentCulture, Resources.ERROR_FLASH, new object[] { this.errInfo }));
 							}
 						}
 						else
@@ -1195,7 +1182,7 @@ namespace FFUComponents
 							this.usbStream.Write(packet, i, Math.Min(this.usbTransactionSize, packet.Length - i));
 						}
 					}
-					flag = (optimize || this.WaitForAck());
+					flag = optimize || this.WaitForAck();
 				}
 				catch (Win32Exception ex)
 				{
@@ -1245,10 +1232,7 @@ namespace FFUComponents
 			this.usbStream = null;
 			this.fConnected = false;
 			this.hostLogger.EventWriteFlash_Error(this.DeviceUniqueID, this.DeviceFriendlyName);
-			throw new FFUFlashException(this.DeviceFriendlyName, this.DeviceUniqueID, (FFUFlashException.ErrorCode)this.errId, string.Format(CultureInfo.CurrentCulture, Resources.ERROR_FLASH, new object[]
-			{
-				this.errInfo
-			}));
+			throw new FFUFlashException(this.DeviceFriendlyName, this.DeviceUniqueID, (FFUFlashException.ErrorCode)this.errId, string.Format(CultureInfo.CurrentCulture, Resources.ERROR_FLASH, new object[] { this.errInfo }));
 		}
 
 		// Token: 0x06000136 RID: 310 RVA: 0x0000696C File Offset: 0x00004B6C
@@ -1299,7 +1283,7 @@ namespace FFUComponents
 		// Token: 0x06000139 RID: 313 RVA: 0x00006AD0 File Offset: 0x00004CD0
 		private bool DoWaitForDevice()
 		{
-			bool result = false;
+			bool flag = false;
 			if (this.usbStream != null)
 			{
 				this.usbStream.Dispose();
@@ -1314,9 +1298,9 @@ namespace FFUComponents
 				}
 				try
 				{
-					bool flag2 = this.forceClearOnReconnect;
+					bool flag3 = this.forceClearOnReconnect;
 					this.forceClearOnReconnect = true;
-					if (flag2)
+					if (flag3)
 					{
 						using (DTSFUsbStream dtsfusbStream = new DTSFUsbStream(this.UsbDevicePath, TimeSpan.FromMilliseconds(100.0)))
 						{
@@ -1325,7 +1309,7 @@ namespace FFUComponents
 					}
 					this.usbStream = new DTSFUsbStream(this.UsbDevicePath, TimeSpan.FromMinutes(1.0));
 					this.ReadBootmeFromStream(this.usbStream);
-					result = true;
+					flag = true;
 				}
 				catch (IOException)
 				{
@@ -1340,7 +1324,7 @@ namespace FFUComponents
 					this.ReleasePathMutex();
 				}
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x0600013A RID: 314 RVA: 0x00006C40 File Offset: 0x00004E40
@@ -1418,14 +1402,14 @@ namespace FFUComponents
 			while (this.packets.RemainingData > 0L)
 			{
 				this.hostLogger.EventWriteFileRead_Start(this.DeviceUniqueID, this.DeviceFriendlyName);
-				byte[] packet = this.packets.GetNextPacket(optimize);
+				byte[] array = this.packets.GetNextPacket(optimize);
 				this.hostLogger.EventWriteFileRead_Stop(this.DeviceUniqueID, this.DeviceFriendlyName);
-				this.SendPacket(packet, optimize);
+				this.SendPacket(array, optimize);
 				if (this.ProgressEvent != null && (this.packets.Position - this.lastProgress > 1048576L || this.packets.Position == this.packets.Length))
 				{
 					this.lastProgress = this.packets.Position;
 					ProgressEventArgs args = new ProgressEventArgs(this, this.packets.Position, this.packets.Length);
-					Task.Factory.StartNew(delegate()
+					Task.Factory.StartNew(delegate
 					{
 						this.ProgressEvent(this, args);
 					});
@@ -1433,25 +1417,15 @@ namespace FFUComponents
 			}
 			if (this.packets.Length % this.packets.PacketDataSize == 0L)
 			{
-				byte[] packet = this.packets.GetZeroLengthPacket();
-				this.SendPacket(packet, optimize);
+				byte[] array = this.packets.GetZeroLengthPacket();
+				this.SendPacket(array, optimize);
 			}
 		}
 
 		// Token: 0x0600013E RID: 318 RVA: 0x00006FB0 File Offset: 0x000051B0
 		private bool HasWimHeader(Stream wimStream)
 		{
-			byte[] array = new byte[]
-			{
-				77,
-				83,
-				87,
-				73,
-				77,
-				0,
-				0,
-				0
-			};
+			byte[] array = new byte[] { 77, 83, 87, 73, 77, 0, 0, 0 };
 			byte[] array2 = new byte[array.Length];
 			long position = wimStream.Position;
 			wimStream.Read(array2, 0, array2.Length);
@@ -1469,41 +1443,34 @@ namespace FFUComponents
 			}
 			bool flag = this.HasWimHeader(wimStream);
 			byte[] array = new byte[12];
-			uint value = 0U;
+			uint num2 = 0U;
 			if (flag)
 			{
-				value = (uint)sdiStream.Length;
+				num2 = (uint)sdiStream.Length;
 			}
-			BitConverter.GetBytes(value).CopyTo(array, 0);
+			BitConverter.GetBytes(num2).CopyTo(array, 0);
 			BitConverter.GetBytes((uint)wimStream.Length).CopyTo(array, 4);
 			BitConverter.GetBytes(num).CopyTo(array, 8);
-			byte[] buffer = new byte[num];
-			Stream[] array2;
+			byte[] array2 = new byte[num];
+			Stream[] array3;
 			if (flag)
 			{
-				array2 = new Stream[]
-				{
-					sdiStream,
-					wimStream
-				};
+				array3 = new Stream[] { sdiStream, wimStream };
 			}
 			else
 			{
-				array2 = new Stream[]
-				{
-					wimStream
-				};
+				array3 = new Stream[] { wimStream };
 			}
 			this.usbStream.WriteByte(16);
 			this.usbStream.Write(array, 0, array.Length);
-			foreach (Stream stream in array2)
+			foreach (Stream stream in array3)
 			{
 				this.hostLogger.EventWriteWimTransferStart(this.DeviceUniqueID, this.DeviceFriendlyName);
 				while (stream.Position < stream.Length)
 				{
-					int num2 = stream.Read(buffer, 0, num);
-					this.hostLogger.EventWriteWimPacketStart(this.DeviceUniqueID, this.DeviceFriendlyName, num2);
-					this.usbStream.Write(buffer, 0, num2);
+					int num3 = stream.Read(array2, 0, num);
+					this.hostLogger.EventWriteWimPacketStart(this.DeviceUniqueID, this.DeviceFriendlyName, num3);
+					this.usbStream.Write(array2, 0, num3);
 					this.hostLogger.EventWriteWimPacketStop(this.DeviceUniqueID, this.DeviceFriendlyName, 0);
 				}
 				this.hostLogger.EventWriteWimTransferStop(this.DeviceUniqueID, this.DeviceFriendlyName);
@@ -1524,10 +1491,7 @@ namespace FFUComponents
 				return flag;
 			}
 			this.hostLogger.EventWriteWimError(this.DeviceUniqueID, this.DeviceFriendlyName, num);
-			throw new FFUException(this.DeviceFriendlyName, this.DeviceUniqueID, string.Format(CultureInfo.CurrentCulture, Resources.ERROR_WIMBOOT, new object[]
-			{
-				num
-			}));
+			throw new FFUException(this.DeviceFriendlyName, this.DeviceUniqueID, string.Format(CultureInfo.CurrentCulture, Resources.ERROR_WIMBOOT, new object[] { num }));
 		}
 
 		// Token: 0x06000141 RID: 321 RVA: 0x00007230 File Offset: 0x00005430
@@ -1548,13 +1512,10 @@ namespace FFUComponents
 		// Token: 0x06000142 RID: 322 RVA: 0x0000728C File Offset: 0x0000548C
 		private bool NeedsToHandleZLP()
 		{
-			string[] array = new string[]
+			string[] array = new string[] { ".*\\.MSM8960\\.*" };
+			foreach (string text in array)
 			{
-				".*\\.MSM8960\\.*"
-			};
-			foreach (string pattern in array)
-			{
-				if (Regex.IsMatch(this.DeviceFriendlyName, pattern))
+				if (Regex.IsMatch(this.DeviceFriendlyName, text))
 				{
 					return true;
 				}
@@ -1565,55 +1526,55 @@ namespace FFUComponents
 		// Token: 0x06000143 RID: 323 RVA: 0x000072DC File Offset: 0x000054DC
 		private void ReadDataToBuffer(ulong diskOffset, byte[] buffer, int offset, int count)
 		{
-			ulong value = (ulong)((long)count);
+			ulong num = (ulong)((long)count);
 			this.usbStream.WriteByte(13);
 			byte[] array = new byte[16];
 			BitConverter.GetBytes(diskOffset).CopyTo(array, 0);
-			BitConverter.GetBytes(value).CopyTo(array, 8);
+			BitConverter.GetBytes(num).CopyTo(array, 8);
 			this.usbStream.Write(array, 0, array.Length);
 			int i = offset;
-			int num = offset + count;
-			while (i < num)
+			int num2 = offset + count;
+			while (i < num2)
 			{
-				int num2 = this.diskTransferSize;
-				if (num2 > num - i)
+				int num3 = this.diskTransferSize;
+				if (num3 > num2 - i)
 				{
-					num2 = num - i;
+					num3 = num2 - i;
 				}
-				this.usbStream.Read(buffer, i, num2);
-				if (num2 % 512 == 0 && this.NeedsToHandleZLP())
+				this.usbStream.Read(buffer, i, num3);
+				if (num3 % 512 == 0 && this.NeedsToHandleZLP())
 				{
 					this.usbStream.ReadByte();
 				}
-				i += num2;
+				i += num3;
 			}
 		}
 
 		// Token: 0x06000144 RID: 324 RVA: 0x00007380 File Offset: 0x00005580
 		private void WriteDataFromBuffer(ulong diskOffset, byte[] buffer, int offset, int count)
 		{
-			ulong value = (ulong)((long)count);
+			ulong num = (ulong)((long)count);
 			this.usbStream.WriteByte(14);
 			byte[] array = new byte[16];
 			BitConverter.GetBytes(diskOffset).CopyTo(array, 0);
-			BitConverter.GetBytes(value).CopyTo(array, 8);
+			BitConverter.GetBytes(num).CopyTo(array, 8);
 			this.usbStream.Write(array, 0, array.Length);
 			int i = offset;
-			int num = offset + count;
-			while (i < num)
+			int num2 = offset + count;
+			while (i < num2)
 			{
-				int num2 = this.diskTransferSize;
-				if (num2 > num - i)
+				int num3 = this.diskTransferSize;
+				if (num3 > num2 - i)
 				{
-					num2 = num - i;
+					num3 = num2 - i;
 				}
-				this.usbStream.Write(buffer, i, num2);
-				if (num2 % 512 == 0)
+				this.usbStream.Write(buffer, i, num3);
+				if (num3 % 512 == 0)
 				{
 					byte[] array2 = new byte[0];
 					this.usbStream.Write(array2, 0, array2.Length);
 				}
-				i += num2;
+				i += num3;
 			}
 			byte[] array3 = new byte[8];
 			this.usbStream.Read(array3, 0, array3.Length);
@@ -1673,7 +1634,7 @@ namespace FFUComponents
 		// Token: 0x06000147 RID: 327 RVA: 0x00007580 File Offset: 0x00005780
 		private bool ReadBootme()
 		{
-			bool result = false;
+			bool flag = false;
 			for (int i = 0; i < 3; i++)
 			{
 				lock (this.pathSync)
@@ -1694,7 +1655,7 @@ namespace FFUComponents
 						using (DTSFUsbStream dtsfusbStream2 = new DTSFUsbStream(this.UsbDevicePath, TimeSpan.FromSeconds(2.0)))
 						{
 							this.ReadBootmeFromStream(dtsfusbStream2);
-							result = true;
+							flag = true;
 							break;
 						}
 					}
@@ -1712,18 +1673,18 @@ namespace FFUComponents
 					}
 				}
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x06000148 RID: 328 RVA: 0x000076D4 File Offset: 0x000058D4
 		private Guid GetSerialNumberFromDevice()
 		{
-			Guid result = Guid.Empty;
+			Guid guid = Guid.Empty;
 			lock (this.pathSync)
 			{
 				if (this.syncMutex == null || !this.AcquirePathMutex())
 				{
-					return result;
+					return guid;
 				}
 				try
 				{
@@ -1732,7 +1693,7 @@ namespace FFUComponents
 						byte[] array = new byte[16];
 						dtsfusbStream.WriteByte(17);
 						dtsfusbStream.Read(array, 0, array.Length);
-						result = new Guid(array);
+						guid = new Guid(array);
 					}
 				}
 				catch (IOException)
@@ -1746,7 +1707,7 @@ namespace FFUComponents
 					this.ReleasePathMutex();
 				}
 			}
-			return result;
+			return guid;
 		}
 
 		// Token: 0x04000115 RID: 277

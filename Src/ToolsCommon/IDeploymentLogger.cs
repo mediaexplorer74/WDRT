@@ -2,28 +2,28 @@
 
 namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 {
-	// Token: 0x02000053 RID: 83
+	// Token: 0x02000063 RID: 99
 	public interface IDeploymentLogger
 	{
-		// Token: 0x0600024E RID: 590
+		// Token: 0x06000263 RID: 611
 		void Log(LoggingLevel level, string format, params object[] list);
 
-		// Token: 0x0600024F RID: 591
+		// Token: 0x06000264 RID: 612
 		void LogException(Exception exp);
 
-		// Token: 0x06000250 RID: 592
+		// Token: 0x06000265 RID: 613
 		void LogException(Exception exp, LoggingLevel level);
 
-		// Token: 0x06000251 RID: 593
+		// Token: 0x06000266 RID: 614
 		void LogDebug(string format, params object[] list);
 
-		// Token: 0x06000252 RID: 594
+		// Token: 0x06000267 RID: 615
 		void LogInfo(string format, params object[] list);
 
-		// Token: 0x06000253 RID: 595
+		// Token: 0x06000268 RID: 616
 		void LogWarning(string format, params object[] list);
 
-		// Token: 0x06000254 RID: 596
+		// Token: 0x06000269 RID: 617
 		void LogError(string format, params object[] list);
 	}
 }

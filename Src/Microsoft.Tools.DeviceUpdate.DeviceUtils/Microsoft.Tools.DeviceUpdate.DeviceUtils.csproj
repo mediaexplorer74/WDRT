@@ -1,18 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{39CCFB8D-79A5-4BDD-8C53-B029BE27BFBC}</ProjectGuid>
+    <ProjectGuid>{8C726962-D7A3-4054-B90F-0583259F9659}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Microsoft.Tools.DeviceUpdate.DeviceUtils</RootNamespace>
     <AssemblyName>Microsoft.Tools.DeviceUpdate.DeviceUtils</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFramework>net48</TargetFramework>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+  <PropertyGroup>
+    <NoStdLib>True</NoStdLib>
+    <EnableDefaultItems>False</EnableDefaultItems>
+  </PropertyGroup>
+  <PropertyGroup />
+
+   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
@@ -33,19 +37,8 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="Microsoft.Deployment.Compression, Version=3.0.0.0, Culture=neutral, PublicKeyToken=ce35f76fcda82bad, processorArchitecture=MSIL">
-      <HintPath>..\packages\MSFTCompressionCab.1.0.0\lib\Microsoft.Deployment.Compression.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Deployment.Compression.Cab, Version=3.0.0.0, Culture=neutral, PublicKeyToken=ce35f76fcda82bad, processorArchitecture=MSIL">
-      <HintPath>..\packages\MSFTCompressionCab.1.0.0\lib\Microsoft.Deployment.Compression.Cab.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-  </ItemGroup>
-  <ItemGroup>
-    <AppDesigner Include="Properties\" />
-  </ItemGroup>
+ 
+
   <ItemGroup>
     <Compile Include="DeviceException.cs" />
     <Compile Include="DevicePropertyAttribute.cs" />
@@ -99,25 +92,35 @@
     <Compile Include="WpdUtils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CabApiWrapper\CabApiWrapper.csproj">
-      <Project>{3008b0cc-bade-46cb-a46d-0ffe647f19cd}</Project>
-      <Name>CabApiWrapper</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FFUComponents\FFUComponents.csproj">
-      <Project>{928157d7-3130-4324-9f56-b04dba29818a}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F964F}</Project>
       <Name>FFUComponents</Name>
     </ProjectReference>
     <ProjectReference Include="..\Microsoft.Tools.Connectivity\Microsoft.Tools.Connectivity.csproj">
-      <Project>{95c4863b-6105-47a2-b968-89801c828f60}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9658}</Project>
       <Name>Microsoft.Tools.Connectivity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\mscorlib\mscorlib.csproj">
+      <Project>{8C726962-D7A3-4054-B90F-0583259F968E}</Project>
+      <Name>mscorlib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mscorlib\mscorlib.csproj">
+      <Project>{8C726962-D7A3-4054-B90F-0583259F968E}</Project>
+      <Name>mscorlib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\System\System.csproj">
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9692}</Project>
+      <Name>System</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ToolsCommon\ToolsCommon.csproj">
-      <Project>{37ba0760-0c2c-4d4f-993f-94be80cecf68}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F968A}</Project>
       <Name>ToolsCommon</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <Reference Include="CabApiWrapper" />
+    <Reference Include="Microsoft.Deployment.Compression" />
+    <Reference Include="Microsoft.Deployment.Compression.Cab" />
+    <Reference Include="System.Core" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

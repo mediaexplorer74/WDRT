@@ -7,7 +7,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.OemAdaptation.Primitives
 	// Token: 0x02000004 RID: 4
 	public sealed class IdentificationInfo
 	{
-		// Token: 0x06000005 RID: 5 RVA: 0x000020F0 File Offset: 0x000002F0
+		// Token: 0x0600000B RID: 11 RVA: 0x00002198 File Offset: 0x00000398
 		public IdentificationInfo(IEnumerable<string> deviceReturnedValues)
 		{
 			if (deviceReturnedValues == null)
@@ -22,9 +22,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.OemAdaptation.Primitives
 			this.DeviceReturnedValues = array;
 		}
 
-		// Token: 0x17000002 RID: 2
-		// (get) Token: 0x06000006 RID: 6 RVA: 0x0000212F File Offset: 0x0000032F
-		// (set) Token: 0x06000007 RID: 7 RVA: 0x00002137 File Offset: 0x00000337
+		// Token: 0x17000004 RID: 4
+		// (get) Token: 0x0600000C RID: 12 RVA: 0x000021D6 File Offset: 0x000003D6
+		// (set) Token: 0x0600000D RID: 13 RVA: 0x000021DE File Offset: 0x000003DE
 		public string[] DeviceReturnedValues { get; private set; }
 	}
 }

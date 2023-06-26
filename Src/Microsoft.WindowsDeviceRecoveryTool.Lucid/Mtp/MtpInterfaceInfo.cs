@@ -2,10 +2,10 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Lucid.Mtp
 {
-	// Token: 0x02000003 RID: 3
+	// Token: 0x02000007 RID: 7
 	public sealed class MtpInterfaceInfo
 	{
-		// Token: 0x06000005 RID: 5 RVA: 0x00002050 File Offset: 0x00000250
+		// Token: 0x0600001A RID: 26 RVA: 0x00002687 File Offset: 0x00000887
 		internal MtpInterfaceInfo(string description, string manufacturer)
 		{
 			this.Description = description;
@@ -13,13 +13,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Lucid.Mtp
 		}
 
 		// Token: 0x17000001 RID: 1
-		// (get) Token: 0x06000006 RID: 6 RVA: 0x00002066 File Offset: 0x00000266
-		// (set) Token: 0x06000007 RID: 7 RVA: 0x0000206E File Offset: 0x0000026E
+		// (get) Token: 0x0600001B RID: 27 RVA: 0x0000269D File Offset: 0x0000089D
+		// (set) Token: 0x0600001C RID: 28 RVA: 0x000026A5 File Offset: 0x000008A5
 		public string Description { get; private set; }
 
 		// Token: 0x17000002 RID: 2
-		// (get) Token: 0x06000008 RID: 8 RVA: 0x00002077 File Offset: 0x00000277
-		// (set) Token: 0x06000009 RID: 9 RVA: 0x0000207F File Offset: 0x0000027F
+		// (get) Token: 0x0600001D RID: 29 RVA: 0x000026AE File Offset: 0x000008AE
+		// (set) Token: 0x0600001E RID: 30 RVA: 0x000026B6 File Offset: 0x000008B6
 		public string Manufacturer { get; private set; }
 	}
 }

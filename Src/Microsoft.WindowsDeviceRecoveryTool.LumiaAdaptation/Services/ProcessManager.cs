@@ -13,11 +13,11 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.Enums;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation.Services
 {
-	// Token: 0x02000008 RID: 8
+	// Token: 0x02000006 RID: 6
 	[Export]
 	public class ProcessManager : IDisposable
 	{
-		// Token: 0x06000077 RID: 119 RVA: 0x0000579C File Offset: 0x0000399C
+		// Token: 0x06000053 RID: 83 RVA: 0x00004444 File Offset: 0x00002644
 		[ImportingConstructor]
 		public ProcessManager()
 		{
@@ -25,44 +25,49 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation.Services
 			this.timeoutTimer.Elapsed += this.Thor2TimeoutOccured;
 		}
 
-		// Token: 0x14000009 RID: 9
-		// (add) Token: 0x06000078 RID: 120 RVA: 0x000057EC File Offset: 0x000039EC
-		// (remove) Token: 0x06000079 RID: 121 RVA: 0x00005828 File Offset: 0x00003A28
+		// Token: 0x14000006 RID: 6
+		// (add) Token: 0x06000054 RID: 84 RVA: 0x00004490 File Offset: 0x00002690
+		// (remove) Token: 0x06000055 RID: 85 RVA: 0x000044C8 File Offset: 0x000026C8
+		[field: DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event Action<DataReceivedEventArgs> OnOutputDataReceived;
 
-		// Token: 0x0600007A RID: 122 RVA: 0x00005864 File Offset: 0x00003A64
+		// Token: 0x06000056 RID: 86 RVA: 0x000044FD File Offset: 0x000026FD
 		public void Dispose()
 		{
 			this.Dispose(true);
 			GC.SuppressFinalize(this);
 		}
 
-		// Token: 0x0600007B RID: 123 RVA: 0x00005878 File Offset: 0x00003A78
+		// Token: 0x06000057 RID: 87 RVA: 0x00004510 File Offset: 0x00002710
 		protected virtual void Dispose(bool disposing)
 		{
-			if (!this.disposed)
+			bool flag = this.disposed;
+			if (!flag)
 			{
 				this.disposed = true;
 			}
 		}
 
-		// Token: 0x0600007C RID: 124 RVA: 0x000058A0 File Offset: 0x00003AA0
+		// Token: 0x06000058 RID: 88 RVA: 0x00004534 File Offset: 0x00002734
 		private void Thor2TimeoutOccured(object sender, ElapsedEventArgs e)
 		{
 			Tracer<ProcessManager>.WriteInformation("Thor2.exe timeout occured");
-			lock (this.timeoutTimer)
+			System.Timers.Timer timer = this.timeoutTimer;
+			lock (timer)
 			{
 				this.ReleaseManagedObjects();
 				this.timeoutOccured = true;
 			}
 		}
 
-		// Token: 0x0600007D RID: 125 RVA: 0x00005900 File Offset: 0x00003B00
+		// Token: 0x06000059 RID: 89 RVA: 0x0000458C File Offset: 0x0000278C
 		private void RestartTimeoutTimer()
 		{
-			lock (this.timeoutTimer)
+			System.Timers.Timer timer = this.timeoutTimer;
+			lock (timer)
 			{
-				if (!this.timeoutOccured)
+				bool flag2 = this.timeoutOccured;
+				if (!flag2)
 				{
 					this.timeoutTimer.Stop();
 					this.timeoutTimer.Start();
@@ -70,7 +75,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation.Services
 			}
 		}
 
-		// Token: 0x0600007E RID: 126 RVA: 0x00005994 File Offset: 0x00003B94
+		// Token: 0x0600005A RID: 90 RVA: 0x000045F0 File Offset: 0x000027F0
 		public Thor2ExitCode RunThor2ProcessWithArguments(string processArguments, CancellationToken cancellationToken)
 		{
 			ProcessHelper thor2ProcessProcess = this.PrepareThorProcess(processArguments);
@@ -81,7 +86,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation.Services
 			int id = thor2ProcessProcess.Id;
 			this.actualProcessIds.Add(id);
 			thor2ProcessProcess.BeginOutputReadLine();
-			Task task = new Task(delegate()
+			Task task = new Task(delegate
 			{
 				this.CancellationMonitor(cancellationToken, thor2ProcessProcess);
 			});
@@ -89,45 +94,51 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation.Services
 			thor2ProcessProcess.WaitForExit();
 			thor2ProcessProcess.OutputDataReceived -= this.OutputDataReceived;
 			this.timeoutTimer.Stop();
-			lock (this.actualProcessIds)
+			List<int> list = this.actualProcessIds;
+			lock (list)
 			{
-				if (this.actualProcessIds.Contains(id))
+				bool flag2 = this.actualProcessIds.Contains(id);
+				if (flag2)
 				{
 					this.actualProcessIds.Remove(id);
 				}
 			}
-			Thor2ExitCode result;
-			if (this.timeoutOccured)
+			bool flag3 = this.timeoutOccured;
+			Thor2ExitCode thor2ExitCode;
+			if (flag3)
 			{
-				result = Thor2ExitCode.Thor2NotResponding;
+				thor2ExitCode = Thor2ExitCode.Thor2NotResponding;
 			}
 			else
 			{
-				result = (Thor2ExitCode)thor2ProcessProcess.ExitCode;
+				thor2ExitCode = (Thor2ExitCode)thor2ProcessProcess.ExitCode;
 			}
-			return result;
+			return thor2ExitCode;
 		}
 
-		// Token: 0x0600007F RID: 127 RVA: 0x00005AEC File Offset: 0x00003CEC
+		// Token: 0x0600005B RID: 91 RVA: 0x00004738 File Offset: 0x00002938
 		private void OutputDataReceived(object sender, DataReceivedEventArgs dataReceivedEventArgs)
 		{
 			this.RestartTimeoutTimer();
 			Action<DataReceivedEventArgs> onOutputDataReceived = this.OnOutputDataReceived;
-			if (onOutputDataReceived != null)
+			bool flag = onOutputDataReceived != null;
+			if (flag)
 			{
 				onOutputDataReceived(dataReceivedEventArgs);
 			}
 		}
 
-		// Token: 0x06000080 RID: 128 RVA: 0x00005B1C File Offset: 0x00003D1C
+		// Token: 0x0600005C RID: 92 RVA: 0x00004768 File Offset: 0x00002968
 		private void CancellationMonitor(CancellationToken token, ProcessHelper helper)
 		{
 			while (!helper.HasExited)
 			{
 				Thread.Sleep(500);
-				if (token.IsCancellationRequested)
+				bool isCancellationRequested = token.IsCancellationRequested;
+				if (isCancellationRequested)
 				{
-					if (!helper.HasExited)
+					bool flag = !helper.HasExited;
+					if (flag)
 					{
 						Tracer<ProcessManager>.WriteInformation("Cancellation requested. Process still running. Need to manually kill process.");
 						helper.Kill();
@@ -136,12 +147,12 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation.Services
 			}
 		}
 
-		// Token: 0x06000081 RID: 129 RVA: 0x00005B74 File Offset: 0x00003D74
+		// Token: 0x0600005D RID: 93 RVA: 0x000047C0 File Offset: 0x000029C0
 		private ProcessHelper PrepareThorProcess(string processArguments)
 		{
 			string workingDirectoryPath = this.GetWorkingDirectoryPath();
 			Tracer<ProcessManager>.WriteInformation("Creating process start information.");
-			ProcessStartInfo startInfo = new ProcessStartInfo
+			ProcessStartInfo processStartInfo = new ProcessStartInfo
 			{
 				FileName = string.Format("\"{0}\"", Path.Combine(workingDirectoryPath, "thor2.exe")),
 				Arguments = processArguments,
@@ -155,15 +166,16 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation.Services
 			return new ProcessHelper
 			{
 				EnableRaisingEvents = true,
-				StartInfo = startInfo
+				StartInfo = processStartInfo
 			};
 		}
 
-		// Token: 0x06000082 RID: 130 RVA: 0x00005C10 File Offset: 0x00003E10
+		// Token: 0x0600005E RID: 94 RVA: 0x00004858 File Offset: 0x00002A58
 		private string GetWorkingDirectoryPath()
 		{
 			string directoryName = Path.GetDirectoryName(Uri.UnescapeDataString(new UriBuilder(Assembly.GetExecutingAssembly().CodeBase).Path));
-			if (string.IsNullOrWhiteSpace(directoryName))
+			bool flag = string.IsNullOrWhiteSpace(directoryName);
+			if (flag)
 			{
 				Tracer<ProcessManager>.WriteError("Could not find working directory path", new object[0]);
 				throw new Exception("Could not find working directory path");
@@ -171,10 +183,11 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation.Services
 			return directoryName;
 		}
 
-		// Token: 0x06000083 RID: 131 RVA: 0x00005C6C File Offset: 0x00003E6C
+		// Token: 0x0600005F RID: 95 RVA: 0x000048B4 File Offset: 0x00002AB4
 		internal void ReleaseManagedObjects()
 		{
-			lock (this.actualProcessIds)
+			List<int> list = this.actualProcessIds;
+			lock (list)
 			{
 				for (int i = this.actualProcessIds.Count - 1; i >= 0; i--)
 				{
@@ -184,45 +197,37 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation.Services
 			}
 		}
 
-		// Token: 0x06000084 RID: 132 RVA: 0x00005CF4 File Offset: 0x00003EF4
+		// Token: 0x06000060 RID: 96 RVA: 0x00004934 File Offset: 0x00002B34
 		private void AbortProcess(int processId)
 		{
 			try
 			{
 				Process processById = ProcessHelper.GetProcessById(processId);
-				if (processById.ProcessName.Equals("thor2", StringComparison.OrdinalIgnoreCase))
+				bool flag = processById.ProcessName.Equals("thor2", StringComparison.OrdinalIgnoreCase);
+				if (flag)
 				{
-					Tracer<ProcessManager>.WriteInformation("Killing process {0}", new object[]
-					{
-						processId
-					});
+					Tracer<ProcessManager>.WriteInformation("Killing process {0}", new object[] { processId });
 					processById.Kill();
-					Tracer<ProcessManager>.WriteInformation("Process {0} killed", new object[]
-					{
-						processId
-					});
+					Tracer<ProcessManager>.WriteInformation("Process {0} killed", new object[] { processId });
 				}
 			}
-			catch (Exception error)
+			catch (Exception ex)
 			{
-				Tracer<ProcessManager>.WriteError(error, "Aborting device update process {0} failed", new object[]
-				{
-					processId
-				});
+				Tracer<ProcessManager>.WriteError(ex, "Aborting device update process {0} failed", new object[] { processId });
 				throw;
 			}
 		}
 
-		// Token: 0x04000034 RID: 52
+		// Token: 0x04000022 RID: 34
 		private readonly List<int> actualProcessIds = new List<int>();
 
-		// Token: 0x04000035 RID: 53
+		// Token: 0x04000023 RID: 35
 		private readonly System.Timers.Timer timeoutTimer;
 
-		// Token: 0x04000036 RID: 54
+		// Token: 0x04000024 RID: 36
 		private bool disposed;
 
-		// Token: 0x04000037 RID: 55
+		// Token: 0x04000025 RID: 37
 		private bool timeoutOccured;
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Threading;
@@ -17,7 +18,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.FreetelAdaptation
 	[Export(typeof(IDeviceSupport))]
 	internal class FreetelSupport : IDeviceSupport
 	{
-		// Token: 0x06000005 RID: 5 RVA: 0x000021E0 File Offset: 0x000003E0
+		// Token: 0x06000005 RID: 5 RVA: 0x000021BD File Offset: 0x000003BD
 		[ImportingConstructor]
 		public FreetelSupport(IMtpDeviceInfoProvider mtpDeviceInfoProvider)
 		{
@@ -30,7 +31,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.FreetelAdaptation
 		}
 
 		// Token: 0x17000001 RID: 1
-		// (get) Token: 0x06000006 RID: 6 RVA: 0x00002222 File Offset: 0x00000422
+		// (get) Token: 0x06000006 RID: 6 RVA: 0x000021F2 File Offset: 0x000003F2
 		public Guid Id
 		{
 			get
@@ -39,13 +40,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.FreetelAdaptation
 			}
 		}
 
-		// Token: 0x06000007 RID: 7 RVA: 0x00002229 File Offset: 0x00000429
+		// Token: 0x06000007 RID: 7 RVA: 0x000021F9 File Offset: 0x000003F9
 		public DeviceDetectionInformation[] GetDeviceDetectionInformation()
 		{
 			return this.catalog.GetDeviceDetectionInformations();
 		}
 
-		// Token: 0x06000008 RID: 8 RVA: 0x00002490 File Offset: 0x00000690
+		// Token: 0x06000008 RID: 8 RVA: 0x00002208 File Offset: 0x00000408
 		public async Task UpdateDeviceDetectionDataAsync(DeviceDetectionData detectionData, CancellationToken cancellationToken)
 		{
 			if (detectionData.IsDeviceSupported)
@@ -54,24 +55,29 @@ namespace Microsoft.WindowsDeviceRecoveryTool.FreetelAdaptation
 			}
 			cancellationToken.ThrowIfCancellationRequested();
 			VidPidPair vidPidPair = detectionData.VidPidPair;
-			string devicePath = detectionData.UsbDeviceInterfaceDevicePath;
-			if (this.catalog.Models.FirstOrDefault((ModelInfo m) => m.DetectionInfo.DeviceDetectionInformations.Any((DeviceDetectionInformation di) => di.VidPidPair == vidPidPair)) == null)
+			string usbDeviceInterfaceDevicePath = detectionData.UsbDeviceInterfaceDevicePath;
+			Func<DeviceDetectionInformation, bool> <>9__1;
+			if (this.catalog.Models.FirstOrDefault(delegate(ModelInfo m)
 			{
-				Tracer<FreetelSupport>.WriteInformation("No Freetel device detected. Path: {0}", new object[]
+				IEnumerable<DeviceDetectionInformation> deviceDetectionInformations = m.DetectionInfo.DeviceDetectionInformations;
+				Func<DeviceDetectionInformation, bool> func;
+				if ((func = <>9__1) == null)
 				{
-					detectionData.UsbDeviceInterfaceDevicePath
-				});
+					func = (<>9__1 = (DeviceDetectionInformation di) => di.VidPidPair == vidPidPair);
+				}
+				return deviceDetectionInformations.Any(func);
+			}) == null)
+			{
+				Tracer<FreetelSupport>.WriteInformation("No Freetel device detected. Path: {0}", new object[] { detectionData.UsbDeviceInterfaceDevicePath });
 			}
 			else
 			{
-				MtpInterfaceInfo deviceInfo = await this.mtpDeviceInfoProvider.ReadInformationAsync(devicePath, cancellationToken);
-				string mtpDeviceDescription = deviceInfo.Description;
+				string description = (await this.mtpDeviceInfoProvider.ReadInformationAsync(usbDeviceInterfaceDevicePath, cancellationToken)).Description;
 				ModelInfo modelInfo;
-				if (this.catalog.TryGetModelInfo(mtpDeviceDescription, out modelInfo))
+				if (this.catalog.TryGetModelInfo(description, out modelInfo))
 				{
 					string name = modelInfo.Name;
-					byte[] deviceBitmapBytes = modelInfo.Bitmap.ToBytes();
-					detectionData.DeviceBitmapBytes = deviceBitmapBytes;
+					detectionData.DeviceBitmapBytes = modelInfo.Bitmap.ToBytes();
 					detectionData.DeviceSalesName = name;
 					detectionData.IsDeviceSupported = true;
 				}

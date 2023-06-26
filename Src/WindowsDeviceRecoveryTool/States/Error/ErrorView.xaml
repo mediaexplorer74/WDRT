@@ -1,13 +1,6 @@
 <Grid
-	x:Class="Microsoft.WindowsDeviceRecoveryTool.States.Error.ErrorView" 
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-    xmlns:resources="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Resources" 
-    xmlns:templates1="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.States.Error.Templates" 
-    xmlns:error1="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.States.Error"
-	Style="{DynamicResource ContentRoot}">
+	x:Class="Microsoft.WindowsDeviceRecoveryTool.States.Error.ErrorView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:resources="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Resources" xmlns:templates1="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.States.Error.Templates" xmlns:error1="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.States.Error"
+	FrameworkElement.Style="{DynamicResource ContentRoot}">
 	<FrameworkElement.Resources>
 		<ResourceDictionary>
 			<DataTemplate
@@ -25,27 +18,26 @@
 				<templates1:AutoUpdateError
 					DataContext="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type error1:ErrorView}}}" />
 			</DataTemplate>
-			<!--error1:ErrorTemplateSelector
+			<error1:ErrorTemplateSelector
+				x:Key="{x:Static resources:Consts.ErrorSelector}"
 				DefaultError="{StaticResource DefaultErrorTemplate}"
 				TryAgainError="{StaticResource TryAgainErrorTemplate}"
-				AutoUpdateError="{StaticResource AutoUpdateErrorTemplate}"
-				x:Key="{x:Static resources:Consts.ErrorSelector}" /-->
+				AutoUpdateError="{StaticResource AutoUpdateErrorTemplate}" />
 		</ResourceDictionary>
 	</FrameworkElement.Resources>
 	<Grid.RowDefinitions>
 		<RowDefinition
-			Height="Auto" />
+			RowDefinition.Height="Auto" />
 		<RowDefinition
-			Height="*" />
+			RowDefinition.Height="*" />
 	</Grid.RowDefinitions>
-
-    <!--ContentTemplateSelector="{StaticResource resources:Consts.ErrorSelector}"-->
-        <ContentControl
+	<ContentControl
 		Grid.Row="1"
-		HorizontalContentAlignment="Left"
-		VerticalContentAlignment="Center"
-		HorizontalAlignment="Left"
-		VerticalAlignment="Center"
-		Focusable="False"
-		Content="{Binding Exception}" />
+		ContentControl.ContentTemplateSelector="{StaticResource {x:Static resources:Consts.ErrorSelector}}"
+		Control.HorizontalContentAlignment="Left"
+		Control.VerticalContentAlignment="Center"
+		FrameworkElement.HorizontalAlignment="Left"
+		FrameworkElement.VerticalAlignment="Center"
+		UIElement.Focusable="False"
+		ContentControl.Content="{Binding Exception}" />
 </Grid>

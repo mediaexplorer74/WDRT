@@ -3,27 +3,30 @@ using System.Runtime.Serialization;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model.Exceptions
 {
-	// Token: 0x02000033 RID: 51
+	// Token: 0x0200002A RID: 42
 	[Serializable]
 	public class AutoUpdateException : Exception
 	{
-		// Token: 0x06000169 RID: 361 RVA: 0x00004B08 File Offset: 0x00002D08
+		// Token: 0x06000203 RID: 515 RVA: 0x00006346 File Offset: 0x00004546
 		public AutoUpdateException()
 		{
 		}
 
-		// Token: 0x0600016A RID: 362 RVA: 0x00004B13 File Offset: 0x00002D13
-		public AutoUpdateException(string message) : base(message)
+		// Token: 0x06000204 RID: 516 RVA: 0x00006350 File Offset: 0x00004550
+		public AutoUpdateException(string message)
+			: base(message)
 		{
 		}
 
-		// Token: 0x0600016B RID: 363 RVA: 0x00004B1F File Offset: 0x00002D1F
-		public AutoUpdateException(string message, Exception innerException) : base(message, innerException)
+		// Token: 0x06000205 RID: 517 RVA: 0x0000635B File Offset: 0x0000455B
+		public AutoUpdateException(string message, Exception innerException)
+			: base(message, innerException)
 		{
 		}
 
-		// Token: 0x0600016C RID: 364 RVA: 0x00004B2C File Offset: 0x00002D2C
-		protected AutoUpdateException(SerializationInfo info, StreamingContext context) : base(info, context)
+		// Token: 0x06000206 RID: 518 RVA: 0x00006367 File Offset: 0x00004567
+		protected AutoUpdateException(SerializationInfo info, StreamingContext context)
+			: base(info, context)
 		{
 		}
 	}

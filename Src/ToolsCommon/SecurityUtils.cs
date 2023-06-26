@@ -6,33 +6,37 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 {
-	// Token: 0x0200001D RID: 29
+	// Token: 0x02000022 RID: 34
 	public class SecurityUtils
 	{
-		// Token: 0x0600010A RID: 266 RVA: 0x00007044 File Offset: 0x00005244
+		// Token: 0x0600011D RID: 285 RVA: 0x00007834 File Offset: 0x00005A34
 		public static string GetFileSystemMandatoryLevel(string resourcePath)
 		{
-			string result = string.Empty;
-			string text = SecurityUtils.ConvertSDToStringSD(SecurityUtils.GetSecurityDescriptor(resourcePath, SecurityInformationFlags.MANDATORY_ACCESS_LABEL), SecurityInformationFlags.MANDATORY_ACCESS_LABEL);
-			if (!string.IsNullOrEmpty(text))
+			string text = string.Empty;
+			byte[] securityDescriptor = SecurityUtils.GetSecurityDescriptor(resourcePath, SecurityInformationFlags.MANDATORY_ACCESS_LABEL);
+			string text2 = SecurityUtils.ConvertSDToStringSD(securityDescriptor, SecurityInformationFlags.MANDATORY_ACCESS_LABEL);
+			if (!string.IsNullOrEmpty(text2))
 			{
-				text = text.TrimEnd(new char[1]);
-				Match match = SecurityUtils.regexExtractMIL.Match(text);
+				string text3 = text2;
+				char[] array = new char[1];
+				text2 = text3.TrimEnd(array);
+				Match match = SecurityUtils.regexExtractMIL.Match(text2);
 				if (match.Success)
 				{
-					result = match.Groups["MIL"].Value;
+					Group group = match.Groups["MIL"];
+					text = group.Value;
 				}
 			}
-			return result;
+			return text;
 		}
 
-		// Token: 0x0600010B RID: 267 RVA: 0x000070A8 File Offset: 0x000052A8
+		// Token: 0x0600011E RID: 286 RVA: 0x000078A4 File Offset: 0x00005AA4
 		[CLSCompliant(false)]
 		public static byte[] GetSecurityDescriptor(string resourcePath, SecurityInformationFlags flags)
 		{
 			byte[] array = null;
 			int num = 0;
-			NativeSecurityMethods.GetFileSecurity(resourcePath, flags, IntPtr.Zero, 0, ref num);
+			bool fileSecurity = NativeSecurityMethods.GetFileSecurity(resourcePath, flags, IntPtr.Zero, 0, ref num);
 			int lastWin32Error = Marshal.GetLastWin32Error();
 			if (lastWin32Error != 122)
 			{
@@ -57,21 +61,21 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return array;
 		}
 
-		// Token: 0x0600010C RID: 268 RVA: 0x0000713C File Offset: 0x0000533C
+		// Token: 0x0600011F RID: 287 RVA: 0x00007940 File Offset: 0x00005B40
 		[CLSCompliant(false)]
 		public static string ConvertSDToStringSD(byte[] securityDescriptor, SecurityInformationFlags flags)
 		{
-			string result = string.Empty;
+			string text = string.Empty;
 			IntPtr zero;
-			int len;
-			bool flag = NativeSecurityMethods.ConvertSecurityDescriptorToStringSecurityDescriptor(securityDescriptor, 1, flags, out zero, out len);
+			int num;
+			bool flag = NativeSecurityMethods.ConvertSecurityDescriptorToStringSecurityDescriptor(securityDescriptor, 1, flags, out zero, out num);
 			try
 			{
 				if (!flag)
 				{
 					throw new Win32Exception(Marshal.GetLastWin32Error());
 				}
-				result = Marshal.PtrToStringUni(zero, len);
+				text = Marshal.PtrToStringUni(zero, num);
 			}
 			finally
 			{
@@ -81,10 +85,10 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 				}
 				zero = IntPtr.Zero;
 			}
-			return result;
+			return text;
 		}
 
-		// Token: 0x0600010D RID: 269 RVA: 0x000071A0 File Offset: 0x000053A0
+		// Token: 0x06000120 RID: 288 RVA: 0x000079A4 File Offset: 0x00005BA4
 		public static AclCollection GetFileSystemACLs(string rootDir)
 		{
 			if (rootDir == null)
@@ -106,7 +110,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return aclCollection;
 		}
 
-		// Token: 0x0600010E RID: 270 RVA: 0x00007200 File Offset: 0x00005400
+		// Token: 0x06000121 RID: 289 RVA: 0x00007A08 File Offset: 0x00005C08
 		public static AclCollection GetRegistryACLs(string hiveRoot)
 		{
 			if (hiveRoot == null)
@@ -121,9 +125,9 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			foreach (object obj in Enum.GetValues(typeof(SystemRegistryHiveFiles)))
 			{
 				SystemRegistryHiveFiles systemRegistryHiveFiles = (SystemRegistryHiveFiles)obj;
-				string hivefile = Path.Combine(hiveRoot, Enum.GetName(typeof(SystemRegistryHiveFiles), systemRegistryHiveFiles));
-				string prefix = RegistryUtils.MapHiveToMountPoint(systemRegistryHiveFiles);
-				using (ORRegistryKey orregistryKey = ORRegistryKey.OpenHive(hivefile, prefix))
+				string text = Path.Combine(hiveRoot, Enum.GetName(typeof(SystemRegistryHiveFiles), systemRegistryHiveFiles));
+				string text2 = RegistryUtils.MapHiveToMountPoint(systemRegistryHiveFiles);
+				using (ORRegistryKey orregistryKey = ORRegistryKey.OpenHive(text, text2))
 				{
 					SecurityUtils.GetRegistryACLsRecursive(orregistryKey, aclCollection);
 				}
@@ -131,7 +135,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return aclCollection;
 		}
 
-		// Token: 0x0600010F RID: 271 RVA: 0x000072D8 File Offset: 0x000054D8
+		// Token: 0x06000122 RID: 290 RVA: 0x00007AE8 File Offset: 0x00005CE8
 		private static void GetFileSystemACLsRecursive(DirectoryInfo rootdi, string rootDir, AclCollection accesslist)
 		{
 			foreach (DirectoryInfo directoryInfo in rootdi.GetDirectories())
@@ -143,10 +147,9 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 					accesslist.Add(directoryAcl);
 				}
 			}
-			FileInfo[] files = rootdi.GetFiles();
-			for (int i = 0; i < files.Length; i++)
+			foreach (FileInfo fileInfo in rootdi.GetFiles())
 			{
-				FileAcl fileAcl = new FileAcl(files[i], rootDir);
+				FileAcl fileAcl = new FileAcl(fileInfo, rootDir);
 				if (!fileAcl.IsEmpty)
 				{
 					accesslist.Add(fileAcl);
@@ -154,12 +157,14 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x06000110 RID: 272 RVA: 0x00007350 File Offset: 0x00005550
+		// Token: 0x06000123 RID: 291 RVA: 0x00007B70 File Offset: 0x00005D70
 		public static void GetRegistryACLsRecursive(ORRegistryKey parent, AclCollection accesslist)
 		{
-			foreach (string subkeyname in parent.SubKeys)
+			new RegistryAcl(parent);
+			string[] subKeys = parent.SubKeys;
+			foreach (string text in subKeys)
 			{
-				using (ORRegistryKey orregistryKey = parent.OpenSubKey(subkeyname))
+				using (ORRegistryKey orregistryKey = parent.OpenSubKey(text))
 				{
 					SecurityUtils.GetRegistryACLsRecursive(orregistryKey, accesslist);
 					RegistryAcl registryAcl = new RegistryAcl(orregistryKey);
@@ -171,10 +176,10 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x04000061 RID: 97
+		// Token: 0x04000072 RID: 114
 		private const int ERROR_INSUFFICIENT_BUFFER = 122;
 
-		// Token: 0x04000062 RID: 98
+		// Token: 0x04000073 RID: 115
 		private static readonly Regex regexExtractMIL = new Regex("(?<MIL>\\(ML[^\\)]*\\))", RegexOptions.Compiled);
 	}
 }

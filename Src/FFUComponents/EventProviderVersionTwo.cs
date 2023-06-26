@@ -8,7 +8,8 @@ namespace FFUComponents
 	internal class EventProviderVersionTwo : EventProvider
 	{
 		// Token: 0x060001FB RID: 507 RVA: 0x00009C5C File Offset: 0x00007E5C
-		internal EventProviderVersionTwo(Guid id) : base(id)
+		internal EventProviderVersionTwo(Guid id)
+			: base(id)
 		{
 		}
 
@@ -16,129 +17,129 @@ namespace FFUComponents
 		internal unsafe bool TemplateDeviceSpecificEventWithString(ref EventDescriptor eventDescriptor, Guid DeviceId, string DeviceFriendlyName, string AssemblyFileVersion)
 		{
 			int num = 3;
-			bool result = true;
+			bool flag = true;
 			if (base.IsEnabled(eventDescriptor.Level, eventDescriptor.Keywords))
 			{
-				byte* ptr = stackalloc byte[(int)(UIntPtr)(sizeof(EventProviderVersionTwo.EventData) * num)];
+				byte* ptr = stackalloc byte[(UIntPtr)(sizeof(EventProviderVersionTwo.EventData) * num)];
 				EventProviderVersionTwo.EventData* ptr2 = (EventProviderVersionTwo.EventData*)ptr;
-				ptr2->DataPointer = (ulong)&DeviceId;
+				ptr2->DataPointer = &DeviceId;
 				ptr2->Size = (uint)sizeof(Guid);
 				ptr2[1].Size = (uint)((DeviceFriendlyName.Length + 1) * 2);
 				ptr2[2].Size = (uint)((AssemblyFileVersion.Length + 1) * 2);
 				fixed (char* ptr3 = DeviceFriendlyName, ptr4 = AssemblyFileVersion)
 				{
-					ptr2[1].DataPointer = (ulong)ptr3;
-					ptr2[2].DataPointer = (ulong)ptr4;
-					result = base.WriteEvent(ref eventDescriptor, num, (IntPtr)((void*)ptr));
+					ptr2[1].DataPointer = ptr3;
+					ptr2[2].DataPointer = ptr4;
+					flag = base.WriteEvent(ref eventDescriptor, num, (IntPtr)((void*)ptr));
 				}
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x060001FD RID: 509 RVA: 0x00009D44 File Offset: 0x00007F44
 		internal unsafe bool TemplateDeviceSpecificEvent(ref EventDescriptor eventDescriptor, Guid DeviceId, string DeviceFriendlyName)
 		{
 			int num = 2;
-			bool result = true;
+			bool flag = true;
 			if (base.IsEnabled(eventDescriptor.Level, eventDescriptor.Keywords))
 			{
-				byte* ptr = stackalloc byte[(int)(UIntPtr)(sizeof(EventProviderVersionTwo.EventData) * num)];
+				byte* ptr = stackalloc byte[(UIntPtr)(sizeof(EventProviderVersionTwo.EventData) * num)];
 				EventProviderVersionTwo.EventData* ptr2 = (EventProviderVersionTwo.EventData*)ptr;
-				ptr2->DataPointer = (ulong)&DeviceId;
+				ptr2->DataPointer = &DeviceId;
 				ptr2->Size = (uint)sizeof(Guid);
 				ptr2[1].Size = (uint)((DeviceFriendlyName.Length + 1) * 2);
 				fixed (char* ptr3 = DeviceFriendlyName)
 				{
-					ptr2[1].DataPointer = (ulong)ptr3;
-					result = base.WriteEvent(ref eventDescriptor, num, (IntPtr)((void*)ptr));
+					ptr2[1].DataPointer = ptr3;
+					flag = base.WriteEvent(ref eventDescriptor, num, (IntPtr)((void*)ptr));
 				}
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x060001FE RID: 510 RVA: 0x00009DD8 File Offset: 0x00007FD8
 		internal unsafe bool TemplateDeviceEventWithErrorCode(ref EventDescriptor eventDescriptor, Guid DeviceId, string DeviceFriendlyName, int ErrorCode)
 		{
 			int num = 3;
-			bool result = true;
+			bool flag = true;
 			if (base.IsEnabled(eventDescriptor.Level, eventDescriptor.Keywords))
 			{
-				byte* ptr = stackalloc byte[(int)(UIntPtr)(sizeof(EventProviderVersionTwo.EventData) * num)];
+				byte* ptr = stackalloc byte[(UIntPtr)(sizeof(EventProviderVersionTwo.EventData) * num)];
 				EventProviderVersionTwo.EventData* ptr2 = (EventProviderVersionTwo.EventData*)ptr;
-				ptr2->DataPointer = (ulong)&DeviceId;
+				ptr2->DataPointer = &DeviceId;
 				ptr2->Size = (uint)sizeof(Guid);
 				ptr2[1].Size = (uint)((DeviceFriendlyName.Length + 1) * 2);
-				ptr2[2].DataPointer = (ulong)&ErrorCode;
+				ptr2[2].DataPointer = &ErrorCode;
 				ptr2[2].Size = 4U;
 				fixed (char* ptr3 = DeviceFriendlyName)
 				{
-					ptr2[1].DataPointer = (ulong)ptr3;
-					result = base.WriteEvent(ref eventDescriptor, num, (IntPtr)((void*)ptr));
+					ptr2[1].DataPointer = ptr3;
+					flag = base.WriteEvent(ref eventDescriptor, num, (IntPtr)((void*)ptr));
 				}
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x060001FF RID: 511 RVA: 0x00009E94 File Offset: 0x00008094
 		internal unsafe bool TemplateNotifyException(ref EventDescriptor eventDescriptor, string DevicePath, string Exception)
 		{
 			int num = 2;
-			bool result = true;
+			bool flag = true;
 			if (base.IsEnabled(eventDescriptor.Level, eventDescriptor.Keywords))
 			{
-				byte* ptr = stackalloc byte[(int)(UIntPtr)(sizeof(EventProviderVersionTwo.EventData) * num)];
+				byte* ptr = stackalloc byte[(UIntPtr)(sizeof(EventProviderVersionTwo.EventData) * num)];
 				EventProviderVersionTwo.EventData* ptr2 = (EventProviderVersionTwo.EventData*)ptr;
 				ptr2->Size = (uint)((DevicePath.Length + 1) * 2);
 				ptr2[1].Size = (uint)((Exception.Length + 1) * 2);
 				fixed (char* ptr3 = DevicePath, ptr4 = Exception)
 				{
-					ptr2->DataPointer = (ulong)ptr3;
-					ptr2[1].DataPointer = (ulong)ptr4;
-					result = base.WriteEvent(ref eventDescriptor, num, (IntPtr)((void*)ptr));
+					ptr2->DataPointer = ptr3;
+					ptr2[1].DataPointer = ptr4;
+					flag = base.WriteEvent(ref eventDescriptor, num, (IntPtr)((void*)ptr));
 				}
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x06000200 RID: 512 RVA: 0x00009F44 File Offset: 0x00008144
 		internal unsafe bool TemplateDeviceSpecificEventWithSize(ref EventDescriptor eventDescriptor, Guid DeviceId, string DeviceFriendlyName, int TransferSize)
 		{
 			int num = 3;
-			bool result = true;
+			bool flag = true;
 			if (base.IsEnabled(eventDescriptor.Level, eventDescriptor.Keywords))
 			{
-				byte* ptr = stackalloc byte[(int)(UIntPtr)(sizeof(EventProviderVersionTwo.EventData) * num)];
+				byte* ptr = stackalloc byte[(UIntPtr)(sizeof(EventProviderVersionTwo.EventData) * num)];
 				EventProviderVersionTwo.EventData* ptr2 = (EventProviderVersionTwo.EventData*)ptr;
-				ptr2->DataPointer = (ulong)&DeviceId;
+				ptr2->DataPointer = &DeviceId;
 				ptr2->Size = (uint)sizeof(Guid);
 				ptr2[1].Size = (uint)((DeviceFriendlyName.Length + 1) * 2);
-				ptr2[2].DataPointer = (ulong)&TransferSize;
+				ptr2[2].DataPointer = &TransferSize;
 				ptr2[2].Size = 4U;
 				fixed (char* ptr3 = DeviceFriendlyName)
 				{
-					ptr2[1].DataPointer = (ulong)ptr3;
-					result = base.WriteEvent(ref eventDescriptor, num, (IntPtr)((void*)ptr));
+					ptr2[1].DataPointer = ptr3;
+					flag = base.WriteEvent(ref eventDescriptor, num, (IntPtr)((void*)ptr));
 				}
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x06000201 RID: 513 RVA: 0x0000A000 File Offset: 0x00008200
 		internal unsafe bool TemplateDeviceFlashParameters(ref EventDescriptor eventDescriptor, int USBTransactionSize, int PacketDataSize)
 		{
 			int num = 2;
-			bool result = true;
+			bool flag = true;
 			if (base.IsEnabled(eventDescriptor.Level, eventDescriptor.Keywords))
 			{
-				byte* ptr = stackalloc byte[(int)(UIntPtr)(sizeof(EventProviderVersionTwo.EventData) * num)];
+				byte* ptr = stackalloc byte[(UIntPtr)(sizeof(EventProviderVersionTwo.EventData) * num)];
 				EventProviderVersionTwo.EventData* ptr2 = (EventProviderVersionTwo.EventData*)ptr;
-				ptr2->DataPointer = (ulong)&USBTransactionSize;
+				ptr2->DataPointer = &USBTransactionSize;
 				ptr2->Size = 4U;
-				ptr2[1].DataPointer = (ulong)&PacketDataSize;
+				ptr2[1].DataPointer = &PacketDataSize;
 				ptr2[1].Size = 4U;
-				result = base.WriteEvent(ref eventDescriptor, num, (IntPtr)((void*)ptr));
+				flag = base.WriteEvent(ref eventDescriptor, num, (IntPtr)((void*)ptr));
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x0200005D RID: 93

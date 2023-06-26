@@ -1,18 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{2ADF7F14-AA94-4A70-B28F-668964626E8F}</ProjectGuid>
+    <ProjectGuid>{8C726962-D7A3-4054-B90F-0583259F9670}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Microsoft.WindowsDeviceRecoveryTool.LogicCommon</RootNamespace>
     <AssemblyName>Microsoft.WindowsDeviceRecoveryTool.LogicCommon</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFramework>net48</TargetFramework>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+  <PropertyGroup>
+    <NoStdLib>True</NoStdLib>
+    <EnableDefaultItems>False</EnableDefaultItems>
+  </PropertyGroup>
+  <PropertyGroup />
+
+   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
@@ -21,6 +25,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -30,29 +35,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Storage, Version=9.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\WindowsAzure.Storage.9.3.2\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.Linq" />
-  </ItemGroup>
-  <ItemGroup>
-    <AppDesigner Include="Properties\" />
-  </ItemGroup>
+ 
   <ItemGroup>
     <Compile Include="BaseAdaptation.cs" />
     <Compile Include="BaseRemoteRepository.cs" />
@@ -71,9 +56,7 @@
     <Compile Include="Helpers\UriDataArgument.cs" />
     <Compile Include="Helpers\UriDescriptionAttribute.cs" />
     <Compile Include="Helpers\VersionComparer.cs" />
-    <Compile Include="Helpers\WebClientEx.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Helpers\WebClientEx.cs" />
     <Compile Include="Helpers\WorkerHelper.cs" />
     <Compile Include="LucidConnectivity\InterfaceHandlingLocks.cs" />
     <Compile Include="LucidConnectivity\JsonCommunication.cs" />
@@ -124,40 +107,56 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ImageCommon\ImageCommon.csproj">
-      <Project>{37ba0760-0c2c-4d4f-993f-94be80cecf40}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9651}</Project>
       <Name>ImageCommon</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Microsoft.WindowsAzure.Storage\Microsoft.WindowsAzure.Storage.csproj">
+      <Project>{8C726962-D7A3-4054-B90F-0583259F965A}</Project>
+      <Name>Microsoft.WindowsAzure.Storage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Common\Microsoft.WindowsDeviceRecoveryTool.Common.csproj">
-      <Project>{64a43b64-7647-425c-b0e6-2e27da6dbdda}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9660}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.FfuFileReader\Microsoft.WindowsDeviceRecoveryTool.FfuFileReader.csproj">
-      <Project>{5b39bf96-8c2f-4fdf-a82d-603010a30846}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9665}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.FfuFileReader</Name>
     </ProjectReference>
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Localization\Microsoft.WindowsDeviceRecoveryTool.Localization.csproj">
-      <Project>{081f084d-70ab-42aa-a1e7-460f52620ca7}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F966F}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.Localization</Name>
     </ProjectReference>
     <ProjectReference Include="..\Microsoft.WindowsDeviceRecoveryTool.Model\Microsoft.WindowsDeviceRecoveryTool.Model.csproj">
-      <Project>{0fcb723b-55fa-4794-8262-8ec9d399f6e3}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9675}</Project>
       <Name>Microsoft.WindowsDeviceRecoveryTool.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\mscorlib\mscorlib.csproj">
+      <Project>{8C726962-D7A3-4054-B90F-0583259F968E}</Project>
+      <Name>mscorlib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Nokia.Lucid\Nokia.Lucid.csproj">
-      <Project>{0ba1a6f4-e417-4ab3-ab1d-264cc7735f25}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9683}</Project>
       <Name>Nokia.Lucid</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nokia.Mira\Nokia.Mira.csproj">
-      <Project>{a3fd0999-a422-44d1-9c14-23a16af09d58}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9686}</Project>
       <Name>Nokia.Mira</Name>
     </ProjectReference>
     <ProjectReference Include="..\SoftwareRepository\SoftwareRepository.csproj">
-      <Project>{67fb07f5-df73-45d6-8efd-9c76838949bf}</Project>
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9688}</Project>
       <Name>SoftwareRepository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\System\System.csproj">
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9692}</Project>
+      <Name>System</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

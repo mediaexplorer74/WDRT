@@ -10,18 +10,18 @@ using System.Windows.Media.Imaging;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 {
-	// Token: 0x02000036 RID: 54
+	// Token: 0x020000D5 RID: 213
 	public sealed partial class ExtendedMessageBox : Window
 	{
-		// Token: 0x060001F1 RID: 497 RVA: 0x0000DA62 File Offset: 0x0000BC62
+		// Token: 0x060006A8 RID: 1704 RVA: 0x0001EE06 File Offset: 0x0001D006
 		public ExtendedMessageBox()
 		{
 			this.InitializeComponent();
 		}
 
-		// Token: 0x1700005A RID: 90
-		// (get) Token: 0x060001F2 RID: 498 RVA: 0x0000DA74 File Offset: 0x0000BC74
-		// (set) Token: 0x060001F3 RID: 499 RVA: 0x0000DA96 File Offset: 0x0000BC96
+		// Token: 0x17000183 RID: 387
+		// (get) Token: 0x060006A9 RID: 1705 RVA: 0x0001EE18 File Offset: 0x0001D018
+		// (set) Token: 0x060006AA RID: 1706 RVA: 0x0001EE3A File Offset: 0x0001D03A
 		public string MessageBoxText
 		{
 			get
@@ -34,8 +34,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x1700005B RID: 91
-		// (get) Token: 0x060001F4 RID: 500 RVA: 0x0000DAA8 File Offset: 0x0000BCA8
+		// Token: 0x17000184 RID: 388
+		// (get) Token: 0x060006AB RID: 1707 RVA: 0x0001EE4C File Offset: 0x0001D04C
 		public BitmapSource BoxIcon
 		{
 			get
@@ -44,55 +44,58 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x1700005C RID: 92
-		// (get) Token: 0x060001F5 RID: 501 RVA: 0x0000DABC File Offset: 0x0000BCBC
+		// Token: 0x17000185 RID: 389
+		// (get) Token: 0x060006AC RID: 1708 RVA: 0x0001EE60 File Offset: 0x0001D060
 		public Visibility AdvanceVisibility
 		{
 			get
 			{
-				Visibility result;
-				if (string.IsNullOrEmpty(this.MessageBoxAdvance))
+				bool flag = string.IsNullOrEmpty(this.MessageBoxAdvance);
+				Visibility visibility;
+				if (flag)
 				{
-					result = Visibility.Collapsed;
+					visibility = Visibility.Collapsed;
 				}
 				else
 				{
-					result = Visibility.Visible;
+					visibility = Visibility.Visible;
 				}
-				return result;
+				return visibility;
 			}
 		}
 
-		// Token: 0x1700005D RID: 93
-		// (get) Token: 0x060001F6 RID: 502 RVA: 0x0000DAE8 File Offset: 0x0000BCE8
-		// (set) Token: 0x060001F7 RID: 503 RVA: 0x0000DB1C File Offset: 0x0000BD1C
+		// Token: 0x17000186 RID: 390
+		// (get) Token: 0x060006AD RID: 1709 RVA: 0x0001EE88 File Offset: 0x0001D088
+		// (set) Token: 0x060006AE RID: 1710 RVA: 0x0001EEBC File Offset: 0x0001D0BC
 		public string MessageBoxAdvance
 		{
 			get
 			{
-				string result;
-				if (this.AdvanceTextBox != null)
+				bool flag = this.AdvanceTextBox != null;
+				string text;
+				if (flag)
 				{
-					result = this.AdvanceTextBox.Text;
+					text = this.AdvanceTextBox.Text;
 				}
 				else
 				{
-					result = string.Empty;
+					text = string.Empty;
 				}
-				return result;
+				return text;
 			}
 			set
 			{
-				if (this.AdvanceTextBox != null)
+				bool flag = this.AdvanceTextBox != null;
+				if (flag)
 				{
 					this.AdvanceTextBox.Text = value;
 				}
 			}
 		}
 
-		// Token: 0x1700005E RID: 94
-		// (get) Token: 0x060001F8 RID: 504 RVA: 0x0000DB48 File Offset: 0x0000BD48
-		// (set) Token: 0x060001F9 RID: 505 RVA: 0x0000DB6A File Offset: 0x0000BD6A
+		// Token: 0x17000187 RID: 391
+		// (get) Token: 0x060006AF RID: 1711 RVA: 0x0001EEE8 File Offset: 0x0001D0E8
+		// (set) Token: 0x060006B0 RID: 1712 RVA: 0x0001EF0A File Offset: 0x0001D10A
 		public Style ButtonPanelStyle
 		{
 			get
@@ -105,7 +108,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x060001FA RID: 506 RVA: 0x0000DB7C File Offset: 0x0000BD7C
+		// Token: 0x060006B1 RID: 1713 RVA: 0x0001EF1C File Offset: 0x0001D11C
 		public static void Show(string messageBoxText, string caption, string messageBoxAdvance)
 		{
 			ExtendedMessageBox extendedMessageBox = new ExtendedMessageBox
@@ -114,7 +117,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 				MessageBoxText = messageBoxText,
 				MessageBoxAdvance = messageBoxAdvance
 			};
-			if (Thread.CurrentThread.CurrentUICulture.TextInfo.IsRightToLeft)
+			bool isRightToLeft = Thread.CurrentThread.CurrentUICulture.TextInfo.IsRightToLeft;
+			if (isRightToLeft)
 			{
 				extendedMessageBox.FlowDirection = FlowDirection.RightToLeft;
 			}
@@ -125,23 +129,23 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			extendedMessageBox.ShowDialog();
 		}
 
-		// Token: 0x060001FB RID: 507 RVA: 0x0000DBE2 File Offset: 0x0000BDE2
+		// Token: 0x060006B2 RID: 1714 RVA: 0x0001EF7D File Offset: 0x0001D17D
 		private void ButtonClick(object sender, RoutedEventArgs e)
 		{
 			base.Close();
 		}
 
-		// Token: 0x060001FC RID: 508 RVA: 0x0000DBEC File Offset: 0x0000BDEC
+		// Token: 0x060006B3 RID: 1715 RVA: 0x0001EF87 File Offset: 0x0001D187
 		private void ExtendedMessageBoxLoaded(object sender, RoutedEventArgs e)
 		{
 			base.MaxHeight = base.Height;
 			base.MinHeight = base.Height;
 		}
 
-		// Token: 0x040000D6 RID: 214
+		// Token: 0x04000301 RID: 769
 		public static readonly DependencyProperty MessageBoxTextProperty = DependencyProperty.Register("MessageBoxText", typeof(string), typeof(ExtendedMessageBox));
 
-		// Token: 0x040000D7 RID: 215
+		// Token: 0x04000302 RID: 770
 		public static readonly DependencyProperty ButtonPanelStyleProperty = DependencyProperty.Register("ButtonPanelStyle", typeof(Style), typeof(ExtendedMessageBox));
 	}
 }

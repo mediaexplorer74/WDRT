@@ -3,7 +3,7 @@
 namespace ComponentAce.Compression.Libs.PPMd
 {
 	// Token: 0x02000055 RID: 85
-	public struct PpmState
+	internal struct PpmState
 	{
 		// Token: 0x0600038D RID: 909 RVA: 0x0001D7C3 File Offset: 0x0001C7C3
 		public PpmState(uint address)
@@ -48,7 +48,7 @@ namespace ComponentAce.Compression.Libs.PPMd
 		{
 			get
 			{
-				return new Model.PpmContext((uint)((int)PpmState.Memory[(int)((UIntPtr)(this.Address + 2U))] | (int)PpmState.Memory[(int)((UIntPtr)(this.Address + 3U))] << 8 | (int)PpmState.Memory[(int)((UIntPtr)(this.Address + 4U))] << 16 | (int)PpmState.Memory[(int)((UIntPtr)(this.Address + 5U))] << 24));
+				return new Model.PpmContext((uint)((int)PpmState.Memory[(int)((UIntPtr)(this.Address + 2U))] | ((int)PpmState.Memory[(int)((UIntPtr)(this.Address + 3U))] << 8) | ((int)PpmState.Memory[(int)((UIntPtr)(this.Address + 4U))] << 16) | ((int)PpmState.Memory[(int)((UIntPtr)(this.Address + 5U))] << 24)));
 			}
 			set
 			{

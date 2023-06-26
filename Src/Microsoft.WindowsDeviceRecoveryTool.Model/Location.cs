@@ -2,10 +2,10 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model
 {
-	// Token: 0x0200004F RID: 79
+	// Token: 0x02000016 RID: 22
 	internal class Location
 	{
-		// Token: 0x06000275 RID: 629 RVA: 0x000079CC File Offset: 0x00005BCC
+		// Token: 0x06000153 RID: 339 RVA: 0x000056F8 File Offset: 0x000038F8
 		public Location(string countryEnglishName, string ietfLanguageTag, int geoId)
 		{
 			this.CountryEnglishName = countryEnglishName;
@@ -13,19 +13,19 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			this.GeoId = geoId;
 		}
 
-		// Token: 0x170000EF RID: 239
-		// (get) Token: 0x06000276 RID: 630 RVA: 0x000079F0 File Offset: 0x00005BF0
-		// (set) Token: 0x06000277 RID: 631 RVA: 0x00007A07 File Offset: 0x00005C07
+		// Token: 0x17000090 RID: 144
+		// (get) Token: 0x06000154 RID: 340 RVA: 0x0000571A File Offset: 0x0000391A
+		// (set) Token: 0x06000155 RID: 341 RVA: 0x00005722 File Offset: 0x00003922
 		public string CountryEnglishName { get; set; }
 
-		// Token: 0x170000F0 RID: 240
-		// (get) Token: 0x06000278 RID: 632 RVA: 0x00007A10 File Offset: 0x00005C10
-		// (set) Token: 0x06000279 RID: 633 RVA: 0x00007A27 File Offset: 0x00005C27
+		// Token: 0x17000091 RID: 145
+		// (get) Token: 0x06000156 RID: 342 RVA: 0x0000572B File Offset: 0x0000392B
+		// (set) Token: 0x06000157 RID: 343 RVA: 0x00005733 File Offset: 0x00003933
 		public string IetfLanguageTag { get; set; }
 
-		// Token: 0x170000F1 RID: 241
-		// (get) Token: 0x0600027A RID: 634 RVA: 0x00007A30 File Offset: 0x00005C30
-		// (set) Token: 0x0600027B RID: 635 RVA: 0x00007A47 File Offset: 0x00005C47
+		// Token: 0x17000092 RID: 146
+		// (get) Token: 0x06000158 RID: 344 RVA: 0x0000573C File Offset: 0x0000393C
+		// (set) Token: 0x06000159 RID: 345 RVA: 0x00005744 File Offset: 0x00003944
 		public int GeoId { get; set; }
 	}
 }

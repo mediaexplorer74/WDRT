@@ -6,29 +6,29 @@ using System.Text;
 
 namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 {
-	// Token: 0x02000048 RID: 72
-	public static class LongPathCommon
+	// Token: 0x02000057 RID: 87
+	internal static class LongPathCommon
 	{
-		// Token: 0x060001E3 RID: 483 RVA: 0x00009999 File Offset: 0x00007B99
-		public static Exception GetExceptionFromLastWin32Error()
+		// Token: 0x060001FC RID: 508 RVA: 0x0000A1CD File Offset: 0x000083CD
+		internal static Exception GetExceptionFromLastWin32Error()
 		{
 			return LongPathCommon.GetExceptionFromLastWin32Error("path");
 		}
 
-		// Token: 0x060001E4 RID: 484 RVA: 0x000099A5 File Offset: 0x00007BA5
-		public static Exception GetExceptionFromLastWin32Error(string parameterName)
+		// Token: 0x060001FD RID: 509 RVA: 0x0000A1D9 File Offset: 0x000083D9
+		internal static Exception GetExceptionFromLastWin32Error(string parameterName)
 		{
 			return LongPathCommon.GetExceptionFromWin32Error(Marshal.GetLastWin32Error(), parameterName);
 		}
 
-		// Token: 0x060001E5 RID: 485 RVA: 0x000099B2 File Offset: 0x00007BB2
-		public static Exception GetExceptionFromWin32Error(int errorCode)
+		// Token: 0x060001FE RID: 510 RVA: 0x0000A1E6 File Offset: 0x000083E6
+		internal static Exception GetExceptionFromWin32Error(int errorCode)
 		{
 			return LongPathCommon.GetExceptionFromWin32Error(errorCode, "path");
 		}
 
-		// Token: 0x060001E6 RID: 486 RVA: 0x000099C0 File Offset: 0x00007BC0
-		public static Exception GetExceptionFromWin32Error(int errorCode, string parameterName)
+		// Token: 0x060001FF RID: 511 RVA: 0x0000A1F4 File Offset: 0x000083F4
+		internal static Exception GetExceptionFromWin32Error(int errorCode, string parameterName)
 		{
 			string messageFromErrorCode = LongPathCommon.GetMessageFromErrorCode(errorCode);
 			if (errorCode <= 15)
@@ -69,20 +69,16 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return new IOException(messageFromErrorCode, NativeMethods.MakeHRFromErrorCode(errorCode));
 		}
 
-		// Token: 0x060001E7 RID: 487 RVA: 0x00009A50 File Offset: 0x00007C50
+		// Token: 0x06000200 RID: 512 RVA: 0x0000A284 File Offset: 0x00008484
 		private static string GetMessageFromErrorCode(int errorCode)
 		{
 			StringBuilder stringBuilder = new StringBuilder(512);
-			int dwFlags = 12800;
-			IntPtr zero = IntPtr.Zero;
-			int dwLanguageId = 0;
-			StringBuilder stringBuilder2 = stringBuilder;
-			NativeMethods.FormatMessage(dwFlags, zero, errorCode, dwLanguageId, stringBuilder2, stringBuilder2.Capacity, IntPtr.Zero);
+			NativeMethods.FormatMessage(12800, IntPtr.Zero, errorCode, 0, stringBuilder, stringBuilder.Capacity, IntPtr.Zero);
 			return stringBuilder.ToString();
 		}
 
-		// Token: 0x060001E8 RID: 488 RVA: 0x00009A8C File Offset: 0x00007C8C
-		public static string[] ConvertPtrArrayToStringArray(IntPtr strPtrArray, int cStrings)
+		// Token: 0x06000201 RID: 513 RVA: 0x0000A2C0 File Offset: 0x000084C0
+		internal static string[] ConvertPtrArrayToStringArray(IntPtr strPtrArray, int cStrings)
 		{
 			IntPtr[] array = new IntPtr[cStrings];
 			if (strPtrArray != IntPtr.Zero)
@@ -97,12 +93,11 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return list.ToArray();
 		}
 
-		// Token: 0x060001E9 RID: 489 RVA: 0x00009AE0 File Offset: 0x00007CE0
+		// Token: 0x06000202 RID: 514 RVA: 0x0000A31C File Offset: 0x0000851C
 		public static string NormalizeLongPath(string path)
 		{
 			StringBuilder stringBuilder = new StringBuilder(LongPathCommon.MAX_LONG_PATH);
-			StringBuilder stringBuilder2 = stringBuilder;
-			int num = NativeMethods.IU_GetCanonicalUNCPath(path, stringBuilder2, stringBuilder2.Capacity);
+			int num = NativeMethods.IU_GetCanonicalUNCPath(path, stringBuilder, stringBuilder.Capacity);
 			if (num != 0)
 			{
 				throw LongPathCommon.GetExceptionFromWin32Error(num);
@@ -110,10 +105,11 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return stringBuilder.ToString();
 		}
 
-		// Token: 0x060001EA RID: 490 RVA: 0x00009B16 File Offset: 0x00007D16
+		// Token: 0x06000203 RID: 515 RVA: 0x0000A354 File Offset: 0x00008554
 		public static FileAttributes GetAttributes(string path)
 		{
-			FileAttributes fileAttributes = NativeMethods.GetFileAttributes(LongPathCommon.NormalizeLongPath(path));
+			string text = LongPathCommon.NormalizeLongPath(path);
+			FileAttributes fileAttributes = NativeMethods.GetFileAttributes(text);
 			if (fileAttributes == (FileAttributes)(-1))
 			{
 				throw LongPathCommon.GetExceptionFromLastWin32Error();
@@ -121,7 +117,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return fileAttributes;
 		}
 
-		// Token: 0x040000FA RID: 250
+		// Token: 0x0400015A RID: 346
 		private static int MAX_LONG_PATH = 32000;
 	}
 }

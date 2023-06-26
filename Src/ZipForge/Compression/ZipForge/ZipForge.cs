@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using ComponentAce.Compression.Archiver;
-using ComponentAce.Compression.Exception1;
+using ComponentAce.Compression.Exception;
 using ComponentAce.Compression.Interfaces;
 using ComponentAce.Compression.ZipForge.Encryption;
 
@@ -152,27 +152,27 @@ namespace ComponentAce.Compression.ZipForge
 			while (processedBytesCount < length)
 			{
 				long num3 = length - processedBytesCount;
-				long num4 = (num3 > (long)blockSize) ? ((long)blockSize) : num3;
+				long num4 = ((num3 > (long)blockSize) ? ((long)blockSize) : num3);
 				this._totalProcessedFilesSize += num4;
 				if (this._progressEnabled)
 				{
 					DateTime now = DateTime.Now;
-					TimeSpan timeLeft = new TimeSpan(0L);
+					TimeSpan timeSpan = new TimeSpan(0L);
 					if (processedBytesCount != 0L)
 					{
-						timeLeft = new TimeSpan(length * (now.Ticks - this._currentItemOperationStartTime.Ticks) / processedBytesCount) - (now - this._currentItemOperationStartTime);
+						timeSpan = new TimeSpan(length * (now.Ticks - this._currentItemOperationStartTime.Ticks) / processedBytesCount) - (now - this._currentItemOperationStartTime);
 					}
-					this.DoOnFileProgress(item.Name, (double)processedBytesCount / (double)length * 100.0, now - this._currentItemOperationStartTime, timeLeft, item.Operation, ProgressPhase.Process, ref this._progressCancel);
+					this.DoOnFileProgress(item.Name, (double)processedBytesCount / (double)length * 100.0, now - this._currentItemOperationStartTime, timeSpan, item.Operation, ProgressPhase.Process, ref this._progressCancel);
 					if (this._progressCancel)
 					{
 						break;
 					}
-					TimeSpan timeLeft2 = new TimeSpan(0L);
+					TimeSpan timeSpan2 = new TimeSpan(0L);
 					if (this._totalProcessedFilesSize != 0L)
 					{
-						timeLeft2 = new TimeSpan(this._toProcessFilesTotalSize * (now.Ticks - this._operationStartTime.Ticks) / this._totalProcessedFilesSize) - (now - this._operationStartTime);
+						timeSpan2 = new TimeSpan(this._toProcessFilesTotalSize * (now.Ticks - this._operationStartTime.Ticks) / this._totalProcessedFilesSize) - (now - this._operationStartTime);
 					}
-					this.DoOnOverallProgress((double)this._totalProcessedFilesSize / (double)this._toProcessFilesTotalSize * 100.0, now - this._operationStartTime, timeLeft2, item.Operation, ProgressPhase.Process, ref this._progressCancel);
+					this.DoOnOverallProgress((double)this._totalProcessedFilesSize / (double)this._toProcessFilesTotalSize * 100.0, now - this._operationStartTime, timeSpan2, item.Operation, ProgressPhase.Process, ref this._progressCancel);
 					if (this._progressCancel)
 					{
 						break;
@@ -239,15 +239,15 @@ namespace ComponentAce.Compression.ZipForge
 		// Token: 0x06000786 RID: 1926 RVA: 0x0002CCC8 File Offset: 0x0002BCC8
 		protected override void AddNewItemToItemsHandler()
 		{
-			DirItem item = new DirItem();
-			this._itemsHandler.ItemsArray.AddItem(item);
+			DirItem dirItem = new DirItem();
+			this._itemsHandler.ItemsArray.AddItem(dirItem);
 		}
 
 		// Token: 0x06000787 RID: 1927 RVA: 0x0002CCEC File Offset: 0x0002BCEC
 		protected internal override IItemsHandler CreateNewItemsHandler(Stream s, bool create)
 		{
 			DirManager dirManager = (DirManager)base.CreateNewItemsHandler(s, create);
-			dirManager.FZip64 = (this.Zip64Mode == Zip64Mode.Always);
+			dirManager.FZip64 = this.Zip64Mode == Zip64Mode.Always;
 			return dirManager;
 		}
 

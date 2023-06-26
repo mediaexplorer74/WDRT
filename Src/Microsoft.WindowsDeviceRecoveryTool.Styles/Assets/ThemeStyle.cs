@@ -3,17 +3,17 @@ using Microsoft.WindowsDeviceRecoveryTool.Localization;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Styles.Assets
 {
-	// Token: 0x02000002 RID: 2
+	// Token: 0x02000016 RID: 22
 	public class ThemeStyle
 	{
-		// Token: 0x06000001 RID: 1 RVA: 0x00002050 File Offset: 0x00000250
+		// Token: 0x0600006F RID: 111 RVA: 0x0000351C File Offset: 0x0000171C
 		public ThemeStyle(string name)
 		{
 			this.Name = name;
 		}
 
-		// Token: 0x17000001 RID: 1
-		// (get) Token: 0x06000002 RID: 2 RVA: 0x00002064 File Offset: 0x00000264
+		// Token: 0x17000005 RID: 5
+		// (get) Token: 0x06000070 RID: 112 RVA: 0x00003530 File Offset: 0x00001730
 		public string LocalizedName
 		{
 			get
@@ -22,12 +22,12 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Styles.Assets
 			}
 		}
 
-		// Token: 0x17000002 RID: 2
-		// (get) Token: 0x06000003 RID: 3 RVA: 0x00002084 File Offset: 0x00000284
-		// (set) Token: 0x06000004 RID: 4 RVA: 0x0000209B File Offset: 0x0000029B
+		// Token: 0x17000006 RID: 6
+		// (get) Token: 0x06000071 RID: 113 RVA: 0x0000354D File Offset: 0x0000174D
+		// (set) Token: 0x06000072 RID: 114 RVA: 0x00003555 File Offset: 0x00001755
 		public string Name { get; private set; }
 
-		// Token: 0x06000005 RID: 5 RVA: 0x000020A4 File Offset: 0x000002A4
+		// Token: 0x06000073 RID: 115 RVA: 0x00003560 File Offset: 0x00001760
 		public override string ToString()
 		{
 			return this.LocalizedName;

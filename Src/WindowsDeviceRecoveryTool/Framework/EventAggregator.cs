@@ -1,101 +1,101 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using System.Diagnostics;
 using System.Linq;
 using Microsoft.WindowsDeviceRecoveryTool.Common;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Framework
 {
-	// Token: 0x020000E9 RID: 233
+	// Token: 0x0200008A RID: 138
 	[Export]
 	public sealed class EventAggregator
 	{
-		// Token: 0x06000781 RID: 1921 RVA: 0x0002794C File Offset: 0x00025B4C
+		// Token: 0x060004AF RID: 1199 RVA: 0x00017474 File Offset: 0x00015674
 		public void Subscribe(ICanHandle instance)
 		{
-			lock (this.subscribers)
+			List<WeakReference> list = this.subscribers;
+			lock (list)
 			{
-				if (!this.subscribers.Any((WeakReference reference) => reference.Target == instance))
+				bool flag2 = this.subscribers.Any((WeakReference reference) => reference.Target == instance);
+				if (!flag2)
 				{
 					this.subscribers.Add(new WeakReference(instance));
 				}
 			}
 		}
 
-		// Token: 0x06000782 RID: 1922 RVA: 0x00027A10 File Offset: 0x00025C10
+		// Token: 0x060004B0 RID: 1200 RVA: 0x000174F8 File Offset: 0x000156F8
 		public void Unsubscribe(ICanHandle instance)
 		{
-			lock (this.subscribers)
+			List<WeakReference> list = this.subscribers;
+			lock (list)
 			{
 				WeakReference weakReference = this.subscribers.FirstOrDefault((WeakReference reference) => reference.Target == instance);
-				if (weakReference != null)
+				bool flag2 = weakReference != null;
+				if (flag2)
 				{
 					this.subscribers.Remove(weakReference);
 				}
 			}
 		}
 
-		// Token: 0x06000783 RID: 1923 RVA: 0x00027AA4 File Offset: 0x00025CA4
+		// Token: 0x060004B1 RID: 1201 RVA: 0x00017578 File Offset: 0x00015778
 		public void Publish<TMessage>(TMessage message)
 		{
 			this.Publish<TMessage>(message, new Action<Action>(this.Execute));
 		}
 
-		// Token: 0x06000784 RID: 1924 RVA: 0x00027ABB File Offset: 0x00025CBB
+		// Token: 0x060004B2 RID: 1202 RVA: 0x0001758F File Offset: 0x0001578F
 		private void Execute(Action action)
 		{
 			AppDispatcher.Execute(action, false);
 		}
 
-		// Token: 0x06000785 RID: 1925 RVA: 0x00027BF4 File Offset: 0x00025DF4
+		// Token: 0x060004B3 RID: 1203 RVA: 0x0001759C File Offset: 0x0001579C
 		private void Publish<TMessage>(TMessage message, Action<Action> executor)
 		{
-			WeakReference[] objectsToNotify = default;
-
-			try
+			List<WeakReference> list = this.subscribers;
+			WeakReference[] objectsToNotify;
+			lock (list)
 			{
-				lock (this.subscribers)
+				objectsToNotify = this.subscribers.ToArray();
+			}
+			executor(delegate
+			{
+				List<WeakReference> list2 = new List<WeakReference>();
+				foreach (WeakReference weakReference in objectsToNotify)
 				{
-					objectsToNotify = this.subscribers.ToArray();
+					ICanHandle<TMessage> canHandle = weakReference.Target as ICanHandle<TMessage>;
+					bool flag2 = canHandle != null;
+					if (flag2)
+					{
+						canHandle.Handle(message);
+					}
+					else
+					{
+						bool flag3 = !weakReference.IsAlive;
+						if (flag3)
+						{
+							list2.Add(weakReference);
+						}
+					}
 				}
-				executor(delegate
+				bool flag4 = list2.Count > 0;
+				if (flag4)
 				{
-					//RnD
-					List<WeakReference> list = new List<WeakReference>();
-					//WeakReference[] objectsToNotify = default;
-
-					foreach (WeakReference weakReference in objectsToNotify)
+					List<WeakReference> list3 = this.subscribers;
+					lock (list3)
 					{
-						ICanHandle<TMessage> canHandle = weakReference.Target as ICanHandle<TMessage>;
-						if (canHandle != null)
+						foreach (WeakReference weakReference2 in list2)
 						{
-							canHandle.Handle(message);
-						}
-						else if (!weakReference.IsAlive)
-						{
-							list.Add(weakReference);
+							this.subscribers.Remove(weakReference2);
 						}
 					}
-					if (list.Count > 0)
-					{
-						lock (this.subscribers)
-						{
-							foreach (WeakReference item in list)
-							{
-								this.subscribers.Remove(item);
-							}
-						}
-					}
-				});
-			}
-			catch (Exception ex)
-			{
-				Debug.WriteLine("[ex] EventAggregator (Publish) Exception : " + ex.Message);
-			}
+				}
+			});
 		}
 
-		// Token: 0x0400035B RID: 859
+		// Token: 0x0400022A RID: 554
 		private readonly List<WeakReference> subscribers = new List<WeakReference>();
 	}
 }

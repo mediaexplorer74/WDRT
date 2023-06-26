@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-// Token: 0x02000136 RID: 310
+// Token: 0x020001D3 RID: 467
 [NativeCppClass]
 internal struct lconv
 {

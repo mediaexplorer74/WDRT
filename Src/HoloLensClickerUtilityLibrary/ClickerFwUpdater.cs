@@ -19,7 +19,7 @@ namespace ClickerUtilityLibrary
 		// Token: 0x14000002 RID: 2
 		// (add) Token: 0x06000021 RID: 33 RVA: 0x0000336C File Offset: 0x0000156C
 		// (remove) Token: 0x06000022 RID: 34 RVA: 0x000033A4 File Offset: 0x000015A4
-		//[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		[field: DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event EventHandler<FwUpdaterEventArgs> UpdaterEvent;
 
 		// Token: 0x06000023 RID: 35 RVA: 0x000033DC File Offset: 0x000015DC
@@ -55,7 +55,8 @@ namespace ClickerUtilityLibrary
 		}
 
 		// Token: 0x06000025 RID: 37 RVA: 0x000034F0 File Offset: 0x000016F0
-		public ClickerFwUpdater() : this(null)
+		public ClickerFwUpdater()
+			: this(null)
 		{
 		}
 
@@ -78,55 +79,55 @@ namespace ClickerUtilityLibrary
 		{
 			bool flag = this.RunBootLoader();
 			bool flag2 = !flag;
-			bool result;
+			bool flag3;
 			if (flag2)
 			{
 				this.LogError("Failed to run the boot loader.");
-				result = false;
+				flag3 = false;
 			}
 			else
 			{
 				flag = this.OpenFile(filename);
-				bool flag3 = !flag;
-				if (flag3)
+				bool flag4 = !flag;
+				if (flag4)
 				{
 					this.LogError("Failed to open the file for firmware download.");
-					result = false;
+					flag3 = false;
 				}
 				else
 				{
 					this.LogInfo("Starting download of the application firmware.");
 					this.WriteFirmwareConfiguration(version);
-					bool flag4 = !this.mFlashingCompleted.WaitOne(50000);
-					if (flag4)
+					bool flag5 = !this.mFlashingCompleted.WaitOne(50000);
+					if (flag5)
 					{
 						this.LogError("Timed out waiting for firmware download to complete.");
-						result = false;
+						flag3 = false;
 					}
 					else
 					{
 						Thread.Sleep(500);
 						ClickerFwUpdater.RunApplication();
-						bool flag5 = !this.mDeviceConnectedToApp.WaitOne(5000);
-						if (flag5)
+						bool flag6 = !this.mDeviceConnectedToApp.WaitOne(5000);
+						if (flag6)
 						{
 							this.LogError("Application firmware did not start.");
-							result = false;
+							flag3 = false;
 						}
 						else
 						{
 							this.LogInfo("Application firmware is now running.");
-							FwUpdaterEventArgs updaterEventArgs = new FwUpdaterEventArgs
+							FwUpdaterEventArgs fwUpdaterEventArgs = new FwUpdaterEventArgs
 							{
 								Type = FwUpdaterEventArgs.EventType.UpdateCompleted
 							};
-							this.OnUpdaterEvent(updaterEventArgs);
-							result = true;
+							this.OnUpdaterEvent(fwUpdaterEventArgs);
+							flag3 = true;
 						}
 					}
 				}
 			}
-			return result;
+			return flag3;
 		}
 
 		// Token: 0x06000028 RID: 40 RVA: 0x0000369C File Offset: 0x0000189C
@@ -236,14 +237,14 @@ namespace ClickerUtilityLibrary
 					CommandEngine.Instance.SendRawData(packet2.RawPacket, packet2.Length);
 				}
 			}
-			bool result = true;
+			bool flag3 = true;
 			version = CommandResponse.GetResponse(CommandResponse.CommandCode.FW_VER);
-			bool flag3 = version == null;
-			if (flag3)
+			bool flag4 = version == null;
+			if (flag4)
 			{
-				result = false;
+				flag3 = false;
 			}
-			return result;
+			return flag3;
 		}
 
 		// Token: 0x06000031 RID: 49 RVA: 0x0000394C File Offset: 0x00001B4C
@@ -268,28 +269,28 @@ namespace ClickerUtilityLibrary
 					CommandEngine.Instance.SendRawData(packet2.RawPacket, packet2.Length);
 				}
 			}
-			bool result = true;
+			bool flag3 = true;
 			id = 0;
 			string response = CommandResponse.GetResponse(CommandResponse.CommandCode.HWID);
-			bool flag3 = response == null;
-			if (flag3)
+			bool flag4 = response == null;
+			if (flag4)
 			{
-				result = false;
+				flag3 = false;
 			}
 			else
 			{
 				id = Convert.ToInt32(response, CultureInfo.InvariantCulture);
 			}
-			return result;
+			return flag3;
 		}
 
 		// Token: 0x06000032 RID: 50 RVA: 0x00003A1C File Offset: 0x00001C1C
 		public bool GetFirmwareUpdateTimestamp(out DateTime timestamp)
 		{
-			bool result = true;
+			bool flag = true;
 			timestamp = default(DateTime);
-			bool flag = this.deviceStatus == ClickerFwUpdater.DeviceStatus.ConnectedToBootLoader;
-			if (flag)
+			bool flag2 = this.deviceStatus == ClickerFwUpdater.DeviceStatus.ConnectedToBootLoader;
+			if (flag2)
 			{
 				CommandResponse.CommandSent(CommandResponse.CommandCode.UPDATE_DATE);
 				IPacket packet = BootLoaderProtocol.Instance.CreateNewPacket();
@@ -298,42 +299,42 @@ namespace ClickerUtilityLibrary
 			}
 			else
 			{
-				bool flag2 = this.deviceStatus == ClickerFwUpdater.DeviceStatus.ConnectedToApplication;
-				if (flag2)
+				bool flag3 = this.deviceStatus == ClickerFwUpdater.DeviceStatus.ConnectedToApplication;
+				if (flag3)
 				{
 					return false;
 				}
 			}
 			string response = CommandResponse.GetResponse(CommandResponse.CommandCode.UPDATE_DATE);
-			bool flag3 = response == null;
-			if (flag3)
+			bool flag4 = response == null;
+			if (flag4)
 			{
-				result = false;
+				flag = false;
 			}
 			else
 			{
 				uint num = Convert.ToUInt32(response, CultureInfo.InvariantCulture);
 				timestamp = new DateTime(1970, 1, 1).AddSeconds(num);
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x06000033 RID: 51 RVA: 0x00003ADC File Offset: 0x00001CDC
 		public bool GetVitalProductData(out string bluetoothAddress, out string serialNumber, out int boardId)
 		{
-			bool result = true;
+			bool flag = true;
 			boardId = 0;
 			bluetoothAddress = null;
 			serialNumber = null;
-			bool flag = this.deviceStatus == ClickerFwUpdater.DeviceStatus.ConnectedToBootLoader;
-			if (flag)
+			bool flag2 = this.deviceStatus == ClickerFwUpdater.DeviceStatus.ConnectedToBootLoader;
+			if (flag2)
 			{
-				result = false;
+				flag = false;
 			}
 			else
 			{
-				bool flag2 = this.deviceStatus == ClickerFwUpdater.DeviceStatus.ConnectedToApplication;
-				if (flag2)
+				bool flag3 = this.deviceStatus == ClickerFwUpdater.DeviceStatus.ConnectedToApplication;
+				if (flag3)
 				{
 					CommandResponse.CommandSent(CommandResponse.CommandCode.VPD);
 					IPacket packet = BootLoaderProtocol.Instance.CreateNewPacket();
@@ -341,27 +342,27 @@ namespace ClickerUtilityLibrary
 					CommandEngine.Instance.SendRawData(packet.RawPacket, packet.Length);
 				}
 				string response = CommandResponse.GetResponse(CommandResponse.CommandCode.VPD);
-				bool flag3 = response == null;
-				if (flag3)
+				bool flag4 = response == null;
+				if (flag4)
 				{
-					result = false;
+					flag = false;
 				}
 				else
 				{
 					string responsePattern = CommandResponse.GetResponsePattern(CommandResponse.CommandCode.VPD);
 					Regex regex = new Regex(responsePattern);
 					Match match = regex.Match(response);
-					bool flag4 = !match.Success;
-					if (flag4)
+					bool flag5 = !match.Success;
+					if (flag5)
 					{
-						result = false;
+						flag = false;
 					}
 					else
 					{
-						bool flag5 = match.Groups.Count != 4;
-						if (flag5)
+						bool flag6 = match.Groups.Count != 4;
+						if (flag6)
 						{
-							result = false;
+							flag = false;
 						}
 						else
 						{
@@ -372,25 +373,25 @@ namespace ClickerUtilityLibrary
 					}
 				}
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x06000034 RID: 52 RVA: 0x00003C08 File Offset: 0x00001E08
 		public bool GetFirmwareInformation(out string configurationType, out string releaseType, out string siliconType)
 		{
-			bool result = true;
+			bool flag = true;
 			configurationType = null;
 			releaseType = null;
 			siliconType = null;
-			bool flag = this.deviceStatus == ClickerFwUpdater.DeviceStatus.ConnectedToBootLoader;
-			if (flag)
+			bool flag2 = this.deviceStatus == ClickerFwUpdater.DeviceStatus.ConnectedToBootLoader;
+			if (flag2)
 			{
-				result = false;
+				flag = false;
 			}
 			else
 			{
-				bool flag2 = this.deviceStatus == ClickerFwUpdater.DeviceStatus.ConnectedToApplication;
-				if (flag2)
+				bool flag3 = this.deviceStatus == ClickerFwUpdater.DeviceStatus.ConnectedToApplication;
+				if (flag3)
 				{
 					CommandResponse.CommandSent(CommandResponse.CommandCode.FW_CFG);
 					IPacket packet = BootLoaderProtocol.Instance.CreateNewPacket();
@@ -398,27 +399,27 @@ namespace ClickerUtilityLibrary
 					CommandEngine.Instance.SendRawData(packet.RawPacket, packet.Length);
 				}
 				string response = CommandResponse.GetResponse(CommandResponse.CommandCode.FW_CFG);
-				bool flag3 = response == null;
-				if (flag3)
+				bool flag4 = response == null;
+				if (flag4)
 				{
-					result = false;
+					flag = false;
 				}
 				else
 				{
 					string responsePattern = CommandResponse.GetResponsePattern(CommandResponse.CommandCode.FW_CFG);
 					Regex regex = new Regex(responsePattern);
 					Match match = regex.Match(response);
-					bool flag4 = !match.Success;
-					if (flag4)
+					bool flag5 = !match.Success;
+					if (flag5)
 					{
-						result = false;
+						flag = false;
 					}
 					else
 					{
-						bool flag5 = match.Groups.Count != 4;
-						if (flag5)
+						bool flag6 = match.Groups.Count != 4;
+						if (flag6)
 						{
-							result = false;
+							flag = false;
 						}
 						else
 						{
@@ -429,7 +430,7 @@ namespace ClickerUtilityLibrary
 					}
 				}
 			}
-			return result;
+			return flag;
 		}
 
 		// Token: 0x06000035 RID: 53 RVA: 0x00003D28 File Offset: 0x00001F28
@@ -438,14 +439,14 @@ namespace ClickerUtilityLibrary
 			try
 			{
 				IPacket packet = BootLoaderProtocol.Instance.CreateNewPacket();
-				string value = string.Concat(new object[]
+				string text = string.Concat(new object[]
 				{
 					"Sending ",
 					0,
 					" / ",
 					this.mFileStream.Length.ToString(CultureInfo.InvariantCulture)
 				});
-				this.LogDbg(value);
+				this.LogDbg(text);
 				bool flag = (uint)this.mFwAddress.Data != 131072U;
 				if (flag)
 				{
@@ -495,15 +496,15 @@ namespace ClickerUtilityLibrary
 			{
 			case EventType.ExceptionMessage:
 			{
-				string value = DateTime.Now.ToString("HH:mm:ss: Error - ", CultureInfo.InvariantCulture) + receivedEventArgs.StringParameter;
-				this.LogDbg(value);
+				string text = DateTime.Now.ToString("HH:mm:ss: Error - ", CultureInfo.InvariantCulture) + receivedEventArgs.StringParameter;
+				this.LogDbg(text);
 				receivedEventArgs.StringParameter = "";
 				break;
 			}
 			case EventType.OperationMessage:
 			{
-				string value = DateTime.Now.ToString("HH:mm:ss:\t", CultureInfo.InvariantCulture) + receivedEventArgs.StringParameter;
-				this.LogDbg(value);
+				string text = DateTime.Now.ToString("HH:mm:ss:\t", CultureInfo.InvariantCulture) + receivedEventArgs.StringParameter;
+				this.LogDbg(text);
 				LogManager.Instance.Log(receivedEventArgs.StringParameter);
 				receivedEventArgs.StringParameter = "";
 				break;
@@ -532,15 +533,15 @@ namespace ClickerUtilityLibrary
 			}
 			case EventType.UsbDeviceConnected:
 			{
-				string text = receivedEventArgs.ObjectParameter as string;
-				bool flag4 = text != null && ClickerFwUpdater.IsBootLoaderUsbFriendlyName(text);
+				string text2 = receivedEventArgs.ObjectParameter as string;
+				bool flag4 = text2 != null && ClickerFwUpdater.IsBootLoaderUsbFriendlyName(text2);
 				if (flag4)
 				{
 					this.deviceStatus = ClickerFwUpdater.DeviceStatus.ConnectedToBootLoader;
 					CommandEngine.Instance.ChangeProtocol(BootLoaderProtocol.Instance);
 					this.mDeviceConnectedToBootLoader.Set();
-					string value = "Device is connected.(BL)";
-					this.LogInfo(value);
+					string text = "Device is connected.(BL)";
+					this.LogInfo(text);
 					fwUpdaterEventArgs.Type = FwUpdaterEventArgs.EventType.ConnectedToBootLoader;
 					this.OnUpdaterEvent(fwUpdaterEventArgs);
 				}
@@ -549,8 +550,8 @@ namespace ClickerUtilityLibrary
 					this.deviceStatus = ClickerFwUpdater.DeviceStatus.ConnectedToApplication;
 					CommandEngine.Instance.ChangeProtocol(AppProtocol.Instance);
 					this.mDeviceConnectedToApp.Set();
-					string value = "Device is connected.(App)";
-					this.LogInfo(value);
+					string text = "Device is connected.(App)";
+					this.LogInfo(text);
 					fwUpdaterEventArgs.Type = FwUpdaterEventArgs.EventType.ConnectedToApplication;
 					this.OnUpdaterEvent(fwUpdaterEventArgs);
 				}
@@ -559,8 +560,8 @@ namespace ClickerUtilityLibrary
 			case EventType.UsbDeviceDisconnected:
 			{
 				this.deviceStatus = ClickerFwUpdater.DeviceStatus.Disconnected;
-				string value = "Device is disconnected!";
-				this.LogInfo(value);
+				string text = "Device is disconnected!";
+				this.LogInfo(text);
 				fwUpdaterEventArgs.Type = FwUpdaterEventArgs.EventType.DeviceDisconnected;
 				this.OnUpdaterEvent(fwUpdaterEventArgs);
 				break;
@@ -571,14 +572,10 @@ namespace ClickerUtilityLibrary
 		// Token: 0x06000038 RID: 56 RVA: 0x00004154 File Offset: 0x00002354
 		public static bool IsBootLoaderUsbFriendlyName(string usbFriendlyName)
 		{
-			string[] array = new string[]
+			string[] array = new string[] { "FFU", "Recovery" };
+			foreach (string text in array)
 			{
-				"FFU",
-				"Recovery"
-			};
-			foreach (string value in array)
-			{
-				bool flag = usbFriendlyName.Contains(value) && !usbFriendlyName.Contains("Updater");
+				bool flag = usbFriendlyName.Contains(text) && !usbFriendlyName.Contains("Updater");
 				if (flag)
 				{
 					return true;
@@ -590,11 +587,8 @@ namespace ClickerUtilityLibrary
 		// Token: 0x06000039 RID: 57 RVA: 0x000041C0 File Offset: 0x000023C0
 		public static bool IsBootLoaderUpdaterUsbFriendlyName(string usbFriendlyName)
 		{
-			string[] source = new string[]
-			{
-				"Updater"
-			};
-			return source.Any((string name) => usbFriendlyName.Contains(name));
+			string[] array = new string[] { "Updater" };
+			return array.Any((string name) => usbFriendlyName.Contains(name));
 		}
 
 		// Token: 0x0600003A RID: 58 RVA: 0x00004200 File Offset: 0x00002400
@@ -622,8 +616,8 @@ namespace ClickerUtilityLibrary
 					this.mFileStream.Read(this.mFwBinary.GetRawData(), 0, this.mFwBinary.Length);
 					BootLoaderProtocol.Instance.FormDataPacket(packet2);
 					CommandEngine.Instance.SendRawData(packet2.RawPacket, packet2.Length);
-					string value = "Sending " + this.mFileStream.Position.ToString(CultureInfo.InvariantCulture) + " / " + this.mFileStream.Length.ToString(CultureInfo.InvariantCulture);
-					this.LogDbg(value);
+					string text = "Sending " + this.mFileStream.Position.ToString(CultureInfo.InvariantCulture) + " / " + this.mFileStream.Length.ToString(CultureInfo.InvariantCulture);
+					this.LogDbg(text);
 					fwUpdaterEventArgs.Type = FwUpdaterEventArgs.EventType.UpdateProgress;
 					fwUpdaterEventArgs.Parameters = (double)this.mFileStream.Position / (double)this.mFileStream.Length;
 					this.OnUpdaterEvent(fwUpdaterEventArgs);
@@ -687,14 +681,14 @@ namespace ClickerUtilityLibrary
 										BootLoaderProtocol.Instance.FormDataPacket(packet3);
 										CommandEngine.Instance.SendRawData(packet3.RawPacket, packet3.Length);
 									}
-									string value = string.Concat(new object[]
+									string text = string.Concat(new object[]
 									{
 										"Sending ",
 										this.mFileStream.Position,
 										" / ",
 										this.mFileStream.Length
 									});
-									this.LogDbg(value);
+									this.LogDbg(text);
 									fwUpdaterEventArgs.Type = FwUpdaterEventArgs.EventType.UpdateProgress;
 									fwUpdaterEventArgs.Parameters = (double)this.mFileStream.Position / (double)this.mFileStream.Length;
 									this.OnUpdaterEvent(fwUpdaterEventArgs);
@@ -720,8 +714,8 @@ namespace ClickerUtilityLibrary
 							if (flag12)
 							{
 								DataElement dataElement = DataElementDictionary.Instance[DataElementType.DI_FW_VER];
-								int version = Convert.ToInt32(dataElement.Data, CultureInfo.InvariantCulture);
-								ImageVersion imageVersion = new ImageVersion(version);
+								int num = Convert.ToInt32(dataElement.Data, CultureInfo.InvariantCulture);
+								ImageVersion imageVersion = new ImageVersion(num);
 								CommandResponse.UpdateResponseData(CommandResponse.CommandCode.FW_VER, imageVersion.ToString());
 								DataElement dataElement2 = DataElementDictionary.Instance[DataElementType.DI_FW_UPDATE_DATE];
 								CommandResponse.UpdateResponseData(CommandResponse.CommandCode.UPDATE_DATE, Convert.ToInt32(dataElement2.Data, CultureInfo.InvariantCulture).ToString(CultureInfo.InvariantCulture));
@@ -732,8 +726,8 @@ namespace ClickerUtilityLibrary
 								if (flag13)
 								{
 									DataElement dataElement3 = DataElementDictionary.Instance[DataElementType.DI_FW_HWID];
-									string data = Convert.ToInt32(dataElement3.Data, CultureInfo.InvariantCulture).ToString(CultureInfo.InvariantCulture);
-									CommandResponse.UpdateResponseData(CommandResponse.CommandCode.HWID, data);
+									string text2 = Convert.ToInt32(dataElement3.Data, CultureInfo.InvariantCulture).ToString(CultureInfo.InvariantCulture);
+									CommandResponse.UpdateResponseData(CommandResponse.CommandCode.HWID, text2);
 								}
 							}
 						}

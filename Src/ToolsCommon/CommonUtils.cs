@@ -13,27 +13,27 @@ using System.Text;
 
 namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 {
-	// Token: 0x02000024 RID: 36
+	// Token: 0x02000029 RID: 41
 	public static class CommonUtils
 	{
-		// Token: 0x0600012D RID: 301 RVA: 0x0000767C File Offset: 0x0000587C
+		// Token: 0x06000140 RID: 320 RVA: 0x00007ED8 File Offset: 0x000060D8
 		public static IntPtr MountVHD(string vhdPath, bool fReadOnly)
 		{
-			VIRTUAL_DISK_ACCESS_MASK accessMask = VIRTUAL_DISK_ACCESS_MASK.VIRTUAL_DISK_ACCESS_ALL;
+			VIRTUAL_DISK_ACCESS_MASK virtual_DISK_ACCESS_MASK = VIRTUAL_DISK_ACCESS_MASK.VIRTUAL_DISK_ACCESS_ALL;
 			if (fReadOnly)
 			{
-				accessMask = VIRTUAL_DISK_ACCESS_MASK.VIRTUAL_DISK_ACCESS_READ;
+				virtual_DISK_ACCESS_MASK = VIRTUAL_DISK_ACCESS_MASK.VIRTUAL_DISK_ACCESS_READ;
 			}
-			OPEN_VIRTUAL_DISK_FLAG openFlags = OPEN_VIRTUAL_DISK_FLAG.OPEN_VIRTUAL_DISK_FLAG_NONE;
-			ATTACH_VIRTUAL_DISK_FLAG attachFlags = ATTACH_VIRTUAL_DISK_FLAG.ATTACH_VIRTUAL_DISK_FLAG_NONE;
+			OPEN_VIRTUAL_DISK_FLAG open_VIRTUAL_DISK_FLAG = OPEN_VIRTUAL_DISK_FLAG.OPEN_VIRTUAL_DISK_FLAG_NONE;
+			ATTACH_VIRTUAL_DISK_FLAG attach_VIRTUAL_DISK_FLAG = ATTACH_VIRTUAL_DISK_FLAG.ATTACH_VIRTUAL_DISK_FLAG_NONE;
 			if (fReadOnly)
 			{
-				attachFlags = ATTACH_VIRTUAL_DISK_FLAG.ATTACH_VIRTUAL_DISK_FLAG_READ_ONLY;
+				attach_VIRTUAL_DISK_FLAG = ATTACH_VIRTUAL_DISK_FLAG.ATTACH_VIRTUAL_DISK_FLAG_READ_ONLY;
 			}
-			return CommonUtils.MountVHD(vhdPath, accessMask, openFlags, attachFlags);
+			return CommonUtils.MountVHD(vhdPath, virtual_DISK_ACCESS_MASK, open_VIRTUAL_DISK_FLAG, attach_VIRTUAL_DISK_FLAG);
 		}
 
-		// Token: 0x0600012E RID: 302 RVA: 0x000076AC File Offset: 0x000058AC
+		// Token: 0x06000141 RID: 321 RVA: 0x00007F08 File Offset: 0x00006108
 		public static IntPtr MountVHD(string vhdPath, VIRTUAL_DISK_ACCESS_MASK accessMask, OPEN_VIRTUAL_DISK_FLAG openFlags, ATTACH_VIRTUAL_DISK_FLAG attachFlags)
 		{
 			IntPtr zero = IntPtr.Zero;
@@ -58,7 +58,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return zero;
 		}
 
-		// Token: 0x0600012F RID: 303 RVA: 0x00007740 File Offset: 0x00005940
+		// Token: 0x06000142 RID: 322 RVA: 0x00007F9C File Offset: 0x0000619C
 		public static void DismountVHD(IntPtr hndlVirtDisk)
 		{
 			if (hndlVirtDisk == IntPtr.Zero)
@@ -73,27 +73,27 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			VirtualDiskLib.CloseHandle(hndlVirtDisk);
 		}
 
-		// Token: 0x06000130 RID: 304
+		// Token: 0x06000143 RID: 323
 		[DllImport("UpdateDLL.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern int IU_MountWim(string WimPath, string MountPath, string TemporaryPath);
 
-		// Token: 0x06000131 RID: 305
+		// Token: 0x06000144 RID: 324
 		[DllImport("UpdateDLL.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern int IU_DismountWim(string WimPath, string MountPath, int CommitMode);
 
-		// Token: 0x06000132 RID: 306 RVA: 0x00007775 File Offset: 0x00005975
+		// Token: 0x06000145 RID: 325 RVA: 0x00007FD1 File Offset: 0x000061D1
 		public static bool MountWIM(string wimPath, string mountPoint, string tmpDir)
 		{
-			return CommonUtils.IU_MountWim(wimPath, mountPoint, tmpDir) == 0;
+			return 0 == CommonUtils.IU_MountWim(wimPath, mountPoint, tmpDir);
 		}
 
-		// Token: 0x06000133 RID: 307 RVA: 0x00007782 File Offset: 0x00005982
+		// Token: 0x06000146 RID: 326 RVA: 0x00007FDE File Offset: 0x000061DE
 		public static bool DismountWIM(string wimPath, string mountPoint, bool commit)
 		{
-			return CommonUtils.IU_DismountWim(wimPath, mountPoint, commit ? 1 : 0) == 0;
+			return 0 == CommonUtils.IU_DismountWim(wimPath, mountPoint, commit ? 1 : 0);
 		}
 
-		// Token: 0x06000134 RID: 308 RVA: 0x00007798 File Offset: 0x00005998
+		// Token: 0x06000147 RID: 327 RVA: 0x0000800C File Offset: 0x0000620C
 		public static string FindInPath(string filename)
 		{
 			string text;
@@ -103,10 +103,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 			else
 			{
-				text = Environment.GetEnvironmentVariable("PATH").Split(new char[]
-				{
-					';'
-				}).FirstOrDefault((string x) => LongPathFile.Exists(Path.Combine(x, filename)));
+				text = Environment.GetEnvironmentVariable("PATH").Split(new char[] { ';' }).FirstOrDefault((string x) => LongPathFile.Exists(Path.Combine(x, filename)));
 			}
 			if (string.IsNullOrEmpty(text))
 			{
@@ -115,38 +112,38 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return Path.Combine(text, filename);
 		}
 
-		// Token: 0x06000135 RID: 309 RVA: 0x0000782C File Offset: 0x00005A2C
+		// Token: 0x06000148 RID: 328 RVA: 0x000080A8 File Offset: 0x000062A8
 		public static int RunProcess(string workingDir, string command, string args, bool hiddenWindow)
 		{
 			string text = null;
 			return CommonUtils.RunProcess(workingDir, command, args, hiddenWindow, false, out text);
 		}
 
-		// Token: 0x06000136 RID: 310 RVA: 0x00007848 File Offset: 0x00005A48
+		// Token: 0x06000149 RID: 329 RVA: 0x000080C4 File Offset: 0x000062C4
 		public static int RunProcess(string command, string args)
 		{
-			string value = null;
-			int num = CommonUtils.RunProcess(null, command, args, true, true, out value);
+			string text = null;
+			int num = CommonUtils.RunProcess(null, command, args, true, true, out text);
 			if (num != 0)
 			{
-				Console.WriteLine(value);
+				Console.WriteLine(text);
 			}
 			return num;
 		}
 
-		// Token: 0x06000137 RID: 311 RVA: 0x0000786C File Offset: 0x00005A6C
+		// Token: 0x0600014A RID: 330 RVA: 0x000080EC File Offset: 0x000062EC
 		public static int RunProcessVerbose(string command, string args)
 		{
-			string value = null;
-			int result = CommonUtils.RunProcess(null, command, args, true, true, out value);
-			Console.WriteLine(value);
-			return result;
+			string text = null;
+			int num = CommonUtils.RunProcess(null, command, args, true, true, out text);
+			Console.WriteLine(text);
+			return num;
 		}
 
-		// Token: 0x06000138 RID: 312 RVA: 0x00007890 File Offset: 0x00005A90
+		// Token: 0x0600014B RID: 331 RVA: 0x00008110 File Offset: 0x00006310
 		private static int RunProcess(string workingDir, string command, string args, bool hiddenWindow, bool captureOutput, out string processOutput)
 		{
-			int result = 0;
+			int num = 0;
 			processOutput = string.Empty;
 			command = Environment.ExpandEnvironmentVariables(command);
 			args = Environment.ExpandEnvironmentVariables(args);
@@ -180,18 +177,15 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 					process.WaitForExit();
 					if (!process.HasExited)
 					{
-						throw new IUException("Process <{0}> didn't exit correctly", new object[]
-						{
-							command
-						});
+						throw new IUException("Process <{0}> didn't exit correctly", new object[] { command });
 					}
-					result = process.ExitCode;
+					num = process.ExitCode;
 				}
 			}
-			return result;
+			return num;
 		}
 
-		// Token: 0x06000139 RID: 313 RVA: 0x0000797C File Offset: 0x00005B7C
+		// Token: 0x0600014C RID: 332 RVA: 0x000081FC File Offset: 0x000063FC
 		public static string BytesToHexicString(byte[] bytes)
 		{
 			if (bytes == null)
@@ -206,7 +200,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return stringBuilder.ToString();
 		}
 
-		// Token: 0x0600013A RID: 314 RVA: 0x000079D4 File Offset: 0x00005BD4
+		// Token: 0x0600014D RID: 333 RVA: 0x00008254 File Offset: 0x00006454
 		public static byte[] HexicStringToBytes(string text)
 		{
 			if (text == null)
@@ -215,29 +209,23 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 			if (text.Length % 2 != 0)
 			{
-				throw new IUException("Incorrect length of a hexic string:\"{0}\"", new object[]
-				{
-					text
-				});
+				throw new IUException("Incorrect length of a hexic string:\"{0}\"", new object[] { text });
 			}
 			List<byte> list = new List<byte>(text.Length / 2);
 			for (int i = 0; i < text.Length; i += 2)
 			{
 				string text2 = text.Substring(i, 2);
-				byte item;
-				if (!byte.TryParse(text2, NumberStyles.HexNumber, CultureInfo.InvariantCulture.NumberFormat, out item))
+				byte b;
+				if (!byte.TryParse(text2, NumberStyles.HexNumber, CultureInfo.InvariantCulture.NumberFormat, out b))
 				{
-					throw new IUException("Failed to parse hexic string: \"{0}\"", new object[]
-					{
-						text2
-					});
+					throw new IUException("Failed to parse hexic string: \"{0}\"", new object[] { text2 });
 				}
-				list.Add(item);
+				list.Add(b);
 			}
 			return list.ToArray();
 		}
 
-		// Token: 0x0600013B RID: 315 RVA: 0x00007A70 File Offset: 0x00005C70
+		// Token: 0x0600014E RID: 334 RVA: 0x000082F8 File Offset: 0x000064F8
 		public static bool ByteArrayCompare(byte[] array1, byte[] array2)
 		{
 			if (array1 == array2)
@@ -262,41 +250,42 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return true;
 		}
 
-		// Token: 0x0600013C RID: 316 RVA: 0x00007AB0 File Offset: 0x00005CB0
+		// Token: 0x0600014F RID: 335 RVA: 0x00008338 File Offset: 0x00006538
 		public static string GetCopyrightString()
 		{
-			string format = "Microsoft (C) {0} {1}";
+			string text = "Microsoft (C) {0} {1}";
 			string processName = Process.GetCurrentProcess().ProcessName;
 			string currentAssemblyFileVersion = FileUtils.GetCurrentAssemblyFileVersion();
 			StringBuilder stringBuilder = new StringBuilder();
-			stringBuilder.AppendFormat(format, processName, currentAssemblyFileVersion);
+			stringBuilder.AppendFormat(text, processName, currentAssemblyFileVersion);
 			stringBuilder.AppendLine();
 			return stringBuilder.ToString();
 		}
 
-		// Token: 0x0600013D RID: 317 RVA: 0x00007AEF File Offset: 0x00005CEF
+		// Token: 0x06000150 RID: 336 RVA: 0x0000837C File Offset: 0x0000657C
 		[SecurityPermission(SecurityAction.Demand, Flags = SecurityPermissionFlag.ControlPrincipal)]
 		public static bool IsCurrentUserAdmin()
 		{
-			return new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole("BUILTIN\\\\Administrators");
+			WindowsPrincipal windowsPrincipal = new WindowsPrincipal(WindowsIdentity.GetCurrent());
+			return windowsPrincipal.IsInRole("BUILTIN\\\\Administrators");
 		}
 
-		// Token: 0x0600013E RID: 318 RVA: 0x00007B05 File Offset: 0x00005D05
+		// Token: 0x06000151 RID: 337 RVA: 0x0000839F File Offset: 0x0000659F
 		public static string GetSha256Hash(byte[] buffer)
 		{
 			return BitConverter.ToString(CommonUtils.Sha256Algorithm.ComputeHash(buffer)).Replace("-", string.Empty);
 		}
 
-		// Token: 0x04000065 RID: 101
+		// Token: 0x04000076 RID: 118
 		private const int S_OK = 0;
 
-		// Token: 0x04000066 RID: 102
+		// Token: 0x04000077 RID: 119
 		private const int WimNoCommit = 0;
 
-		// Token: 0x04000067 RID: 103
+		// Token: 0x04000078 RID: 120
 		private const int WimCommit = 1;
 
-		// Token: 0x04000068 RID: 104
+		// Token: 0x04000079 RID: 121
 		private static readonly HashAlgorithm Sha256Algorithm = HashAlgorithm.Create("SHA256");
 	}
 }

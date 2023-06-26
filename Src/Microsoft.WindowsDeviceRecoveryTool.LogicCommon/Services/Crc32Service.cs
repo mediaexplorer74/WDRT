@@ -1,58 +1,62 @@
 ﻿using System;
 using System.ComponentModel.Composition;
+using System.Diagnostics;
 using System.IO;
 using System.Threading;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 {
-	// Token: 0x02000033 RID: 51
+	// Token: 0x02000008 RID: 8
 	[Export]
 	public class Crc32Service : IDisposable
 	{
-		// Token: 0x060002BD RID: 701 RVA: 0x0000B5ED File Offset: 0x000097ED
+		// Token: 0x0600005B RID: 91 RVA: 0x000027B8 File Offset: 0x000009B8
 		[ImportingConstructor]
 		public Crc32Service()
 		{
 		}
 
-		// Token: 0x1400000A RID: 10
-		// (add) Token: 0x060002BE RID: 702 RVA: 0x0000B5F8 File Offset: 0x000097F8
-		// (remove) Token: 0x060002BF RID: 703 RVA: 0x0000B634 File Offset: 0x00009834
+		// Token: 0x14000005 RID: 5
+		// (add) Token: 0x0600005C RID: 92 RVA: 0x00002F1C File Offset: 0x0000111C
+		// (remove) Token: 0x0600005D RID: 93 RVA: 0x00002F54 File Offset: 0x00001154
+		[field: DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event Action<int> Crc32ProgressEvent;
 
-		// Token: 0x060002C0 RID: 704 RVA: 0x0000B670 File Offset: 0x00009870
+		// Token: 0x0600005E RID: 94 RVA: 0x00002F89 File Offset: 0x00001189
 		public void Dispose()
 		{
 			this.Dispose(true);
 			GC.SuppressFinalize(this);
 		}
 
-		// Token: 0x060002C1 RID: 705 RVA: 0x0000B684 File Offset: 0x00009884
+		// Token: 0x0600005F RID: 95 RVA: 0x00002F9C File Offset: 0x0000119C
 		protected virtual void Dispose(bool disposing)
 		{
-			if (!this.disposed)
+			bool flag = this.disposed;
+			if (!flag)
 			{
 				this.disposed = true;
 			}
 		}
 
-		// Token: 0x060002C2 RID: 706 RVA: 0x0000B6AC File Offset: 0x000098AC
+		// Token: 0x06000060 RID: 96 RVA: 0x00002FC0 File Offset: 0x000011C0
 		public uint CalculateCrc32(string filePath, CancellationToken cancellationToken)
 		{
 			FileInfo fileInfo = new FileInfo(filePath);
-			if (!fileInfo.Exists)
+			bool flag = !fileInfo.Exists;
+			if (flag)
 			{
 				throw new InvalidOperationException(string.Format("File '{0}' not found.", filePath));
 			}
-			uint result;
+			uint num;
 			using (FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
 			{
-				result = this.CalculateCrc32(fileStream, cancellationToken);
+				num = this.CalculateCrc32(fileStream, cancellationToken);
 			}
-			return result;
+			return num;
 		}
 
-		// Token: 0x060002C3 RID: 707 RVA: 0x0000B718 File Offset: 0x00009918
+		// Token: 0x06000061 RID: 97 RVA: 0x00003028 File Offset: 0x00001228
 		private uint CalculateCrc32(Stream fileStream, CancellationToken cancellationToken)
 		{
 			uint[] array = new uint[256];
@@ -61,16 +65,17 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 				uint num2 = num;
 				for (int i = 8; i > 0; i--)
 				{
-					if ((num2 & 1U) == 1U)
+					bool flag = (num2 & 1U) == 1U;
+					if (flag)
 					{
-						num2 = (num2 >> 1 ^ 3988292384U);
+						num2 = (num2 >> 1) ^ 3988292384U;
 					}
 					else
 					{
 						num2 >>= 1;
 					}
 				}
-				array[(int)((UIntPtr)num)] = num2;
+				array[(int)num] = num2;
 			}
 			uint num3 = uint.MaxValue;
 			long num4 = 0L;
@@ -79,15 +84,17 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 				byte[] array2 = new byte[65536];
 				int num5 = fileStream.Read(array2, 0, array2.Length);
 				num4 += (long)num5;
-				if (0 == num5)
+				bool flag2 = num5 == 0;
+				if (flag2)
 				{
 					break;
 				}
 				for (int j = 0; j < num5; j++)
 				{
-					num3 = (num3 >> 8 ^ array[(int)((UIntPtr)((uint)array2[j] ^ (num3 & 255U)))]);
+					num3 = (num3 >> 8) ^ array[(int)((uint)array2[j] ^ (num3 & 255U))];
 				}
-				if (num4 % 65536000L == 0L)
+				bool flag3 = num4 % 65536000L == 0L;
+				if (flag3)
 				{
 					this.RaiseProgressEvent((int)(num4 * 100L / fileStream.Length % 101L));
 				}
@@ -96,17 +103,18 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 			return ~num3;
 		}
 
-		// Token: 0x060002C4 RID: 708 RVA: 0x0000B848 File Offset: 0x00009A48
+		// Token: 0x06000062 RID: 98 RVA: 0x0000314C File Offset: 0x0000134C
 		private void RaiseProgressEvent(int progress)
 		{
 			Action<int> crc32ProgressEvent = this.Crc32ProgressEvent;
-			if (crc32ProgressEvent != null)
+			bool flag = crc32ProgressEvent != null;
+			if (flag)
 			{
 				crc32ProgressEvent(progress);
 			}
 		}
 
-		// Token: 0x04000164 RID: 356
+		// Token: 0x04000021 RID: 33
 		private bool disposed;
 	}
 }

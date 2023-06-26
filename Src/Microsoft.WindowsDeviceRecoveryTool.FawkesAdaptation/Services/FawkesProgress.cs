@@ -4,15 +4,16 @@ using Microsoft.WindowsDeviceRecoveryTool.Common.Tracing;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.FawkesAdaptation.Services
 {
-	// Token: 0x0200000A RID: 10
+	// Token: 0x02000009 RID: 9
 	internal class FawkesProgress : Progress<FawkesProgressData>
 	{
-		// Token: 0x0600005A RID: 90 RVA: 0x0000361B File Offset: 0x0000181B
-		public FawkesProgress(Action<FawkesProgressData> progressHandler) : base(progressHandler)
+		// Token: 0x06000040 RID: 64 RVA: 0x0000323E File Offset: 0x0000143E
+		public FawkesProgress(Action<FawkesProgressData> progressHandler)
+			: base(progressHandler)
 		{
 		}
 
-		// Token: 0x0600005B RID: 91 RVA: 0x00003624 File Offset: 0x00001824
+		// Token: 0x06000041 RID: 65 RVA: 0x00003247 File Offset: 0x00001447
 		internal void SetupUpdaterEvents(ClickerFwUpdater updaterInstance)
 		{
 			if (this.updater != null)
@@ -23,7 +24,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.FawkesAdaptation.Services
 			this.updater.UpdaterEvent += this.UpdaterOnUpdaterEvent;
 		}
 
-		// Token: 0x0600005C RID: 92 RVA: 0x00003657 File Offset: 0x00001857
+		// Token: 0x06000042 RID: 66 RVA: 0x0000327A File Offset: 0x0000147A
 		internal void CleanUpdaterEvents()
 		{
 			if (this.updater != null)
@@ -32,14 +33,10 @@ namespace Microsoft.WindowsDeviceRecoveryTool.FawkesAdaptation.Services
 			}
 		}
 
-		// Token: 0x0600005D RID: 93 RVA: 0x00003678 File Offset: 0x00001878
+		// Token: 0x06000043 RID: 67 RVA: 0x0000329C File Offset: 0x0000149C
 		private void UpdaterOnUpdaterEvent(object sender, FwUpdaterEventArgs fwUpdaterEventArgs)
 		{
-			Tracer<FawkesProgress>.WriteInformation("Fawkes firmware update event received: {0}, params: {1}", new object[]
-			{
-				fwUpdaterEventArgs.Type,
-				fwUpdaterEventArgs.Parameters
-			});
+			Tracer<FawkesProgress>.WriteInformation("Fawkes firmware update event received: {0}, params: {1}", new object[] { fwUpdaterEventArgs.Type, fwUpdaterEventArgs.Parameters });
 			switch (fwUpdaterEventArgs.Type)
 			{
 			case FwUpdaterEventArgs.EventType.UpdateCompleted:
@@ -62,39 +59,39 @@ namespace Microsoft.WindowsDeviceRecoveryTool.FawkesAdaptation.Services
 			}
 		}
 
-		// Token: 0x0600005E RID: 94 RVA: 0x00003710 File Offset: 0x00001910
+		// Token: 0x06000044 RID: 68 RVA: 0x00003332 File Offset: 0x00001532
 		private void ProcessDeviceDisconnectedEvent(object parameters)
 		{
 		}
 
-		// Token: 0x0600005F RID: 95 RVA: 0x00003712 File Offset: 0x00001912
+		// Token: 0x06000045 RID: 69 RVA: 0x00003332 File Offset: 0x00001532
 		private void ProcessDeviceConnectedToApplicationEvent(object parameters)
 		{
 		}
 
-		// Token: 0x06000060 RID: 96 RVA: 0x00003714 File Offset: 0x00001914
+		// Token: 0x06000046 RID: 70 RVA: 0x00003332 File Offset: 0x00001532
 		private void ProcessDeviceConnectedToBootLoaderEvent(object parameters)
 		{
 		}
 
-		// Token: 0x06000061 RID: 97 RVA: 0x00003716 File Offset: 0x00001916
+		// Token: 0x06000047 RID: 71 RVA: 0x00003334 File Offset: 0x00001534
 		private void ProcessUpdateFinishedEvent(object parameters)
 		{
-			this.OnReport(new FawkesProgressData(new double?(100.0), "WaitUntilPhoneTurnsOn"));
+			this.OnReport(new FawkesProgressData(new double?((double)100), "WaitUntilPhoneTurnsOn"));
 		}
 
-		// Token: 0x06000062 RID: 98 RVA: 0x00003738 File Offset: 0x00001938
+		// Token: 0x06000048 RID: 72 RVA: 0x00003350 File Offset: 0x00001550
 		private void ProcessUpdateProgressEvent(object parameters)
 		{
-			double value = -1.0;
+			double num = -1.0;
 			if (parameters is double)
 			{
-				value = (double)parameters * 100.0;
+				num = (double)parameters * 100.0;
 			}
-			this.OnReport(new FawkesProgressData(new double?(value), "FlashingMessageInstallingSoftware"));
+			this.OnReport(new FawkesProgressData(new double?(num), "FlashingMessageInstallingSoftware"));
 		}
 
-		// Token: 0x0400001F RID: 31
+		// Token: 0x0400000F RID: 15
 		private ClickerFwUpdater updater;
 	}
 }

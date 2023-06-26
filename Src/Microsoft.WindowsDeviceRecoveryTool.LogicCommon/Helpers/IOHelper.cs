@@ -10,29 +10,31 @@ using Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Reporting.Interfaces;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Helpers
 {
-	// Token: 0x0200000B RID: 11
+	// Token: 0x02000032 RID: 50
 	internal class IOHelper
 	{
-		// Token: 0x06000063 RID: 99 RVA: 0x00002A4C File Offset: 0x00000C4C
+		// Token: 0x06000327 RID: 807 RVA: 0x0000C698 File Offset: 0x0000A898
 		public void CreateDir(string directory)
 		{
-			if (!Directory.Exists(directory))
+			bool flag = !Directory.Exists(directory);
+			if (flag)
 			{
 				Directory.CreateDirectory(directory);
 			}
 		}
 
-		// Token: 0x06000064 RID: 100 RVA: 0x00002A70 File Offset: 0x00000C70
+		// Token: 0x06000328 RID: 808 RVA: 0x0000C6BC File Offset: 0x0000A8BC
 		public void CreateDirForPath(string fullPath)
 		{
 			string directoryName = Path.GetDirectoryName(fullPath);
-			if (directoryName != null)
+			bool flag = directoryName != null;
+			if (flag)
 			{
 				this.CreateDir(directoryName);
 			}
 		}
 
-		// Token: 0x06000065 RID: 101 RVA: 0x00002A98 File Offset: 0x00000C98
+		// Token: 0x06000329 RID: 809 RVA: 0x0000C6E4 File Offset: 0x0000A8E4
 		public void SerializeReport(string reportPath, IReport report)
 		{
 			this.CreateDirForPath(reportPath);
@@ -44,10 +46,11 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Helpers
 			}
 		}
 
-		// Token: 0x06000066 RID: 102 RVA: 0x00002AF4 File Offset: 0x00000CF4
+		// Token: 0x0600032A RID: 810 RVA: 0x0000C738 File Offset: 0x0000A938
 		public void SaveReport(string reportPath, MsrReport report)
 		{
-			if (reportPath != null)
+			bool flag = reportPath != null;
+			if (flag)
 			{
 				this.CreateDirForPath(reportPath);
 				XmlSerializer xmlSerializer = new XmlSerializer(typeof(MsrReport));
@@ -59,10 +62,11 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Helpers
 			}
 		}
 
-		// Token: 0x06000067 RID: 103 RVA: 0x00002B60 File Offset: 0x00000D60
+		// Token: 0x0600032B RID: 811 RVA: 0x0000C7A0 File Offset: 0x0000A9A0
 		public void SaveReportAsCsv(string reportPath, IReport report)
 		{
-			if (reportPath != null)
+			bool flag = reportPath != null;
+			if (flag)
 			{
 				this.CreateDirForPath(reportPath);
 				string reportAsCsv = report.GetReportAsCsv();
@@ -74,10 +78,11 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Helpers
 			}
 		}
 
-		// Token: 0x06000068 RID: 104 RVA: 0x00002BC4 File Offset: 0x00000DC4
+		// Token: 0x0600032C RID: 812 RVA: 0x0000C7FC File Offset: 0x0000A9FC
 		public void SaveReportAsCsv(string reportPath, SurveyReport report)
 		{
-			if (reportPath != null)
+			bool flag = reportPath != null;
+			if (flag)
 			{
 				this.CreateDirForPath(reportPath);
 				string reportAsCsv = report.GetReportAsCsv();
@@ -89,10 +94,11 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Helpers
 			}
 		}
 
-		// Token: 0x06000069 RID: 105 RVA: 0x00002C28 File Offset: 0x00000E28
+		// Token: 0x0600032D RID: 813 RVA: 0x0000C858 File Offset: 0x0000AA58
 		public void SaveReport(string reportPath, ReportUpdateStatus4Parameters parameters)
 		{
-			if (reportPath != null)
+			bool flag = reportPath != null;
+			if (flag)
 			{
 				this.CreateDirForPath(reportPath);
 				XmlSerializer xmlSerializer = new XmlSerializer(typeof(ReportUpdateStatus4Parameters));
@@ -105,35 +111,35 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Helpers
 			}
 		}
 
-		// Token: 0x0600006A RID: 106 RVA: 0x00002CA8 File Offset: 0x00000EA8
+		// Token: 0x0600032E RID: 814 RVA: 0x0000C8D0 File Offset: 0x0000AAD0
 		public IReport DeserializeReport(string reportPath)
 		{
-			IReport result;
+			IReport report2;
 			using (FileStream fileStream = new FileStream(reportPath, FileMode.Open))
 			{
 				BinaryFormatter binaryFormatter = new BinaryFormatter();
 				IReport report = (IReport)binaryFormatter.Deserialize(fileStream);
 				report.LocalPath = reportPath;
-				result = report;
+				report2 = report;
 			}
-			return result;
+			return report2;
 		}
 
-		// Token: 0x0600006B RID: 107 RVA: 0x00002D04 File Offset: 0x00000F04
+		// Token: 0x0600032F RID: 815 RVA: 0x0000C924 File Offset: 0x0000AB24
 		public Report DeserializeFireReport(string reportPath)
 		{
-			Report result;
+			Report report2;
 			using (FileStream fileStream = new FileStream(reportPath, FileMode.Open))
 			{
 				BinaryFormatter binaryFormatter = new BinaryFormatter();
 				Report report = (Report)binaryFormatter.Deserialize(fileStream);
 				report.LocalPath = reportPath;
-				result = report;
+				report2 = report;
 			}
-			return result;
+			return report2;
 		}
 
-		// Token: 0x0600006C RID: 108 RVA: 0x00002D60 File Offset: 0x00000F60
+		// Token: 0x06000330 RID: 816 RVA: 0x0000C978 File Offset: 0x0000AB78
 		public void DeleteFile(string fileName)
 		{
 			try
@@ -146,41 +152,39 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Helpers
 			}
 		}
 
-		// Token: 0x0600006D RID: 109 RVA: 0x00002DC8 File Offset: 0x00000FC8
+		// Token: 0x06000331 RID: 817 RVA: 0x0000C9BC File Offset: 0x0000ABBC
 		public string[] GetFiles(string dir)
 		{
 			string[] files = Directory.GetFiles(dir);
-			return (from x in files
-			where !x.Contains("msr_")
-			select x).ToArray<string>();
+			return files.Where((string x) => !x.Contains("msr_")).ToArray<string>();
 		}
 
-		// Token: 0x0600006E RID: 110 RVA: 0x00002E0C File Offset: 0x0000100C
+		// Token: 0x06000332 RID: 818 RVA: 0x0000CA00 File Offset: 0x0000AC00
 		public string[] GetMsrFiles(string dir)
 		{
 			return Directory.GetFiles(dir, "msr_*.*");
 		}
 
-		// Token: 0x0600006F RID: 111 RVA: 0x00002E2C File Offset: 0x0000102C
+		// Token: 0x06000333 RID: 819 RVA: 0x0000CA20 File Offset: 0x0000AC20
 		public string GetReportFileExtension(ReportFileType reportFileType)
 		{
-			string result;
+			string text;
 			switch (reportFileType)
 			{
 			case ReportFileType.Xml:
-				result = "xml";
+				text = "xml";
 				break;
 			case ReportFileType.Binary:
-				result = "dat";
+				text = "dat";
 				break;
 			case ReportFileType.Csv:
-				result = "csv";
+				text = "csv";
 				break;
 			default:
-				result = "xml";
+				text = "xml";
 				break;
 			}
-			return result;
+			return text;
 		}
 	}
 }

@@ -1,19 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{081F084D-70AB-42AA-A1E7-460F52620CA7}</ProjectGuid>
+    <ProjectGuid>{8C726962-D7A3-4054-B90F-0583259F966F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Microsoft.WindowsDeviceRecoveryTool.Localization</RootNamespace>
     <AssemblyName>Microsoft.WindowsDeviceRecoveryTool.Localization</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
     <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{60DC8134-EBA5-43B8-BCC9-BB4BC16C2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile />
+    <TargetFramework>net48</TargetFramework>
+    <UseWPF>True</UseWPF>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+  <PropertyGroup>
+    <NoStdLib>True</NoStdLib>
+    <EnableDefaultItems>False</EnableDefaultItems>
+  </PropertyGroup>
+  <PropertyGroup />
+
+   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
@@ -22,6 +26,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -31,28 +36,78 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xaml" />
-    <Reference Include="WindowsBase" />
-  </ItemGroup>
-  <ItemGroup>
-    <AppDesigner Include="Properties\" />
-  </ItemGroup>
+ 
   <ItemGroup>
     <Compile Include="LocalizationExtension.cs" />
     <Compile Include="LocalizationManager.cs" />
     <Compile Include="LocalizationNotTranslatableWords.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceLocalizationProvider.cs" />
-    <Compile Include="Resources\Resources.cs" />
+    <Compile Include="Resources\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Resources.resources" />
+    <EmbeddedResource Include="Resources\Resources.ar-SA.resx" />
+    <EmbeddedResource Include="Resources\Resources.cs-CZ.resx" />
+    <EmbeddedResource Include="Resources\Resources.da-DK.resx" />
+    <EmbeddedResource Include="Resources\Resources.de-DE.resx" />
+    <EmbeddedResource Include="Resources\Resources.el-GR.resx" />
+    <EmbeddedResource Include="Resources\Resources.en-GB.resx" />
+    <EmbeddedResource Include="Resources\Resources.es-ES.resx" />
+    <EmbeddedResource Include="Resources\Resources.es-US.resx" />
+    <EmbeddedResource Include="Resources\Resources.et-EE.resx" />
+    <EmbeddedResource Include="Resources\Resources.fi-FI.resx" />
+    <EmbeddedResource Include="Resources\Resources.fil-PH.resx" />
+    <EmbeddedResource Include="Resources\Resources.fr-CA.resx" />
+    <EmbeddedResource Include="Resources\Resources.fr-FR.resx" />
+    <EmbeddedResource Include="Resources\Resources.he-IL.resx" />
+    <EmbeddedResource Include="Resources\Resources.hr-HR.resx" />
+    <EmbeddedResource Include="Resources\Resources.hu-HU.resx" />
+    <EmbeddedResource Include="Resources\Resources.id-ID.resx" />
+    <EmbeddedResource Include="Resources\Resources.it-IT.resx" />
+    <EmbeddedResource Include="Resources\Resources.ja-JP.resx" />
+    <EmbeddedResource Include="Resources\Resources.ko-KR.resx" />
+    <EmbeddedResource Include="Resources\Resources.lt-LT.resx" />
+    <EmbeddedResource Include="Resources\Resources.lv-LV.resx" />
+    <EmbeddedResource Include="Resources\Resources.ms-MY.resx" />
+    <EmbeddedResource Include="Resources\Resources.nb-NO.resx" />
+    <EmbeddedResource Include="Resources\Resources.nl-NL.resx" />
+    <EmbeddedResource Include="Resources\Resources.pl-PL.resx" />
+    <EmbeddedResource Include="Resources\Resources.pt-BR.resx" />
+    <EmbeddedResource Include="Resources\Resources.pt-PT.resx" />
+    <EmbeddedResource Include="Resources\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Resources.ro-RO.resx" />
+    <EmbeddedResource Include="Resources\Resources.ru-RU.resx" />
+    <EmbeddedResource Include="Resources\Resources.sk-SK.resx" />
+    <EmbeddedResource Include="Resources\Resources.sl-SI.resx" />
+    <EmbeddedResource Include="Resources\Resources.sv-SE.resx" />
+    <EmbeddedResource Include="Resources\Resources.th-TH.resx" />
+    <EmbeddedResource Include="Resources\Resources.tr-TR.resx" />
+    <EmbeddedResource Include="Resources\Resources.vi-VN.resx" />
+    <EmbeddedResource Include="Resources\Resources.zh-CN.resx" />
+    <EmbeddedResource Include="Resources\Resources.zh-HK.resx" />
+    <EmbeddedResource Include="Resources\Resources.zh-TW.resx" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\mscorlib\mscorlib.csproj">
+      <Project>{8C726962-D7A3-4054-B90F-0583259F968E}</Project>
+      <Name>mscorlib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\System\System.csproj">
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9692}</Project>
+      <Name>System</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Core" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
 </Project>

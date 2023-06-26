@@ -82,14 +82,14 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 		// Token: 0x060000EF RID: 239 RVA: 0x0000F85C File Offset: 0x0000DA5C
 		public void ReadPartition(string partition, out byte[] data)
 		{
-			uint blockSize = 0U;
-			ulong num = 0UL;
-			if (!this.FFUDevice.GetDiskInfo(out blockSize, out num))
+			uint num = 0U;
+			ulong num2 = 0UL;
+			if (!this.FFUDevice.GetDiskInfo(out num, out num2))
 			{
 				throw new DeviceException("Unable to retrieve disk size details.  Please ensure the device supports this FFU operation.");
 			}
 			GptDevice gptDevice = null;
-			if (!GptDevice.CreateInstance(this.FFUDevice, blockSize, out gptDevice))
+			if (!GptDevice.CreateInstance(this.FFUDevice, num, out gptDevice))
 			{
 				throw new DeviceException("Unable to parse GPT on device.  The disk may have been corrupted.");
 			}
@@ -102,14 +102,14 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 		// Token: 0x060000F0 RID: 240 RVA: 0x0000F8C4 File Offset: 0x0000DAC4
 		public void WritePartition(string partition, byte[] data)
 		{
-			uint blockSize = 0U;
-			ulong num = 0UL;
-			if (!this.FFUDevice.GetDiskInfo(out blockSize, out num))
+			uint num = 0U;
+			ulong num2 = 0UL;
+			if (!this.FFUDevice.GetDiskInfo(out num, out num2))
 			{
 				throw new DeviceException("Unable to retrieve disk size details.  Please ensure that the device supports this FFU operation");
 			}
 			GptDevice gptDevice = null;
-			if (!GptDevice.CreateInstance(this.FFUDevice, blockSize, out gptDevice))
+			if (!GptDevice.CreateInstance(this.FFUDevice, num, out gptDevice))
 			{
 				throw new DeviceException("Unable to parse GPT on device.  The disk may have been corrupted.");
 			}

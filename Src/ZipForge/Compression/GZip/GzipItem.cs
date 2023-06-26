@@ -3,7 +3,7 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using ComponentAce.Compression.Archiver;
-using ComponentAce.Compression.Exception1;
+using ComponentAce.Compression.Exception;
 using ComponentAce.Compression.Interfaces;
 using ComponentAce.Compression.Tar;
 using ComponentAce.Compression.ZipForge;
@@ -25,7 +25,8 @@ namespace ComponentAce.Compression.GZip
 		}
 
 		// Token: 0x060002A0 RID: 672 RVA: 0x00018152 File Offset: 0x00017152
-		public GzipItem(string name, DoOnStreamOperationFailureDelegate writeToStreamFailureDelegate, DoOnStreamOperationFailureDelegate readFromStreamFailureDelegate) : this(writeToStreamFailureDelegate, readFromStreamFailureDelegate)
+		public GzipItem(string name, DoOnStreamOperationFailureDelegate writeToStreamFailureDelegate, DoOnStreamOperationFailureDelegate readFromStreamFailureDelegate)
+			: this(writeToStreamFailureDelegate, readFromStreamFailureDelegate)
 		{
 			this.Name = name;
 		}
@@ -621,7 +622,7 @@ namespace ComponentAce.Compression.GZip
 			{
 				throw ExceptionBuilder.Exception(ErrorCode.IndexOutOfBounds);
 			}
-			this.Flag &= (byte)(255 ^ 1 << bitIndex);
+			this.Flag &= (byte)(255 ^ (1 << bitIndex));
 		}
 
 		// Token: 0x040001CA RID: 458

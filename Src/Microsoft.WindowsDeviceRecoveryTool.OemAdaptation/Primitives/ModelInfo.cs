@@ -8,7 +8,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.OemAdaptation.Primitives
 	// Token: 0x02000006 RID: 6
 	public sealed class ModelInfo
 	{
-		// Token: 0x0600000D RID: 13 RVA: 0x00002194 File Offset: 0x00000394
+		// Token: 0x06000013 RID: 19 RVA: 0x0000223C File Offset: 0x0000043C
 		public ModelInfo(string name, Bitmap bitmap, DetectionInfo detectionInfo, IEnumerable<VariantInfo> variants)
 		{
 			if (name == null)
@@ -38,24 +38,24 @@ namespace Microsoft.WindowsDeviceRecoveryTool.OemAdaptation.Primitives
 			this.Variants = array;
 		}
 
-		// Token: 0x17000005 RID: 5
-		// (get) Token: 0x0600000E RID: 14 RVA: 0x00002214 File Offset: 0x00000414
-		// (set) Token: 0x0600000F RID: 15 RVA: 0x0000221C File Offset: 0x0000041C
+		// Token: 0x17000007 RID: 7
+		// (get) Token: 0x06000014 RID: 20 RVA: 0x000022BB File Offset: 0x000004BB
+		// (set) Token: 0x06000015 RID: 21 RVA: 0x000022C3 File Offset: 0x000004C3
 		public string Name { get; private set; }
 
-		// Token: 0x17000006 RID: 6
-		// (get) Token: 0x06000010 RID: 16 RVA: 0x00002225 File Offset: 0x00000425
-		// (set) Token: 0x06000011 RID: 17 RVA: 0x0000222D File Offset: 0x0000042D
+		// Token: 0x17000008 RID: 8
+		// (get) Token: 0x06000016 RID: 22 RVA: 0x000022CC File Offset: 0x000004CC
+		// (set) Token: 0x06000017 RID: 23 RVA: 0x000022D4 File Offset: 0x000004D4
 		public Bitmap Bitmap { get; private set; }
 
-		// Token: 0x17000007 RID: 7
-		// (get) Token: 0x06000012 RID: 18 RVA: 0x00002236 File Offset: 0x00000436
-		// (set) Token: 0x06000013 RID: 19 RVA: 0x0000223E File Offset: 0x0000043E
+		// Token: 0x17000009 RID: 9
+		// (get) Token: 0x06000018 RID: 24 RVA: 0x000022DD File Offset: 0x000004DD
+		// (set) Token: 0x06000019 RID: 25 RVA: 0x000022E5 File Offset: 0x000004E5
 		public DetectionInfo DetectionInfo { get; private set; }
 
-		// Token: 0x17000008 RID: 8
-		// (get) Token: 0x06000014 RID: 20 RVA: 0x00002247 File Offset: 0x00000447
-		// (set) Token: 0x06000015 RID: 21 RVA: 0x0000224F File Offset: 0x0000044F
+		// Token: 0x1700000A RID: 10
+		// (get) Token: 0x0600001A RID: 26 RVA: 0x000022EE File Offset: 0x000004EE
+		// (set) Token: 0x0600001B RID: 27 RVA: 0x000022F6 File Offset: 0x000004F6
 		public VariantInfo[] Variants { get; private set; }
 	}
 }

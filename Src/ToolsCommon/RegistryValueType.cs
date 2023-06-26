@@ -2,32 +2,32 @@
 
 namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 {
-	// Token: 0x02000013 RID: 19
+	// Token: 0x02000019 RID: 25
 	public enum RegistryValueType : uint
 	{
-		// Token: 0x0400002D RID: 45
+		// Token: 0x04000043 RID: 67
 		None,
-		// Token: 0x0400002E RID: 46
+		// Token: 0x04000044 RID: 68
 		String,
-		// Token: 0x0400002F RID: 47
+		// Token: 0x04000045 RID: 69
 		ExpandString,
-		// Token: 0x04000030 RID: 48
+		// Token: 0x04000046 RID: 70
 		Binary,
-		// Token: 0x04000031 RID: 49
+		// Token: 0x04000047 RID: 71
 		DWord,
-		// Token: 0x04000032 RID: 50
+		// Token: 0x04000048 RID: 72
 		DWordBigEndian,
-		// Token: 0x04000033 RID: 51
+		// Token: 0x04000049 RID: 73
 		Link,
-		// Token: 0x04000034 RID: 52
+		// Token: 0x0400004A RID: 74
 		MultiString,
-		// Token: 0x04000035 RID: 53
+		// Token: 0x0400004B RID: 75
 		RegResourceList,
-		// Token: 0x04000036 RID: 54
+		// Token: 0x0400004C RID: 76
 		RegFullResourceDescriptor,
-		// Token: 0x04000037 RID: 55
+		// Token: 0x0400004D RID: 77
 		RegResourceRequirementsList,
-		// Token: 0x04000038 RID: 56
+		// Token: 0x0400004E RID: 78
 		QWord
 	}
 }

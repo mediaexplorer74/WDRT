@@ -1,30 +1,33 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Common
 {
-	// Token: 0x02000008 RID: 8
+	// Token: 0x02000007 RID: 7
 	[CompilerGenerated]
 	public class NotificationObject : INotifyPropertyChanged
 	{
 		// Token: 0x14000002 RID: 2
-		// (add) Token: 0x06000019 RID: 25 RVA: 0x0000284C File Offset: 0x00000A4C
-		// (remove) Token: 0x0600001A RID: 26 RVA: 0x00002888 File Offset: 0x00000A88
+		// (add) Token: 0x06000010 RID: 16 RVA: 0x0000223C File Offset: 0x0000043C
+		// (remove) Token: 0x06000011 RID: 17 RVA: 0x00002274 File Offset: 0x00000474
+		[field: DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		// Token: 0x0600001B RID: 27 RVA: 0x000028C4 File Offset: 0x00000AC4
+		// Token: 0x06000012 RID: 18 RVA: 0x000022AC File Offset: 0x000004AC
 		private void OnPropertyChanged([CallerMemberName] string propertyName = null)
 		{
 			PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
 			this.RaisePropertyChanged(propertyChanged, propertyName);
 		}
 
-		// Token: 0x0600001C RID: 28 RVA: 0x0000290C File Offset: 0x00000B0C
+		// Token: 0x06000013 RID: 19 RVA: 0x000022CC File Offset: 0x000004CC
 		protected virtual void RaisePropertyChanged(PropertyChangedEventHandler handler, string propertyName)
 		{
-			if (handler != null)
+			bool flag = handler != null;
+			if (flag)
 			{
 				AppDispatcher.Execute(delegate
 				{
@@ -33,34 +36,36 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Common
 			}
 		}
 
-		// Token: 0x0600001D RID: 29 RVA: 0x00002964 File Offset: 0x00000B64
+		// Token: 0x06000014 RID: 20 RVA: 0x00002318 File Offset: 0x00000518
 		protected void RaisePropertyChanged<T>(Expression<Func<T>> expression)
 		{
 			string name = ReflectionHelper.GetName<T>(expression);
 			this.OnPropertyChanged(name);
 		}
 
-		// Token: 0x0600001E RID: 30 RVA: 0x00002984 File Offset: 0x00000B84
+		// Token: 0x06000015 RID: 21 RVA: 0x00002338 File Offset: 0x00000538
 		protected void SetValue<T>(Expression<Func<T>> expression, Action setValueAction)
 		{
-			if (setValueAction != null)
+			bool flag = setValueAction != null;
+			if (flag)
 			{
 				setValueAction();
 			}
 			this.RaisePropertyChanged<T>(expression);
 		}
 
-		// Token: 0x0600001F RID: 31 RVA: 0x000029AB File Offset: 0x00000BAB
+		// Token: 0x06000016 RID: 22 RVA: 0x0000235F File Offset: 0x0000055F
 		protected void SetValue<T>(Expression<Func<T>> expression, ref T backfield, T value)
 		{
 			backfield = value;
 			this.RaisePropertyChanged<T>(expression);
 		}
 
-		// Token: 0x06000020 RID: 32 RVA: 0x000029C0 File Offset: 0x00000BC0
+		// Token: 0x06000017 RID: 23 RVA: 0x00002374 File Offset: 0x00000574
 		protected void SetValue<T>(Expression<Func<T>> expression, Action<T> setValueAction, T value)
 		{
-			if (setValueAction != null)
+			bool flag = setValueAction != null;
+			if (flag)
 			{
 				setValueAction(value);
 				this.RaisePropertyChanged<T>(expression);

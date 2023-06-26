@@ -1,0 +1,892 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccentColor" xml:space="preserve">
+    <value>Accentfärg</value>
+  </data>
+  <data name="AccentColorBlack" xml:space="preserve">
+    <value>Svart</value>
+  </data>
+  <data name="AccentColorBlue" xml:space="preserve">
+    <value>Blå</value>
+  </data>
+  <data name="AccentColorCobalt" xml:space="preserve">
+    <value>Kobolt</value>
+  </data>
+  <data name="AccentColorCrimson" xml:space="preserve">
+    <value>Karmosinröd</value>
+  </data>
+  <data name="AccentColorEmerald" xml:space="preserve">
+    <value>Smaragdgrön</value>
+  </data>
+  <data name="AccentColorIndigo" xml:space="preserve">
+    <value>Indigo</value>
+  </data>
+  <data name="AccentColorMauve" xml:space="preserve">
+    <value>Malva</value>
+  </data>
+  <data name="AccentColorSienna" xml:space="preserve">
+    <value>Sienna – rödbrun</value>
+  </data>
+  <data name="AddressForm" xml:space="preserve">
+    <value>Adress</value>
+  </data>
+  <data name="AllFilesSize" xml:space="preserve">
+    <value>Total filstorlek: {0}</value>
+  </data>
+  <data name="AnotherInstanceAlreadyRunning" xml:space="preserve">
+    <value>Ett annat exemplar av {0} är redan igång.</value>
+  </data>
+  <data name="ApplicationData" xml:space="preserve">
+    <value>Programdata</value>
+  </data>
+  <data name="ApplicationUpdate" xml:space="preserve">
+    <value>Programuppdatering</value>
+  </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>Är du säker?</value>
+  </data>
+  <data name="AutomaticPackageFileSelection" xml:space="preserve">
+    <value>Letar efter rätt paket för den anslutna telefonen.</value>
+  </data>
+  <data name="AutomaticPackageSelection" xml:space="preserve">
+    <value>Automatiskt val av paket</value>
+  </data>
+  <data name="AvailablePackageIsOlder" xml:space="preserve">
+    <value>Tillgänglig programvara är äldre än den som finns i din telefon.</value>
+  </data>
+  <data name="AwaitRecoveryAfterEmergencyFlashingInstruction" xml:space="preserve">
+    <value>Väntar på telefonen efter lyckad återställning.
+Om batterinivån är låg kan det ta upp till 30 minuter.</value>
+  </data>
+  <data name="BatteryCheckHeader" xml:space="preserve">
+    <value>Kontrollera batteriet</value>
+  </data>
+  <data name="BatteryCheckingCancelled" xml:space="preserve">
+    <value>Batterikontrollen avbröts.</value>
+  </data>
+  <data name="BatteryWarning" xml:space="preserve">
+    <value>Säkerställ att telefonens batterinivå är minst 25 %. Annars kan din telefon skadas.</value>
+  </data>
+  <data name="ButtonBrowse" xml:space="preserve">
+    <value>Bläddra</value>
+  </data>
+  <data name="ButtonCancel" xml:space="preserve">
+    <value>Avbryt</value>
+  </data>
+  <data name="ButtonChangePackagePath" xml:space="preserve">
+    <value>Ändra målkatalog för paketet</value>
+  </data>
+  <data name="ButtonClean" xml:space="preserve">
+    <value>Rensa alla appdata</value>
+  </data>
+  <data name="ButtonCleanOneCategory" xml:space="preserve">
+    <value>Rensa</value>
+  </data>
+  <data name="ButtonCollectLogs" xml:space="preserve">
+    <value>Exportera</value>
+  </data>
+  <data name="ButtonContinue" xml:space="preserve">
+    <value>Fortsätt</value>
+  </data>
+  <data name="ButtonDelete" xml:space="preserve">
+    <value>Radera</value>
+  </data>
+  <data name="ButtonExit" xml:space="preserve">
+    <value>Avsluta</value>
+  </data>
+  <data name="ButtonFinish" xml:space="preserve">
+    <value>Avsluta</value>
+  </data>
+  <data name="ButtonInstall" xml:space="preserve">
+    <value>Installera</value>
+  </data>
+  <data name="ButtonInstallSoftware" xml:space="preserve">
+    <value>Installera programvara</value>
+  </data>
+  <data name="ButtonMyPhoneIsNotOnTheList" xml:space="preserve">
+    <value>Min telefon finns inte i listan</value>
+  </data>
+  <data name="ButtonMyPhoneWasNotDetected" xml:space="preserve">
+    <value>Min telefon detekterades inte</value>
+  </data>
+  <data name="ButtonNewFolder" xml:space="preserve">
+    <value>Ny mapp</value>
+  </data>
+  <data name="ButtonNext" xml:space="preserve">
+    <value>Nästa</value>
+  </data>
+  <data name="ButtonNo" xml:space="preserve">
+    <value>Nej</value>
+  </data>
+  <data name="ButtonOff" xml:space="preserve">
+    <value>Av</value>
+  </data>
+  <data name="ButtonOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ButtonOn" xml:space="preserve">
+    <value>På</value>
+  </data>
+  <data name="ButtonReset" xml:space="preserve">
+    <value>Återställ till standardinställningarna</value>
+  </data>
+  <data name="ButtonTryAgain" xml:space="preserve">
+    <value>Försök igen</value>
+  </data>
+  <data name="ButtonYes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="CapsLockIsOn" xml:space="preserve">
+    <value>Caps Lock på</value>
+  </data>
+  <data name="CheckLatestPackageHeader" xml:space="preserve">
+    <value>Information om telefonen</value>
+  </data>
+  <data name="CheckingAlreadyDownloadedFiles" xml:space="preserve">
+    <value>Kontrollerar nedladdade filers kompatibilitet</value>
+  </data>
+  <data name="CheckingAppUpdate" xml:space="preserve">
+    <value>Letar efter programuppdateringar</value>
+  </data>
+  <data name="CheckingFirmwareAvailability" xml:space="preserve">
+    <value>Kontrollerar programvarans tillgänglighet</value>
+  </data>
+  <data name="CheckingPackageIntegrity" xml:space="preserve">
+    <value>Kontrollerar paketets integritet</value>
+  </data>
+  <data name="CleanUserDataQuestion" xml:space="preserve">
+    <value>Är du säker på att du vill radera all programdata (rapporter, telefonprogrampaket, loggfiler)?</value>
+  </data>
+  <data name="CollectingLogFilesInfo" xml:space="preserve">
+    <value>Samlar loggfiler. Var god vänta.</value>
+  </data>
+  <data name="ComputerBatteryWarning" xml:space="preserve">
+    <value>Din dators batterinivå är låg. Anslut din dator till en laddare och försök igen.</value>
+  </data>
+  <data name="ConnectPhone" xml:space="preserve">
+    <value>Anslut telefonen</value>
+  </data>
+  <data name="ConnectPhoneWithUsbCable" xml:space="preserve">
+    <value>Anslut USB-kabeln till telefonen.</value>
+  </data>
+  <data name="ConnectedDeviceCannotBeRecovered" xml:space="preserve">
+    <value>Den anslutna telefonen kan inte återställas.</value>
+  </data>
+  <data name="CouldNotDetectPhone" xml:space="preserve">
+    <value>Det gick inte att detektera telefonen</value>
+  </data>
+  <data name="CreatingNewFolderMessage" xml:space="preserve">
+    <value>Skapa ny mapp</value>
+  </data>
+  <data name="CurrentFirmwareVersion" xml:space="preserve">
+    <value>Installerad programvaruversion:</value>
+  </data>
+  <data name="CustomPackagesPath" xml:space="preserve">
+    <value>Använd egen målkatalog för paket</value>
+  </data>
+  <data name="DeleteLogsQuestion" xml:space="preserve">
+    <value>Är du säker på att du vill radera loggfilerna?</value>
+  </data>
+  <data name="DeletePackagesQuestion" xml:space="preserve">
+    <value>Är du säker på att du vill radera filer för återställning av programvara?</value>
+  </data>
+  <data name="DeleteReportsQuestion" xml:space="preserve">
+    <value>Är du säker på att du vill radera rapportfiler?</value>
+  </data>
+  <data name="DeletingLogFilesInfo" xml:space="preserve">
+    <value>Raderar loggfiler</value>
+  </data>
+  <data name="DeletingPackagesInfo" xml:space="preserve">
+    <value>Raderar filer för återställning av programvara</value>
+  </data>
+  <data name="DeletingReportsInfo" xml:space="preserve">
+    <value>Raderar rapportfiler</value>
+  </data>
+  <data name="DetailsHeader" xml:space="preserve">
+    <value>Detaljer</value>
+  </data>
+  <data name="Device" xml:space="preserve">
+    <value>Telefon</value>
+  </data>
+  <data name="DeviceFlashing" xml:space="preserve">
+    <value>Installation av programvarupaket</value>
+  </data>
+  <data name="DeviceInUefiMode" xml:space="preserve">
+    <value>Lumia-telefon</value>
+  </data>
+  <data name="DeviceSelectionHeader" xml:space="preserve">
+    <value>Val av telefon</value>
+  </data>
+  <data name="DirectoryNotSet" xml:space="preserve">
+    <value>Ingen katalog har valts, eller så finns inte vald katalog.</value>
+  </data>
+  <data name="DisclaimerBackupInfo" xml:space="preserve">
+    <value>Personligt innehåll i telefonen kommer att raderas under installationen. Vi rekommenderar att du gör en säkerhetskopiering av telefonen, under:</value>
+  </data>
+  <data name="DisclaimerHeader" xml:space="preserve">
+    <value>Viktigt meddelande</value>
+  </data>
+  <data name="DisclaimerInfoInstallationDuration" xml:space="preserve">
+    <value>Det tar cirka 15 minuter att installera programvaran. Nedladdningstiden för programpaketet avgörs av nätverkets hastighet.</value>
+  </data>
+  <data name="DisconnectPhone" xml:space="preserve">
+    <value>Koppla bort USB-kabeln från telefonen.</value>
+  </data>
+  <data name="DowngradeSoftwareQuestion" xml:space="preserve">
+    <value>Du försöker installera programvara som är äldre än den som redan finns installerad på telefonen. Vill du fortsätta?</value>
+  </data>
+  <data name="DownloadCancelled" xml:space="preserve">
+    <value>Hämtningen avbröts</value>
+  </data>
+  <data name="DownloadProgressExactMinute" xml:space="preserve">
+    <value>Ungefär {0} minuter kvar</value>
+  </data>
+  <data name="DownloadProgressMinute" xml:space="preserve">
+    <value>Ungefär en minut kvar</value>
+  </data>
+  <data name="DownloadProgressMinuteLess" xml:space="preserve">
+    <value>Mindre än en minut kvar</value>
+  </data>
+  <data name="DownloadingCancelMessage" xml:space="preserve">
+    <value>Då avbryter du hämtningen. De filer som redan hämtats raderas inte. Du kan återuppta hämtningen senare.</value>
+  </data>
+  <data name="DownloadingEmergencyPackage" xml:space="preserve">
+    <value>Hämtar nödpaket</value>
+  </data>
+  <data name="DownloadingFiles" xml:space="preserve">
+    <value>Hämtar filer: {0}/{1} ({2})</value>
+  </data>
+  <data name="DownloadingInstallPacket" xml:space="preserve">
+    <value>Hämtar ny version</value>
+  </data>
+  <data name="DownloadingPackage" xml:space="preserve">
+    <value>Hämtar paket</value>
+  </data>
+  <data name="EmergencyFlashingMessage" xml:space="preserve">
+    <value>Nödblinkning</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Fel</value>
+  </data>
+  <data name="ErrorDescription_AutoUpdateException" xml:space="preserve">
+    <value>Det verkar vara problem med att ansluta till servern. Kontrollera din internetanslutning. Kontrollera att dina inställningar för proxy, brandvägg och virusskydd är korrekta. Kontrollera också inställningarna för tid och datum.</value>
+  </data>
+  <data name="ErrorDescription_CannotAccessDirectoryException" xml:space="preserve">
+    <value>Du tycks sakna behörighet för katalogen. Ändra katalogens målkatalog eller ändra behörighet för katalogen.</value>
+  </data>
+  <data name="ErrorDescription_DeviceNotFoundException" xml:space="preserve">
+    <value>Telefonen hittades ej.</value>
+  </data>
+  <data name="ErrorDescription_DownloadPackageException" xml:space="preserve">
+    <value>Kontrollera att proxyinställningarna stämmer. Klicka sedan på "{0}". Om du vill avbryta hämtningen klickar du på "{1}".</value>
+  </data>
+  <data name="ErrorDescription_EmergencyPackageNotFoundOnServerException" xml:space="preserve">
+    <value>Nödblinkning stöds för närvarande inte för din telefon</value>
+  </data>
+  <data name="ErrorDescription_FirmwareFileNotFoundException" xml:space="preserve">
+    <value>Programpaketet är ofullständigt. En eller flera filer saknas. Ladda ned paketet igen eller välj annan programvara.</value>
+  </data>
+  <data name="ErrorDescription_HtcDeviceCommunicationException" xml:space="preserve">
+    <value>Starta om enheten i läget {0}.</value>
+  </data>
+  <data name="ErrorDescription_HtcPackageFileCheckException" xml:space="preserve">
+    <value>Hämta ROM-paketfilen igen.</value>
+  </data>
+  <data name="ErrorDescription_HtcServiceControlException" xml:space="preserve">
+    <value>Kontrollera om {0}-tjänsten har stoppats.</value>
+  </data>
+  <data name="ErrorDescription_HtcUsbCommunicationException" xml:space="preserve">
+    <value>Starta om enheten i {0}.
+Kontrollera enhetens USB-anslutning.</value>
+  </data>
+  <data name="ErrorDescription_HtcUsbPortOpenException" xml:space="preserve">
+    <value>Se efter om porten används av någon annan applikation.
+Kontrollera enhetens USB-anslutning.</value>
+  </data>
+  <data name="ErrorDescription_InvalidOperationException" xml:space="preserve">
+    <value>Starta om programmet.</value>
+  </data>
+  <data name="ErrorDescription_NoInternetConnectionException" xml:space="preserve">
+    <value>Den senaste åtgärden kunde inte slutföras eftersom internetanslutningen inte är aktiv.</value>
+  </data>
+  <data name="ErrorDescription_NotEnoughSpaceException" xml:space="preserve">
+    <value>{0} saknas på disk {1}. Frigör lite utrymme och försök igen.</value>
+  </data>
+  <data name="ErrorDescription_OperationCanceledException" xml:space="preserve">
+    <value>Åtgärden avbröts.</value>
+  </data>
+  <data name="ErrorDescription_PackageNotFoundException" xml:space="preserve">
+    <value>Programpaket ej tillgängligt för denna telefon.</value>
+  </data>
+  <data name="ErrorDescription_PlannedServiceBreakException" xml:space="preserve">
+    <value>Tjänsten är ej tillgänglig mellan {0} och {1}. Försök igen senare.</value>
+  </data>
+  <data name="ErrorDescription_ReadPhoneInformationException" xml:space="preserve">
+    <value>Vi kunde inte läsa information från din telefon.</value>
+  </data>
+  <data name="ErrorDescription_RestartApplicationException" xml:space="preserve">
+    <value>Frånkoppla alla telefoner och starta om programmet. Om problemet kvarstår, avinstallera {0} och ladda ned den senaste versionen av programmet.</value>
+  </data>
+  <data name="ErrorDescription_UnknownError" xml:space="preserve">
+    <value>Det gick inte att genomföra åtgärden.</value>
+  </data>
+  <data name="ErrorDescription_WebException" xml:space="preserve">
+    <value>Det verkar vara problem med att ansluta till servern. Kontrollera din internetanslutning. Kontrollera att dina inställningar för proxy, brandvägg och virusskydd är korrekta.</value>
+  </data>
+  <data name="ErrorDetails_NotEnoughSpaceOnTheDiskException" xml:space="preserve">
+    <value>{1} ledigt utrymme på disk {0} krävs för uppdateringen. Frigör lite utrymme och försök igen.</value>
+  </data>
+  <data name="ErrorHeader" xml:space="preserve">
+    <value>Tyvärr, vi stötte på ett problem</value>
+  </data>
+  <data name="Error_AutoUpdateException" xml:space="preserve">
+    <value>Kontrollen av programuppdateringen gick ej att slutföra</value>
+  </data>
+  <data name="Error_CannotAccessDirectoryException" xml:space="preserve">
+    <value>Ingen åtkomst till katalogen</value>
+  </data>
+  <data name="Error_DeviceNotFoundException" xml:space="preserve">
+    <value>Det gick inte att hitta telefonen</value>
+  </data>
+  <data name="Error_DownloadPackageException" xml:space="preserve">
+    <value>Ett problem uppstod vid hämtningen av programpaketet</value>
+  </data>
+  <data name="Error_EmergencyPackageNotFoundOnServerException" xml:space="preserve">
+    <value>Nödpaket hittades inte</value>
+  </data>
+  <data name="Error_FileNotFoundException" xml:space="preserve">
+    <value>Fil eller målkatalog: "{0}" hittades inte</value>
+  </data>
+  <data name="Error_FirmwareFileNotFoundException" xml:space="preserve">
+    <value>Programvarufilen hittades ej</value>
+  </data>
+  <data name="Error_HtcDeviceCommunicationException" xml:space="preserve">
+    <value>Enhetskommunikationsfel</value>
+  </data>
+  <data name="Error_HtcDeviceHandshakingException" xml:space="preserve">
+    <value>Enhetshandskakningsfel</value>
+  </data>
+  <data name="Error_HtcPackageFileCheckException" xml:space="preserve">
+    <value>Fel vid kontroll av paketfil</value>
+  </data>
+  <data name="Error_HtcServiceControlException" xml:space="preserve">
+    <value>Fel vid kontroll av tjänst</value>
+  </data>
+  <data name="Error_HtcUsbCommunicationException" xml:space="preserve">
+    <value>USB-kommunikationsfel</value>
+  </data>
+  <data name="Error_HtcUsbPortOpenException" xml:space="preserve">
+    <value>Fel – USB-porten är öppen</value>
+  </data>
+  <data name="Error_InvalidOperationException" xml:space="preserve">
+    <value>Åtgärden misslyckades</value>
+  </data>
+  <data name="Error_NoInternetConnectionException" xml:space="preserve">
+    <value>Ingen internetanslutning</value>
+  </data>
+  <data name="Error_NotEnoughSpaceException" xml:space="preserve">
+    <value>Ej tillräckligt med diskutrymme</value>
+  </data>
+  <data name="Error_NotEnoughSpaceOnTheDiskException" xml:space="preserve">
+    <value>Ej tillräckligt med diskutrymme</value>
+  </data>
+  <data name="Error_OperationCanceledException" xml:space="preserve">
+    <value>Åtgärden har avbrutits</value>
+  </data>
+  <data name="Error_PackageNotFoundException" xml:space="preserve">
+    <value>Variantpaketet hittades inte</value>
+  </data>
+  <data name="Error_PlannedServiceBreakException" xml:space="preserve">
+    <value>Kunde inte ansluta till server</value>
+  </data>
+  <data name="Error_ReadPhoneInformationException" xml:space="preserve">
+    <value>Avläsningen av information från telefonen misslyckades</value>
+  </data>
+  <data name="Error_RestartApplicationException" xml:space="preserve">
+    <value>Starta om programmet</value>
+  </data>
+  <data name="Error_SoftwareInstallationFailed" xml:space="preserve">
+    <value>Programvaruinstallationen misslyckades. Starta om telefonen och kör programvaruinstallationen igen. Om telefonen inte detekteras använder du knappen "{0}" på välkomstsidan.</value>
+  </data>
+  <data name="Error_SoftwareIsNotCorrectlySignedException" xml:space="preserve">
+    <value>Programvaran är inte signerad korrekt eller inte signerad för den här telefonen.</value>
+  </data>
+  <data name="Error_UnauthorizedAccessException" xml:space="preserve">
+    <value>Åtkomst nekad</value>
+  </data>
+  <data name="Error_UnknownError" xml:space="preserve">
+    <value>Ett okänt fel uppstod</value>
+  </data>
+  <data name="Error_WebException" xml:space="preserve">
+    <value>Kunde inte ansluta till servern</value>
+  </data>
+  <data name="FFUCheckingDirectory" xml:space="preserve">
+    <value>Kontrollerar katalogen</value>
+  </data>
+  <data name="FFUCheckingFile" xml:space="preserve">
+    <value>Den valda filen kontrolleras</value>
+  </data>
+  <data name="FFUFamily" xml:space="preserve">
+    <value>Familj:</value>
+  </data>
+  <data name="FFUManufacturer" xml:space="preserve">
+    <value>Tillverkare:</value>
+  </data>
+  <data name="FFUProductName" xml:space="preserve">
+    <value>Produktnamn:</value>
+  </data>
+  <data name="FFUVersion" xml:space="preserve">
+    <value>Version:</value>
+  </data>
+  <data name="FirmwareIntegrityError" xml:space="preserve">
+    <value>Programpaketet {0} är skadat. Ladda ned paketet igen eller välj annan programvara.</value>
+  </data>
+  <data name="FirmwareVersion" xml:space="preserve">
+    <value>Firmware-version: </value>
+  </data>
+  <data name="FirmwareVersionUnknown" xml:space="preserve">
+    <value>Firmware-version: okänd</value>
+  </data>
+  <data name="FlashCancelMessage" xml:space="preserve">
+    <value>Installation av programvarupaket pågår. Om du avbryter installationen kan det skada telefonen. Är du säker på att du vill avbryta åtgärden?</value>
+  </data>
+  <data name="FlashWarningMessage1" xml:space="preserve">
+    <value>Använd inte din telefon. Frånkoppla inte kabeln. Stäng inte av telefonen. Annars kanske din telefon slutar fungera.</value>
+  </data>
+  <data name="FlashWarningMessage2" xml:space="preserve">
+    <value>Under installationen startas telefonen om, och skärmen blir tom.
+Du kan ignorera alla Windows-meddelanden om USB-kabelanslutning.</value>
+  </data>
+  <data name="Flashing" xml:space="preserve">
+    <value>Installerar programvara på telefonen</value>
+  </data>
+  <data name="FlashingMessageChangeToFlashMode" xml:space="preserve">
+    <value>Växlar telefonen till blinkningsläge</value>
+  </data>
+  <data name="FlashingMessageCheckingAntiTheftStatus" xml:space="preserve">
+    <value>Kontrollerar status för stöldskydd</value>
+  </data>
+  <data name="FlashingMessageConnectingWithPhone" xml:space="preserve">
+    <value>Ansluter till telefonen</value>
+  </data>
+  <data name="FlashingMessageInstallingSoftware" xml:space="preserve">
+    <value>Installerar programvara</value>
+  </data>
+  <data name="FlashingMessageOperationStarted" xml:space="preserve">
+    <value>Programvaruinstallationen har påbörjats</value>
+  </data>
+  <data name="FlashingResult" xml:space="preserve">
+    <value>Resultat av installation av programvarupaket</value>
+  </data>
+  <data name="HtcBootloaderMode" xml:space="preserve">
+    <value>HTC {0}-läge</value>
+  </data>
+  <data name="HtcPackageNotFound" xml:space="preserve">
+    <value>Programpaket hittades inte på servern</value>
+  </data>
+  <data name="KeepButtonTillImage" xml:space="preserve">
+    <value>Tryck ned knappen tills du ser en bild som den på skärmen.</value>
+  </data>
+  <data name="KeepButtonsTillImage" xml:space="preserve">
+    <value>Tryck ned knapparna tills du ser en bild som den på skärmen.</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Språk</value>
+  </data>
+  <data name="LogFiles" xml:space="preserve">
+    <value>Loggfiler</value>
+  </data>
+  <data name="LumiaBatteryChecking" xml:space="preserve">
+    <value>Telefonens batterinivå är låg. Du kan fortsätta, men det kan skada din telefon.</value>
+  </data>
+  <data name="ManualDeviceSelection" xml:space="preserve">
+    <value>Val av telefon</value>
+  </data>
+  <data name="ManualRestartHtcInfo" xml:space="preserve">
+    <value>Det gick inte att avläsa informationen om telefonen. Följ nedanstående steg om du vill fortsätta. Klicka på "{0}" om du i stället vill avbryta.</value>
+  </data>
+  <data name="ManufacturerDetectionFailed" xml:space="preserve">
+    <value>Tyvärr, vi kunde inte fastställa telefonens tillverkare.</value>
+  </data>
+  <data name="ManufacturerHeader" xml:space="preserve">
+    <value>Telefonens tillverkare</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>{0}-läge</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Modell: </value>
+  </data>
+  <data name="ModelUnknown" xml:space="preserve">
+    <value>Modell: okänd</value>
+  </data>
+  <data name="MoreThanOnePackageFound" xml:space="preserve">
+    <value>Fler än ett paket hittades – välj ett paket och klicka på "{0}" för att fortsätta.</value>
+  </data>
+  <data name="Network" xml:space="preserve">
+    <value>Nätverk</value>
+  </data>
+  <data name="NoPackagesFoundSelectAnotherDirectory" xml:space="preserve">
+    <value>Det gick inte att hitta rätt paket. Välj en annan katalog eller välj paket manuellt.</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>Hittades inte</value>
+  </data>
+  <data name="OnePackageFound" xml:space="preserve">
+    <value>Ett paket hittades för: {0}. Klicka på "{1}" för att fortsätta, eller välj en annan mapp eller fil.</value>
+  </data>
+  <data name="OperatingSystemUnknown" xml:space="preserve">
+    <value>Version på operativsystem: okänd</value>
+  </data>
+  <data name="OperatingSystemVersion" xml:space="preserve">
+    <value>Version på operativsystem: </value>
+  </data>
+  <data name="OperationFailed" xml:space="preserve">
+    <value>Åtgärden genomfördes inte</value>
+  </data>
+  <data name="OperationPassed" xml:space="preserve">
+    <value>Åtgärden genomfördes</value>
+  </data>
+  <data name="PackageDirectory" xml:space="preserve">
+    <value>Paketets katalog: {0}</value>
+  </data>
+  <data name="PackageFileHeader" xml:space="preserve">
+    <value>Paketfil</value>
+  </data>
+  <data name="PackageFilePath" xml:space="preserve">
+    <value>Målkatalog för paketet: {0}</value>
+  </data>
+  <data name="PackageIntegrityCheck" xml:space="preserve">
+    <value>Integritetskontroll av paketet</value>
+  </data>
+  <data name="PackageNotFound" xml:space="preserve">
+    <value>Paket ej tillgängligt för denna telefon.</value>
+  </data>
+  <data name="PackagePathNotSet" xml:space="preserve">
+    <value>Ingen målkatalog för paketet har angetts</value>
+  </data>
+  <data name="PackageSelection" xml:space="preserve">
+    <value>Val av paket</value>
+  </data>
+  <data name="Packages" xml:space="preserve">
+    <value>Paket</value>
+  </data>
+  <data name="PackagesPath" xml:space="preserve">
+    <value>Målkatalog för paket</value>
+  </data>
+  <data name="PasswordForm" xml:space="preserve">
+    <value>Lösenord</value>
+  </data>
+  <data name="PhoneAddedHeader" xml:space="preserve">
+    <value>Telefon ansluten</value>
+  </data>
+  <data name="PhoneAddedMessage" xml:space="preserve">
+    <value>Ny telefon {0} har anslutits.</value>
+  </data>
+  <data name="PhoneIsUpToDate" xml:space="preserve">
+    <value>Du har den senaste versionen av programvaran.</value>
+  </data>
+  <data name="PhoneRemovedHeader" xml:space="preserve">
+    <value>Telefon frånkopplad</value>
+  </data>
+  <data name="PhoneRemovedMessage" xml:space="preserve">
+    <value>Telefonen {0} har kopplats från.</value>
+  </data>
+  <data name="PhoneRestart" xml:space="preserve">
+    <value>Omstart av telefonen</value>
+  </data>
+  <data name="PhoneSettingsBackupPathWin10" xml:space="preserve">
+    <value>Inställningar &gt; Uppdatering och återställning &gt; Säkerhetskopiering</value>
+  </data>
+  <data name="PhoneSettingsBackupPathWin8" xml:space="preserve">
+    <value>Inställningar &gt; säkerhetskopiering</value>
+  </data>
+  <data name="PleaseConnectDevice" xml:space="preserve">
+    <value>Anslut telefonen</value>
+  </data>
+  <data name="PleaseConnectOneDevice" xml:space="preserve">
+    <value>Anslut endast en telefon</value>
+  </data>
+  <data name="PleaseSelectAFolder" xml:space="preserve">
+    <value>Välj en mapp</value>
+  </data>
+  <data name="PleaseSelectDeviceToContinue" xml:space="preserve">
+    <value>Välj telefon för att fortsätta</value>
+  </data>
+  <data name="PleaseSelectManufacturer" xml:space="preserve">
+    <value>Välj tillverkare nedan:</value>
+  </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>Var god vänta</value>
+  </data>
+  <data name="PortForm" xml:space="preserve">
+    <value>Port</value>
+  </data>
+  <data name="Preferences" xml:space="preserve">
+    <value>Preferenser</value>
+  </data>
+  <data name="PressPowerAndVolumeDown" xml:space="preserve">
+    <value>Tryck på strömbrytaren och "Volym ner" samtidigt.</value>
+  </data>
+  <data name="PressThePowerButton" xml:space="preserve">
+    <value>Tryck på strömbrytaren. </value>
+  </data>
+  <data name="PressThePowerButtonUntilSwitchOff" xml:space="preserve">
+    <value>Tryck på och håll ned strömbrytaren tills telefonen vibrerar.</value>
+  </data>
+  <data name="PressVolumeUpVolumeDown" xml:space="preserve">
+    <value>När telefonen vibrerar trycker du på "Volym upp" och "Volym ner" samtidigt.</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Integritetspolicy</value>
+  </data>
+  <data name="ReadingDeviceInfo" xml:space="preserve">
+    <value>Avläser information om telefonen</value>
+  </data>
+  <data name="RebootHtc" xml:space="preserve">
+    <value>Du kan nu starta om telefonen i normalt läge. Starta om telefonen genom att trycka på och hålla ned strömbrytaren.</value>
+  </data>
+  <data name="RebootPhoneInstructions" xml:space="preserve">
+    <value>Det gick inte att hitta telefonen.
+Starta om telefonen genom att trycka på strömbrytaren och ”Volym ner” samtidigt.
+Tryck ned knapparna tills telefonen vibrerar.</value>
+  </data>
+  <data name="ReinstallSoftware" xml:space="preserve">
+    <value>Installera om programvara</value>
+  </data>
+  <data name="ReleasePowerPressVolumeUp" xml:space="preserve">
+    <value>När telefonen vibrerar släpper du strömbrytaren och trycker på "Volym upp".</value>
+  </data>
+  <data name="RemovingPackages" xml:space="preserve">
+    <value>Tar bort paket</value>
+  </data>
+  <data name="RemovingReports" xml:space="preserve">
+    <value>Tar bort rapporter</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>Rapporter</value>
+  </data>
+  <data name="ResetSettingsQuestion" xml:space="preserve">
+    <value>Är du säker på att du vill återställa alla inställningar till standardvärden?</value>
+  </data>
+  <data name="RestartDeviceHeader" xml:space="preserve">
+    <value>Starta om telefonen</value>
+  </data>
+  <data name="SelectDeviceToRecover" xml:space="preserve">
+    <value>Välj den telefon du vill återställa</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Inställningar</value>
+  </data>
+  <data name="SoftwareInstallation" xml:space="preserve">
+    <value>Programvaruinstallation</value>
+  </data>
+  <data name="SoftwareOnServer" xml:space="preserve">
+    <value>Programvara tillgänglig på servern</value>
+  </data>
+  <data name="SoftwarePackage" xml:space="preserve">
+    <value>Programpaket</value>
+  </data>
+  <data name="SthWentWrongMessage" xml:space="preserve">
+    <value>Något blev fel</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>Sammanfattning</value>
+  </data>
+  <data name="Survey1" xml:space="preserve">
+    <value>Enkät</value>
+  </data>
+  <data name="Survey_Button_ContinueNoSubmit1" xml:space="preserve">
+    <value>Fortsätt utan att skicka</value>
+  </data>
+  <data name="Survey_Button_SubmitAndContinue1" xml:space="preserve">
+    <value>Skicka och fortsätt återställningen</value>
+  </data>
+  <data name="Survey_Choice_AppsNotWorking1" xml:space="preserve">
+    <value>Mina appar fungerar inte som förväntat</value>
+  </data>
+  <data name="Survey_Choice_DeviceNotWorking1" xml:space="preserve">
+    <value>Min enhet fungerar inte som förväntat</value>
+  </data>
+  <data name="Survey_Choice_PerformanceIssues1" xml:space="preserve">
+    <value>Jag har prestandaproblem</value>
+  </data>
+  <data name="Survey_Choice_PrevVersionFaster1" xml:space="preserve">
+    <value>Den föregående versionen verkade snabbare</value>
+  </data>
+  <data name="Survey_Choice_PrevVersionMoreReliable1" xml:space="preserve">
+    <value>Den föregående versionen verkade mer tillförlitlig</value>
+  </data>
+  <data name="Survey_Header1" xml:space="preserve">
+    <value>Varför återställer du din enhet?</value>
+  </data>
+  <data name="Survey_TellUsMore1" xml:space="preserve">
+    <value>Berätta mer</value>
+  </data>
+  <data name="Theme" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>Mörkt</value>
+  </data>
+  <data name="ThemeHighContrast" xml:space="preserve">
+    <value>Högkontrast</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>Ljust</value>
+  </data>
+  <data name="ThereIsMandatoryApplicationUpdate" xml:space="preserve">
+    <value>Det finns en obligatorisk programuppdatering {0}.</value>
+  </data>
+  <data name="ThisUpdateMustBeInstalled" xml:space="preserve">
+    <value>Denna {0}-uppdatering måste installeras och kan ej hoppas över. Programmet måste uppdateras innan det kan användas.
+Frånkoppla alla enheter innan du installerar uppdateringen.</value>
+  </data>
+  <data name="TraceEnabled" xml:space="preserve">
+    <value>Skapa en loggfil</value>
+  </data>
+  <data name="Troubleshooting" xml:space="preserve">
+    <value>Felsökning</value>
+  </data>
+  <data name="TurnOffPhone" xml:space="preserve">
+    <value>Stäng av telefonen.</value>
+  </data>
+  <data name="UpdateAvailable" xml:space="preserve">
+    <value>Det finns en uppdatering för telefonen</value>
+  </data>
+  <data name="UseProxyServer" xml:space="preserve">
+    <value>Använd proxyserver</value>
+  </data>
+  <data name="UserNameForm" xml:space="preserve">
+    <value>Användarnamn</value>
+  </data>
+  <data name="VerifyingDownloadedFiles" xml:space="preserve">
+    <value>Verifierar de filer som hämtats</value>
+  </data>
+  <data name="WaitUntilPhoneTurnsOn" xml:space="preserve">
+    <value>Vänta tills telefonen slås på.</value>
+  </data>
+  <data name="WaitingForConnection" xml:space="preserve">
+    <value>Väntar på anslutning</value>
+  </data>
+  <data name="WelcomeHeader" xml:space="preserve">
+    <value>Välkommen!</value>
+  </data>
+</root>

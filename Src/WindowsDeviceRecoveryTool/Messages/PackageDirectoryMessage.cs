@@ -2,18 +2,18 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Messages
 {
-	// Token: 0x02000060 RID: 96
+	// Token: 0x020000A7 RID: 167
 	public class PackageDirectoryMessage
 	{
-		// Token: 0x060002E5 RID: 741 RVA: 0x0000FEBC File Offset: 0x0000E0BC
+		// Token: 0x06000563 RID: 1379 RVA: 0x0001B516 File Offset: 0x00019716
 		public PackageDirectoryMessage(string directory)
 		{
 			this.Directory = directory;
 		}
 
-		// Token: 0x17000086 RID: 134
-		// (get) Token: 0x060002E6 RID: 742 RVA: 0x0000FED0 File Offset: 0x0000E0D0
-		// (set) Token: 0x060002E7 RID: 743 RVA: 0x0000FEE7 File Offset: 0x0000E0E7
+		// Token: 0x17000136 RID: 310
+		// (get) Token: 0x06000564 RID: 1380 RVA: 0x0001B528 File Offset: 0x00019728
+		// (set) Token: 0x06000565 RID: 1381 RVA: 0x0001B530 File Offset: 0x00019730
 		public string Directory { get; private set; }
 	}
 }

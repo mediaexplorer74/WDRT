@@ -30,7 +30,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation.Services
 	[PartCreationPolicy(CreationPolicy.Shared)]
 	public class AcerAdaptation : BaseAdaptation
 	{
-		// Token: 0x06000018 RID: 24 RVA: 0x00002A40 File Offset: 0x00000C40
+		// Token: 0x06000012 RID: 18 RVA: 0x00002734 File Offset: 0x00000934
 		[ImportingConstructor]
 		public AcerAdaptation(MsrService msrService, ReportingService reportingService)
 		{
@@ -39,8 +39,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation.Services
 			this.reportingService = reportingService;
 		}
 
-		// Token: 0x1700000C RID: 12
-		// (get) Token: 0x06000019 RID: 25 RVA: 0x00002A8E File Offset: 0x00000C8E
+		// Token: 0x17000004 RID: 4
+		// (get) Token: 0x06000013 RID: 19 RVA: 0x00002782 File Offset: 0x00000982
 		public override PhoneTypes PhoneType
 		{
 			get
@@ -49,8 +49,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation.Services
 			}
 		}
 
-		// Token: 0x1700000D RID: 13
-		// (get) Token: 0x0600001A RID: 26 RVA: 0x00002A91 File Offset: 0x00000C91
+		// Token: 0x17000005 RID: 5
+		// (get) Token: 0x06000014 RID: 20 RVA: 0x00002785 File Offset: 0x00000985
 		public override string ReportManufacturerName
 		{
 			get
@@ -59,8 +59,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation.Services
 			}
 		}
 
-		// Token: 0x1700000E RID: 14
-		// (get) Token: 0x0600001B RID: 27 RVA: 0x00002A98 File Offset: 0x00000C98
+		// Token: 0x17000006 RID: 6
+		// (get) Token: 0x06000015 RID: 21 RVA: 0x0000278C File Offset: 0x0000098C
 		public override string ManufacturerName
 		{
 			get
@@ -69,8 +69,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation.Services
 			}
 		}
 
-		// Token: 0x1700000F RID: 15
-		// (get) Token: 0x0600001C RID: 28 RVA: 0x00002A9F File Offset: 0x00000C9F
+		// Token: 0x17000007 RID: 7
+		// (get) Token: 0x06000016 RID: 22 RVA: 0x00002793 File Offset: 0x00000993
 		public override bool RecoverySupport
 		{
 			get
@@ -79,8 +79,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation.Services
 			}
 		}
 
-		// Token: 0x17000010 RID: 16
-		// (get) Token: 0x0600001D RID: 29 RVA: 0x00002AA2 File Offset: 0x00000CA2
+		// Token: 0x17000008 RID: 8
+		// (get) Token: 0x06000017 RID: 23 RVA: 0x00002796 File Offset: 0x00000996
 		public override string PackageExtension
 		{
 			get
@@ -89,19 +89,19 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation.Services
 			}
 		}
 
-		// Token: 0x0600001E RID: 30 RVA: 0x00002AA9 File Offset: 0x00000CA9
+		// Token: 0x06000018 RID: 24 RVA: 0x0000279D File Offset: 0x0000099D
 		public override List<PackageFileInfo> FindPackage(string directory, Phone currentPhone, CancellationToken cancellationToken)
 		{
 			throw new NotSupportedException();
 		}
 
-		// Token: 0x0600001F RID: 31 RVA: 0x00002AB0 File Offset: 0x00000CB0
+		// Token: 0x06000019 RID: 25 RVA: 0x0000279D File Offset: 0x0000099D
 		public override List<PackageFileInfo> FindAllPackages(string directory, CancellationToken cancellationToken)
 		{
 			throw new NotSupportedException();
 		}
 
-		// Token: 0x06000020 RID: 32 RVA: 0x00002AB8 File Offset: 0x00000CB8
+		// Token: 0x0600001A RID: 26 RVA: 0x000027A4 File Offset: 0x000009A4
 		public override PackageFileInfo CheckLatestPackage(Phone phone, CancellationToken cancellationToken)
 		{
 			PackageFileInfo result;
@@ -126,9 +126,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation.Services
 				{
 					throw new WebException();
 				}
-				if (ex is OperationCanceledException || ex.InnerException is TaskCanceledException)
+				if (!(ex is OperationCanceledException))
 				{
-					throw;
+					TaskCanceledException ex2 = ex.InnerException as TaskCanceledException;
 				}
 				throw;
 			}
@@ -139,13 +139,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation.Services
 			return result;
 		}
 
-		// Token: 0x06000021 RID: 33 RVA: 0x00002B7C File Offset: 0x00000D7C
+		// Token: 0x0600001B RID: 27 RVA: 0x0000279D File Offset: 0x0000099D
 		public override void CheckPackageIntegrity(Phone phone, CancellationToken cancellationToken)
 		{
 			throw new NotSupportedException();
 		}
 
-		// Token: 0x06000022 RID: 34 RVA: 0x00002B94 File Offset: 0x00000D94
+		// Token: 0x0600001C RID: 28 RVA: 0x00002864 File Offset: 0x00000A64
 		public override void FlashDevice(Phone phone, CancellationToken cancellationToken)
 		{
 			Tracer<AcerAdaptation>.LogEntry("FlashDevice");
@@ -156,9 +156,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation.Services
 				try
 				{
 					this.progressMessage = "SoftwareInstallation";
-					ffuDevice.FlashFFUFile((from f in phone.PackageFiles
-					where f.EndsWith(".ffu", StringComparison.OrdinalIgnoreCase)
-					select f).First<string>(), true);
+					ffuDevice.FlashFFUFile(phone.PackageFiles.Where((string f) => f.EndsWith(".ffu", StringComparison.OrdinalIgnoreCase)).First<string>(), true);
 				}
 				finally
 				{
@@ -168,18 +166,18 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation.Services
 			Tracer<AcerAdaptation>.LogExit("FlashDevice");
 		}
 
-		// Token: 0x06000023 RID: 35 RVA: 0x00002C38 File Offset: 0x00000E38
+		// Token: 0x0600001D RID: 29 RVA: 0x00002908 File Offset: 0x00000B08
 		public override bool IsDeviceInFlashModeConnected(Phone phone, CancellationToken cancellationToken)
 		{
-			bool result;
+			bool flag;
 			using (IFFUDevice ffuDevice = this.GetFfuDevice(phone))
 			{
-				result = (ffuDevice != null);
+				flag = ffuDevice != null;
 			}
-			return result;
+			return flag;
 		}
 
-		// Token: 0x06000024 RID: 36 RVA: 0x00002C74 File Offset: 0x00000E74
+		// Token: 0x0600001E RID: 30 RVA: 0x00002940 File Offset: 0x00000B40
 		public override void DownloadPackage(Phone phone, CancellationToken cancellationToken)
 		{
 			Tracer<AcerAdaptation>.LogEntry("DownloadPackage");
@@ -193,10 +191,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation.Services
 					DestinationFolder = ((!string.IsNullOrEmpty(phone.QueryParameters.ManufacturerHardwareModel)) ? Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.GetAcerProductsPath(phone.QueryParameters.ManufacturerHardwareModel) : Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.GetAcerProductsPath(phone.QueryParameters.ManufacturerHardwareVariant)),
 					FilesVersioned = true
 				};
-				Tracer<AcerAdaptation>.WriteInformation("Download Params: {0}", new object[]
-				{
-					downloadParameters
-				});
+				Tracer<AcerAdaptation>.WriteInformation("Download Params: {0}", new object[] { downloadParameters });
 				phone.PackageFiles = this.msrService.DownloadLatestPackage(downloadParameters, cancellationToken);
 				Tuple<long, long, bool> downloadPackageInformation = this.msrService.GetDownloadPackageInformation();
 				this.reportingService.SetDownloadByteInformation(phone, ReportOperationType.DownloadPackage, downloadPackageInformation.Item1, downloadPackageInformation.Item2, downloadPackageInformation.Item3);
@@ -205,19 +200,19 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation.Services
 			catch (Exception ex)
 			{
 				bool flag = true;
-				UriData resultUriData;
+				UriData uriData;
 				if (ex is OperationCanceledException || ex.GetBaseException() is TaskCanceledException)
 				{
-					resultUriData = UriData.DownloadVariantPackageAbortedByUser;
+					uriData = UriData.DownloadVariantPackageAbortedByUser;
 					flag = false;
 				}
 				else
 				{
-					resultUriData = UriData.FailedToDownloadVariantPackage;
+					uriData = UriData.FailedToDownloadVariantPackage;
 				}
 				Tuple<long, long, bool> downloadPackageInformation2 = this.msrService.GetDownloadPackageInformation();
 				this.reportingService.SetDownloadByteInformation(phone, ReportOperationType.DownloadPackage, downloadPackageInformation2.Item1, downloadPackageInformation2.Item2, downloadPackageInformation2.Item3);
-				this.reportingService.OperationFailed(phone, ReportOperationType.DownloadPackage, resultUriData, ex);
+				this.reportingService.OperationFailed(phone, ReportOperationType.DownloadPackage, uriData, ex);
 				Tracer<AcerAdaptation>.WriteError(ex);
 				if (flag)
 				{
@@ -230,25 +225,25 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation.Services
 			}
 		}
 
-		// Token: 0x06000025 RID: 37 RVA: 0x00002E10 File Offset: 0x00001010
+		// Token: 0x0600001F RID: 31 RVA: 0x0000279D File Offset: 0x0000099D
 		public override void DownloadEmergencyPackage(Phone currentPhone, CancellationToken cancellationToken)
 		{
 			throw new NotSupportedException();
 		}
 
-		// Token: 0x06000026 RID: 38 RVA: 0x00002E17 File Offset: 0x00001017
+		// Token: 0x06000020 RID: 32 RVA: 0x00002AD0 File Offset: 0x00000CD0
 		public override SwVersionComparisonResult CompareFirmwareVersions(Phone phone)
 		{
 			return SwVersionComparisonResult.UnableToCompare;
 		}
 
-		// Token: 0x06000027 RID: 39 RVA: 0x00002E1A File Offset: 0x0000101A
+		// Token: 0x06000021 RID: 33 RVA: 0x0000279D File Offset: 0x0000099D
 		public override void ReadDeviceInfo(Phone currentPhone, CancellationToken cancellationToken)
 		{
 			throw new NotSupportedException();
 		}
 
-		// Token: 0x06000028 RID: 40 RVA: 0x00002E24 File Offset: 0x00001024
+		// Token: 0x06000022 RID: 34 RVA: 0x00002AD4 File Offset: 0x00000CD4
 		protected override void FillSupportedDeviceIdentifiers()
 		{
 			this.SupportedNormalModeIds.Add(new DeviceIdentifier("045E", "F0CA"));
@@ -256,11 +251,10 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation.Services
 			this.SupportedFlashModeIds.Add(new DeviceIdentifier("045E", "062A"));
 		}
 
-		// Token: 0x06000029 RID: 41 RVA: 0x00002EF8 File Offset: 0x000010F8
+		// Token: 0x06000023 RID: 35 RVA: 0x00002B30 File Offset: 0x00000D30
 		private Phone[] GetPhoneVariants(ModelInfo modelInfo)
 		{
-			return (from v in modelInfo.Variants
-			select new Phone
+			return modelInfo.Variants.Select((Microsoft.WindowsDeviceRecoveryTool.OemAdaptation.Primitives.VariantInfo v) => new Phone
 			{
 				Type = this.PhoneType,
 				SalesName = v.Name,
@@ -271,7 +265,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation.Services
 			}).ToArray<Phone>();
 		}
 
-		// Token: 0x0600002A RID: 42 RVA: 0x00002F3C File Offset: 0x0000113C
+		// Token: 0x06000024 RID: 36 RVA: 0x00002B72 File Offset: 0x00000D72
 		private Phone GetPhone(ModelInfo modelInfo)
 		{
 			return new Phone
@@ -283,38 +277,33 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation.Services
 			};
 		}
 
-		// Token: 0x0600002B RID: 43 RVA: 0x000030A0 File Offset: 0x000012A0
+		// Token: 0x06000025 RID: 37 RVA: 0x00002BB0 File Offset: 0x00000DB0
 		protected override void InitializeManuallySupportedModels()
 		{
-			ModelIdent[] array = new ModelIdent[]
+			var array = new <>f__AnonymousType0<ModelInfo, string>[]
 			{
-				
-				new ModelIdent{
-					//RnD
-					Model1 = AcerModels.LiquidM220,
+				new
+				{
+					Model = AcerModels.LiquidM220,
 					IdentificationInstruction = LocalizationManager.GetTranslation("ModelIdentificationAcerM220")
 				},
-
-                new ModelIdent{
-					Model1 = AcerModels.JadePrimo,
+				new
+				{
+					Model = AcerModels.JadePrimo,
 					IdentificationInstruction = null
 				},
-
-                new ModelIdent{
-                    Model1 = AcerModels.LiquidM330,
-					IdentificationInstruction = 
-					LocalizationManager.GetTranslation("ModelIdentificationAcerM330")
+				new
+				{
+					Model = AcerModels.LiquidM330,
+					IdentificationInstruction = LocalizationManager.GetTranslation("ModelIdentificationAcerM330")
 				}
-				
 			};
-			
-			var array2 = array;
-			for (int i = 0; i < array2.Length; i++)
+			for (int i = 0; i < array.Length; i++)
 			{
-				var f__AnonymousType = array2[i];
-				ModelInfo model = f__AnonymousType.Model1;
-				Phone phone = this.GetPhone(f__AnonymousType.Model1);
-				phone.ModelIdentificationInstruction = f__AnonymousType.IdentificationInstruction;
+				var <>f__AnonymousType = array[i];
+				ModelInfo model = <>f__AnonymousType.Model;
+				Phone phone = this.GetPhone(<>f__AnonymousType.Model);
+				phone.ModelIdentificationInstruction = <>f__AnonymousType.IdentificationInstruction;
 				this.manuallySupportedModels.Add(phone);
 				if (model.Variants.Length == 1)
 				{
@@ -328,22 +317,19 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation.Services
 			}
 		}
 
-		// Token: 0x0600002C RID: 44 RVA: 0x00003175 File Offset: 0x00001375
+		// Token: 0x06000026 RID: 38 RVA: 0x00002C78 File Offset: 0x00000E78
 		public override List<Phone> ManuallySupportedModels()
 		{
 			return this.manuallySupportedModels;
 		}
 
-		// Token: 0x0600002D RID: 45 RVA: 0x000031A0 File Offset: 0x000013A0
+		// Token: 0x06000027 RID: 39 RVA: 0x00002C80 File Offset: 0x00000E80
 		public override List<Phone> ManuallySupportedVariants(Phone phone)
 		{
-			return (from variant in this.manuallySupportedVariants
-			where variant.HardwareModel.Equals(phone.HardwareModel, 
-			StringComparison.OrdinalIgnoreCase)
-			select variant).ToList<Phone>();
+			return this.manuallySupportedVariants.Where((Phone variant) => variant.HardwareModel.Equals(phone.HardwareModel, StringComparison.OrdinalIgnoreCase)).ToList<Phone>();
 		}
 
-		// Token: 0x0600002E RID: 46 RVA: 0x00003200 File Offset: 0x00001400
+		// Token: 0x06000028 RID: 40 RVA: 0x00002CB8 File Offset: 0x00000EB8
 		protected override Stream GetImageDataStream(Phone phone)
 		{
 			Assembly executingAssembly = Assembly.GetExecutingAssembly();
@@ -351,18 +337,15 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation.Services
 			string text = string.Empty;
 			if (phone.SalesName.ToLower().Contains("m220"))
 			{
-				text = manifestResourceNames.FirstOrDefault((string resourceName) 
-					=> resourceName.Contains("M220.png"));
+				text = manifestResourceNames.FirstOrDefault((string resourceName) => resourceName.Contains("M220.png"));
 			}
 			else if (phone.SalesName.ToLower().Contains("jade primo"))
 			{
-				text = manifestResourceNames.FirstOrDefault((string resourcesName) 
-					=> resourcesName.Contains("JadePrimo.png"));
+				text = manifestResourceNames.FirstOrDefault((string resourcesName) => resourcesName.Contains("JadePrimo.png"));
 			}
 			else if (phone.SalesName.ToLower().Contains("m330"))
 			{
-				text = manifestResourceNames.FirstOrDefault((string resourcesName) 
-					=> resourcesName.Contains("M330.png"));
+				text = manifestResourceNames.FirstOrDefault((string resourcesName) => resourcesName.Contains("M330.png"));
 			}
 			if (!string.IsNullOrEmpty(text))
 			{
@@ -371,13 +354,11 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation.Services
 			return base.GetImageDataStream(phone);
 		}
 
-		// Token: 0x0600002F RID: 47 RVA: 0x000032FC File Offset: 0x000014FC
+		// Token: 0x06000029 RID: 41 RVA: 0x00002DAC File Offset: 0x00000FAC
 		protected override Stream GetManufacturerImageDataStream()
 		{
 			Assembly executingAssembly = Assembly.GetExecutingAssembly();
-			string[] manifestResourceNames = executingAssembly.GetManifestResourceNames();
-			string text = manifestResourceNames.FirstOrDefault((string resourceName) 
-				=> resourceName.Contains("AcerLogo.png"));
+			string text = executingAssembly.GetManifestResourceNames().FirstOrDefault((string resourceName) => resourceName.Contains("AcerLogo.png"));
 			if (!string.IsNullOrEmpty(text))
 			{
 				return executingAssembly.GetManifestResourceStream(text);
@@ -385,16 +366,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation.Services
 			return null;
 		}
 
-		// Token: 0x06000030 RID: 48 RVA: 0x0000334B File Offset: 0x0000154B
+		// Token: 0x0600002A RID: 42 RVA: 0x00002DFB File Offset: 0x00000FFB
 		private void MsrDownloadProgressEvent(ProgressChangedEventArgs progressArgs)
 		{
-			base.RaiseProgressPercentageChanged(progressArgs.Percentage, 
-				progressArgs.Message, progressArgs.DownloadedSize, 
-				progressArgs.TotalSize, progressArgs.BytesPerSecond, 
-				progressArgs.SecondsLeft);
+			base.RaiseProgressPercentageChanged(progressArgs.Percentage, progressArgs.Message, progressArgs.DownloadedSize, progressArgs.TotalSize, progressArgs.BytesPerSecond, progressArgs.SecondsLeft);
 		}
 
-		// Token: 0x06000031 RID: 49 RVA: 0x00003378 File Offset: 0x00001578
+		// Token: 0x0600002B RID: 43 RVA: 0x00002E28 File Offset: 0x00001028
 		private IFFUDevice GetFfuDevice(Phone phone)
 		{
 			Tracer<AcerAdaptation>.LogEntry("GetFfuDevice");
@@ -412,7 +390,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation.Services
 			return flashableDevice;
 		}
 
-		// Token: 0x06000032 RID: 50 RVA: 0x000033C4 File Offset: 0x000015C4
+		// Token: 0x0600002C RID: 44 RVA: 0x00002E74 File Offset: 0x00001074
 		private void FlashProgressEvent(object obj, ProgressEventArgs progress)
 		{
 			double num = (double)progress.Position / (double)progress.Length * 100.0;
@@ -434,10 +412,4 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation.Services
 		// Token: 0x04000017 RID: 23
 		private string progressMessage;
 	}
-
-    internal class ModelIdent
-    {
-        internal ModelInfo Model1;
-        internal string IdentificationInstruction;
-    }
 }

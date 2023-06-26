@@ -24,7 +24,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.BusinessLogic
 			{
 				container.SatisfyImportsOnce(this);
 				this.ffuFileInfoService = container.GetExportedValue<FfuFileInfoService>();
-				this.lumiaAdaptation = container.GetExportedValue<LumiaAdaptation1>();
+				this.lumiaAdaptation = container.GetExportedValue<LumiaAdaptation>();
 				this.adaptationManager = container.GetExportedValue<AdaptationManager>();
 				this.autoUpdateService = container.GetExportedValue<AutoUpdateService>();
 				this.reportingService = container.GetExportedValue<ReportingService>();
@@ -33,9 +33,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.BusinessLogic
 				this.thor2Service = container.GetExportedValue<Thor2Service>();
 				this.InitializeAdaptationManager();
 			}
-			catch (Exception error)
+			catch (Exception ex)
 			{
-				Tracer<LogicContext>.WriteError(error);
+				Tracer<LogicContext>.WriteError(ex);
 				throw;
 			}
 		}
@@ -48,141 +48,146 @@ namespace Microsoft.WindowsDeviceRecoveryTool.BusinessLogic
 
 		// Token: 0x17000001 RID: 1
 		// (get) Token: 0x06000003 RID: 3 RVA: 0x00002130 File Offset: 0x00000330
-		// (set) Token: 0x06000004 RID: 4 RVA: 0x00002147 File Offset: 0x00000347
+		// (set) Token: 0x06000004 RID: 4 RVA: 0x00002138 File Offset: 0x00000338
 		[ImportMany]
 		public IEnumerable<Lazy<IAdaptation, IExportAdaptationMetadata>> AdaptationsWithMetadata { get; set; }
 
 		// Token: 0x17000002 RID: 2
-		// (get) Token: 0x06000005 RID: 5 RVA: 0x00002150 File Offset: 0x00000350
-		// (set) Token: 0x06000006 RID: 6 RVA: 0x00002167 File Offset: 0x00000367
+		// (get) Token: 0x06000005 RID: 5 RVA: 0x00002141 File Offset: 0x00000341
+		// (set) Token: 0x06000006 RID: 6 RVA: 0x00002149 File Offset: 0x00000349
 		[ImportMany]
 		private IEnumerable<Lazy<IUseProxy>> UsingProxyServices { get; set; }
 
 		// Token: 0x17000003 RID: 3
-		// (get) Token: 0x06000007 RID: 7 RVA: 0x00002170 File Offset: 0x00000370
+		// (get) Token: 0x06000007 RID: 7 RVA: 0x00002154 File Offset: 0x00000354
 		public FfuFileInfoService FfuFileInfoService
 		{
 			get
 			{
-				FfuFileInfoService result;
-				lock (this.ffuFileInfoService)
+				FfuFileInfoService ffuFileInfoService = this.ffuFileInfoService;
+				FfuFileInfoService ffuFileInfoService2;
+				lock (ffuFileInfoService)
 				{
-					result = this.ffuFileInfoService;
+					ffuFileInfoService2 = this.ffuFileInfoService;
 				}
-				return result;
+				return ffuFileInfoService2;
 			}
 		}
 
 		// Token: 0x17000004 RID: 4
-		// (get) Token: 0x06000008 RID: 8 RVA: 0x000021BC File Offset: 0x000003BC
-		public LumiaAdaptation1 LumiaAdaptation
+		// (get) Token: 0x06000008 RID: 8 RVA: 0x0000219C File Offset: 0x0000039C
+		public LumiaAdaptation LumiaAdaptation
 		{
 			get
 			{
-				LumiaAdaptation1 result;
-				lock (this.lumiaAdaptation)
+				LumiaAdaptation lumiaAdaptation = this.lumiaAdaptation;
+				LumiaAdaptation lumiaAdaptation2;
+				lock (lumiaAdaptation)
 				{
-					result = this.lumiaAdaptation;
+					lumiaAdaptation2 = this.lumiaAdaptation;
 				}
-				return result;
+				return lumiaAdaptation2;
 			}
 		}
 
 		// Token: 0x17000005 RID: 5
-		// (get) Token: 0x06000009 RID: 9 RVA: 0x00002208 File Offset: 0x00000408
+		// (get) Token: 0x06000009 RID: 9 RVA: 0x000021E4 File Offset: 0x000003E4
 		public AdaptationManager AdaptationManager
 		{
 			get
 			{
-				AdaptationManager result;
-				lock (this.adaptationManager)
+				AdaptationManager adaptationManager = this.adaptationManager;
+				AdaptationManager adaptationManager2;
+				lock (adaptationManager)
 				{
-					result = this.adaptationManager;
+					adaptationManager2 = this.adaptationManager;
 				}
-				return result;
+				return adaptationManager2;
 			}
 		}
 
 		// Token: 0x17000006 RID: 6
-		// (get) Token: 0x0600000A RID: 10 RVA: 0x00002254 File Offset: 0x00000454
+		// (get) Token: 0x0600000A RID: 10 RVA: 0x0000222C File Offset: 0x0000042C
 		public ReportingService ReportingService
 		{
 			get
 			{
-				ReportingService result;
-				lock (this.reportingService)
+				ReportingService reportingService = this.reportingService;
+				ReportingService reportingService2;
+				lock (reportingService)
 				{
-					result = this.reportingService;
+					reportingService2 = this.reportingService;
 				}
-				return result;
+				return reportingService2;
 			}
 		}
 
 		// Token: 0x17000007 RID: 7
-		// (get) Token: 0x0600000B RID: 11 RVA: 0x000022A0 File Offset: 0x000004A0
+		// (get) Token: 0x0600000B RID: 11 RVA: 0x00002274 File Offset: 0x00000474
 		public MsrReportingService MsrReportingService
 		{
 			get
 			{
-				MsrReportingService result;
-				lock (this.msrReportingService)
+				MsrReportingService msrReportingService = this.msrReportingService;
+				MsrReportingService msrReportingService2;
+				lock (msrReportingService)
 				{
-					result = this.msrReportingService;
+					msrReportingService2 = this.msrReportingService;
 				}
-				return result;
+				return msrReportingService2;
 			}
 		}
 
 		// Token: 0x17000008 RID: 8
-		// (get) Token: 0x0600000C RID: 12 RVA: 0x000022EC File Offset: 0x000004EC
+		// (get) Token: 0x0600000C RID: 12 RVA: 0x000022BC File Offset: 0x000004BC
 		public AutoUpdateService AutoUpdateService
 		{
 			get
 			{
-				AutoUpdateService result;
-				lock (this.autoUpdateService)
+				AutoUpdateService autoUpdateService = this.autoUpdateService;
+				AutoUpdateService autoUpdateService2;
+				lock (autoUpdateService)
 				{
-					result = this.autoUpdateService;
+					autoUpdateService2 = this.autoUpdateService;
 				}
-				return result;
+				return autoUpdateService2;
 			}
 		}
 
 		// Token: 0x17000009 RID: 9
-		// (get) Token: 0x0600000D RID: 13 RVA: 0x00002338 File Offset: 0x00000538
+		// (get) Token: 0x0600000D RID: 13 RVA: 0x00002304 File Offset: 0x00000504
 		public Thor2Service Thor2Service
 		{
 			get
 			{
-				Thor2Service result;
-				lock (this.thor2Service)
+				Thor2Service thor2Service = this.thor2Service;
+				Thor2Service thor2Service2;
+				lock (thor2Service)
 				{
-					result = this.thor2Service;
+					thor2Service2 = this.thor2Service;
 				}
-				return result;
+				return thor2Service2;
 			}
 		}
 
-		// Token: 0x0600000E RID: 14 RVA: 0x00002384 File Offset: 0x00000584
+		// Token: 0x0600000E RID: 14 RVA: 0x0000234C File Offset: 0x0000054C
 		private void InitializeAdaptationManager()
 		{
-			//RnD
-			//this.AdaptationManager.AddAdaptation(this.lumiaAdaptation);
-
+			this.AdaptationManager.AddAdaptation(this.lumiaAdaptation);
 			foreach (Lazy<IAdaptation, IExportAdaptationMetadata> lazy in this.AdaptationsWithMetadata)
 			{
 				this.AdaptationManager.AddAdaptation((BaseAdaptation)lazy.Value);
 			}
 		}
 
-		// Token: 0x0600000F RID: 15 RVA: 0x00002400 File Offset: 0x00000600
+		// Token: 0x0600000F RID: 15 RVA: 0x000023C0 File Offset: 0x000005C0
 		public void Dispose()
 		{
 			this.Dispose(true);
 			GC.SuppressFinalize(this);
 		}
 
-		// Token: 0x06000010 RID: 16 RVA: 0x00002414 File Offset: 0x00000614
+		// Token: 0x06000010 RID: 16 RVA: 0x000023D4 File Offset: 0x000005D4
 		public void SetProxy(IWebProxy proxy)
 		{
 			foreach (Lazy<IUseProxy> lazy in this.UsingProxyServices)
@@ -191,10 +196,11 @@ namespace Microsoft.WindowsDeviceRecoveryTool.BusinessLogic
 			}
 		}
 
-		// Token: 0x06000011 RID: 17 RVA: 0x00002474 File Offset: 0x00000674
+		// Token: 0x06000011 RID: 17 RVA: 0x0000242C File Offset: 0x0000062C
 		private void Dispose(bool disposing)
 		{
-			if (!this.disposed)
+			bool flag = this.disposed;
+			if (!flag)
 			{
 				if (disposing)
 				{
@@ -208,7 +214,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.BusinessLogic
 		private readonly FfuFileInfoService ffuFileInfoService;
 
 		// Token: 0x04000002 RID: 2
-		private readonly LumiaAdaptation1 lumiaAdaptation;
+		private readonly LumiaAdaptation lumiaAdaptation;
 
 		// Token: 0x04000003 RID: 3
 		private readonly AdaptationManager adaptationManager;
@@ -228,5 +234,4 @@ namespace Microsoft.WindowsDeviceRecoveryTool.BusinessLogic
 		// Token: 0x04000008 RID: 8
 		private bool disposed;
 	}
-
 }

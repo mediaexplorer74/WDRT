@@ -7,7 +7,8 @@ namespace Nokia.Lucid.GenericStream
 	public class GenericStream : IDisposable
 	{
 		// Token: 0x06000011 RID: 17 RVA: 0x00002284 File Offset: 0x00000484
-		public GenericStream() : this(10000)
+		public GenericStream()
+			: this(10000)
 		{
 		}
 
@@ -72,8 +73,8 @@ namespace Nokia.Lucid.GenericStream
 			}
 			if (this.OnReceived != null && this.OnReceived != null)
 			{
-				GenericStreamReceiveEventArgs e = new GenericStreamReceiveEventArgs(genericMessage);
-				this.HandleOnReceived(e);
+				GenericStreamReceiveEventArgs genericStreamReceiveEventArgs = new GenericStreamReceiveEventArgs(genericMessage);
+				this.HandleOnReceived(genericStreamReceiveEventArgs);
 				return;
 			}
 			if (!this.messageQueue.TryAdd(genericMessage, 500))

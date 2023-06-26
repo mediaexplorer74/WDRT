@@ -10,11 +10,11 @@ using Microsoft.WindowsDeviceRecoveryTool.Localization;
 
 namespace Microsoft.WindowsDeviceRecoveryTool
 {
-	// Token: 0x0200004B RID: 75
+	// Token: 0x02000007 RID: 7
 	[Export("ShellWindow")]
 	public sealed partial class MainWindow : Window
 	{
-		// Token: 0x06000292 RID: 658 RVA: 0x0000F658 File Offset: 0x0000D858
+		// Token: 0x0600001C RID: 28 RVA: 0x000024A3 File Offset: 0x000006A3
 		public MainWindow()
 		{
 			this.InitializeComponent();
@@ -22,10 +22,10 @@ namespace Microsoft.WindowsDeviceRecoveryTool
 			this.OnLanguageChanged(this, null);
 		}
 
-		// Token: 0x06000293 RID: 659 RVA: 0x0000F68C File Offset: 0x0000D88C
+		// Token: 0x0600001D RID: 29 RVA: 0x000024D4 File Offset: 0x000006D4
 		private void OnLanguageChanged(object sender, EventArgs e)
 		{
-			FlowDirection flowDirection = LocalizationManager.Instance().CurrentLanguage.TextInfo.IsRightToLeft ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
+			FlowDirection flowDirection = (LocalizationManager.Instance().CurrentLanguage.TextInfo.IsRightToLeft ? FlowDirection.RightToLeft : FlowDirection.LeftToRight);
 			base.SetCurrentValue(FrameworkElement.FlowDirectionProperty, flowDirection);
 		}
 	}

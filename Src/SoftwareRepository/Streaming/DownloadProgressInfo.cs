@@ -7,7 +7,7 @@ namespace SoftwareRepository.Streaming
 	[SuppressMessage("Microsoft.Performance", "CA1815:OverrideEqualsAndOperatorEqualsOnValueTypes")]
 	public struct DownloadProgressInfo
 	{
-		// Token: 0x0600005E RID: 94 RVA: 0x00003141 File Offset: 0x00001341
+		// Token: 0x06000063 RID: 99 RVA: 0x000035D8 File Offset: 0x000017D8
 		public DownloadProgressInfo(long bytesReceived, long totalBytes, string fileName)
 		{
 			this.BytesReceived = bytesReceived;

@@ -11,32 +11,32 @@ using Microsoft.WindowsDeviceRecoveryTool.Framework;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 {
-	// Token: 0x0200009C RID: 156
+	// Token: 0x02000047 RID: 71
 	[Export]
-	[Region(new string[]
-	{
-		"MainArea"
-	})]
+	[Region(new string[] { "MainArea" })]
 	public partial class ManualGenericModelSelectionView : Grid
 	{
-		// Token: 0x06000448 RID: 1096 RVA: 0x0001493F File Offset: 0x00012B3F
+		// Token: 0x060002CA RID: 714 RVA: 0x0000FCB9 File Offset: 0x0000DEB9
 		public ManualGenericModelSelectionView()
 		{
 			this.InitializeComponent();
 			this.selectedItem = null;
 		}
 
-		// Token: 0x06000449 RID: 1097 RVA: 0x00014958 File Offset: 0x00012B58
+		// Token: 0x060002CB RID: 715 RVA: 0x0000FCD4 File Offset: 0x0000DED4
 		private void ManufacturersListBoxOnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
 			ListBox listBox = sender as ListBox;
-			if (listBox != null)
+			bool flag = listBox != null;
+			if (flag)
 			{
 				FrameworkElement frameworkElement = listBox.ItemContainerGenerator.ContainerFromItem(listBox.SelectedItem) as FrameworkElement;
-				if (frameworkElement != null && this.selectedItem != null && object.Equals(frameworkElement, this.selectedItem))
+				bool flag2 = frameworkElement != null && this.selectedItem != null && object.Equals(frameworkElement, this.selectedItem);
+				if (flag2)
 				{
 					ManualGenericModelSelectionViewModel manualGenericModelSelectionViewModel = (ManualGenericModelSelectionViewModel)base.DataContext;
-					if (manualGenericModelSelectionViewModel.SelectTileCommand.CanExecute(null))
+					bool flag3 = manualGenericModelSelectionViewModel.SelectTileCommand.CanExecute(null);
+					if (flag3)
 					{
 						manualGenericModelSelectionViewModel.SelectTileCommand.Execute(this.selectedItem.DataContext);
 					}
@@ -44,17 +44,20 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x0600044A RID: 1098 RVA: 0x000149EC File Offset: 0x00012BEC
+		// Token: 0x060002CC RID: 716 RVA: 0x0000FD64 File Offset: 0x0000DF64
 		private void ManufacturersListBoxOnPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs args)
 		{
 			ListBox listBox = sender as ListBox;
-			if (args != null && listBox != null)
+			bool flag = args != null && listBox != null;
+			if (flag)
 			{
 				DependencyObject dependencyObject = args.OriginalSource as DependencyObject;
-				if (dependencyObject != null)
+				bool flag2 = dependencyObject != null;
+				if (flag2)
 				{
 					ListBoxItem listBoxItem = ItemsControl.ContainerFromElement(listBox, dependencyObject) as ListBoxItem;
-					if (listBoxItem != null)
+					bool flag3 = listBoxItem != null;
+					if (flag3)
 					{
 						this.selectedItem = listBoxItem;
 					}
@@ -62,20 +65,24 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x0600044B RID: 1099 RVA: 0x00014A48 File Offset: 0x00012C48
+		// Token: 0x060002CD RID: 717 RVA: 0x0000FDC4 File Offset: 0x0000DFC4
 		private void ManufacturersListBoxOnFocusedItemKeyPressed(object sender, KeyEventArgs e)
 		{
-			if (e.Key == Key.Space || e.Key == Key.Return)
+			bool flag = e.Key == Key.Space || e.Key == Key.Return;
+			if (flag)
 			{
 				ListBox listBox = sender as ListBox;
-				if (listBox != null)
+				bool flag2 = listBox != null;
+				if (flag2)
 				{
 					FrameworkElement frameworkElement = listBox.ItemContainerGenerator.ContainerFromItem(listBox.SelectedItem) as FrameworkElement;
 					DependencyObject dependencyObject = e.OriginalSource as DependencyObject;
-					if (frameworkElement != null && dependencyObject != null && object.Equals(frameworkElement, dependencyObject))
+					bool flag3 = frameworkElement != null && dependencyObject != null && object.Equals(frameworkElement, dependencyObject);
+					if (flag3)
 					{
 						ManualGenericModelSelectionViewModel manualGenericModelSelectionViewModel = (ManualGenericModelSelectionViewModel)base.DataContext;
-						if (manualGenericModelSelectionViewModel.SelectTileCommand.CanExecute(null))
+						bool flag4 = manualGenericModelSelectionViewModel.SelectTileCommand.CanExecute(null);
+						if (flag4)
 						{
 							manualGenericModelSelectionViewModel.SelectTileCommand.Execute(frameworkElement.DataContext);
 						}
@@ -84,7 +91,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x040001E1 RID: 481
+		// Token: 0x04000143 RID: 323
 		private FrameworkElement selectedItem;
 	}
 }

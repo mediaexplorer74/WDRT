@@ -3,16 +3,16 @@ using System.Net;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Helpers
 {
-	// Token: 0x02000012 RID: 18
+	// Token: 0x02000039 RID: 57
 	public class WebClientEx : WebClient
 	{
-		// Token: 0x06000093 RID: 147 RVA: 0x0000357C File Offset: 0x0000177C
+		// Token: 0x06000356 RID: 854 RVA: 0x0000D0B7 File Offset: 0x0000B2B7
 		public WebClientEx(int timeoutInMiliseconds = 30000)
 		{
 			this.timeout = timeoutInMiliseconds;
 		}
 
-		// Token: 0x06000094 RID: 148 RVA: 0x00003590 File Offset: 0x00001790
+		// Token: 0x06000357 RID: 855 RVA: 0x0000D0C8 File Offset: 0x0000B2C8
 		protected override WebRequest GetWebRequest(Uri address)
 		{
 			WebRequest webRequest = base.GetWebRequest(address);
@@ -20,7 +20,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Helpers
 			return webRequest;
 		}
 
-		// Token: 0x0400005F RID: 95
+		// Token: 0x04000184 RID: 388
 		private readonly int timeout;
 	}
 }

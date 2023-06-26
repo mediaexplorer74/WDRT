@@ -6,17 +6,19 @@ using System.Text;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Common.Tracing
 {
-	// Token: 0x0200000C RID: 12
+	// Token: 0x0200000A RID: 10
 	public sealed class DiagnosticLogTextWriter : TextWriterTraceListener, ITraceWriter
 	{
-		// Token: 0x06000048 RID: 72 RVA: 0x00003018 File Offset: 0x00001218
+		// Token: 0x0600003B RID: 59 RVA: 0x000029A4 File Offset: 0x00000BA4
 		public DiagnosticLogTextWriter(string traceLogFolder, string filePrefix)
 		{
-			if (filePrefix == null)
+			bool flag = filePrefix == null;
+			if (flag)
 			{
 				throw new ArgumentNullException("filePrefix");
 			}
-			if (string.IsNullOrEmpty(filePrefix))
+			bool flag2 = string.IsNullOrEmpty(filePrefix);
+			if (flag2)
 			{
 				throw new ArgumentException("File prefix cannot be empty string.", "filePrefix");
 			}
@@ -29,23 +31,26 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Common.Tracing
 			this.ChangeLogFolder(traceLogFolder);
 		}
 
-		// Token: 0x1700000A RID: 10
-		// (get) Token: 0x06000049 RID: 73 RVA: 0x000030AC File Offset: 0x000012AC
-		// (set) Token: 0x0600004A RID: 74 RVA: 0x000030C3 File Offset: 0x000012C3
+		// Token: 0x17000009 RID: 9
+		// (get) Token: 0x0600003C RID: 60 RVA: 0x00002A2F File Offset: 0x00000C2F
+		// (set) Token: 0x0600003D RID: 61 RVA: 0x00002A37 File Offset: 0x00000C37
 		public string LogFilePath { get; private set; }
 
-		// Token: 0x0600004B RID: 75 RVA: 0x000030CC File Offset: 0x000012CC
+		// Token: 0x0600003E RID: 62 RVA: 0x00002A40 File Offset: 0x00000C40
 		public void ChangeLogFolder(string newPath)
 		{
-			if (!Directory.Exists(newPath))
+			bool flag = !Directory.Exists(newPath);
+			if (flag)
 			{
 				Directory.CreateDirectory(newPath);
 			}
-			lock (this.syncRoot)
+			object obj = this.syncRoot;
+			lock (obj)
 			{
 				try
 				{
-					if (base.Writer != null)
+					bool flag3 = base.Writer != null;
+					if (flag3)
 					{
 						base.Writer.Close();
 						base.Writer = null;
@@ -56,20 +61,22 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Common.Tracing
 					Trace.WriteLine("DiagnosticLogTextWriter ChangeLogFolder catches:" + ex.Message);
 				}
 				this.LogFilePath = Path.Combine(newPath, this.logFileName);
-				FileStream stream = new FileStream(this.LogFilePath, FileMode.Append, FileAccess.Write);
-				base.Writer = new StreamWriter(stream)
+				FileStream fileStream = new FileStream(this.LogFilePath, FileMode.Append, FileAccess.Write);
+				base.Writer = new StreamWriter(fileStream)
 				{
 					AutoFlush = true
 				};
 			}
 		}
 
-		// Token: 0x0600004C RID: 76 RVA: 0x000031B4 File Offset: 0x000013B4
+		// Token: 0x0600003F RID: 63 RVA: 0x00002B20 File Offset: 0x00000D20
 		public override void Close()
 		{
-			lock (this.syncRoot)
+			object obj = this.syncRoot;
+			lock (obj)
 			{
-				if (base.Writer != null)
+				bool flag2 = base.Writer != null;
+				if (flag2)
 				{
 					base.Writer.Close();
 					base.Writer = null;
@@ -79,82 +86,70 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Common.Tracing
 			}
 		}
 
-		// Token: 0x0600004D RID: 77 RVA: 0x00003230 File Offset: 0x00001430
+		// Token: 0x06000040 RID: 64 RVA: 0x00002B98 File Offset: 0x00000D98
 		public override void TraceData(TraceEventCache eventCache, string source, TraceEventType eventType, int id, params object[] data)
 		{
 			this.TraceData(eventCache, source, eventType, (int)data[0], (string)data[1], (int)data[2], (string)data[3], (string)data[4], (string)data[5], (string)data[6]);
 		}
 
-		// Token: 0x0600004E RID: 78 RVA: 0x00003288 File Offset: 0x00001488
+		// Token: 0x06000041 RID: 65 RVA: 0x00002BF0 File Offset: 0x00000DF0
 		private static void AppendField(StringBuilder builder, object fieldValue)
 		{
-			if (builder.Length != 0)
+			bool flag = builder.Length != 0;
+			if (flag)
 			{
 				builder.Append(" | ");
 			}
 			builder.Append(fieldValue ?? string.Empty);
 		}
 
-		// Token: 0x0600004F RID: 79 RVA: 0x000032C4 File Offset: 0x000014C4
+		// Token: 0x06000042 RID: 66 RVA: 0x00002C2C File Offset: 0x00000E2C
 		private static void AppendField(StringBuilder builder, string formatString, params object[] args)
 		{
-			if (builder.Length != 0)
+			bool flag = builder.Length != 0;
+			if (flag)
 			{
 				builder.Append(" | ");
 			}
-
-			//RnD
-			if (formatString == null)
-			{
-				formatString = "";
-			}
-
-
-            builder.AppendFormat(CultureInfo.CurrentCulture, formatString, args);
+			builder.AppendFormat(CultureInfo.CurrentCulture, formatString, args);
 		}
 
-		// Token: 0x06000050 RID: 80 RVA: 0x000032FC File Offset: 0x000014FC
+		// Token: 0x06000043 RID: 67 RVA: 0x00002C64 File Offset: 0x00000E64
 		private void TraceData(TraceEventCache eventCache, string source, TraceEventType eventType, int processId, string processName, int threadId, string threadName, string assemblyFileName, string messageText, string errorText)
 		{
-			string formatString = eventCache.DateTime.ToLocalTime().ToString("u", CultureInfo.InvariantCulture);
+			string text = eventCache.DateTime.ToLocalTime().ToString("u", CultureInfo.InvariantCulture);
 			StringBuilder stringBuilder = new StringBuilder(250);
-			DiagnosticLogTextWriter.AppendField(stringBuilder, formatString, new object[0]);
-			DiagnosticLogTextWriter.AppendField(stringBuilder, "{0} ({1})", new object[]
+			DiagnosticLogTextWriter.AppendField(stringBuilder, text, new object[0]);
+			DiagnosticLogTextWriter.AppendField(stringBuilder, "{0} ({1})", new object[] { processId, processName });
+			bool flag = threadName != null;
+			if (flag)
 			{
-				processId,
-				processName
-			});
-			if (threadName != null)
-			{
-				DiagnosticLogTextWriter.AppendField(stringBuilder, "0x{0:x8} ({1})", new object[]
-				{
-					threadId,
-					threadName
-				});
+				DiagnosticLogTextWriter.AppendField(stringBuilder, "0x{0:x8} ({1})", new object[] { threadId, threadName });
 			}
 			else
 			{
-				DiagnosticLogTextWriter.AppendField(stringBuilder, "0x{0:x8}", new object[]
-				{
-					threadId
-				});
+				DiagnosticLogTextWriter.AppendField(stringBuilder, "0x{0:x8}", new object[] { threadId });
 			}
 			DiagnosticLogTextWriter.AppendField(stringBuilder, assemblyFileName, new object[0]);
 			DiagnosticLogTextWriter.AppendField(stringBuilder, source, new object[0]);
 			DiagnosticLogTextWriter.AppendField(stringBuilder, eventType);
-			if (!string.IsNullOrEmpty(messageText))
+			bool flag2 = !string.IsNullOrEmpty(messageText);
+			if (flag2)
 			{
 				messageText = messageText.Replace("{", "{{").Replace("}", "}}");
 			}
 			DiagnosticLogTextWriter.AppendField(stringBuilder, messageText);
-			if (!string.IsNullOrEmpty(errorText))
+			bool flag3 = !string.IsNullOrEmpty(errorText);
+			if (flag3)
 			{
 				errorText = errorText.Replace("{", "{{").Replace("}", "}}");
 			}
 			DiagnosticLogTextWriter.AppendField(stringBuilder, (errorText != null) ? ("<!CDATA[[" + errorText + "]]>") : string.Empty, new object[0]);
-			lock (this.syncRoot)
+			object obj = this.syncRoot;
+			lock (obj)
 			{
-				if (base.Writer != null)
+				bool flag5 = base.Writer != null;
+				if (flag5)
 				{
 					try
 					{
@@ -167,10 +162,10 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Common.Tracing
 			}
 		}
 
-		// Token: 0x0400000E RID: 14
+		// Token: 0x04000009 RID: 9
 		private readonly object syncRoot = new object();
 
-		// Token: 0x0400000F RID: 15
+		// Token: 0x0400000A RID: 10
 		private readonly string logFileName;
 	}
 }

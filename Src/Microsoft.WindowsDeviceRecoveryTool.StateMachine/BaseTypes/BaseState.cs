@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using Microsoft.WindowsDeviceRecoveryTool.Common.Tracing;
 using Microsoft.WindowsDeviceRecoveryTool.StateMachine.DefaultTypes;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.BaseTypes
 {
-	// Token: 0x02000002 RID: 2
+	// Token: 0x02000010 RID: 16
 	public class BaseState
 	{
-		// Token: 0x06000001 RID: 1 RVA: 0x00002050 File Offset: 0x00000250
+		// Token: 0x06000038 RID: 56 RVA: 0x000026E7 File Offset: 0x000008E7
 		protected BaseState()
 		{
 			this.ConditionalTransitions = new Collection<BaseTransition>();
@@ -17,77 +18,82 @@ namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.BaseTypes
 		}
 
 		// Token: 0x14000001 RID: 1
-		// (add) Token: 0x06000002 RID: 2 RVA: 0x00002074 File Offset: 0x00000274
-		// (remove) Token: 0x06000003 RID: 3 RVA: 0x000020B0 File Offset: 0x000002B0
+		// (add) Token: 0x06000039 RID: 57 RVA: 0x0000270C File Offset: 0x0000090C
+		// (remove) Token: 0x0600003A RID: 58 RVA: 0x00002744 File Offset: 0x00000944
+		[field: DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event EventHandler<EventArgs> StateStarted;
 
 		// Token: 0x14000002 RID: 2
-		// (add) Token: 0x06000004 RID: 4 RVA: 0x000020EC File Offset: 0x000002EC
-		// (remove) Token: 0x06000005 RID: 5 RVA: 0x00002128 File Offset: 0x00000328
+		// (add) Token: 0x0600003B RID: 59 RVA: 0x0000277C File Offset: 0x0000097C
+		// (remove) Token: 0x0600003C RID: 60 RVA: 0x000027B4 File Offset: 0x000009B4
+		[field: DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event EventHandler<TransitionEventArgs> Finished;
 
 		// Token: 0x14000003 RID: 3
-		// (add) Token: 0x06000006 RID: 6 RVA: 0x00002164 File Offset: 0x00000364
-		// (remove) Token: 0x06000007 RID: 7 RVA: 0x000021A0 File Offset: 0x000003A0
+		// (add) Token: 0x0600003D RID: 61 RVA: 0x000027EC File Offset: 0x000009EC
+		// (remove) Token: 0x0600003E RID: 62 RVA: 0x00002824 File Offset: 0x00000A24
+		[field: DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event EventHandler<Error> Errored;
 
 		// Token: 0x14000004 RID: 4
-		// (add) Token: 0x06000008 RID: 8 RVA: 0x000021DC File Offset: 0x000003DC
-		// (remove) Token: 0x06000009 RID: 9 RVA: 0x00002218 File Offset: 0x00000418
+		// (add) Token: 0x0600003F RID: 63 RVA: 0x0000285C File Offset: 0x00000A5C
+		// (remove) Token: 0x06000040 RID: 64 RVA: 0x00002894 File Offset: 0x00000A94
+		[field: DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event EventHandler Closing;
 
-		// Token: 0x17000001 RID: 1
-		// (get) Token: 0x0600000A RID: 10 RVA: 0x00002254 File Offset: 0x00000454
-		// (set) Token: 0x0600000B RID: 11 RVA: 0x0000226B File Offset: 0x0000046B
+		// Token: 0x17000005 RID: 5
+		// (get) Token: 0x06000041 RID: 65 RVA: 0x000028C9 File Offset: 0x00000AC9
+		// (set) Token: 0x06000042 RID: 66 RVA: 0x000028D1 File Offset: 0x00000AD1
 		public DefaultTransition DefaultTransition { get; set; }
 
-		// Token: 0x17000002 RID: 2
-		// (get) Token: 0x0600000C RID: 12 RVA: 0x00002274 File Offset: 0x00000474
-		// (set) Token: 0x0600000D RID: 13 RVA: 0x0000228B File Offset: 0x0000048B
+		// Token: 0x17000006 RID: 6
+		// (get) Token: 0x06000043 RID: 67 RVA: 0x000028DA File Offset: 0x00000ADA
+		// (set) Token: 0x06000044 RID: 68 RVA: 0x000028E2 File Offset: 0x00000AE2
 		public Collection<BaseTransition> ConditionalTransitions { get; private set; }
 
-		// Token: 0x17000003 RID: 3
-		// (get) Token: 0x0600000E RID: 14 RVA: 0x00002294 File Offset: 0x00000494
-		// (set) Token: 0x0600000F RID: 15 RVA: 0x000022AB File Offset: 0x000004AB
+		// Token: 0x17000007 RID: 7
+		// (get) Token: 0x06000045 RID: 69 RVA: 0x000028EB File Offset: 0x00000AEB
+		// (set) Token: 0x06000046 RID: 70 RVA: 0x000028F3 File Offset: 0x00000AF3
 		public ErrorTransition DefaultErrorTransition { get; set; }
 
-		// Token: 0x17000004 RID: 4
-		// (get) Token: 0x06000010 RID: 16 RVA: 0x000022B4 File Offset: 0x000004B4
-		// (set) Token: 0x06000011 RID: 17 RVA: 0x000022CB File Offset: 0x000004CB
+		// Token: 0x17000008 RID: 8
+		// (get) Token: 0x06000047 RID: 71 RVA: 0x000028FC File Offset: 0x00000AFC
+		// (set) Token: 0x06000048 RID: 72 RVA: 0x00002904 File Offset: 0x00000B04
 		public Dictionary<Type, ErrorTransition> ErrorTransitions { get; private set; }
 
-		// Token: 0x17000005 RID: 5
-		// (get) Token: 0x06000012 RID: 18 RVA: 0x000022D4 File Offset: 0x000004D4
-		// (set) Token: 0x06000013 RID: 19 RVA: 0x000022EB File Offset: 0x000004EB
+		// Token: 0x17000009 RID: 9
+		// (get) Token: 0x06000049 RID: 73 RVA: 0x0000290D File Offset: 0x00000B0D
+		// (set) Token: 0x0600004A RID: 74 RVA: 0x00002915 File Offset: 0x00000B15
 		public bool Started { get; private set; }
 
-		// Token: 0x17000006 RID: 6
-		// (get) Token: 0x06000014 RID: 20 RVA: 0x000022F4 File Offset: 0x000004F4
-		// (set) Token: 0x06000015 RID: 21 RVA: 0x0000230B File Offset: 0x0000050B
+		// Token: 0x1700000A RID: 10
+		// (get) Token: 0x0600004B RID: 75 RVA: 0x0000291E File Offset: 0x00000B1E
+		// (set) Token: 0x0600004C RID: 76 RVA: 0x00002926 File Offset: 0x00000B26
 		public string MachineName { get; set; }
 
-		// Token: 0x06000016 RID: 22 RVA: 0x00002314 File Offset: 0x00000514
+		// Token: 0x0600004D RID: 77 RVA: 0x00002930 File Offset: 0x00000B30
 		public static BaseState NullObject()
 		{
 			return new BaseState();
 		}
 
-		// Token: 0x06000017 RID: 23 RVA: 0x0000232B File Offset: 0x0000052B
+		// Token: 0x0600004E RID: 78 RVA: 0x00002947 File Offset: 0x00000B47
 		public void AddConditionalTransition(BaseTransition transition)
 		{
 			this.ConditionalTransitions.Add(transition);
 		}
 
-		// Token: 0x06000018 RID: 24 RVA: 0x0000233B File Offset: 0x0000053B
+		// Token: 0x0600004F RID: 79 RVA: 0x00002957 File Offset: 0x00000B57
 		public void AddErrorTransition(ErrorTransition transition, Exception exception)
 		{
 			this.ErrorTransitions.Add(exception.GetType(), transition);
 		}
 
-		// Token: 0x06000019 RID: 25 RVA: 0x00002354 File Offset: 0x00000554
+		// Token: 0x06000050 RID: 80 RVA: 0x00002970 File Offset: 0x00000B70
 		public virtual void Start()
 		{
-			if (!this.Started)
+			bool flag = !this.Started;
+			if (flag)
 			{
 				Tracer<BaseState>.WriteInformation(string.Format("Started state: {0} ({1})", this.ToString(), this.MachineName));
 				this.Started = true;
@@ -103,10 +109,11 @@ namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.BaseTypes
 			}
 		}
 
-		// Token: 0x0600001A RID: 26 RVA: 0x000023C8 File Offset: 0x000005C8
+		// Token: 0x06000051 RID: 81 RVA: 0x000029E4 File Offset: 0x00000BE4
 		public virtual void Stop()
 		{
-			if (this.Started)
+			bool started = this.Started;
+			if (started)
 			{
 				Tracer<BaseState>.WriteInformation(string.Format("Stopped state: {0} ({1})", this.ToString(), this.MachineName));
 				this.Started = false;
@@ -121,7 +128,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.BaseTypes
 			}
 		}
 
-		// Token: 0x0600001B RID: 27 RVA: 0x00002434 File Offset: 0x00000634
+		// Token: 0x06000052 RID: 82 RVA: 0x00002A4C File Offset: 0x00000C4C
 		public virtual BaseState NextState(TransitionEventArgs eventArgs)
 		{
 			BaseState baseState = this;
@@ -131,13 +138,11 @@ namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.BaseTypes
 			{
 				foreach (BaseTransition baseTransition2 in this.ConditionalTransitions)
 				{
-					if (baseTransition2.ConditionsAreMet(this, eventArgs))
+					bool flag = baseTransition2.ConditionsAreMet(this, eventArgs);
+					if (flag)
 					{
 						baseTransition = baseTransition2;
-						Tracer<BaseState>.WriteInformation("Conditions are met for {0}", new object[]
-						{
-							baseTransition2.ToString()
-						});
+						Tracer<BaseState>.WriteInformation("Conditions are met for {0}", new object[] { baseTransition2.ToString() });
 						break;
 					}
 				}
@@ -147,14 +152,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.BaseTypes
 				Tracer<BaseState>.WriteError(ex, "Checking transitions is failed: unexpected error", new object[0]);
 				return this.HandleTransitionException(baseState, ex);
 			}
-			if (baseTransition != null)
+			bool flag2 = baseTransition != null;
+			if (flag2)
 			{
-				if (baseTransition == this.DefaultTransition)
+				bool flag3 = baseTransition == this.DefaultTransition;
+				if (flag3)
 				{
-					Tracer<BaseState>.WriteInformation("Selecting Default transition {0}", new object[]
-					{
-						baseTransition.Next.ToString()
-					});
+					Tracer<BaseState>.WriteInformation("Selecting Default transition {0}", new object[] { baseTransition.Next.ToString() });
 				}
 				Tracer<BaseState>.WriteInformation(string.Format("Next state of {0} is {1}", this.ToString(), baseTransition.Next));
 				baseState = baseTransition.Next;
@@ -162,24 +166,25 @@ namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.BaseTypes
 			return baseState;
 		}
 
-		// Token: 0x0600001C RID: 28 RVA: 0x0000258C File Offset: 0x0000078C
+		// Token: 0x06000053 RID: 83 RVA: 0x00002B84 File Offset: 0x00000D84
 		public void Finish(string status)
 		{
 			this.RaiseStateFinished(string.IsNullOrEmpty(status) ? TransitionEventArgs.Empty : new TransitionEventArgs(status));
 		}
 
-		// Token: 0x0600001D RID: 29 RVA: 0x000025AC File Offset: 0x000007AC
+		// Token: 0x06000054 RID: 84 RVA: 0x00002BA3 File Offset: 0x00000DA3
 		public void Error(Exception exception)
 		{
 			this.RaiseStateErrored(new Error(exception));
 		}
 
-		// Token: 0x0600001E RID: 30 RVA: 0x000025BC File Offset: 0x000007BC
+		// Token: 0x06000055 RID: 85 RVA: 0x00002BB4 File Offset: 0x00000DB4
 		private BaseState HandleTransitionException(BaseState state, Exception exception)
 		{
 			Error error = new Error(exception);
 			BaseErrorState baseErrorState = this.NextErrorState(error);
-			if (baseErrorState != null)
+			bool flag = baseErrorState != null;
+			if (flag)
 			{
 				baseErrorState.Start(error);
 				state = baseErrorState;
@@ -187,49 +192,53 @@ namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.BaseTypes
 			return state;
 		}
 
-		// Token: 0x0600001F RID: 31 RVA: 0x000025F4 File Offset: 0x000007F4
+		// Token: 0x06000056 RID: 86 RVA: 0x00002BEC File Offset: 0x00000DEC
 		public virtual BaseErrorState NextErrorState(Error error)
 		{
 			Tracer<BaseState>.WriteInformation(string.Format("Getting Next Error state of {0}, error code: {1}", this.ToString(), error.Message));
-			BaseErrorState next;
-			if (this.ErrorTransitions.ContainsKey(error.ExceptionType))
+			bool flag = this.ErrorTransitions.ContainsKey(error.ExceptionType);
+			BaseErrorState baseErrorState;
+			if (flag)
 			{
-				next = this.ErrorTransitions[error.ExceptionType].Next;
+				baseErrorState = this.ErrorTransitions[error.ExceptionType].Next;
 			}
 			else
 			{
-				if (this.DefaultErrorTransition == null)
+				bool flag2 = this.DefaultErrorTransition != null;
+				if (!flag2)
 				{
-					throw new InvalidOperationException("There is no error transition for code: " + error.ExceptionType);
+					string text = "There is no error transition for code: ";
+					Type exceptionType = error.ExceptionType;
+					throw new InvalidOperationException(text + ((exceptionType != null) ? exceptionType.ToString() : null));
 				}
-				next = this.DefaultErrorTransition.Next;
-				Tracer<BaseState>.WriteInformation("Selecting Default error state {0}", new object[]
-				{
-					next.ToString()
-				});
+				baseErrorState = this.DefaultErrorTransition.Next;
+				Tracer<BaseState>.WriteInformation("Selecting Default error state {0}", new object[] { baseErrorState.ToString() });
 			}
-			if (next != null)
+			bool flag3 = baseErrorState != null;
+			if (flag3)
 			{
-				Tracer<BaseState>.WriteInformation(string.Format("Next Error state of {0} is {1}", this.ToString(), next));
+				Tracer<BaseState>.WriteInformation(string.Format("Next Error state of {0} is {1}", this.ToString(), baseErrorState));
 			}
-			return next;
+			return baseErrorState;
 		}
 
-		// Token: 0x06000020 RID: 32 RVA: 0x000026C8 File Offset: 0x000008C8
+		// Token: 0x06000057 RID: 87 RVA: 0x00002CC8 File Offset: 0x00000EC8
 		protected virtual void RaiseStateStarted(EventArgs eventArgs)
 		{
 			EventHandler<EventArgs> stateStarted = this.StateStarted;
-			if (stateStarted != null)
+			bool flag = stateStarted != null;
+			if (flag)
 			{
 				stateStarted(this, eventArgs);
 			}
 		}
 
-		// Token: 0x06000021 RID: 33 RVA: 0x000026F0 File Offset: 0x000008F0
+		// Token: 0x06000058 RID: 88 RVA: 0x00002CF0 File Offset: 0x00000EF0
 		protected virtual void RaiseStateFinished(TransitionEventArgs eventArgs)
 		{
 			EventHandler<TransitionEventArgs> finished = this.Finished;
-			if (finished != null)
+			bool flag = finished != null;
+			if (flag)
 			{
 				finished(this, eventArgs);
 			}
@@ -244,11 +253,12 @@ namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.BaseTypes
 			}
 		}
 
-		// Token: 0x06000022 RID: 34 RVA: 0x00002764 File Offset: 0x00000964
+		// Token: 0x06000059 RID: 89 RVA: 0x00002D60 File Offset: 0x00000F60
 		protected virtual void RaiseStateErrored(Error error)
 		{
 			EventHandler<Error> errored = this.Errored;
-			if (errored != null)
+			bool flag = errored != null;
+			if (flag)
 			{
 				errored(this, error);
 			}
@@ -262,17 +272,18 @@ namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.BaseTypes
 			}
 		}
 
-		// Token: 0x06000023 RID: 35 RVA: 0x000027B8 File Offset: 0x000009B8
+		// Token: 0x0600005A RID: 90 RVA: 0x00002DB0 File Offset: 0x00000FB0
 		public override string ToString()
 		{
 			return base.ToString().Substring(base.ToString().LastIndexOf('.') + 1);
 		}
 
-		// Token: 0x06000024 RID: 36 RVA: 0x000027E4 File Offset: 0x000009E4
+		// Token: 0x0600005B RID: 91 RVA: 0x00002DDC File Offset: 0x00000FDC
 		protected void SendClosingEvent()
 		{
 			EventHandler closing = this.Closing;
-			if (closing != null)
+			bool flag = closing != null;
+			if (flag)
 			{
 				closing(this, EventArgs.Empty);
 			}

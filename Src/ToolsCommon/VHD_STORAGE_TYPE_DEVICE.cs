@@ -2,15 +2,15 @@
 
 namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 {
-	// Token: 0x0200002D RID: 45
+	// Token: 0x0200003B RID: 59
 	[CLSCompliant(false)]
 	public enum VHD_STORAGE_TYPE_DEVICE : uint
 	{
-		// Token: 0x0400008C RID: 140
+		// Token: 0x040000ED RID: 237
 		VIRTUAL_STORAGE_TYPE_DEVICE_UNKNOWN,
-		// Token: 0x0400008D RID: 141
+		// Token: 0x040000EE RID: 238
 		VIRTUAL_STORAGE_TYPE_DEVICE_ISO,
-		// Token: 0x0400008E RID: 142
+		// Token: 0x040000EF RID: 239
 		VIRTUAL_STORAGE_TYPE_DEVICE_VHD
 	}
 }

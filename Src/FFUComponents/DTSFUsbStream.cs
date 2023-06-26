@@ -26,20 +26,13 @@ namespace FFUComponents
 				this.deviceHandle = DTSFUsbStream.CreateDeviceHandle(this.deviceName, shareMode, ref num);
 				if (this.deviceHandle.IsInvalid)
 				{
-					throw new IOException(string.Format(CultureInfo.CurrentCulture, Resources.ERROR_INVALID_HANDLE, new object[]
-					{
-						deviceName,
-						num
-					}));
+					throw new IOException(string.Format(CultureInfo.CurrentCulture, Resources.ERROR_INVALID_HANDLE, new object[] { deviceName, num }));
 				}
 				this.InitializeDevice();
 				this.SetTransferTimeout(transferTimeout);
 				if (!ThreadPool.BindHandle(this.deviceHandle))
 				{
-					throw new IOException(string.Format(CultureInfo.CurrentCulture, Resources.ERROR_BINDHANDLE, new object[]
-					{
-						deviceName
-					}));
+					throw new IOException(string.Format(CultureInfo.CurrentCulture, Resources.ERROR_BINDHANDLE, new object[] { deviceName }));
 				}
 				this.Connect();
 			}
@@ -51,7 +44,8 @@ namespace FFUComponents
 		}
 
 		// Token: 0x0600019E RID: 414 RVA: 0x0000862C File Offset: 0x0000682C
-		public DTSFUsbStream(string deviceName, TimeSpan transferTimeout) : this(deviceName, FileShare.None, transferTimeout)
+		public DTSFUsbStream(string deviceName, TimeSpan transferTimeout)
+			: this(deviceName, FileShare.None, transferTimeout)
 		{
 		}
 
@@ -140,17 +134,17 @@ namespace FFUComponents
 		public override int Read(byte[] buffer, int offset, int count)
 		{
 			IAsyncResult asyncResult = this.BeginRead(buffer, offset, count, null, null);
-			int result;
+			int num;
 			try
 			{
-				result = this.EndRead(asyncResult);
+				num = this.EndRead(asyncResult);
 			}
-			catch (TimeoutException innerException)
+			catch (TimeoutException ex)
 			{
 				this.HandleAsyncTimeout(asyncResult);
-				throw new Win32Exception(Resources.ERROR_CALLBACK_TIMEOUT, innerException);
+				throw new Win32Exception(Resources.ERROR_CALLBACK_TIMEOUT, ex);
 			}
-			return result;
+			return num;
 		}
 
 		// Token: 0x060001AA RID: 426 RVA: 0x000086D0 File Offset: 0x000068D0
@@ -161,10 +155,10 @@ namespace FFUComponents
 			{
 				this.EndWrite(asyncResult);
 			}
-			catch (TimeoutException innerException)
+			catch (TimeoutException ex)
 			{
 				this.HandleAsyncTimeout(asyncResult);
-				throw new Win32Exception(Resources.ERROR_CALLBACK_TIMEOUT, innerException);
+				throw new Win32Exception(Resources.ERROR_CALLBACK_TIMEOUT, ex);
 			}
 		}
 
@@ -411,9 +405,9 @@ namespace FFUComponents
 		// Token: 0x060001B5 RID: 437 RVA: 0x00008BD4 File Offset: 0x00006DD4
 		private static SafeFileHandle CreateDeviceHandle(string deviceName, FileShare shareMode, ref int lastError)
 		{
-			SafeFileHandle result = NativeMethods.CreateFile(deviceName, 3221225472U, (uint)shareMode, IntPtr.Zero, 3U, 1073741952U, IntPtr.Zero);
+			SafeFileHandle safeFileHandle = NativeMethods.CreateFile(deviceName, 3221225472U, (uint)shareMode, IntPtr.Zero, 3U, 1073741952U, IntPtr.Zero);
 			lastError = Marshal.GetLastWin32Error();
-			return result;
+			return safeFileHandle;
 		}
 
 		// Token: 0x060001B6 RID: 438 RVA: 0x00008C08 File Offset: 0x00006E08
@@ -492,9 +486,9 @@ namespace FFUComponents
 		// Token: 0x060001BB RID: 443 RVA: 0x00008D90 File Offset: 0x00006F90
 		public void SetTransferTimeout(TimeSpan transferTimeout)
 		{
-			uint value = (uint)transferTimeout.TotalMilliseconds;
-			this.SetPipePolicy(this.bulkInPipeId, 3U, value);
-			this.SetPipePolicy(this.bulkOutPipeId, 3U, value);
+			uint num = (uint)transferTimeout.TotalMilliseconds;
+			this.SetPipePolicy(this.bulkInPipeId, 3U, num);
+			this.SetPipePolicy(this.bulkOutPipeId, 3U, num);
 		}
 
 		// Token: 0x060001BC RID: 444 RVA: 0x00008DC2 File Offset: 0x00006FC2
@@ -536,17 +530,17 @@ namespace FFUComponents
 		// Token: 0x060001C1 RID: 449 RVA: 0x00008E40 File Offset: 0x00007040
 		private unsafe void ControlTransferSetData(UsbControlRequest request, ushort value)
 		{
-			WinUsbSetupPacket setupPacket = default(WinUsbSetupPacket);
-			setupPacket.RequestType = 33;
-			setupPacket.Request = (byte)request;
-			setupPacket.Value = value;
-			setupPacket.Index = 0;
-			setupPacket.Length = 0;
+			WinUsbSetupPacket winUsbSetupPacket = default(WinUsbSetupPacket);
+			winUsbSetupPacket.RequestType = 33;
+			winUsbSetupPacket.Request = (byte)request;
+			winUsbSetupPacket.Value = value;
+			winUsbSetupPacket.Index = 0;
+			winUsbSetupPacket.Length = 0;
 			uint num = 0U;
 			byte[] array = null;
 			fixed (byte* ptr = array)
 			{
-				if (!NativeMethods.WinUsbControlTransfer(this.usbHandle, setupPacket, ptr, (uint)setupPacket.Length, ref num, IntPtr.Zero))
+				if (!NativeMethods.WinUsbControlTransfer(this.usbHandle, winUsbSetupPacket, ptr, (uint)winUsbSetupPacket.Length, ref num, IntPtr.Zero))
 				{
 					int lastWin32Error = Marshal.GetLastWin32Error();
 					throw new Win32Exception(lastWin32Error);
@@ -557,16 +551,16 @@ namespace FFUComponents
 		// Token: 0x060001C2 RID: 450 RVA: 0x00008ED0 File Offset: 0x000070D0
 		private unsafe void ControlTransferGetData(UsbControlRequest request, byte[] buffer)
 		{
-			WinUsbSetupPacket setupPacket = default(WinUsbSetupPacket);
-			setupPacket.RequestType = 161;
-			setupPacket.Request = (byte)request;
-			setupPacket.Value = 0;
-			setupPacket.Index = 0;
-			setupPacket.Length = ((ushort)((buffer == null) ? 0 : ((ushort)buffer.Length)));
+			WinUsbSetupPacket winUsbSetupPacket = default(WinUsbSetupPacket);
+			winUsbSetupPacket.RequestType = 161;
+			winUsbSetupPacket.Request = (byte)request;
+			winUsbSetupPacket.Value = 0;
+			winUsbSetupPacket.Index = 0;
+			winUsbSetupPacket.Length = ((buffer == null) ? 0 : ((ushort)buffer.Length));
 			uint num = 0U;
 			fixed (byte* ptr = buffer)
 			{
-				if (!NativeMethods.WinUsbControlTransfer(this.usbHandle, setupPacket, ptr, (uint)setupPacket.Length, ref num, IntPtr.Zero))
+				if (!NativeMethods.WinUsbControlTransfer(this.usbHandle, winUsbSetupPacket, ptr, (uint)winUsbSetupPacket.Length, ref num, IntPtr.Zero))
 				{
 					int lastWin32Error = Marshal.GetLastWin32Error();
 					throw new Win32Exception(lastWin32Error);

@@ -12,7 +12,7 @@ namespace FFUComponents
 		// Token: 0x060000C8 RID: 200 RVA: 0x000043BE File Offset: 0x000025BE
 		internal static uint CTL_CODE(uint DeviceType, uint Function, uint Method, uint Access)
 		{
-			return DeviceType << 16 | Access << 14 | Function << 2 | Method;
+			return (DeviceType << 16) | (Access << 14) | (Function << 2) | Method;
 		}
 
 		// Token: 0x060000C9 RID: 201

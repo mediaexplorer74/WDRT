@@ -2,30 +2,30 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model
 {
-	// Token: 0x0200000C RID: 12
+	// Token: 0x02000007 RID: 7
 	public class EmergencyPackageInfo
 	{
-		// Token: 0x1700003D RID: 61
-		// (get) Token: 0x06000083 RID: 131 RVA: 0x000030A4 File Offset: 0x000012A4
-		// (set) Token: 0x06000084 RID: 132 RVA: 0x000030BB File Offset: 0x000012BB
+		// Token: 0x1700001F RID: 31
+		// (get) Token: 0x06000046 RID: 70 RVA: 0x00002A8B File Offset: 0x00000C8B
+		// (set) Token: 0x06000047 RID: 71 RVA: 0x00002A93 File Offset: 0x00000C93
 		public string ConfigFilePath { get; set; }
 
-		// Token: 0x1700003E RID: 62
-		// (get) Token: 0x06000085 RID: 133 RVA: 0x000030C4 File Offset: 0x000012C4
-		// (set) Token: 0x06000086 RID: 134 RVA: 0x000030DB File Offset: 0x000012DB
+		// Token: 0x17000020 RID: 32
+		// (get) Token: 0x06000048 RID: 72 RVA: 0x00002A9C File Offset: 0x00000C9C
+		// (set) Token: 0x06000049 RID: 73 RVA: 0x00002AA4 File Offset: 0x00000CA4
 		public string HexFlasherFilePath { get; set; }
 
-		// Token: 0x1700003F RID: 63
-		// (get) Token: 0x06000087 RID: 135 RVA: 0x000030E4 File Offset: 0x000012E4
-		// (set) Token: 0x06000088 RID: 136 RVA: 0x000030FB File Offset: 0x000012FB
+		// Token: 0x17000021 RID: 33
+		// (get) Token: 0x0600004A RID: 74 RVA: 0x00002AAD File Offset: 0x00000CAD
+		// (set) Token: 0x0600004B RID: 75 RVA: 0x00002AB5 File Offset: 0x00000CB5
 		public string EdpImageFilePath { get; set; }
 
-		// Token: 0x17000040 RID: 64
-		// (get) Token: 0x06000089 RID: 137 RVA: 0x00003104 File Offset: 0x00001304
-		// (set) Token: 0x0600008A RID: 138 RVA: 0x0000311B File Offset: 0x0000131B
+		// Token: 0x17000022 RID: 34
+		// (get) Token: 0x0600004C RID: 76 RVA: 0x00002ABE File Offset: 0x00000CBE
+		// (set) Token: 0x0600004D RID: 77 RVA: 0x00002AC6 File Offset: 0x00000CC6
 		public string MbnImageFilePath { get; set; }
 
-		// Token: 0x0600008B RID: 139 RVA: 0x00003124 File Offset: 0x00001324
+		// Token: 0x0600004E RID: 78 RVA: 0x00002AD0 File Offset: 0x00000CD0
 		public bool IsAlphaCollins()
 		{
 			return !string.IsNullOrWhiteSpace(this.MbnImageFilePath) && !string.IsNullOrWhiteSpace(this.HexFlasherFilePath);

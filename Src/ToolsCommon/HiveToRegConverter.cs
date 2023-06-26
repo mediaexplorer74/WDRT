@@ -7,88 +7,50 @@ using System.Text;
 
 namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 {
-	// Token: 0x02000016 RID: 22
+	// Token: 0x0200001C RID: 28
 	public class HiveToRegConverter
 	{
-		// Token: 0x060000CC RID: 204 RVA: 0x000065EA File Offset: 0x000047EA
-		public HiveToRegConverter(string hiveFile)
-		{
-			this.VerifyHiveFileInput(hiveFile);
-			this.m_hiveFile = hiveFile;
-			this.m_keyPrefix = null;
-		}
-
-		// Token: 0x060000CD RID: 205 RVA: 0x00006617 File Offset: 0x00004817
-		public HiveToRegConverter(string hiveFile, string keyPrefix)
-		{
-			this.VerifyHiveFileInput(hiveFile);
-			this.m_hiveFile = hiveFile;
-			this.m_keyPrefix = keyPrefix;
-		}
-
-		// Token: 0x060000CE RID: 206 RVA: 0x00006644 File Offset: 0x00004844
-		public void VerifyHiveFileInput(string hiveFile)
+		// Token: 0x060000F0 RID: 240 RVA: 0x000070C0 File Offset: 0x000052C0
+		public HiveToRegConverter(string hiveFile, string keyPrefix = null)
 		{
 			if (string.IsNullOrEmpty(hiveFile))
 			{
-				throw new ArgumentNullException("hiveFile", "HiveFile cannot be null.");
+				throw new ArgumentNullException("hiveFile");
 			}
 			if (!LongPathFile.Exists(hiveFile))
 			{
 				throw new FileNotFoundException(string.Format("Hive file {0} does not exist or cannot be read", hiveFile));
 			}
+			this.m_hiveFile = hiveFile;
+			this.m_keyPrefix = keyPrefix;
 		}
 
-		// Token: 0x060000CF RID: 207 RVA: 0x00006677 File Offset: 0x00004877
-		public void ConvertToReg(string outputFile)
-		{
-			this.ConvertToReg(outputFile, null, false);
-		}
-
-		// Token: 0x060000D0 RID: 208 RVA: 0x00006682 File Offset: 0x00004882
-		public void ConvertToReg(string outputFile, HashSet<string> exclusions)
-		{
-			this.ConvertToReg(outputFile, exclusions, false);
-		}
-
-		// Token: 0x060000D1 RID: 209 RVA: 0x00006690 File Offset: 0x00004890
-		public void ConvertToReg(string outputFile, HashSet<string> exclusions, bool append)
+		// Token: 0x060000F1 RID: 241 RVA: 0x00007120 File Offset: 0x00005320
+		public void ConvertToReg(string outputFile, HashSet<string> exclusions = null, bool append = false)
 		{
 			if (string.IsNullOrEmpty(outputFile))
 			{
-				throw new ArgumentNullException("outputFile", "Output file cannot be empty.");
+				throw new ArgumentNullException("outputFile");
 			}
 			if (exclusions != null)
 			{
 				this.m_exclusions.UnionWith(exclusions);
 			}
-			FileMode mode = append ? FileMode.Append : FileMode.Create;
-			using (this.m_writer = new StreamWriter(LongPathFile.Open(outputFile, mode, FileAccess.Write), Encoding.Unicode))
+			FileMode fileMode = (append ? FileMode.Append : FileMode.Create);
+			using (this.m_writer = new StreamWriter(LongPathFile.Open(outputFile, fileMode, FileAccess.Write), Encoding.Unicode))
 			{
 				this.ConvertToStream(!append, null);
 			}
 		}
 
-		// Token: 0x060000D2 RID: 210 RVA: 0x00006710 File Offset: 0x00004910
-		public void ConvertToReg(ref StringBuilder outputStr)
-		{
-			this.ConvertToReg(ref outputStr, null);
-		}
-
-		// Token: 0x060000D3 RID: 211 RVA: 0x0000671A File Offset: 0x0000491A
-		public void ConvertToReg(ref StringBuilder outputStr, HashSet<string> exclusions)
+		// Token: 0x060000F2 RID: 242 RVA: 0x0000719C File Offset: 0x0000539C
+		public void ConvertToReg(ref StringBuilder outputStr, HashSet<string> exclusions = null)
 		{
 			this.ConvertToReg(ref outputStr, null, true, exclusions);
 		}
 
-		// Token: 0x060000D4 RID: 212 RVA: 0x00006726 File Offset: 0x00004926
-		public void ConvertToReg(ref StringBuilder outputStr, string subKey, bool outputHeader)
-		{
-			this.ConvertToReg(ref outputStr, null, true, null);
-		}
-
-		// Token: 0x060000D5 RID: 213 RVA: 0x00006734 File Offset: 0x00004934
-		public void ConvertToReg(ref StringBuilder outputStr, string subKey, bool outputHeader, HashSet<string> exclusions)
+		// Token: 0x060000F3 RID: 243 RVA: 0x000071A8 File Offset: 0x000053A8
+		public void ConvertToReg(ref StringBuilder outputStr, string subKey, bool outputHeader, HashSet<string> exclusions = null)
 		{
 			if (outputStr == null)
 			{
@@ -104,7 +66,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x060000D6 RID: 214 RVA: 0x00006798 File Offset: 0x00004998
+		// Token: 0x060000F4 RID: 244 RVA: 0x0000720C File Offset: 0x0000540C
 		private void ConvertToStream(bool outputHeader, string subKey)
 		{
 			if (outputHeader)
@@ -123,12 +85,12 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			}
 		}
 
-		// Token: 0x060000D7 RID: 215 RVA: 0x00006808 File Offset: 0x00004A08
+		// Token: 0x060000F5 RID: 245 RVA: 0x00007280 File Offset: 0x00005480
 		private void WalkHive(ORRegistryKey root)
 		{
-			foreach (string subkeyname in root.SubKeys.OrderBy((string x) => x, StringComparer.OrdinalIgnoreCase))
+			foreach (string text in root.SubKeys.OrderBy((string x) => x, StringComparer.OrdinalIgnoreCase))
 			{
-				using (ORRegistryKey orregistryKey = root.OpenSubKey(subkeyname))
+				using (ORRegistryKey orregistryKey = root.OpenSubKey(text))
 				{
 					try
 					{
@@ -143,22 +105,22 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 							this.WalkHive(orregistryKey);
 						}
 					}
-					catch (Exception innerException)
+					catch (Exception ex)
 					{
-						throw new IUException("Failed to iterate through hive", innerException);
+						throw new IUException("Failed to iterate through hive", ex);
 					}
 				}
 			}
 		}
 
-		// Token: 0x060000D8 RID: 216 RVA: 0x000068F4 File Offset: 0x00004AF4
+		// Token: 0x060000F6 RID: 246 RVA: 0x00007374 File Offset: 0x00005574
 		private void WriteKeyName(string keyname)
 		{
 			this.m_writer.WriteLine();
 			this.m_writer.WriteLine("[{0}]", keyname);
 		}
 
-		// Token: 0x060000D9 RID: 217 RVA: 0x00006914 File Offset: 0x00004B14
+		// Token: 0x060000F7 RID: 247 RVA: 0x00007394 File Offset: 0x00005594
 		private string FormatValueName(string valueName)
 		{
 			StringBuilder stringBuilder = new StringBuilder();
@@ -175,7 +137,7 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return stringBuilder.ToString();
 		}
 
-		// Token: 0x060000DA RID: 218 RVA: 0x00006984 File Offset: 0x00004B84
+		// Token: 0x060000F8 RID: 248 RVA: 0x00007404 File Offset: 0x00005604
 		private string FormatValue(ORRegistryKey key, string valueName)
 		{
 			RegistryValueType valueKind = key.GetValueKind(valueName);
@@ -187,32 +149,23 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 				StringBuilder stringBuilder2 = new StringBuilder();
 				stringBuilder2.Append(key.GetStringValue(valueName));
 				stringBuilder2.Replace("\\", "\\\\").Replace("\"", "\\\"");
-				stringBuilder.AppendFormat(CultureInfo.InvariantCulture, "\"{0}\"", new object[]
-				{
-					stringBuilder2.ToString()
-				});
-				goto IL_15C;
+				stringBuilder.AppendFormat(CultureInfo.InvariantCulture, "\"{0}\"", new object[] { stringBuilder2.ToString() });
+				goto IL_175;
 			}
 			case RegistryValueType.DWord:
 			{
 				uint dwordValue = key.GetDwordValue(valueName);
-				stringBuilder.AppendFormat(CultureInfo.InvariantCulture, "dword:{0:X8}", new object[]
-				{
-					dwordValue
-				});
-				goto IL_15C;
+				stringBuilder.AppendFormat(CultureInfo.InvariantCulture, "dword:{0:X8}", new object[] { dwordValue });
+				goto IL_175;
 			}
 			case RegistryValueType.MultiString:
 			{
 				byte[] byteValue = key.GetByteValue(valueName);
-				stringBuilder.AppendFormat(CultureInfo.InvariantCulture, "hex(7):{0}", new object[]
-				{
-					OfflineRegUtils.ConvertByteArrayToRegStrings(byteValue)
-				});
+				stringBuilder.AppendFormat(CultureInfo.InvariantCulture, "hex(7):{0}", new object[] { OfflineRegUtils.ConvertByteArrayToRegStrings(byteValue) });
 				string[] multiStringValue = key.GetMultiStringValue(valueName);
 				stringBuilder.AppendLine();
 				stringBuilder.AppendLine(this.GetMultiStringValuesAsComments(multiStringValue));
-				goto IL_15C;
+				goto IL_175;
 			}
 			}
 			byte[] byteValue2 = key.GetByteValue(valueName);
@@ -226,16 +179,16 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 				stringBuilder.AppendLine();
 				stringBuilder.AppendLine(this.GetExpandStringValueAsComments(key.GetStringValue(valueName)));
 			}
-			IL_15C:
+			IL_175:
 			return stringBuilder.ToString();
 		}
 
-		// Token: 0x060000DB RID: 219 RVA: 0x00006AF4 File Offset: 0x00004CF4
+		// Token: 0x060000F9 RID: 249 RVA: 0x0000758C File Offset: 0x0000578C
 		private string GetMultiStringValuesAsComments(string[] values)
 		{
 			StringBuilder stringBuilder = new StringBuilder(500);
 			int num = 80;
-			if (values != null && values.Length != 0)
+			if (values != null && values.Length > 0)
 			{
 				stringBuilder.Append(";Values=");
 				int num2 = stringBuilder.Length;
@@ -255,13 +208,13 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			return stringBuilder.ToString();
 		}
 
-		// Token: 0x060000DC RID: 220 RVA: 0x00006B96 File Offset: 0x00004D96
+		// Token: 0x060000FA RID: 250 RVA: 0x00007633 File Offset: 0x00005833
 		private string GetExpandStringValueAsComments(string value)
 		{
 			return string.Format(";Value={0}", value);
 		}
 
-		// Token: 0x060000DD RID: 221 RVA: 0x00006BA4 File Offset: 0x00004DA4
+		// Token: 0x060000FB RID: 251 RVA: 0x00007644 File Offset: 0x00005844
 		private void WriteKeyContents(ORRegistryKey key)
 		{
 			this.WriteKeyName(key.FullName);
@@ -270,25 +223,26 @@ namespace Microsoft.WindowsPhone.ImageUpdate.Tools.Common
 			{
 				this.m_writer.WriteLine(string.Format(";Class=\"{0}\"", @class));
 			}
-			foreach (string valueName in key.ValueNames.OrderBy((string x) => x, StringComparer.OrdinalIgnoreCase))
+			string[] valueNames = key.ValueNames;
+			foreach (string text in valueNames.OrderBy((string x) => x, StringComparer.OrdinalIgnoreCase))
 			{
 				StringBuilder stringBuilder = new StringBuilder();
-				stringBuilder.Append(this.FormatValueName(valueName));
-				stringBuilder.Append(this.FormatValue(key, valueName));
+				stringBuilder.Append(this.FormatValueName(text));
+				stringBuilder.Append(this.FormatValue(key, text));
 				this.m_writer.WriteLine(stringBuilder.ToString());
 			}
 		}
 
-		// Token: 0x04000042 RID: 66
+		// Token: 0x0400005B RID: 91
 		private HashSet<string> m_exclusions = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
-		// Token: 0x04000043 RID: 67
+		// Token: 0x0400005C RID: 92
 		private string m_keyPrefix;
 
-		// Token: 0x04000044 RID: 68
+		// Token: 0x0400005D RID: 93
 		private string m_hiveFile;
 
-		// Token: 0x04000045 RID: 69
+		// Token: 0x0400005E RID: 94
 		private TextWriter m_writer;
 	}
 }

@@ -148,16 +148,9 @@ namespace Nokia.Lucid.DeviceDetection.Primitives
 					}
 					catch (Win32Exception ex2)
 					{
-						throw new AggregateException(new Exception[]
-						{
-							ex,
-							ex2
-						});
+						throw new AggregateException(new Exception[] { ex, ex2 });
 					}
-					throw new AggregateException(new Exception[]
-					{
-						ex
-					});
+					throw new AggregateException(new Exception[] { ex });
 				}
 			}
 		}
@@ -169,14 +162,14 @@ namespace Nokia.Lucid.DeviceDetection.Primitives
 			this.VerifyAccess();
 			try
 			{
-				WNDPROC dwNewLong = new WNDPROC(this.WindowProc);
+				WNDPROC wndproc = new WNDPROC(this.WindowProc);
 				RobustTrace.Trace<IntPtr>(new Action<IntPtr>(MessageTraceSource.Instance.MessageWindowProcAttach_Start), this.handle);
-				if (((IntPtr.Size == 4) ? User32NativeMethods.SetWindowLong(this.handle, -4, dwNewLong) : User32NativeMethods.SetWindowLongPtr(this.handle, -4, dwNewLong)) == null)
+				if (((IntPtr.Size == 4) ? User32NativeMethods.SetWindowLong(this.handle, -4, wndproc) : User32NativeMethods.SetWindowLongPtr(this.handle, -4, wndproc)) == null)
 				{
 					throw new Win32Exception();
 				}
 				RobustTrace.Trace<IntPtr>(new Action<IntPtr>(MessageTraceSource.Instance.MessageWindowProcAttach_Stop), this.handle);
-				this.cachedWindowProc = dwNewLong;
+				this.cachedWindowProc = wndproc;
 			}
 			catch (Win32Exception ex)
 			{
@@ -187,16 +180,9 @@ namespace Nokia.Lucid.DeviceDetection.Primitives
 				}
 				catch (Win32Exception ex2)
 				{
-					throw new AggregateException(new Exception[]
-					{
-						ex,
-						ex2
-					});
+					throw new AggregateException(new Exception[] { ex, ex2 });
 				}
-				throw new AggregateException(new Exception[]
-				{
-					ex
-				});
+				throw new AggregateException(new Exception[] { ex });
 			}
 		}
 
@@ -254,12 +240,12 @@ namespace Nokia.Lucid.DeviceDetection.Primitives
 		private IntPtr WindowProc(IntPtr hwnd, int uMsg, IntPtr wParam, IntPtr lParam)
 		{
 			RobustTrace.Trace<IntPtr, int, IntPtr, IntPtr>(new Action<IntPtr, int, IntPtr, IntPtr>(MessageTraceSource.Instance.WindowMessage), hwnd, uMsg, wParam, lParam);
-			IntPtr result = IntPtr.Zero;
+			IntPtr intPtr = IntPtr.Zero;
 			if (uMsg != 2)
 			{
 				if (uMsg != 537)
 				{
-					result = User32NativeMethods.DefWindowProc(hwnd, uMsg, wParam, lParam);
+					intPtr = User32NativeMethods.DefWindowProc(hwnd, uMsg, wParam, lParam);
 				}
 				else
 				{
@@ -270,7 +256,7 @@ namespace Nokia.Lucid.DeviceDetection.Primitives
 			{
 				this.WmDestroy();
 			}
-			return result;
+			return intPtr;
 		}
 
 		// Token: 0x06000014 RID: 20 RVA: 0x00002964 File Offset: 0x00000B64
@@ -338,18 +324,18 @@ namespace Nokia.Lucid.DeviceDetection.Primitives
 			RobustTrace.Trace(new Action(MessageTraceSource.Instance.MessageLoopExitRequest_Start));
 			User32NativeMethods.PostQuitMessage(0);
 			RobustTrace.Trace(new Action(MessageTraceSource.Instance.MessageLoopExitRequest_Stop));
-			IntPtr arg = this.handle;
+			IntPtr intPtr = this.handle;
 			lock (this.syncRoot)
 			{
 				this.handle = new IntPtr(-1);
 				goto IL_E3;
 			}
 			IL_67:
-			IntPtr arg2 = this.devNotifyHandles.Pop();
-			RobustTrace.Trace<IntPtr, IntPtr>(new Action<IntPtr, IntPtr>(MessageTraceSource.Instance.DeviceNotificationUnregistration_Start), arg, arg2);
-			if (User32NativeMethods.UnregisterDeviceNotification(arg2))
+			IntPtr intPtr2 = this.devNotifyHandles.Pop();
+			RobustTrace.Trace<IntPtr, IntPtr>(new Action<IntPtr, IntPtr>(MessageTraceSource.Instance.DeviceNotificationUnregistration_Start), intPtr, intPtr2);
+			if (User32NativeMethods.UnregisterDeviceNotification(intPtr2))
 			{
-				RobustTrace.Trace<IntPtr, IntPtr>(new Action<IntPtr, IntPtr>(MessageTraceSource.Instance.DeviceNotificationUnregistration_Stop), arg, arg2);
+				RobustTrace.Trace<IntPtr, IntPtr>(new Action<IntPtr, IntPtr>(MessageTraceSource.Instance.DeviceNotificationUnregistration_Stop), intPtr, intPtr2);
 			}
 			else
 			{
@@ -359,18 +345,18 @@ namespace Nokia.Lucid.DeviceDetection.Primitives
 				}
 				catch (Win32Exception ex)
 				{
-					RobustTrace.Trace<IntPtr, IntPtr, int, string>(new Action<IntPtr, IntPtr, int, string>(MessageTraceSource.Instance.DeviceNotificationUnregistration_Error), arg, arg2, ex.NativeErrorCode, ex.Message);
+					RobustTrace.Trace<IntPtr, IntPtr, int, string>(new Action<IntPtr, IntPtr, int, string>(MessageTraceSource.Instance.DeviceNotificationUnregistration_Error), intPtr, intPtr2, ex.NativeErrorCode, ex.Message);
 					this.deferredExceptions.Add(ex);
 				}
 			}
 			IL_E3:
 			if (this.devNotifyHandles.Count <= 0)
 			{
-				MessageWindowStatus arg3 = this.currentStatus;
-				MessageWindowStatus arg4 = (this.deferredExceptions.Count == 0) ? MessageWindowStatus.Destroyed : MessageWindowStatus.Faulted;
-				RobustTrace.Trace<IntPtr, MessageWindowStatus, MessageWindowStatus>(new Action<IntPtr, MessageWindowStatus, MessageWindowStatus>(MessageTraceSource.Instance.MessageWindowStatusChange_Start), arg, arg3, arg4);
-				this.currentStatus = arg4;
-				RobustTrace.Trace<IntPtr, MessageWindowStatus, MessageWindowStatus>(new Action<IntPtr, MessageWindowStatus, MessageWindowStatus>(MessageTraceSource.Instance.MessageWindowStatusChange_Stop), arg, arg3, arg4);
+				MessageWindowStatus messageWindowStatus = this.currentStatus;
+				MessageWindowStatus messageWindowStatus2 = ((this.deferredExceptions.Count == 0) ? MessageWindowStatus.Destroyed : MessageWindowStatus.Faulted);
+				RobustTrace.Trace<IntPtr, MessageWindowStatus, MessageWindowStatus>(new Action<IntPtr, MessageWindowStatus, MessageWindowStatus>(MessageTraceSource.Instance.MessageWindowStatusChange_Start), intPtr, messageWindowStatus, messageWindowStatus2);
+				this.currentStatus = messageWindowStatus2;
+				RobustTrace.Trace<IntPtr, MessageWindowStatus, MessageWindowStatus>(new Action<IntPtr, MessageWindowStatus, MessageWindowStatus>(MessageTraceSource.Instance.MessageWindowStatusChange_Stop), intPtr, messageWindowStatus, messageWindowStatus2);
 				return;
 			}
 			goto IL_67;

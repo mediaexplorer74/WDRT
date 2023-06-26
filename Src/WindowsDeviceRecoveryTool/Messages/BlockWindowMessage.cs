@@ -2,10 +2,10 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Messages
 {
-	// Token: 0x02000055 RID: 85
+	// Token: 0x0200009C RID: 156
 	public class BlockWindowMessage
 	{
-		// Token: 0x060002BE RID: 702 RVA: 0x0000FC08 File Offset: 0x0000DE08
+		// Token: 0x0600053C RID: 1340 RVA: 0x0001B34A File Offset: 0x0001954A
 		public BlockWindowMessage(bool block, string message = null, string title = null)
 		{
 			this.Block = block;
@@ -13,19 +13,19 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Messages
 			this.Title = title;
 		}
 
-		// Token: 0x17000078 RID: 120
-		// (get) Token: 0x060002BF RID: 703 RVA: 0x0000FC2C File Offset: 0x0000DE2C
-		// (set) Token: 0x060002C0 RID: 704 RVA: 0x0000FC43 File Offset: 0x0000DE43
+		// Token: 0x17000128 RID: 296
+		// (get) Token: 0x0600053D RID: 1341 RVA: 0x0001B36C File Offset: 0x0001956C
+		// (set) Token: 0x0600053E RID: 1342 RVA: 0x0001B374 File Offset: 0x00019574
 		public bool Block { get; private set; }
 
-		// Token: 0x17000079 RID: 121
-		// (get) Token: 0x060002C1 RID: 705 RVA: 0x0000FC4C File Offset: 0x0000DE4C
-		// (set) Token: 0x060002C2 RID: 706 RVA: 0x0000FC63 File Offset: 0x0000DE63
+		// Token: 0x17000129 RID: 297
+		// (get) Token: 0x0600053F RID: 1343 RVA: 0x0001B37D File Offset: 0x0001957D
+		// (set) Token: 0x06000540 RID: 1344 RVA: 0x0001B385 File Offset: 0x00019585
 		public string Message { get; private set; }
 
-		// Token: 0x1700007A RID: 122
-		// (get) Token: 0x060002C3 RID: 707 RVA: 0x0000FC6C File Offset: 0x0000DE6C
-		// (set) Token: 0x060002C4 RID: 708 RVA: 0x0000FC83 File Offset: 0x0000DE83
+		// Token: 0x1700012A RID: 298
+		// (get) Token: 0x06000541 RID: 1345 RVA: 0x0001B38E File Offset: 0x0001958E
+		// (set) Token: 0x06000542 RID: 1346 RVA: 0x0001B396 File Offset: 0x00019596
 		public string Title { get; private set; }
 	}
 }

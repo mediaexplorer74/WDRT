@@ -44,13 +44,13 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 		{
 			get
 			{
-				IWpdDevice[] result;
+				IWpdDevice[] array;
 				lock (this.mutex)
 				{
 					this.Refresh();
-					result = this.wpdDevices.Values.ToArray<IWpdDevice>();
+					array = this.wpdDevices.Values.ToArray<IWpdDevice>();
 				}
-				return result;
+				return array;
 			}
 		}
 
@@ -93,9 +93,9 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 						{
 							try
 							{
-								PortableDeviceApiLib.IPortableDeviceValues pClientInfo = (PortableDeviceApiLib.IPortableDeviceValues)((PortableDeviceValues)Activator.CreateInstance(Type.GetTypeFromCLSID(new Guid("0C15D503-D017-47CE-9016-7B3F978721CC"))));
+								PortableDeviceApiLib.IPortableDeviceValues portableDeviceValues = (PortableDeviceApiLib.IPortableDeviceValues)((PortableDeviceValues)Activator.CreateInstance(Type.GetTypeFromCLSID(new Guid("0C15D503-D017-47CE-9016-7B3F978721CC"))));
 								portableDevice = (PortableDevice)Activator.CreateInstance(Type.GetTypeFromCLSID(new Guid("728A21C5-3D9E-48D7-9810-864848F0F404")));
-								portableDevice.Open(text, pClientInfo);
+								portableDevice.Open(text, portableDeviceValues);
 								this.portableDevices[text] = portableDevice;
 								goto IL_108;
 							}
@@ -115,11 +115,11 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 								portableDevice.Content(out portableDeviceContent);
 								IPortableDeviceProperties portableDeviceProperties = null;
 								portableDeviceContent.Properties(out portableDeviceProperties);
-								PortableDeviceApiLib.IPortableDeviceValues portableDeviceValues = null;
-								portableDeviceProperties.GetValues("DEVICE", null, out portableDeviceValues);
-								Guid b;
-								portableDeviceValues.GetGuidValue(ref PortableDevicePKeys.WPD_DEVICE_MODEL_UNIQUE_ID, out b);
-								if (WpdDevice.WindowsPhone8ModelID == b)
+								PortableDeviceApiLib.IPortableDeviceValues portableDeviceValues2 = null;
+								portableDeviceProperties.GetValues("DEVICE", null, out portableDeviceValues2);
+								Guid guid;
+								portableDeviceValues2.GetGuidValue(ref PortableDevicePKeys.WPD_DEVICE_MODEL_UNIQUE_ID, out guid);
+								if (WpdDevice.WindowsPhone8ModelID == guid)
 								{
 									this.wpdDevices[text] = new WpdDevice(this.wpdManager, portableDevice, text);
 								}

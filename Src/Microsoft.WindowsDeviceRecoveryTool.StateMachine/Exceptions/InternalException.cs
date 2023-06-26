@@ -3,27 +3,30 @@ using System.Runtime.Serialization;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.StateMachine.Exceptions
 {
-	// Token: 0x02000014 RID: 20
+	// Token: 0x02000005 RID: 5
 	[Serializable]
 	public class InternalException : Exception
 	{
-		// Token: 0x06000089 RID: 137 RVA: 0x00003ADF File Offset: 0x00001CDF
+		// Token: 0x06000006 RID: 6 RVA: 0x000020D3 File Offset: 0x000002D3
 		public InternalException()
 		{
 		}
 
-		// Token: 0x0600008A RID: 138 RVA: 0x00003AEA File Offset: 0x00001CEA
-		public InternalException(string message) : base(message)
+		// Token: 0x06000007 RID: 7 RVA: 0x000020DD File Offset: 0x000002DD
+		public InternalException(string message)
+			: base(message)
 		{
 		}
 
-		// Token: 0x0600008B RID: 139 RVA: 0x00003AF6 File Offset: 0x00001CF6
-		public InternalException(string message, Exception internalException) : base(message, internalException)
+		// Token: 0x06000008 RID: 8 RVA: 0x000020E8 File Offset: 0x000002E8
+		public InternalException(string message, Exception internalException)
+			: base(message, internalException)
 		{
 		}
 
-		// Token: 0x0600008C RID: 140 RVA: 0x00003B03 File Offset: 0x00001D03
-		protected InternalException(SerializationInfo info, StreamingContext context) : base(info, context)
+		// Token: 0x06000009 RID: 9 RVA: 0x000020F4 File Offset: 0x000002F4
+		protected InternalException(SerializationInfo info, StreamingContext context)
+			: base(info, context)
 		{
 		}
 	}

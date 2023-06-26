@@ -9,13 +9,13 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.Enums;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 {
-	// Token: 0x020000A2 RID: 162
+	// Token: 0x0200004D RID: 77
 	[Export]
 	public class ManualHtcRestartViewModel : BaseViewModel, ICanHandle<DeviceConnectedMessage>, ICanHandle
 	{
-		// Token: 0x170000EF RID: 239
-		// (get) Token: 0x06000484 RID: 1156 RVA: 0x00015D38 File Offset: 0x00013F38
-		// (set) Token: 0x06000485 RID: 1157 RVA: 0x00015D50 File Offset: 0x00013F50
+		// Token: 0x170000C7 RID: 199
+		// (get) Token: 0x06000306 RID: 774 RVA: 0x00010FA8 File Offset: 0x0000F1A8
+		// (set) Token: 0x06000307 RID: 775 RVA: 0x00010FC0 File Offset: 0x0000F1C0
 		public string SubHeader
 		{
 			get
@@ -28,7 +28,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			}
 		}
 
-		// Token: 0x06000486 RID: 1158 RVA: 0x00015DA8 File Offset: 0x00013FA8
+		// Token: 0x06000308 RID: 776 RVA: 0x00011000 File Offset: 0x0000F200
 		public override void OnStarted()
 		{
 			base.OnStarted();
@@ -36,29 +36,31 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Preparing
 			base.EventAggregator.Publish<IsBackButtonMessage>(new IsBackButtonMessage(false));
 			this.SubHeader = string.Format(LocalizationManager.GetTranslation("ManualRestartHtcInfo"), LocalizationManager.GetTranslation("ButtonCancel"));
 			DetectionParameters detectionParams = new DetectionParameters(PhoneTypes.Htc, PhoneModes.Normal);
-			//base.Commands.Run((FlowController c) => c.StartDeviceDetection(detectionParams));
+			base.Commands.Run((FlowController c) => c.StartDeviceDetection(detectionParams));
 		}
 
-		// Token: 0x06000487 RID: 1159 RVA: 0x00015E8C File Offset: 0x0001408C
+		// Token: 0x06000309 RID: 777 RVA: 0x000110E8 File Offset: 0x0000F2E8
 		public override void OnStopped()
 		{
 			base.OnStopped();
-			//base.Commands.Run((FlowController c) => c.StopDeviceDetection());
+			base.Commands.Run((FlowController c) => c.StopDeviceDetection());
 		}
 
-		// Token: 0x06000488 RID: 1160 RVA: 0x00015EF0 File Offset: 0x000140F0
+		// Token: 0x0600030A RID: 778 RVA: 0x00011148 File Offset: 0x0000F348
 		public void Handle(DeviceConnectedMessage message)
 		{
-			if (base.IsStarted)
+			bool isStarted = base.IsStarted;
+			if (isStarted)
 			{
-				if (message.Phone.Type == PhoneTypes.Htc)
+				bool flag = message.Phone.Type == PhoneTypes.Htc;
+				if (flag)
 				{
-					//base.Commands.Run((AppController c) => c.SwitchToState("AwaitHtcState"));
+					base.Commands.Run((AppController c) => c.SwitchToState("AwaitHtcState"));
 				}
 			}
 		}
 
-		// Token: 0x040001F9 RID: 505
+		// Token: 0x0400015B RID: 347
 		private string subHeader;
 	}
 }

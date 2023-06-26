@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Threading;
@@ -17,7 +18,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.McjAdaptation
 	[Export(typeof(IDeviceSupport))]
 	internal class McjSupport : IDeviceSupport
 	{
-		// Token: 0x06000005 RID: 5 RVA: 0x00002240 File Offset: 0x00000440
+		// Token: 0x06000005 RID: 5 RVA: 0x00002219 File Offset: 0x00000419
 		[ImportingConstructor]
 		public McjSupport(IMtpDeviceInfoProvider mtpDeviceInfoProvider)
 		{
@@ -30,7 +31,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.McjAdaptation
 		}
 
 		// Token: 0x17000001 RID: 1
-		// (get) Token: 0x06000006 RID: 6 RVA: 0x00002288 File Offset: 0x00000488
+		// (get) Token: 0x06000006 RID: 6 RVA: 0x00002250 File Offset: 0x00000450
 		public Guid Id
 		{
 			get
@@ -39,42 +40,55 @@ namespace Microsoft.WindowsDeviceRecoveryTool.McjAdaptation
 			}
 		}
 
-		// Token: 0x06000007 RID: 7 RVA: 0x000022A0 File Offset: 0x000004A0
+		// Token: 0x06000007 RID: 7 RVA: 0x00002268 File Offset: 0x00000468
 		public DeviceDetectionInformation[] GetDeviceDetectionInformation()
 		{
 			return this.catalog.GetDeviceDetectionInformations();
 		}
 
-		// Token: 0x06000008 RID: 8 RVA: 0x00002578 File Offset: 0x00000778
+		// Token: 0x06000008 RID: 8 RVA: 0x00002288 File Offset: 0x00000488
 		public async Task UpdateDeviceDetectionDataAsync(DeviceDetectionData detectionData, CancellationToken cancellationToken)
 		{
-			if (detectionData.IsDeviceSupported)
+			bool isDeviceSupported = detectionData.IsDeviceSupported;
+			if (isDeviceSupported)
 			{
 				throw new InvalidOperationException("Device is already supported.");
 			}
 			cancellationToken.ThrowIfCancellationRequested();
 			VidPidPair vidPidPair = detectionData.VidPidPair;
 			string devicePath = detectionData.UsbDeviceInterfaceDevicePath;
-			ModelInfo model = this.catalog.Models.FirstOrDefault((ModelInfo m) => m.DetectionInfo.DeviceDetectionInformations.Any((DeviceDetectionInformation di) => di.VidPidPair == vidPidPair));
-			if (model == null)
+			Func<DeviceDetectionInformation, bool> <>9__1;
+			ModelInfo model = this.catalog.Models.FirstOrDefault(delegate(ModelInfo m)
 			{
-				Tracer<McjSupport>.WriteInformation("No MCJ device detected. Path: {0}", new object[]
+				IEnumerable<DeviceDetectionInformation> deviceDetectionInformations = m.DetectionInfo.DeviceDetectionInformations;
+				Func<DeviceDetectionInformation, bool> func;
+				if ((func = <>9__1) == null)
 				{
-					detectionData.UsbDeviceInterfaceDevicePath
-				});
+					func = (<>9__1 = (DeviceDetectionInformation di) => di.VidPidPair == vidPidPair);
+				}
+				return deviceDetectionInformations.Any(func);
+			});
+			bool flag = model == null;
+			if (flag)
+			{
+				Tracer<McjSupport>.WriteInformation("No MCJ device detected. Path: {0}", new object[] { detectionData.UsbDeviceInterfaceDevicePath });
 			}
 			else
 			{
-				MtpInterfaceInfo deviceInfo = await this.mtpDeviceInfoProvider.ReadInformationAsync(devicePath, cancellationToken);
+				MtpInterfaceInfo mtpInterfaceInfo = await this.mtpDeviceInfoProvider.ReadInformationAsync(devicePath, cancellationToken);
+				MtpInterfaceInfo deviceInfo = mtpInterfaceInfo;
+				mtpInterfaceInfo = null;
 				string mtpDeviceDescription = deviceInfo.Description;
 				ModelInfo modelInfo;
 				if (this.catalog.TryGetModelInfo(mtpDeviceDescription, out modelInfo))
 				{
-					string name = modelInfo.Name;
-					byte[] deviceBitmapBytes = modelInfo.Bitmap.ToBytes();
-					detectionData.DeviceBitmapBytes = deviceBitmapBytes;
-					detectionData.DeviceSalesName = name;
+					string deviceFriendlyName = modelInfo.Name;
+					byte[] bitmapBytes = modelInfo.Bitmap.ToBytes();
+					detectionData.DeviceBitmapBytes = bitmapBytes;
+					detectionData.DeviceSalesName = deviceFriendlyName;
 					detectionData.IsDeviceSupported = true;
+					deviceFriendlyName = null;
+					bitmapBytes = null;
 				}
 			}
 		}

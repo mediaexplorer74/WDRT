@@ -230,9 +230,9 @@ namespace ComponentAce.Compression.Libs.ZLib
 			{
 				return -2;
 			}
-			int result = this._istate.inflateEnd(this);
+			int num = this._istate.inflateEnd(this);
 			this._istate = null;
-			return result;
+			return num;
 		}
 
 		// Token: 0x0600086D RID: 2157 RVA: 0x000362BD File Offset: 0x000352BD
@@ -285,9 +285,9 @@ namespace ComponentAce.Compression.Libs.ZLib
 			{
 				return -2;
 			}
-			int result = this._dstate.deflateEnd();
+			int num = this._dstate.deflateEnd();
 			this._dstate = null;
-			return result;
+			return num;
 		}
 
 		// Token: 0x06000873 RID: 2163 RVA: 0x00036360 File Offset: 0x00035360

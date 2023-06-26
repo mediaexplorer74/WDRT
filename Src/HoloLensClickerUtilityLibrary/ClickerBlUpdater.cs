@@ -18,7 +18,7 @@ namespace ClickerUtilityLibrary
 		// Token: 0x14000001 RID: 1
 		// (add) Token: 0x06000007 RID: 7 RVA: 0x00002084 File Offset: 0x00000284
 		// (remove) Token: 0x06000008 RID: 8 RVA: 0x000020BC File Offset: 0x000002BC
-		//[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		[field: DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event EventHandler<BlUpdaterEventArgs> UpdaterEvent;
 
 		// Token: 0x06000009 RID: 9 RVA: 0x000020F4 File Offset: 0x000002F4
@@ -75,7 +75,8 @@ namespace ClickerUtilityLibrary
 		}
 
 		// Token: 0x0600000D RID: 13 RVA: 0x00002273 File Offset: 0x00000473
-		public ClickerBlUpdater() : this(null)
+		public ClickerBlUpdater()
+			: this(null)
 		{
 		}
 
@@ -95,11 +96,11 @@ namespace ClickerUtilityLibrary
 		{
 			bool flag = this.RunBootLoader();
 			bool flag2 = !flag;
-			bool result;
+			bool flag3;
 			if (flag2)
 			{
 				this.LogError("Failed to run the boot loader.");
-				result = false;
+				flag3 = false;
 			}
 			else
 			{
@@ -112,21 +113,21 @@ namespace ClickerUtilityLibrary
 					Thread.Sleep(1000);
 					num++;
 				}
-				bool flag3 = this.mUpdateState == ClickerBlUpdater.UPDATE_STATE.BACKUP_APPCONFIG;
-				if (flag3)
+				bool flag4 = this.mUpdateState == ClickerBlUpdater.UPDATE_STATE.BACKUP_APPCONFIG;
+				if (flag4)
 				{
 					this.LogError("Timed out while reading the firmware configuration.");
-					result = false;
+					flag3 = false;
 				}
 				else
 				{
 					this.LogInfo("Bootloader version is " + this.mFwBLVer.HexData);
 					this.LogInfo("Start Bootloader-Updater downloading.");
 					flag = this.OpenFile(bootLoaderUpdaterFilename);
-					bool flag4 = !flag;
-					if (flag4)
+					bool flag5 = !flag;
+					if (flag5)
 					{
-						result = false;
+						flag3 = false;
 					}
 					else
 					{
@@ -138,46 +139,46 @@ namespace ClickerUtilityLibrary
 							Thread.Sleep(1000);
 							num++;
 						}
-						bool flag5 = this.mUpdateState == ClickerBlUpdater.UPDATE_STATE.FLASHING_UPDATER;
-						if (flag5)
+						bool flag6 = this.mUpdateState == ClickerBlUpdater.UPDATE_STATE.FLASHING_UPDATER;
+						if (flag6)
 						{
 							this.LogError("Timed out waiting for the boot loader updater to be downloaded.");
-							result = false;
+							flag3 = false;
 						}
 						else
 						{
 							flag = this.RunBootLoaderUpdater(bootLoaderFilename);
-							bool flag6 = !flag;
-							if (flag6)
+							bool flag7 = !flag;
+							if (flag7)
 							{
 								this.LogInfo("Boot Loader Updater couldn't be run.");
-								result = false;
+								flag3 = false;
 							}
 							else
 							{
-								bool flag7 = !this.mFlashingCompleted.WaitOne(50000);
-								if (flag7)
+								bool flag8 = !this.mFlashingCompleted.WaitOne(50000);
+								if (flag8)
 								{
 									this.LogInfo("Timed out waiting for the boot loader to be downloaded.");
-									result = false;
+									flag3 = false;
 								}
 								else
 								{
 									flag = this.RunBootLoader();
-									bool flag8 = !flag;
-									if (flag8)
+									bool flag9 = !flag;
+									if (flag9)
 									{
 										this.LogError("Failed to run the boot loader.");
-										result = false;
+										flag3 = false;
 									}
 									else
 									{
-										BlUpdaterEventArgs updaterEventArgs = new BlUpdaterEventArgs
+										BlUpdaterEventArgs blUpdaterEventArgs = new BlUpdaterEventArgs
 										{
 											Type = BlUpdaterEventArgs.EventType.UpdateCompleted
 										};
-										this.OnUpdaterEvent(updaterEventArgs);
-										result = true;
+										this.OnUpdaterEvent(blUpdaterEventArgs);
+										flag3 = true;
 									}
 								}
 							}
@@ -185,7 +186,7 @@ namespace ClickerUtilityLibrary
 					}
 				}
 			}
-			return result;
+			return flag3;
 		}
 
 		// Token: 0x06000010 RID: 16 RVA: 0x000024C4 File Offset: 0x000006C4
@@ -207,14 +208,14 @@ namespace ClickerUtilityLibrary
 				BootLoaderProtocol.Instance.FormCommandPacket(packet, 0);
 				CommandEngine.Instance.SendRawData(packet.RawPacket, packet.Length);
 			}
-			bool result = true;
+			bool flag2 = true;
 			version = CommandResponse.GetResponse(CommandResponse.CommandCode.BL_VER);
-			bool flag2 = version == null;
-			if (flag2)
+			bool flag3 = version == null;
+			if (flag3)
 			{
-				result = false;
+				flag2 = false;
 			}
-			return result;
+			return flag2;
 		}
 
 		// Token: 0x06000012 RID: 18 RVA: 0x00002575 File Offset: 0x00000775
@@ -370,15 +371,15 @@ namespace ClickerUtilityLibrary
 			{
 			case EventType.ExceptionMessage:
 			{
-				string value = DateTime.Now.ToString("HH:mm:ss: Error - ", CultureInfo.CurrentCulture) + receivedEventArgs.StringParameter;
-				this.LogInfo(value);
+				string text = DateTime.Now.ToString("HH:mm:ss: Error - ", CultureInfo.CurrentCulture) + receivedEventArgs.StringParameter;
+				this.LogInfo(text);
 				receivedEventArgs.StringParameter = "";
 				break;
 			}
 			case EventType.OperationMessage:
 			{
-				string value = DateTime.Now.ToString("HH:mm:ss:\t", CultureInfo.CurrentCulture) + receivedEventArgs.StringParameter;
-				this.LogInfo(value);
+				string text = DateTime.Now.ToString("HH:mm:ss:\t", CultureInfo.CurrentCulture) + receivedEventArgs.StringParameter;
+				this.LogInfo(text);
 				LogManager.Instance.Log(receivedEventArgs.StringParameter);
 				receivedEventArgs.StringParameter = "";
 				break;
@@ -399,28 +400,28 @@ namespace ClickerUtilityLibrary
 			}
 			case EventType.UsbDeviceConnected:
 			{
-				string text = receivedEventArgs.ObjectParameter as string;
-				bool flag3 = text != null && ClickerFwUpdater.IsBootLoaderUsbFriendlyName(text);
+				string text2 = receivedEventArgs.ObjectParameter as string;
+				bool flag3 = text2 != null && ClickerFwUpdater.IsBootLoaderUsbFriendlyName(text2);
 				if (flag3)
 				{
 					this.deviceStatus = ClickerBlUpdater.DeviceStatus.ConnectedToBootLoader;
 					CommandEngine.Instance.ChangeProtocol(BootLoaderProtocol.Instance);
 					this.UpdateConnectionEvents();
-					string value = "Device is connected.(BL)";
-					this.LogInfo(value);
+					string text = "Device is connected.(BL)";
+					this.LogInfo(text);
 					blUpdaterEventArgs.Type = BlUpdaterEventArgs.EventType.ConnectedToBootLoader;
 					this.OnUpdaterEvent(blUpdaterEventArgs);
 				}
 				else
 				{
-					bool flag4 = text != null && ClickerFwUpdater.IsBootLoaderUpdaterUsbFriendlyName(text);
+					bool flag4 = text2 != null && ClickerFwUpdater.IsBootLoaderUpdaterUsbFriendlyName(text2);
 					if (flag4)
 					{
 						this.deviceStatus = ClickerBlUpdater.DeviceStatus.ConnectedToBootLoaderUpdater;
 						CommandEngine.Instance.ChangeProtocol(BootLoaderProtocol.Instance);
 						this.UpdateConnectionEvents();
-						string value = "Device is connected.(BL Updater)";
-						this.LogInfo(value);
+						string text = "Device is connected.(BL Updater)";
+						this.LogInfo(text);
 						blUpdaterEventArgs.Type = BlUpdaterEventArgs.EventType.ConnectedToBootLoaderUpdater;
 						this.OnUpdaterEvent(blUpdaterEventArgs);
 					}
@@ -429,8 +430,8 @@ namespace ClickerUtilityLibrary
 						this.deviceStatus = ClickerBlUpdater.DeviceStatus.ConnectedToApplication;
 						CommandEngine.Instance.ChangeProtocol(AppProtocol.Instance);
 						this.UpdateConnectionEvents();
-						string value = "Device is connected.(App)";
-						this.LogInfo(value);
+						string text = "Device is connected.(App)";
+						this.LogInfo(text);
 						blUpdaterEventArgs.Type = BlUpdaterEventArgs.EventType.ConnectedToApplication;
 						this.OnUpdaterEvent(blUpdaterEventArgs);
 					}
@@ -441,8 +442,8 @@ namespace ClickerUtilityLibrary
 			{
 				this.deviceStatus = ClickerBlUpdater.DeviceStatus.Disconnected;
 				this.UpdateConnectionEvents();
-				string value = "Device is disconnected!";
-				this.LogInfo(value);
+				string text = "Device is disconnected!";
+				this.LogInfo(text);
 				blUpdaterEventArgs.Type = BlUpdaterEventArgs.EventType.DeviceDisconnected;
 				this.OnUpdaterEvent(blUpdaterEventArgs);
 				break;
@@ -615,8 +616,8 @@ namespace ClickerUtilityLibrary
 							if (flag13)
 							{
 								DataElement dataElement = DataElementDictionary.Instance[DataElementType.DI_BL_VER];
-								int version = Convert.ToInt32(dataElement.Data, CultureInfo.InvariantCulture);
-								ImageVersion imageVersion = new ImageVersion(version);
+								int num = Convert.ToInt32(dataElement.Data, CultureInfo.InvariantCulture);
+								ImageVersion imageVersion = new ImageVersion(num);
 								CommandResponse.UpdateResponseData(CommandResponse.CommandCode.BL_VER, imageVersion.ToString());
 							}
 						}
@@ -656,14 +657,14 @@ namespace ClickerUtilityLibrary
 		// Token: 0x0600001D RID: 29 RVA: 0x000031D4 File Offset: 0x000013D4
 		private void SendProgressUpdate()
 		{
-			string value = string.Concat(new object[]
+			string text = string.Concat(new object[]
 			{
 				"Sending ",
 				this.mFileStream.Position,
 				" / ",
 				this.mFileStream.Length
 			});
-			this.LogInfo(value);
+			this.LogInfo(text);
 			BlUpdaterEventArgs blUpdaterEventArgs = new BlUpdaterEventArgs
 			{
 				Type = BlUpdaterEventArgs.EventType.UpdateProgress

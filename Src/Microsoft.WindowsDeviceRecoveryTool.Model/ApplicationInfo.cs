@@ -14,7 +14,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 		public ApplicationInfo()
 		{
 			Assembly entryAssembly = Assembly.GetEntryAssembly();
-			if (entryAssembly == null)
+			bool flag = entryAssembly == null;
+			if (flag)
 			{
 				throw new InvalidOperationException("CouldNotRetrieveInformationOnCurrentlyRunningApplication");
 			}
@@ -28,30 +29,36 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			this.companyName = ApplicationInfo.GetCompanyName(entryAssembly);
 		}
 
-		// Token: 0x06000002 RID: 2 RVA: 0x000020F0 File Offset: 0x000002F0
+		// Token: 0x06000002 RID: 2 RVA: 0x000020EC File Offset: 0x000002EC
 		public ApplicationInfo(string applicationAssemblyName, string applicationAssemblyFilePath, string applicationName, string applicationDisplayName, string applicationVersion, string companyName)
 		{
-			if (applicationAssemblyName == null)
+			bool flag = applicationAssemblyName == null;
+			if (flag)
 			{
 				throw new ArgumentNullException("applicationAssemblyName");
 			}
-			if (applicationAssemblyFilePath == null)
+			bool flag2 = applicationAssemblyFilePath == null;
+			if (flag2)
 			{
 				throw new ArgumentNullException("applicationAssemblyFilePath");
 			}
-			if (applicationName == null)
+			bool flag3 = applicationName == null;
+			if (flag3)
 			{
 				throw new ArgumentNullException("applicationName");
 			}
-			if (applicationDisplayName == null)
+			bool flag4 = applicationDisplayName == null;
+			if (flag4)
 			{
 				throw new ArgumentNullException("applicationDisplayName");
 			}
-			if (applicationVersion == null)
+			bool flag5 = applicationVersion == null;
+			if (flag5)
 			{
 				throw new ArgumentNullException("applicationVersion");
 			}
-			if (companyName == null)
+			bool flag6 = companyName == null;
+			if (flag6)
 			{
 				throw new ArgumentNullException("companyName");
 			}
@@ -66,8 +73,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 		}
 
 		// Token: 0x17000001 RID: 1
-		// (get) Token: 0x06000003 RID: 3 RVA: 0x000021D8 File Offset: 0x000003D8
-		// (set) Token: 0x06000004 RID: 4 RVA: 0x00002217 File Offset: 0x00000417
+		// (get) Token: 0x06000003 RID: 3 RVA: 0x000021C8 File Offset: 0x000003C8
+		// (set) Token: 0x06000004 RID: 4 RVA: 0x00002204 File Offset: 0x00000404
 		public static CultureInfo CurrentLanguageInRegistry
 		{
 			get
@@ -75,7 +82,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 				string registryValue = ApplicationInfo.GetRegistryValue("CurrentLanguage");
 				bool flag;
 				CultureInfo cultureInfo = ApplicationInfo.TryGetCultureInfo(registryValue, out flag);
-				if (flag)
+				bool flag2 = flag;
+				if (flag2)
 				{
 					ApplicationInfo.SetRegistryValue("CurrentLanguage", cultureInfo);
 				}
@@ -88,7 +96,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 		}
 
 		// Token: 0x17000002 RID: 2
-		// (get) Token: 0x06000005 RID: 5 RVA: 0x00002228 File Offset: 0x00000428
+		// (get) Token: 0x06000005 RID: 5 RVA: 0x00002214 File Offset: 0x00000414
 		public static CultureInfo DefaultLanguageInRegistry
 		{
 			get
@@ -96,7 +104,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 				string registryValue = ApplicationInfo.GetRegistryValue("DefaultLanguage");
 				bool flag;
 				CultureInfo cultureInfo = ApplicationInfo.TryGetCultureInfo(registryValue, out flag);
-				if (flag)
+				bool flag2 = flag;
+				if (flag2)
 				{
 					ApplicationInfo.SetRegistryValue("DefaultLanguage", cultureInfo);
 				}
@@ -105,7 +114,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 		}
 
 		// Token: 0x17000003 RID: 3
-		// (get) Token: 0x06000006 RID: 6 RVA: 0x00002268 File Offset: 0x00000468
+		// (get) Token: 0x06000006 RID: 6 RVA: 0x00002250 File Offset: 0x00000450
 		public string ApplicationAssemblyDirectoryPath
 		{
 			get
@@ -115,7 +124,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 		}
 
 		// Token: 0x17000004 RID: 4
-		// (get) Token: 0x06000007 RID: 7 RVA: 0x00002280 File Offset: 0x00000480
+		// (get) Token: 0x06000007 RID: 7 RVA: 0x00002268 File Offset: 0x00000468
 		public string ApplicationAssemblyFileName
 		{
 			get
@@ -125,7 +134,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 		}
 
 		// Token: 0x17000005 RID: 5
-		// (get) Token: 0x06000008 RID: 8 RVA: 0x00002298 File Offset: 0x00000498
+		// (get) Token: 0x06000008 RID: 8 RVA: 0x00002280 File Offset: 0x00000480
 		public string ApplicationAssemblyFilePath
 		{
 			get
@@ -135,7 +144,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 		}
 
 		// Token: 0x17000006 RID: 6
-		// (get) Token: 0x06000009 RID: 9 RVA: 0x000022B0 File Offset: 0x000004B0
+		// (get) Token: 0x06000009 RID: 9 RVA: 0x00002298 File Offset: 0x00000498
 		public string ApplicationAssemblyName
 		{
 			get
@@ -145,7 +154,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 		}
 
 		// Token: 0x17000007 RID: 7
-		// (get) Token: 0x0600000A RID: 10 RVA: 0x000022C8 File Offset: 0x000004C8
+		// (get) Token: 0x0600000A RID: 10 RVA: 0x000022B0 File Offset: 0x000004B0
 		public string ApplicationName
 		{
 			get
@@ -155,7 +164,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 		}
 
 		// Token: 0x17000008 RID: 8
-		// (get) Token: 0x0600000B RID: 11 RVA: 0x000022E0 File Offset: 0x000004E0
+		// (get) Token: 0x0600000B RID: 11 RVA: 0x000022C8 File Offset: 0x000004C8
 		public string ApplicationDisplayName
 		{
 			get
@@ -165,7 +174,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 		}
 
 		// Token: 0x17000009 RID: 9
-		// (get) Token: 0x0600000C RID: 12 RVA: 0x000022F8 File Offset: 0x000004F8
+		// (get) Token: 0x0600000C RID: 12 RVA: 0x000022E0 File Offset: 0x000004E0
 		public string CompanyName
 		{
 			get
@@ -175,7 +184,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 		}
 
 		// Token: 0x1700000A RID: 10
-		// (get) Token: 0x0600000D RID: 13 RVA: 0x00002310 File Offset: 0x00000510
+		// (get) Token: 0x0600000D RID: 13 RVA: 0x000022F8 File Offset: 0x000004F8
 		public string ApplicationVersion
 		{
 			get
@@ -184,29 +193,25 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 		}
 
-		// Token: 0x0600000E RID: 14 RVA: 0x00002328 File Offset: 0x00000528
+		// Token: 0x0600000E RID: 14 RVA: 0x00002310 File Offset: 0x00000510
 		public static string GetRegistryValue(string name)
 		{
 			try
 			{
-				Tracer<ApplicationInfo>.WriteInformation("Looking for 64bit '{0}' registry value", new object[]
-				{
-					name
-				});
+				Tracer<ApplicationInfo>.WriteInformation("Looking for 64bit '{0}' registry value", new object[] { name });
 				RegistryKey registryKey = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64);
 				registryKey = registryKey.OpenSubKey("SOFTWARE\\Microsoft\\Care Suite\\Windows Device Recovery Tool");
-				if (registryKey != null)
+				bool flag = registryKey != null;
+				if (flag)
 				{
 					Tracer<ApplicationInfo>.WriteInformation("Found 64bit registry value");
 					return (string)registryKey.GetValue(name);
 				}
-				Tracer<ApplicationInfo>.WriteInformation("Looking for 32bit '{0}' registry value", new object[]
-				{
-					name
-				});
+				Tracer<ApplicationInfo>.WriteInformation("Looking for 32bit '{0}' registry value", new object[] { name });
 				registryKey = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry32);
 				registryKey = registryKey.OpenSubKey("SOFTWARE\\Microsoft\\Care Suite\\Windows Device Recovery Tool");
-				if (registryKey != null)
+				bool flag2 = registryKey != null;
+				if (flag2)
 				{
 					Tracer<ApplicationInfo>.WriteInformation("Found 32bit registry value");
 					return (string)registryKey.GetValue(name);
@@ -215,15 +220,12 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 			catch (Exception ex)
 			{
-				Tracer<ApplicationInfo>.WriteError("Error while looking for registry value", new object[]
-				{
-					ex
-				});
+				Tracer<ApplicationInfo>.WriteError("Error while looking for registry value", new object[] { ex });
 			}
 			return null;
 		}
 
-		// Token: 0x0600000F RID: 15 RVA: 0x0000242C File Offset: 0x0000062C
+		// Token: 0x0600000F RID: 15 RVA: 0x0000240C File Offset: 0x0000060C
 		public static void SetRegistryValue(string name, object value)
 		{
 			try
@@ -231,7 +233,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 				Tracer<ApplicationInfo>.WriteInformation("Looking for 64bit registry value");
 				RegistryKey registryKey = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64);
 				registryKey = registryKey.OpenSubKey("SOFTWARE\\Microsoft\\Care Suite\\Windows Device Recovery Tool", true);
-				if (registryKey != null)
+				bool flag = registryKey != null;
+				if (flag)
 				{
 					Tracer<ApplicationInfo>.WriteInformation("Found 64bit registry value");
 					registryKey.SetValue(name, value);
@@ -239,7 +242,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 				Tracer<ApplicationInfo>.WriteInformation("Looking for 32bit registry value");
 				registryKey = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry32);
 				registryKey = registryKey.OpenSubKey("SOFTWARE\\Microsoft\\Care Suite\\Windows Device Recovery Tool", true);
-				if (registryKey != null)
+				bool flag2 = registryKey != null;
+				if (flag2)
 				{
 					Tracer<ApplicationInfo>.WriteInformation("Found 32bit registry value");
 					registryKey.SetValue(name, value);
@@ -248,32 +252,30 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			}
 			catch (Exception ex)
 			{
-				Tracer<ApplicationInfo>.WriteError("Error while looking for registry value", new object[]
-				{
-					ex
-				});
+				Tracer<ApplicationInfo>.WriteError("Error while looking for registry value", new object[] { ex });
 			}
 		}
 
-		// Token: 0x06000010 RID: 16 RVA: 0x00002504 File Offset: 0x00000704
+		// Token: 0x06000010 RID: 16 RVA: 0x000024E0 File Offset: 0x000006E0
 		public static bool IsInternal()
 		{
 			string registryValue = ApplicationInfo.GetRegistryValue("Internal");
 			return registryValue == "0";
 		}
 
-		// Token: 0x06000011 RID: 17 RVA: 0x0000252C File Offset: 0x0000072C
+		// Token: 0x06000011 RID: 17 RVA: 0x00002508 File Offset: 0x00000708
 		public static bool UseTestServer()
 		{
 			string registryValue = ApplicationInfo.GetRegistryValue("TestServer");
 			return ApplicationInfo.IsInternal() && registryValue == "0";
 		}
 
-		// Token: 0x06000012 RID: 18 RVA: 0x00002560 File Offset: 0x00000760
+		// Token: 0x06000012 RID: 18 RVA: 0x0000253C File Offset: 0x0000073C
 		private static CultureInfo TryGetCultureInfo(string language, out bool shouldUpdateLanguage)
 		{
+			bool flag = !string.IsNullOrEmpty(language);
 			CultureInfo cultureInfo;
-			if (!string.IsNullOrEmpty(language))
+			if (flag)
 			{
 				try
 				{
@@ -294,54 +296,57 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model
 			return cultureInfo;
 		}
 
-		// Token: 0x06000013 RID: 19 RVA: 0x000025C4 File Offset: 0x000007C4
+		// Token: 0x06000013 RID: 19 RVA: 0x000025A4 File Offset: 0x000007A4
 		private static string GetApplicationAssemblyFilePath(Assembly assembly)
 		{
 			Uri uri = new Uri(assembly.CodeBase, UriKind.Absolute);
 			return uri.LocalPath;
 		}
 
-		// Token: 0x06000014 RID: 20 RVA: 0x000025EC File Offset: 0x000007EC
+		// Token: 0x06000014 RID: 20 RVA: 0x000025CC File Offset: 0x000007CC
 		private static string GetApplicationName(Assembly assembly)
 		{
 			AssemblyName assemblyName = new AssemblyName(assembly.FullName);
 			return assemblyName.Name;
 		}
 
-		// Token: 0x06000015 RID: 21 RVA: 0x00002610 File Offset: 0x00000810
+		// Token: 0x06000015 RID: 21 RVA: 0x000025F0 File Offset: 0x000007F0
 		private static string GetApplicationAssemblyName(Assembly assembly)
 		{
 			AssemblyName assemblyName = new AssemblyName(assembly.FullName);
 			return assemblyName.FullName;
 		}
 
-		// Token: 0x06000016 RID: 22 RVA: 0x00002634 File Offset: 0x00000834
+		// Token: 0x06000016 RID: 22 RVA: 0x00002614 File Offset: 0x00000814
 		private static string GetApplicationVersion(Assembly assembly)
 		{
 			AssemblyFileVersionAttribute assemblyFileVersionAttribute = (AssemblyFileVersionAttribute)assembly.GetCustomAttribute(typeof(AssemblyFileVersionAttribute));
-			if (assemblyFileVersionAttribute == null)
+			bool flag = assemblyFileVersionAttribute == null;
+			if (flag)
 			{
 				throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, "InvalidOperationException_ErrorMessage_AssemblyNotMarkedWithAttribute", new object[0]));
 			}
 			return assemblyFileVersionAttribute.Version;
 		}
 
-		// Token: 0x06000017 RID: 23 RVA: 0x0000268C File Offset: 0x0000088C
+		// Token: 0x06000017 RID: 23 RVA: 0x00002668 File Offset: 0x00000868
 		private static string GetApplicationDisplayName(Assembly assembly)
 		{
 			AssemblyTitleAttribute assemblyTitleAttribute = (AssemblyTitleAttribute)assembly.GetCustomAttribute(typeof(AssemblyTitleAttribute));
-			if (assemblyTitleAttribute == null)
+			bool flag = assemblyTitleAttribute == null;
+			if (flag)
 			{
 				throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, "Resources.InvalidOperationException_ErrorMessage_AssemblyNotMarkedWithAttribute", new object[0]));
 			}
 			return assemblyTitleAttribute.Title;
 		}
 
-		// Token: 0x06000018 RID: 24 RVA: 0x000026E4 File Offset: 0x000008E4
+		// Token: 0x06000018 RID: 24 RVA: 0x000026BC File Offset: 0x000008BC
 		private static string GetCompanyName(Assembly assembly)
 		{
 			AssemblyCompanyAttribute assemblyCompanyAttribute = (AssemblyCompanyAttribute)assembly.GetCustomAttribute(typeof(AssemblyCompanyAttribute));
-			if (assemblyCompanyAttribute == null)
+			bool flag = assemblyCompanyAttribute == null;
+			if (flag)
 			{
 				throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, "Resources.InvalidOperationException_ErrorMessage_AssemblyNotMarkedWithAttribute", new object[0]));
 			}

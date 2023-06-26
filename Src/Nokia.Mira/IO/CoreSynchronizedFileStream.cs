@@ -7,7 +7,8 @@ namespace Nokia.Mira.IO
 	internal class CoreSynchronizedFileStream : IDisposable
 	{
 		// Token: 0x0600002A RID: 42 RVA: 0x00002736 File Offset: 0x00000936
-		public CoreSynchronizedFileStream(string path) : this(new FileStream(path, FileMode.Open, FileAccess.Write, FileShare.Read, 1, FileOptions.WriteThrough))
+		public CoreSynchronizedFileStream(string path)
+			: this(new FileStream(path, FileMode.Open, FileAccess.Write, FileShare.Read, 1, FileOptions.WriteThrough))
 		{
 		}
 

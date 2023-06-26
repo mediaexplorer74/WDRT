@@ -9,8 +9,8 @@ namespace ComponentAce.Compression.GZip
 		// Token: 0x0600027A RID: 634 RVA: 0x00018084 File Offset: 0x00017084
 		public void LoadFromByteArray(byte[] source)
 		{
-			MemoryStream input = new MemoryStream(source);
-			BinaryReader binaryReader = new BinaryReader(input);
+			MemoryStream memoryStream = new MemoryStream(source);
+			BinaryReader binaryReader = new BinaryReader(memoryStream);
 			this.Id1 = binaryReader.ReadByte();
 			this.Id2 = binaryReader.ReadByte();
 			this.CompressionMethod = binaryReader.ReadByte();

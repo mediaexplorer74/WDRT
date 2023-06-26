@@ -5,21 +5,21 @@ using Microsoft.WindowsDeviceRecoveryTool.Common.Tracing;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.FawkesAdaptation.Services
 {
-	// Token: 0x02000009 RID: 9
+	// Token: 0x02000008 RID: 8
 	internal class FawkesLogger : ILogger
 	{
-		// Token: 0x17000017 RID: 23
-		// (get) Token: 0x06000054 RID: 84 RVA: 0x000035A7 File Offset: 0x000017A7
-		// (set) Token: 0x06000055 RID: 85 RVA: 0x000035AF File Offset: 0x000017AF
+		// Token: 0x1700000B RID: 11
+		// (get) Token: 0x0600003A RID: 58 RVA: 0x000031CA File Offset: 0x000013CA
+		// (set) Token: 0x0600003B RID: 59 RVA: 0x000031D2 File Offset: 0x000013D2
 		internal List<string> LoggedErrorMessages { get; private set; }
 
-		// Token: 0x06000056 RID: 86 RVA: 0x000035B8 File Offset: 0x000017B8
+		// Token: 0x0600003C RID: 60 RVA: 0x000031DB File Offset: 0x000013DB
 		public FawkesLogger()
 		{
 			this.LoggedErrorMessages = new List<string>();
 		}
 
-		// Token: 0x06000057 RID: 87 RVA: 0x000035CB File Offset: 0x000017CB
+		// Token: 0x0600003D RID: 61 RVA: 0x000031EE File Offset: 0x000013EE
 		public void LogDebug(string message)
 		{
 			if (message.Contains("Error"))
@@ -31,13 +31,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.FawkesAdaptation.Services
 			Tracer<FawkesLogger>.WriteInformation(message);
 		}
 
-		// Token: 0x06000058 RID: 88 RVA: 0x000035F9 File Offset: 0x000017F9
+		// Token: 0x0600003E RID: 62 RVA: 0x0000321C File Offset: 0x0000141C
 		public void LogInfo(string message)
 		{
 			Tracer<FawkesLogger>.WriteInformation(message);
 		}
 
-		// Token: 0x06000059 RID: 89 RVA: 0x00003601 File Offset: 0x00001801
+		// Token: 0x0600003F RID: 63 RVA: 0x00003224 File Offset: 0x00001424
 		public void LogError(string message)
 		{
 			this.LoggedErrorMessages.Add(message);

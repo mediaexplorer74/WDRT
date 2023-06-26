@@ -4,7 +4,7 @@ using Interop.SirepClient;
 namespace Microsoft.Tools.Connectivity
 {
 	// Token: 0x0200000D RID: 13
-	public class CallbackHandler : ILaunchWithOutputCB
+	internal class CallbackHandler : ILaunchWithOutputCB
 	{
 		// Token: 0x0600008F RID: 143 RVA: 0x000042C5 File Offset: 0x000024C5
 		public CallbackHandler(Action<uint, string> callback)
@@ -21,9 +21,4 @@ namespace Microsoft.Tools.Connectivity
 		// Token: 0x040000A5 RID: 165
 		private readonly Action<uint, string> m_callback;
 	}
-
-    public interface ILaunchWithOutputCB
-    {
-        void OnOutputMessage(uint flags, string data);
-    }
 }

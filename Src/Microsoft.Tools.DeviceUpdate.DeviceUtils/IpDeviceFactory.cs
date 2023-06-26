@@ -41,13 +41,13 @@ namespace Microsoft.Tools.DeviceUpdate.DeviceUtils
 		{
 			get
 			{
-				IIpDevice[] result;
+				IIpDevice[] array;
 				lock (this.mutex)
 				{
 					this.Refresh();
-					result = this.ipDevices.Values.ToArray<IpDevice>();
+					array = this.ipDevices.Values.ToArray<IpDevice>();
 				}
-				return result;
+				return array;
 			}
 		}
 

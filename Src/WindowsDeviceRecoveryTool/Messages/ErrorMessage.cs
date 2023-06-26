@@ -2,18 +2,18 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Messages
 {
-	// Token: 0x0200006E RID: 110
+	// Token: 0x020000B5 RID: 181
 	public class ErrorMessage
 	{
-		// Token: 0x06000330 RID: 816 RVA: 0x00010424 File Offset: 0x0000E624
+		// Token: 0x060005AE RID: 1454 RVA: 0x0001B8AA File Offset: 0x00019AAA
 		public ErrorMessage(Exception exception)
 		{
 			this.Exception = exception;
 		}
 
-		// Token: 0x170000A3 RID: 163
-		// (get) Token: 0x06000331 RID: 817 RVA: 0x00010438 File Offset: 0x0000E638
-		// (set) Token: 0x06000332 RID: 818 RVA: 0x0001044F File Offset: 0x0000E64F
+		// Token: 0x17000153 RID: 339
+		// (get) Token: 0x060005AF RID: 1455 RVA: 0x0001B8BC File Offset: 0x00019ABC
+		// (set) Token: 0x060005B0 RID: 1456 RVA: 0x0001B8C4 File Offset: 0x00019AC4
 		public Exception Exception { get; set; }
 	}
 }

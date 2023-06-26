@@ -3,24 +3,24 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.DataPackage;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Messages
 {
-	// Token: 0x0200005F RID: 95
+	// Token: 0x020000A6 RID: 166
 	public class FoundSoftwareVersionMessage
 	{
-		// Token: 0x060002E0 RID: 736 RVA: 0x0000FE60 File Offset: 0x0000E060
+		// Token: 0x0600055E RID: 1374 RVA: 0x0001B4DA File Offset: 0x000196DA
 		public FoundSoftwareVersionMessage(bool status, PackageFileInfo packageFileInfo)
 		{
 			this.Status = status;
 			this.PackageFileInfo = packageFileInfo;
 		}
 
-		// Token: 0x17000084 RID: 132
-		// (get) Token: 0x060002E1 RID: 737 RVA: 0x0000FE7C File Offset: 0x0000E07C
-		// (set) Token: 0x060002E2 RID: 738 RVA: 0x0000FE93 File Offset: 0x0000E093
+		// Token: 0x17000134 RID: 308
+		// (get) Token: 0x0600055F RID: 1375 RVA: 0x0001B4F4 File Offset: 0x000196F4
+		// (set) Token: 0x06000560 RID: 1376 RVA: 0x0001B4FC File Offset: 0x000196FC
 		public PackageFileInfo PackageFileInfo { get; set; }
 
-		// Token: 0x17000085 RID: 133
-		// (get) Token: 0x060002E3 RID: 739 RVA: 0x0000FE9C File Offset: 0x0000E09C
-		// (set) Token: 0x060002E4 RID: 740 RVA: 0x0000FEB3 File Offset: 0x0000E0B3
+		// Token: 0x17000135 RID: 309
+		// (get) Token: 0x06000561 RID: 1377 RVA: 0x0001B505 File Offset: 0x00019705
+		// (set) Token: 0x06000562 RID: 1378 RVA: 0x0001B50D File Offset: 0x0001970D
 		public bool Status { get; set; }
 	}
 }

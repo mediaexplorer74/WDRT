@@ -1,18 +1,16 @@
 <Window
-	x:Class="Microsoft.WindowsDeviceRecoveryTool.MainWindow" 
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	Width="840"
-	Height="472"
-	MinWidth="1100"
-	MinHeight="640"
+	x:Class="Microsoft.WindowsDeviceRecoveryTool.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	FrameworkElement.Width="840"
+	FrameworkElement.Height="472"
+	FrameworkElement.MinWidth="1100"
+	FrameworkElement.MinHeight="640"
 	Icon="Resources/app_icon.ico"
-	Style="{DynamicResource WindowStyle}" 
-    xmlns:windowsdevicerecoverytool="clr-namespace:Microsoft.WindowsDeviceRecoveryTool"
+	FrameworkElement.Style="{DynamicResource WindowStyle}" xmlns:windowsdevicerecoverytool="clr-namespace:Microsoft.WindowsDeviceRecoveryTool"
 	Title="{Binding AppName}">
 	<Grid
-		Name="Root"
-		Style="{DynamicResource ContentRoot}"
-		Margin="5,30,5,5"
-		KeyboardNavigation.TabNavigation="Local" />
+		FrameworkElement.Name="Root"
+		FrameworkElement.Style="{DynamicResource ContentRoot}"
+		FrameworkElement.Margin="5,30,5,5"
+		KeyboardNavigation.TabNavigation="Local"
+		x:Name="Root" />
 </Window>

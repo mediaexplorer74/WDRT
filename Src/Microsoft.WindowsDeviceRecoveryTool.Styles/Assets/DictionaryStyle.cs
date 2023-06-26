@@ -5,10 +5,10 @@ using Microsoft.WindowsDeviceRecoveryTool.Localization;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Styles.Assets
 {
-	// Token: 0x02000003 RID: 3
+	// Token: 0x02000017 RID: 23
 	public class DictionaryStyle
 	{
-		// Token: 0x06000006 RID: 6 RVA: 0x000020BC File Offset: 0x000002BC
+		// Token: 0x06000074 RID: 116 RVA: 0x00003578 File Offset: 0x00001778
 		public DictionaryStyle(string name, string fileName, System.Drawing.Color color)
 		{
 			this.Name = name;
@@ -16,8 +16,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Styles.Assets
 			this.MainColor = new SolidColorBrush(System.Windows.Media.Color.FromRgb(color.R, color.G, color.B));
 		}
 
-		// Token: 0x17000003 RID: 3
-		// (get) Token: 0x06000007 RID: 7 RVA: 0x00002108 File Offset: 0x00000308
+		// Token: 0x17000007 RID: 7
+		// (get) Token: 0x06000075 RID: 117 RVA: 0x000035B8 File Offset: 0x000017B8
 		public string LocalizedName
 		{
 			get
@@ -26,22 +26,22 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Styles.Assets
 			}
 		}
 
-		// Token: 0x17000004 RID: 4
-		// (get) Token: 0x06000008 RID: 8 RVA: 0x00002128 File Offset: 0x00000328
-		// (set) Token: 0x06000009 RID: 9 RVA: 0x0000213F File Offset: 0x0000033F
+		// Token: 0x17000008 RID: 8
+		// (get) Token: 0x06000076 RID: 118 RVA: 0x000035D5 File Offset: 0x000017D5
+		// (set) Token: 0x06000077 RID: 119 RVA: 0x000035DD File Offset: 0x000017DD
 		public string Name { get; private set; }
 
-		// Token: 0x17000005 RID: 5
-		// (get) Token: 0x0600000A RID: 10 RVA: 0x00002148 File Offset: 0x00000348
-		// (set) Token: 0x0600000B RID: 11 RVA: 0x0000215F File Offset: 0x0000035F
+		// Token: 0x17000009 RID: 9
+		// (get) Token: 0x06000078 RID: 120 RVA: 0x000035E6 File Offset: 0x000017E6
+		// (set) Token: 0x06000079 RID: 121 RVA: 0x000035EE File Offset: 0x000017EE
 		public System.Windows.Media.Brush MainColor { get; private set; }
 
-		// Token: 0x17000006 RID: 6
-		// (get) Token: 0x0600000C RID: 12 RVA: 0x00002168 File Offset: 0x00000368
-		// (set) Token: 0x0600000D RID: 13 RVA: 0x0000217F File Offset: 0x0000037F
+		// Token: 0x1700000A RID: 10
+		// (get) Token: 0x0600007A RID: 122 RVA: 0x000035F7 File Offset: 0x000017F7
+		// (set) Token: 0x0600007B RID: 123 RVA: 0x000035FF File Offset: 0x000017FF
 		internal string FileName { get; set; }
 
-		// Token: 0x0600000E RID: 14 RVA: 0x00002188 File Offset: 0x00000388
+		// Token: 0x0600007C RID: 124 RVA: 0x00003608 File Offset: 0x00001808
 		public override string ToString()
 		{
 			return this.LocalizedName;

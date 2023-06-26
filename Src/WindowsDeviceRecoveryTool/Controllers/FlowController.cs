@@ -26,13 +26,14 @@ using Microsoft.WindowsDeviceRecoveryTool.Properties;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 {
-	// Token: 0x02000033 RID: 51
+	// Token: 0x02000090 RID: 144
 	[Export("Microsoft.WindowsDeviceRecoveryTool.Controllers.FlowController", typeof(IController))]
 	public class FlowController : BaseController
 	{
-		// Token: 0x060001B5 RID: 437 RVA: 0x0000B50C File Offset: 0x0000970C
+		// Token: 0x060004CC RID: 1228 RVA: 0x000184BC File Offset: 0x000166BC
 		[ImportingConstructor]
-		public FlowController(ICommandRepository commandRepository, Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext, LogicContext logics, EventAggregator eventAggregator, ReportingService reportingService) : base(commandRepository, eventAggregator)
+		public FlowController(ICommandRepository commandRepository, Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext, LogicContext logics, EventAggregator eventAggregator, ReportingService reportingService)
+			: base(commandRepository, eventAggregator)
 		{
 			this.appContext = appContext;
 			this.logics = logics;
@@ -44,59 +45,58 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 			this.logics.AdaptationManager.DeviceConnectionStatusRead += this.AdaptationManagerDeviceConnectionStatusRead;
 		}
 
-		// Token: 0x060001B6 RID: 438 RVA: 0x0000B5E4 File Offset: 0x000097E4
+		// Token: 0x060004CD RID: 1229 RVA: 0x0001858C File Offset: 0x0001678C
 		[CustomCommand]
 		public void ChangePackageDirectoryCommand()
 		{
 			string result = DialogManager.Instance.OpenDirectoryDialog("c:\\");
-			if (!string.IsNullOrEmpty(result))
+			bool flag = !string.IsNullOrEmpty(result);
+			if (flag)
 			{
 				base.EventAggregator.Publish<PackageDirectoryMessage>(new PackageDirectoryMessage(result));
-				//base.Commands.Run((FlowController c) => c.FindCorrectPackage(result, CancellationToken.None));
+				base.Commands.Run((FlowController c) => c.FindCorrectPackage(result, CancellationToken.None));
 			}
 		}
 
-		// Token: 0x060001B7 RID: 439 RVA: 0x0000B6BC File Offset: 0x000098BC
+		// Token: 0x060004CE RID: 1230 RVA: 0x00018668 File Offset: 0x00016868
 		[CustomCommand]
 		public void ChangePackagePathCommand()
 		{
 			string adaptationExtension = this.logics.AdaptationManager.GetAdaptationExtension(this.appContext.CurrentPhone.Type);
 			string text = DialogManager.Instance.OpenFileDialog(adaptationExtension, Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.DefaultFfuPath);
-			if (!string.IsNullOrEmpty(text))
+			bool flag = !string.IsNullOrEmpty(text);
+			if (flag)
 			{
 				base.EventAggregator.Publish<PackageDirectoryMessage>(new PackageDirectoryMessage(text));
 			}
 		}
 
-		// Token: 0x060001B8 RID: 440 RVA: 0x0000B71C File Offset: 0x0000991C
+		// Token: 0x060004CF RID: 1231 RVA: 0x000186CC File Offset: 0x000168CC
 		[CustomCommand]
 		public void CancelSearchingPackageAndSwitchToManual()
 		{
 			((IAsyncDelegateCommand)base.Commands["FindCorrectPackage"]).Cancel();
-			//base.Commands.Run((AppController c) => c.SwitchToState("ManualPackageSelectionState"));
+			base.Commands.Run((AppController c) => c.SwitchToState("ManualPackageSelectionState"));
 		}
 
-		// Token: 0x060001B9 RID: 441 RVA: 0x0000B7AC File Offset: 0x000099AC
+		// Token: 0x060004D0 RID: 1232 RVA: 0x00018758 File Offset: 0x00016958
 		[CustomCommand(IsAsynchronous = true)]
 		public void FindCorrectPackage(string directory, CancellationToken token)
 		{
-			List<PackageFileInfo> packages = this.logics.AdaptationManager.FindCorrectPackage(directory, this.appContext.CurrentPhone, token);
-			base.EventAggregator.Publish<CompatibleFfuFilesMessage>(new CompatibleFfuFilesMessage(packages));
+			List<PackageFileInfo> list = this.logics.AdaptationManager.FindCorrectPackage(directory, this.appContext.CurrentPhone, token);
+			base.EventAggregator.Publish<CompatibleFfuFilesMessage>(new CompatibleFfuFilesMessage(list));
 		}
 
-		// Token: 0x060001BA RID: 442 RVA: 0x0000B7EC File Offset: 0x000099EC
+		// Token: 0x060004D1 RID: 1233 RVA: 0x00018798 File Offset: 0x00016998
 		[CustomCommand(IsAsynchronous = true)]
 		public void FindAllLumiaPackages(string directory, CancellationToken cancellationToken)
 		{
 			List<PackageFileInfo> list = this.logics.AdaptationManager.FindAllPackages(directory, PhoneTypes.Lumia, cancellationToken);
-			Tracer<FlowController>.WriteInformation("Found packages: {0}", new object[]
-			{
-				list.Count
-			});
+			Tracer<FlowController>.WriteInformation("Found packages: {0}", new object[] { list.Count });
 			base.EventAggregator.Publish<CompatibleFfuFilesMessage>(new CompatibleFfuFilesMessage(list));
 		}
 
-		// Token: 0x060001BB RID: 443 RVA: 0x0000B841 File Offset: 0x00009A41
+		// Token: 0x060004D2 RID: 1234 RVA: 0x000187EB File Offset: 0x000169EB
 		[CustomCommand]
 		public void StartAwaitRecoveryState()
 		{
@@ -104,33 +104,28 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 			base.EventAggregator.Publish<SwitchStateMessage>(new SwitchStateMessage("AwaitRecoveryDeviceState"));
 		}
 
-		// Token: 0x060001BC RID: 444 RVA: 0x0000B86C File Offset: 0x00009A6C
+		// Token: 0x060004D3 RID: 1235 RVA: 0x00018818 File Offset: 0x00016A18
 		[CustomCommand(IsAsynchronous = true)]
 		public void CancelAwaitRecoveryAfterEmergency(bool cancelled, CancellationToken token)
 		{
 			this.reportingService.OperationFailed(new Phone(), ReportOperationType.EmergencyFlashing, UriData.AwaitAfterEmergencyFlashingCanceled, new OperationCanceledException("User canceled waiting for device after succesfull emergency flashing operation"));
-			List<string> extendedMessage = new List<string>
-			{
-				"Error_OperationCanceledException"
-			};
-			base.EventAggregator.Publish<FlashResultMessage>(new FlashResultMessage(false, extendedMessage, null));
-			//base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
+			List<string> list = new List<string> { "Error_OperationCanceledException" };
+			base.EventAggregator.Publish<FlashResultMessage>(new FlashResultMessage(false, list, null));
+			base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
 		}
 
-		// Token: 0x060001BD RID: 445 RVA: 0x0000B92C File Offset: 0x00009B2C
+		// Token: 0x060004D4 RID: 1236 RVA: 0x000188D0 File Offset: 0x00016AD0
 		[CustomCommand(IsAsynchronous = true)]
 		public void FinishAwaitRecoveryAfterEmergency(bool cancelled, CancellationToken token)
 		{
 			Phone currentPhone = this.appContext.CurrentPhone;
-			if (currentPhone.IsDeviceInEmergencyMode())
+			bool flag = currentPhone.IsDeviceInEmergencyMode();
+			if (flag)
 			{
 				this.reportingService.OperationFailed(currentPhone, ReportOperationType.EmergencyFlashing, UriData.EmergencyModeAfterEmergencyFlashing, new Exception("Emergency mode appeared after succesfull emergency flashing operation"));
-				List<string> extendedMessage = new List<string>
-				{
-					"Error_DeviceNotFoundException"
-				};
-				base.EventAggregator.Publish<FlashResultMessage>(new FlashResultMessage(false, extendedMessage, null));
-				//base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
+				List<string> list = new List<string> { "Error_DeviceNotFoundException" };
+				base.EventAggregator.Publish<FlashResultMessage>(new FlashResultMessage(false, list, null));
+				base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
 			}
 			else
 			{
@@ -149,13 +144,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 			}
 		}
 
-		// Token: 0x060001BE RID: 446 RVA: 0x0000BAA8 File Offset: 0x00009CA8
+		// Token: 0x060004D5 RID: 1237 RVA: 0x00018A38 File Offset: 0x00016C38
 		[CustomCommand(IsAsynchronous = true)]
 		public void EmergencyFlashDevice(object parameter, CancellationToken token)
 		{
 			bool flag = false;
-			List<string> extendedMessage = new List<string>();
-			string argument = string.Empty;
+			List<string> list = new List<string>();
+			string text = string.Empty;
 			try
 			{
 				this.logics.AdaptationManager.EmergencyFlashDevice(this.appContext.CurrentPhone, token);
@@ -163,180 +158,165 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 			}
 			catch (NoDeviceException)
 			{
-				extendedMessage = new List<string>
-				{
-					"Error_DeviceNotFoundException"
-				};
+				list = new List<string> { "Error_DeviceNotFoundException" };
 			}
 			catch (FileNotFoundException ex)
 			{
-				extendedMessage = new List<string>
-				{
-					"Error_FileNotFoundException"
-				};
-				argument = ex.Message;
+				list = new List<string> { "Error_FileNotFoundException" };
+				text = ex.Message;
 			}
 			catch (SoftwareIsNotCorrectlySignedException ex2)
 			{
-				extendedMessage = new List<string>
-				{
-					"Error_SoftwareIsNotCorrectlySignedException"
-				};
-				argument = ex2.Message;
+				list = new List<string> { "Error_SoftwareIsNotCorrectlySignedException" };
+				text = ex2.Message;
 			}
-			catch (Exception arg)
+			catch (Exception ex3)
 			{
-				extendedMessage = new List<string>
-				{
-					"Error_SoftwareInstallationFailed",
-					"ButtonMyPhoneWasNotDetected"
-				};
-				Tracer<FlowController>.WriteInformation("Flashing failed:\n" + arg);
+				list = new List<string> { "Error_SoftwareInstallationFailed", "ButtonMyPhoneWasNotDetected" };
+				string text2 = "Flashing failed:\n";
+				Exception ex4 = ex3;
+				Tracer<FlowController>.WriteInformation(text2 + ((ex4 != null) ? ex4.ToString() : null));
 			}
 			finally
 			{
-				if (flag)
+				bool flag2 = flag;
+				if (flag2)
 				{
-					//base.Commands.Run((AppController c) => c.SwitchToState("AwaitRecoveryModeAfterEmergencyFlashingState"));
+					base.Commands.Run((AppController c) => c.SwitchToState("AwaitRecoveryModeAfterEmergencyFlashingState"));
 				}
 				else
 				{
-					base.EventAggregator.Publish<FlashResultMessage>(new FlashResultMessage(false, extendedMessage, argument));
-					//base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
+					base.EventAggregator.Publish<FlashResultMessage>(new FlashResultMessage(false, list, text));
+					base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
 				}
 			}
 		}
 
-		// Token: 0x060001BF RID: 447 RVA: 0x0000BD18 File Offset: 0x00009F18
+		// Token: 0x060004D6 RID: 1238 RVA: 0x00018C48 File Offset: 0x00016E48
 		[CustomCommand(IsAsynchronous = true)]
 		public void FlashDevice(DetectionType detectionType, CancellationToken token)
 		{
-			bool result = false;
-			List<string> extendedMessage = new List<string>();
-			string argument = string.Empty;
-			if (this.appContext.CurrentPhone == null || !this.logics.AdaptationManager.IsDeviceInFlashModeConnected(this.appContext.CurrentPhone, token))
+			bool flag = false;
+			List<string> list = new List<string>();
+			string text = string.Empty;
+			bool flag2 = this.appContext.CurrentPhone == null || !this.logics.AdaptationManager.IsDeviceInFlashModeConnected(this.appContext.CurrentPhone, token);
+			if (flag2)
 			{
 				throw new DeviceNotFoundException();
 			}
 			try
 			{
 				this.logics.AdaptationManager.FlashDevice(this.appContext.CurrentPhone, detectionType, token);
-				result = true;
+				flag = true;
 			}
 			catch (NoDeviceException)
 			{
-				extendedMessage = new List<string>
-				{
-					"Error_DeviceNotFoundException"
-				};
+				list = new List<string> { "Error_DeviceNotFoundException" };
 			}
 			catch (DeviceDisconnectedException)
 			{
-				extendedMessage = new List<string>
-				{
-					"Error_DeviceDisconnectedException"
-				};
+				list = new List<string> { "Error_DeviceDisconnectedException" };
 			}
 			catch (FileNotFoundException ex)
 			{
-				extendedMessage = new List<string>
-				{
-					"Error_FileNotFoundException"
-				};
-				argument = ex.Message;
+				list = new List<string> { "Error_FileNotFoundException" };
+				text = ex.Message;
 			}
 			catch (SoftwareIsNotCorrectlySignedException ex2)
 			{
-				extendedMessage = new List<string>
-				{
-					"Error_SoftwareIsNotCorrectlySignedException"
-				};
-				argument = ex2.Message;
+				list = new List<string> { "Error_SoftwareIsNotCorrectlySignedException" };
+				text = ex2.Message;
 			}
-			catch (Exception error)
+			catch (Exception ex3)
 			{
-				extendedMessage = new List<string>
+				list = new List<string>
 				{
 					(this.appContext != null && this.appContext.CurrentPhone != null && this.appContext.CurrentPhone.Type == PhoneTypes.HoloLensAccessory) ? "Error_SoftwareInstallationFailed_ReconnectUSB" : "Error_SoftwareInstallationFailed",
 					"ButtonMyPhoneWasNotDetected"
 				};
 				Tracer<FlowController>.WriteInformation("Flashing failed!");
-				Tracer<FlowController>.WriteError(error);
+				Tracer<FlowController>.WriteError(ex3);
 			}
 			finally
 			{
-				base.EventAggregator.Publish<FlashResultMessage>(new FlashResultMessage(result, extendedMessage, argument));
-				//base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
+				base.EventAggregator.Publish<FlashResultMessage>(new FlashResultMessage(flag, list, text));
+				base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
 			}
 		}
 
-		// Token: 0x060001C0 RID: 448 RVA: 0x0000BFAC File Offset: 0x0000A1AC
+		// Token: 0x060004D7 RID: 1239 RVA: 0x00018EB8 File Offset: 0x000170B8
 		[CustomCommand(IsAsynchronous = true)]
 		public void CheckPackageIntegrity(object parameter, CancellationToken token)
 		{
-			if (this.appContext.CurrentPhone == null)
+			bool flag = this.appContext.CurrentPhone == null;
+			if (flag)
 			{
 				throw new DeviceNotFoundException();
 			}
-			bool result = false;
+			bool flag2 = false;
 			try
 			{
 				this.logics.AdaptationManager.CheckPackageIntegrity(this.appContext.CurrentPhone, token);
-				result = true;
+				flag2 = true;
 			}
 			finally
 			{
-				base.EventAggregator.Publish<FfuIntegrityCheckMessage>(new FfuIntegrityCheckMessage(result));
+				base.EventAggregator.Publish<FfuIntegrityCheckMessage>(new FfuIntegrityCheckMessage(flag2));
 			}
 		}
 
-		// Token: 0x060001C1 RID: 449 RVA: 0x0000C024 File Offset: 0x0000A224
+		// Token: 0x060004D8 RID: 1240 RVA: 0x00018F2C File Offset: 0x0001712C
 		private void AdaptationManagerProgressChanged(ProgressChangedEventArgs progressChangedEventArgs)
 		{
 			base.EventAggregator.Publish<ProgressMessage>(new ProgressMessage(progressChangedEventArgs.Percentage, progressChangedEventArgs.Message, progressChangedEventArgs.DownloadedSize, progressChangedEventArgs.TotalSize, progressChangedEventArgs.BytesPerSecond, progressChangedEventArgs.SecondsLeft));
 		}
 
-		// Token: 0x060001C2 RID: 450 RVA: 0x0000C05C File Offset: 0x0000A25C
+		// Token: 0x060004D9 RID: 1241 RVA: 0x00018F64 File Offset: 0x00017164
 		[CustomCommand(IsAsynchronous = true)]
 		public void CheckLatestPackage(object parameter, CancellationToken cancellationToken)
 		{
-			bool status = false;
+			bool flag = false;
 			PackageFileInfo packageFileInfo = null;
-			if (this.appContext.CurrentPhone == null)
+			bool flag2 = this.appContext.CurrentPhone == null;
+			if (flag2)
 			{
 				throw new DeviceNotFoundException();
 			}
-			if (Settings.Default.CustomPackagesPathEnabled && !Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.CheckDirectoryWritePermission(Settings.Default.PackagesPath))
+			bool flag3 = Settings.Default.CustomPackagesPathEnabled && !Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.CheckDirectoryWritePermission(Settings.Default.PackagesPath);
+			if (flag3)
 			{
 				throw new CannotAccessDirectoryException(Settings.Default.PackagesPath);
 			}
 			try
 			{
 				packageFileInfo = this.logics.AdaptationManager.CheckLatestPackage(this.appContext.CurrentPhone, cancellationToken);
-				status = (packageFileInfo != null);
-				if (packageFileInfo == null)
+				flag = packageFileInfo != null;
+				bool flag4 = packageFileInfo == null;
+				if (flag4)
 				{
 					packageFileInfo = new MsrPackageInfo(this.notFoundText, this.notFoundText, this.notFoundText);
 				}
 			}
-			catch (PackageNotFoundException error)
+			catch (PackageNotFoundException ex)
 			{
 				packageFileInfo = new MsrPackageInfo(this.notFoundText, this.notFoundText, this.notFoundText);
-				status = false;
-				Tracer<FlowController>.WriteError(error);
+				flag = false;
+				Tracer<FlowController>.WriteError(ex);
 			}
 			catch (WebException)
 			{
-				if (!NetworkInterface.GetIsNetworkAvailable())
+				bool flag5 = !NetworkInterface.GetIsNetworkAvailable();
+				if (flag5)
 				{
 					throw new NoInternetConnectionException();
 				}
 				throw;
 			}
-			catch (Exception ex)
+			catch (Exception ex2)
 			{
-				Tracer<FlowController>.WriteError(ex);
-				if (!(ex is OperationCanceledException) && !(ex.InnerException is PackageNotFoundException))
+				Tracer<FlowController>.WriteError(ex2);
+				bool flag6 = ex2 is OperationCanceledException || ex2.InnerException is PackageNotFoundException;
+				if (!flag6)
 				{
 					throw;
 				}
@@ -344,60 +324,62 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 			}
 			finally
 			{
-				if (this.appContext.CurrentPhone != null)
+				bool flag7 = this.appContext.CurrentPhone != null;
+				if (flag7)
 				{
 					this.appContext.CurrentPhone.PackageFileInfo = packageFileInfo;
-					if (packageFileInfo != null && !string.IsNullOrEmpty(packageFileInfo.ManufacturerModelName) && (this.appContext.CurrentPhone.Type == PhoneTypes.Htc || this.appContext.CurrentPhone.Type == PhoneTypes.Lg || this.appContext.CurrentPhone.Type == PhoneTypes.Mcj || this.appContext.CurrentPhone.Type == PhoneTypes.Alcatel))
+					bool flag8 = packageFileInfo != null && !string.IsNullOrEmpty(packageFileInfo.ManufacturerModelName) && (this.appContext.CurrentPhone.Type == PhoneTypes.Htc || this.appContext.CurrentPhone.Type == PhoneTypes.Lg || this.appContext.CurrentPhone.Type == PhoneTypes.Mcj || this.appContext.CurrentPhone.Type == PhoneTypes.Alcatel);
+					if (flag8)
 					{
 						this.appContext.CurrentPhone.SalesName = packageFileInfo.ManufacturerModelName;
 					}
-					base.EventAggregator.Publish<FoundSoftwareVersionMessage>(new FoundSoftwareVersionMessage(status, packageFileInfo));
+					base.EventAggregator.Publish<FoundSoftwareVersionMessage>(new FoundSoftwareVersionMessage(flag, packageFileInfo));
 				}
 			}
 		}
 
-		// Token: 0x060001C3 RID: 451 RVA: 0x0000C2A0 File Offset: 0x0000A4A0
+		// Token: 0x060004DA RID: 1242 RVA: 0x0001919C File Offset: 0x0001739C
 		[CustomCommand(IsAsynchronous = true)]
 		public void DownloadEmergencyPackage(object parameter, CancellationToken cancellationToken)
 		{
-			if (this.appContext.CurrentPhone == null)
+			bool flag = this.appContext.CurrentPhone == null;
+			if (flag)
 			{
 				throw new DeviceNotFoundException();
 			}
-			if (!Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.CheckPermission(Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.DefaultPackagesPath))
+			bool flag2 = !Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.CheckPermission(Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.DefaultPackagesPath);
+			if (flag2)
 			{
 				throw new CannotAccessDirectoryException(Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.DefaultPackagesPath);
 			}
 			try
 			{
 				this.logics.AdaptationManager.DownloadEmeregencyPackage(this.appContext.CurrentPhone, cancellationToken);
-				if (cancellationToken.IsCancellationRequested)
+				bool isCancellationRequested = cancellationToken.IsCancellationRequested;
+				if (isCancellationRequested)
 				{
-					base.EventAggregator.Publish<FlashResultMessage>(new FlashResultMessage(false, new List<string>
-					{
-						"DownloadCancelled"
-					}));
-					//base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
+					base.EventAggregator.Publish<FlashResultMessage>(new FlashResultMessage(false, new List<string> { "DownloadCancelled" }));
+					base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
 					Tracer<FlowController>.WriteInformation("Download package canceled.");
 				}
 				else
 				{
-					//base.Commands.Run((AppController c) => c.SwitchToState("FlashingState"));
+					base.Commands.Run((AppController c) => c.SwitchToState("FlashingState"));
 				}
 			}
 			catch (TaskCanceledException)
 			{
-				base.EventAggregator.Publish<FlashResultMessage>(new FlashResultMessage(false, new List<string>
-				{
-					"DownloadCancelled"
-				}));
-				//base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
+				base.EventAggregator.Publish<FlashResultMessage>(new FlashResultMessage(false, new List<string> { "DownloadCancelled" }));
+				base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
 				Tracer<FlowController>.WriteInformation("Download package canceled.");
 			}
-			catch (WebException arg)
+			catch (WebException ex)
 			{
-				Tracer<FlowController>.WriteInformation("Download package failed:\n" + arg);
-				if (!NetworkInterface.GetIsNetworkAvailable())
+				string text = "Download package failed:\n";
+				WebException ex2 = ex;
+				Tracer<FlowController>.WriteInformation(text + ((ex2 != null) ? ex2.ToString() : null));
+				bool flag3 = !NetworkInterface.GetIsNetworkAvailable();
+				if (flag3)
 				{
 					throw new NoInternetConnectionException();
 				}
@@ -405,59 +387,63 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 			}
 		}
 
-		// Token: 0x060001C4 RID: 452 RVA: 0x0000C52C File Offset: 0x0000A72C
+		// Token: 0x060004DB RID: 1243 RVA: 0x0001940C File Offset: 0x0001760C
 		[CustomCommand]
 		public void CancelDownloadEmergencyPackage()
 		{
-			if (new DialogMessageManager().ShowQuestionDialog(LocalizationManager.GetTranslation("DownloadingCancelMessage"), null, true) == true)
+			DialogMessageManager dialogMessageManager = new DialogMessageManager();
+			bool? flag = dialogMessageManager.ShowQuestionDialog(LocalizationManager.GetTranslation("DownloadingCancelMessage"), null, true);
+			bool flag2 = true;
+			bool flag3 = (flag.GetValueOrDefault() == flag2) & (flag != null);
+			if (flag3)
 			{
 				((IAsyncDelegateCommand)base.Commands["DownloadEmergencyPackage"]).Cancel();
 			}
 		}
 
-		// Token: 0x060001C5 RID: 453 RVA: 0x0000C594 File Offset: 0x0000A794
+		// Token: 0x060004DC RID: 1244 RVA: 0x00019468 File Offset: 0x00017668
 		[CustomCommand(IsAsynchronous = true)]
 		public void DownloadPackage(object parameter, CancellationToken token)
 		{
-			if (this.appContext.CurrentPhone == null)
+			bool flag = this.appContext.CurrentPhone == null;
+			if (flag)
 			{
 				throw new DeviceNotFoundException();
 			}
-			if (!Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.CheckPermission(Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.DefaultPackagesPath))
+			bool flag2 = !Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.CheckPermission(Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.DefaultPackagesPath);
+			if (flag2)
 			{
 				throw new CannotAccessDirectoryException(Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.DefaultPackagesPath);
 			}
 			try
 			{
 				this.logics.AdaptationManager.DownloadPackage(this.appContext.CurrentPhone, token);
-				if (token.IsCancellationRequested)
+				bool isCancellationRequested = token.IsCancellationRequested;
+				if (isCancellationRequested)
 				{
-					base.EventAggregator.Publish<FlashResultMessage>(new FlashResultMessage(false, new List<string>
-					{
-						"DownloadCancelled"
-					}));
-					//base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
+					base.EventAggregator.Publish<FlashResultMessage>(new FlashResultMessage(false, new List<string> { "DownloadCancelled" }));
+					base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
 					Tracer<FlowController>.WriteInformation("Download package canceled.");
 				}
 				else
 				{
-					string nextState = (this.appContext.CurrentPhone.Type == PhoneTypes.HoloLensAccessory) ? "FlashingState" : "BatteryCheckingState";
-					//base.Commands.Run((AppController c) => c.SwitchToState(nextState));
+					string nextState = ((this.appContext.CurrentPhone.Type == PhoneTypes.HoloLensAccessory) ? "FlashingState" : "BatteryCheckingState");
+					base.Commands.Run((AppController c) => c.SwitchToState(nextState));
 				}
 			}
 			catch (OperationCanceledException)
 			{
-				base.EventAggregator.Publish<FlashResultMessage>(new FlashResultMessage(false, new List<string>
-				{
-					"DownloadCancelled"
-				}));
-				//base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
+				base.EventAggregator.Publish<FlashResultMessage>(new FlashResultMessage(false, new List<string> { "DownloadCancelled" }));
+				base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
 				Tracer<FlowController>.WriteInformation("Download package canceled.");
 			}
-			catch (WebException arg)
+			catch (WebException ex)
 			{
-				Tracer<FlowController>.WriteInformation("Download package failed:\n" + arg);
-				if (!NetworkInterface.GetIsNetworkAvailable())
+				string text = "Download package failed:\n";
+				WebException ex2 = ex;
+				Tracer<FlowController>.WriteInformation(text + ((ex2 != null) ? ex2.ToString() : null));
+				bool flag3 = !NetworkInterface.GetIsNetworkAvailable();
+				if (flag3)
 				{
 					throw new NoInternetConnectionException();
 				}
@@ -470,25 +456,29 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 			}
 		}
 
-		// Token: 0x060001C6 RID: 454 RVA: 0x0000C888 File Offset: 0x0000AA88
+		// Token: 0x060004DD RID: 1245 RVA: 0x00019744 File Offset: 0x00017944
 		[CustomCommand]
 		public void CancelDownloadPackage()
 		{
-			if (new DialogMessageManager().ShowQuestionDialog(LocalizationManager.GetTranslation("DownloadingCancelMessage"), null, true) == true)
+			DialogMessageManager dialogMessageManager = new DialogMessageManager();
+			bool? flag = dialogMessageManager.ShowQuestionDialog(LocalizationManager.GetTranslation("DownloadingCancelMessage"), null, true);
+			bool flag2 = true;
+			bool flag3 = (flag.GetValueOrDefault() == flag2) & (flag != null);
+			if (flag3)
 			{
 				((IAsyncDelegateCommand)base.Commands["DownloadPackage"]).Cancel();
 			}
 		}
 
-		// Token: 0x060001C7 RID: 455 RVA: 0x0000C8E8 File Offset: 0x0000AAE8
+		// Token: 0x060004DE RID: 1246 RVA: 0x000197A0 File Offset: 0x000179A0
 		[CustomCommand]
 		public void CompareFirmwareVersions()
 		{
-			SwVersionComparisonResult status = this.logics.AdaptationManager.CompareFirmwareVersions(this.appContext.CurrentPhone);
-			base.EventAggregator.Publish<FirmwareVersionsCompareMessage>(new FirmwareVersionsCompareMessage(status));
+			SwVersionComparisonResult swVersionComparisonResult = this.logics.AdaptationManager.CompareFirmwareVersions(this.appContext.CurrentPhone);
+			base.EventAggregator.Publish<FirmwareVersionsCompareMessage>(new FirmwareVersionsCompareMessage(swVersionComparisonResult));
 		}
 
-		// Token: 0x060001C8 RID: 456 RVA: 0x0000C924 File Offset: 0x0000AB24
+		// Token: 0x060004DF RID: 1247 RVA: 0x000197DC File Offset: 0x000179DC
 		[CustomCommand]
 		public void StartDeviceDetection(DetectionParameters detectionParams)
 		{
@@ -502,7 +492,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 			}
 		}
 
-		// Token: 0x060001C9 RID: 457 RVA: 0x0000C9DC File Offset: 0x0000ABDC
+		// Token: 0x060004E0 RID: 1248 RVA: 0x00019890 File Offset: 0x00017A90
 		[CustomCommand]
 		public void StopDeviceDetection()
 		{
@@ -511,180 +501,181 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controllers
 			this.logics.AdaptationManager.DeviceDisconnected -= this.AdaptationManagerDeviceDisconnected;
 		}
 
-		// Token: 0x060001CA RID: 458 RVA: 0x0000CA35 File Offset: 0x0000AC35
+		// Token: 0x060004E1 RID: 1249 RVA: 0x000198E9 File Offset: 0x00017AE9
 		[CustomCommand]
 		public void GetConnectedPhones(DetectionParameters detectionParams)
 		{
 			base.EventAggregator.Publish<ConnectedPhonesMessage>(new ConnectedPhonesMessage(this.logics.AdaptationManager.GetConnectedPhones(detectionParams)));
 		}
 
-		// Token: 0x060001CB RID: 459 RVA: 0x0000CA5A File Offset: 0x0000AC5A
+		// Token: 0x060004E2 RID: 1250 RVA: 0x0001990E File Offset: 0x00017B0E
 		[CustomCommand]
 		public void GetSupportedManufacturers()
 		{
 			base.EventAggregator.Publish<SupportedManufacturersMessage>(new SupportedManufacturersMessage(this.logics.AdaptationManager.GetAdaptationsData()));
 		}
 
-		// Token: 0x060001CC RID: 460 RVA: 0x0000CA7E File Offset: 0x0000AC7E
+		// Token: 0x060004E3 RID: 1251 RVA: 0x00019932 File Offset: 0x00017B32
 		[CustomCommand]
 		public void GetSupportedAdaptationModels(PhoneTypes phoneType)
 		{
 			base.EventAggregator.Publish<SupportedAdaptationModelsMessage>(new SupportedAdaptationModelsMessage(this.logics.AdaptationManager.GetSupportedAdaptationModels(phoneType)));
 		}
 
-		// Token: 0x060001CD RID: 461 RVA: 0x0000CAA4 File Offset: 0x0000ACA4
+		// Token: 0x060004E4 RID: 1252 RVA: 0x00019958 File Offset: 0x00017B58
 		[CustomCommand]
 		public void Finish(bool isPassed)
 		{
-			if (!isPassed && this.appContext.SelectedManufacturer == PhoneTypes.Htc)
+			bool flag = !isPassed && this.appContext.SelectedManufacturer == PhoneTypes.Htc;
+			if (flag)
 			{
-				//base.Commands.Run((AppController c) => c.SwitchToState("RebootHtcState"));
+				base.Commands.Run((AppController c) => c.SwitchToState("RebootHtcState"));
 			}
 			else
 			{
-				//base.Commands.Run((AppController c) => c.SwitchToState("AutomaticManufacturerSelectionState"));
+				base.Commands.Run((AppController c) => c.SwitchToState("AutomaticManufacturerSelectionState"));
 			}
 		}
 
-		// Token: 0x060001CE RID: 462 RVA: 0x0000CBA0 File Offset: 0x0000ADA0
+		// Token: 0x060004E5 RID: 1253 RVA: 0x00019A48 File Offset: 0x00017C48
 		[CustomCommand]
 		public void CancelBatteryChecking()
 		{
-			base.EventAggregator.Publish<FlashResultMessage>(new FlashResultMessage(false, new List<string>
-			{
-				"BatteryCheckingCancelled"
-			}));
-			//base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
+			base.EventAggregator.Publish<FlashResultMessage>(new FlashResultMessage(false, new List<string> { "BatteryCheckingCancelled" }));
+			base.Commands.Run((AppController c) => c.SwitchToState("SummaryState"));
 		}
 
-		// Token: 0x060001CF RID: 463 RVA: 0x0000CC39 File Offset: 0x0000AE39
+		// Token: 0x060004E6 RID: 1254 RVA: 0x00019ADB File Offset: 0x00017CDB
 		private void AdaptationManagerDeviceDisconnected(Phone phone)
 		{
 			base.EventAggregator.Publish<DeviceDisconnectedMessage>(new DeviceDisconnectedMessage(phone));
 		}
 
-		// Token: 0x060001D0 RID: 464 RVA: 0x0000CC4E File Offset: 0x0000AE4E
+		// Token: 0x060004E7 RID: 1255 RVA: 0x00019AF0 File Offset: 0x00017CF0
 		private void AdaptationManagerDeviceConnected(Phone phone)
 		{
 			base.EventAggregator.Publish<DeviceConnectedMessage>(new DeviceConnectedMessage(phone));
 		}
 
-		// Token: 0x060001D1 RID: 465 RVA: 0x0000CC63 File Offset: 0x0000AE63
+		// Token: 0x060004E8 RID: 1256 RVA: 0x00019B05 File Offset: 0x00017D05
 		[CustomCommand]
 		public void CancelCheckLatestPackage()
 		{
 			((IAsyncDelegateCommand)base.Commands["CheckLatestPackage"]).Cancel();
 		}
 
-		// Token: 0x060001D2 RID: 466 RVA: 0x0000CC81 File Offset: 0x0000AE81
+		// Token: 0x060004E9 RID: 1257 RVA: 0x00019B23 File Offset: 0x00017D23
 		[CustomCommand(IsAsynchronous = true)]
 		public void ReadDeviceInfo(Phone currentPhone, CancellationToken cancellationToken)
 		{
 			this.logics.AdaptationManager.ReadDeviceInfo(currentPhone, cancellationToken);
 		}
 
-		// Token: 0x060001D3 RID: 467 RVA: 0x0000CC97 File Offset: 0x0000AE97
+		// Token: 0x060004EA RID: 1258 RVA: 0x00019B39 File Offset: 0x00017D39
 		[CustomCommand(IsAsynchronous = true)]
 		public void ReadDeviceBatteryLevel(Phone currentPhone, CancellationToken cancellationToken)
 		{
 			this.logics.AdaptationManager.ReadDeviceBatteryLevel(currentPhone, cancellationToken);
 		}
 
-		// Token: 0x060001D4 RID: 468 RVA: 0x0000CCAD File Offset: 0x0000AEAD
+		// Token: 0x060004EB RID: 1259 RVA: 0x00019B4F File Offset: 0x00017D4F
 		[CustomCommand(IsAsynchronous = true)]
 		public void ReadDeviceBatteryStatus(Phone phone, CancellationToken cancellationToken)
 		{
 			this.logics.AdaptationManager.ReadDeviceBatteryStatus(phone, cancellationToken);
 		}
 
-		// Token: 0x060001D5 RID: 469 RVA: 0x0000CCC3 File Offset: 0x0000AEC3
+		// Token: 0x060004EC RID: 1260 RVA: 0x00019B65 File Offset: 0x00017D65
 		[CustomCommand(IsAsynchronous = true)]
 		public void CheckIfDeviceStillConnected(Phone phone, CancellationToken cancellationToken)
 		{
 			this.logics.AdaptationManager.CheckIfDeviceStillConnected(phone, cancellationToken);
 		}
 
-		// Token: 0x060001D6 RID: 470 RVA: 0x0000CCD9 File Offset: 0x0000AED9
+		// Token: 0x060004ED RID: 1261 RVA: 0x00019B7B File Offset: 0x00017D7B
 		[CustomCommand]
 		public void CancelReadDeviceInfo()
 		{
 			((IAsyncDelegateCommand)base.Commands["ReadDeviceInfo"]).Cancel();
 		}
 
-		// Token: 0x060001D7 RID: 471 RVA: 0x0000CCF7 File Offset: 0x0000AEF7
+		// Token: 0x060004EE RID: 1262 RVA: 0x00019B99 File Offset: 0x00017D99
 		[CustomCommand(IsAsynchronous = true)]
 		public void SurveyCompleted(SurveyReport survey, CancellationToken cancellationToken)
 		{
 			this.reportingService.SurveySucceded(survey);
 		}
 
-		// Token: 0x060001D8 RID: 472 RVA: 0x0000CD07 File Offset: 0x0000AF07
+		// Token: 0x060004EF RID: 1263 RVA: 0x00019BA9 File Offset: 0x00017DA9
 		[CustomCommand(IsAsynchronous = true)]
 		public void StartSessionFlow(string sessionParameter, CancellationToken cancellationToken)
 		{
 			this.reportingService.StartFlowSession();
 		}
 
-		// Token: 0x060001D9 RID: 473 RVA: 0x0000CD18 File Offset: 0x0000AF18
+		// Token: 0x060004F0 RID: 1264 RVA: 0x00019BB8 File Offset: 0x00017DB8
 		private void AdaptationManagerDeviceInfoRead(Phone phone)
 		{
-			if (phone != null)
+			bool flag = phone != null;
+			if (flag)
 			{
 				this.appContext.CurrentPhone = phone;
 			}
 			base.EventAggregator.Publish<DeviceInfoReadMessage>(new DeviceInfoReadMessage(phone != null));
 		}
 
-		// Token: 0x060001DA RID: 474 RVA: 0x0000CD58 File Offset: 0x0000AF58
+		// Token: 0x060004F1 RID: 1265 RVA: 0x00019BF4 File Offset: 0x00017DF4
 		private void AdaptationManagerDeviceBatteryLevelRead(Phone phone)
 		{
-			if (phone != null)
+			bool flag = phone != null;
+			if (flag)
 			{
 				this.appContext.CurrentPhone = phone;
 			}
 			base.EventAggregator.Publish<DeviceInfoReadMessage>(new DeviceInfoReadMessage(phone != null));
 		}
 
-		// Token: 0x060001DB RID: 475 RVA: 0x0000CD95 File Offset: 0x0000AF95
+		// Token: 0x060004F2 RID: 1266 RVA: 0x00019C2E File Offset: 0x00017E2E
 		private void AdaptationManagerDeviceBatteryStatusRead(BatteryStatus batteryStatus)
 		{
 			base.EventAggregator.Publish<DeviceBatteryStatusReadMessage>(new DeviceBatteryStatusReadMessage(batteryStatus));
 		}
 
-		// Token: 0x060001DC RID: 476 RVA: 0x0000CDAA File Offset: 0x0000AFAA
+		// Token: 0x060004F3 RID: 1267 RVA: 0x00019C43 File Offset: 0x00017E43
 		private void AdaptationManagerDeviceConnectionStatusRead(bool deviceConnectionStatus)
 		{
 			base.EventAggregator.Publish<DeviceConnectionStatusReadMessage>(new DeviceConnectionStatusReadMessage(deviceConnectionStatus));
 		}
 
-		// Token: 0x060001DD RID: 477 RVA: 0x0000CDC0 File Offset: 0x0000AFC0
+		// Token: 0x060004F4 RID: 1268 RVA: 0x00019C58 File Offset: 0x00017E58
 		private bool CheckCustomDirectoryExistenceAndPermissions(string path)
 		{
-			string path2 = Path.Combine(path, "Products");
-			if (!Directory.Exists(path2))
+			string text = Path.Combine(path, "Products");
+			bool flag = !Directory.Exists(text);
+			if (flag)
 			{
 				try
 				{
-					Directory.CreateDirectory(path2);
+					Directory.CreateDirectory(text);
 				}
 				catch
 				{
 					return false;
 				}
 			}
-			return Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.CheckDirectoryWritePermission(path2);
+			return Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.CheckDirectoryWritePermission(text);
 		}
 
-		// Token: 0x040000CC RID: 204
+		// Token: 0x0400022C RID: 556
 		private readonly string notFoundText = LocalizationManager.GetTranslation("NotFound");
 
-		// Token: 0x040000CD RID: 205
+		// Token: 0x0400022D RID: 557
 		private readonly Microsoft.WindowsDeviceRecoveryTool.ApplicationLogic.AppContext appContext;
 
-		// Token: 0x040000CE RID: 206
+		// Token: 0x0400022E RID: 558
 		private readonly LogicContext logics;
 
-		// Token: 0x040000CF RID: 207
+		// Token: 0x0400022F RID: 559
 		private readonly ReportingService reportingService;
 	}
 }

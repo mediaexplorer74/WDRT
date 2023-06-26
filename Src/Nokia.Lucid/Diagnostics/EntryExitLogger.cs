@@ -17,12 +17,12 @@ namespace Nokia.Lucid.Diagnostics
 		// Token: 0x060000FA RID: 250 RVA: 0x0000A0B0 File Offset: 0x000082B0
 		public static IDisposable Log(string methodName, TraceSource source)
 		{
-			IDisposable result = null;
+			IDisposable disposable = null;
 			if (source.Switch.Level > SourceLevels.Verbose)
 			{
-				result = new EntryExitLogger(methodName, source);
+				disposable = new EntryExitLogger(methodName, source);
 			}
-			return result;
+			return disposable;
 		}
 
 		// Token: 0x060000FB RID: 251 RVA: 0x0000A0D7 File Offset: 0x000082D7

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Threading;
@@ -13,11 +14,11 @@ using Microsoft.WindowsDeviceRecoveryTool.OemAdaptation.Primitives;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation
 {
-	// Token: 0x02000004 RID: 4
+	// Token: 0x02000005 RID: 5
 	[Export(typeof(IDeviceSupport))]
 	internal class AcerSupport : IDeviceSupport
 	{
-		// Token: 0x06000007 RID: 7 RVA: 0x000025BC File Offset: 0x000007BC
+		// Token: 0x0600000D RID: 13 RVA: 0x00002668 File Offset: 0x00000868
 		[ImportingConstructor]
 		public AcerSupport(IMtpDeviceInfoProvider mtpDeviceInfoProvider)
 		{
@@ -30,8 +31,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation
 			});
 		}
 
-		// Token: 0x17000001 RID: 1
-		// (get) Token: 0x06000008 RID: 8 RVA: 0x00002606 File Offset: 0x00000806
+		// Token: 0x17000003 RID: 3
+		// (get) Token: 0x0600000E RID: 14 RVA: 0x000026A5 File Offset: 0x000008A5
 		public Guid Id
 		{
 			get
@@ -40,13 +41,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation
 			}
 		}
 
-		// Token: 0x06000009 RID: 9 RVA: 0x0000260D File Offset: 0x0000080D
+		// Token: 0x0600000F RID: 15 RVA: 0x000026AC File Offset: 0x000008AC
 		public DeviceDetectionInformation[] GetDeviceDetectionInformation()
 		{
 			return this.catalog.GetDeviceDetectionInformations();
 		}
 
-		// Token: 0x0600000A RID: 10 RVA: 0x00002874 File Offset: 0x00000A74
+		// Token: 0x06000010 RID: 16 RVA: 0x000026BC File Offset: 0x000008BC
 		public async Task UpdateDeviceDetectionDataAsync(DeviceDetectionData detectionData, CancellationToken cancellationToken)
 		{
 			if (detectionData.IsDeviceSupported)
@@ -55,40 +56,45 @@ namespace Microsoft.WindowsDeviceRecoveryTool.AcerAdaptation
 			}
 			cancellationToken.ThrowIfCancellationRequested();
 			VidPidPair vidPidPair = detectionData.VidPidPair;
-			string devicePath = detectionData.UsbDeviceInterfaceDevicePath;
-			if (this.catalog.Models.FirstOrDefault((ModelInfo m) => m.DetectionInfo.DeviceDetectionInformations.Any((DeviceDetectionInformation di) => di.VidPidPair == vidPidPair)) == null)
+			string usbDeviceInterfaceDevicePath = detectionData.UsbDeviceInterfaceDevicePath;
+			Func<DeviceDetectionInformation, bool> <>9__1;
+			if (this.catalog.Models.FirstOrDefault(delegate(ModelInfo m)
 			{
-				Tracer<AcerSupport>.WriteInformation("No Acer device detected. Path: {0}", new object[]
+				IEnumerable<DeviceDetectionInformation> deviceDetectionInformations = m.DetectionInfo.DeviceDetectionInformations;
+				Func<DeviceDetectionInformation, bool> func;
+				if ((func = <>9__1) == null)
 				{
-					detectionData.UsbDeviceInterfaceDevicePath
-				});
+					func = (<>9__1 = (DeviceDetectionInformation di) => di.VidPidPair == vidPidPair);
+				}
+				return deviceDetectionInformations.Any(func);
+			}) == null)
+			{
+				Tracer<AcerSupport>.WriteInformation("No Acer device detected. Path: {0}", new object[] { detectionData.UsbDeviceInterfaceDevicePath });
 			}
 			else
 			{
-				MtpInterfaceInfo deviceInfo = await this.mtpDeviceInfoProvider.ReadInformationAsync(devicePath, cancellationToken);
-				string mtpDeviceDescription = deviceInfo.Description;
+				string description = (await this.mtpDeviceInfoProvider.ReadInformationAsync(usbDeviceInterfaceDevicePath, cancellationToken)).Description;
 				ModelInfo modelInfo;
-				if (this.catalog.TryGetModelInfo(mtpDeviceDescription, out modelInfo))
+				if (this.catalog.TryGetModelInfo(description, out modelInfo))
 				{
 					string name = modelInfo.Name;
-					byte[] deviceBitmapBytes = modelInfo.Bitmap.ToBytes();
-					detectionData.DeviceBitmapBytes = deviceBitmapBytes;
+					detectionData.DeviceBitmapBytes = modelInfo.Bitmap.ToBytes();
 					detectionData.DeviceSalesName = name;
 					detectionData.IsDeviceSupported = true;
 				}
 			}
 		}
 
-		// Token: 0x0400000D RID: 13
+		// Token: 0x0400000F RID: 15
 		private readonly IMtpDeviceInfoProvider mtpDeviceInfoProvider;
 
-		// Token: 0x0400000E RID: 14
+		// Token: 0x04000010 RID: 16
 		private static readonly Guid SupportGuid = new Guid("5DD6D8CE-DAB9-4E27-8846-669B343E89BE");
 
-		// Token: 0x0400000F RID: 15
+		// Token: 0x04000011 RID: 17
 		private static readonly ManufacturerInfo ManufacturerInfo = new ManufacturerInfo(Resources.Name_Manufacturer, Resources.AcerLogo);
 
-		// Token: 0x04000010 RID: 16
+		// Token: 0x04000012 RID: 18
 		private readonly ManufacturerModelsCatalog catalog;
 	}
 }

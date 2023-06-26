@@ -370,8 +370,8 @@ namespace Nokia.Lucid.IsiStream
 			byte[] array = new byte[10];
 			array[2] = 16;
 			array[5] = 4;
-			byte[] collection = array;
-			this.Message.InsertRange(0, collection);
+			byte[] array2 = array;
+			this.Message.InsertRange(0, array2);
 		}
 
 		// Token: 0x0600002A RID: 42 RVA: 0x0000244C File Offset: 0x0000064C

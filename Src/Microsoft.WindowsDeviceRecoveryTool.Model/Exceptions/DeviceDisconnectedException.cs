@@ -3,27 +3,30 @@ using System.Runtime.Serialization;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model.Exceptions
 {
-	// Token: 0x02000013 RID: 19
+	// Token: 0x02000024 RID: 36
 	[Serializable]
 	public class DeviceDisconnectedException : Exception
 	{
-		// Token: 0x0600009B RID: 155 RVA: 0x00003221 File Offset: 0x00001421
+		// Token: 0x060001EE RID: 494 RVA: 0x00006346 File Offset: 0x00004546
 		public DeviceDisconnectedException()
 		{
 		}
 
-		// Token: 0x0600009C RID: 156 RVA: 0x0000322C File Offset: 0x0000142C
-		public DeviceDisconnectedException(string message) : base(message)
+		// Token: 0x060001EF RID: 495 RVA: 0x00006350 File Offset: 0x00004550
+		public DeviceDisconnectedException(string message)
+			: base(message)
 		{
 		}
 
-		// Token: 0x0600009D RID: 157 RVA: 0x00003238 File Offset: 0x00001438
-		public DeviceDisconnectedException(string message, Exception innerException) : base(message, innerException)
+		// Token: 0x060001F0 RID: 496 RVA: 0x0000635B File Offset: 0x0000455B
+		public DeviceDisconnectedException(string message, Exception innerException)
+			: base(message, innerException)
 		{
 		}
 
-		// Token: 0x0600009E RID: 158 RVA: 0x00003245 File Offset: 0x00001445
-		protected DeviceDisconnectedException(SerializationInfo info, StreamingContext context) : base(info, context)
+		// Token: 0x060001F1 RID: 497 RVA: 0x00006367 File Offset: 0x00004567
+		protected DeviceDisconnectedException(SerializationInfo info, StreamingContext context)
+			: base(info, context)
 		{
 		}
 	}

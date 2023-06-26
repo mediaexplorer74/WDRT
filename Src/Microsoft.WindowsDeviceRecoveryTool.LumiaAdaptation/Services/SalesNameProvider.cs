@@ -4,45 +4,42 @@ using Microsoft.WindowsDeviceRecoveryTool.LogicCommon;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.LumiaAdaptation.Services
 {
-	// Token: 0x0200000A RID: 10
+	// Token: 0x02000008 RID: 8
 	public class SalesNameProvider : BaseSalesNameProvider
 	{
-		// Token: 0x06000089 RID: 137 RVA: 0x00006388 File Offset: 0x00004588
+		// Token: 0x06000065 RID: 101 RVA: 0x00004F88 File Offset: 0x00003188
 		public override string NameForVidPid(string vid, string pid)
 		{
-			string result;
-			if (string.Compare(vid, "0421", StringComparison.OrdinalIgnoreCase) == 0 && (string.Compare(pid, "066E", StringComparison.OrdinalIgnoreCase) == 0 || string.Compare(pid, "0714", StringComparison.OrdinalIgnoreCase) == 0))
+			bool flag = string.Compare(vid, "0421", StringComparison.OrdinalIgnoreCase) == 0 && (string.Compare(pid, "066E", StringComparison.OrdinalIgnoreCase) == 0 || string.Compare(pid, "0714", StringComparison.OrdinalIgnoreCase) == 0);
+			string text;
+			if (flag)
 			{
-				result = "DeviceInUefiMode";
+				text = "DeviceInUefiMode";
 			}
 			else
 			{
-				result = base.NameForVidPid(vid, pid);
+				text = base.NameForVidPid(vid, pid);
 			}
-			return result;
+			return text;
 		}
 
-		// Token: 0x0600008A RID: 138 RVA: 0x000063E8 File Offset: 0x000045E8
+		// Token: 0x06000066 RID: 102 RVA: 0x00004FE0 File Offset: 0x000031E0
 		public override string NameForTypeDesignator(string typeDesignator)
 		{
-			string result;
-			if (this.lumia1020List.Contains(typeDesignator.ToUpper()))
+			bool flag = this.lumia1020List.Contains(typeDesignator.ToUpper());
+			string text;
+			if (flag)
 			{
-				result = "Nokia Lumia 1020";
+				text = "Nokia Lumia 1020";
 			}
 			else
 			{
-				result = base.NameForTypeDesignator(typeDesignator);
+				text = base.NameForTypeDesignator(typeDesignator);
 			}
-			return result;
+			return text;
 		}
 
-		// Token: 0x0400003A RID: 58
-		private readonly List<string> lumia1020List = new List<string>
-		{
-			"RM-875",
-			"RM-876",
-			"RM-877"
-		};
+		// Token: 0x04000028 RID: 40
+		private readonly List<string> lumia1020List = new List<string> { "RM-875", "RM-876", "RM-877" };
 	}
 }

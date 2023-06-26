@@ -4,10 +4,10 @@ using System.Threading.Tasks;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Detection
 {
-	// Token: 0x0200001C RID: 28
+	// Token: 0x020000BE RID: 190
 	public interface IUsbDeviceMonitor : IDisposable
 	{
-		// Token: 0x060000E2 RID: 226
+		// Token: 0x060005DA RID: 1498
 		Task<UsbDeviceChangeEvent> TakeDeviceChangeEventAsync(CancellationToken cancellationToken);
 	}
 }

@@ -14,7 +14,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LgeAdaptation
 	internal class LgeSupport : IDeviceSupport
 	{
 		// Token: 0x17000001 RID: 1
-		// (get) Token: 0x06000002 RID: 2 RVA: 0x000020A8 File Offset: 0x000002A8
+		// (get) Token: 0x06000002 RID: 2 RVA: 0x000020A4 File Offset: 0x000002A4
 		public Guid Id
 		{
 			get
@@ -23,14 +23,14 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LgeAdaptation
 			}
 		}
 
-		// Token: 0x06000003 RID: 3 RVA: 0x000020BF File Offset: 0x000002BF
+		// Token: 0x06000003 RID: 3 RVA: 0x000020BB File Offset: 0x000002BB
 		[ImportingConstructor]
 		public LgeSupport(ILucidService lucidService)
 		{
 			this.lucidService = lucidService;
 		}
 
-		// Token: 0x06000004 RID: 4 RVA: 0x000020D4 File Offset: 0x000002D4
+		// Token: 0x06000004 RID: 4 RVA: 0x000020CC File Offset: 0x000002CC
 		public DeviceDetectionInformation[] GetDeviceDetectionInformation()
 		{
 			return new DeviceDetectionInformation[]
@@ -39,19 +39,21 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LgeAdaptation
 			};
 		}
 
-		// Token: 0x06000005 RID: 5 RVA: 0x00002210 File Offset: 0x00000410
+		// Token: 0x06000005 RID: 5 RVA: 0x000020F4 File Offset: 0x000002F4
 		public async Task UpdateDeviceDetectionDataAsync(DeviceDetectionData detectionData, CancellationToken cancellationToken)
 		{
-			if (detectionData.IsDeviceSupported)
+			bool isDeviceSupported = detectionData.IsDeviceSupported;
+			if (isDeviceSupported)
 			{
 				throw new InvalidOperationException("Device is already supported.");
 			}
-			VidPidPair vidPidPair = detectionData.VidPidPair;
-			string usbDeviceInterfaceDevicePath = detectionData.UsbDeviceInterfaceDevicePath;
-			if (!(vidPidPair != LgeSupport.LgeVidPid))
+			VidPidPair vidPid = detectionData.VidPidPair;
+			string devicePath = detectionData.UsbDeviceInterfaceDevicePath;
+			bool flag = vidPid != LgeSupport.LgeVidPid;
+			if (!flag)
 			{
-				DeviceInfo deviceInfoForInterfaceGuid = this.lucidService.GetDeviceInfoForInterfaceGuid(usbDeviceInterfaceDevicePath, WellKnownGuids.UsbDeviceInterfaceGuid);
-				detectionData.DeviceSalesName = deviceInfoForInterfaceGuid.ReadBusReportedDeviceDescription();
+				DeviceInfo deviceInfo = this.lucidService.GetDeviceInfoForInterfaceGuid(devicePath, WellKnownGuids.UsbDeviceInterfaceGuid);
+				detectionData.DeviceSalesName = deviceInfo.ReadBusReportedDeviceDescription();
 				detectionData.DeviceBitmapBytes = Resources.Lancet.ToBytes();
 				detectionData.IsDeviceSupported = true;
 			}

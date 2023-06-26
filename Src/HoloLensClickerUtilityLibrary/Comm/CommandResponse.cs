@@ -49,15 +49,12 @@ namespace ClickerUtilityLibrary.Comm
 						bool flag3 = text.Contains("command " + commandResponseState.CommandName + ", status");
 						if (flag3)
 						{
-							string[] array = text.Split(new char[]
-							{
-								':'
-							});
+							string[] array = text.Split(new char[] { ':' });
 							bool flag4 = array.Length == 2;
 							if (flag4)
 							{
-								string a = array[1].Trim();
-								commandResponseState.Status = (a == "0");
+								string text2 = array[1].Trim();
+								commandResponseState.Status = text2 == "0";
 							}
 						}
 						else
@@ -99,7 +96,7 @@ namespace ClickerUtilityLibrary.Comm
 		// Token: 0x060000C7 RID: 199 RVA: 0x0000605C File Offset: 0x0000425C
 		public static string GetResponse(CommandResponse.CommandCode cmdCode)
 		{
-			string result = null;
+			string text = null;
 			bool flag = !CommandResponse.mResponseStateDictionary.ContainsKey(cmdCode);
 			if (!flag)
 			{
@@ -108,27 +105,27 @@ namespace ClickerUtilityLibrary.Comm
 				bool flag3 = !flag2;
 				if (!flag3)
 				{
-					result = commandResponseState.Data;
+					text = commandResponseState.Data;
 				}
 			}
-			return result;
+			return text;
 		}
 
 		// Token: 0x060000C8 RID: 200 RVA: 0x000060BC File Offset: 0x000042BC
 		public static string GetResponsePattern(CommandResponse.CommandCode cmdCode)
 		{
 			bool flag = !CommandResponse.mResponseStateDictionary.ContainsKey(cmdCode);
-			string result;
+			string text;
 			if (flag)
 			{
-				result = null;
+				text = null;
 			}
 			else
 			{
 				CommandResponse.CommandResponseState commandResponseState = CommandResponse.mResponseStateDictionary[cmdCode];
-				result = commandResponseState.ResponsePattern;
+				text = commandResponseState.ResponsePattern;
 			}
-			return result;
+			return text;
 		}
 
 		// Token: 0x040000C4 RID: 196

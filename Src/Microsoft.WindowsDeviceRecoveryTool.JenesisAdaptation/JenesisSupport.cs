@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Threading;
@@ -17,19 +18,16 @@ namespace Microsoft.WindowsDeviceRecoveryTool.JenesisAdaptation
 	[Export(typeof(IDeviceSupport))]
 	internal class JenesisSupport : IDeviceSupport
 	{
-		// Token: 0x06000004 RID: 4 RVA: 0x00002128 File Offset: 0x00000328
+		// Token: 0x06000004 RID: 4 RVA: 0x00002104 File Offset: 0x00000304
 		[ImportingConstructor]
 		public JenesisSupport(IMtpDeviceInfoProvider mtpDeviceInfoProvider)
 		{
 			this.mtpDeviceInfoProvider = mtpDeviceInfoProvider;
-			this.catalog = new ManufacturerModelsCatalog(JenesisSupport.McjManufacturerInfo, new ModelInfo[]
-			{
-				JenesisModels.WPJ40_10
-			});
+			this.catalog = new ManufacturerModelsCatalog(JenesisSupport.McjManufacturerInfo, new ModelInfo[] { JenesisModels.WPJ40_10 });
 		}
 
 		// Token: 0x17000001 RID: 1
-		// (get) Token: 0x06000005 RID: 5 RVA: 0x00002162 File Offset: 0x00000362
+		// (get) Token: 0x06000005 RID: 5 RVA: 0x00002131 File Offset: 0x00000331
 		public Guid Id
 		{
 			get
@@ -38,13 +36,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.JenesisAdaptation
 			}
 		}
 
-		// Token: 0x06000006 RID: 6 RVA: 0x00002169 File Offset: 0x00000369
+		// Token: 0x06000006 RID: 6 RVA: 0x00002138 File Offset: 0x00000338
 		public DeviceDetectionInformation[] GetDeviceDetectionInformation()
 		{
 			return this.catalog.GetDeviceDetectionInformations();
 		}
 
-		// Token: 0x06000007 RID: 7 RVA: 0x000023D0 File Offset: 0x000005D0
+		// Token: 0x06000007 RID: 7 RVA: 0x00002148 File Offset: 0x00000348
 		public async Task UpdateDeviceDetectionDataAsync(DeviceDetectionData detectionData, CancellationToken cancellationToken)
 		{
 			if (detectionData.IsDeviceSupported)
@@ -53,24 +51,29 @@ namespace Microsoft.WindowsDeviceRecoveryTool.JenesisAdaptation
 			}
 			cancellationToken.ThrowIfCancellationRequested();
 			VidPidPair vidPidPair = detectionData.VidPidPair;
-			string devicePath = detectionData.UsbDeviceInterfaceDevicePath;
-			if (this.catalog.Models.FirstOrDefault((ModelInfo m) => m.DetectionInfo.DeviceDetectionInformations.Any((DeviceDetectionInformation di) => di.VidPidPair == vidPidPair)) == null)
+			string usbDeviceInterfaceDevicePath = detectionData.UsbDeviceInterfaceDevicePath;
+			Func<DeviceDetectionInformation, bool> <>9__1;
+			if (this.catalog.Models.FirstOrDefault(delegate(ModelInfo m)
 			{
-				Tracer<JenesisSupport>.WriteInformation("No Jenesis device detected. Path: {0}", new object[]
+				IEnumerable<DeviceDetectionInformation> deviceDetectionInformations = m.DetectionInfo.DeviceDetectionInformations;
+				Func<DeviceDetectionInformation, bool> func;
+				if ((func = <>9__1) == null)
 				{
-					detectionData.UsbDeviceInterfaceDevicePath
-				});
+					func = (<>9__1 = (DeviceDetectionInformation di) => di.VidPidPair == vidPidPair);
+				}
+				return deviceDetectionInformations.Any(func);
+			}) == null)
+			{
+				Tracer<JenesisSupport>.WriteInformation("No Jenesis device detected. Path: {0}", new object[] { detectionData.UsbDeviceInterfaceDevicePath });
 			}
 			else
 			{
-				MtpInterfaceInfo deviceInfo = await this.mtpDeviceInfoProvider.ReadInformationAsync(devicePath, cancellationToken);
-				string mtpDeviceDescription = deviceInfo.Description;
+				string description = (await this.mtpDeviceInfoProvider.ReadInformationAsync(usbDeviceInterfaceDevicePath, cancellationToken)).Description;
 				ModelInfo modelInfo;
-				if (this.catalog.TryGetModelInfo(mtpDeviceDescription, out modelInfo))
+				if (this.catalog.TryGetModelInfo(description, out modelInfo))
 				{
 					string name = modelInfo.Name;
-					byte[] deviceBitmapBytes = modelInfo.Bitmap.ToBytes();
-					detectionData.DeviceBitmapBytes = deviceBitmapBytes;
+					detectionData.DeviceBitmapBytes = modelInfo.Bitmap.ToBytes();
 					detectionData.DeviceSalesName = name;
 					detectionData.IsDeviceSupported = true;
 				}

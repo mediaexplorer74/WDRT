@@ -8,10 +8,10 @@ using System.Windows.Markup;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Error.Templates
 {
-	// Token: 0x020000C1 RID: 193
+	// Token: 0x02000074 RID: 116
 	public sealed partial class DefaultError : Grid
 	{
-		// Token: 0x060005CB RID: 1483 RVA: 0x0001E229 File Offset: 0x0001C429
+		// Token: 0x060003F8 RID: 1016 RVA: 0x00015854 File Offset: 0x00013A54
 		public DefaultError()
 		{
 			this.InitializeComponent();

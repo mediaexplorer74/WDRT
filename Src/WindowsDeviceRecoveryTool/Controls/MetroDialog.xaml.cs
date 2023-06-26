@@ -12,10 +12,10 @@ using System.Windows.Shapes;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 {
-	// Token: 0x02000029 RID: 41
+	// Token: 0x020000D7 RID: 215
 	public abstract partial class MetroDialog : Window
 	{
-		// Token: 0x0600013B RID: 315 RVA: 0x00009E50 File Offset: 0x00008050
+		// Token: 0x060006BD RID: 1725 RVA: 0x0001F194 File Offset: 0x0001D394
 		protected MetroDialog()
 		{
 			Window mainWindow = Application.Current.MainWindow;
@@ -24,7 +24,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			base.Width = mainWindow.ActualWidth;
 			base.Height = mainWindow.ActualHeight;
 			this.dialogResult = false;
-			if (Thread.CurrentThread.CurrentUICulture.TextInfo.IsRightToLeft)
+			bool isRightToLeft = Thread.CurrentThread.CurrentUICulture.TextInfo.IsRightToLeft;
+			if (isRightToLeft)
 			{
 				this.MetroDialogWindow.FlowDirection = FlowDirection.RightToLeft;
 			}
@@ -34,14 +35,14 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x1700003A RID: 58
-		// (get) Token: 0x0600013C RID: 316 RVA: 0x00009EDC File Offset: 0x000080DC
-		// (set) Token: 0x0600013D RID: 317 RVA: 0x00009EF3 File Offset: 0x000080F3
+		// Token: 0x17000188 RID: 392
+		// (get) Token: 0x060006BE RID: 1726 RVA: 0x0001F21C File Offset: 0x0001D41C
+		// (set) Token: 0x060006BF RID: 1727 RVA: 0x0001F224 File Offset: 0x0001D424
 		public bool Warning { get; set; }
 
-		// Token: 0x1700003B RID: 59
-		// (get) Token: 0x0600013E RID: 318 RVA: 0x00009EFC File Offset: 0x000080FC
-		// (set) Token: 0x0600013F RID: 319 RVA: 0x00009F19 File Offset: 0x00008119
+		// Token: 0x17000189 RID: 393
+		// (get) Token: 0x060006C0 RID: 1728 RVA: 0x0001F230 File Offset: 0x0001D430
+		// (set) Token: 0x060006C1 RID: 1729 RVA: 0x0001F24D File Offset: 0x0001D44D
 		public string Message
 		{
 			get
@@ -54,9 +55,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x1700003C RID: 60
-		// (get) Token: 0x06000140 RID: 320 RVA: 0x00009F2C File Offset: 0x0000812C
-		// (set) Token: 0x06000141 RID: 321 RVA: 0x00009F49 File Offset: 0x00008149
+		// Token: 0x1700018A RID: 394
+		// (get) Token: 0x060006C2 RID: 1730 RVA: 0x0001F260 File Offset: 0x0001D460
+		// (set) Token: 0x060006C3 RID: 1731 RVA: 0x0001F27D File Offset: 0x0001D47D
 		public string MessageTitle
 		{
 			get
@@ -69,9 +70,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x1700003D RID: 61
-		// (get) Token: 0x06000142 RID: 322 RVA: 0x00009F5C File Offset: 0x0000815C
-		// (set) Token: 0x06000143 RID: 323 RVA: 0x00009F7E File Offset: 0x0000817E
+		// Token: 0x1700018B RID: 395
+		// (get) Token: 0x060006C4 RID: 1732 RVA: 0x0001F290 File Offset: 0x0001D490
+		// (set) Token: 0x060006C5 RID: 1733 RVA: 0x0001F2B2 File Offset: 0x0001D4B2
 		protected string NoButtonText
 		{
 			get
@@ -84,9 +85,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x1700003E RID: 62
-		// (get) Token: 0x06000144 RID: 324 RVA: 0x00009F90 File Offset: 0x00008190
-		// (set) Token: 0x06000145 RID: 325 RVA: 0x00009FB2 File Offset: 0x000081B2
+		// Token: 0x1700018C RID: 396
+		// (get) Token: 0x060006C6 RID: 1734 RVA: 0x0001F2C4 File Offset: 0x0001D4C4
+		// (set) Token: 0x060006C7 RID: 1735 RVA: 0x0001F2E6 File Offset: 0x0001D4E6
 		protected string YesButtonText
 		{
 			get
@@ -99,9 +100,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x1700003F RID: 63
-		// (get) Token: 0x06000146 RID: 326 RVA: 0x00009FC4 File Offset: 0x000081C4
-		// (set) Token: 0x06000147 RID: 327 RVA: 0x00009FE8 File Offset: 0x000081E8
+		// Token: 0x1700018D RID: 397
+		// (get) Token: 0x060006C8 RID: 1736 RVA: 0x0001F2F8 File Offset: 0x0001D4F8
+		// (set) Token: 0x060006C9 RID: 1737 RVA: 0x0001F31C File Offset: 0x0001D51C
 		protected bool YesButtonFocused
 		{
 			get
@@ -117,7 +118,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x06000148 RID: 328 RVA: 0x0000A010 File Offset: 0x00008210
+		// Token: 0x060006CA RID: 1738 RVA: 0x0001F340 File Offset: 0x0001D540
 		protected override void OnActivated(EventArgs e)
 		{
 			base.OnActivated(e);
@@ -126,23 +127,23 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			mainWindow.Top = base.Top;
 		}
 
-		// Token: 0x17000040 RID: 64
-		// (get) Token: 0x06000149 RID: 329 RVA: 0x0000A04C File Offset: 0x0000824C
-		// (set) Token: 0x0600014A RID: 330 RVA: 0x0000A063 File Offset: 0x00008263
+		// Token: 0x1700018E RID: 398
+		// (get) Token: 0x060006CB RID: 1739 RVA: 0x0001F37B File Offset: 0x0001D57B
+		// (set) Token: 0x060006CC RID: 1740 RVA: 0x0001F383 File Offset: 0x0001D583
 		public RoutedEventHandler YesButtonClicked { get; set; }
 
-		// Token: 0x17000041 RID: 65
-		// (get) Token: 0x0600014B RID: 331 RVA: 0x0000A06C File Offset: 0x0000826C
-		// (set) Token: 0x0600014C RID: 332 RVA: 0x0000A083 File Offset: 0x00008283
+		// Token: 0x1700018F RID: 399
+		// (get) Token: 0x060006CD RID: 1741 RVA: 0x0001F38C File Offset: 0x0001D58C
+		// (set) Token: 0x060006CE RID: 1742 RVA: 0x0001F394 File Offset: 0x0001D594
 		public RoutedEventHandler NoButtonClicked { get; set; }
 
-		// Token: 0x0600014D RID: 333 RVA: 0x0000A08C File Offset: 0x0000828C
+		// Token: 0x060006CF RID: 1743 RVA: 0x0001F39D File Offset: 0x0001D59D
 		private void OnCloseDialog()
 		{
 			this.FadeoutBackground();
 		}
 
-		// Token: 0x0600014E RID: 334 RVA: 0x0000A098 File Offset: 0x00008298
+		// Token: 0x060006D0 RID: 1744 RVA: 0x0001F3A8 File Offset: 0x0001D5A8
 		private void FadeoutBackground()
 		{
 			Storyboard storyboard = (Storyboard)base.FindResource("FadeoutBackground");
@@ -150,43 +151,47 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			storyboard.Begin(this);
 		}
 
-		// Token: 0x0600014F RID: 335 RVA: 0x0000A0D2 File Offset: 0x000082D2
+		// Token: 0x060006D1 RID: 1745 RVA: 0x0001F3E2 File Offset: 0x0001D5E2
 		private void FadeoutBackgroundCompleted(object sender, EventArgs e)
 		{
 			base.DialogResult = new bool?(this.dialogResult);
 		}
 
-		// Token: 0x06000150 RID: 336 RVA: 0x0000A0E8 File Offset: 0x000082E8
+		// Token: 0x060006D2 RID: 1746 RVA: 0x0001F3F8 File Offset: 0x0001D5F8
 		private void OnNoButtonClicked(object sender, RoutedEventArgs e)
 		{
 			RoutedEventHandler noButtonClicked = this.NoButtonClicked;
-			if (noButtonClicked != null)
+			bool flag = noButtonClicked != null;
+			if (flag)
 			{
 				noButtonClicked(this, e);
 			}
-			if (!e.Handled)
+			bool flag2 = !e.Handled;
+			if (flag2)
 			{
 				this.dialogResult = false;
 				this.OnCloseDialog();
 			}
 		}
 
-		// Token: 0x06000151 RID: 337 RVA: 0x0000A12C File Offset: 0x0000832C
+		// Token: 0x060006D3 RID: 1747 RVA: 0x0001F440 File Offset: 0x0001D640
 		private void OnYesButtonClicked(object sender, RoutedEventArgs e)
 		{
 			RoutedEventHandler yesButtonClicked = this.YesButtonClicked;
-			if (yesButtonClicked != null)
+			bool flag = yesButtonClicked != null;
+			if (flag)
 			{
 				yesButtonClicked(this, e);
 			}
-			if (!e.Handled)
+			bool flag2 = !e.Handled;
+			if (flag2)
 			{
 				this.dialogResult = true;
 				this.OnCloseDialog();
 			}
 		}
 
-		// Token: 0x04000097 RID: 151
+		// Token: 0x04000308 RID: 776
 		private bool dialogResult;
 	}
 }

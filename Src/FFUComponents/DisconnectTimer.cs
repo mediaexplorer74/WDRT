@@ -40,17 +40,17 @@ namespace FFUComponents
 		// Token: 0x06000043 RID: 67 RVA: 0x00002EE0 File Offset: 0x000010E0
 		public IFFUDeviceInternal StopTimer(IFFUDeviceInternal device)
 		{
-			IFFUDeviceInternal result = null;
+			IFFUDeviceInternal iffudeviceInternal = null;
 			lock (this.devices)
 			{
 				DisconnectDevice disconnectDevice;
 				if (this.devices.TryGetValue(device.DeviceUniqueID, out disconnectDevice))
 				{
 					disconnectDevice.Cancel();
-					result = disconnectDevice.FFUDevice;
+					iffudeviceInternal = disconnectDevice.FFUDevice;
 				}
 			}
-			return result;
+			return iffudeviceInternal;
 		}
 
 		// Token: 0x04000015 RID: 21

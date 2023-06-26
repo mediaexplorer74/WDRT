@@ -9,18 +9,18 @@ using System.Windows.Media;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 {
-	// Token: 0x0200002B RID: 43
+	// Token: 0x020000CD RID: 205
 	public sealed partial class NotificationControl : Border
 	{
-		// Token: 0x0600015D RID: 349 RVA: 0x0000A3F3 File Offset: 0x000085F3
+		// Token: 0x06000650 RID: 1616 RVA: 0x0001DFD2 File Offset: 0x0001C1D2
 		public NotificationControl()
 		{
 			this.InitializeComponent();
 		}
 
-		// Token: 0x17000045 RID: 69
-		// (get) Token: 0x0600015E RID: 350 RVA: 0x0000A408 File Offset: 0x00008608
-		// (set) Token: 0x0600015F RID: 351 RVA: 0x0000A42A File Offset: 0x0000862A
+		// Token: 0x1700016E RID: 366
+		// (get) Token: 0x06000651 RID: 1617 RVA: 0x0001DFE4 File Offset: 0x0001C1E4
+		// (set) Token: 0x06000652 RID: 1618 RVA: 0x0001E006 File Offset: 0x0001C206
 		public Brush Foreground
 		{
 			get
@@ -33,9 +33,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x17000046 RID: 70
-		// (get) Token: 0x06000160 RID: 352 RVA: 0x0000A43C File Offset: 0x0000863C
-		// (set) Token: 0x06000161 RID: 353 RVA: 0x0000A45E File Offset: 0x0000865E
+		// Token: 0x1700016F RID: 367
+		// (get) Token: 0x06000653 RID: 1619 RVA: 0x0001E018 File Offset: 0x0001C218
+		// (set) Token: 0x06000654 RID: 1620 RVA: 0x0001E03A File Offset: 0x0001C23A
 		public bool? ShowNotification
 		{
 			get
@@ -48,9 +48,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x17000047 RID: 71
-		// (get) Token: 0x06000162 RID: 354 RVA: 0x0000A474 File Offset: 0x00008674
-		// (set) Token: 0x06000163 RID: 355 RVA: 0x0000A496 File Offset: 0x00008696
+		// Token: 0x17000170 RID: 368
+		// (get) Token: 0x06000655 RID: 1621 RVA: 0x0001E050 File Offset: 0x0001C250
+		// (set) Token: 0x06000656 RID: 1622 RVA: 0x0001E072 File Offset: 0x0001C272
 		public string NotificationHeader
 		{
 			get
@@ -63,9 +63,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x17000048 RID: 72
-		// (get) Token: 0x06000164 RID: 356 RVA: 0x0000A4A8 File Offset: 0x000086A8
-		// (set) Token: 0x06000165 RID: 357 RVA: 0x0000A4CA File Offset: 0x000086CA
+		// Token: 0x17000171 RID: 369
+		// (get) Token: 0x06000657 RID: 1623 RVA: 0x0001E084 File Offset: 0x0001C284
+		// (set) Token: 0x06000658 RID: 1624 RVA: 0x0001E0A6 File Offset: 0x0001C2A6
 		public string NotificationText
 		{
 			get
@@ -78,9 +78,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x17000049 RID: 73
-		// (get) Token: 0x06000166 RID: 358 RVA: 0x0000A4DC File Offset: 0x000086DC
-		// (set) Token: 0x06000167 RID: 359 RVA: 0x0000A4FE File Offset: 0x000086FE
+		// Token: 0x17000172 RID: 370
+		// (get) Token: 0x06000659 RID: 1625 RVA: 0x0001E0B8 File Offset: 0x0001C2B8
+		// (set) Token: 0x0600065A RID: 1626 RVA: 0x0001E0DA File Offset: 0x0001C2DA
 		public Style HeaderStyle
 		{
 			get
@@ -93,9 +93,9 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x1700004A RID: 74
-		// (get) Token: 0x06000168 RID: 360 RVA: 0x0000A510 File Offset: 0x00008710
-		// (set) Token: 0x06000169 RID: 361 RVA: 0x0000A532 File Offset: 0x00008732
+		// Token: 0x17000173 RID: 371
+		// (get) Token: 0x0600065B RID: 1627 RVA: 0x0001E0EC File Offset: 0x0001C2EC
+		// (set) Token: 0x0600065C RID: 1628 RVA: 0x0001E10E File Offset: 0x0001C30E
 		public Style MessageStyle
 		{
 			get
@@ -108,22 +108,22 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Controls
 			}
 		}
 
-		// Token: 0x040000A7 RID: 167
+		// Token: 0x040002DC RID: 732
 		public static readonly DependencyProperty ForegroundProperty = DependencyProperty.Register("Foreground", typeof(Brush), typeof(NotificationControl), new PropertyMetadata(null));
 
-		// Token: 0x040000A8 RID: 168
+		// Token: 0x040002DD RID: 733
 		public static readonly DependencyProperty NotificationHeaderProperty = DependencyProperty.Register("NotificationHeader", typeof(string), typeof(NotificationControl), new PropertyMetadata(null));
 
-		// Token: 0x040000A9 RID: 169
+		// Token: 0x040002DE RID: 734
 		public static readonly DependencyProperty NotificationTextProperty = DependencyProperty.Register("NotificationText", typeof(string), typeof(NotificationControl), new PropertyMetadata(null));
 
-		// Token: 0x040000AA RID: 170
+		// Token: 0x040002DF RID: 735
 		public static readonly DependencyProperty HeaderStyleProperty = DependencyProperty.Register("HeaderStyle", typeof(Style), typeof(NotificationControl), new PropertyMetadata(null));
 
-		// Token: 0x040000AB RID: 171
+		// Token: 0x040002E0 RID: 736
 		public static readonly DependencyProperty MessageStyleProperty = DependencyProperty.Register("MessageStyle", typeof(Style), typeof(NotificationControl), new PropertyMetadata(null));
 
-		// Token: 0x040000AC RID: 172
+		// Token: 0x040002E1 RID: 737
 		public static readonly DependencyProperty ShowNotificationProperty = DependencyProperty.Register("ShowNotification", typeof(bool?), typeof(NotificationControl), new PropertyMetadata(null));
 	}
 }

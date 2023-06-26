@@ -2,18 +2,18 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Messages
 {
-	// Token: 0x02000068 RID: 104
+	// Token: 0x020000AF RID: 175
 	public class SelectedPathMessage
 	{
-		// Token: 0x06000318 RID: 792 RVA: 0x00010274 File Offset: 0x0000E474
+		// Token: 0x06000596 RID: 1430 RVA: 0x0001B78D File Offset: 0x0001998D
 		public SelectedPathMessage(string selectedPath)
 		{
 			this.SelectedPath = selectedPath;
 		}
 
-		// Token: 0x1700009A RID: 154
-		// (get) Token: 0x06000319 RID: 793 RVA: 0x00010288 File Offset: 0x0000E488
-		// (set) Token: 0x0600031A RID: 794 RVA: 0x0001029F File Offset: 0x0000E49F
+		// Token: 0x1700014A RID: 330
+		// (get) Token: 0x06000597 RID: 1431 RVA: 0x0001B79F File Offset: 0x0001999F
+		// (set) Token: 0x06000598 RID: 1432 RVA: 0x0001B7A7 File Offset: 0x000199A7
 		public string SelectedPath { get; private set; }
 	}
 }

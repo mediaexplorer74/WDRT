@@ -36,9 +36,9 @@ namespace Nokia.Mira.Chunks
 				ChunkRaw chunkRaw = this.FindMatchingChunk(num);
 				if (chunkRaw != null)
 				{
-					long current = (chunkRaw.Current < num + chunkSize) ? chunkRaw.Current : (num + chunkSize);
-					ChunkInformation item = new ChunkInformation(num, current, num + chunkSize - 1L);
-					list.Add(item);
+					long num2 = ((chunkRaw.Current < num + chunkSize) ? chunkRaw.Current : (num + chunkSize));
+					ChunkInformation chunkInformation = new ChunkInformation(num, num2, num + chunkSize - 1L);
+					list.Add(chunkInformation);
 				}
 				num += chunkSize;
 			}

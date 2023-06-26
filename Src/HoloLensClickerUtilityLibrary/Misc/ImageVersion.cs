@@ -41,8 +41,8 @@ namespace ClickerUtilityLibrary.Misc
 		public ImageVersion(int version)
 		{
 			this.BuildNumber = (short)(version & 65535);
-			this.Minor = (byte)(version >> 16 & 255);
-			this.Major = (byte)(version >> 24 & 255);
+			this.Minor = (byte)((version >> 16) & 255);
+			this.Major = (byte)((version >> 24) & 255);
 		}
 
 		// Token: 0x0600004B RID: 75 RVA: 0x000048E4 File Offset: 0x00002AE4
@@ -50,18 +50,13 @@ namespace ClickerUtilityLibrary.Misc
 		{
 			int num = (int)this.BuildNumber;
 			num |= (int)this.Minor << 16;
-			return num | (int)this.Major << 24;
+			return num | ((int)this.Major << 24);
 		}
 
 		// Token: 0x0600004C RID: 76 RVA: 0x00004918 File Offset: 0x00002B18
 		public override string ToString()
 		{
-			return string.Format(CultureInfo.InvariantCulture, "{0}.{1}.{2}", new object[]
-			{
-				this.Major,
-				this.Minor,
-				this.BuildNumber
-			});
+			return string.Format(CultureInfo.InvariantCulture, "{0}.{1}.{2}", new object[] { this.Major, this.Minor, this.BuildNumber });
 		}
 	}
 }

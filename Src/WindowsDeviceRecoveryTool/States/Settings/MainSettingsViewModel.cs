@@ -7,13 +7,13 @@ using Microsoft.WindowsDeviceRecoveryTool.Properties;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 {
-	// Token: 0x020000D5 RID: 213
+	// Token: 0x0200002E RID: 46
 	[Export]
 	public class MainSettingsViewModel : BaseViewModel, ICanHandle<SettingsPreviousStateMessage>, ICanHandle
 	{
-		// Token: 0x17000184 RID: 388
-		// (get) Token: 0x0600068E RID: 1678 RVA: 0x00021CCC File Offset: 0x0001FECC
-		// (set) Token: 0x0600068F RID: 1679 RVA: 0x00021CEC File Offset: 0x0001FEEC
+		// Token: 0x1700008C RID: 140
+		// (get) Token: 0x060001F7 RID: 503 RVA: 0x0000C05C File Offset: 0x0000A25C
+		// (set) Token: 0x060001F8 RID: 504 RVA: 0x0000C074 File Offset: 0x0000A274
 		public SettingsPage? SelectedPage
 		{
 			get
@@ -22,14 +22,17 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 			}
 			set
 			{
-				if (!(this.selectedPage == value))
+				SettingsPage? settingsPage = this.selectedPage;
+				SettingsPage? settingsPage2 = value;
+				bool flag = (settingsPage.GetValueOrDefault() == settingsPage2.GetValueOrDefault()) & (settingsPage != null == (settingsPage2 != null));
+				if (!flag)
 				{
 					base.SetValue<SettingsPage?>(() => this.SelectedPage, ref this.selectedPage, value);
-					SettingsPage valueOrDefault = value.GetValueOrDefault();
-					if (value != null)
+					SettingsPage? settingsPage3 = value;
+					if (settingsPage3 != null)
 					{
 						string nextState;
-						switch (valueOrDefault)
+						switch (settingsPage3.GetValueOrDefault())
 						{
 						case SettingsPage.Network:
 							nextState = "NetworkState";
@@ -47,16 +50,16 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 							nextState = "ApplicationDataState";
 							break;
 						default:
-							goto IL_F9;
+							goto IL_F6;
 						}
-						//base.Commands.Run((AppController c) => c.SwitchSettingsState(nextState));
+						base.Commands.Run((AppController c) => c.SwitchSettingsState(nextState));
 					}
-					IL_F9:;
+					IL_F6:;
 				}
 			}
 		}
 
-		// Token: 0x06000690 RID: 1680 RVA: 0x00021E68 File Offset: 0x00020068
+		// Token: 0x060001F9 RID: 505 RVA: 0x0000C1EC File Offset: 0x0000A3EC
 		public override void OnStarted()
 		{
 			this.SelectedPage = new SettingsPage?(this.previousPage ?? SettingsPage.Preferences);
@@ -66,40 +69,39 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 			base.OnStarted();
 		}
 
-		// Token: 0x06000691 RID: 1681 RVA: 0x00021ED8 File Offset: 0x000200D8
+		// Token: 0x060001FA RID: 506 RVA: 0x0000C25C File Offset: 0x0000A45C
 		public override void OnStopped()
 		{
 			Settings.Default.Save();
-			//base.Commands.Run((SettingsController c) => c.SetApplicationSettings());
+			base.Commands.Run((SettingsController c) => c.SetApplicationSettings());
 		}
 
-		// Token: 0x06000692 RID: 1682 RVA: 0x00021F40 File Offset: 0x00020140
+		// Token: 0x060001FB RID: 507 RVA: 0x0000C2C0 File Offset: 0x0000A4C0
 		public void Handle(SettingsPreviousStateMessage message)
 		{
-			if (!string.IsNullOrEmpty(message.PreviousState))
+			bool flag = !string.IsNullOrEmpty(message.PreviousState);
+			if (flag)
 			{
 				string previousState = message.PreviousState;
-				if (previousState != null)
+				string text = previousState;
+				if (!(text == "TraceState"))
 				{
-					if (!(previousState == "TraceState"))
+					if (text == "PackagesState")
 					{
-						if (previousState == "PackagesState")
-						{
-							this.previousPage = new SettingsPage?(SettingsPage.Packages);
-						}
+						this.previousPage = new SettingsPage?(SettingsPage.Packages);
 					}
-					else
-					{
-						this.previousPage = new SettingsPage?(SettingsPage.Troubleshooting);
-					}
+				}
+				else
+				{
+					this.previousPage = new SettingsPage?(SettingsPage.Troubleshooting);
 				}
 			}
 		}
 
-		// Token: 0x040002BD RID: 701
+		// Token: 0x040000F6 RID: 246
 		private SettingsPage? selectedPage;
 
-		// Token: 0x040002BE RID: 702
+		// Token: 0x040000F7 RID: 247
 		private SettingsPage? previousPage;
 	}
 }

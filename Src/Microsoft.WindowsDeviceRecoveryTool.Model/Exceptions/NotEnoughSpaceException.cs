@@ -3,43 +3,47 @@ using System.Runtime.Serialization;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model.Exceptions
 {
-	// Token: 0x02000042 RID: 66
+	// Token: 0x02000033 RID: 51
 	[Serializable]
 	public class NotEnoughSpaceException : Exception
 	{
-		// Token: 0x0600018B RID: 395 RVA: 0x00004CCE File Offset: 0x00002ECE
-		public NotEnoughSpaceException() : base("There is not enough space on disk")
+		// Token: 0x0600021F RID: 543 RVA: 0x0000642F File Offset: 0x0000462F
+		public NotEnoughSpaceException()
+			: base("There is not enough space on disk")
 		{
 		}
 
-		// Token: 0x0600018C RID: 396 RVA: 0x00004CDE File Offset: 0x00002EDE
-		public NotEnoughSpaceException(string message) : base(message)
+		// Token: 0x06000220 RID: 544 RVA: 0x00006350 File Offset: 0x00004550
+		public NotEnoughSpaceException(string message)
+			: base(message)
 		{
 		}
 
-		// Token: 0x0600018D RID: 397 RVA: 0x00004CEA File Offset: 0x00002EEA
-		public NotEnoughSpaceException(string message, Exception innerException) : base(message, innerException)
+		// Token: 0x06000221 RID: 545 RVA: 0x0000635B File Offset: 0x0000455B
+		public NotEnoughSpaceException(string message, Exception innerException)
+			: base(message, innerException)
 		{
 		}
 
-		// Token: 0x0600018E RID: 398 RVA: 0x00004CF7 File Offset: 0x00002EF7
-		protected NotEnoughSpaceException(SerializationInfo info, StreamingContext context) : base(info, context)
+		// Token: 0x06000222 RID: 546 RVA: 0x00006367 File Offset: 0x00004567
+		protected NotEnoughSpaceException(SerializationInfo info, StreamingContext context)
+			: base(info, context)
 		{
 		}
 
-		// Token: 0x17000091 RID: 145
-		// (get) Token: 0x0600018F RID: 399 RVA: 0x00004D04 File Offset: 0x00002F04
-		// (set) Token: 0x06000190 RID: 400 RVA: 0x00004D1B File Offset: 0x00002F1B
+		// Token: 0x170000D1 RID: 209
+		// (get) Token: 0x06000223 RID: 547 RVA: 0x0000643E File Offset: 0x0000463E
+		// (set) Token: 0x06000224 RID: 548 RVA: 0x00006446 File Offset: 0x00004646
 		public long Available { get; set; }
 
-		// Token: 0x17000092 RID: 146
-		// (get) Token: 0x06000191 RID: 401 RVA: 0x00004D24 File Offset: 0x00002F24
-		// (set) Token: 0x06000192 RID: 402 RVA: 0x00004D3B File Offset: 0x00002F3B
+		// Token: 0x170000D2 RID: 210
+		// (get) Token: 0x06000225 RID: 549 RVA: 0x0000644F File Offset: 0x0000464F
+		// (set) Token: 0x06000226 RID: 550 RVA: 0x00006457 File Offset: 0x00004657
 		public long Needed { get; set; }
 
-		// Token: 0x17000093 RID: 147
-		// (get) Token: 0x06000193 RID: 403 RVA: 0x00004D44 File Offset: 0x00002F44
-		// (set) Token: 0x06000194 RID: 404 RVA: 0x00004D5B File Offset: 0x00002F5B
+		// Token: 0x170000D3 RID: 211
+		// (get) Token: 0x06000227 RID: 551 RVA: 0x00006460 File Offset: 0x00004660
+		// (set) Token: 0x06000228 RID: 552 RVA: 0x00006468 File Offset: 0x00004668
 		public string Disk { get; set; }
 	}
 }

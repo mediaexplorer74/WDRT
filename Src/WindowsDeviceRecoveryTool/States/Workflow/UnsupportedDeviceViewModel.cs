@@ -5,12 +5,12 @@ using Microsoft.WindowsDeviceRecoveryTool.Messages;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 {
-	// Token: 0x020000E3 RID: 227
+	// Token: 0x02000024 RID: 36
 	[Export]
 	public class UnsupportedDeviceViewModel : BaseViewModel
 	{
-		// Token: 0x170001A9 RID: 425
-		// (get) Token: 0x0600074C RID: 1868 RVA: 0x00026B4C File Offset: 0x00024D4C
+		// Token: 0x1700006E RID: 110
+		// (get) Token: 0x06000197 RID: 407 RVA: 0x0000A12C File Offset: 0x0000832C
 		public override string PreviousStateName
 		{
 			get
@@ -19,7 +19,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x0600074D RID: 1869 RVA: 0x00026B63 File Offset: 0x00024D63
+		// Token: 0x06000198 RID: 408 RVA: 0x0000A143 File Offset: 0x00008343
 		public override void OnStarted()
 		{
 			base.EventAggregator.Publish<HeaderMessage>(new HeaderMessage("Unsupported device", ""));

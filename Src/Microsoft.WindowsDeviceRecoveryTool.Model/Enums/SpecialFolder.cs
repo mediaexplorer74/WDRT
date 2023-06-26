@@ -2,20 +2,20 @@
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model.Enums
 {
-	// Token: 0x02000028 RID: 40
+	// Token: 0x02000044 RID: 68
 	public enum SpecialFolder
 	{
-		// Token: 0x040000F2 RID: 242
+		// Token: 0x0400012B RID: 299
 		Traces,
-		// Token: 0x040000F3 RID: 243
+		// Token: 0x0400012C RID: 300
 		Reports,
-		// Token: 0x040000F4 RID: 244
+		// Token: 0x0400012D RID: 301
 		Exports,
-		// Token: 0x040000F5 RID: 245
+		// Token: 0x0400012E RID: 302
 		AppUpdate,
-		// Token: 0x040000F6 RID: 246
+		// Token: 0x0400012F RID: 303
 		TestsConfigurations,
-		// Token: 0x040000F7 RID: 247
+		// Token: 0x04000130 RID: 304
 		Configurations
 	}
 }

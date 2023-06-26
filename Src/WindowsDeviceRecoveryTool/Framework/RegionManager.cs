@@ -1,22 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Framework
 {
-	// Token: 0x02000048 RID: 72
+	// Token: 0x02000083 RID: 131
 	public class RegionManager : DependencyObject
 	{
-		// Token: 0x06000281 RID: 641 RVA: 0x0000F4AC File Offset: 0x0000D6AC
+		// Token: 0x0600046F RID: 1135 RVA: 0x000169C8 File Offset: 0x00014BC8
 		private RegionManager()
 		{
-			//
 		}
 
-		// Token: 0x1700006C RID: 108
-		// (get) Token: 0x06000282 RID: 642 RVA: 0x0000F4C4 File Offset: 0x0000D6C4
+		// Token: 0x17000113 RID: 275
+		// (get) Token: 0x06000470 RID: 1136 RVA: 0x000169E0 File Offset: 0x00014BE0
 		public static RegionManager Instance
 		{
 			get
@@ -25,96 +23,76 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Framework
 			}
 		}
 
-		// Token: 0x06000283 RID: 643 RVA: 0x0000F4DB File Offset: 0x0000D6DB
+		// Token: 0x06000471 RID: 1137 RVA: 0x000169F7 File Offset: 0x00014BF7
 		public static void SetRegionName(ContentControl element, string value)
 		{
 			element.SetValue(RegionManager.RegionNameProperty, value);
 		}
 
-		// Token: 0x06000284 RID: 644 RVA: 0x0000F4EC File Offset: 0x0000D6EC
+		// Token: 0x06000472 RID: 1138 RVA: 0x00016A08 File Offset: 0x00014C08
 		public static string GetRegionName(ContentControl element)
 		{
 			return (string)element.GetValue(RegionManager.RegionNameProperty);
 		}
 
-		// Token: 0x06000285 RID: 645 RVA: 0x0000F50E File Offset: 0x0000D70E
+		// Token: 0x06000473 RID: 1139 RVA: 0x00016A2A File Offset: 0x00014C2A
 		public void ShowView(string regionName, FrameworkElement content)
 		{
-			//RnD
-            try
-            {
-                this.regions[regionName].Content = content;
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("[ex] RegionManager (ShowView) Exception : " + ex.Message);
-            }
-        }
+			this.regions[regionName].Content = content;
+		}
 
-		// Token: 0x06000286 RID: 646 RVA: 0x0000F524 File Offset: 0x0000D724
+		// Token: 0x06000474 RID: 1140 RVA: 0x00016A40 File Offset: 0x00014C40
 		public void AddRegion(string name, ContentControl control)
 		{
 			this.regions.Add(name, control);
 		}
 
-		// Token: 0x06000287 RID: 647 RVA: 0x0000F538 File Offset: 0x0000D738
+		// Token: 0x06000475 RID: 1141 RVA: 0x00016A54 File Offset: 0x00014C54
 		public ContentControl GetRegion(string name)
 		{
 			return this.regions[name];
 		}
 
-		// Token: 0x06000288 RID: 648 RVA: 0x0000F556 File Offset: 0x0000D756
+		// Token: 0x06000476 RID: 1142 RVA: 0x00016A72 File Offset: 0x00014C72
 		public void HideRegion(string name)
 		{
 			this.regions[name].Visibility = Visibility.Collapsed;
 		}
 
-		// Token: 0x06000289 RID: 649 RVA: 0x0000F56C File Offset: 0x0000D76C
+		// Token: 0x06000477 RID: 1143 RVA: 0x00016A88 File Offset: 0x00014C88
 		public void RemoveRegion(string name)
 		{
 			this.regions.Remove(name);
 		}
 
-		// Token: 0x0600028A RID: 650 RVA: 0x0000F57C File Offset: 0x0000D77C
+		// Token: 0x06000478 RID: 1144 RVA: 0x00016A98 File Offset: 0x00014C98
 		public void ShowRegion(string name)
 		{
-			//RnD
-			try
-			{
-				this.regions[name].Visibility = Visibility.Visible;
-			}
-			catch (Exception ex)
-			{
-				Debug.WriteLine("[ex] RegionManager (ShowRegion) Exception : " + ex.Message);
-			}
+			this.regions[name].Visibility = Visibility.Visible;
 		}
 
-		// Token: 0x0600028B RID: 651 RVA: 0x0000F594 File Offset: 0x0000D794
+		// Token: 0x06000479 RID: 1145 RVA: 0x00016AB0 File Offset: 0x00014CB0
 		private static void OnSetRegionNameChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{
 			ContentControl contentControl = d as ContentControl;
-			if (contentControl != null)
+			bool flag = contentControl != null;
+			if (flag)
 			{
 				RegionManager.Instance.AddRegion(e.NewValue as string, contentControl);
 			}
 		}
 
-		// Token: 0x040000FB RID: 251
-		private readonly IDictionary<string, ContentControl> 
-			regions = new Dictionary<string, ContentControl>();
+		// Token: 0x0400021B RID: 539
+		private readonly IDictionary<string, ContentControl> regions = new Dictionary<string, ContentControl>();
 
-		// Token: 0x040000FC RID: 252
-		public static readonly DependencyProperty RegionNameProperty 
-			= DependencyProperty.RegisterAttached("RegionName", typeof(string), 
-				typeof(RegionManager), new FrameworkPropertyMetadata(
-					string.Empty, FrameworkPropertyMetadataOptions.AffectsRender, 
-					new PropertyChangedCallback(RegionManager.OnSetRegionNameChanged)));
+		// Token: 0x0400021C RID: 540
+		public static readonly DependencyProperty RegionNameProperty = DependencyProperty.RegisterAttached("RegionName", typeof(string), typeof(RegionManager), new FrameworkPropertyMetadata(string.Empty, FrameworkPropertyMetadataOptions.AffectsRender, new PropertyChangedCallback(RegionManager.OnSetRegionNameChanged)));
 
-		// Token: 0x02000049 RID: 73
-		public class Nested
+		// Token: 0x0200012F RID: 303
+		private class Nested
 		{
-			// Token: 0x040000FD RID: 253
-			public static readonly RegionManager NestedInstance = new RegionManager();
+			// Token: 0x040003E7 RID: 999
+			internal static readonly RegionManager NestedInstance = new RegionManager();
 		}
 	}
 }

@@ -13,9 +13,9 @@ namespace Nokia.Lucid.Diagnostics
 			{
 				trace();
 			}
-			catch (Exception exception)
+			catch (Exception ex)
 			{
-				if (ExceptionServices.IsCriticalException(exception))
+				if (ExceptionServices.IsCriticalException(ex))
 				{
 					throw;
 				}
@@ -29,9 +29,9 @@ namespace Nokia.Lucid.Diagnostics
 			{
 				trace(arg);
 			}
-			catch (Exception exception)
+			catch (Exception ex)
 			{
-				if (ExceptionServices.IsCriticalException(exception))
+				if (ExceptionServices.IsCriticalException(ex))
 				{
 					throw;
 				}
@@ -45,9 +45,9 @@ namespace Nokia.Lucid.Diagnostics
 			{
 				trace(arg0, arg1);
 			}
-			catch (Exception exception)
+			catch (Exception ex)
 			{
-				if (ExceptionServices.IsCriticalException(exception))
+				if (ExceptionServices.IsCriticalException(ex))
 				{
 					throw;
 				}
@@ -61,9 +61,9 @@ namespace Nokia.Lucid.Diagnostics
 			{
 				trace(arg0, arg1, arg2);
 			}
-			catch (Exception exception)
+			catch (Exception ex)
 			{
-				if (ExceptionServices.IsCriticalException(exception))
+				if (ExceptionServices.IsCriticalException(ex))
 				{
 					throw;
 				}
@@ -77,9 +77,9 @@ namespace Nokia.Lucid.Diagnostics
 			{
 				trace(arg0, arg1, arg2, arg3);
 			}
-			catch (Exception exception)
+			catch (Exception ex)
 			{
-				if (ExceptionServices.IsCriticalException(exception))
+				if (ExceptionServices.IsCriticalException(ex))
 				{
 					throw;
 				}
@@ -93,9 +93,9 @@ namespace Nokia.Lucid.Diagnostics
 			{
 				trace(arg0, arg1, arg2, arg3, arg4);
 			}
-			catch (Exception exception)
+			catch (Exception ex)
 			{
-				if (ExceptionServices.IsCriticalException(exception))
+				if (ExceptionServices.IsCriticalException(ex))
 				{
 					throw;
 				}

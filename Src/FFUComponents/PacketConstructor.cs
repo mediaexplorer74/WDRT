@@ -85,24 +85,24 @@ namespace FFUComponents
 		{
 			byte[] array = new byte[this.PacketDataSize + 12L];
 			Array.Clear(array, 0, array.Length);
-			int value = this.DataStream.Read(array, 0, (int)this.PacketDataSize);
-			int num = (int)this.PacketDataSize;
-			byte[] bytes = BitConverter.GetBytes(value);
-			bytes.CopyTo(array, num);
-			num += bytes.Length;
-			bytes = BitConverter.GetBytes(this.packetNumber++);
-			bytes.CopyTo(array, num);
-			num += bytes.Length;
-			uint value2 = 0U;
+			int num = this.DataStream.Read(array, 0, (int)this.PacketDataSize);
+			int num2 = (int)this.PacketDataSize;
+			byte[] array2 = BitConverter.GetBytes(num);
+			array2.CopyTo(array, num2);
+			num2 += array2.Length;
+			array2 = BitConverter.GetBytes(this.packetNumber++);
+			array2.CopyTo(array, num2);
+			num2 += array2.Length;
+			uint num3 = 0U;
 			if (!optimize)
 			{
 				fixed (byte* ptr = array)
 				{
-					value2 = Crc32.GetChecksum(0U, ptr, (uint)(array.Length - 4));
+					num3 = Crc32.GetChecksum(0U, ptr, (uint)(array.Length - 4));
 				}
 			}
-			bytes = BitConverter.GetBytes(value2);
-			bytes.CopyTo(array, num);
+			array2 = BitConverter.GetBytes(num3);
+			array2.CopyTo(array, num2);
 			return array;
 		}
 

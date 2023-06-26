@@ -1,19 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5D42CEC8-E315-4BAE-82F9-DB42646E73FE}</ProjectGuid>
+    <ProjectGuid>{8C726962-D7A3-4054-B90F-0583259F968D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>ComponentAce</RootNamespace>
     <AssemblyName>ZipForge</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
     <FileAlignment>4096</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFramework>net48</TargetFramework>
+    <UseWindowsForms>True</UseWindowsForms>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+  <PropertyGroup>
+    <NoStdLib>True</NoStdLib>
+    <EnableDefaultItems>False</EnableDefaultItems>
+  </PropertyGroup>
+  <PropertyGroup />
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,8 +27,8 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\bin\Release\</OutputPath>
@@ -33,28 +37,14 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Management" />
-    <Reference Include="System.Windows.Forms" />
-  </ItemGroup>
-  <ItemGroup>
-    <AppDesigner Include="Properties\" />
-  </ItemGroup>
+ 
   <ItemGroup>
     <Compile Include="Compression\Archiver\ArchiveItem.cs" />
     <Compile Include="Compression\Archiver\ArchiverException.cs" />
-    <Compile Include="Compression\Archiver\ArchiverForgeBase.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Compression\Archiver\ArchiverOptions.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Compression\Archiver\ArchiverForgeBase.cs" />
+    <Compile Include="Compression\Archiver\ArchiverOptions.cs" />
     <Compile Include="Compression\Archiver\BaseArchiveItem.cs" />
-    <Compile Include="Compression\Archiver\BaseArchiver.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Compression\Archiver\BaseArchiver.cs" />
     <Compile Include="Compression\Archiver\BaseCompressor.cs" />
     <Compile Include="Compression\Archiver\BZIP2Compressor.cs" />
     <Compile Include="Compression\Archiver\CentralDirectorySearcher.cs" />
@@ -76,9 +66,7 @@
     <Compile Include="Compression\Archiver\ProcessOperation.cs" />
     <Compile Include="Compression\Archiver\ProgressPhase.cs" />
     <Compile Include="Compression\Archiver\SpanningMode.cs" />
-    <Compile Include="Compression\Archiver\SpanningOptions.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Compression\Archiver\SpanningOptions.cs" />
     <Compile Include="Compression\Archiver\StoreCompressor.cs" />
     <Compile Include="Compression\Archiver\StorePathMode.cs" />
     <Compile Include="Compression\Archiver\VolumeSize.cs" />
@@ -94,14 +82,10 @@
     <Compile Include="Compression\FileUtils.cs" />
     <Compile Include="Compression\GZip\CompressionLevel.cs" />
     <Compile Include="Compression\GZip\GzipArchiveItem.cs" />
-    <Compile Include="Compression\GZip\GzipArchiveOptions.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Compression\GZip\GzipArchiveOptions.cs" />
     <Compile Include="Compression\GZip\GzipCompressionItemsArray.cs" />
     <Compile Include="Compression\GZip\GzipConsts.cs" />
-    <Compile Include="Compression\GZip\GzipForge.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Compression\GZip\GzipForge.cs" />
     <Compile Include="Compression\GZip\GzipHeader.cs" />
     <Compile Include="Compression\GZip\GzipItem.cs" />
     <Compile Include="Compression\GZip\GzipItemsHandler.cs" />
@@ -156,7 +140,11 @@
     <Compile Include="Compression\Libs\ZLib\ZOutputStream.cs" />
     <Compile Include="Compression\Libs\ZLib\ZStream.cs" />
     <Compile Include="Compression\Libs\ZLib\ZStreamException.cs" />
-    <Compile Include="Compression\Properties\Resources.cs" />
+    <Compile Include="Compression\Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Compression\Tar\ITarHeader.cs" />
     <Compile Include="Compression\Tar\LegacyTarWriter.cs" />
     <Compile Include="Compression\Tar\LongPathExtraHeader.cs" />
@@ -167,12 +155,8 @@
     <Compile Include="Compression\Tar\OnStoreFileDelegate.cs" />
     <Compile Include="Compression\Tar\ReadWriteHelper.cs" />
     <Compile Include="Compression\Tar\TarArchiveItem.cs" />
-    <Compile Include="Compression\Tar\TarBaseForge.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Compression\Tar\TarForge.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Compression\Tar\TarBaseForge.cs" />
+    <Compile Include="Compression\Tar\TarForge.cs" />
     <Compile Include="Compression\Tar\TarItem.cs" />
     <Compile Include="Compression\Tar\TarItemsHandler.cs" />
     <Compile Include="Compression\Tar\TarReader.cs" />
@@ -181,17 +165,13 @@
     <Compile Include="Compression\Tgz\OnExtractFileDelegate.cs" />
     <Compile Include="Compression\Tgz\OnStoreFileDelegate.cs" />
     <Compile Include="Compression\Tgz\TgzArchiveItem.cs" />
-    <Compile Include="Compression\Tgz\TgzForge.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Compression\Tgz\TgzForge.cs" />
     <Compile Include="Compression\ZipForgeRealTime\RealTimeArchiverParameters.cs" />
     <Compile Include="Compression\ZipForgeRealTime\RealTimeCompressionLevel.cs" />
     <Compile Include="Compression\ZipForgeRealTime\RealTimeCompressionMethod.cs" />
     <Compile Include="Compression\ZipForgeRealTime\RealTimeDirManager.cs" />
     <Compile Include="Compression\ZipForgeRealTime\RealTimeEncryptionAlgorithm.cs" />
-    <Compile Include="Compression\ZipForgeRealTime\ZipForgeRealTime.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Compression\ZipForgeRealTime\ZipForgeRealTime.cs" />
     <Compile Include="Compression\ZipForge\AESExtraFieldData.cs" />
     <Compile Include="Compression\ZipForge\Compression.cs" />
     <Compile Include="Compression\ZipForge\CompressionMethods.cs" />
@@ -216,9 +196,7 @@
     <Compile Include="Compression\ZipForge\Zip64ExtraFieldData.cs" />
     <Compile Include="Compression\ZipForge\ZipCentralDirEnd.cs" />
     <Compile Include="Compression\ZipForge\ZipFileHeader.cs" />
-    <Compile Include="Compression\ZipForge\ZipForge.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Compression\ZipForge\ZipForge.cs" />
     <Compile Include="Compression\ZipForge\ZipUtil.cs" />
     <Compile Include="Encryption\Cipher.cs" />
     <Compile Include="Encryption\CipherBlockMode.cs" />
@@ -239,14 +217,43 @@
     <Compile Include="resfinder.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Compression\ConfirmOverwriteDialog.resources" />
-    <EmbeddedResource Include="Compression\InputPasswordForm.resources" />
-    <EmbeddedResource Include="Compression\Properties\Resources.resources" />
+    <EmbeddedResource Include="Compression\ConfirmOverwriteDialog.resx">
+      <DependentUpon>ConfirmOverwriteDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Compression\InputPasswordForm.resx">
+      <DependentUpon>InputPasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Compression\Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Compression\Resources\gzip16.ico" />
     <EmbeddedResource Include="Compression\Resources\rtzip16.ico" />
     <EmbeddedResource Include="Compression\Resources\tar16.ico" />
     <EmbeddedResource Include="Compression\Resources\tgz16.ico" />
     <EmbeddedResource Include="Compression\Resources\zip16.ico" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\mscorlib\mscorlib.csproj">
+      <Project>{8C726962-D7A3-4054-B90F-0583259F968E}</Project>
+      <Name>mscorlib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\System.Drawing\System.Drawing.csproj">
+      <Project>{8C726962-D7A3-4054-B90F-0583259F968F}</Project>
+      <Name>System.Drawing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\System.Management\System.Management.csproj">
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9690}</Project>
+      <Name>System.Management</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\System.Windows.Forms\System.Windows.Forms.csproj">
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9691}</Project>
+      <Name>System.Windows.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\System\System.csproj">
+      <Project>{8C726962-D7A3-4054-B90F-0583259F9692}</Project>
+      <Name>System</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
 </Project>

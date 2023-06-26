@@ -1,34 +1,34 @@
 <UserControl
 	x:Class="Microsoft.WindowsDeviceRecoveryTool.States.Help.LumiaFlashingHelpView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:l="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.Localization;assembly=Microsoft.WindowsDeviceRecoveryTool.Localization"
-	Focusable="True"
+	UIElement.Focusable="True"
 	KeyboardNavigation.IsTabStop="True" xmlns:help="clr-namespace:Microsoft.WindowsDeviceRecoveryTool.States.Help"
 	FocusVisualStyle="{x:Null}">
 	<DockPanel>
 		<Image
-			Source="../../Resources/Help_Arrows.png"
-			MaxHeight="300"
-			Margin="30,0"
-			VerticalAlignment="Top" />
+			Image.Source="../../Resources/Help_Arrows.png"
+			FrameworkElement.MaxHeight="300"
+			FrameworkElement.Margin="30,0"
+			FrameworkElement.VerticalAlignment="Top" />
 		<StackPanel
-			Width="400"
+			FrameworkElement.Width="400"
 			KeyboardNavigation.TabNavigation="None">
 			<TextBlock
-				Style="{DynamicResource BasicTextStyle}"
-				Margin="0,0,0,12"
-				Focusable="True"
-				Text="{l:Localization TrySoftResetInFlashMode}"
+				FrameworkElement.Style="{DynamicResource BasicTextStyle}"
+				FrameworkElement.Margin="0,0,0,12"
+				UIElement.Focusable="True"
+				TextBlock.Text="{l:Localization TrySoftResetInFlashMode}"
 				FocusVisualStyle="{x:Null}" />
 			<TextBlock
-				Style="{DynamicResource BasicTextStyle}"
-				Margin="0,0,0,12"
-				Focusable="True"
-				Text="{l:Localization SelectPhoneAndFollowInstructions}"
+				FrameworkElement.Style="{DynamicResource BasicTextStyle}"
+				FrameworkElement.Margin="0,0,0,12"
+				UIElement.Focusable="True"
+				TextBlock.Text="{l:Localization SelectPhoneAndFollowInstructions}"
 				FocusVisualStyle="{x:Null}" />
 			<TextBlock
-				Style="{DynamicResource BasicTextStyle}"
-				Margin="0,0,0,12"
-				Focusable="True"
-				Text="{Binding GoToMyPhoneHasNotBeenDetectedIfNotDetectedText}"
+				FrameworkElement.Style="{DynamicResource BasicTextStyle}"
+				FrameworkElement.Margin="0,0,0,12"
+				UIElement.Focusable="True"
+				TextBlock.Text="{Binding GoToMyPhoneHasNotBeenDetectedIfNotDetectedText}"
 				FocusVisualStyle="{x:Null}" />
 		</StackPanel>
 	</DockPanel>

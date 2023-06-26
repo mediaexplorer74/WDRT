@@ -2,7 +2,7 @@
 using System.Net;
 using System.Text;
 using ComponentAce.Compression.Archiver;
-using ComponentAce.Compression.Exception1;
+using ComponentAce.Compression.Exception;
 
 namespace ComponentAce.Compression.Tar
 {
@@ -10,7 +10,8 @@ namespace ComponentAce.Compression.Tar
 	internal class UnixStandartHeader : OldStyleHeader
 	{
 		// Token: 0x0600047B RID: 1147 RVA: 0x00020480 File Offset: 0x0001F480
-		public UnixStandartHeader(int codepage) : base(codepage)
+		public UnixStandartHeader(int codepage)
+			: base(codepage)
 		{
 		}
 
@@ -27,11 +28,7 @@ namespace ComponentAce.Compression.Tar
 			{
 				if (value.Length > 100)
 				{
-					throw ExceptionBuilder.Exception(ErrorCode.NameTooLong, new object[]
-					{
-						value,
-						100
-					});
+					throw ExceptionBuilder.Exception(ErrorCode.NameTooLong, new object[] { value, 100 });
 				}
 				base.FileName = value;
 			}
@@ -50,11 +47,7 @@ namespace ComponentAce.Compression.Tar
 			{
 				if (value.Length > 32)
 				{
-					throw ExceptionBuilder.Exception(ErrorCode.NameTooLong, new object[]
-					{
-						value,
-						32
-					});
+					throw ExceptionBuilder.Exception(ErrorCode.NameTooLong, new object[] { value, 32 });
 				}
 				this._groupName = value;
 			}
@@ -73,11 +66,7 @@ namespace ComponentAce.Compression.Tar
 			{
 				if (value.Length > 32)
 				{
-					throw ExceptionBuilder.Exception(ErrorCode.NameTooLong, new object[]
-					{
-						value,
-						32
-					});
+					throw ExceptionBuilder.Exception(ErrorCode.NameTooLong, new object[] { value, 32 });
 				}
 				this._userName = value;
 			}

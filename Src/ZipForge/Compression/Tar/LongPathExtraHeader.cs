@@ -38,9 +38,9 @@ namespace ComponentAce.Compression.Tar
 		// Token: 0x060003CE RID: 974 RVA: 0x0001E750 File Offset: 0x0001D750
 		public void Write(Stream stream)
 		{
-			MemoryStream data = new MemoryStream(Encoding.GetEncoding(this._codepage).GetBytes(this._fileName));
+			MemoryStream memoryStream = new MemoryStream(Encoding.GetEncoding(this._codepage).GetBytes(this._fileName));
 			LegacyTarWriter legacyTarWriter = new LegacyTarWriter(stream, this._codepage, this._writeToStreamFailureDelegate, this._readFromStreamFailureDelegate);
-			legacyTarWriter.Write(data, (long)this._fileName.Length, this._header.FileName, this._header.UserId, this._header.GroupId, this._header.Mode, this._header.LastModification, this._header.TypeFlag);
+			legacyTarWriter.Write(memoryStream, (long)this._fileName.Length, this._header.FileName, this._header.UserId, this._header.GroupId, this._header.Mode, this._header.LastModification, this._header.TypeFlag);
 		}
 
 		// Token: 0x060003CF RID: 975 RVA: 0x0001E7E7 File Offset: 0x0001D7E7

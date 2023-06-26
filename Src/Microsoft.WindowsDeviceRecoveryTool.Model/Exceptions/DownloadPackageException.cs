@@ -3,27 +3,30 @@ using System.Runtime.Serialization;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model.Exceptions
 {
-	// Token: 0x02000037 RID: 55
+	// Token: 0x0200002E RID: 46
 	[Serializable]
 	public class DownloadPackageException : Exception
 	{
-		// Token: 0x06000175 RID: 373 RVA: 0x00004BBC File Offset: 0x00002DBC
+		// Token: 0x0600020F RID: 527 RVA: 0x00006346 File Offset: 0x00004546
 		public DownloadPackageException()
 		{
 		}
 
-		// Token: 0x06000176 RID: 374 RVA: 0x00004BC7 File Offset: 0x00002DC7
-		public DownloadPackageException(string message) : base(message)
+		// Token: 0x06000210 RID: 528 RVA: 0x00006350 File Offset: 0x00004550
+		public DownloadPackageException(string message)
+			: base(message)
 		{
 		}
 
-		// Token: 0x06000177 RID: 375 RVA: 0x00004BD3 File Offset: 0x00002DD3
-		public DownloadPackageException(string message, Exception innerException) : base(message, innerException)
+		// Token: 0x06000211 RID: 529 RVA: 0x0000635B File Offset: 0x0000455B
+		public DownloadPackageException(string message, Exception innerException)
+			: base(message, innerException)
 		{
 		}
 
-		// Token: 0x06000178 RID: 376 RVA: 0x00004BE0 File Offset: 0x00002DE0
-		protected DownloadPackageException(SerializationInfo info, StreamingContext context) : base(info, context)
+		// Token: 0x06000212 RID: 530 RVA: 0x00006367 File Offset: 0x00004567
+		protected DownloadPackageException(SerializationInfo info, StreamingContext context)
+			: base(info, context)
 		{
 		}
 	}

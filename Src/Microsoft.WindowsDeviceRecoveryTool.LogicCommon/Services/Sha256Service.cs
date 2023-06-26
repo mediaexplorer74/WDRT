@@ -1,123 +1,132 @@
 ﻿using System;
 using System.ComponentModel.Composition;
+using System.Diagnostics;
 using System.IO;
 using System.Security.Cryptography;
 using System.Threading;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.LogicCommon.Services
 {
-	// Token: 0x02000040 RID: 64
+	// Token: 0x02000012 RID: 18
 	[Export]
 	public class Sha256Service : IDisposable, IChecksumService
 	{
-		// Token: 0x14000012 RID: 18
-		// (add) Token: 0x06000361 RID: 865 RVA: 0x0000FF7C File Offset: 0x0000E17C
-		// (remove) Token: 0x06000362 RID: 866 RVA: 0x0000FFB8 File Offset: 0x0000E1B8
+		// Token: 0x1400000D RID: 13
+		// (add) Token: 0x060000DE RID: 222 RVA: 0x00005144 File Offset: 0x00003344
+		// (remove) Token: 0x060000DF RID: 223 RVA: 0x0000517C File Offset: 0x0000337C
+		[field: DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public event Action<int> ProgressEvent;
 
-		// Token: 0x06000363 RID: 867 RVA: 0x0000FFF4 File Offset: 0x0000E1F4
+		// Token: 0x060000E0 RID: 224 RVA: 0x000027B8 File Offset: 0x000009B8
 		[ImportingConstructor]
 		public Sha256Service()
 		{
 		}
 
-		// Token: 0x06000364 RID: 868 RVA: 0x0000FFFF File Offset: 0x0000E1FF
+		// Token: 0x060000E1 RID: 225 RVA: 0x000051B1 File Offset: 0x000033B1
 		public void Dispose()
 		{
 			this.Dispose(true);
 			GC.SuppressFinalize(this);
 		}
 
-		// Token: 0x06000365 RID: 869 RVA: 0x00010014 File Offset: 0x0000E214
+		// Token: 0x060000E2 RID: 226 RVA: 0x000051C4 File Offset: 0x000033C4
 		protected virtual void Dispose(bool disposing)
 		{
-			if (!this.disposed)
+			bool flag = this.disposed;
+			if (!flag)
 			{
 				this.disposed = true;
 			}
 		}
 
-		// Token: 0x06000366 RID: 870 RVA: 0x0001003C File Offset: 0x0000E23C
+		// Token: 0x060000E3 RID: 227 RVA: 0x000051E8 File Offset: 0x000033E8
 		private void RaiseProgressEvent(int progress)
 		{
 			Action<int> progressEvent = this.ProgressEvent;
-			if (progressEvent != null)
+			bool flag = progressEvent != null;
+			if (flag)
 			{
 				progressEvent(progress);
 			}
 		}
 
-		// Token: 0x06000367 RID: 871 RVA: 0x00010064 File Offset: 0x0000E264
+		// Token: 0x060000E4 RID: 228 RVA: 0x00005210 File Offset: 0x00003410
 		public bool IsOfType(string checksumTypeName)
 		{
 			bool flag = string.Equals(checksumTypeName, "sha-256", StringComparison.InvariantCultureIgnoreCase);
-			if (!flag)
+			bool flag2 = !flag;
+			if (flag2)
 			{
 				flag = string.Equals(checksumTypeName, "sha256", StringComparison.InvariantCultureIgnoreCase);
 			}
 			return flag;
 		}
 
-		// Token: 0x06000368 RID: 872 RVA: 0x00010098 File Offset: 0x0000E298
+		// Token: 0x060000E5 RID: 229 RVA: 0x00005248 File Offset: 0x00003448
 		public byte[] CalculateChecksum(string filePath, CancellationToken cancellationToken)
 		{
 			FileInfo fileInfo = new FileInfo(filePath);
-			if (!fileInfo.Exists)
+			bool flag = !fileInfo.Exists;
+			if (flag)
 			{
 				throw new InvalidOperationException(string.Format("File '{0}' not found.", filePath));
 			}
-			byte[] result;
+			byte[] array;
 			using (FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
 			{
-				result = this.CalculateChecksum(fileStream, cancellationToken);
+				array = this.CalculateChecksum(fileStream, cancellationToken);
 			}
-			return result;
+			return array;
 		}
 
-		// Token: 0x06000369 RID: 873 RVA: 0x00010104 File Offset: 0x0000E304
+		// Token: 0x060000E6 RID: 230 RVA: 0x000052B0 File Offset: 0x000034B0
 		public byte[] CalculateChecksum(FileStream fileStream, CancellationToken cancellationToken)
 		{
-			byte[] result;
-			if (fileStream.Length == 0L)
+			bool flag = fileStream.Length == 0L;
+			byte[] array;
+			if (flag)
 			{
-				result = null;
+				array = null;
 			}
 			else
 			{
 				using (SHA256Managed sha256Managed = new SHA256Managed())
 				{
-					byte[] array = new byte[4096];
+					byte[] array2 = new byte[4096];
 					long num = 0L;
 					int num2;
 					do
 					{
-						num2 = fileStream.Read(array, 0, 4096);
-						if (num2 > 0)
+						num2 = fileStream.Read(array2, 0, 4096);
+						bool flag2 = num2 > 0;
+						if (flag2)
 						{
-							sha256Managed.TransformBlock(array, 0, num2, array, 0);
+							sha256Managed.TransformBlock(array2, 0, num2, array2, 0);
 						}
 						num += (long)num2;
-						if (num % 4096000L == 0L)
+						bool flag3 = num % 4096000L == 0L;
+						if (flag3)
 						{
 							this.RaiseProgressEvent((int)(num * 100L / fileStream.Length % 101L));
 						}
 						cancellationToken.ThrowIfCancellationRequested();
 					}
 					while (num2 > 0);
-					sha256Managed.TransformFinalBlock(array, 0, num2);
-					result = sha256Managed.Hash;
+					sha256Managed.TransformFinalBlock(array2, 0, num2);
+					array = sha256Managed.Hash;
 				}
 			}
-			return result;
+			return array;
 		}
 
-		// Token: 0x04000195 RID: 405
+		// Token: 0x04000046 RID: 70
 		private const string MsrChecksumTypeName = "sha-256";
 
-		// Token: 0x04000196 RID: 406
+		// Token: 0x04000047 RID: 71
 		private const string MsrChecksumTypeNameOther = "sha256";
 
-		// Token: 0x04000197 RID: 407
+		// Token: 0x04000048 RID: 72
 		private bool disposed;
 	}
 }

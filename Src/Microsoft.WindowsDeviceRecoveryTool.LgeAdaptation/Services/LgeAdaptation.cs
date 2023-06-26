@@ -22,12 +22,12 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.Exceptions;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.LgeAdaptation.Services
 {
-	// Token: 0x02000005 RID: 5
+	// Token: 0x02000004 RID: 4
 	[ExportAdaptation(Type = PhoneTypes.Lg)]
 	[PartCreationPolicy(CreationPolicy.Shared)]
 	public class LgeAdaptation : BaseAdaptation
 	{
-		// Token: 0x0600000D RID: 13 RVA: 0x00002360 File Offset: 0x00000560
+		// Token: 0x06000007 RID: 7 RVA: 0x0000216C File Offset: 0x0000036C
 		[ImportingConstructor]
 		public LgeAdaptation(FfuFileInfoService ffuFileInfoService, MsrService msrService, ReportingService reportingService)
 		{
@@ -38,8 +38,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LgeAdaptation.Services
 			this.msrService.ProgressChanged += this.MsrDownloadProgressEvent;
 		}
 
-		// Token: 0x17000006 RID: 6
-		// (get) Token: 0x0600000E RID: 14 RVA: 0x000023B0 File Offset: 0x000005B0
+		// Token: 0x17000002 RID: 2
+		// (get) Token: 0x06000008 RID: 8 RVA: 0x000021BC File Offset: 0x000003BC
 		public override PhoneTypes PhoneType
 		{
 			get
@@ -48,8 +48,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LgeAdaptation.Services
 			}
 		}
 
-		// Token: 0x17000007 RID: 7
-		// (get) Token: 0x0600000F RID: 15 RVA: 0x000023C4 File Offset: 0x000005C4
+		// Token: 0x17000003 RID: 3
+		// (get) Token: 0x06000009 RID: 9 RVA: 0x000021D0 File Offset: 0x000003D0
 		public override bool RecoverySupport
 		{
 			get
@@ -58,8 +58,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LgeAdaptation.Services
 			}
 		}
 
-		// Token: 0x17000008 RID: 8
-		// (get) Token: 0x06000010 RID: 16 RVA: 0x000023D8 File Offset: 0x000005D8
+		// Token: 0x17000004 RID: 4
+		// (get) Token: 0x0600000A RID: 10 RVA: 0x000021E4 File Offset: 0x000003E4
 		public override string ManufacturerName
 		{
 			get
@@ -68,8 +68,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LgeAdaptation.Services
 			}
 		}
 
-		// Token: 0x17000009 RID: 9
-		// (get) Token: 0x06000011 RID: 17 RVA: 0x000023F0 File Offset: 0x000005F0
+		// Token: 0x17000005 RID: 5
+		// (get) Token: 0x0600000B RID: 11 RVA: 0x000021FC File Offset: 0x000003FC
 		public override string ReportManufacturerName
 		{
 			get
@@ -78,8 +78,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LgeAdaptation.Services
 			}
 		}
 
-		// Token: 0x1700000A RID: 10
-		// (get) Token: 0x06000012 RID: 18 RVA: 0x00002408 File Offset: 0x00000608
+		// Token: 0x17000006 RID: 6
+		// (get) Token: 0x0600000C RID: 12 RVA: 0x00002214 File Offset: 0x00000414
 		public override string PackageExtension
 		{
 			get
@@ -88,25 +88,25 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LgeAdaptation.Services
 			}
 		}
 
-		// Token: 0x06000013 RID: 19 RVA: 0x00002420 File Offset: 0x00000620
+		// Token: 0x0600000D RID: 13 RVA: 0x0000222C File Offset: 0x0000042C
 		public override ISalesNameProvider SalesNameProvider()
 		{
 			return this.salesNameProvider;
 		}
 
-		// Token: 0x06000014 RID: 20 RVA: 0x00002438 File Offset: 0x00000638
+		// Token: 0x0600000E RID: 14 RVA: 0x00002244 File Offset: 0x00000444
 		public override List<PackageFileInfo> FindPackage(string directory, Phone currentPhone, CancellationToken cancellationToken)
 		{
 			throw new NotImplementedException();
 		}
 
-		// Token: 0x06000015 RID: 21 RVA: 0x00002440 File Offset: 0x00000640
+		// Token: 0x0600000F RID: 15 RVA: 0x00002244 File Offset: 0x00000444
 		public override List<PackageFileInfo> FindAllPackages(string directory, CancellationToken cancellationToken)
 		{
 			throw new NotImplementedException();
 		}
 
-		// Token: 0x06000016 RID: 22 RVA: 0x00002448 File Offset: 0x00000648
+		// Token: 0x06000010 RID: 16 RVA: 0x0000224C File Offset: 0x0000044C
 		public override PackageFileInfo CheckLatestPackage(Phone phone, CancellationToken cancellationToken)
 		{
 			PackageFileInfo result;
@@ -119,15 +119,18 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LgeAdaptation.Services
 			}
 			catch (Exception ex)
 			{
-				if (ex.InnerException is PackageNotFoundException)
+				bool flag = ex.InnerException is PackageNotFoundException;
+				if (flag)
 				{
 					throw ex.InnerException;
 				}
-				if (ex.InnerException != null && ex.InnerException.GetBaseException() is WebException)
+				bool flag2 = ex.InnerException != null && ex.InnerException.GetBaseException() is WebException;
+				if (flag2)
 				{
 					throw new WebException();
 				}
-				if (ex is OperationCanceledException || ex.InnerException is TaskCanceledException)
+				bool flag3 = ex is OperationCanceledException || ex.InnerException is TaskCanceledException;
+				if (flag3)
 				{
 					throw;
 				}
@@ -140,7 +143,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LgeAdaptation.Services
 			return result;
 		}
 
-		// Token: 0x06000017 RID: 23 RVA: 0x00002528 File Offset: 0x00000728
+		// Token: 0x06000011 RID: 17 RVA: 0x00002324 File Offset: 0x00000524
 		public override void CheckPackageIntegrity(Phone phone, CancellationToken cancellationToken)
 		{
 			Tracer<LgeAdaptation>.LogEntry("CheckPackageIntegrity");
@@ -148,12 +151,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LgeAdaptation.Services
 			Tracer<LgeAdaptation>.LogExit("CheckPackageIntegrity");
 		}
 
-		// Token: 0x06000018 RID: 24 RVA: 0x00002554 File Offset: 0x00000754
+		// Token: 0x06000012 RID: 18 RVA: 0x00002350 File Offset: 0x00000550
 		public override void FlashDevice(Phone phone, CancellationToken cancellationToken)
 		{
 			Tracer<LgeAdaptation>.LogEntry("FlashDevice");
 			IFFUDevice ffuDevice = this.GetFfuDevice(phone);
-			if (ffuDevice != null)
+			bool flag = ffuDevice != null;
+			if (flag)
 			{
 				ffuDevice.ProgressEvent += this.FlashProgressEvent;
 				try
@@ -169,20 +173,20 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LgeAdaptation.Services
 			Tracer<LgeAdaptation>.LogExit("FlashDevice");
 		}
 
-		// Token: 0x06000019 RID: 25 RVA: 0x000025E8 File Offset: 0x000007E8
+		// Token: 0x06000013 RID: 19 RVA: 0x000023E4 File Offset: 0x000005E4
 		private void FlashProgressEvent(object obj, ProgressEventArgs progress)
 		{
 			double num = (double)progress.Position / (double)progress.Length * 100.0;
 			base.RaiseProgressPercentageChanged((int)num, this.progressMessage);
 		}
 
-		// Token: 0x0600001A RID: 26 RVA: 0x00002620 File Offset: 0x00000820
+		// Token: 0x06000014 RID: 20 RVA: 0x0000241C File Offset: 0x0000061C
 		public override bool IsDeviceInFlashModeConnected(Phone phone, CancellationToken cancellationToken)
 		{
 			return this.GetFfuDevice(phone) != null;
 		}
 
-		// Token: 0x0600001B RID: 27 RVA: 0x00002640 File Offset: 0x00000840
+		// Token: 0x06000015 RID: 21 RVA: 0x00002438 File Offset: 0x00000638
 		public override void DownloadPackage(Phone phone, CancellationToken cancellationToken)
 		{
 			Tracer<LgeAdaptation>.LogEntry("DownloadPackage");
@@ -196,10 +200,7 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LgeAdaptation.Services
 					DestinationFolder = Microsoft.WindowsDeviceRecoveryTool.Model.FileSystemInfo.GetLgeProductsPath(phone.PlatformId.ProductName),
 					FilesVersioned = true
 				};
-				Tracer<LgeAdaptation>.WriteInformation("Download Params: {0}", new object[]
-				{
-					downloadParameters
-				});
+				Tracer<LgeAdaptation>.WriteInformation("Download Params: {0}", new object[] { downloadParameters });
 				phone.PackageFiles = this.msrService.DownloadLatestPackage(downloadParameters, cancellationToken);
 				Tuple<long, long, bool> downloadPackageInformation = this.msrService.GetDownloadPackageInformation();
 				this.reportingService.SetDownloadByteInformation(phone, ReportOperationType.DownloadPackage, downloadPackageInformation.Item1, downloadPackageInformation.Item2, downloadPackageInformation.Item3);
@@ -208,21 +209,23 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LgeAdaptation.Services
 			catch (Exception ex)
 			{
 				bool flag = true;
-				UriData resultUriData;
-				if (ex is OperationCanceledException || ex.GetBaseException() is TaskCanceledException)
+				bool flag2 = ex is OperationCanceledException || ex.GetBaseException() is TaskCanceledException;
+				UriData uriData;
+				if (flag2)
 				{
-					resultUriData = UriData.DownloadVariantPackageAbortedByUser;
+					uriData = UriData.DownloadVariantPackageAbortedByUser;
 					flag = false;
 				}
 				else
 				{
-					resultUriData = UriData.FailedToDownloadVariantPackage;
+					uriData = UriData.FailedToDownloadVariantPackage;
 				}
-				Tuple<long, long, bool> downloadPackageInformation = this.msrService.GetDownloadPackageInformation();
-				this.reportingService.SetDownloadByteInformation(phone, ReportOperationType.DownloadPackage, downloadPackageInformation.Item1, downloadPackageInformation.Item2, downloadPackageInformation.Item3);
-				this.reportingService.OperationFailed(phone, ReportOperationType.DownloadPackage, resultUriData, ex);
+				Tuple<long, long, bool> downloadPackageInformation2 = this.msrService.GetDownloadPackageInformation();
+				this.reportingService.SetDownloadByteInformation(phone, ReportOperationType.DownloadPackage, downloadPackageInformation2.Item1, downloadPackageInformation2.Item2, downloadPackageInformation2.Item3);
+				this.reportingService.OperationFailed(phone, ReportOperationType.DownloadPackage, uriData, ex);
 				Tracer<LgeAdaptation>.WriteError(ex);
-				if (flag)
+				bool flag3 = flag;
+				if (flag3)
 				{
 					throw;
 				}
@@ -233,25 +236,26 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LgeAdaptation.Services
 			}
 		}
 
-		// Token: 0x0600001C RID: 28 RVA: 0x000027FC File Offset: 0x000009FC
+		// Token: 0x06000016 RID: 22 RVA: 0x00002244 File Offset: 0x00000444
 		public override void DownloadEmergencyPackage(Phone currentPhone, CancellationToken cancellationToken)
 		{
 			throw new NotImplementedException();
 		}
 
-		// Token: 0x0600001D RID: 29 RVA: 0x00002804 File Offset: 0x00000A04
+		// Token: 0x06000017 RID: 23 RVA: 0x000025E4 File Offset: 0x000007E4
 		public override SwVersionComparisonResult CompareFirmwareVersions(Phone phone)
 		{
 			return SwVersionComparisonResult.UnableToCompare;
 		}
 
-		// Token: 0x0600001E RID: 30 RVA: 0x00002818 File Offset: 0x00000A18
+		// Token: 0x06000018 RID: 24 RVA: 0x000025F8 File Offset: 0x000007F8
 		public override void ReadDeviceInfo(Phone currentPhone, CancellationToken cancellationToken)
 		{
 			try
 			{
 				SimpleIODevice simpleIODevice = new SimpleIODevice(currentPhone.Path);
-				if (simpleIODevice.IsConnected())
+				bool flag = simpleIODevice.IsConnected();
+				if (flag)
 				{
 					PlatformId platformId = new PlatformId();
 					platformId.SetPlatformId(simpleIODevice.DeviceFriendlyName);
@@ -270,14 +274,14 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LgeAdaptation.Services
 			throw new ReadPhoneInformationException("Cannot find selected device!");
 		}
 
-		// Token: 0x0600001F RID: 31 RVA: 0x000028B8 File Offset: 0x00000AB8
+		// Token: 0x06000019 RID: 25 RVA: 0x00002694 File Offset: 0x00000894
 		protected override void FillSupportedDeviceIdentifiers()
 		{
 			this.SupportedNormalModeIds.Add(new DeviceIdentifier("1004", "627E"));
 			this.SupportedFlashModeIds.Add(new DeviceIdentifier("045E", "062A"));
 		}
 
-		// Token: 0x06000020 RID: 32 RVA: 0x000028F4 File Offset: 0x00000AF4
+		// Token: 0x0600001A RID: 26 RVA: 0x000026D0 File Offset: 0x000008D0
 		private QueryParameters DeviceQueryParameters(Phone phone)
 		{
 			return new QueryParameters
@@ -288,13 +292,13 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LgeAdaptation.Services
 			};
 		}
 
-		// Token: 0x06000021 RID: 33 RVA: 0x00002937 File Offset: 0x00000B37
+		// Token: 0x0600001B RID: 27 RVA: 0x00002711 File Offset: 0x00000911
 		private void MsrDownloadProgressEvent(ProgressChangedEventArgs progressArgs)
 		{
 			base.RaiseProgressPercentageChanged(progressArgs.Percentage, progressArgs.Message, progressArgs.DownloadedSize, progressArgs.TotalSize, progressArgs.BytesPerSecond, progressArgs.SecondsLeft);
 		}
 
-		// Token: 0x06000022 RID: 34 RVA: 0x00002968 File Offset: 0x00000B68
+		// Token: 0x0600001C RID: 28 RVA: 0x00002740 File Offset: 0x00000940
 		private IFFUDevice GetFfuDevice(Phone phone)
 		{
 			Tracer<LgeAdaptation>.LogEntry("GetFfuDevice");
@@ -312,55 +316,57 @@ namespace Microsoft.WindowsDeviceRecoveryTool.LgeAdaptation.Services
 			return flashableDevice;
 		}
 
-		// Token: 0x06000023 RID: 35 RVA: 0x000029DC File Offset: 0x00000BDC
+		// Token: 0x0600001D RID: 29 RVA: 0x00002794 File Offset: 0x00000994
 		protected override Stream GetImageDataStream(Phone phone)
 		{
 			Assembly executingAssembly = Assembly.GetExecutingAssembly();
 			string[] manifestResourceNames = executingAssembly.GetManifestResourceNames();
 			string text = manifestResourceNames.FirstOrDefault((string resourceName) => resourceName.Contains("Lancet.png"));
-			Stream result;
-			if (!string.IsNullOrEmpty(text))
+			bool flag = !string.IsNullOrEmpty(text);
+			Stream stream;
+			if (flag)
 			{
-				result = executingAssembly.GetManifestResourceStream(text);
+				stream = executingAssembly.GetManifestResourceStream(text);
 			}
 			else
 			{
-				result = base.GetImageDataStream(phone);
+				stream = base.GetImageDataStream(phone);
 			}
-			return result;
+			return stream;
 		}
 
-		// Token: 0x06000024 RID: 36 RVA: 0x00002A5C File Offset: 0x00000C5C
+		// Token: 0x0600001E RID: 30 RVA: 0x000027FC File Offset: 0x000009FC
 		protected override Stream GetManufacturerImageDataStream()
 		{
 			Assembly executingAssembly = Assembly.GetExecutingAssembly();
 			string[] manifestResourceNames = executingAssembly.GetManifestResourceNames();
 			string text = manifestResourceNames.FirstOrDefault((string resourceName) => resourceName.Contains("LgLogo.png"));
-			Stream result;
-			if (!string.IsNullOrEmpty(text))
+			bool flag = !string.IsNullOrEmpty(text);
+			Stream stream;
+			if (flag)
 			{
-				result = executingAssembly.GetManifestResourceStream(text);
+				stream = executingAssembly.GetManifestResourceStream(text);
 			}
 			else
 			{
-				result = null;
+				stream = null;
 			}
-			return result;
+			return stream;
 		}
 
-		// Token: 0x04000006 RID: 6
+		// Token: 0x04000004 RID: 4
 		private readonly MsrService msrService;
 
-		// Token: 0x04000007 RID: 7
+		// Token: 0x04000005 RID: 5
 		private readonly ReportingService reportingService;
 
-		// Token: 0x04000008 RID: 8
+		// Token: 0x04000006 RID: 6
 		private readonly FfuFileInfoService ffuFileInfoService;
 
-		// Token: 0x04000009 RID: 9
+		// Token: 0x04000007 RID: 7
 		private readonly SalesNameProvider salesNameProvider;
 
-		// Token: 0x0400000A RID: 10
+		// Token: 0x04000008 RID: 8
 		private string progressMessage;
 	}
 }

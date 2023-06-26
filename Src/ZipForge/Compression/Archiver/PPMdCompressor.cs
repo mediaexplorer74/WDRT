@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using ComponentAce.Compression.Exception1;
+using ComponentAce.Compression.Exception;
 using ComponentAce.Compression.Libs.PPMd;
 
 namespace ComponentAce.Compression.Archiver
@@ -39,9 +39,8 @@ namespace ComponentAce.Compression.Archiver
 			MemoryStream memoryStream = new MemoryStream();
 			if (this.sourceStream == null)
 			{
-				ushort value = (ushort)((ModelRestorationMethod)(this.modelOrder - 1)
-					| (ModelRestorationMethod)(this.allocatorSize - 1 << 4) | (ModelRestorationMethod)((int)this.modelRestorationMethod << 12));
-				memoryStream.Write(BitConverter.GetBytes(value), 0, 2);
+				ushort num = (ushort)((ModelRestorationMethod)(this.modelOrder - 1) | (ModelRestorationMethod)(this.allocatorSize - 1 << 4) | (this.modelRestorationMethod << 12));
+				memoryStream.Write(BitConverter.GetBytes(num), 0, 2);
 				Model.StartEncoding(this.modelRestorationMethod, this.modelOrder);
 				this.sourceStream = new MemoryStream();
 			}
@@ -138,7 +137,7 @@ namespace ComponentAce.Compression.Archiver
 			decompressedDataSize = (long)array2.Length;
 			bool flag;
 			base.DoOnDecompressedBufferReady(array2, array2.Length, out flag);
-			endOfFileDiscovered = (Model.EntryPoint == 0);
+			endOfFileDiscovered = Model.EntryPoint == 0;
 			if (endOfFileDiscovered)
 			{
 				Allocator.Stop();

@@ -15,40 +15,37 @@ using Microsoft.WindowsDeviceRecoveryTool.Framework;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Settings
 {
-	// Token: 0x020000D6 RID: 214
+	// Token: 0x0200002F RID: 47
 	[Export]
-	[Region(new string[]
-	{
-		"SettingsMainArea"
-	})]
+	[Region(new string[] { "SettingsMainArea" })]
 	public partial class NetworkView : StackPanel
 	{
-		// Token: 0x06000694 RID: 1684 RVA: 0x00021FA9 File Offset: 0x000201A9
+		// Token: 0x060001FD RID: 509 RVA: 0x0000C323 File Offset: 0x0000A523
 		public NetworkView()
 		{
 			this.InitializeComponent();
 			this.capsLockTimer = (DispatcherTimer)base.FindResource("CapsLockTimer");
 		}
 
-		// Token: 0x06000695 RID: 1685 RVA: 0x00021FD1 File Offset: 0x000201D1
+		// Token: 0x060001FE RID: 510 RVA: 0x0000C34A File Offset: 0x0000A54A
 		private void CapsLockTimer_OnTick(object sender, EventArgs e)
 		{
-			this.CapsLockTextBlock.IsEnabled = (this.PasswordBox.IsKeyboardFocused && Keyboard.IsKeyToggled(Key.Capital));
+			this.CapsLockTextBlock.IsEnabled = this.PasswordBox.IsKeyboardFocused && Keyboard.IsKeyToggled(Key.Capital);
 		}
 
-		// Token: 0x06000696 RID: 1686 RVA: 0x00021FF7 File Offset: 0x000201F7
+		// Token: 0x060001FF RID: 511 RVA: 0x0000C36F File Offset: 0x0000A56F
 		private void NetworkView_OnLoaded(object sender, RoutedEventArgs e)
 		{
 			this.capsLockTimer.Start();
 		}
 
-		// Token: 0x06000697 RID: 1687 RVA: 0x00022006 File Offset: 0x00020206
+		// Token: 0x06000200 RID: 512 RVA: 0x0000C37E File Offset: 0x0000A57E
 		private void NetworkView_OnUnloaded(object sender, RoutedEventArgs e)
 		{
 			this.capsLockTimer.Stop();
 		}
 
-		// Token: 0x040002BF RID: 703
+		// Token: 0x040000F8 RID: 248
 		private readonly DispatcherTimer capsLockTimer;
 	}
 }

@@ -8,52 +8,52 @@ using Microsoft.WindowsDeviceRecoveryTool.Common.Tracing;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.Model.DataPackage
 {
-	// Token: 0x02000022 RID: 34
+	// Token: 0x0200004F RID: 79
 	public class VplContent
 	{
-		// Token: 0x06000100 RID: 256 RVA: 0x00003BE8 File Offset: 0x00001DE8
+		// Token: 0x0600027E RID: 638 RVA: 0x00006A7A File Offset: 0x00004C7A
 		public VplContent()
 		{
 			this.fileList = new List<VplFile>();
 		}
 
-		// Token: 0x17000065 RID: 101
-		// (get) Token: 0x06000101 RID: 257 RVA: 0x00003C00 File Offset: 0x00001E00
-		// (set) Token: 0x06000102 RID: 258 RVA: 0x00003C17 File Offset: 0x00001E17
+		// Token: 0x170000F5 RID: 245
+		// (get) Token: 0x0600027F RID: 639 RVA: 0x00006A8F File Offset: 0x00004C8F
+		// (set) Token: 0x06000280 RID: 640 RVA: 0x00006A97 File Offset: 0x00004C97
 		public string VplFileName { get; private set; }
 
-		// Token: 0x17000066 RID: 102
-		// (get) Token: 0x06000103 RID: 259 RVA: 0x00003C20 File Offset: 0x00001E20
-		// (set) Token: 0x06000104 RID: 260 RVA: 0x00003C37 File Offset: 0x00001E37
+		// Token: 0x170000F6 RID: 246
+		// (get) Token: 0x06000281 RID: 641 RVA: 0x00006AA0 File Offset: 0x00004CA0
+		// (set) Token: 0x06000282 RID: 642 RVA: 0x00006AA8 File Offset: 0x00004CA8
 		public string Description { get; private set; }
 
-		// Token: 0x17000067 RID: 103
-		// (get) Token: 0x06000105 RID: 261 RVA: 0x00003C40 File Offset: 0x00001E40
-		// (set) Token: 0x06000106 RID: 262 RVA: 0x00003C57 File Offset: 0x00001E57
+		// Token: 0x170000F7 RID: 247
+		// (get) Token: 0x06000283 RID: 643 RVA: 0x00006AB1 File Offset: 0x00004CB1
+		// (set) Token: 0x06000284 RID: 644 RVA: 0x00006AB9 File Offset: 0x00004CB9
 		public string TypeDesignator { get; private set; }
 
-		// Token: 0x17000068 RID: 104
-		// (get) Token: 0x06000107 RID: 263 RVA: 0x00003C60 File Offset: 0x00001E60
-		// (set) Token: 0x06000108 RID: 264 RVA: 0x00003C77 File Offset: 0x00001E77
+		// Token: 0x170000F8 RID: 248
+		// (get) Token: 0x06000285 RID: 645 RVA: 0x00006AC2 File Offset: 0x00004CC2
+		// (set) Token: 0x06000286 RID: 646 RVA: 0x00006ACA File Offset: 0x00004CCA
 		public string ProductCode { get; private set; }
 
-		// Token: 0x17000069 RID: 105
-		// (get) Token: 0x06000109 RID: 265 RVA: 0x00003C80 File Offset: 0x00001E80
-		// (set) Token: 0x0600010A RID: 266 RVA: 0x00003C97 File Offset: 0x00001E97
+		// Token: 0x170000F9 RID: 249
+		// (get) Token: 0x06000287 RID: 647 RVA: 0x00006AD3 File Offset: 0x00004CD3
+		// (set) Token: 0x06000288 RID: 648 RVA: 0x00006ADB File Offset: 0x00004CDB
 		public string SoftwareVersion { get; private set; }
 
-		// Token: 0x1700006A RID: 106
-		// (get) Token: 0x0600010B RID: 267 RVA: 0x00003CA0 File Offset: 0x00001EA0
-		// (set) Token: 0x0600010C RID: 268 RVA: 0x00003CB7 File Offset: 0x00001EB7
+		// Token: 0x170000FA RID: 250
+		// (get) Token: 0x06000289 RID: 649 RVA: 0x00006AE4 File Offset: 0x00004CE4
+		// (set) Token: 0x0600028A RID: 650 RVA: 0x00006AEC File Offset: 0x00004CEC
 		public string VariantVersion { get; private set; }
 
-		// Token: 0x1700006B RID: 107
-		// (get) Token: 0x0600010D RID: 269 RVA: 0x00003CC0 File Offset: 0x00001EC0
-		// (set) Token: 0x0600010E RID: 270 RVA: 0x00003CD7 File Offset: 0x00001ED7
+		// Token: 0x170000FB RID: 251
+		// (get) Token: 0x0600028B RID: 651 RVA: 0x00006AF5 File Offset: 0x00004CF5
+		// (set) Token: 0x0600028C RID: 652 RVA: 0x00006AFD File Offset: 0x00004CFD
 		public Dictionary<int, string> RofsVersions { get; private set; }
 
-		// Token: 0x1700006C RID: 108
-		// (get) Token: 0x0600010F RID: 271 RVA: 0x00003CE0 File Offset: 0x00001EE0
+		// Token: 0x170000FC RID: 252
+		// (get) Token: 0x0600028D RID: 653 RVA: 0x00006B08 File Offset: 0x00004D08
 		public ReadOnlyCollection<VplFile> FileList
 		{
 			get
@@ -62,28 +62,28 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model.DataPackage
 			}
 		}
 
-		// Token: 0x06000110 RID: 272 RVA: 0x00003D00 File Offset: 0x00001F00
+		// Token: 0x0600028E RID: 654 RVA: 0x00006B28 File Offset: 0x00004D28
 		public static Dictionary<int, string> ParseRofsVersions(string vplFilePath)
 		{
 			XDocument xdocument = XDocument.Load(vplFilePath);
-			XElement variant = xdocument.Descendants("Variant").First<XElement>();
-			return VplContent.ParseRofsVersions(variant);
+			XElement xelement = xdocument.Descendants("Variant").First<XElement>();
+			return VplContent.ParseRofsVersions(xelement);
 		}
 
-		// Token: 0x06000111 RID: 273 RVA: 0x00003D38 File Offset: 0x00001F38
+		// Token: 0x0600028F RID: 655 RVA: 0x00006B60 File Offset: 0x00004D60
 		public void ParseVplFile(string vplFilePath)
 		{
 			this.VplFileName = Path.GetFileName(vplFilePath);
 			XDocument xdocument = XDocument.Load(vplFilePath);
-			XElement variant = xdocument.Descendants("Variant").First<XElement>();
-			this.ParseVariantIdentification(variant);
-			this.ParseSwVersion(variant);
-			this.ParseVariantVersion(variant);
-			this.ParseFileList(variant);
-			this.RofsVersions = VplContent.ParseRofsVersions(variant);
+			XElement xelement = xdocument.Descendants("Variant").First<XElement>();
+			this.ParseVariantIdentification(xelement);
+			this.ParseSwVersion(xelement);
+			this.ParseVariantVersion(xelement);
+			this.ParseFileList(xelement);
+			this.RofsVersions = VplContent.ParseRofsVersions(xelement);
 		}
 
-		// Token: 0x06000112 RID: 274 RVA: 0x00003DE8 File Offset: 0x00001FE8
+		// Token: 0x06000290 RID: 656 RVA: 0x00006BC8 File Offset: 0x00004DC8
 		private static Dictionary<int, string> ParseRofsVersions(XElement variant)
 		{
 			Dictionary<int, string> dictionary = new Dictionary<int, string>();
@@ -94,10 +94,12 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model.DataPackage
 				{
 					XElement xelement2 = xelement.Descendants("Version").FirstOrDefault<XElement>();
 					XElement xelement3 = xelement.Descendants("RofsIndex").FirstOrDefault<XElement>();
-					if (xelement2 != null && xelement2.Value.Any<char>() && xelement3 != null)
+					bool flag = xelement2 != null && xelement2.Value.Any<char>() && xelement3 != null;
+					if (flag)
 					{
 						short num = Convert.ToInt16(xelement3.Value);
-						if (num < 1 || num > 6)
+						bool flag2 = num < 1 || num > 6;
+						if (flag2)
 						{
 							Tracer<VplContent>.WriteError(string.Format("Illegal ROFS index in VPL ({0}).", num), new object[0]);
 							break;
@@ -106,7 +108,8 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model.DataPackage
 					}
 					else
 					{
-						if (xelement3 == null)
+						bool flag3 = xelement3 == null;
+						if (flag3)
 						{
 							Tracer<VplContent>.WriteError("ROFS index element in VPL was invalid or missing", new object[0]);
 							break;
@@ -116,17 +119,15 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model.DataPackage
 					}
 				}
 			}
-			catch (Exception error)
+			catch (Exception ex)
 			{
-				Tracer<VplContent>.WriteError(error, "Problem with ROFS parsing.", new object[0]);
+				Tracer<VplContent>.WriteError(ex, "Problem with ROFS parsing.", new object[0]);
 				throw;
 			}
-			return (from elem in dictionary
-			orderby elem.Key
-			select elem).ToDictionary((KeyValuePair<int, string> elem) => elem.Key, (KeyValuePair<int, string> elem) => elem.Value);
+			return dictionary.OrderBy((KeyValuePair<int, string> elem) => elem.Key).ToDictionary((KeyValuePair<int, string> elem) => elem.Key, (KeyValuePair<int, string> elem) => elem.Value);
 		}
 
-		// Token: 0x06000113 RID: 275 RVA: 0x00003FE8 File Offset: 0x000021E8
+		// Token: 0x06000291 RID: 657 RVA: 0x00006DB0 File Offset: 0x00004FB0
 		private void ParseVariantIdentification(XElement variant)
 		{
 			XElement xelement = variant.Descendants("VariantIdentification").First<XElement>();
@@ -138,68 +139,72 @@ namespace Microsoft.WindowsDeviceRecoveryTool.Model.DataPackage
 			this.ProductCode = xelement4.Value;
 		}
 
-		// Token: 0x06000114 RID: 276 RVA: 0x00004078 File Offset: 0x00002278
+		// Token: 0x06000292 RID: 658 RVA: 0x00006E40 File Offset: 0x00005040
 		private void ParseSwVersion(XElement variant)
 		{
 			XElement xelement = variant.Descendants("SwVersion").First<XElement>();
 			this.SoftwareVersion = xelement.Value;
 		}
 
-		// Token: 0x06000115 RID: 277 RVA: 0x000040AC File Offset: 0x000022AC
+		// Token: 0x06000293 RID: 659 RVA: 0x00006E74 File Offset: 0x00005074
 		private void ParseVariantVersion(XElement variant)
 		{
 			XElement xelement = variant.Descendants("VariantVersion").First<XElement>();
 			this.VariantVersion = xelement.Value;
 		}
 
-		// Token: 0x06000116 RID: 278 RVA: 0x000040E0 File Offset: 0x000022E0
+		// Token: 0x06000294 RID: 660 RVA: 0x00006EA8 File Offset: 0x000050A8
 		private void ParseFileList(XElement variant)
 		{
 			this.fileList.Clear();
 			XElement xelement = variant.Descendants("FileList").First<XElement>();
 			IEnumerable<XElement> enumerable = xelement.Descendants("File");
-			foreach (XElement file in enumerable)
+			foreach (XElement xelement2 in enumerable)
 			{
-				this.ParseFile(file);
+				this.ParseFile(xelement2);
 			}
 		}
 
-		// Token: 0x06000117 RID: 279 RVA: 0x00004170 File Offset: 0x00002370
+		// Token: 0x06000295 RID: 661 RVA: 0x00006F2C File Offset: 0x0000512C
 		private void ParseFile(XElement file)
 		{
 			string value = file.Descendants("Name").First<XElement>().Value;
 			string value2 = file.Descendants("FileType").First<XElement>().Value;
-			string fileSubtype = string.Empty;
+			string text = string.Empty;
 			XElement xelement = file.Element("FileSubType");
-			if (xelement != null)
+			bool flag = xelement != null;
+			if (flag)
 			{
-				fileSubtype = xelement.Value;
+				text = xelement.Value;
 			}
-			string strA = "false";
+			string text2 = "false";
 			XElement xelement2 = file.Element("Signed");
-			if (xelement2 != null)
+			bool flag2 = xelement2 != null;
+			if (flag2)
 			{
-				strA = xelement2.Value;
+				text2 = xelement2.Value;
 			}
-			string strA2 = "false";
+			string text3 = "false";
 			XElement xelement3 = file.Element("Optional");
-			if (xelement3 != null)
+			bool flag3 = xelement3 != null;
+			if (flag3)
 			{
-				strA2 = xelement3.Value;
+				text3 = xelement3.Value;
 			}
-			string crc = string.Empty;
+			string text4 = string.Empty;
 			XElement xelement4 = file.Element("Crc");
-			if (xelement4 != null)
+			bool flag4 = xelement4 != null;
+			if (flag4)
 			{
-				crc = xelement4.Value;
+				text4 = xelement4.Value;
 			}
-			bool signed = string.CompareOrdinal(strA, "true") == 0;
-			bool optional = string.CompareOrdinal(strA2, "true") == 0;
-			VplFile item = new VplFile(value, value2, fileSubtype, signed, optional, crc);
-			this.fileList.Add(item);
+			bool flag5 = string.CompareOrdinal(text2, "true") == 0;
+			bool flag6 = string.CompareOrdinal(text3, "true") == 0;
+			VplFile vplFile = new VplFile(value, value2, text, flag5, flag6, text4);
+			this.fileList.Add(vplFile);
 		}
 
-		// Token: 0x040000B1 RID: 177
+		// Token: 0x04000227 RID: 551
 		private readonly List<VplFile> fileList;
 	}
 }

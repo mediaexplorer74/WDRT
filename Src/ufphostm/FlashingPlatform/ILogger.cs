@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-namespace FlashingPlatform1
+namespace FlashingPlatform
 {
 	// Token: 0x02000045 RID: 69
 	[NativeCppClass]
-    public struct ILogger
+	internal struct ILogger
 	{
 	}
 }

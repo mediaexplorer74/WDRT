@@ -7,13 +7,13 @@ using Microsoft.WindowsDeviceRecoveryTool.Model.Enums;
 
 namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 {
-	// Token: 0x020000D1 RID: 209
+	// Token: 0x0200001E RID: 30
 	[Export]
-	public class RebootHtcViewModel : BaseViewModel, ICanHandle<FlashResultMessage>, ICanHandle<FirmwareVersionsCompareMessage>, ICanHandle
+	public class RebootHtcViewModel : BaseViewModel, ICanHandle<FlashResultMessage>, ICanHandle, ICanHandle<FirmwareVersionsCompareMessage>
 	{
-		// Token: 0x1700017D RID: 381
-		// (get) Token: 0x0600066E RID: 1646 RVA: 0x00021618 File Offset: 0x0001F818
-		// (set) Token: 0x0600066F RID: 1647 RVA: 0x00021630 File Offset: 0x0001F830
+		// Token: 0x1700005E RID: 94
+		// (get) Token: 0x0600015E RID: 350 RVA: 0x0000936C File Offset: 0x0000756C
+		// (set) Token: 0x0600015F RID: 351 RVA: 0x00009384 File Offset: 0x00007584
 		public string Header
 		{
 			get
@@ -26,31 +26,32 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			}
 		}
 
-		// Token: 0x06000670 RID: 1648 RVA: 0x00021680 File Offset: 0x0001F880
+		// Token: 0x06000160 RID: 352 RVA: 0x000093C4 File Offset: 0x000075C4
 		public override void OnStarted()
 		{
 			base.EventAggregator.Publish<IsBackButtonMessage>(new IsBackButtonMessage(false));
 			this.ResetText();
 		}
 
-		// Token: 0x06000671 RID: 1649 RVA: 0x0002169C File Offset: 0x0001F89C
+		// Token: 0x06000161 RID: 353 RVA: 0x000093E0 File Offset: 0x000075E0
 		public void Handle(FlashResultMessage message)
 		{
 			this.packageNotFound = message.Result;
 		}
 
-		// Token: 0x06000672 RID: 1650 RVA: 0x000216AC File Offset: 0x0001F8AC
+		// Token: 0x06000162 RID: 354 RVA: 0x000093F0 File Offset: 0x000075F0
 		public void Handle(FirmwareVersionsCompareMessage message)
 		{
 			SwVersionComparisonResult status = message.Status;
-			if (status == SwVersionComparisonResult.PackageNotFound)
+			SwVersionComparisonResult swVersionComparisonResult = status;
+			if (swVersionComparisonResult == SwVersionComparisonResult.PackageNotFound)
 			{
 				this.packageNotFound = true;
 				this.ResetText();
 			}
 		}
 
-		// Token: 0x06000673 RID: 1651 RVA: 0x000216D8 File Offset: 0x0001F8D8
+		// Token: 0x06000163 RID: 355 RVA: 0x00009420 File Offset: 0x00007620
 		private void ResetText()
 		{
 			this.Header = LocalizationManager.GetTranslation(this.packageNotFound ? "HtcPackageNotFound" : "OperationFailed");
@@ -58,10 +59,10 @@ namespace Microsoft.WindowsDeviceRecoveryTool.States.Workflow
 			base.EventAggregator.Publish<HeaderMessage>(new HeaderMessage(translation, ""));
 		}
 
-		// Token: 0x040002B2 RID: 690
+		// Token: 0x040000BC RID: 188
 		private bool packageNotFound = true;
 
-		// Token: 0x040002B3 RID: 691
+		// Token: 0x040000BD RID: 189
 		private string header;
 	}
 }
